@@ -22,7 +22,7 @@ angular.module('myApp', [
 				controller: 'RdvCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/view1'});
+		$routeProvider.otherwise({redirectTo: '/appointment'});
 	}]);
 
 
