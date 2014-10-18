@@ -1,0 +1,12 @@
+#last-places {
+    position: relative;
+    border-radius: 5px;
+    .cover-game, .block {
+        display: inline-block;
+        margin-right: 10px;
+        z-index: 2;
+        position: relative;
+        vertical-align: top
+    }
+    
+}
