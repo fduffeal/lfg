@@ -36,32 +36,32 @@ ul {
   margin: 2px 0;
 }
 
-#last-places {
+#home #last-places {
   position: relative;
   border-radius: 5px;
   width: 100%;
 }
-#last-places .cover-game, #last-places .block {
+#home #last-places .cover-game, #home #last-places .block {
   display: inline-block;
   margin-right: 10px;
   z-index: 2;
   position: relative;
   vertical-align: top;
 }
-#last-places .cover-game {
+#home #last-places .cover-game {
   width: 36%;
 }
-#last-places .block {
+#home #last-places .block {
   width: 60%;
 }
-#last-places .block .line li {
+#home #last-places .block .line li {
   display: inline-block;
   font-size: 13px;
 }
-#last-places .block .line li:nth-child(1) {
+#home #last-places .block .line li:nth-child(1) {
   width: 10%;
 }
-#last-places .block .line li:nth-child(1) div {
+#home #last-places .block .line li:nth-child(1) div {
   border-radius: 50% 50%;
   width: 40px;
   font-size: 12px;
@@ -69,24 +69,24 @@ ul {
   line-height: 20px;
   height: 20px;
 }
-#last-places .block .line li:nth-child(2) {
+#home #last-places .block .line li:nth-child(2) {
   width: 60%;
 }
-#last-places .block .line li:nth-child(3) {
+#home #last-places .block .line li:nth-child(3) {
   width: 20%;
 }
-#last-places .block .line li:nth-child(4) {
+#home #last-places .block .line li:nth-child(4) {
   width: 5%;
 }
-#last-places .block .line:nth-child(odd) {
+#home #last-places .block .line:nth-child(odd) {
   background: grey;
 }
-#last-places .pvp {
+#home #last-places .pvp {
   background: red;
 }
-#last-places .pve {
+#home #last-places .pve {
   background: green;
 }
-#last-places .assaut {
+#home #last-places .assaut {
   background: blue;
 }

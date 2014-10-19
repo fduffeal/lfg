@@ -1,59 +1,62 @@
-#last-places {
-    position: relative;
-    border-radius: 5px;
-    width: 100%;
-    .cover-game, .block {
-        display: inline-block;
-        margin-right: 10px;
-        z-index: 2;
+#home {
+    #last-places {
         position: relative;
-        vertical-align: top
-    }
-    .cover-game {
-        width: 36%;
-    }
-    .block {
-        width: 60%;
-    }
-    .block .line li{
-        display: inline-block;
-        font-size: 13px;
-        &:nth-child(1) {
-            width: 10%;
-            div {
-                border-radius: 50% 50%;
-                width: 40px;
-                font-size: 12px;
-                text-align: center;
-                line-height: 20px;
-                height: 20px;
-            }
+        border-radius: 5px;
+        width: 100%;
+        .cover-game, .block {
+            display: inline-block;
+            margin-right: 10px;
+            z-index: 2;
+            position: relative;
+            vertical-align: top
         }
-        &:nth-child(2) {
+        .cover-game {
+            width: 36%;
+        }
+        .block {
             width: 60%;
         }
-        &:nth-child(3) {
-            width: 20%;
+        .block .line li{
+            display: inline-block;
+            font-size: 13px;
+            &:nth-child(1) {
+                width: 10%;
+                div {
+                    border-radius: 50% 50%;
+                    width: 40px;
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 20px;
+                    height: 20px;
+                }
+            }
+            &:nth-child(2) {
+                width: 60%;
+            }
+            &:nth-child(3) {
+                width: 20%;
+            }
+            &:nth-child(4) {
+                width: 5%
+            }
         }
-        &:nth-child(4) {
-            width: 5%
+        .block .line:nth-child(odd) {
+            background: grey
         }
-    }
-    .block .line:nth-child(odd) {
-        background: grey
-    }
 
-    .pvp{
-        background: red;
+        .pvp{
+            background: red;
+        }
+        .pve {
+            background: green;
+        }
+        .assaut {
+            background: blue;
+        }
+
+        #new-party {
+
+        }
     }
-    .pve {
-        background: green;
-    }
-    .assaut {
-        background: blue;
-    }
-    
-    #new-party {
-        
-    }
+    .list ul li {}
 }
