@@ -15,6 +15,18 @@ body {
   margin: auto;
 }
 
+.pvp {
+  background: red;
+}
+
+.pve {
+  background: green;
+}
+
+.assaut {
+  background: blue;
+}
+
 .page {
   margin-top: 20px;
 }
@@ -35,6 +47,9 @@ ul {
   padding: 0;
   margin: 2px 0;
 }
+ul li {
+  display: inline-block;
+}
 
 #home #last-places {
   position: relative;
@@ -48,6 +63,14 @@ ul {
   position: relative;
   vertical-align: top;
 }
+@media screen and (max-width: 972px) {
+  #home #last-places .cover-game {
+    display: none;
+  }
+  #home #last-places .block {
+    width: 100% !important;
+  }
+}
 #home #last-places .cover-game {
   width: 36%;
 }
@@ -55,11 +78,11 @@ ul {
   width: 60%;
 }
 #home #last-places .block .line li {
-  display: inline-block;
   font-size: 13px;
 }
 #home #last-places .block .line li:nth-child(1) {
   width: 10%;
+  padding-left: 10px;
 }
 #home #last-places .block .line li:nth-child(1) div {
   border-radius: 50% 50%;
@@ -81,12 +104,44 @@ ul {
 #home #last-places .block .line:nth-child(odd) {
   background: grey;
 }
-#home #last-places .pvp {
-  background: red;
+#home .list {
+  position: relative;
+  margin-top: 20px;
 }
-#home #last-places .pve {
-  background: green;
+#home .list ul {
+  width: 100%;
+  z-index: 2;
+  position: relative;
 }
-#home #last-places .assaut {
-  background: blue;
+#home .list ul.title {
+  background: grey;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}
+#home .list ul li {
+  font-size: 13px;
+}
+#home .list ul li:nth-child(1) {
+  width: 10%;
+  padding-left: 10px;
+}
+#home .list ul li:nth-child(2) {
+  width: 10%;
+}
+#home .list ul li:nth-child(2) div {
+  border-radius: 50% 50%;
+  width: 40px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+}
+#home .list ul li:nth-child(3) {
+  width: 50%;
+}
+#home .list ul li:nth-child(4) {
+  width: 20%;
+}
+#home .list ul li:nth-child(5) {
+  width: 5%;
 }

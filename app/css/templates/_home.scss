@@ -10,6 +10,14 @@
             position: relative;
             vertical-align: top
         }
+         @media screen and (max-width: 972px) {
+            .cover-game{
+                display: none
+            }
+            .block {
+                width: 100%!important;
+            }
+          }
         .cover-game {
             width: 36%;
         }
@@ -17,10 +25,10 @@
             width: 60%;
         }
         .block .line li{
-            display: inline-block;
             font-size: 13px;
             &:nth-child(1) {
                 width: 10%;
+                padding-left: 10px;
                 div {
                     border-radius: 50% 50%;
                     width: 40px;
@@ -44,19 +52,49 @@
             background: grey
         }
 
-        .pvp{
-            background: red;
-        }
-        .pve {
-            background: green;
-        }
-        .assaut {
-            background: blue;
-        }
-
         #new-party {
 
         }
     }
-    .list ul li {}
+    .list {
+        position: relative;
+        margin-top: 20px;
+        ul {
+            width: 100%;
+            z-index: 2;
+            position: relative;
+            &.title {
+                background: grey;
+                border-radius: 5px 5px 0 0;
+                font-weight: bold;
+            }
+            li{
+                font-size: 13px;
+                &:nth-child(1) {
+                    width: 10%;
+                    padding-left: 10px;
+                }
+                &:nth-child(2) {
+                    width: 10%;
+                    div {
+                        border-radius: 50% 50%;
+                        width: 40px;
+                        font-size: 12px;
+                        text-align: center;
+                        line-height: 20px;
+                        height: 20px;
+                    }
+                }
+                &:nth-child(3) {
+                    width: 50%;
+                }
+                &:nth-child(4) {
+                    width: 20%
+                }
+                 &:nth-child(5) {
+                    width: 5%
+                }
+            }
+        }
+    }
 }
