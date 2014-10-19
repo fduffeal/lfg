@@ -1,7 +1,7 @@
 #last-places {
     position: relative;
     border-radius: 5px;
-    widows: 100%;
+    width: 100%;
     .cover-game, .block {
         display: inline-block;
         margin-right: 10px;
@@ -9,16 +9,25 @@
         position: relative;
         vertical-align: top
     }
-    .block {
-        width: 62%;
-        &.line {
-            font-size: 13px;
-        }
+    .cover-game {
+        width: 36%;
     }
-    .block .title li, .block .line li{
+    .block {
+        width: 60%;
+    }
+    .block .line li{
         display: inline-block;
+        font-size: 13px;
         &:nth-child(1) {
             width: 10%;
+            div {
+                border-radius: 50% 50%;
+                width: 40px;
+                font-size: 12px;
+                text-align: center;
+                line-height: 20px;
+                height: 20px;
+            }
         }
         &:nth-child(2) {
             width: 60%;
@@ -30,15 +39,21 @@
             width: 5%
         }
     }
+    .block .line:nth-child(odd) {
+        background: grey
+    }
+
     .pvp{
-        border-radius: 50% 50%;
         background: red;
-        width: 40px;
-        font-size: 12px;
-        text-align: center;
-        line-height: 20px;
-        height: 20px;
+    }
+    .pve {
+        background: green;
+    }
+    .assaut {
+        background: blue;
     }
     
-    
+    #new-party {
+        
+    }
 }

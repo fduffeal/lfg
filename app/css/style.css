@@ -33,12 +33,13 @@ body {
 
 ul {
   padding: 0;
+  margin: 2px 0;
 }
 
 #last-places {
   position: relative;
   border-radius: 5px;
-  widows: 100%;
+  width: 100%;
 }
 #last-places .cover-game, #last-places .block {
   display: inline-block;
@@ -47,33 +48,45 @@ ul {
   position: relative;
   vertical-align: top;
 }
+#last-places .cover-game {
+  width: 36%;
+}
 #last-places .block {
-  width: 62%;
-}
-#last-places .block.line {
-  font-size: 13px;
-}
-#last-places .block .title li, #last-places .block .line li {
-  display: inline-block;
-}
-#last-places .block .title li:nth-child(1), #last-places .block .line li:nth-child(1) {
-  width: 10%;
-}
-#last-places .block .title li:nth-child(2), #last-places .block .line li:nth-child(2) {
   width: 60%;
 }
-#last-places .block .title li:nth-child(3), #last-places .block .line li:nth-child(3) {
-  width: 20%;
+#last-places .block .line li {
+  display: inline-block;
+  font-size: 13px;
 }
-#last-places .block .title li:nth-child(4), #last-places .block .line li:nth-child(4) {
-  width: 5%;
+#last-places .block .line li:nth-child(1) {
+  width: 10%;
 }
-#last-places .pvp {
+#last-places .block .line li:nth-child(1) div {
   border-radius: 50% 50%;
-  background: red;
   width: 40px;
   font-size: 12px;
   text-align: center;
   line-height: 20px;
   height: 20px;
+}
+#last-places .block .line li:nth-child(2) {
+  width: 60%;
+}
+#last-places .block .line li:nth-child(3) {
+  width: 20%;
+}
+#last-places .block .line li:nth-child(4) {
+  width: 5%;
+}
+#last-places .block .line:nth-child(odd) {
+  background: grey;
+}
+#last-places .pvp {
+  background: red;
+}
+#last-places .pve {
+  background: green;
+}
+#last-places .assaut {
+  background: blue;
 }
