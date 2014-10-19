@@ -31,9 +31,14 @@ body {
   height: 100%;
 }
 
+ul {
+  padding: 0;
+}
+
 #last-places {
   position: relative;
   border-radius: 5px;
+  widows: 100%;
 }
 #last-places .cover-game, #last-places .block {
   display: inline-block;
@@ -41,4 +46,34 @@ body {
   z-index: 2;
   position: relative;
   vertical-align: top;
+}
+#last-places .block {
+  width: 62%;
+}
+#last-places .block.line {
+  font-size: 13px;
+}
+#last-places .block .title li, #last-places .block .line li {
+  display: inline-block;
+}
+#last-places .block .title li:nth-child(1), #last-places .block .line li:nth-child(1) {
+  width: 10%;
+}
+#last-places .block .title li:nth-child(2), #last-places .block .line li:nth-child(2) {
+  width: 60%;
+}
+#last-places .block .title li:nth-child(3), #last-places .block .line li:nth-child(3) {
+  width: 20%;
+}
+#last-places .block .title li:nth-child(4), #last-places .block .line li:nth-child(4) {
+  width: 5%;
+}
+#last-places .pvp {
+  border-radius: 50% 50%;
+  background: red;
+  width: 40px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
 }

@@ -1,6 +1,7 @@
 #last-places {
     position: relative;
     border-radius: 5px;
+    widows: 100%;
     .cover-game, .block {
         display: inline-block;
         margin-right: 10px;
@@ -8,5 +9,36 @@
         position: relative;
         vertical-align: top
     }
+    .block {
+        width: 62%;
+        &.line {
+            font-size: 13px;
+        }
+    }
+    .block .title li, .block .line li{
+        display: inline-block;
+        &:nth-child(1) {
+            width: 10%;
+        }
+        &:nth-child(2) {
+            width: 60%;
+        }
+        &:nth-child(3) {
+            width: 20%;
+        }
+        &:nth-child(4) {
+            width: 5%
+        }
+    }
+    .pvp{
+        border-radius: 50% 50%;
+        background: red;
+        width: 40px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 20px;
+        height: 20px;
+    }
+    
     
 }
