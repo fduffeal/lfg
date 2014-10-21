@@ -3,11 +3,37 @@
   -webkit-box-shadow: black 0px 2px 10px;
   -moz-box-shadow: black 0px 2px 10px;
   box-shadow: black 0px 2px 10px;
+  height: 58px;
+  line-height: 58px;
+}
+.header .actions {
+  float: right;
+}
+.header .actions * {
+  display: inline-block;
+  margin: 0 5px;
+}
+.header .actions input {
+  border: 0;
+  height: 30px;
+  padding-left: 10px;
+  line-height: 30px;
+  width: 200px;
+  border-radius: 5px;
+}
+.header .actions a {
+  font-size: 13px;
+  color: #e0e0e0;
+  width: 50px;
+  text-align: center;
+  height: 58px;
+  line-height: 58px;
 }
 
 body {
   background: url("../img/bg.jpg") no-repeat;
   background-size: cover;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -49,6 +75,11 @@ ul {
 }
 ul li {
   display: inline-block;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 #home #last-places {
