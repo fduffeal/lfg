@@ -51,14 +51,17 @@
            <ul class="title">
                <li>Name</li>
                <li>Infos</li>
-               <li>Date</li>
+               <li>Start</li>
+               <li>End</li>
+               <li>nb slot</li>
            </ul>
            <ul class="line"  ng-repeat="rdv in aRdv">
                <li>{{ rdv.name }}</li>
                <li>{{ rdv.description}} </li>
-               <li>{{ rdv.start.timestamp }}</li>
+               <li>{{ rdv.start.timestamp*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+               <li>{{ rdv.end.timestamp*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+               <li>0/{{ rdv.nbParticipant}}</li>
            </ul>
        </div>
    </div>
-    
 </div>
