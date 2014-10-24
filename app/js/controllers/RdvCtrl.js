@@ -5,6 +5,13 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.test='1';
 
+			$scope.today = new Date();
+
+			$scope.demain = new Date();
+			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
+
+			$scope.endDay =
+
 
 			rdv.getAll().success(function(data, status, headers, config) {
 					// this callback will be called asynchronously
