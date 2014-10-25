@@ -42,56 +42,11 @@
                    <li>19.06 10:00 PM</li>
                    <li>Ps3</li>
                </ul>
-               <a href="" id="new-party" ng-click="displayForm = true">Create a party</a>
+               <a ng-href="#/party/create" id="new-party">Create a party</a>
            </div>
            
        </div>
 
-	   <div ng-show="displayForm">
-		   <form name="myForm">
-			   Date :
-			   <input type="date" id="start-date" name="inputDayStart" ng-model="day" placeholder="yyyy-MM-dd" min="{{today | date:'yyyy-MM-dd'}}" max="{{demain| date:'yyyy-MM-dd'}}" required />
-			   <span class="error" ng-show="myForm.inputDayStart.$error.required">
-			       Required!</span>
-			   <span class="error" ng-show="myForm.inputDayStart.$error.date">
-			       Not a valid date!</span>
-			   </br>
-			   at :
-			   <input type="time" id="start-hours" name="inputHoursStart" ng-model="hours" placeholder="HH:mm" required/>
-			   <span class="error" ng-show="myForm.inputHoursStart.$error.required">
-			       Required!</span>
-			   <span class="error" ng-show="myForm.inputHoursStart.$error.date">
-			       Not a valid hour!</span>
-			   </br>
-
-
-			   To Date :
-			   <input type="date" id="end-date" name="inputDayEnd" ng-model="dayEnd" placeholder="yyyy-MM-dd" min="{{day | date:'yyyy-MM-dd'}}" max="{{demain| date:'yyyy-MM-dd'}}" required />
-			   <span class="error" ng-show="myForm.inputDayEnd.$error.required">
-			       Required!</span>
-			   <span class="error" ng-show="myForm.inputDayEnd.$error.date">
-			       Not a valid date!</span>
-			   </br>
-			   at :
-			   <input type="time" id="end-hours" name="inputHoursEnd" ng-model="hoursEnd" placeholder="HH:mm" required/>
-			   <span class="error" ng-show="myForm.inputHoursEnd.$error.required">
-			       Required!</span>
-			   <span class="error" ng-show="myForm.inputHoursEnd.$error.date">
-			       Not a valid hour!</span>
-			   </br>
-
-
-
-
-
-			   <span>day = {{day | date: "yyyy-MM-dd HH:mm"}}</span><br/>
-			   <span>myForm.inputDayStart.$valid = {{myForm.inputDayStart.$valid}}</span><br/>
-			   <span>myForm.inputDayStart.$error = {{myForm.inputDayStart.$error}}</span><br/>
-			   <span>myForm.$valid = {{myForm.$valid}}</span><br/>
-			   <span>myForm.$error.required = {{!!myForm.$error.required}}</span><br/>
-		   </form>
-		   <a href="" ng-click="displayForm = false">Close</a>
-	   </div>
 	   <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
 	   [ <a href="" ng-click="predicate=''">unsorted</a> ]
        <div class="list">

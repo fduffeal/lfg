@@ -21,6 +21,11 @@ angular.module('myApp', [
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'
 			});
+        $routeProvider.when('/party/create',
+            {
+                templateUrl: 'html/controllers/party-create.html',
+                controller: 'PartyCreateCtrl'
+            });
 
 		$routeProvider.otherwise({redirectTo: '/appointment'});
 	}]);
