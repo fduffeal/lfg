@@ -7,6 +7,7 @@ angular.module('myApp', [
 	'myApp.services',
 	'myApp.directives',
 	'myApp.filters',
+	'ngCookies'
 ]).
 	config(['$routeProvider', function ($routeProvider) {
 

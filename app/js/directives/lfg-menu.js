@@ -12,7 +12,7 @@ angular.module('myApp.directives')
                         })
                     };
 
-                    $scope.userInfo = user.data;
+                    $scope.userInfo = user.get();
 
 				},
 				restrict: 'E',

@@ -1,22 +1,17 @@
 angular.module('myApp.services')
-	.service('user', ['$http',
-		function($http) {
+	.service('user', ['$http','storage',
+		function($http,storage) {
             this.data = '';
 			this.log = function(email,password){
-
-                return $http({
-                    method: 'POST',
-                    url: 'http://dev.esbattle.com/app_dev.php/login',
-                    data: {email:email,password:password},
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function(data){
-                    this.data;
-                });
-
-				return $http.post('http://dev.esbattle.com/app_dev.php/login',{email:email,password:password}).success(function(data){
-                    this.data;
-                });
+				return $http.get('http://dev.esbattle.com/app_dev.php/login/'+email+'/'+password).success(function(data){
+					this.data = data;
+					storage.setPersistant('user',JSON.stringify(this.data));
+				});
 			};
+
+			this.get = function(){
+				return JSON.parse(storage.getPersistant('user'));
+			}
 		}
 	]
 );
