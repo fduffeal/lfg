@@ -1,5 +1,5 @@
 angular.module('myApp.directives')
-	.directive('lfgMenu', ['user',
+	.directive('lfgHeader', ['user',
 		function(user) {
 			return {
 				link: function($scope, element, attrs) {
@@ -13,10 +13,9 @@ angular.module('myApp.directives')
                     };
 
                     $scope.userInfo = user.get();
-
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-menu.html'
+				templateUrl: 'html/directives/lfg-header.html'
 			};
 		}
 	]

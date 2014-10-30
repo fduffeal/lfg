@@ -10,7 +10,11 @@ angular.module('myApp.services')
 			};
 
 			this.get = function(){
-				return JSON.parse(storage.getPersistant('user'));
+				var courantUser = storage.getPersistant('user');
+				if(typeof(courantUser) !== "undefined"){
+					return JSON.parse(courantUser);
+				}
+				return null;
 			}
 		}
 	]

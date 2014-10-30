@@ -17,7 +17,7 @@ angular.module('myApp', [
 				controller: 'MatchmakingCtrl'
 			});
 
-		$routeProvider.when('/appointment',
+		$routeProvider.when('/',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'
@@ -28,7 +28,7 @@ angular.module('myApp', [
                 controller: 'PartyCreateCtrl'
             });
 
-		$routeProvider.otherwise({redirectTo: '/appointment'});
+		$routeProvider.otherwise({redirectTo: '/'});
 	}]);
 
 
