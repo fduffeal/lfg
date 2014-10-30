@@ -1,70 +1,31 @@
+<div id="ui-top"></div>
+<div id="ui-left"></div>
 <lfg-menu></lfg-menu>
-<div id="home" class="page">
-   <div class="container">
-       <div id="last-places">
-           <div class="bg-transparent"></div>
-           <img src="img/cover-destiny.png" alt="" class="cover-game" />
-           <div class="block">
-               <h1><img src="img/ico-lastplaces.png" alt="" /> Last Places</h1>
-               <ul class="line">
-                   <li><div class='pvp'>PvP</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.06 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <ul class="line">
-                   <li><div class='pve'>PvE</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.06 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <ul class="line">
-                   <li><div class='assaut'>AST</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.06 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <ul class="line">
-                   <li><div class='pvp'>PvP</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.08 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <ul class="line">
-                   <li><div class='pvp'>PvP</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.06 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <ul class="line">
-                   <li><div class='pve'>PVE</div></li>
-                   <li>Assault lvl 28 only !!</li>
-                   <li>19.06 10:00 PM</li>
-                   <li>Ps3</li>
-               </ul>
-               <a ng-href="#/party/create" id="new-party">Create a party</a>
-           </div>
-           
-       </div>
 
-	   <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
-	   [ <a href="" ng-click="predicate=''">unsorted</a> ]
-       <div class="list">
-          <div class="bg-transparent"></div>
-           <ul class="title">
-               <li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></li>
-               <li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
-               <li><a href="" ng-click="predicate = 'start.timestamp'; reverse=!reverse">Start</a></li>
-               <li><a href="" ng-click="predicate = 'end.timestamp'; reverse=!reverse">End</a></li>
-               <li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
-           </ul>
-           <ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
-               <li>{{ rdv.name }}</li>
-               <li>{{ rdv.description}} </li>
-               <li>{{ rdv.start.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-               <li>{{ rdv.end.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-               <li>0/{{ rdv.nbParticipant}}</li>
-           </ul>
-       </div>
-   </div>
+<div id="home" class="page">
+	<div class="cover-game">
+		<span>Destiny</span>
+	</div>
+
+
+	<pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+	[ <a href="" ng-click="predicate=''">unsorted</a> ]
+	<div class="list">
+		<div class="bg-transparent"></div>
+		<ul class="title">
+			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></li>
+			<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
+			<li><a href="" ng-click="predicate = 'start.timestamp'; reverse=!reverse">Start</a></li>
+			<li><a href="" ng-click="predicate = 'end.timestamp'; reverse=!reverse">End</a></li>
+			<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
+		</ul>
+		<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
+			<li>{{ rdv.name }}</li>
+			<li>{{ rdv.description}} </li>
+			<li>{{ rdv.start.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+			<li>{{ rdv.end.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+			<li>0/{{ rdv.nbParticipant}}</li>
+		</ul>
+	</div>
+
 </div>

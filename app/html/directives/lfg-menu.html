@@ -1,17 +1,25 @@
 <div class="header">
-	<div class="container">
-		<a href="" id="logo"><img src="img/logo.png" alt="" /></a>
-		<div class="actions" ng-if="!userInfo.username">
-			<form action="">
-				<input type="text" ng-model="email">
-				<input type="password" ng-model="password">
-			</form>
-			<a href="">sign up</a>
-			<a href="" ng-click="login(email,password)">log in</a>
-		</div>
 
-        <div  class="actions" ng-if="userInfo.username" style="color: #ffffff">{{userInfo.username}}</div>
+	<a href="" id="logo"><img src="img/logo.png" alt="" /></a>
+	<div class="actions" ng-if="!userInfo.username">
+		<form action="">
+			<input type="text" ng-model="email">
+			<input type="password" ng-model="password">
+		</form>
+		<a href="">sign up</a>
+		<a href="" ng-click="login(email,password)">log in</a>
 	</div>
+
+	<div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
+		<ul>
+			<li><a href="">FIND</a></li>
+			<li><a href="">MY PARTY</a></li>
+		</ul>
+
+		<div class="user">{{userInfo.username}}</div>
+		<div class="picture-user"></div>
+	</div>
+
 </div>
 <!--<ul class="menu">
 	<li><a href="#/matchmaking">Matchmaking</a></li>
