@@ -27,6 +27,11 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/party-create.html',
                 controller: 'PartyCreateCtrl'
             });
+        $routeProvider.when('/signin',
+            {
+                templateUrl: 'html/controllers/signin.html',
+                controller: 'SignCtrl'
+            });
 
 		$routeProvider.otherwise({redirectTo: '/'});
 	}]);
