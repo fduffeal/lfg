@@ -15,7 +15,7 @@ angular.module('myApp.services')
 					return JSON.parse(courantUser);
 				}
 				return null;
-			}
+			};
 
 			this.register = function(email,password,username){
 
@@ -23,7 +23,11 @@ angular.module('myApp.services')
 					this.data = data;
 					storage.setPersistant('user',JSON.stringify(this.data));
 				});
-			}
+			};
+
+			this.logout = function(){
+				storage.erasePersistant('user');
+			};
 		}
 	]
 );

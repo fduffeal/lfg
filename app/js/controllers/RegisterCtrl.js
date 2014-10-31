@@ -7,8 +7,9 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 	        }
 
 	        $scope.submit = function(){
-		        user.register($scope.email,$scope.password,$scope.username);
-		        $location.path('/');
+		        user.register($scope.email,$scope.password,$scope.username).success(function(data){
+			        $location.path('/');
+		        });
 	        }
 
         }

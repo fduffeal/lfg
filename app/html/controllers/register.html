@@ -6,7 +6,7 @@
 	<div class="cover">
 	</div>
 	<div class="block">
-		<form name="registerForm" ng-submit="submit()">
+		<form name="registerForm">
 			<label>Username :</label>
 			<input class="error" type="text" ng-model="username" name="inputUsername">
 			<label>Email :</label>
@@ -15,7 +15,7 @@
 			<input ng-model="password" type="password" ng-change="updateRegExpPassword()">
 			<label>Confirm your password :</label>
 			<input type="password" ng-pattern="regExpPassword">
-			<input type="submit" class="btn" value="Register !">
+			<a href="" ng-click="submit()" class="btn">Register !</a>
 		</form>
 	</div>
 	<div class="error-msg">
