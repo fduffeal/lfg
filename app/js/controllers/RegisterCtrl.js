@@ -1,8 +1,15 @@
 angular.module('myApp.controllers').controller('RegisterCtrl',
-    ['$scope',
-        function ($scope) {
+    ['$scope','user','$location',
+        function ($scope,user,$location) {
 
+	        $scope.updateRegExpPassword = function(){
+		        $scope.regExpPassword = '/'+$scope.password+'/';
+	        }
 
+	        $scope.submit = function(){
+		        user.register($scope.email,$scope.password,$scope.username);
+		        $location.path('/');
+	        }
 
         }
     ]
