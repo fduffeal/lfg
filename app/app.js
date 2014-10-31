@@ -32,6 +32,11 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/register.html',
                 controller: 'RegisterCtrl'
             });
+        $routeProvider.when('/profile',
+            {
+                templateUrl: 'html/controllers/profile.html',
+                controller: 'ProfileCtrl'
+            });
 
 		$routeProvider.otherwise({redirectTo: '/'});
 	}]);

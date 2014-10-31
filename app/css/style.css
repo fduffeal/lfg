@@ -74,8 +74,17 @@ body {
   color: #3d3b3b;
 }
 
+.cover {
+  width: 980px;
+  height: 227px;
+}
+
 :focus {
   outline: 0;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 input[type=text] {
@@ -156,11 +165,8 @@ a {
   float: none !important;
 }
 
-#home .cover-game {
+#home .cover {
   background: url("../img/cover-destiny.jpg");
-  width: 980px;
-  height: 227px;
-  position: relative;
 }
 #home .list {
   position: relative;
@@ -206,8 +212,6 @@ a {
 
 #signin .cover {
   background: url("../img/cover-register.jpg");
-  width: 980px;
-  height: 227px;
 }
 #signin .block {
   width: 514px;
@@ -249,4 +253,48 @@ a {
 #signin .error-msg {
   top: 286px;
   right: 62px;
+}
+
+#profile .cover {
+  background: url("../img/cover-profile.jpg");
+}
+#profile .block {
+  width: 414px;
+  float: left;
+  padding: 10px;
+  margin-top: 30px;
+}
+#profile .block label {
+  width: 200px;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+}
+#profile .block input {
+  width: 200px;
+}
+#profile .block * {
+  float: left;
+  margin: 10px 0;
+}
+#profile .block .modify-pwd {
+  color: #87cbc1;
+}
+#profile .block .btn {
+  display: block;
+  background: #f15641;
+  height: 40px;
+  width: 80px;
+  clear: both;
+  float: right;
+  line-height: 40px;
+  text-align: center;
+  margin: 20px auto;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#profile .block .btn:hover {
+  background: #87cbc1;
 }

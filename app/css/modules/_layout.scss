@@ -7,8 +7,16 @@ body {
 	color: #3d3b3b;
 }
 
+.cover {
+	width: 980px;
+	height: 227px;
+}
+
 :focus {
 	outline: 0;
+}
+.hidden {
+	visibility: hidden;
 }
 input[type=text] {
 	border-radius: 5px;
