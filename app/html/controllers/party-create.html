@@ -1,115 +1,115 @@
 <!-- oui je sais mais j'ai pas compass d'installé ... --->
 <style>
-    .selected {
-        color : #ffff00;
-    }
-    .required {
-        border : 1px solid red;
-    }
-    .unvalid {
-        color : #808080;
-    }
+	.selected {
+		color: #ffff00;
+	}
+
+	.required {
+		border: 1px solid red;
+	}
+
+	.unvalid {
+		color: #808080;
+	}
 </style>
 <lfg-header></lfg-header>
 <div id="party-create" class="page">
-   <div class="container">
-	   <div>
-		   <form name="myForm" ng-submit="submit()" >
+	<div class="container">
+		<div>
+			<form name="myForm" ng-submit="submit()">
 
-               What Game :
-               <select type="select" id="game" name="inputGameSelect">
-                <option value="Destiny">Destiny</option>
-               </select>
-               <br>
+				What Game :
+				<select type="select" id="game" name="inputGameSelect">
+					<option value="Destiny">Destiny</option>
+				</select>
+				<br>
 
-			   When :
-			   <input ng-class="{'required':myForm.inputDayStart.$error.required,
+				When :
+				<input ng-class="{'required':myForm.inputDayStart.$error.required,
 			        'unvalid':myForm.inputDayStart.$error.date}"
-                    type="date"
-                    id="start-date"
-                    name="inputDayStart"
-                    ng-model="day"
-                    placeholder="yyyy-MM-dd"
-                    min="{{today | date:'yyyy-MM-dd'}}"
-                    max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
-                    required />
-			   at :
-			   <input ng-class="{'required':myForm.inputHoursStart.$error.required,
+				       type="date"
+				       id="start-date"
+				       name="inputDayStart"
+				       ng-model="day"
+				       placeholder="yyyy-MM-dd"
+				       min="{{today | date:'yyyy-MM-dd'}}"
+				       max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
+				       required/>
+				at :
+				<input ng-class="{'required':myForm.inputHoursStart.$error.required,
 			        'unvalid':myForm.inputHoursStart.$error.time}"
-                      type="time"
-                      id="start-hours"
-                      name="inputHoursStart"
-                      ng-model="hours"
-                      placeholder="HH:mm" required/>
-                <br>
+				       type="time"
+				       id="start-hours"
+				       name="inputHoursStart"
+				       ng-model="hours"
+				       placeholder="HH:mm" required/>
+				<br>
 
-			   To Date :
-			   <input ng-class="{'required':myForm.inputDayEnd.$error.required,
+				To Date :
+				<input ng-class="{'required':myForm.inputDayEnd.$error.required,
 			        'unvalid':myForm.inputDayEnd.$error.date}"
-                       type="date"
-                       id="end-date"
-                       name="inputDayEnd"
-                       ng-model="dayEnd"
-                       placeholder="yyyy-MM-dd"
-                       min="{{day | date:'yyyy-MM-dd'}}"
-                       max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
-                       required />
-			   at :
-			   <input ng-class="{'required':myForm.inputHoursEnd.$error.required,
+				       type="date"
+				       id="end-date"
+				       name="inputDayEnd"
+				       ng-model="dayEnd"
+				       placeholder="yyyy-MM-dd"
+				       min="{{day | date:'yyyy-MM-dd'}}"
+				       max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
+				       required/>
+				at :
+				<input ng-class="{'required':myForm.inputHoursEnd.$error.required,
 			        'unvalid':myForm.inputHoursEnd.$error.time}"
-                      type="time" id="end-hours"
-                      name="inputHoursEnd"
-                      ng-model="hoursEnd"
-                      placeholder="HH:mm"
-                      required/>
-			   <br>
+				       type="time" id="end-hours"
+				       name="inputHoursEnd"
+				       ng-model="hoursEnd"
+				       placeholder="HH:mm"
+				       required/>
+				<br>
 
 
                <span ng-class="{'required':myForm.inputPlateform.$error.required,
 			        'unvalid':myForm.inputPlateform.$error.date}">Platform :</span>
-               <input type="radio" name="inputPlateform" ng-model="plateform" value="PS3" required>PS3
-               <input type="radio" name="inputPlateform" ng-model="plateform" value="PS4" required>PS4
-               <input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX 360" required>XBOX 360
-               <input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX ONE" required>XBOX ONE
-               <br>
+				<input type="radio" name="inputPlateform" ng-model="plateform" value="PS3" required>PS3
+				<input type="radio" name="inputPlateform" ng-model="plateform" value="PS4" required>PS4
+				<input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX 360" required>XBOX 360
+				<input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX ONE" required>XBOX ONE
+				<br>
 
-               Tags :
-               <input ng-class="{'required':myForm.inputTags.$error.required,
+				Tags :
+				<input ng-class="{'required':myForm.inputTags.$error.required,
 			        'unvalid':myForm.inputTags.$error.text}"
-                      type="text" name="inputTags" ng-model="tags" required ng-trim="true">
-               <br>
+				       type="text" name="inputTags" ng-model="tags" required ng-trim="true">
+				<br>
 
-               Description :
-               <input ng-class="{'required':myForm.inputDescription.$error.required,
+				Description :
+				<input ng-class="{'required':myForm.inputDescription.$error.required,
 			        'unvalid':myForm.inputDescription.$error.text}"
-                      type="text" name="inputDescription" ng-model="description" required ng-trim="true">
-               <br>
+				       type="text" name="inputDescription" ng-model="description" required ng-trim="true">
+				<br>
 
-               Slots :
-               <input ng-class="{'required':myForm.inputSlotReserved.$error.required,
+				Slots :
+				<input ng-class="{'required':myForm.inputSlotReserved.$error.required,
 			        'unvalid':myForm.inputSlotReserved.$error.text}"
-                      type="number"
-                      name="inputSlotReserved"
-                      ng-model="slotReserved" required>
-               /
-               <input ng-class="{'required':myForm.inputSlotTotal.$error.required,
+				       type="number"
+				       name="inputSlotReserved"
+				       ng-model="slotReserved" required>
+				/
+				<input ng-class="{'required':myForm.inputSlotTotal.$error.required,
 			        'unvalid':myForm.inputSlotTotal.$error.text}"
-                      type="number" name="inputSlotTotal" ng-model="slotTotal" required>
-                <br>
+				       type="number" name="inputSlotTotal" ng-model="slotTotal" required>
+				<br>
 
 
+				<input type="submit" id="submit" value="Submit"/>
 
-
-               <input type="submit" id="submit" value="Submit" />
-
-			   <span>day = {{day | date: "yyyy-MM-dd HH:mm"}}</span><br/>
-			   <span>myForm.inputDayStart.$valid = {{myForm.inputDayStart.$valid}}</span><br/>
-			   <span>myForm.inputDayStart.$error = {{myForm.inputDayStart.$error}}</span><br/>
-			   <span>myForm.$valid = {{myForm.$valid}}</span><br/>
-			   <span>myForm.$error.required = {{!!myForm.$error.required}}</span><br/>
-			   <span>myForm.inputPlateform = {{plateform}}</span><br/>
-		   </form>
-		   <a href="" ng-click="displayForm = false">Close</a>
-	   </div>
-   </div>
+				<span>day = {{day | date: "yyyy-MM-dd HH:mm"}}</span><br/>
+				<span>myForm.inputDayStart.$valid = {{myForm.inputDayStart.$valid}}</span><br/>
+				<span>myForm.inputDayStart.$error = {{myForm.inputDayStart.$error}}</span><br/>
+				<span>myForm.$valid = {{myForm.$valid}}</span><br/>
+				<span>myForm.$error.required = {{!!myForm.$error.required}}</span><br/>
+				<span>myForm.inputPlateform = {{plateform}}</span><br/>
+			</form>
+			<a href="" ng-click="displayForm = false">Close</a>
+		</div>
+	</div>
 </div>
