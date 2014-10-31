@@ -6,15 +6,17 @@
 	<div class="cover">
 	</div>
 	<div class="block">
-		<label>Username :</label>
-		<input class="error"type="text">
-		<label>Email :</label>
-		<input type="text">
-		<label>Password :</label>
-		<input type="text">
-		<label>Confirm your password :</label>
-		<input type="text">
-		<a href="" class="btn">Register !</a>
+		<form name="registerForm">
+			<label>Username :</label>
+			<input class="error" type="text" ng-model="username" name="inputUsername">
+			<label>Email :</label>
+			<input type="email"  ng-model="email" name="inputEmail">
+			<label>Password :</label>
+			<input ng-model="password" type="password" ng-change="updateRegExpPassword()">
+			<label>Confirm your password :</label>
+			<input type="password" ng-pattern="regExpPassword">
+			<a href="" ng-click="submit()" class="btn">Register !</a>
+		</form>
 	</div>
 	<div class="error-msg">
 		The username is already used.

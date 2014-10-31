@@ -15,7 +15,19 @@ angular.module('myApp.services')
 					return JSON.parse(courantUser);
 				}
 				return null;
-			}
+			};
+
+			this.register = function(email,password,username){
+
+				return $http.get('http://dev.esbattle.com/app_dev.php/register/'+email+'/'+password+'/'+username).success(function(data){
+					this.data = data;
+					storage.setPersistant('user',JSON.stringify(this.data));
+				});
+			};
+
+			this.logout = function(){
+				storage.erasePersistant('user');
+			};
 		}
 	]
 );

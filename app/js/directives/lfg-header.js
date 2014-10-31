@@ -12,6 +12,11 @@ angular.module('myApp.directives')
                         })
                     };
 
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+					};
+
                     $scope.userInfo = user.get();
 				},
 				restrict: 'E',
