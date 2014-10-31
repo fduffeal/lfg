@@ -1,18 +1,18 @@
 <div class="header">
 
-	<a href="" id="logo"><img src="img/logo.png" alt="" /></a>
+	<a href="#/" id="logo"><img src="img/logo.png" alt="" /></a>
 	<div class="actions" ng-if="!userInfo.username">
 		<form action="">
 			<input type="text" ng-model="email">
 			<input type="password" ng-model="password">
 		</form>
-		<a href="">sign up</a>
+		<a href="#/register">sign up</a>
 		<a href="" ng-click="login(email,password)">log in</a>
 	</div>
 
 	<div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
 		<ul>
-			<li><a href="">NEW PARTY</a></li>
+			<li><a href="#/party/create">NEW PARTY</a></li>
 			<li><a href="">MY PARTY</a></li>
 		</ul>
 
