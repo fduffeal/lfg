@@ -1,11 +1,11 @@
 #signin {
 	.cover {
-		background: url("../img/cover-register-step1.jpg");
+		background: url("../img/cover-register.jpg");
 		width: 980px;
 		height: 227px;
 	}
 	.block {
-		width: 523px;
+		width: 514px;
 		margin: auto;
 		padding: 10px;
 		margin-top: 30px;
@@ -17,15 +17,6 @@
 		}
 		input {
 			width: 300px;
-			border-radius: 5px;
-			border: 1px solid #CCC;
-			padding-left: 10px;
-			height: 30px;
-			@include transition(all 0.20s ease-in-out);
-		}
-		input[type=text]:hover,input[type=text]:focus  {
-			border: 1px solid #87cbc1;
-			box-shadow: 0 0 5px #87cbc1;
 		}
 		* {
 			float: left;
@@ -46,5 +37,9 @@
 				background: #87cbc1;
 			}
 		}
+	}
+	.error-msg {
+		top: 286px;
+		right: 62px;
 	}
 }
