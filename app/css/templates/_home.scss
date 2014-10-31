@@ -1,18 +1,9 @@
 #home {
 	.cover-game {
-		background: url("../img/cover-destiny.png");
+		background: url("../img/cover-destiny.jpg");
 		width: 980px;
 		height: 227px;
 		position: relative;
-		span {
-			display: block;
-			position: absolute;
-			bottom: 15px;
-			left: 10px;
-			font-size: 40px;
-			color: white;
-			opacity: 0.9;
-		}
 	}
 	.list {
 		position: relative;
