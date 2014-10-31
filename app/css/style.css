@@ -223,23 +223,23 @@ a {
   background: url("../img/cover-register.jpg");
 }
 #signin .block {
-  width: 514px;
+  width: 814px;
   margin: auto;
   padding: 10px;
   margin-top: 30px;
 }
-#signin .block label {
-  width: 200px;
-  display: block;
-  height: 30px;
-  line-height: 30px;
+#signin .block ul li {
+  display: inline-block;
+  margin: 10px 0;
 }
-#signin .block input {
+#signin .block ul li input {
   width: 300px;
 }
-#signin .block * {
-  float: left;
-  margin: 10px 0;
+#signin .block ul li:nth-child(odd) {
+  width: 200px;
+}
+#signin .block ul li:nth-child(even) {
+  width: 500px;
 }
 #signin .block .btn {
   display: block;

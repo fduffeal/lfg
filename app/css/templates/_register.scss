@@ -3,22 +3,23 @@
 		background: url("../img/cover-register.jpg");
 	}
 	.block {
-		width: 514px;
+		width: 814px;
 		margin: auto;
 		padding: 10px;
 		margin-top: 30px;
-		label {
-			width: 200px;
-			display: block;
-			height: 30px;
-			line-height: 30px;
-		}
-		input {
-			width: 300px;
-		}
-		* {
-			float: left;
-			margin: 10px 0
+
+		ul li {
+			display: inline-block;
+			margin: 10px 0;
+			input {
+				width: 300px;
+			}
+			&:nth-child(odd){
+				width: 200px;
+			}
+			&:nth-child(even){
+				width: 500px;
+			}
 		}
 		.btn {
 			display: block;
