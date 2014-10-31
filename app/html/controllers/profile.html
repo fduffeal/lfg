@@ -6,23 +6,31 @@
 	<div class="cover">
 	</div>
 	<div class="block left">
-	<label>Picture</label>
-	<div class="clear"></div>
+		<label>Picture <span>:</span></label>
+		<div class="mypicture">
+			<!-- if no avatar -->
+			<div class="no-avatar">No image</div> <br />
+			<a href="">Upload a picture</a>
+			<!-- if avatar -->
+			<!--<img src="" /><br />
+			<a href="">Change your picture</a>
 
-		<label>Username :</label>
+			-->
+		</div>
+		<div class="clear"></div>
+
+		<label>Username <span>:</span></label>
 		<input class="error"type="text">
-		<label>Email :</label>
+		<label>Email  <span>:</span></label>
 		<input type="text">
-		<label>Password : <a href="" class="modify-pwd">Modify</a></label>
+		<label>Password  <span>:</span></label>
 		<input type="text">
 
-		<label class="hidden">Confirm your password :</label>
+		<label class="hidden">Confirm your password  <span>:</span></label>
+		<a href="" class="modify-pwd">Modify</a>
 		<input class="hidden" type="text">
 
-		<a href="" class="btn">Register !</a>
-	</div>
-	<div class="error-msg">
-		The username is already used.
+		<a href="" class="btn">Modify !</a>
 	</div>
 </div>
 <lfg-footer></lfg-footer>

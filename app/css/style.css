@@ -69,6 +69,14 @@ html, body {
   height: 100%;
 }
 
+.selected {
+  color: #ffff00;
+}
+
+.unvalid {
+  border: 1px solid red;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   color: #3d3b3b;
@@ -76,6 +84,7 @@ body {
 
 .cover {
   width: 980px;
+  background-repeat: no-repeat;
   height: 227px;
 }
 
@@ -258,29 +267,58 @@ a {
 #profile .cover {
   background: url("../img/cover-profile.jpg");
 }
-#profile .block {
-  width: 414px;
+#profile .block.left {
+  width: 367px;
   float: left;
   padding: 10px;
+  margin: auto;
   margin-top: 30px;
 }
-#profile .block label {
-  width: 200px;
+#profile .block.left .mypicture {
+  margin-top: -20px;
+}
+#profile .block.left .mypicture .no-avatar {
+  background: black;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  color: white;
+  line-height: 80px;
+  text-align: center;
+}
+#profile .block.left .mypicture a {
+  color: #87cbc1;
+  font-size: 13px;
+  margin-top: 0;
+}
+#profile .block.left label {
+  width: 132px;
   display: block;
   height: 30px;
+  margin-right: 20px;
   line-height: 30px;
 }
-#profile .block input {
+#profile .block.left label span {
+  float: right;
+  display: block;
+  line-height: 30px;
+  height: 30px;
+  margin: 0 25px;
+}
+#profile .block.left input {
   width: 200px;
 }
-#profile .block * {
+#profile .block.left * {
   float: left;
   margin: 10px 0;
 }
-#profile .block .modify-pwd {
+#profile .block.left .modify-pwd {
   color: #87cbc1;
+  float: right;
+  font-size: 13px;
+  margin-top: 0;
 }
-#profile .block .btn {
+#profile .block.left .btn {
   display: block;
   background: #f15641;
   height: 40px;
@@ -295,6 +333,54 @@ a {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-#profile .block .btn:hover {
+#profile .block.left .btn:hover {
+  background: #87cbc1;
+}
+
+#party-create .cover {
+  background: url("../img/cover-create.jpg");
+}
+#party-create .block {
+  width: 810px;
+  margin: auto;
+  padding: 10px;
+  margin-top: 30px;
+}
+#party-create .block ul li {
+  display: inline-block;
+  margin: 10px 0;
+}
+#party-create .block ul li input[type=text] {
+  width: 300px;
+}
+#party-create .block ul li:nth-child(odd) {
+  width: 200px;
+}
+#party-create .block ul li:nth-child(even) {
+  width: 500px;
+}
+#party-create .block ul li ul li {
+  width: 100px !important;
+  text-align: center;
+  vertical-align: middle;
+}
+#party-create .block .btn {
+  display: block;
+  background: #f15641;
+  height: 40px;
+  width: 80px;
+  clear: both;
+  float: right;
+  line-height: 40px;
+  color: white;
+  text-align: center;
+  margin: 20px auto;
+  border: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#party-create .block .btn:hover {
   background: #87cbc1;
 }

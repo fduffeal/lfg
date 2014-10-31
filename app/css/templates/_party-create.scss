@@ -1,0 +1,46 @@
+#party-create {
+	.cover {
+		background: url("../img/cover-create.jpg");
+	}
+	.block {
+		width: 810px;
+		margin: auto;
+		padding: 10px;
+		margin-top: 30px;
+		ul li {
+			display: inline-block;
+			margin: 10px 0;
+			input[type=text] {
+				width: 300px;
+			}
+			&:nth-child(odd){
+				width: 200px;
+			}
+			&:nth-child(even){
+				width: 500px;
+			}
+			ul li {
+				width: 100px!important;
+				text-align: center;
+				vertical-align: middle;
+			}
+		}
+		.btn {
+			display: block;
+			background: #f15641;
+			height: 40px;
+			width: 80px;
+			clear: both;
+			float: right;
+			line-height: 40px;
+			color: white;
+			text-align: center;
+			margin:20px auto;
+			border: 0;
+			@include transition(all 0.2s ease-in-out);
+			&:hover {
+				background: #87cbc1;
+			}
+		}
+	}
+}

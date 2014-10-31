@@ -2,16 +2,41 @@
 	.cover {
 		background: url("../img/cover-profile.jpg");
 	}
-	.block {
-		width: 414px;
+	.block.left {
+		width: 367px;
 		float: left;
 		padding: 10px;
+		margin: auto;
 		margin-top: 30px;
+		.mypicture {
+			margin-top: -20px;
+			.no-avatar {
+				background: black;
+				border-radius: 50%;
+				width: 80px;
+				height: 80px;
+				color: white;
+				line-height: 80px;
+				text-align: center;
+			}
+			a{
+				color: #87cbc1;
+				font-size: 13px;
+				margin-top: 0;
+			}
+		}
 		label {
-			width: 200px;
+			width: 132px;
 			display: block;
 			height: 30px;
+			margin-right: 20px;
 			line-height: 30px;
+			span {
+				float: right;
+				display: block;line-height: 30px;
+				height: 30px;
+				margin: 0 25px;
+			}
 		}
 		input {
 			width: 200px;
@@ -21,7 +46,10 @@
 			margin: 10px 0
 		}
 		.modify-pwd {
-			color: #87cbc1
+			color: #87cbc1;
+			float: right;
+			font-size: 13px;
+			margin-top: 0;
 		}
 		.btn {
 			display: block;
