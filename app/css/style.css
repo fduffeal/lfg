@@ -51,25 +51,23 @@
 }
 .header .actions.not-logged ul li {
   margin: 0 5px;
-}
-.header .actions.not-logged ul input {
-  height: 25px;
-  width: 150px;
-}
-.header .actions.not-logged ul .login {
-  width: 40px;
-}
-.header .actions.not-logged ul .fields input:first-child {
-  margin-right: 5px;
-}
-.header .actions.not-logged ul .signin {
-  width: 50px;
   float: right;
 }
 .header .actions.not-logged ul a {
-  color: #87cbc1;
-  font-size: 15px;
-  font-weight: bold;
+  display: block;
+  border: 2px solid #87cbc1;
+  width: 69px;
+  height: 25px;
+  line-height: 25px;
+  margin-top: 11px;
+  border-radius: 30px;
+}
+.header .actions.not-logged ul a.go {
+  margin-left: 15px;
+}
+.header .actions.not-logged ul a:hover {
+  background: #87cbc1;
+  color: black;
 }
 .header .picture-user {
   float: right;
@@ -302,12 +300,14 @@ a {
 }
 #signin .block h1 {
   width: 310px;
+  height: 40px;
+  line-height: 40px;
 }
 #signin .block .register-fb {
   display: block;
   background: #3b5997;
   height: 40px;
-  width: 100%;
+  width: 310px;
   font-size: 15px;
   font-weight: bold;
   line-height: 40px;
@@ -339,6 +339,63 @@ a {
   width: 310px;
 }
 #signin .error-msg {
+  top: 286px;
+  right: 62px;
+}
+
+#login .cover {
+  background: url("../img/cover-register.jpg");
+}
+#login .block {
+  width: 300px;
+  margin: auto;
+  padding: 10px;
+}
+#login .block h1 {
+  width: 310px;
+  height: 40px;
+  line-height: 40px;
+}
+#login .block .login-fb {
+  display: block;
+  background: #3b5997;
+  height: 40px;
+  width: 310px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin: 20px auto;
+}
+#login .block .login-fb span {
+  display: block;
+  float: left;
+  width: 15px;
+  margin: 6px 0 0 15px;
+  height: 29px;
+  background: url("../img/logo-fb.png") no-repeat;
+}
+#login .block .or {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+#login .block ul li {
+  display: block;
+  margin: 20px 0;
+}
+#login .block ul li.forget a {
+  color: #87cbc1;
+  font-size: 13px;
+}
+#login .block ul li input {
+  width: 300px;
+}
+#login .block ul li .btn {
+  width: 310px;
+}
+#login .error-msg {
   top: 286px;
   right: 62px;
 }

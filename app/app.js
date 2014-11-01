@@ -37,6 +37,11 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/register.html',
                 controller: 'RegisterCtrl'
             });
+        $routeProvider.when('/login',
+            {
+                templateUrl: 'html/controllers/login.html',
+                controller: 'LoginCtrl'
+            });
         $routeProvider.when('/profile',
             {
                 templateUrl: 'html/controllers/profile.html',

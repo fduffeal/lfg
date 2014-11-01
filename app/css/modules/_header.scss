@@ -50,26 +50,26 @@
 
 				li {
 					margin: 0 5px;
-				}
-				input {
-					height: 25px;
-					width: 150px;
-				}
-				.login {
-					width: 40px;
-				}
-				.fields input:first-child{
-					margin-right: 5px;
-				}
-				.signin {
-					width: 50px;
 					float: right;
-
 				}
+
+
+
 				a {
-						color: #87cbc1;
-						font-size: 15px;
-						font-weight: bold;
+						display: block;
+						border: 2px solid #87cbc1;
+						width: 69px;
+						height: 25px;
+						line-height: 25px;
+						margin-top: 11px;
+						border-radius: 30px;
+						&.go {
+							margin-left: 15px;
+						}
+						&:hover {
+							background: #87cbc1;
+							color: black;
+						}
 					}
 			}
 
