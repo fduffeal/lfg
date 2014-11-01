@@ -42,6 +42,35 @@
   height: 58px;
   line-height: 58px;
 }
+.header .actions.not-logged ul {
+  width: 725px;
+  float: left;
+  color: white;
+  margin-left: 10px;
+  font-size: 13px;
+}
+.header .actions.not-logged ul li {
+  margin: 0 5px;
+}
+.header .actions.not-logged ul input {
+  height: 25px;
+  width: 150px;
+}
+.header .actions.not-logged ul .login {
+  width: 40px;
+}
+.header .actions.not-logged ul .fields input:first-child {
+  margin-right: 5px;
+}
+.header .actions.not-logged ul .signin {
+  width: 50px;
+  float: right;
+}
+.header .actions.not-logged ul a {
+  color: #87cbc1;
+  font-size: 15px;
+  font-weight: bold;
+}
 .header .picture-user {
   float: right;
   width: 40px;
@@ -77,9 +106,49 @@ html, body {
   border: 1px solid red;
 }
 
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   color: #3d3b3b;
+}
+
+h1 {
+  background: #f15641;
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  height: 30px;
+  color: white;
+  line-height: 30px;
+  width: 100%;
+}
+
+.btn {
+  display: block;
+  background: #87cbc1;
+  height: 40px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  color: white;
+  border: 0;
+  text-align: center;
+  margin: 20px auto;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+  color: #f15641;
 }
 
 .cover {
@@ -96,7 +165,12 @@ body {
   visibility: hidden;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email],
+input[type=date],
+input[type=number],
+input[type=time],
+input[type=password] {
   border-radius: 5px;
   border: 1px solid #CCC;
   padding-left: 10px;
@@ -108,7 +182,6 @@ input[type=text] {
 }
 
 input[type=text]:hover, input[type=text]:focus {
-  border: 1px solid #87cbc1;
   box-shadow: 0 0 5px #87cbc1;
 }
 
@@ -223,41 +296,47 @@ a {
   background: url("../img/cover-register.jpg");
 }
 #signin .block {
-  width: 814px;
+  width: 300px;
   margin: auto;
   padding: 10px;
-  margin-top: 30px;
+}
+#signin .block h1 {
+  width: 310px;
+}
+#signin .block .register-fb {
+  display: block;
+  background: #3b5997;
+  height: 40px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin: 20px auto;
+}
+#signin .block .register-fb span {
+  display: block;
+  float: left;
+  width: 15px;
+  margin: 6px 0 0 15px;
+  height: 29px;
+  background: url("../img/logo-fb.png") no-repeat;
+}
+#signin .block .or {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
 }
 #signin .block ul li {
-  display: inline-block;
-  margin: 10px 0;
+  display: block;
+  margin: 20px 0;
 }
 #signin .block ul li input {
   width: 300px;
 }
-#signin .block ul li:nth-child(odd) {
-  width: 200px;
-}
-#signin .block ul li:nth-child(even) {
-  width: 500px;
-}
-#signin .block .btn {
-  display: block;
-  background: #f15641;
-  height: 40px;
-  width: 80px;
-  clear: both;
-  float: right;
-  line-height: 40px;
-  text-align: center;
-  margin: 20px auto;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-#signin .block .btn:hover {
-  background: #87cbc1;
+#signin .block ul li .btn {
+  width: 310px;
 }
 #signin .error-msg {
   top: 286px;
@@ -267,17 +346,21 @@ a {
 #profile .cover {
   background: url("../img/cover-profile.jpg");
 }
-#profile .block.left {
-  width: 367px;
-  float: left;
+#profile .block {
+  width: 465px;
   padding: 10px;
-  margin: auto;
-  margin-top: 30px;
+  font-size: 13px;
 }
-#profile .block.left .mypicture {
-  margin-top: -20px;
+#profile .block ul li {
+  display: block;
+  margin: 20px 0;
 }
-#profile .block.left .mypicture .no-avatar {
+#profile .block .mypicture {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  float: left;
+}
+#profile .block .mypicture .no-avatar {
   background: black;
   border-radius: 50%;
   width: 80px;
@@ -286,65 +369,45 @@ a {
   line-height: 80px;
   text-align: center;
 }
-#profile .block.left .mypicture a {
+#profile .block .mypicture a {
   color: #87cbc1;
   font-size: 13px;
   margin-top: 0;
 }
-#profile .block.left label {
-  width: 132px;
+#profile .block label {
+  width: 170px;
   display: block;
+  float: left;
   height: 30px;
   margin-right: 20px;
   line-height: 30px;
 }
-#profile .block.left label span {
-  float: right;
-  display: block;
-  line-height: 30px;
-  height: 30px;
-  margin: 0 25px;
+#profile .block input {
+  width: 260px;
 }
-#profile .block.left input {
-  width: 200px;
-}
-#profile .block.left * {
-  float: left;
-  margin: 10px 0;
-}
-#profile .block.left .modify-pwd {
+#profile .block .modify-pwd {
   color: #87cbc1;
   float: right;
   font-size: 13px;
   margin-top: 0;
-}
-#profile .block.left .btn {
-  display: block;
-  background: #f15641;
-  height: 40px;
-  width: 80px;
-  clear: both;
-  float: right;
-  line-height: 40px;
-  text-align: center;
-  margin: 20px auto;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-#profile .block.left .btn:hover {
-  background: #87cbc1;
 }
 
 #party-create .cover {
   background: url("../img/cover-create.jpg");
 }
 #party-create .block {
-  width: 810px;
+  width: 704px;
+  font-size: 13px;
   margin: auto;
   padding: 10px;
-  margin-top: 30px;
+}
+#party-create .block .text {
+  text-align: justify;
+  font-weight: bold;
+  display: block;
+}
+#party-create .block .text span {
+  text-decoration: underline;
 }
 #party-create .block ul li {
   display: inline-block;
@@ -354,7 +417,7 @@ a {
   width: 300px;
 }
 #party-create .block ul li:nth-child(odd) {
-  width: 200px;
+  width: 150px;
 }
 #party-create .block ul li:nth-child(even) {
   width: 500px;
@@ -364,23 +427,19 @@ a {
   text-align: center;
   vertical-align: middle;
 }
-#party-create .block .btn {
-  display: block;
-  background: #f15641;
-  height: 40px;
-  width: 80px;
-  clear: both;
-  float: right;
-  line-height: 40px;
-  color: white;
-  text-align: center;
-  margin: 20px auto;
-  border: 0;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+#party-create .block ul li.slots input {
+  width: 50px;
 }
-#party-create .block .btn:hover {
-  background: #87cbc1;
+#party-create .block .btn {
+  border: 0;
+}
+
+#party-waiting .cover {
+  background: url("../img/cover-create-waiting.jpg");
+}
+#party-waiting .block {
+  width: 704px;
+  font-size: 13px;
+  margin: auto;
+  padding: 10px;
 }

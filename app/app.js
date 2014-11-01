@@ -27,6 +27,11 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/party-create.html',
                 controller: 'PartyCreateCtrl'
             });
+         $routeProvider.when('/party/waiting',
+            {
+                templateUrl: 'html/controllers/party-waiting.html',
+                controller: 'PartyWaitingCtrl'
+            });
         $routeProvider.when('/register',
             {
                 templateUrl: 'html/controllers/register.html',

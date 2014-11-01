@@ -2,20 +2,54 @@ html, body {
 	width: 100%;
 	height: 100%;
 }
- .selected {
-  color: #ffff00;
- }
+.selected {
+	color: #ffff00;
+}
 
 
- .unvalid {
-    border: 1px solid red;
- }
+.unvalid {
+	border: 1px solid red;
+}
+
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}
 
 body {
 	font-family: 'Lato', sans-serif;
 	color: #3d3b3b;
 }
+h1 {
+	background: #f15641;
+	display: block;
+	font-size: 16px;
+	text-align: center;
+	height: 30px;
+	color: white;
+	line-height: 30px;
+	width: 100%;
 
+}
+.btn {
+	display: block;
+	background: #87cbc1;
+	height: 40px;
+	width: 100%;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 40px;
+	color: white;
+	border: 0;
+	text-align: center;
+	margin:20px auto;
+	@include transition(all 0.2s ease-in-out);
+	&:hover {
+		color: #f15641;
+	}
+}
 .cover {
 	width: 980px;
 	background-repeat: no-repeat;
@@ -28,7 +62,12 @@ body {
 .hidden {
 	visibility: hidden;
 }
-input[type=text] {
+input[type=text],
+input[type=email],
+input[type=date],
+input[type=number],
+input[type=time],
+input[type=password]  {
 	border-radius: 5px;
 	border: 1px solid #CCC;
 	padding-left: 10px;
@@ -36,7 +75,7 @@ input[type=text] {
 	@include transition(all 0.20s ease-in-out);
 }
 input[type=text]:hover,input[type=text]:focus  {
-	border: 1px solid #87cbc1;
+
 	box-shadow: 0 0 5px #87cbc1;
 }
 input.error {

@@ -40,7 +40,42 @@
 			height: 58px;
 			line-height: 58px;
 		}
+		&.not-logged {
+			ul {
+				width: 725px;
+				float: left;
+				color: white;
+				margin-left: 10px;
+				font-size: 13px;
+
+				li {
+					margin: 0 5px;
+				}
+				input {
+					height: 25px;
+					width: 150px;
+				}
+				.login {
+					width: 40px;
+				}
+				.fields input:first-child{
+					margin-right: 5px;
+				}
+				.signin {
+					width: 50px;
+					float: right;
+
+				}
+				a {
+						color: #87cbc1;
+						font-size: 15px;
+						font-weight: bold;
+					}
+			}
+
+		}
 	}
+
 	.picture-user {
 		float: right;
 		width: 40px;

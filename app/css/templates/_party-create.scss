@@ -3,10 +3,18 @@
 		background: url("../img/cover-create.jpg");
 	}
 	.block {
-		width: 810px;
+		width: 704px;
+		font-size: 13px;
 		margin: auto;
 		padding: 10px;
-		margin-top: 30px;
+		.text {
+			text-align: justify;
+			font-weight: bold;
+			display: block;
+			span {
+				text-decoration: underline;
+			}
+		}
 		ul li {
 			display: inline-block;
 			margin: 10px 0;
@@ -14,7 +22,7 @@
 				width: 300px;
 			}
 			&:nth-child(odd){
-				width: 200px;
+				width: 150px;
 			}
 			&:nth-child(even){
 				width: 500px;
@@ -24,23 +32,12 @@
 				text-align: center;
 				vertical-align: middle;
 			}
+			&.slots input {
+				width: 50px;
+			}
 		}
 		.btn {
-			display: block;
-			background: #f15641;
-			height: 40px;
-			width: 80px;
-			clear: both;
-			float: right;
-			line-height: 40px;
-			color: white;
-			text-align: center;
-			margin:20px auto;
-			border: 0;
-			@include transition(all 0.2s ease-in-out);
-			&:hover {
-				background: #87cbc1;
-			}
+			border: 0
 		}
 	}
 }

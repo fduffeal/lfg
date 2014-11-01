@@ -6,8 +6,8 @@
 	</div>
 
 	<div class="block">
+	<h1>New party on Destiny </h1>
 		<form name="myForm" ng-submit="submit()">
-
 				<!--What Game :
 				<select type="select" id="game" name="inputGameSelect">
 					<option value="Destiny">Destiny</option>
@@ -15,7 +15,7 @@
 				<br>
 			-->
 			<ul>
-				<li>When :</li>
+				<li>When</li>
 				<li>
 					<input ng-class="{'required':myForm.inputDayStart.$error.required,
 					'unvalid':myForm.inputDayStart.$error.date}"
@@ -36,7 +36,7 @@
 					ng-model="hours"
 					placeholder="HH:mm" required/>
 				</li>
-				<li>To :</li>
+				<li>To</li>
 				<li>
 					<input ng-class="{'required':myForm.inputDayEnd.$error.required,
 					'unvalid':myForm.inputDayEnd.$error.date}"
@@ -59,7 +59,7 @@
 				</li>
 				<li>
 					<label ng-class="{'required':myForm.inputPlateform.$error.required,
-					'unvalid':myForm.inputPlateform.$error.date}">Platform :</label>
+					'unvalid':myForm.inputPlateform.$error.date}">Platform</label>
 				</li>
 				<li>
 					<ul>
@@ -69,20 +69,20 @@
 						<li><input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX ONE" required><br />XBOX ONE</li>
 					</ul>
 				</li>
-				<li>Tags :</li>
+				<li>Tags</li>
 				<li>
 					<input ng-class="{'required':myForm.inputTags.$error.required,
 					'unvalid':myForm.inputTags.$error.text}"
 					type="text" name="inputTags" ng-model="tags" required ng-trim="true">
 				</li>
-				<li>Description :</li>
+				<li>Description</li>
 				<li>
 					<input ng-class="{'required':myForm.inputDescription.$error.required,
 					'unvalid':myForm.inputDescription.$error.text}"
 					type="text" name="inputDescription" ng-model="description" required ng-trim="true">
 				</li>
-				<li>Slots :</li>
-				<li>
+				<li>Slots</li>
+				<li class="slots">
 					<input ng-class="{'required':myForm.inputSlotReserved.$error.required,
 					'unvalid':myForm.inputSlotReserved.$error.text}"
 					type="number"
@@ -94,9 +94,12 @@
 					type="number" name="inputSlotTotal" ng-model="slotTotal" required>
 
 				</li>
-				<li></li>
-				<li><input type="submit" id="submit" value="Submit" class="btn"/></li>
+
 			</ul>
+			<span class="text"><span>IMPORTANT :</span>
+				 After create the party, it will be possible to invit/promote some players and to modify/delete the party. However, after two players in the party, it will unfortunately not be possible to cancel or modify anything! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!
+			</span>
+			<input type="submit" id="submit" value="Start" class="btn"/>
 
 
 

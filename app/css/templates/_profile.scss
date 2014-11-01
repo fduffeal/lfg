@@ -2,14 +2,22 @@
 	.cover {
 		background: url("../img/cover-profile.jpg");
 	}
-	.block.left {
-		width: 367px;
-		float: left;
+
+	.block {
+		width: 465px;
 		padding: 10px;
-		margin: auto;
-		margin-top: 30px;
+
+		font-size: 13px;
+		ul {
+			li {
+			display: block;
+			margin: 20px 0
+			}
+		}
 		.mypicture {
-			margin-top: -20px;
+			margin-top: 10px;
+			margin-bottom: 15px;
+			float: left;
 			.no-avatar {
 				background: black;
 				border-radius: 50%;
@@ -26,45 +34,24 @@
 			}
 		}
 		label {
-			width: 132px;
+			width: 170px;
 			display: block;
+			float: left;
 			height: 30px;
 			margin-right: 20px;
 			line-height: 30px;
-			span {
-				float: right;
-				display: block;line-height: 30px;
-				height: 30px;
-				margin: 0 25px;
-			}
+
 		}
 		input {
-			width: 200px;
+			width: 260px;
 		}
-		* {
-			float: left;
-			margin: 10px 0
-		}
+
 		.modify-pwd {
 			color: #87cbc1;
 			float: right;
 			font-size: 13px;
 			margin-top: 0;
 		}
-		.btn {
-			display: block;
-			background: #f15641;
-			height: 40px;
-			width: 80px;
-			clear: both;
-			float: right;
-			line-height: 40px;
-			text-align: center;
-			margin:20px auto;
-			@include transition(all 0.2s ease-in-out);
-			&:hover {
-				background: #87cbc1;
-			}
-		}
+
 	}
 }

@@ -1,13 +1,20 @@
 <div class="header">
 
 	<a href="#/" id="logo"><img src="img/logo.png" alt="" /></a>
-	<div class="actions" ng-if="!userInfo.username">
-		<form action="">
-			<input type="text" ng-model="email">
-			<input type="password" ng-model="password">
-		</form>
-		<a href="#/register">sign up</a>
-		<a href="" ng-click="login(email,password)">log in</a>
+	<div class="actions not-logged" ng-if="!userInfo.username">
+	<ul>
+		<li class="fields">
+			<form action="">
+				<input type="text" placeholder="username" ng-model="email">
+				<input type="password" placeholder="password" ng-model="password">
+				<a href="" class="go" ng-click="login(email,password)">Let's go</a>
+			</form>
+		</li>
+		<li class="signin"><a href="#/register">Register</a></li>
+	</ul>
+
+
+		<!--<a href="" ng-click="login(email,password)">log in</a>-->
 	</div>
 
 	<div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
