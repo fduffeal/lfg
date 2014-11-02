@@ -5,13 +5,14 @@
 	.list {
 		position: relative;
 		margin-top: 20px;
+		width: 950px;
+		margin: 20px auto;
 		ul {
 			width: 100%;
 			z-index: 2;
 			position: relative;
 			&.title {
-				background: grey;
-				border-radius: 5px 5px 0 0;
+				background: #262525;
 				font-weight: bold;
 			}
 			li{
