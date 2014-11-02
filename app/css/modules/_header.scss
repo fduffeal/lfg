@@ -1,11 +1,19 @@
 .header {
-	height: 98px;
-	top:25px;
-	line-height: 98px;
-	z-index: 2;
-	width: 980px;
-	position: absolute;
-	left: 175px;
+	margin-top: -25px;
+	height: 193px;
+	background: #f15641;
+
+	width: 100%;
+	z-index: 1;
+	.content-header {
+		height: 98px;
+		margin-top:25px;
+		line-height: 98px;
+		z-index: 2;
+		width: 980px;
+		margin-left: 175px;
+	}
+
 	#logo {
 		float: left;
 	}
@@ -56,21 +64,21 @@
 
 
 				a {
-						display: block;
-						border: 2px solid #87cbc1;
-						width: 69px;
-						height: 25px;
-						line-height: 25px;
-						margin-top: 11px;
-						border-radius: 30px;
-						&.go {
-							margin-left: 15px;
-						}
-						&:hover {
-							background: #87cbc1;
-							color: black;
-						}
+					display: block;
+					border: 2px solid #87cbc1;
+					width: 69px;
+					height: 25px;
+					line-height: 25px;
+					margin-top: 11px;
+					border-radius: 30px;
+					&.go {
+						margin-left: 15px;
 					}
+					&:hover {
+						background: #87cbc1;
+						color: black;
+					}
+				}
 			}
 
 		}
