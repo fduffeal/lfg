@@ -8,54 +8,49 @@
 	<div class="block">
 	<h1>New party on Destiny </h1>
 		<form name="myForm" ng-submit="submit()">
-				<!--What Game :
-				<select type="select" id="game" name="inputGameSelect">
-					<option value="Destiny">Destiny</option>
-				</select>
-				<br>
-			-->
 			<ul>
+                <li>
+                    Game :
+                </li>
+                <li>
+                    <select type="select" id="game" name="inputGameSelect" ng-model="game">
+                        <option value="Destiny">Destiny</option>
+                    </select>
+                </li>
 				<li>When</li>
 				<li>
 					<input ng-class="{'required':myForm.inputDayStart.$error.required,
 					'unvalid':myForm.inputDayStart.$error.date}"
-					type="date"
+					type="datetime-local"
 					id="start-date"
 					name="inputDayStart"
 					ng-model="day"
-					placeholder="yyyy-MM-dd"
-					min="{{today | date:'yyyy-MM-dd'}}"
-					max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
+					placeholder="yyyy-MM-ddTHH:mm:ss"
+					min="{{today | date:'yyyy-MM-ddTHH:mm:ss'}}"
+					max="{{dayPlusTwo| date:'yyyy-MM-ddTHH:mm:ss'}}"
 					required/>
-					at :
-					<input ng-class="{'required':myForm.inputHoursStart.$error.required,
-					'unvalid':myForm.inputHoursStart.$error.time}"
-					type="time"
-					id="start-hours"
-					name="inputHoursStart"
-					ng-model="hours"
-					placeholder="HH:mm" required/>
 				</li>
-				<li>To</li>
+				<li>For</li>
 				<li>
-					<input ng-class="{'required':myForm.inputDayEnd.$error.required,
-					'unvalid':myForm.inputDayEnd.$error.date}"
-					type="date"
-					id="end-date"
-					name="inputDayEnd"
-					ng-model="dayEnd"
-					placeholder="yyyy-MM-dd"
-					min="{{day | date:'yyyy-MM-dd'}}"
-					max="{{dayPlusTwo| date:'yyyy-MM-dd'}}"
+					<input ng-class="{'required':myForm.inputHoursDuree.$error.required,
+					'unvalid':myForm.inputHoursDuree.$error.time}"
+					type="number" id="end-hours"
+					name="inputHoursDuree"
+					ng-model="dureeHours"
+					placeholder="1"
+                    min="0"
+                    max="48"
 					required/>
-					at :
-					<input ng-class="{'required':myForm.inputHoursEnd.$error.required,
-					'unvalid':myForm.inputHoursEnd.$error.time}"
-					type="time" id="end-hours"
-					name="inputHoursEnd"
-					ng-model="hoursEnd"
-					placeholder="HH:mm"
-					required/>
+                    :
+                    <input ng-class="{'required':myForm.inputMinutesDuree.$error.required,
+					'unvalid':myForm.inputMinutesDuree.$error.time}"
+                           type="number" id="end-minutes"
+                           name="inputMinutesDuree"
+                           ng-model="dureeMinutes"
+                           placeholder="00"
+                           min="0"
+                           max="59"
+                           required/>
 				</li>
 				<li>
 					<label ng-class="{'required':myForm.inputPlateform.$error.required,
@@ -87,11 +82,14 @@
 					'unvalid':myForm.inputSlotReserved.$error.text}"
 					type="number"
 					name="inputSlotReserved"
-					ng-model="slotReserved" required>
+					ng-model="slotReserved" min="1" max="slotTotal"
+                    placeholder="1"
+                    required>
 					/
 					<input ng-class="{'required':myForm.inputSlotTotal.$error.required,
 					'unvalid':myForm.inputSlotTotal.$error.text}"
-					type="number" name="inputSlotTotal" ng-model="slotTotal" required>
+                    placeholder="6"
+					type="number" name="inputSlotTotal" ng-model="slotTotal" min="1" required>
 
 				</li>
 

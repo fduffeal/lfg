@@ -12,17 +12,21 @@
 	<div class="list">
 		<div class="bg-transparent"></div>
 		<ul class="title">
-			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></li>
-			<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
-			<li><a href="" ng-click="predicate = 'start.timestamp'; reverse=!reverse">Start</a></li>
-			<li><a href="" ng-click="predicate = 'end.timestamp'; reverse=!reverse">End</a></li>
+			<li><a href="">Tags</a></li>
+			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
+			<!--<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>-->
+			<li><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
+			<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>
 			<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
 		</ul>
 		<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
-			<li>{{ rdv.name }}</li>
-			<li>{{ rdv.description}} </li>
-			<li>{{ rdv.start.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-			<li>{{ rdv.end.timestamp*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+			<li>
+                <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+            </li>
+			<li>{{ rdv.leader.username }}</li>
+			<!--<li>{{ rdv.description}} </li>-->
+			<li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+			<li>{{ rdv.duree }}</li>
 			<li>0/{{ rdv.nbParticipant}}</li>
 		</ul>
 	</div>
