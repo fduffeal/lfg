@@ -68,7 +68,7 @@
 				<li>
 					<input ng-class="{'required':myForm.inputTags.$error.required,
 					'unvalid':myForm.inputTags.$error.text}"
-					type="text" name="inputTags" ng-model="tags" required ng-trim="true">
+					type="text" name="inputTags" ng-model="tags" required ng-trim="false" list="tags" ng-change="autocomplete()">
 				</li>
 				<li>Description</li>
 				<li>
@@ -108,6 +108,11 @@
 			<span>myForm.$error.required = {{!!myForm.$error.required}}</span><br/>
 			<span>myForm.inputPlateform = {{plateform}}</span><br/>
 		</form>
+
+        <datalist id="tags">
+            <option data-ng-repeat="item in autocompleteTag" value="{{item}}" />
+        </datalist>
+
 		<a href="" ng-click="displayForm = false">Close</a>
 	</div>
 

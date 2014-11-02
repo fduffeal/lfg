@@ -3,10 +3,13 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 		function ($scope,rdv) {
 			'use strict';
 
+
+			rdv.getFormInfo().success(function(data){
+				$scope.formInfo = data;
+			});
+
 			$scope.today = new Date();
 
-
-			console.log('year',$scope.today.getDay());
 			$scope.day = new Date($scope.today.getFullYear(), $scope.today.getMonth(), $scope.today.getDate(), $scope.today.getHours(), $scope.today.getMinutes()+5,$scope.today.getSeconds());
 
 			$scope.dayPlusTwo = new Date();
@@ -28,6 +31,32 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal);
 
             };
+
+			$scope.autocomplete = function(){
+				var aTags = $scope.tags.split(' ');
+				console.log('aTags',aTags);
+				var previousTags = '';
+				var aPreviousTags = [];
+				for(var i = 0; i < aTags.length -1; i++){
+					console.log('tags loop',aTags[i]);
+					previousTags =  previousTags+aTags[i]+' ';
+					aPreviousTags.push(aTags[i]);
+				}
+
+				console.log("previousTags",previousTags);
+
+				console.log($scope.formInfo.tags);
+				$scope.autocompleteTag = [];
+				for(var key in $scope.formInfo.tags){
+
+					if(aPreviousTags.indexOf($scope.formInfo.tags[key].nom) > -1){
+						continue;
+					}
+					$scope.autocompleteTag.push(previousTags +$scope.formInfo.tags[key].nom);
+				}
+
+				console.log($scope.autocompleteTag);
+			};
 
 		}
 	]

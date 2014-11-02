@@ -6,6 +6,10 @@ angular.module('myApp.services')
 				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/');
 			};
 
+			this.getFormInfo = function(){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/form_info');
+			};
+
             this.add = function(plateform,game,tags,description,start,duree,nbParticipant){
                 var currentUser = user.get();
                 return $http.get('http://dev.esbattle.com/app_dev.php/rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+currentUser.username+'/'+currentUser.token);
