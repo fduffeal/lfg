@@ -13,21 +13,27 @@
 	<h1>Destiny PS4</h1>
 		<ul class="title">
 			<li><a href="">Tags</a></li>
-			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
-			<!--<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>-->
+			<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
 			<li><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
-			<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>
+			<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
 			<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
+			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
+
+
+
 		</ul>
 		<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
 			<li>
                 <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
             </li>
-			<li>{{ rdv.leader.username }}</li>
-			<!--<li>{{ rdv.description}} </li>-->
-			<li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-			<li>{{ rdv.duree }}</li>
+            <li>{{ rdv.description}} </li>
+            <li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+			<!--<li>{{ rdv.duree }}</li>-->
 			<li>0/{{ rdv.nbParticipant}}</li>
+			<li>{{ rdv.leader.username }}</li>
+
+
+
 		</ul>
 	</div>
 

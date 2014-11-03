@@ -291,13 +291,16 @@ a {
 }
 #home .list ul li {
   font-size: 13px;
+  height: 25px;
+  line-height: 25px;
+  display: inline-block;
 }
 #home .list ul li:nth-child(1) {
-  width: 10%;
+  width: 20%;
   padding-left: 10px;
 }
 #home .list ul li:nth-child(2) {
-  width: 10%;
+  width: 40%;
 }
 #home .list ul li:nth-child(2) div {
   border-radius: 50% 50%;
@@ -308,10 +311,10 @@ a {
   height: 20px;
 }
 #home .list ul li:nth-child(3) {
-  width: 50%;
+  width: 20%;
 }
 #home .list ul li:nth-child(4) {
-  width: 20%;
+  width: 10%;
 }
 #home .list ul li:nth-child(5) {
   width: 5%;
