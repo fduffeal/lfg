@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv',
-		function ($scope,rdv) {
+	['$scope','rdv','$location',
+		function ($scope,rdv,$location) {
 			'use strict';
 
 
@@ -16,10 +16,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
 
             $scope.submit = function(){
-                console.log($scope.myForm);
-
                 var game = $scope.game;
-                var day = $scope.day;
+                var day = $scope.day.getTime()/1000;
                 var dureeHours = $scope.dureeHours;
                 var dureeMinutes = $scope.dureeMinutes;
                 var plateform = $scope.plateform;
@@ -28,8 +26,9 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var slotReserved = $scope.slotReserved;
                 var slotTotal = $scope.slotTotal;
 
-                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal);
-
+                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal).success(function(data){
+	                $location.path('/');
+                });
             };
 
 			$scope.autocomplete = function(){
