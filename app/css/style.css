@@ -1,6 +1,7 @@
 .header {
   height: 193px;
   background: #f15641;
+  position: absolute;
   width: 100%;
   z-index: 1;
 }
@@ -91,7 +92,7 @@
   width: 100%;
   background: #f15641;
   height: 110px;
-  margin-top: -2px;
+  margin-top: -10px;
   font-size: 13px;
   bottom: 0;
   z-index: 1;
@@ -231,7 +232,8 @@ input.error {
 }
 
 #page {
-  margin-top: -50px;
+  height: 92%;
+  display: table;
   z-index: 3;
 }
 #page li {
@@ -241,6 +243,7 @@ input.error {
 .content {
   min-height: 720px;
   margin-bottom: 30px;
+  margin-top: 145px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
