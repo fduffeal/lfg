@@ -3,15 +3,6 @@ angular.module('myApp.directives')
 		function(user) {
 			return {
 				link: function($scope, element, attrs) {
-                    $scope.email = '';
-                    $scope.password = '';
-
-                    $scope.login = function(email,password){
-                        user.log(email,password).success(function(data){
-                            $scope.userInfo = data;
-                        })
-                    };
-
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;
