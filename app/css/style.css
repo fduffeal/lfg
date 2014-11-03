@@ -1,7 +1,6 @@
 .header {
   height: 193px;
   background: #f15641;
-  position: absolute;
   width: 100%;
   z-index: 1;
 }
@@ -232,9 +231,8 @@ input.error {
 }
 
 #page {
-  height: 92%;
+  margin-top: -48px;
   display: table;
-  z-index: 3;
 }
 #page li {
   display: table-cell;
@@ -251,8 +249,6 @@ input.error {
 }
 
 .page {
-  position: absolute;
-  top: 145px;
   width: 980px;
   z-index: 4;
 }

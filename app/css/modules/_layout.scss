@@ -99,9 +99,8 @@ input.error {
 }
 
 #page {
-	height: 92%;
+	margin-top: -48px;
 	display: table;
-	z-index: 3;
 	li {
 		display: table-cell;
 	}
@@ -116,10 +115,6 @@ input.error {
 	margin-left: 60px;
 }
 .page {
-
-	position: absolute;
-	top: 145px;
-
 	width: 980px;
 	z-index: 4;
 
