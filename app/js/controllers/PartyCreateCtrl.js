@@ -6,6 +6,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			rdv.getFormInfo().success(function(data){
 				$scope.formInfo = data;
+
+				$scope.plateform = $scope.formInfo.plateforms[0].id;
 			});
 
 			$scope.today = new Date();
@@ -27,27 +29,20 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var slotTotal = $scope.slotTotal;
 
                 rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal).success(function(data){
-
-
-	                console.log('/party/waiting/'+data.id);return;
-	                //$location.path('/party/waiting/'+data.id);
+	                $location.path('/party/waiting/'+data.id);
                 });
             };
 
 			$scope.autocomplete = function(){
 				var aTags = $scope.tags.split(' ');
-				console.log('aTags',aTags);
+
 				var previousTags = '';
 				var aPreviousTags = [];
 				for(var i = 0; i < aTags.length -1; i++){
-					console.log('tags loop',aTags[i]);
 					previousTags =  previousTags+aTags[i]+' ';
 					aPreviousTags.push(aTags[i]);
 				}
 
-				console.log("previousTags",previousTags);
-
-				console.log($scope.formInfo.tags);
 				$scope.autocompleteTag = [];
 				for(var key in $scope.formInfo.tags){
 
@@ -56,8 +51,6 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 					}
 					$scope.autocompleteTag.push(previousTags +$scope.formInfo.tags[key].nom);
 				}
-
-				console.log($scope.autocompleteTag);
 			};
 
 		}

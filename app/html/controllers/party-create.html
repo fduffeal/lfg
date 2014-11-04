@@ -59,10 +59,9 @@
                 </li>
                 <li>
                     <ul>
-                        <li><input type="radio" name="inputPlateform" ng-model="plateform" value="PS3" required><br />PS3</li>
-                        <li><input type="radio" name="inputPlateform" ng-model="plateform" value="PS4" required><br />PS4</li>
-                        <li><input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX 360" required><br />XBOX 360</li>
-                        <li><input type="radio" name="inputPlateform" ng-model="plateform" value="XBOX ONE" required><br />XBOX ONE</li>
+                        <li ng-repeat="plateformData in formInfo.plateforms">
+                            <input type="radio" name="inputPlateform" ng-model="plateform" value="{{plateformData.id}}"><br />{{plateformData.nom}}
+                        </li>
                     </ul>
                 </li>
                 <li>Tags</li>
