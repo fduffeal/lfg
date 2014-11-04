@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv',
-		function ($scope,rdv) {
+	['$scope','rdv','$location',
+		function ($scope,rdv,$location) {
 			'use strict';
 
 			$scope.test='1';
@@ -10,7 +10,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.demain = new Date();
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
 
-			$scope.endDay =
+			$scope.goToParty = function(id){
+				$location.path('/party/waiting/'+id);
+			};
 
 
 			rdv.getAll().success(function(data, status, headers, config) {

@@ -25,7 +25,7 @@
 
 
 				</ul>
-				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
+				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse"  ng-click="goToParty(rdv.id)">
 					<li>
 						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
 					</li>
