@@ -31,6 +31,25 @@
   display: inline-block;
   margin: 0 35px;
 }
+.header .actions ul.menu li a {
+  font-size: 13px;
+  color: #e0e0e0;
+  width: 50px;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  text-align: center;
+  height: 58px;
+  line-height: 58px;
+}
+.header .actions ul.menu li a:hover {
+  background: #06ab93;
+  color: white;
+}
+.header .actions ul.menu li a.selected {
+  border-bottom: 1px solid #06ab93;
+}
 .header .actions input {
   border: 0;
   height: 30px;
@@ -38,14 +57,6 @@
   line-height: 30px;
   width: 200px;
   border-radius: 5px;
-}
-.header .actions a {
-  font-size: 13px;
-  color: #e0e0e0;
-  width: 50px;
-  text-align: center;
-  height: 58px;
-  line-height: 58px;
 }
 .header .actions.not-logged ul.menu {
   width: 725px;
@@ -63,6 +74,10 @@
   border: 2px solid #87cbc1;
   width: 69px;
   height: 25px;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
   line-height: 25px;
   margin-top: 11px;
   border-radius: 30px;
@@ -84,23 +99,49 @@
 }
 .header .user {
   float: right;
+  cursor: pointer;
   margin-right: 30px;
   position: relative;
 }
+.header .user img {
+  margin-left: 4px;
+  margin-top: 1px;
+}
+.header .user:hover .submenu {
+  opacity: 1;
+}
 .header .user .submenu {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
   position: absolute;
-  width: 100px;
+  width: 111px;
   line-height: 10px;
-  padding: 10px;
+  padding: 3px 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  right: -30px;
   top: 47px;
-  background: white;
+  background: black;
 }
 .header .user .submenu ul li {
   display: block;
   color: #06ab93;
+  margin: 5px 0;
+  height: 17px;
 }
 .header .user .submenu ul li a {
   color: #06ab93;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+.header .user .submenu ul li a:hover {
+  background: #06ab93;
+  color: white;
 }
 
 #footer {
@@ -307,6 +348,10 @@ a {
   height: 25px;
   padding: 0 10px;
   line-height: 25px;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
   border-radius: 30px;
 }
 #home .list ul.platforms li a:hover, #home .list ul.platforms li a.selected {
