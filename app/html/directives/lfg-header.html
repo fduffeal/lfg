@@ -21,15 +21,16 @@
 
 <div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
 	<ul class="menu">
+		<li><a href="#/" class="selected">HOME</a></li>
 		<li><a href="#/party/create">NEW PARTY</a></li>
 	</ul>
 
 	<div class="user">
-		{{userInfo.username}}
+		{{userInfo.username}} <img src="img/header-arrow.png" />
 		<div class="submenu">
 			<ul>
 				<li><a href="">Profile</a></li>
-				<li><div ng-click="logout()">logout</div></li>
+				<li><a href=""ng-click="logout()">Logout</a></li>
 			</ul>
 		</div>
 	</div>
