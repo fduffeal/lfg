@@ -8,32 +8,35 @@
 			<div class="list">
 				<ul class="platforms">
 					<li>Platforms:</li>
-					<li><a href="">PS4</a></li>
+					<li><a href="">ALL</a></li>
+					<li><a href="" class="selected">PS4</a></li>
 					<li><a href="">PS3</a></li>
 					<li><a href="">XBOX 360</a></li>
 					<li><a href="">XBOX ONE</a></li>
 				</ul>
 				<h1>Destiny PS4</h1>
 				<ul class="title">
-					<li><a href="">Tags</a></li>
-					<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
-					<li><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
+					<li class="list-platform"><a href="">Platform</a></li>
+					<li class="list-tags"><a href="">Tags</a></li>
+					<li class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
+					<li class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
 					<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
-					<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
-					<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
+					<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
+					<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></li>
 
 
 
 				</ul>
-				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse"  ng-click="goToParty(rdv.id)">
-					<li>
+				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse" ng-click="goToParty(rdv.id)">
+					<li class="list-platform">XBOX ONE</li>
+					<li class="list-tags">
 						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
 					</li>
-					<li>{{ rdv.description}} </li>
-					<li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+					<li class="list-infos">{{ rdv.description}} </li>
+					<li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
 					<!--<li>{{ rdv.duree }}</li>-->
-					<li>0/{{ rdv.nbParticipant}}</li>
-					<li>{{ rdv.leader.username }}</li>
+					<li class="list-slots">0/{{ rdv.nbParticipant}}</li>
+					<li class="list-creator">{{ rdv.leader.username }}</li>
 
 
 
