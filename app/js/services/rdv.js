@@ -14,6 +14,10 @@ angular.module('myApp.services')
                 var currentUser = user.get();
                 return $http.get('http://dev.esbattle.com/app_dev.php/rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+currentUser.username+'/'+currentUser.token);
             };
+
+			this.get = function(id){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/get/'+id);
+			};
 		}
 	]
 );

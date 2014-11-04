@@ -27,7 +27,10 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var slotTotal = $scope.slotTotal;
 
                 rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal).success(function(data){
-	                $location.path('/');
+
+
+	                console.log('/party/waiting/'+data.id);return;
+	                //$location.path('/party/waiting/'+data.id);
                 });
             };
 
