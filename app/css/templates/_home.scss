@@ -21,7 +21,7 @@
 					border-radius: 30px;
 
 				}
-				a:hover {
+				a:hover, a.selected {
 					background: #87cbc1;
 					cursor: pointer;
 				}
@@ -53,12 +53,20 @@
 				height: 25px;
 				line-height: 25px;
 				display: inline-block;
-				&:nth-child(1) {
-					width: 20%;
-					padding-left: 10px;
+				margin: 0 5px;
+				&:first-child {
+					padding-left:10px;
 				}
-				&:nth-child(2) {
-					width: 40%;
+				&.list-platform {
+					width: 100px
+				}
+				&.list-tags {
+					width: 150px;
+
+				}
+
+				&.list-infos {
+					width: 315px;
 					div {
 						border-radius: 50% 50%;
 						width: 40px;
@@ -68,15 +76,20 @@
 						height: 20px;
 					}
 				}
-				&:nth-child(3) {
-					width: 20%;
+				&.list-start {
+					width: 150px;
 				}
-				&:nth-child(4) {
-					width: 10%
+				&.list-slots {
+					width: 30px;
 				}
-				&:nth-child(5) {
-					width: 5%
-				}
+
+			}
+		}
+	}
+	.list.withplatform{
+		li {
+			&.list-infos {
+				width: 415px;
 			}
 		}
 	}

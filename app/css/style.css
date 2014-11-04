@@ -309,7 +309,7 @@ a {
   line-height: 25px;
   border-radius: 30px;
 }
-#home .list ul.platforms li a:hover {
+#home .list ul.platforms li a:hover, #home .list ul.platforms li a.selected {
   background: #87cbc1;
   cursor: pointer;
 }
@@ -342,15 +342,21 @@ a {
   height: 25px;
   line-height: 25px;
   display: inline-block;
+  margin: 0 5px;
 }
-#home .list ul.title li:nth-child(1), #home .list ul.line li:nth-child(1) {
-  width: 20%;
+#home .list ul.title li:first-child, #home .list ul.line li:first-child {
   padding-left: 10px;
 }
-#home .list ul.title li:nth-child(2), #home .list ul.line li:nth-child(2) {
-  width: 40%;
+#home .list ul.title li.list-platform, #home .list ul.line li.list-platform {
+  width: 100px;
 }
-#home .list ul.title li:nth-child(2) div, #home .list ul.line li:nth-child(2) div {
+#home .list ul.title li.list-tags, #home .list ul.line li.list-tags {
+  width: 150px;
+}
+#home .list ul.title li.list-infos, #home .list ul.line li.list-infos {
+  width: 315px;
+}
+#home .list ul.title li.list-infos div, #home .list ul.line li.list-infos div {
   border-radius: 50% 50%;
   width: 40px;
   font-size: 12px;
@@ -358,14 +364,14 @@ a {
   line-height: 20px;
   height: 20px;
 }
-#home .list ul.title li:nth-child(3), #home .list ul.line li:nth-child(3) {
-  width: 20%;
+#home .list ul.title li.list-start, #home .list ul.line li.list-start {
+  width: 150px;
 }
-#home .list ul.title li:nth-child(4), #home .list ul.line li:nth-child(4) {
-  width: 10%;
+#home .list ul.title li.list-slots, #home .list ul.line li.list-slots {
+  width: 30px;
 }
-#home .list ul.title li:nth-child(5), #home .list ul.line li:nth-child(5) {
-  width: 5%;
+#home .list.withplatform li.list-infos {
+  width: 415px;
 }
 
 #signin .cover {
