@@ -15,7 +15,7 @@
                 </li>
                 <li>
                     <select type="select" id="game" name="inputGameSelect" ng-model="game">
-                        <option value="Destiny">Destiny</option>
+                        <option ng-repeat="gameData in formInfo.games" value="{{gameData.id}}">{{gameData.name}}</option>
                     </select>
                 </li>
                 <li>When</li>
