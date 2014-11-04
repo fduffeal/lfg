@@ -4,13 +4,46 @@
 	}
 	.list {
 		position: relative;
-		margin-top: 20px;
 		width: 950px;
 		margin: 20px auto;
-		ul {
+		padding-bottom: 10px;
+		ul.platforms {
+			li {
+				margin: 0 5px;
+				display: inline-block;
+				a {
+					display: block;
+					border: 2px solid #87cbc1;
+					color: #3d3b3b;
+					height: 25px;
+					padding: 0 10px;
+					line-height: 25px;
+					border-radius: 30px;
+
+				}
+				a:hover {
+					background: #87cbc1;
+					cursor: pointer;
+				}
+				&:first-child {
+					margin-right: 10px;
+				}
+			}
+		}
+		ul.title, ul.line {
 			width: 100%;
+			margin: 0;
 			z-index: 2;
 			position: relative;
+			@include transition(all 0.1s ease-in-out);
+
+			&:nth-child(even){
+				background: #d8d8d8
+			}
+			&:hover {
+				background: #87cbc1;
+				cursor: pointer;
+			}
 			&.title {
 				background: #262525;
 				font-weight: bold;

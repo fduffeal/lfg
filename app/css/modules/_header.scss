@@ -24,7 +24,7 @@
 		margin-left: 30px;
 		margin-top: 40px;
 		line-height: 56px;
-		ul {
+		ul.menu {
 			float: left;
 			li {
 				display: inline-block;
@@ -48,7 +48,7 @@
 			line-height: 58px;
 		}
 		&.not-logged {
-			ul {
+			ul.menu {
 				width: 725px;
 				float: left;
 				color: white;
@@ -94,5 +94,21 @@
 	.user{
 		float: right;
 		margin-right: 30px;
+		position: relative;
+		.submenu {
+			position: absolute;
+			width: 100px;
+			line-height: 10px;
+			padding: 10px;
+			top: 47px;
+			background: white;
+			ul li{
+				display: block;
+				color: #06ab93;
+				a{
+					color: #06ab93;
+				}
+			}
+		}
 	}
 }

@@ -3,41 +3,44 @@
 	<li id="ui-left"></li>
 	<li class="page">
 		<div id="home" class="content">
-	<div class="cover">
-	</div>
-
-
-	<pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
-	[ <a href="" ng-click="predicate=''">unsorted</a> ]
-	<div class="list">
-	<h1>Destiny PS4</h1>
-		<ul class="title">
-			<li><a href="">Tags</a></li>
-			<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
-			<li><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
-			<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
-			<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
-			<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
-
-
-
-		</ul>
-		<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
-			<li>
-                <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
-            </li>
-            <li>{{ rdv.description}} </li>
-            <li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-			<!--<li>{{ rdv.duree }}</li>-->
-			<li>0/{{ rdv.nbParticipant}}</li>
-			<li>{{ rdv.leader.username }}</li>
+			<div class="cover">
+			</div>
+			<div class="list">
+				<ul class="platforms">
+					<li>Platforms:</li>
+					<li><a href="">PS4</a></li>
+					<li><a href="">PS3</a></li>
+					<li><a href="">XBOX 360</a></li>
+					<li><a href="">XBOX ONE</a></li>
+				</ul>
+				<h1>Destiny PS4</h1>
+				<ul class="title">
+					<li><a href="">Tags</a></li>
+					<li><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
+					<li><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></li>
+					<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
+					<li><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">nb slot</a></li>
+					<li><a href="" ng-click="predicate = 'name'; reverse=!reverse">Leader</a></li>
 
 
 
-		</ul>
-	</div>
+				</ul>
+				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse">
+					<li>
+						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+					</li>
+					<li>{{ rdv.description}} </li>
+					<li>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+					<!--<li>{{ rdv.duree }}</li>-->
+					<li>0/{{ rdv.nbParticipant}}</li>
+					<li>{{ rdv.leader.username }}</li>
 
-</div>
+
+
+				</ul>
+			</div>
+
+		</div>
 	</li>
 </ul>
 
