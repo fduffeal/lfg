@@ -28,7 +28,7 @@
 
 				</ul>
 				<ul class="line"  ng-repeat="rdv in aRdv | orderBy:predicate:reverse" ng-click="goToParty(rdv.id)">
-					<li class="list-platform">XBOX ONE</li>
+					<li class="list-platform">{{ rdv.plateform.nom }}</li>
 					<li class="list-tags">
 						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
 					</li>
