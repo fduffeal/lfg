@@ -98,6 +98,7 @@
 }
 .header .actions.not-logged ul.menu.right li.search {
   float: left;
+  margin-top: -3px;
 }
 .header .actions.not-logged ul.menu.right a {
   display: block;
@@ -202,6 +203,12 @@
 #footer .container ul li.copyright {
   font-weight: bold;
   margin-top: 10px;
+}
+#footer .container ul li a {
+  color: #3d3b3b;
+}
+#footer .container ul.right img {
+  margin: 0 2px;
 }
 
 html, body {
@@ -697,6 +704,29 @@ a {
 }
 #party-create .block ul li.slots input {
   width: 50px;
+}
+#party-create .block .select-platform div {
+  position: relative;
+  width: 30px;
+  margin: auto;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid #87cbc1;
+}
+#party-create .block .select-platform div span {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 3px;
+  border-radius: 50%;
+  left: 3px;
+}
+#party-create .block .select-platform div.selected span {
+  background: #f15641;
+}
+#party-create .block .select-platform div:hover span {
+  background: #f8aba0;
 }
 #party-create .block .btn {
   border: 0;

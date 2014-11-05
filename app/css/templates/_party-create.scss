@@ -36,6 +36,35 @@
 				width: 50px;
 			}
 		}
+		.select-platform {
+			div {
+				position: relative;
+				width: 30px;
+				margin: auto;
+				height: 30px;
+				border-radius: 50%;
+				cursor: pointer;
+				border: 3px solid #87cbc1;
+				span {
+					position: absolute;
+					width: 24px;
+					height: 24px;
+					top: 3px;
+					border-radius: 50%;
+					left: 3px;
+				}
+				&.selected {
+					span {
+						background: #f15641
+					}
+				}
+				&:hover {
+					span {
+						background: lighten(#f15641,20%);
+					}
+				}
+			}
+		}
 		.btn {
 			border: 0
 		}
