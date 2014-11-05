@@ -49,17 +49,41 @@
 		}
 		input {
 			border: 0;
-			height: 30px;
+			height: 25px;
 			padding-left: 10px;
-			line-height: 30px;
+			line-height: 25px;
 			width: 200px;
 			border-radius: 5px;
 		}
 
 		&.not-logged {
-			ul.menu {
-				width: 725px;
+			ul.menu.left {
 				float: left;
+				width: 300px;
+				li {
+					display: inline-block;
+					margin: 0 35px;
+					a {
+						font-size: 13px;
+						color: #e0e0e0;
+						width: 50px;
+						@include transition(background-color 0.2s ease-out);
+						text-align: center;
+						height: 58px;
+						line-height: 58px;
+						&:hover {
+							background: #06ab93;
+							color: white;
+						}
+						&.selected {
+							border-bottom: 1px solid #06ab93;
+						}
+					}
+				}
+			}
+			ul.menu.right {
+				float: right;
+				margin-right: 20px;
 				color: white;
 				margin-left: 10px;
 				font-size: 13px;
@@ -67,6 +91,9 @@
 				li {
 					margin: 0 5px;
 					float: right;
+					&.search {
+						float: left;
+					}
 				}
 
 

@@ -27,7 +27,7 @@
             height: 30px;
             line-height: 30px;
             &:nth-child(1) {
-                width: 365px;
+                width: 565px;
                 padding-left: 10px;
             }
             &:nth-child(2) {
@@ -36,10 +36,8 @@
             &:nth-child(3) {
                 width: 50px;
             }
+
             &:nth-child(4) {
-                width: 200px;
-            }
-            &:nth-child(5) {
                 width: 200px;
                 a {
                    color: #06ab93;
