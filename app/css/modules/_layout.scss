@@ -5,15 +5,32 @@ html, body {
 .selected {
 	color: #ffff00;
 }
-
+#welcome {
+	position: absolute;
+	top: 0;
+	background: black;
+	height: 25px;
+	text-align: center;
+	width: 100%;
+	line-height: 25px;
+	div {
+		width: 980px;
+		font-size: 13px;
+		color: white;
+		margin-left: 175px;
+		a{
+			color:#06ab93;
+		}
+	}
+}
 .important {
 	display: block;
-text-align: center;
-margin-top: 10px;
-color: black;
-text-decoration: underline;
-font-size: 13px;
-font-weight: bold;
+	text-align: center;
+	margin-top: 10px;
+	color: black;
+	text-decoration: underline;
+	font-size: 13px;
+	font-weight: bold;
 }
 
 .unvalid {
