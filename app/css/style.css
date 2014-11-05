@@ -31,6 +31,9 @@
   display: inline-block;
   margin: 0 35px;
 }
+.header .actions ul.menu li.search {
+  margin-left: 120px;
+}
 .header .actions ul.menu li a {
   font-size: 13px;
   color: #e0e0e0;
@@ -218,6 +221,16 @@ html, body {
 
 .selected {
   color: #ffff00;
+}
+
+.important {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: black;
+  text-decoration: underline;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .unvalid {

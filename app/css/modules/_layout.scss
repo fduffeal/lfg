@@ -6,6 +6,15 @@ html, body {
 	color: #ffff00;
 }
 
+.important {
+	display: block;
+text-align: center;
+margin-top: 10px;
+color: black;
+text-decoration: underline;
+font-size: 13px;
+font-weight: bold;
+}
 
 .unvalid {
 	border: 1px solid red;

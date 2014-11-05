@@ -29,6 +29,10 @@
 			li {
 				display: inline-block;
 				margin: 0 35px;
+				&.search {
+					margin-left: 120px;
+
+				}
 				a {
 					font-size: 13px;
 					color: #e0e0e0;
@@ -45,6 +49,7 @@
 						border-bottom: 1px solid #06ab93;
 					}
 				}
+
 			}
 		}
 		input {
