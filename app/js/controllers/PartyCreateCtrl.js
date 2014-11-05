@@ -33,6 +33,10 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 });
             };
 
+			$scope.updatePlateform = function(id){
+				$scope.plateform = id;
+			}
+
 			$scope.autocomplete = function(){
 				var aTags = $scope.tags.split(' ');
 

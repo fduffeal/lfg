@@ -61,9 +61,10 @@
 							<ul>
 								<li class="select-platform"ng-repeat="plateformData in formInfo.plateforms">
 									<!--<input type="radio" name="inputPlateform" ng-model="plateform" value="{{plateformData.id}}"><br />{{plateformData.nom}}-->
-									<div class="selected"><span></span></div><br />{{plateformData.nom}}
+									<div ng-class="{'selected':plateform == plateformData.id}" ng-click="updatePlateform(plateformData.id)"><span></span></div><br />{{plateformData.nom}}
 								</li>
 							</ul>
+							<input type="hidden" ng-model="plateform">
 						</li>
 						<li>Tags</li>
 						<li>
