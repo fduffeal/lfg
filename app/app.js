@@ -7,9 +7,10 @@ angular.module('myApp', [
 	'myApp.services',
 	'myApp.directives',
 	'myApp.filters',
-	'ngCookies'
+	'ngCookies',
+	'pascalprecht.translate'
 ]).
-	config(['$routeProvider', function ($routeProvider) {
+	config(['$routeProvider','$translateProvider', function ($routeProvider,$translateProvider) {
 
 		$routeProvider.when('/matchmaking',
 			{
@@ -48,7 +49,27 @@ angular.module('myApp', [
                 controller: 'ProfileCtrl'
             });
 
+		$routeProvider.when('/welcome',
+			{
+				templateUrl: 'html/controllers/rdv.html',
+				controller: 'RdvCtrl',
+				action:'welcome'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/'});
+
+
+
+		$translateProvider.translations('en', {
+			MENU_HOME: 'HOME',
+			MENU_NEW_PARTY: 'NEW PARTY'
+		});
+		$translateProvider.translations('fr', {
+			MENU_HOME: 'ACCUEIL',
+			MENU_NEW_PARTY: 'NOUVELLE PARTIE'
+		});
+		$translateProvider.preferredLanguage('fr');
+
 	}]);
 
 
