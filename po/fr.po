@@ -9,8 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7beta1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: app/html/controllers/rdv.html
+msgid "<a href=\"\">Platforms</a>"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Creator"
+msgstr "Créateur"
 
 #: app/html/directives/lfg-header.html
 msgid "HOME"
@@ -28,6 +36,10 @@ msgstr "Déconnexion"
 msgid "NEW PARTY"
 msgstr "NOUVELLE PARTIE"
 
+#: app/html/controllers/rdv.html
+msgid "PLATFORMS"
+msgstr "PLATFORMES"
+
 #: app/html/directives/lfg-header.html
 msgid "Profile"
 msgstr "Compte"
@@ -35,3 +47,7 @@ msgstr "Compte"
 #: app/html/directives/lfg-header.html
 msgid "Register"
 msgstr "Inscription"
+
+#: app/html/controllers/rdv.html
+msgid "Start"
+msgstr "Début"
