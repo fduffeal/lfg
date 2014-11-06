@@ -172,7 +172,7 @@ msgstr "Inscription"
 msgid "Register with your email address"
 msgstr "S'enregistrer avec votre adresse email"
 
-#: app/html/controllers/rdv.html
+#: app/html/controllers/party-create.html app/html/controllers/rdv.html
 msgid "Start"
 msgstr "Début"
 

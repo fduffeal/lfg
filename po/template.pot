@@ -148,6 +148,7 @@ msgstr ""
 msgid "Register with your email address"
 msgstr ""
 
+#: app/html/controllers/party-create.html
 #: app/html/controllers/rdv.html
 msgid "Start"
 msgstr ""
