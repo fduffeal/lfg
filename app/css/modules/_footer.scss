@@ -7,7 +7,7 @@
 	bottom: 0;
 	z-index: 1;
 	.container {
-		width: 950px;
+		width: 980px;
 		position: absolute;
 		left: 175px;
 		margin-top: 10px;
@@ -29,8 +29,33 @@
 			}
 
 		}
+		ul.right {
+			margin: 0 30px;
+			.langs {
+				cursor: pointer;
+				&:hover div{
+					opacity:1;
+				}
+				div {
+					opacity:0;
+
+					margin-left: 49px;
+					width: 100px;
+					a {
+						color: black;
+						&:hover{
+							background: black;
+							color: white
+						}
+					}
+				}
+			}
+		}
 		ul.right img{
 			margin: 0 2px;
+		}
+		.ico-lang {
+			width: 45px;
 		}
 	}
 }
