@@ -34,11 +34,11 @@ msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 
 #: app/html/controllers/party-waiting.html
 msgid "Class"
-msgstr ""
+msgstr "Class"
 
 #: app/html/controllers/profile.html
 msgid "Class (titan/hunter, arcanist)"
-msgstr ""
+msgstr "Class (titan/chasseur, arcanist)"
 
 #: app/html/controllers/register.html
 msgid "Confirm Password"
@@ -64,7 +64,7 @@ msgstr "Créateur"
 
 #: app/html/controllers/party-create.html
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: app/html/controllers/party-waiting.html
 msgid "Duration: for"
@@ -119,9 +119,8 @@ msgid "Login"
 msgstr "Connexion"
 
 #: app/html/controllers/login.html
-#, fuzzy
 msgid "Login !"
-msgstr "Connexion"
+msgstr "Connexion !"
 
 #: app/html/directives/lfg-header.html
 msgid "Logout"
@@ -164,9 +163,8 @@ msgid "Register"
 msgstr "Inscription"
 
 #: app/html/controllers/register.html
-#, fuzzy
 msgid "Register !"
-msgstr "Inscription"
+msgstr "Inscription !"
 
 #: app/html/controllers/register.html
 msgid "Register with your email address"
@@ -177,13 +175,12 @@ msgid "Start"
 msgstr "Début"
 
 #: app/html/controllers/party-waiting.html
-#, fuzzy
 msgid "Start the"
-msgstr "Début"
+msgstr "Démarre le"
 
 #: app/html/controllers/party-create.html
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: app/html/controllers/party-waiting.html
 msgid "Team"
@@ -209,7 +206,6 @@ msgstr "Nom d'utilisateur"
 msgid "When"
 msgstr "Quand:"
 
-#: app/html/controllers/party-waiting.html
 #, fuzzy
-msgid "{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span>"
-msgstr "Temps estimé: <span>{{ rdv.duree }}</span>"
+#~ msgid "{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span>"
+#~ msgstr "Temps estimé: <span>{{ rdv.duree }}</span>"

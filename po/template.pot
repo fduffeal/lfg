@@ -185,7 +185,3 @@ msgstr ""
 #: app/html/controllers/party-create.html
 msgid "When"
 msgstr ""
-
-#: app/html/controllers/party-waiting.html
-msgid "{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span>"
-msgstr ""
