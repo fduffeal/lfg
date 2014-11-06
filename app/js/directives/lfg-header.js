@@ -5,8 +5,10 @@ angular.module('myApp.directives')
 				link: function($scope, element, attrs) {
 
 					if($routeParams.lang){
+						$scope.lang = '/'+$routeParams.lang;
 						gettextCatalog.setCurrentLanguage($routeParams.lang); // Corresponds au header 'Language' du fichier .po;
 					}else {
+						$scope.lang = '/fr';
 						gettextCatalog.setCurrentLanguage('fr'); // Corresponds au header 'Language' du fichier .po;
 					}
 

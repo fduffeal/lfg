@@ -12,44 +12,44 @@ angular.module('myApp', [
 ]).
 	config(['$routeProvider', function ($routeProvider) {
 
-		$routeProvider.when('/matchmaking',
+		$routeProvider.when('/:lang?/matchmaking',
 			{
 				templateUrl: 'html/controllers/matchmaking.html',
 				controller: 'MatchmakingCtrl'
 			});
 
-		$routeProvider.when('/:lang?',
+		$routeProvider.when('/:lang?/',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'
 			});
-        $routeProvider.when('/party/create',
+        $routeProvider.when('/:lang?/party/create',
             {
                 templateUrl: 'html/controllers/party-create.html',
                 controller: 'PartyCreateCtrl'
             });
-         $routeProvider.when('/party/waiting/:partyId',
+         $routeProvider.when('/:lang?/party/waiting/:partyId',
             {
                 templateUrl: 'html/controllers/party-waiting.html',
                 controller: 'PartyWaitingCtrl'
             });
-        $routeProvider.when('/register',
+        $routeProvider.when('/:lang?/register',
             {
                 templateUrl: 'html/controllers/register.html',
                 controller: 'RegisterCtrl'
             });
-        $routeProvider.when('/login',
+        $routeProvider.when('/:lang?/login',
             {
                 templateUrl: 'html/controllers/login.html',
                 controller: 'LoginCtrl'
             });
-        $routeProvider.when('/profile',
+        $routeProvider.when('/:lang?/profile',
             {
                 templateUrl: 'html/controllers/profile.html',
                 controller: 'ProfileCtrl'
             });
 
-		$routeProvider.when('/welcome',
+		$routeProvider.when('/:lang?/welcome',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl',
