@@ -8,9 +8,9 @@ angular.module('myApp', [
 	'myApp.directives',
 	'myApp.filters',
 	'ngCookies',
-	'pascalprecht.translate'
+	'gettext'
 ]).
-	config(['$routeProvider','$translateProvider', function ($routeProvider,$translateProvider) {
+	config(['$routeProvider', function ($routeProvider) {
 
 		$routeProvider.when('/matchmaking',
 			{
@@ -57,18 +57,6 @@ angular.module('myApp', [
 			});
 
 		$routeProvider.otherwise({redirectTo: '/'});
-
-
-
-		$translateProvider.translations('en', {
-			MENU_HOME: 'HOME',
-			MENU_NEW_PARTY: 'NEW PARTY'
-		});
-		$translateProvider.translations('fr', {
-			MENU_HOME: 'ACCUEIL',
-			MENU_NEW_PARTY: 'NOUVELLE PARTIE'
-		});
-		$translateProvider.preferredLanguage('fr');
 
 	}]);
 

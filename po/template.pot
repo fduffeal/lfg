@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/html/directives/lfg-header.html
+msgid "HOME"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Login"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Logout"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "NEW PARTY"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Profile"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Register"
+msgstr ""
