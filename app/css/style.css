@@ -26,13 +26,14 @@
 }
 .header .actions ul.menu {
   float: left;
+  width: 620px;
 }
 .header .actions ul.menu li {
   display: inline-block;
   margin: 0 35px;
 }
 .header .actions ul.menu li.search {
-  margin-left: 120px;
+  margin-left: 50px;
 }
 .header .actions ul.menu li a {
   font-size: 13px;
@@ -67,7 +68,7 @@
 }
 .header .actions.not-logged ul.menu.left li {
   display: inline-block;
-  margin: 0 35px;
+  margin: 0 20px;
 }
 .header .actions.not-logged ul.menu.left li a {
   font-size: 13px;
@@ -92,6 +93,7 @@
   float: right;
   margin-right: 20px;
   color: white;
+  width: 420px;
   margin-left: 10px;
   font-size: 13px;
 }

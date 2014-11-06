@@ -62,11 +62,23 @@ angular.module('myApp', [
 
 		$translateProvider.translations('en', {
 			MENU_HOME: 'HOME',
-			MENU_NEW_PARTY: 'NEW PARTY'
+			MENU_NEW_PARTY: 'NEW PARTY',
+			MENU_REGISTER: 'Register',
+			MENU_LOGIN: 'Login',
+			MENU_LOGOUT: 'Logout',
+			PLATFORMS: 'Platforms',
+			START: 'Start',
+			CREATOR: 'Creator',
 		});
 		$translateProvider.translations('fr', {
 			MENU_HOME: 'ACCUEIL',
-			MENU_NEW_PARTY: 'NOUVELLE PARTIE'
+			MENU_NEW_PARTY: 'NOUVELLE PARTIE',
+			MENU_REGISTER: 'Inscription',
+			MENU_LOGIN: 'Connexion',
+			MENU_LOGOUT: 'Deconnexion',
+			PLATFORMS: 'Plateformes',
+			START: 'Commence',
+			CREATOR: 'Créateur',
 		});
 		$translateProvider.preferredLanguage('fr');
 

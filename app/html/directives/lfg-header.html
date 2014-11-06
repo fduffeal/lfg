@@ -3,13 +3,13 @@
 		<a href="#/" id="logo"><img src="img/logo.png" alt="" /></a>
 		<div class="actions not-logged" ng-if="!userInfo.username">
 			<ul class="menu left">
-				<li><a href="#/" class="selected">HOME</a></li>
-				<li><a href="#/party/create">NEW PARTY</a></li>
+				<li><a href="#/" class="selected">{{ 'MENU_HOME' | translate }}</a></li>
+				<li><a href="#/party/create">{{ 'MENU_NEW_PARTY' | translate }}</a></li>
 			</ul>
 			<ul class="menu right">
 				<li class="search"><input type="text" placeholder="#TAGS"></li>
-				<li class="signin"><a href="#/register">Register</a></li>
-				<li><a href="#/login" class="go">Login</a></li>
+				<li class="signin"><a href="#/register">{{ 'MENU_REGISTER' | translate }}</a></li>
+				<li><a href="#/login" class="go">{{ 'MENU_LOGIN' | translate }}</a></li>
 			</ul>
 		</div>
 
@@ -26,7 +26,7 @@
 				<div class="submenu">
 					<ul>
 						<li><a href="#/profile">Profile</a></li>
-						<li><a href=""ng-click="logout()">Logout</a></li>
+						<li><a href=""ng-click="logout()">{{ 'MENU_LOGOUT' | translate }}</a></li>
 					</ul>
 				</div>
 			</div>
