@@ -18,7 +18,7 @@ angular.module('myApp', [
 				controller: 'MatchmakingCtrl'
 			});
 
-		$routeProvider.when('/',
+		$routeProvider.when('/:lang?',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'

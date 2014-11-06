@@ -1,10 +1,15 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','gettextCatalog',
-		function(user,gettextCatalog) {
+	.directive('lfgHeader', ['user','gettextCatalog','$routeParams',
+		function(user,gettextCatalog,$routeParams) {
 			return {
 				link: function($scope, element, attrs) {
 
-					gettextCatalog.setCurrentLanguage('fr'); // Corresponds au header 'Language' du fichier .po;
+					if($routeParams.lang){
+						gettextCatalog.setCurrentLanguage($routeParams.lang); // Corresponds au header 'Language' du fichier .po;
+					}else {
+						gettextCatalog.setCurrentLanguage('fr'); // Corresponds au header 'Language' du fichier .po;
+					}
+
 					gettextCatalog.debug = true;
 
 					$scope.logout = function(){
