@@ -3,6 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: app/html/controllers/rdv.html
+msgid "<a href=\"\">Platforms</a>"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Creator"
+msgstr ""
+
 #: app/html/directives/lfg-header.html
 msgid "HOME"
 msgstr ""
@@ -19,10 +27,18 @@ msgstr ""
 msgid "NEW PARTY"
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "PLATFORMS"
+msgstr ""
+
 #: app/html/directives/lfg-header.html
 msgid "Profile"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
 msgid "Register"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Start"
 msgstr ""

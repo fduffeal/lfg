@@ -1,5 +1,5 @@
 <lfg-header></lfg-header>
-<div id="welcome" ng-if="displayWelcome"><div>Congratulation ! You are now registered on esBattle.com! You can invit, share your partys with your friends ! Do not forget to put your infos game in your <a href="#/profile">Profile</a>.</div></div>
+<div id="welcome" ng-if="displayWelcome"><div translate>Congratulation ! You are now registered on esBattle.com! You can invit, share your partys with your friends ! Do not forget to put your infos game in your <a href="#/profile">Profile</a>.</div></div>
 <ul id="page">
 	<li id="ui-left"></li>
 	<li class="page">
@@ -8,7 +8,7 @@
 			</div>
 			<div class="list">
 				<ul class="platforms">
-					<li>{{ 'PLATFORMS' | translate }}:</li>
+					<li translate>PLATFORMS</li>
 					<li><a href="">ALL</a></li>
 					<li><a href="" class="selected">PS4</a></li>
 					<li><a href="">PS3</a></li>
@@ -17,13 +17,13 @@
 				</ul>
 				<h1>Destiny PS4</h1>
 				<ul class="title">
-					<li class="list-platform"><a href="">{{ 'PLATFORMS' | translate }}</a></li>
+					<li class="list-platform"><a href=""translate>Platforms</a></li>
 					<li class="list-tags"><a href="">Tags</a></li>
 					<li class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
-					<li class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">{{ 'START' | translate }}</a></li>
+					<li class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse"translate>Start</a></li>
 					<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
 					<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
-					<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">{{ 'CREATOR' | translate }}</a></li>
+					<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
 
 
 
