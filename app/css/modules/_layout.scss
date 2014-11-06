@@ -20,6 +20,9 @@ html, body {
 		margin-left: 175px;
 		a{
 			color:#06ab93;
+			&:hover{
+				color: lighten(#06ab93, 20%);
+			}
 		}
 	}
 }

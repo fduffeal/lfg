@@ -26,13 +26,14 @@
 }
 .header .actions ul.menu {
   float: left;
+  width: 620px;
 }
 .header .actions ul.menu li {
   display: inline-block;
   margin: 0 35px;
 }
 .header .actions ul.menu li.search {
-  margin-left: 120px;
+  margin-left: 50px;
 }
 .header .actions ul.menu li a {
   font-size: 13px;
@@ -67,7 +68,7 @@
 }
 .header .actions.not-logged ul.menu.left li {
   display: inline-block;
-  margin: 0 35px;
+  margin: 0 20px;
 }
 .header .actions.not-logged ul.menu.left li a {
   font-size: 13px;
@@ -92,6 +93,7 @@
   float: right;
   margin-right: 20px;
   color: white;
+  width: 420px;
   margin-left: 10px;
   font-size: 13px;
 }
@@ -189,7 +191,7 @@
   z-index: 1;
 }
 #footer .container {
-  width: 950px;
+  width: 980px;
   position: absolute;
   left: 175px;
   margin-top: 10px;
@@ -210,8 +212,32 @@
 #footer .container ul li a {
   color: #3d3b3b;
 }
+#footer .container ul.right {
+  margin: 0 30px;
+}
+#footer .container ul.right .langs {
+  cursor: pointer;
+}
+#footer .container ul.right .langs:hover div {
+  opacity: 1;
+}
+#footer .container ul.right .langs div {
+  opacity: 0;
+  margin-left: 49px;
+  width: 100px;
+}
+#footer .container ul.right .langs div a {
+  color: black;
+}
+#footer .container ul.right .langs div a:hover {
+  background: black;
+  color: white;
+}
 #footer .container ul.right img {
   margin: 0 2px;
+}
+#footer .container .ico-lang {
+  width: 45px;
 }
 
 html, body {
@@ -240,6 +266,9 @@ html, body {
 }
 #welcome div a {
   color: #06ab93;
+}
+#welcome div a:hover {
+  color: #20f7d8;
 }
 
 .important {
