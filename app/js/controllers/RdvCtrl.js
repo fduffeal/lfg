@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','$location',
-		function ($scope,rdv,$location) {
+	['$scope','rdv','$location','$route',
+		function ($scope,rdv,$location,$route) {
 			'use strict';
 
 			$scope.test='1';
@@ -24,6 +24,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
 				});
+
+			$scope.displayWelcome = ($route.current.action === 'welcome');
 		}
 	]
 );
