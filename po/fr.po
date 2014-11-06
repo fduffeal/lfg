@@ -12,20 +12,115 @@ msgstr ""
 "X-Generator: Poedit 1.7beta1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/html/controllers/rdv.html
-msgid "<a href=\"\">Platforms</a>"
+#: app/html/controllers/party-create.html
+msgid ""
+"<span>IMPORTANT :</span>\n"
+"\t\t\t\t\tAfter creating the party, it will be possible to invit/promote "
+"some players or cancel the party. However, after two players in the party, "
+"it will unfortunately not be possible to cancel the party! If you leave the "
+"party, the second player will be promoted as the creator of the party. "
+"Please check your information before creating!"
 msgstr ""
+"<span>IMPORTANT :</span>\n"
+"\t\t\t\t\tAprès avoir créé la partie, il sera possible d'inviter des joueur, "
+"d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs "
+"sont confirmés dans la partie, il n'est plus possible d'annuler la partie. "
+"Si vous quittez la partie, le second joueur sera promu en tant que créateur. "
+"Donc merci de vérifier vos informations avant de créer une partie !"
+
+#: app/html/controllers/party-create.html app/html/controllers/profile.html
+msgid "ALL FIELDS ARE REQUIRED"
+msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
+
+#: app/html/controllers/party-waiting.html
+msgid "Class"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Class (titan/hunter, arcanist)"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Confirm Password"
+msgstr "Confirmez votre mot de passe"
+
+#: app/html/controllers/profile.html
+msgid "Confirm your password"
+msgstr "Confirmez votre mot de passe"
+
+#: app/html/controllers/rdv.html
+msgid ""
+"Congratulation ! You are now registered on esBattle.com! You can invit, "
+"share your partys with your friends ! Do not forget to put your infos game "
+"in your <a href=\"#/profile\">Profile</a>."
+msgstr ""
+"Bravo ! Vous êtes désormais enregistré sur esBattle.com! Vous pouvez "
+"inviter, partager vos parties avec vos amis! N'oubliez pas de mettre vos "
+"informations de jeux à jour dans <a href=\"#/profile\">Profile</a>."
 
 #: app/html/controllers/rdv.html
 msgid "Creator"
 msgstr "Créateur"
 
+#: app/html/controllers/party-create.html
+msgid "Description"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Duration: for"
+msgstr "Durée:"
+
+#: app/html/controllers/register.html
+msgid "Email Address"
+msgstr "Adresse email"
+
+#: app/html/controllers/profile.html
+msgid "Email>"
+msgstr "Adresse email"
+
+#: app/html/controllers/login.html
+msgid "Enter your login and password"
+msgstr "Entrez votre login et mot de passe"
+
+#: app/html/controllers/party-create.html
+msgid "For"
+msgstr "Durée"
+
+#: app/html/controllers/login.html
+msgid "Forget login or password ?"
+msgstr "Mot de passe oublié ?"
+
+#: app/html/controllers/party-create.html
+msgid "Game :"
+msgstr "Jeu :"
+
+#: app/html/controllers/profile.html
+msgid "Game Infos for Destiny"
+msgstr "Infos jeux pour Destiny"
+
 #: app/html/directives/lfg-header.html
 msgid "HOME"
 msgstr "ACCEUIL"
 
+#: app/html/controllers/party-waiting.html
+msgid "ID in game"
+msgstr "ID dans le jeu"
+
+#: app/html/controllers/party-waiting.html
+msgid "Level"
+msgstr "Niveau"
+
+#: app/html/controllers/profile.html
+msgid "Level (please keep update)"
+msgstr "Niveau (merci de le mettre à jour)"
+
 #: app/html/directives/lfg-header.html
 msgid "Login"
+msgstr "Connexion"
+
+#: app/html/controllers/login.html
+#, fuzzy
+msgid "Login !"
 msgstr "Connexion"
 
 #: app/html/directives/lfg-header.html
@@ -36,9 +131,29 @@ msgstr "Déconnexion"
 msgid "NEW PARTY"
 msgstr "NOUVELLE PARTIE"
 
+#: app/html/controllers/party-create.html
+msgid "New party on Destiny"
+msgstr "Nouvelle partie sur Destiny"
+
 #: app/html/controllers/rdv.html
 msgid "PLATFORMS"
 msgstr "PLATFORMES"
+
+#: app/html/controllers/profile.html app/html/controllers/register.html
+msgid "Password"
+msgstr "Mot de passe"
+
+#: app/html/controllers/profile.html
+msgid "Personal Infos"
+msgstr "Informations personelles"
+
+#: app/html/controllers/party-create.html app/html/controllers/profile.html
+msgid "Platform"
+msgstr "Platformes"
+
+#: app/html/controllers/rdv.html
+msgid "Platforms"
+msgstr "Platformes"
 
 #: app/html/directives/lfg-header.html
 msgid "Profile"
@@ -48,6 +163,53 @@ msgstr "Compte"
 msgid "Register"
 msgstr "Inscription"
 
-#: app/html/controllers/rdv.html
+#: app/html/controllers/register.html
+#, fuzzy
+msgid "Register !"
+msgstr "Inscription"
+
+#: app/html/controllers/register.html
+msgid "Register with your email address"
+msgstr "S'enregistrer avec votre adresse email"
+
+#: app/html/controllers/party-create.html app/html/controllers/rdv.html
 msgid "Start"
 msgstr "Début"
+
+#: app/html/controllers/party-waiting.html
+#, fuzzy
+msgid "Start the"
+msgstr "Début"
+
+#: app/html/controllers/party-create.html
+msgid "Tags"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Team"
+msgstr "Equipe"
+
+#: app/html/controllers/party-waiting.html
+msgid "The Party"
+msgstr "La partie"
+
+#: app/html/controllers/register.html
+msgid "The username is already used."
+msgstr "Ce nom d'utilisateur est déjà pris"
+
+#: app/html/controllers/profile.html
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: app/html/controllers/profile.html app/html/controllers/register.html
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: app/html/controllers/party-create.html
+msgid "When"
+msgstr "Quand:"
+
+#: app/html/controllers/party-waiting.html
+#, fuzzy
+msgid "{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span>"
+msgstr "Temps estimé: <span>{{ rdv.duree }}</span>"

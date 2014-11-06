@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="block">
-				<h1>The Party</h1>
+				<h1 translate>The Party</h1>
 				<div class="link"><a href="">http://www.esbattle.com/party/waiting/{{rdv.id}}</a></div>
 				<div class="block2">
 					<div class="line">
@@ -18,9 +18,9 @@
 					</div>
 					<div class="line">
 						<div class="date">
-							Start the <span>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</span>
+							{{'Start the' | translate}} <span>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</span>
 						</div>
-						<div class="duration">Duration: for  <span>{{ rdv.duree }}</span></div>
+						<div class="duration" translate>{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span></div>
 					</div>
 					<div class="line">
 						<div class="desc">{{ rdv.description }}</div>
@@ -28,12 +28,12 @@
 					</div>
 
 				</div>
-				<h1 class="second">Team</h1>
+				<h1 class="second" translate>Team</h1>
 				<div class="team">
 					<ul class="title">
-						<li>ID in game</li>
-						<li>Class</li>
-						<li>Level</li>
+						<li translate>ID in game</li>
+						<li translate>Class</li>
+						<li translate>Level</li>
 						<li></li>
 					</ul>
 					<ul class="player">
