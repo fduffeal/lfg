@@ -57,6 +57,12 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			};
 
 
+	        $scope.leave = function(){
+		        rdv.leave($scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+			        $scope.rdv = data;
+			        $scope.canJoin = false;
+		        });
+	        };
 
         }
     ]

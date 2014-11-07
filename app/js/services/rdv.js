@@ -30,6 +30,10 @@ angular.module('myApp.services')
 			this.kickUser = function(userId,rdvId,username,token){
 				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
 			};
+
+			this.leave = function(rdvId,username,token){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/leave/'+rdvId+'/'+username+'/'+token);
+			};
 		}
 	]
 );

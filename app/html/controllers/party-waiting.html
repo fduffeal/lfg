@@ -43,7 +43,7 @@
                         <li>28</li>
 
                         <li>
-                            <a href="" ng-if="user.username === currentUser.username">Leave</a>
+                            <a href="" ng-if="user.username === currentUser.username"  ng-click="leave()">Leave</a>
                             <a href="" ng-if="isLeader && user.username !== currentUser.username">Promote</a>
                             <a href="" ng-if="isLeader && user.username !== currentUser.username" ng-click="kickUser(user.id)">Kick</a>
                         </li>
