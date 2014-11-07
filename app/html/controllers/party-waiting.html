@@ -28,50 +28,51 @@
 					</div>
 
 				</div>
-				<h1 class="second" translate>Team</h1>
-				<div class="team">
-					<ul class="title">
-						<li translate>ID in game</li>
-						<li translate>Class</li>
-						<li translate>Level</li>
-						<li></li>
-					</ul>
-					<ul class="player">
-						<li>poneyMCH</li>
-						<li>Titan</li>
-						<li>28</li>
 
-						<li><a href="">Leave</a></li>
-					</ul>
-					<ul class="player">
-						<li>Fifoukiller</li>
-						<li>Hunter</li>
-						<li>28</li>
-						<li><a href="">remove</a> / <a href="">message</a> / <a href="">promote</a></li>
-					</ul>
-					<ul class="player">
-						<li>n4nsou13</li>
-						<li>Titan</li>
-						<li>29</li>
-						<li><a href="">accept</a> / <a href="">decline</a> / <a href="">message</a></li>
-					</ul>
-					<ul class="player">
-						<li>invit</li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-					<ul class="player">
-						<li>invit</li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
+                <h1 class="second" translate>Team</h1>
+                <div class="team">
+                    <ul class="title">
+                        <li translate>ID in game</li>
+                        <li translate>Class</li>
+                        <li translate>Level</li>
+                        <li></li>
+                    </ul>
+                    <ul class="player" ng-repeat="user in rdv.users">
+                        <li>{{user.username}}</li>
+                        <li>Titan</li>
+                        <li>28</li>
 
-				</div>
+                        <li>
+                            <a href="" ng-if="user.username === currentUser.username">Leave</a>
+                            <a href="" ng-if="isLeader && user.username !== currentUser.username">Promote</a>
+                            <a href="" ng-if="isLeader && user.username !== currentUser.username" ng-click="kickUser(user.id)">Kick</a>
+                        </li>
+                    </ul>
+                </div>
 
-			</div>
-			<div class="popup confirm">
+
+                <div class="team" ng-if="rdv.usersInQueue.length > 0">
+                    <h1 class="second" translate>Waiting Players</h1>
+                    <ul class="title">
+                        <li translate>ID in game</li>
+                        <li translate>Class</li>
+                        <li translate>Level</li>
+                        <li></li>
+                    </ul>
+                    <ul class="player" ng-repeat="user in rdv.usersInQueue">
+                        <li>{{user.username}}</li>
+                        <li>Titan</li>
+                        <li>28</li>
+
+                        <li>
+                            <a href="" ng-if="isLeader" ng-click="acceptUser(user.id)">accept</a>
+                            <a href="" ng-if="isLeader" ng-click="kickUser(user.id)">decline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+			<div class="popup confirm" ng-show="false">
 				<div class="text">
 					<span>Are you sure to kick :</span>
 					<div class="choose">
@@ -82,6 +83,8 @@
 				</div>
 				<div class="bg"></div>
 			</div>
+
+            <div ng-show="canJoin" class="btn" ng-click="join()" translate>Join !</div>
 		</div>
 	</li>
 </ul>

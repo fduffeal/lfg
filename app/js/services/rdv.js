@@ -18,6 +18,18 @@ angular.module('myApp.services')
 			this.get = function(id){
 				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/get/'+id);
 			};
+
+			this.join = function(rdvId,username,token){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/join/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.acceptUser = function(userId,rdvId,username,token){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.kickUser = function(userId,rdvId,username,token){
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
 		}
 	]
 );
