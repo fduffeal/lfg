@@ -41,6 +41,9 @@
   cursor: pointer;
   position: relative;
 }
+.header .actions ul.menu li.notif:hover img {
+  opacity: 0.8;
+}
 .header .actions ul.menu li.notif:hover .notif-list {
   opacity: 1;
 }
@@ -304,7 +307,7 @@
   width: 45px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1180px) {
   #ui-left {
     display: none !important;
   }
@@ -325,6 +328,28 @@
     margin-right: auto !important;
     margin-left: auto !important;
     width: 980px;
+  }
+}
+@media screen and (max-width: 1009px) {
+  .header .content-header {
+    text-align: center;
+    width: auto;
+  }
+  .header #logo {
+    float: none;
+  }
+  .header .actions {
+    width: auto;
+    margin-left: 0;
+    float: none;
+  }
+  .header ul.menu {
+    margin-top: 0;
+    width: auto;
+  }
+  .header ul.menu li {
+    display: block;
+    width: 200px;
   }
 }
 html, body {
@@ -968,4 +993,73 @@ a {
 }
 #party-waiting .block2 .line .slots, #party-waiting .block2 .line .date, #party-waiting .block2 .line .duration {
   font-size: 16px;
+}
+
+@media screen and (max-width: 1009px) {
+  .header .content-header {
+    text-align: center;
+    width: auto;
+  }
+  .header #logo {
+    float: none;
+  }
+  .header .actions {
+    width: auto;
+    margin-left: 0;
+    float: none;
+    height: 124px;
+  }
+  .header .actions ul.menu {
+    margin-top: 0;
+    position: relative;
+    width: auto;
+  }
+  .header .actions ul.menu li {
+    text-align: left;
+    margin: 0;
+    width: auto;
+  }
+  .header .actions ul.menu li.search {
+    display: block;
+    margin: 0;
+  }
+  .header .actions ul.menu li.notif {
+    position: absolute;
+    top: 49px;
+    left: 219px;
+  }
+
+  .cover {
+    display: none;
+  }
+
+  #page {
+    width: 100%;
+  }
+  #page .page {
+    width: auto;
+  }
+  #page .page .content {
+    width: auto;
+    box-shadow: none;
+  }
+
+  #home .list {
+    width: auto;
+  }
+  #home .list .title-platforms {
+    display: none !important;
+  }
+  #home .list ul.title li.list-infos, #home .list ul.title li.list-creator, #home .list ul.line li.list-infos, #home .list ul.line li.list-creator {
+    display: none;
+  }
+  #home .list ul.title li.list-platform, #home .list ul.line li.list-platform {
+    width: 70px;
+  }
+  #home .list ul.title li.list-tags, #home .list ul.line li.list-tags {
+    width: 120px;
+  }
+  #home .list ul.title li.list-start, #home .list ul.line li.list-start {
+    width: 120px;
+  }
 }

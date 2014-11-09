@@ -39,6 +39,9 @@
 					margin: 5px;
 					cursor: pointer;
 					position: relative;
+					&:hover img {
+						opacity: 0.8;
+					}
 					&:hover .notif-list {
 						opacity: 1;
 
@@ -64,7 +67,6 @@
 						border-top: 2px solid #06ab93;
 						left: -133px;
 						top: 47px;
-
 						z-index: 3;
 						width: 310px;
 
