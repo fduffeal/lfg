@@ -4,6 +4,9 @@
 			text-align: center;
 			width: auto;
 		}
+		.user {
+			margin-right: 0;
+		}
 		#logo {
 			float: none;
 		}
@@ -33,6 +36,9 @@
 				}
 			}
 		}
+	}
+	#footer .container {
+		width: auto;
 	}
 	.cover {
 		display: none;
@@ -68,6 +74,13 @@
 				}
 
 			}
+		}
+	}
+	#party-create .block {
+		width: 320px;
+		padding: 0;
+		ul li ul li {
+			width: 74px!important;
 		}
 	}
 

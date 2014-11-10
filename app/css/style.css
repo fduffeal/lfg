@@ -1000,6 +1000,9 @@ a {
     text-align: center;
     width: auto;
   }
+  .header .user {
+    margin-right: 0;
+  }
   .header #logo {
     float: none;
   }
@@ -1027,6 +1030,10 @@ a {
     position: absolute;
     top: 49px;
     left: 219px;
+  }
+
+  #footer .container {
+    width: auto;
   }
 
   .cover {
@@ -1061,5 +1068,13 @@ a {
   }
   #home .list ul.title li.list-start, #home .list ul.line li.list-start {
     width: 120px;
+  }
+
+  #party-create .block {
+    width: 320px;
+    padding: 0;
+  }
+  #party-create .block ul li ul li {
+    width: 74px !important;
   }
 }
