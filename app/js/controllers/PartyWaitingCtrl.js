@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user',
-        function ($scope,rdv,$routeParams,user) {
+    ['$scope','rdv','$routeParams','user','$location',
+        function ($scope,rdv,$routeParams,user,$location) {
             'use strict';
 
 			$scope.currentUser = user.get();
@@ -63,6 +63,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        $scope.canJoin = false;
 		        });
 	        };
+
+			$scope.currentUrl = $location.absUrl();
 
         }
     ]

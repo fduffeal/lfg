@@ -100,7 +100,7 @@ msgstr "Infos jeux pour Destiny"
 
 #: app/html/directives/lfg-header.html
 msgid "HOME"
-msgstr "ACCEUIL"
+msgstr "ACCUEIL"
 
 #: app/html/controllers/party-waiting.html
 msgid "ID in game"

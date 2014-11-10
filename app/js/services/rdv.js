@@ -1,13 +1,17 @@
 angular.module('myApp.services')
-	.service('rdv', ['$http','user',
-		function($http,user) {
+	.service('rdv', ['$http','user','$q','$timeout',
+		function($http,user,$q,$timeout) {
 			'use strict';
 			this.getAll = function(){
 				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/');
 			};
 
+			this.getFormInfoData = null;
 			this.getFormInfo = function(){
-				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/form_info');
+				var parent = this;
+				return $http.get('http://dev.esbattle.com/app_dev.php/rdv/form_info').success(function(data){
+					parent.getFormInfoData = data;
+				});
 			};
 
             this.add = function(plateform,game,tags,description,start,duree,nbParticipant){

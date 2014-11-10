@@ -1,9 +1,7 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','$location','$route',
-		function ($scope,rdv,$location,$route) {
+	['$scope','rdv','$location','$route','tag',
+		function ($scope,rdv,$location,$route,tag) {
 			'use strict';
-
-			$scope.test='1';
 
 			$scope.today = new Date();
 
@@ -15,15 +13,38 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			};
 
 
+			$scope.updateTags = function(){
+				var aTags = $scope.tags.split(' ');
+				$scope.autoCompleteTags = tag.autoCompleteUserTags(aTags,$scope.allTags);
+
+			};
+
+			$scope.autoCompleteTags = [];
+
+			$scope.allTags = [];
+
+			rdv.getFormInfo().success(function(data){
+				$scope.allTags = data.tags;
+				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
+				$scope.aPlateforms = data.plateforms;
+			});
+
+
 			rdv.getAll().success(function(data, status, headers, config) {
-					// this callback will be called asynchronously
-					// when the response is available
-					console.log(data);
-					$scope.aRdv = data;
-				}).error(function(data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
-				});
+				// this callback will be called asynchronously
+				// when the response is available
+				$scope.aRdv = data;
+			}).error(function(data, status, headers, config) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			});
+
+			$scope.plateformSelected = '';
+			$scope.plateformNameSelected = 'ALL';
+			$scope.updatePlateform = function(id,nom){
+				$scope.plateformSelected = id;
+				$scope.plateformNameSelected = nom;
+			};
 
 			$scope.displayWelcome = ($route.current.action === 'welcome');
 		}

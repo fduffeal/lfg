@@ -7,15 +7,23 @@
 			<div class="cover">
 			</div>
 			<div class="list">
+                <ul>
+                    <li>TAGS</li>
+                    <li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags" ng-change="updateTags(this)" list="tagsList"></li>
+                    <datalist id="tagsList">
+                        <option data-ng-repeat="item in autoCompleteTags" value="{{item}}" />
+                    </datalist>
+                </ul>
 				<ul class="platforms">
 					<li translate>PLATFORMS</li>
-					<li><a href="">ALL</a></li>
-					<li><a href="" class="selected">PS4</a></li>
-					<li><a href="">PS3</a></li>
-					<li><a href="">XBOX 360</a></li>
-					<li><a href="">XBOX ONE</a></li>
+                    <li ng-repeat="plateform in aPlateforms">
+                        <a href="" ng-click="updatePlateform(plateform.id,plateform.nom);" ng-class="{'selected':(plateformSelected == plateform.id)}">{{plateform.nom}}</a>
+                    </li>
+					<li class="selected">
+                        <a href="" ng-click="updatePlateform('','ALL');" ng-class="{'selected':plateformSelected == ''}">ALL</a>
+                    </li>
 				</ul>
-				<h1>Destiny PS4</h1>
+				<h1>Destiny {{plateformNameSelected}}</h1>
 				<ul class="title">
 					<li class="list-platform"><a href=""translate>Platforms</a></li>
 					<li class="list-tags"><a href="">Tags</a></li>
@@ -28,7 +36,7 @@
 
 
 				</ul>
-				<ul class="line"  ng-repeat="rdv in aRdv | filterRdv:plateform:tags |orderBy:predicate:reverse " ng-click="goToParty(rdv.id)">
+				<ul class="line"  ng-repeat="rdv in aRdv | filterRdv:plateformSelected:tags |orderBy:predicate:reverse " ng-click="goToParty(rdv.id)">
 					<li class="list-platform">{{ rdv.plateform.nom }}</li>
 					<li class="list-tags">
 						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>

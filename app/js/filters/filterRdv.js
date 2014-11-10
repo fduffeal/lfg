@@ -1,20 +1,34 @@
 angular.module('myApp.filters').filter('filterRdv', [function () {
 	return function (items,plateformId,tags) {
 		'use strict';
-		plateformId = 1;
-		tags = 'VoG';
+
 		var aFilterdItems = [];
 
-		var aTags = tags.split(' ');
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
 
 		for(var key in items){
-			if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
 				continue;
 			}
 
-			for(var keyTag in items[key].tags){
-				var asTag = true;
-				if(aTags.indexOf(items[key].tags[keyTag].nom) < 0){
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
 					asTag = false;
 				}
 			}
@@ -22,6 +36,7 @@ angular.module('myApp.filters').filter('filterRdv', [function () {
 			if(asTag === false){
 				continue;
 			}
+
 			aFilterdItems.push(items[key]);
 		}
 

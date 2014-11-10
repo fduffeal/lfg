@@ -18,7 +18,7 @@ angular.module('myApp', [
 				controller: 'MatchmakingCtrl'
 			});
 
-		$routeProvider.when('/:lang?/',
+		$routeProvider.when('/:lang/',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'
@@ -43,7 +43,7 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/login.html',
                 controller: 'LoginCtrl'
             });
-        $routeProvider.when('/:lang?/profile',
+        $routeProvider.when('/:lang?/profile/',
             {
                 templateUrl: 'html/controllers/profile.html',
                 controller: 'ProfileCtrl'
@@ -56,7 +56,7 @@ angular.module('myApp', [
 				action:'welcome'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/'});
+		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
 
