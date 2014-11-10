@@ -1,15 +1,23 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location',
-        function ($scope,rdv,$routeParams,user,$location) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','$rootScope',
+        function ($scope,rdv,$routeParams,user,$location,$filter,$rootScope) {
             'use strict';
 
 			$scope.currentUser = user.get();
+
+
 
 	        rdv.get($routeParams.partyId).success(function(data){
 		        $scope.rdv = data;
 
 				$scope.isLeader = false;
 				$scope.canJoin = true;
+
+				$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
+
+				if($scope.profils[0]){
+					$scope.profilSelected = $scope.profils[0];
+				}
 
 				if($scope.currentUser !== null){
 					if($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username){
@@ -63,6 +71,10 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        $scope.canJoin = false;
 		        });
 	        };
+
+			$scope.createProfil = function(){
+				$location.path($rootScope.lang+'/profile/'+$scope.rdv.game.id+'/'+$scope.rdv.plateform.id);
+			};
 
 			$scope.currentUrl = $location.absUrl();
 

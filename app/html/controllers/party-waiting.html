@@ -84,7 +84,13 @@
 				<div class="bg"></div>
 			</div>
 
-            <div ng-show="canJoin" class="btn" ng-click="join()" translate>Join !</div>
+
+            <div ng-show="canJoin && profils.length > 0" class="btn" ng-click="join()" translate>Join !</div>
+            <div ng-show="canJoin && profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
+            <div ng-show="profils.length > 1 && canJoin">
+                <label translate>with profil :</label>
+                <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
+            </div>
 		</div>
 	</li>
 </ul>

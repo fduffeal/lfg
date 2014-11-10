@@ -1,6 +1,6 @@
 angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
 	return function (items,plateformId,tags) {
-		'use strict';
 
 		var aFilterdItems = [];
 

@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ProfileCtrl',
-    ['$scope','user','rdv',
-        function ($scope,user,rdv) {
+    ['$scope','user','rdv','$routeParams','$window',
+        function ($scope,user,rdv,$routeParams,$window) {
 			'use strict';
 			$scope.currentUser = user.get();
 
@@ -9,7 +9,22 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 				$scope.games = data.games;
 
 				$scope.plateform = data.plateforms[0];
+				if($routeParams.plateformId){
+					for(var key in data.plateforms){
+						if(data.plateforms[key].id == $routeParams.plateformId){
+							$scope.plateform = data.plateforms[key];
+						}
+					}
+				}
+
 				$scope.game = data.games[0];
+				if($routeParams.gameId){
+					for(var key in data.games){
+						if(data.games[key].id == $routeParams.gameId){
+							$scope.game = data.games[key];
+						}
+					}
+				}
 
 				$scope.updateFormData();
 
@@ -39,6 +54,10 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 						$scope.data1 = $scope.currentUser.userGame[key].data1;
 					}
 				}
+			};
+
+			$scope.goBack = function(){
+				$window.history.back();
 			};
 
         }

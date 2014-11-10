@@ -43,11 +43,17 @@ angular.module('myApp', [
                 templateUrl: 'html/controllers/login.html',
                 controller: 'LoginCtrl'
             });
-        $routeProvider.when('/:lang?/profile/',
+        $routeProvider.when('/:lang/profile/',
             {
                 templateUrl: 'html/controllers/profile.html',
                 controller: 'ProfileCtrl'
             });
+
+		$routeProvider.when('/:lang/profile/:gameId/:plateformId/',
+			{
+				templateUrl: 'html/controllers/profile.html',
+				controller: 'ProfileCtrl'
+			});
 
 		$routeProvider.when('/:lang?/welcome',
 			{
