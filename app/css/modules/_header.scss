@@ -26,13 +26,75 @@
 		line-height: 56px;
 		ul.menu {
 			float: left;
+			margin-top: -5px;
 			width: 620px;
 			li {
 				display: inline-block;
-				margin: 0 35px;
+				margin: 0 27px;
 				&.search {
 					margin-left: 50px;
 
+				}
+				&.notif {
+					margin: 5px;
+					cursor: pointer;
+					position: relative;
+					&:hover img {
+						opacity: 0.8;
+					}
+					&:hover .notif-list {
+						opacity: 1;
+
+					}
+					.nb-notif {
+						display: block;
+						width: 20px;
+						height: 20px;
+						text-align: center;
+						border-radius: 50%;
+						position: absolute;
+						top: 0;
+						left: 10px;
+						line-height: 20px;
+						border: 2px solid #06ab93;
+					}
+					.notif-list {
+						@include transition(opacity 0.2s ease-out);
+						position: absolute;
+						opacity: 0;
+						background: url("../img/bg-trans.png");
+						font-size: 13px;
+						border-top: 2px solid #06ab93;
+						left: -133px;
+						top: 47px;
+						z-index: 3;
+						width: 310px;
+
+						.line {
+							position: relative;
+							z-index: 2;
+							line-height: 0;
+							margin: 5px 0;
+							padding: 10px;
+							border-bottom: 1px solid darken(#FFF, 30%);
+							&:last-child {
+								border-bottom: 0;
+							}
+							&.unread {
+								background: #2d2d2d;
+							}
+							a {
+								color: #06ab93;
+								&:hover {
+									color: lighten(#06ab93, 30%	)
+								}
+							}
+							.date {
+								color: darken(#FFF, 30%);
+								text-align: right;
+							}
+						}
+					}
 				}
 				a {
 					font-size: 13px;
@@ -63,8 +125,12 @@
 		}
 
 		&.not-logged {
+			ul.menu {
+				margin-top: 0;
+			}
 			ul.menu.left {
 				float: left;
+
 				width: 300px;
 				li {
 					display: inline-block;
@@ -92,6 +158,7 @@
 				margin-right: 20px;
 				color: white;
 				width: 420px;
+				margin-top: 4px;
 				margin-left: 10px;
 				font-size: 13px;
 

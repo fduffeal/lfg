@@ -4,9 +4,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: app/html/controllers/party-create.html
-msgid ""
-"<span>IMPORTANT :</span>\n"
-"\t\t\t\t\tAfter creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
+msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
 msgstr ""
 
 #: app/html/controllers/party-create.html
@@ -80,6 +78,10 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "ID in game"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Join !"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -180,6 +182,10 @@ msgstr ""
 #: app/html/controllers/profile.html
 #: app/html/controllers/register.html
 msgid "Username"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Waiting Players"
 msgstr ""
 
 #: app/html/controllers/party-create.html

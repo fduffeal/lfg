@@ -1,3 +1,48 @@
+@media screen and (max-width: 1180px) {
+	#ui-left {
+		display:none!important;
+	}
+	.header .content-header {
+		margin: auto!important;
+	}
+	.content {
+		margin-left: 0!important;
+	}
+	#footer .container {
+		left: 0!important
+	}
+	#page {
+		margin-right: auto!important;
+		margin-left: auto!important;
+		width: 980px;
+	}
+}
+@media screen and (max-width: 1009px ) {
+	.header {
+		.content-header {
+			text-align: center;
+			width: auto;
+		}
+		#logo {
+			float: none;
+		}
+		.actions {
+			width: auto;
+			margin-left: 0;
+			float: none;
+		}
+		ul.menu {
+			margin-top: 0;
+			width: auto;
+			li {
+				display: block;
+				width: 200px;
+			}
+		}
+
+	}
+
+}
 html, body {
 	width: 100%;
 	height: 100%;

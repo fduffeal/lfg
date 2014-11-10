@@ -15,7 +15,7 @@
                     </datalist>
                 </ul>
 				<ul class="platforms">
-					<li translate>PLATFORMS</li>
+					<li translate class="title-platforms">PLATFORMS</li>
                     <li ng-repeat="plateform in aPlateforms">
                         <a href="" ng-click="updatePlateform(plateform.id,plateform.nom);" ng-class="{'selected':(plateformSelected == plateform.id)}">{{plateform.nom}}</a>
                     </li>
