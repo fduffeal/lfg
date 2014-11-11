@@ -191,7 +191,7 @@ msgstr "Equipe"
 
 #: app/html/controllers/party-waiting.html
 msgid "The Party"
-msgstr "La partie"
+msgstr "Partie en attente de joueurs..."
 
 #: app/html/controllers/register.html
 msgid "The username is already used."
@@ -207,7 +207,7 @@ msgstr "Nom d'utilisateur"
 
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
-msgstr "En attente de joueurs"
+msgstr "Joueurs voulant rejoindre la partie"
 
 #: app/html/controllers/party-create.html
 msgid "When"
