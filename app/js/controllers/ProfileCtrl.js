@@ -33,7 +33,7 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 
 			$scope.submitFormGameInfo = function(){
 				$scope.formGameInfoUpdate = false;
-				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
+				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
 					$scope.formGameInfoUpdate = true;
 				});
 			};
@@ -41,6 +41,7 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 			$scope.updateFormData = function(){
 				$scope.formGameInfoUpdate = false;
 				$scope.profilName = '';
+				$scope.gameUsername = '';
 				$scope.data1 = '';
 				$scope.data2 = '';
 				$scope.data3 = '';
@@ -48,6 +49,7 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 				for(var key in $scope.currentUser.userGame){
 					if($scope.currentUser.userGame[key].plateform.id === $scope.plateform.id){
 						$scope.profilName = $scope.currentUser.userGame[key].gameProfilName;
+						$scope.gameUsername = $scope.currentUser.userGame[key].gameUsername;
 						$scope.data2 = $scope.currentUser.userGame[key].data2;
 						$scope.data3 = $scope.currentUser.userGame[key].data3;
 						$scope.data4 = $scope.currentUser.userGame[key].data4;

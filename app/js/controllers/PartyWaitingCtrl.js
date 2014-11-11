@@ -12,6 +12,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 				$scope.isLeader = false;
 				$scope.canJoin = true;
+				$scope.imOnGroup = false;
 
 				$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
 
@@ -25,16 +26,19 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					}
 
 					for(var key in $scope.rdv.users){
-						if($scope.rdv.users[key].username === $scope.currentUser.username){
+						if($scope.rdv.users[key].user.username === $scope.currentUser.username){
 							$scope.canJoin = false;
+							$scope.imOnGroup = true;
 						}
 					}
 
 					for(var key2 in $scope.rdv.usersInQueue){
-						if($scope.rdv.usersInQueue[key2].username === $scope.currentUser.username){
+						if($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username){
 							$scope.canJoin = false;
 						}
 					}
+				} else {
+					$scope.canJoin = false;
 				}
 
 
@@ -46,7 +50,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					return;
 				}
 
-				rdv.join($scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+				rdv.join($scope.rdv.id,$scope.profilSelected.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 					$scope.rdv = data;
 					$scope.canJoin = false;
 				});
@@ -65,8 +69,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			};
 
 
-	        $scope.leave = function(){
-		        rdv.leave($scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+	        $scope.leave = function(userId){
+		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 			        $scope.rdv = data;
 			        $scope.canJoin = false;
 		        });

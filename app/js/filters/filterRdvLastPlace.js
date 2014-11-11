@@ -1,4 +1,4 @@
-angular.module('myApp.filters').filter('filterRdv', [function () {
+angular.module('myApp.filters').filter('filterRdvLastPlace', [function () {
 	'use strict';
 	return function (items,plateformId,tags) {
 
@@ -46,6 +46,7 @@ angular.module('myApp.filters').filter('filterRdv', [function () {
 
 			aFilterdItems.push(items[key]);
 		}
+
 
 		return aFilterdItems;
 	};

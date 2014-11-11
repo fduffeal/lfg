@@ -1,13 +1,19 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location',
-		function ($scope,rdv,$location) {
+	['$scope','rdv','$location','$filter','user',
+		function ($scope,rdv,$location,$filter,user) {
 			'use strict';
 
+
+			$scope.currentUser = user.get();
+
+			$scope.dureeHours = 1;
+			$scope.dureeMinutes = 0;
 
 			rdv.getFormInfo().success(function(data){
 				$scope.formInfo = data;
 
 				$scope.plateform = $scope.formInfo.plateforms[0].id;
+				$scope.game = $scope.formInfo.games[0].id;
 			});
 
 			$scope.today = new Date();
@@ -17,6 +23,27 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dayPlusTwo = new Date();
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
 
+
+			$scope.$watch('plateform',function(newValue,oldValue){
+				console.log('new plateform '+newValue);
+				updateProfilsAvailable();
+			});
+
+			$scope.$watch('game',function(newValue,oldValue){
+				console.log('new game '+newValue);
+				updateProfilsAvailable();
+			});
+
+			var updateProfilsAvailable = function(){
+				$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game,$scope.plateform);
+				if($scope.profils[0]){
+					$scope.profilSelected = $scope.profils[0];
+				}
+			};
+
+
+
+
             $scope.submit = function(){
                 var game = $scope.game;
                 var day = $scope.day.getTime()/1000;
@@ -25,10 +52,10 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var plateform = $scope.plateform;
                 var tags = $scope.tags;
                 var description = $scope.description;
-                var slotReserved = $scope.slotReserved;
                 var slotTotal = $scope.slotTotal;
+				var profilId = $scope.profilSelected.id
 
-                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal).success(function(data){
+                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
 	                $location.path('/party/waiting/'+data.id);
                 });
             };

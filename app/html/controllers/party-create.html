@@ -80,13 +80,7 @@
 						</li>
 						<li>Slots</li>
 						<li class="slots">
-							<input ng-class="{'required':myForm.inputSlotReserved.$error.required,
-							'unvalid':myForm.inputSlotReserved.$error.text}"
-							type="number"
-							name="inputSlotReserved"
-							ng-model="slotReserved" min="1" max="slotTotal"
-							placeholder="1"
-							required>
+							1
 							/
 							<input ng-class="{'required':myForm.inputSlotTotal.$error.required,
 							'unvalid':myForm.inputSlotTotal.$error.text}"
@@ -94,6 +88,11 @@
 							type="number" name="inputSlotTotal" ng-model="slotTotal" min="1" required>
 
 						</li>
+
+                        <li>
+                            <label translate>with profil :</label>
+                            <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
+                        </li>
 
 					</ul>
 					<span class="text" translate><span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!</span>

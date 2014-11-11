@@ -20,11 +20,11 @@
 						<div class="date">
 							{{'Start the' | translate}} <span>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</span>
 						</div>
-						<div class="duration">{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span></div>
+						<div class="duration">{{'Till : ' | translate}} <span>{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</span></div>
 					</div>
 					<div class="line">
 						<div class="desc">{{ rdv.description }}</div>
-						<div class="slots">3/{{ rdv.nbParticipant }} slots</div>
+						<div class="slots">{{ rdv.users.length }}/{{ rdv.nbParticipant }} slots</div>
 					</div>
 
 				</div>
@@ -32,20 +32,22 @@
                 <h1 class="second" translate>Team</h1>
                 <div class="team">
                     <ul class="title">
-                        <li translate>ID in game</li>
+                        <li translate ng-if="imOnGroup">ID in game</li>
+                        <li translate ng-if="!imOnGroup">Esbattle Username</li>
                         <li translate>Class</li>
                         <li translate>Level</li>
                         <li></li>
                     </ul>
-                    <ul class="player" ng-repeat="user in rdv.users">
-                        <li>{{user.username}}</li>
-                        <li>Titan</li>
-                        <li>28</li>
+                    <ul class="player" ng-repeat="userGame in rdv.users">
+                        <li ng-if="imOnGroup">{{userGame.gameUsername}}</li>
+                        <li ng-if="!imOnGroup">{{userGame.user.username}}</li>
+                        <li>{{userGame.data1}}</li>
+                        <li>{{userGame.data2}}</li>
 
                         <li>
-                            <a href="" ng-if="user.username === currentUser.username"  ng-click="leave()">Leave</a>
-                            <a href="" ng-if="isLeader && user.username !== currentUser.username">Promote</a>
-                            <a href="" ng-if="isLeader && user.username !== currentUser.username" ng-click="kickUser(user.id)">Kick</a>
+                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave()">Leave</a>
+                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username">Promote</a>
+                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)">Kick</a>
                         </li>
                     </ul>
                 </div>
@@ -54,19 +56,21 @@
                 <div class="team" ng-if="rdv.usersInQueue.length > 0">
                     <h1 class="second" translate>Waiting Players</h1>
                     <ul class="title">
-                        <li translate>ID in game</li>
+                        <li translate ng-if="imOnGroup">ID in game</li>
+                        <li translate ng-if="!imOnGroup">Esbattle Username</li>
                         <li translate>Class</li>
                         <li translate>Level</li>
                         <li></li>
                     </ul>
-                    <ul class="player" ng-repeat="user in rdv.usersInQueue">
-                        <li>{{user.username}}</li>
-                        <li>Titan</li>
-                        <li>28</li>
+                    <ul class="player" ng-repeat="userGame in rdv.usersInQueue">
+                        <li ng-if="imOnGroup">{{userGame.gameUsername}}</li>
+                        <li ng-if="!imOnGroup">{{userGame.user.username}}</li>
+                        <li>{{userGame.data1}}</li>
+                        <li>{{userGame.data2}}</li>
 
                         <li>
-                            <a href="" ng-if="isLeader" ng-click="acceptUser(user.id)">accept</a>
-                            <a href="" ng-if="isLeader" ng-click="kickUser(user.id)">decline</a>
+                            <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)">accept</a>
+                            <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)">decline</a>
                         </li>
                     </ul>
                 </div>

@@ -23,6 +23,28 @@
                         <a href="" ng-click="updatePlateform('','ALL');" ng-class="{'selected':plateformSelected == ''}">ALL</a>
                     </li>
 				</ul>
+                <h1>Destiny {{plateformNameSelected}} : last place</h1>
+                <ul class="title">
+                    <li class="list-platform"><a href=""translate>Platforms</a></li>
+                    <li class="list-tags"><a href="">Tags</a></li>
+                    <li class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></li>
+                    <li class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse"translate>Start</a></li>
+                    <!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
+                    <li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
+                    <li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
+                </ul>
+                <ul class="line"  ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags |orderBy:predicate:reverse " ng-click="goToParty(rdv.id)">
+                    <li class="list-platform">{{ rdv.plateform.nom }}</li>
+                    <li class="list-tags">
+                        <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+                    </li>
+                    <li class="list-infos">{{ rdv.description}} </li>
+                    <li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+                    <!--<li>{{ rdv.duree }}</li>-->
+                    <li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
+                    <li class="list-creator">{{ rdv.leader.username }}</li>
+                </ul>
+
 				<h1>Destiny {{plateformNameSelected}}</h1>
 				<ul class="title">
 					<li class="list-platform"><a href=""translate>Platforms</a></li>
@@ -32,9 +54,6 @@
 					<!--<li><a href="" ng-click="predicate = 'duree'; reverse=!reverse">End</a></li>-->
 					<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
 					<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
-
-
-
 				</ul>
 				<ul class="line"  ng-repeat="rdv in aRdv | filterRdv:plateformSelected:tags |orderBy:predicate:reverse " ng-click="goToParty(rdv.id)">
 					<li class="list-platform">{{ rdv.plateform.nom }}</li>
@@ -44,11 +63,8 @@
 					<li class="list-infos">{{ rdv.description}} </li>
 					<li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
 					<!--<li>{{ rdv.duree }}</li>-->
-					<li class="list-slots">0/{{ rdv.nbParticipant}}</li>
+					<li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
 					<li class="list-creator">{{ rdv.leader.username }}</li>
-
-
-
 				</ul>
 			</div>
 
