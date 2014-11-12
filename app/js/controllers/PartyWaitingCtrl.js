@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','$rootScope','$interval',
-        function ($scope,rdv,$routeParams,user,$location,$filter,$rootScope,$interval) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','$rootScope','$timeout',
+        function ($scope,rdv,$routeParams,user,$location,$filter,$rootScope,$timeout) {
             'use strict';
 
 			$scope.currentUser = user.get();
@@ -16,14 +16,15 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        $scope.canJoin = true;
 			        $scope.imOnGroup = false;
 
-			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
-
-			        if ($scope.profils[0]) {
-				        $scope.profilSelected = $scope.profils[0];
-			        }
-
 			        if ($scope.currentUser !== null) {
-				        if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
+
+						$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
+
+						if ($scope.profils[0]) {
+							$scope.profilSelected = $scope.profils[0];
+						}
+
+						if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
 					        $scope.isLeader = true;
 				        }
 
@@ -44,7 +45,11 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        }
 
 
-		        });
+		        }).then(function(){
+					$timeout(function(){
+						refreshData();
+					}, 10000);
+				});
 	        };
 
 			$scope.join = function(){
@@ -86,9 +91,6 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			$scope.currentUrl = $location.absUrl();
 
 	        refreshData();
-	        $interval(function(){
-				refreshData();
-	        }, 10000);
 
         }
     ]

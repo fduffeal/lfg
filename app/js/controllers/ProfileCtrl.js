@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ProfileCtrl',
-    ['$scope','user','rdv','$routeParams','$window',
-        function ($scope,user,rdv,$routeParams,$window) {
+    ['$scope','user','rdv','$routeParams','redirection',
+        function ($scope,user,rdv,$routeParams,redirection) {
 			'use strict';
 			$scope.currentUser = user.get();
 
@@ -59,7 +59,7 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 			};
 
 			$scope.goBack = function(){
-				$window.history.back();
+				redirection.goBack();
 			};
 
         }

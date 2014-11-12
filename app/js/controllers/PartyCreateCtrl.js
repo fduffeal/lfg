@@ -1,10 +1,15 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope',
-		function ($scope,rdv,$location,$filter,user,$rootScope) {
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection) {
 			'use strict';
 
 
 			$scope.currentUser = user.get();
+
+			if($scope.currentUser === null){
+				redirection.goToLogin();
+				return;
+			}
 
 			$scope.dureeHours = 1;
 			$scope.dureeMinutes = 0;
