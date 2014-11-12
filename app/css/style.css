@@ -45,7 +45,7 @@
   opacity: 0.8;
 }
 .header .actions ul.menu li.notif:hover .notif-list {
-  opacity: 1;
+  display: block;
 }
 .header .actions ul.menu li.notif .nb-notif {
   display: block;
@@ -65,7 +65,7 @@
   -o-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
   position: absolute;
-  opacity: 0;
+  display: none;
   background: url("../img/bg-trans.png");
   font-size: 13px;
   border-top: 2px solid #06ab93;
