@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user',
-		function ($scope,rdv,$location,$filter,user) {
+	['$scope','rdv','$location','$filter','user','$rootScope',
+		function ($scope,rdv,$location,$filter,user,$rootScope) {
 			'use strict';
 
 
@@ -25,12 +25,10 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 
 			$scope.$watch('plateform',function(newValue,oldValue){
-				console.log('new plateform '+newValue);
 				updateProfilsAvailable();
 			});
 
 			$scope.$watch('game',function(newValue,oldValue){
-				console.log('new game '+newValue);
 				updateProfilsAvailable();
 			});
 
@@ -82,6 +80,10 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 					}
 					$scope.autocompleteTag.push(previousTags +$scope.formInfo.tags[key].nom);
 				}
+			};
+
+			$scope.createProfil = function(){
+				$location.path($rootScope.lang+'/profile/'+$scope.game+'/'+$scope.plateform);
 			};
 
 		}
