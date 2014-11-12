@@ -10,6 +10,14 @@ angular.module('myApp.services')
 			this.goBack = function(){
 				$window.history.back();
 			};
+
+			this.goToRdvId = function(id){
+				$location.path($rootScope.lang+'/party/waiting/'+id);
+			};
+
+			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
+				$location.path($rootScope.lang+'/profile/'+gameId+'/'+plateformId);
+			};
 		}
 	]
 );

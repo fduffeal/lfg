@@ -38,10 +38,13 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			});
 
 			var updateProfilsAvailable = function(){
-				$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game,$scope.plateform);
-				if($scope.profils[0]){
-					$scope.profilSelected = $scope.profils[0];
+				if($scope.currentUser !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game,$scope.plateform);
+					if($scope.profils[0]){
+						$scope.profilSelected = $scope.profils[0];
+					}
 				}
+
 			};
 
 
@@ -59,7 +62,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				var profilId = $scope.profilSelected.id
 
                 rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
-	                $location.path('/party/waiting/'+data.id);
+					redirection.goToRdvId(data.id);
                 });
             };
 
@@ -88,7 +91,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				$location.path($rootScope.lang+'/profile/'+$scope.game+'/'+$scope.plateform);
+				redirection.goToCreateProfilForGameAndPlateform($scope.game,$scope.plateform);
 			};
 
 		}
