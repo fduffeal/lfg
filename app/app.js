@@ -11,9 +11,11 @@ angular.module('myApp', [
 	'gettext',
 	'superCache'
 ]).
-	config(['$routeProvider', function ($routeProvider) {
+	config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 
-		$routeProvider.when('/:lang?/matchmaking',
+		$locationProvider.html5Mode(false);
+
+		$routeProvider.when('/:lang/matchmaking',
 			{
 				templateUrl: 'html/controllers/matchmaking.html',
 				controller: 'MatchmakingCtrl'
@@ -24,22 +26,22 @@ angular.module('myApp', [
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl'
 			});
-        $routeProvider.when('/:lang?/party/create',
+        $routeProvider.when('/:lang/party/create',
             {
                 templateUrl: 'html/controllers/party-create.html',
                 controller: 'PartyCreateCtrl'
             });
-         $routeProvider.when('/:lang?/party/waiting/:partyId',
+         $routeProvider.when('/:lang/party/waiting/:partyId',
             {
                 templateUrl: 'html/controllers/party-waiting.html',
                 controller: 'PartyWaitingCtrl'
             });
-        $routeProvider.when('/:lang?/register',
+        $routeProvider.when('/:lang/register',
             {
                 templateUrl: 'html/controllers/register.html',
                 controller: 'RegisterCtrl'
             });
-        $routeProvider.when('/:lang?/login',
+        $routeProvider.when('/:lang/login',
             {
                 templateUrl: 'html/controllers/login.html',
                 controller: 'LoginCtrl'
@@ -56,7 +58,7 @@ angular.module('myApp', [
 				controller: 'ProfileCtrl'
 			});
 
-		$routeProvider.when('/:lang?/welcome',
+		$routeProvider.when('/:lang/welcome',
 			{
 				templateUrl: 'html/controllers/rdv.html',
 				controller: 'RdvCtrl',

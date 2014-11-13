@@ -3,16 +3,16 @@ angular.module('myApp.services')
 		function($http,storage,api) {
 			'use strict';
             this.data = '';
-			this.log = function(email,password){
-				return api.call('login/'+email+'/'+password).success(function(data){
-					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000);
+			this.log = function(username,password){
+				return api.call('login/'+username+'/'+password).success(function(data){
+					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 					storage.setPersistant('user',JSON.stringify(data));
 				});
 			};
 
 			this.logByToken = function(username,token){
 				return api.call('login/token/'+username+'/'+token).success(function(data){
-					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000);
+					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 					storage.setPersistant('user',JSON.stringify(data));
 				});
 			};
@@ -23,7 +23,9 @@ angular.module('myApp.services')
 					var user = JSON.parse(courantUser);
 					if(user.ttl < new Date().getTime()){
 						this.logout();
-						this.logByToken(user.username,user.token);
+						this.logByToken(user.username,user.token).then(function(data){
+							user = data;
+						});
 					}
 					return user;
 				}

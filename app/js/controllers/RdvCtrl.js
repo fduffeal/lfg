@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','$location','$route','tag',
-		function ($scope,rdv,$location,$route,tag) {
+	['$scope','rdv','redirection','$route','tag',
+		function ($scope,rdv,redirection,$route,tag) {
 			'use strict';
 
 			$scope.today = new Date();
@@ -9,7 +9,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
 
 			$scope.goToParty = function(id){
-				$location.path('/party/waiting/'+id);
+				redirection.goToRdvId(id);
 			};
 
 
