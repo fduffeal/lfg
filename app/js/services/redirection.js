@@ -15,6 +15,10 @@ angular.module('myApp.services')
 				$location.path($rootScope.lang+'/party/waiting/'+id);
 			};
 
+			this.goHome = function(id){
+				$location.path($rootScope.lang+'/');
+			};
+
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
 				$location.path($rootScope.lang+'/profile/'+gameId+'/'+plateformId);
 			};
