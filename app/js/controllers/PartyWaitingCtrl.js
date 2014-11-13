@@ -1,13 +1,12 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','$rootScope','$timeout',
-        function ($scope,rdv,$routeParams,user,$location,$filter,$rootScope,$timeout) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','$document',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,$document) {
             'use strict';
 
 			$scope.currentUser = user.get();
 
 
 	        var refreshData = function() {
-
 
 		        rdv.get($routeParams.partyId).success(function (data) {
 			        $scope.rdv = data;
@@ -45,11 +44,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        }
 
 
-		        }).then(function(){
-					$timeout(function(){
-						refreshData();
-					}, 10000);
-				});
+		        });
 	        };
 
 			$scope.join = function(){
@@ -85,12 +80,15 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        };
 
 			$scope.createProfil = function(){
-				$location.path($rootScope.lang+'/profile/'+$scope.rdv.game.id+'/'+$scope.rdv.plateform.id);
+				redirection.goToCreateProfilForGameAndPlateform($scope.rdv.game.id,$scope.rdv.plateform.id);
 			};
 
 			$scope.currentUrl = $location.absUrl();
 
 	        refreshData();
+	        $scope.intervalId = $interval(function(){
+		        refreshData();
+	        }, 10000);
 
         }
     ]

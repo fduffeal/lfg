@@ -45,7 +45,7 @@
                         <li>{{userGame.data2}}</li>
 
                         <li>
-                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave()">Leave</a>
+                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)">Leave</a>
                             <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username">Promote</a>
                             <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)">Kick</a>
                         </li>
@@ -98,6 +98,8 @@
 		</div>
 	</li>
 </ul>
+
+<div lfg-interval="intervalId"></div>
 
 
 <lfg-footer></lfg-footer>
