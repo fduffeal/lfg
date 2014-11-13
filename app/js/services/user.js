@@ -21,7 +21,7 @@ angular.module('myApp.services')
 				var courantUser = storage.getPersistant('user');
 				if(typeof(courantUser) !== "undefined"){
 					var user = JSON.parse(courantUser);
-					if(user.ttl < new Date().getTime()){
+					if(user !== null && user.ttl < new Date().getTime()){
 						this.logout();
 						this.logByToken(user.username,user.token).then(function(data){
 							user = data;
