@@ -4,7 +4,7 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 			'use strict';
 			$scope.currentUser = user.get();
 
-			rdv.getFormInfo().success(function(data){
+			rdv.getFormInfo().then(function(data){
 				$scope.plateforms = data.plateforms;
 				$scope.games = data.games;
 

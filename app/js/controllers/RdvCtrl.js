@@ -23,7 +23,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.allTags = [];
 
-			rdv.getFormInfo().success(function(data){
+			rdv.getFormInfo().then(function(data){
 				$scope.allTags = data.tags;
 				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
 				$scope.aPlateforms = data.plateforms;

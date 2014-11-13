@@ -5,6 +5,14 @@ angular.module('myApp.services')
             this.data = '';
 			this.log = function(email,password){
 				return api.call('login/'+email+'/'+password).success(function(data){
+					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000);
+					storage.setPersistant('user',JSON.stringify(data));
+				});
+			};
+
+			this.logByToken = function(username,token){
+				return api.call('login/token/'+username+'/'+token).success(function(data){
+					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000);
 					storage.setPersistant('user',JSON.stringify(data));
 				});
 			};
@@ -12,7 +20,12 @@ angular.module('myApp.services')
 			this.get = function(){
 				var courantUser = storage.getPersistant('user');
 				if(typeof(courantUser) !== "undefined"){
-					return JSON.parse(courantUser);
+					var user = JSON.parse(courantUser);
+					if(user.ttl < new Date().getTime()){
+						this.logout();
+						this.logByToken(user.username,user.token);
+					}
+					return user;
 				}
 				return null;
 			};

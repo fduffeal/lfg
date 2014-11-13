@@ -14,9 +14,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dureeHours = 1;
 			$scope.dureeMinutes = 0;
 
-			rdv.getFormInfo().success(function(data){
+			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
-
 				$scope.plateform = $scope.formInfo.plateforms[0].id;
 				$scope.game = $scope.formInfo.games[0].id;
 			});

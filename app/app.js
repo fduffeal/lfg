@@ -8,7 +8,8 @@ angular.module('myApp', [
 	'myApp.directives',
 	'myApp.filters',
 	'ngCookies',
-	'gettext'
+	'gettext',
+	'superCache'
 ]).
 	config(['$routeProvider', function ($routeProvider) {
 

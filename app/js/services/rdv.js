@@ -1,16 +1,20 @@
 angular.module('myApp.services')
-	.service('rdv', ['$http','user','api',
-		function($http,user,api) {
+	.service('rdv', ['$http','user','api','superCache',
+		function($http,user,api,superCache) {
 			'use strict';
 			this.getAll = function(){
 				return api.call('rdv/');
 			};
 
-			this.getFormInfoData = null;
 			this.getFormInfo = function(){
-				var parent = this;
+				var cache = superCache.promise('getFormInfo');
+				if(cache !== false){
+					return cache;
+				}
 				return api.call('rdv/form_info').success(function(data){
-					parent.getFormInfoData = data;
+					superCache.put('getFormInfo',data);
+				}).then(function(promise){
+					return promise.data;
 				});
 			};
 
