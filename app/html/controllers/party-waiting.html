@@ -45,9 +45,9 @@
                         <li>{{userGame.data2}}</li>
 
                         <li>
-                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)">Leave</a>
-                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username">Promote</a>
-                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)">Kick</a>
+                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" translate>Promote</a>
+                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
                         </li>
                     </ul>
                 </div>
@@ -69,8 +69,9 @@
                         <li>{{userGame.data2}}</li>
 
                         <li>
-                            <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)">accept</a>
-                            <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)">decline</a>
+                            <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+                            <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
+                            <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
                         </li>
                     </ul>
                 </div>

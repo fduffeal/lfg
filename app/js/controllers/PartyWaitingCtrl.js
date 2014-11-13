@@ -52,30 +52,38 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 //@todo rediriger vers la page connexion / register
 					return;
 				}
+				stopAutoRefreshData();
 
 				rdv.join($scope.rdv.id,$scope.profilSelected.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 					$scope.rdv = data;
 					$scope.canJoin = false;
+					autoRefreshData();
 				});
 			};
 
 			$scope.acceptUser = function(userId){
+				stopAutoRefreshData();
 				rdv.acceptUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 					$scope.rdv = data;
+					autoRefreshData();
 				});
 			};
 
 			$scope.kickUser = function(userId){
+				stopAutoRefreshData();
 				rdv.kickUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 					$scope.rdv = data;
+					autoRefreshData();
 				});
 			};
 
 
 	        $scope.leave = function(userId){
+				stopAutoRefreshData();
 		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
 			        $scope.rdv = data;
 			        $scope.canJoin = false;
+					autoRefreshData();
 		        });
 	        };
 
@@ -85,10 +93,19 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			$scope.currentUrl = $location.absUrl();
 
-	        refreshData();
-	        $scope.intervalId = $interval(function(){
-		        refreshData();
-	        }, 10000);
+			var autoRefreshData = function(){
+				stopAutoRefreshData();
+				$scope.intervalId = $interval(function(){
+					refreshData();
+				}, 10000);
+			};
+
+			var stopAutoRefreshData = function(){
+				$interval.cancel($scope.intervalId);
+			};
+
+			refreshData();
+			autoRefreshData();
 
         }
     ]
