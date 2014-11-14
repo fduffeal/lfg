@@ -15,7 +15,7 @@ angular.module('myApp.services')
 			};
 
 			this.goToRegister = function(){
-				$location.path(getLang()+'/login');
+				$location.path(getLang()+'/register');
 			};
 
 			this.goCreateParty = function(){

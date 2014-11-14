@@ -23,6 +23,14 @@ angular.module('myApp.directives')
 						redirection.goToRegister();
 					};
 
+					$scope.goCreateParty = function(){
+						redirection.goCreateParty();
+					};
+
+					$scope.goHome = function(){
+						redirection.goHome();
+					};
+
                     $scope.userInfo = user.get();
 				},
 				restrict: 'E',
