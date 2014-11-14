@@ -15,6 +15,14 @@ angular.module('myApp.directives')
 						redirection.goHome();
 					};
 
+					$scope.goToLogin = function(){
+						redirection.goToLogin();
+					};
+
+					$scope.goToRegister = function(){
+						redirection.goToRegister();
+					};
+
                     $scope.userInfo = user.get();
 				},
 				restrict: 'E',

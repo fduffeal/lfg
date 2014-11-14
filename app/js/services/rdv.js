@@ -42,6 +42,10 @@ angular.module('myApp.services')
 			this.leave = function(rdvId,userId,username,token){
 				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
+
+			this.promote = function(rdvId,userId,username,token){
+				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
+			};
 		}
 	]
 );

@@ -39,14 +39,14 @@
                         <li></li>
                     </ul>
                     <ul class="player" ng-repeat="userGame in rdv.users">
-                        <li ng-if="imOnGroup">{{userGame.gameUsername}}</li>
-                        <li ng-if="!imOnGroup">{{userGame.user.username}}</li>
+                        <li ng-if="imOnGroup" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</li>
+                        <li ng-if="!imOnGroup" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</li>
                         <li>{{userGame.data1}}</li>
                         <li>{{userGame.data2}}</li>
 
                         <li>
                             <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" translate>Promote</a>
+                            <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="promote(userGame.id)" translate>Promote</a>
                             <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
                         </li>
                     </ul>
