@@ -1,14 +1,14 @@
 <div class="header">
 	<div class="content-header">
-		<a href="#{{lang}}/" id="logo"><img src="img/logo.png" alt="" /></a>
+		<a href="" ng-click="goHome()" id="logo"><img src="img/logo.png" alt="" /></a>
 		<div class="actions not-logged" ng-if="!userInfo.username">
 			<ul class="menu left">
-				<li><a href="#{{lang}}/" class="selected" translate>HOME</a></li>
-				<li><a href="#{{lang}}/party/create" translate>NEW PARTY</a></li>
+				<li><a href="" ng-click="goHome()" class="selected" translate>HOME</a></li>
+				<li><a href="" ng-click="goCreateParty()" translate>NEW PARTY</a></li>
 			</ul>
 			<ul class="menu right">
-				<li class="signin"><a href="#{{lang}}/register" translate>Register</a></li>
-				<li><a href="#{{lang}}/login" class="go" translate>Login</a></li>
+				<li class="signin"><a href="" ng-click="goToRegister()" translate>Register</a></li>
+				<li><a href="" ng-click="goToLogin()" class="go" translate>Login</a></li>
 			</ul>
 		</div>
 

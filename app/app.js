@@ -65,6 +65,12 @@ angular.module('myApp', [
 				action:'welcome'
 			});
 
+		$routeProvider.when('/:lang/404/:msg?',
+			{
+				templateUrl: 'html/controllers/404.html',
+				controller: '404Ctrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);

@@ -31,6 +31,14 @@ msgstr ""
 msgid "ALL FIELDS ARE REQUIRED"
 msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 
+#: app/html/controllers/party-waiting.html
+msgid "Accept"
+msgstr "Accepter"
+
+#: app/html/controllers/404.html
+msgid "Appointment not found"
+msgstr "Rendez vous non trouvé"
+
 #: app/html/controllers/profile.html
 msgid "Back"
 msgstr "Retour"
@@ -64,11 +72,15 @@ msgstr ""
 #: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
-msgstr "Crées un profile pour ce jeu et rejoins !"
+msgstr "Créer un profil pour ce jeu et rejoignez !"
 
 #: app/html/controllers/rdv.html
 msgid "Creator"
 msgstr "Créateur"
+
+#: app/html/controllers/party-waiting.html
+msgid "Decline"
+msgstr "Refuser"
 
 #: app/html/controllers/party-create.html
 msgid "Description"
@@ -88,7 +100,7 @@ msgstr "Entrez votre login et mot de passe"
 
 #: app/html/controllers/party-waiting.html
 msgid "Esbattle Username"
-msgstr "Nom d'utilisateur Esbattle"
+msgstr "Compte Esbattle"
 
 #: app/html/controllers/party-create.html
 msgid "For"
@@ -108,7 +120,7 @@ msgstr "Jeu :"
 
 #: app/html/controllers/profile.html
 msgid "Game Infos for {{game.name}}"
-msgstr "Infos jeux pour {{game.name}}"
+msgstr "Infos de jeux pour {{game.name}}"
 
 #: app/html/directives/lfg-header.html
 msgid "HOME"
@@ -121,6 +133,14 @@ msgstr "ID dans le jeu"
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
 msgstr "Rejoindre !"
+
+#: app/html/controllers/party-waiting.html
+msgid "Kick"
+msgstr "Rejeter"
+
+#: app/html/controllers/party-waiting.html
+msgid "Leave"
+msgstr "Quitter"
 
 #: app/html/controllers/party-waiting.html
 msgid "Level"
@@ -172,11 +192,15 @@ msgstr "Platformes"
 
 #: app/html/controllers/profile.html
 msgid "Profil Name"
-msgstr "Compte"
+msgstr "Nom du profil"
 
 #: app/html/directives/lfg-header.html
 msgid "Profile"
 msgstr "Compte"
+
+#: app/html/controllers/party-waiting.html
+msgid "Promote"
+msgstr "Nommer chef de groupe"
 
 #: app/html/directives/lfg-header.html
 msgid "Register"
@@ -216,7 +240,7 @@ msgstr "Ce nom d'utilisateur est déjà pris"
 
 #: app/html/controllers/party-waiting.html
 msgid "Till :"
-msgstr ""
+msgstr "Jusqu'à :"
 
 #: app/html/controllers/profile.html
 msgid "Update"
@@ -228,7 +252,7 @@ msgstr "Nom d'utilisateur"
 
 #: app/html/controllers/profile.html
 msgid "Username on this game (Psn Id, Xbox Live Id, ...)"
-msgstr "Nom d'utilisateur pour ce jeu (Psn ID, Xbox live id...)"
+msgstr "Nom d'utilisateur sur ce jeu (Psn Id, Xbox Live Id, ...)"
 
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
@@ -241,7 +265,7 @@ msgstr "Quand:"
 #: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
-msgstr "avec profile :"
+msgstr "avec le profil :"
 
 #~ msgid "Duration: for"
 #~ msgstr "Durée:"

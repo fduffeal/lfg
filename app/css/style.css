@@ -60,9 +60,9 @@
   border: 2px solid #06ab93;
 }
 .header .actions ul.menu li.notif .notif-list {
-  -webkit-transition: opacity 0.2s ease-out;
   -moz-transition: opacity 0.2s ease-out;
   -o-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
   position: absolute;
   display: none;
@@ -102,9 +102,9 @@
   font-size: 13px;
   color: #e0e0e0;
   width: 50px;
-  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   text-align: center;
   height: 58px;
@@ -140,9 +140,9 @@
   font-size: 13px;
   color: #e0e0e0;
   width: 50px;
-  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   text-align: center;
   height: 58px;
@@ -177,9 +177,9 @@
   border: 2px solid #87cbc1;
   width: 69px;
   height: 25px;
-  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   line-height: 25px;
   margin-top: 11px;
@@ -215,9 +215,9 @@
 }
 .header .user .submenu {
   opacity: 0;
-  -webkit-transition: opacity 0.2s ease-out;
   -moz-transition: opacity 0.2s ease-out;
   -o-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
   position: absolute;
   width: 111px;
@@ -238,9 +238,9 @@
 }
 .header .user .submenu ul li a {
   color: #06ab93;
-  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
 }
 .header .user .submenu ul li a:hover {
@@ -434,9 +434,9 @@ h1 {
   border: 0;
   text-align: center;
   margin: 20px auto;
-  -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 .btn:hover {
@@ -469,9 +469,9 @@ input[type=password] {
   border: 1px solid #CCC;
   padding-left: 10px;
   height: 30px;
-  -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
@@ -618,9 +618,9 @@ a {
   height: 25px;
   padding: 0 10px;
   line-height: 25px;
-  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   border-radius: 30px;
 }
@@ -636,9 +636,9 @@ a {
   margin: 0;
   z-index: 2;
   position: relative;
-  -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
 #home .list ul.title:nth-child(even), #home .list ul.line:nth-child(even) {
@@ -958,6 +958,9 @@ a {
 }
 #party-waiting .team li:nth-child(4) a:hover {
   text-decoration: underline;
+}
+#party-waiting .team .leader {
+  color: #f15641;
 }
 #party-waiting .team .title {
   background: #262525;

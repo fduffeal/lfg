@@ -12,6 +12,14 @@ msgstr ""
 msgid "ALL FIELDS ARE REQUIRED"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "Accept"
+msgstr ""
+
+#: app/html/controllers/404.html
+msgid "Appointment not found"
+msgstr ""
+
 #: app/html/controllers/profile.html
 msgid "Back"
 msgstr ""
@@ -43,6 +51,10 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Creator"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Decline"
 msgstr ""
 
 #: app/html/controllers/party-create.html
@@ -95,6 +107,14 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Kick"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Leave"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -153,6 +173,10 @@ msgstr ""
 
 #: app/html/directives/lfg-header.html
 msgid "Profile"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Promote"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
