@@ -32,6 +32,18 @@ msgid "ALL FIELDS ARE REQUIRED"
 msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 
 #: app/html/controllers/party-waiting.html
+msgid "Accept"
+msgstr "Accepter"
+
+#: app/html/controllers/404.html
+msgid "Appointment not found"
+msgstr "Rendez vous non trouvé"
+
+#: app/html/controllers/profile.html
+msgid "Back"
+msgstr "Retour"
+
+#: app/html/controllers/party-waiting.html
 msgid "Class"
 msgstr "Class"
 
@@ -57,17 +69,22 @@ msgstr ""
 "inviter, partager vos parties avec vos amis! N'oubliez pas de mettre vos "
 "informations de jeux à jour dans <a href=\"#/profile\">Profile</a>."
 
+#: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
+msgid "Create a profil for this game and join !"
+msgstr "Créer un profil pour ce jeu et rejoignez !"
+
 #: app/html/controllers/rdv.html
 msgid "Creator"
 msgstr "Créateur"
 
+#: app/html/controllers/party-waiting.html
+msgid "Decline"
+msgstr "Refuser"
+
 #: app/html/controllers/party-create.html
 msgid "Description"
 msgstr "Description"
-
-#: app/html/controllers/party-waiting.html
-msgid "Duration: for"
-msgstr "Durée:"
 
 #: app/html/controllers/register.html
 msgid "Email Address"
@@ -81,6 +98,10 @@ msgstr "Adresse email"
 msgid "Enter your login and password"
 msgstr "Entrez votre login et mot de passe"
 
+#: app/html/controllers/party-waiting.html
+msgid "Esbattle Username"
+msgstr "Compte Esbattle"
+
 #: app/html/controllers/party-create.html
 msgid "For"
 msgstr "Durée"
@@ -89,13 +110,17 @@ msgstr "Durée"
 msgid "Forget login or password ?"
 msgstr "Mot de passe oublié ?"
 
+#: app/html/controllers/profile.html
+msgid "Game"
+msgstr "Jeu"
+
 #: app/html/controllers/party-create.html
 msgid "Game :"
 msgstr "Jeu :"
 
 #: app/html/controllers/profile.html
-msgid "Game Infos for Destiny"
-msgstr "Infos jeux pour Destiny"
+msgid "Game Infos for {{game.name}}"
+msgstr "Infos de jeux pour {{game.name}}"
 
 #: app/html/directives/lfg-header.html
 msgid "HOME"
@@ -108,6 +133,14 @@ msgstr "ID dans le jeu"
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
 msgstr "Rejoindre !"
+
+#: app/html/controllers/party-waiting.html
+msgid "Kick"
+msgstr "Rejeter"
+
+#: app/html/controllers/party-waiting.html
+msgid "Leave"
+msgstr "Quitter"
 
 #: app/html/controllers/party-waiting.html
 msgid "Level"
@@ -157,9 +190,17 @@ msgstr "Platformes"
 msgid "Platforms"
 msgstr "Platformes"
 
+#: app/html/controllers/profile.html
+msgid "Profil Name"
+msgstr "Nom du profil"
+
 #: app/html/directives/lfg-header.html
 msgid "Profile"
 msgstr "Compte"
+
+#: app/html/controllers/party-waiting.html
+msgid "Promote"
+msgstr "Nommer chef de groupe"
 
 #: app/html/directives/lfg-header.html
 msgid "Register"
@@ -197,6 +238,10 @@ msgstr "Partie en attente de joueurs..."
 msgid "The username is already used."
 msgstr "Ce nom d'utilisateur est déjà pris"
 
+#: app/html/controllers/party-waiting.html
+msgid "Till :"
+msgstr "Jusqu'à :"
+
 #: app/html/controllers/profile.html
 msgid "Update"
 msgstr "Mettre à jour"
@@ -205,6 +250,10 @@ msgstr "Mettre à jour"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
+#: app/html/controllers/profile.html
+msgid "Username on this game (Psn Id, Xbox Live Id, ...)"
+msgstr "Nom d'utilisateur sur ce jeu (Psn Id, Xbox Live Id, ...)"
+
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
 msgstr "Joueurs voulant rejoindre la partie"
@@ -212,6 +261,14 @@ msgstr "Joueurs voulant rejoindre la partie"
 #: app/html/controllers/party-create.html
 msgid "When"
 msgstr "Quand:"
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
+msgid "with profil :"
+msgstr "avec le profil :"
+
+#~ msgid "Duration: for"
+#~ msgstr "Durée:"
 
 #, fuzzy
 #~ msgid "{{'Duration: for' | translate}} <span>{{ rdv.duree }}</span>"

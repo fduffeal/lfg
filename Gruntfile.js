@@ -23,4 +23,6 @@ module.exports = function (grunt) {
     });
     grunt.registerTask('default', []);
     grunt.registerTask('build', ['nggettext_extract','nggettext_compile']);
+	grunt.registerTask('extract-translate', ['nggettext_extract']);
+	grunt.registerTask('update-translation', ['nggettext_compile']);
 };
