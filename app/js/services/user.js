@@ -64,6 +64,10 @@ angular.module('myApp.services')
 					storage.setPersistant('user',JSON.stringify(data));
 				});
 			};
+
+			this.forgetPassword = function(email){
+				return api.call('forget_password/'+email);
+			};
 		}
 	]
 );

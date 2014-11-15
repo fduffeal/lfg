@@ -71,6 +71,20 @@ angular.module('myApp', [
 				controller: '404Ctrl'
 			});
 
+		$routeProvider.when('/:lang/profil/password/forget/:username/:forgetToken',
+			{
+				templateUrl: 'html/controllers/password-update.html',
+				controller: 'PasswordUpdateCtrl',
+				action:'forget'
+			});
+
+		$routeProvider.when('/:lang/profil/password/update',
+			{
+				templateUrl: 'html/controllers/password-update.html',
+				controller: 'PasswordUpdateCtrl',
+				action:'update'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
