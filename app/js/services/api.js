@@ -13,6 +13,10 @@ angular.module('myApp.services')
 							redirection.goToLogin();
 							break;
 
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
 						case 308:
 							redirection.goHome();
 							break;

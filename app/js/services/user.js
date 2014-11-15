@@ -3,17 +3,27 @@ angular.module('myApp.services')
 		function($http,storage,api) {
 			'use strict';
             this.data = '';
+
+			var storeUser = function(data){
+				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
+				storage.setPersistant('user',JSON.stringify(data));
+			};
+
 			this.log = function(username,password){
 				return api.call('login/'+username+'/'+password).success(function(data){
-					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
-					storage.setPersistant('user',JSON.stringify(data));
+					storeUser(data);
 				});
 			};
 
 			this.logByToken = function(username,token){
 				return api.call('login/token/'+username+'/'+token).success(function(data){
-					data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
-					storage.setPersistant('user',JSON.stringify(data));
+					storeUser(data);
+				});
+			};
+
+			this.logByForgetToken = function(username,token){
+				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
+					storeUser(data);
 				});
 			};
 
@@ -35,7 +45,7 @@ angular.module('myApp.services')
 			this.register = function(email,password,username){
 
 				return api.call('register/'+email+'/'+password+'/'+username).success(function(data){
-					storage.setPersistant('user',JSON.stringify(data));
+					storeUser(data);
 				});
 			};
 
@@ -61,12 +71,17 @@ angular.module('myApp.services')
 				}
 
 				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
-					storage.setPersistant('user',JSON.stringify(data));
+					storeUser(data);
 				});
 			};
 
 			this.forgetPassword = function(email){
 				return api.call('forget_password/'+email);
+			};
+
+			this.updatePassword = function(password){
+				var currentUser = this.get();
+				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
 			};
 		}
 	]
