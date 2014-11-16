@@ -24,6 +24,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: app/html/controllers/login.html
+msgid "Bad Username or Password."
+msgstr ""
+
 #: app/html/controllers/party-waiting.html
 msgid "Class"
 msgstr ""
@@ -137,12 +141,24 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
+#: app/html/controllers/login.html
+msgid "Mail already send. Please check your mailBox (and your spam box)"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Mail send. Please check your mailBox (and your spam box)"
+msgstr ""
+
 #: app/html/directives/lfg-header.html
 msgid "NEW PARTY"
 msgstr ""
 
 #: app/html/controllers/party-create.html
 msgid "New party on Destiny"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "OR"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -152,6 +168,14 @@ msgstr ""
 #: app/html/controllers/profile.html
 #: app/html/controllers/register.html
 msgid "Password"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Password Forgotten ?"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "Password Updated !"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -191,6 +215,10 @@ msgstr ""
 msgid "Register with your email address"
 msgstr ""
 
+#: app/html/controllers/login.html
+msgid "Retrieve my account !"
+msgstr ""
+
 #: app/html/controllers/party-create.html
 #: app/html/controllers/rdv.html
 msgid "Start"
@@ -224,6 +252,14 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#: app/html/controllers/password-update.html
+msgid "Update Password"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "Update my password !"
+msgstr ""
+
 #: app/html/controllers/profile.html
 #: app/html/controllers/register.html
 msgid "Username"
@@ -239,6 +275,10 @@ msgstr ""
 
 #: app/html/controllers/party-create.html
 msgid "When"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "password doesn't match"
 msgstr ""
 
 #: app/html/controllers/party-create.html
