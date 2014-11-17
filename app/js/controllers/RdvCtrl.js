@@ -8,6 +8,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.demain = new Date();
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
 
+			$scope.slotMinAvailable = 1;
+			$scope.slotMaxAvailable = 6;
+
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
 			};
