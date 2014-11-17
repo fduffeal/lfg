@@ -29,11 +29,8 @@ msgid "Bad Username or Password."
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
-msgid "Class"
-msgstr ""
-
 #: app/html/controllers/profile.html
-msgid "Class (titan/hunter, arcanist)"
+msgid "Class"
 msgstr ""
 
 #: app/html/controllers/register.html
@@ -65,12 +62,12 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: app/html/controllers/register.html
-msgid "Email Address"
+#: app/html/controllers/profile.html
+msgid "Email"
 msgstr ""
 
-#: app/html/controllers/profile.html
-msgid "Email>"
+#: app/html/controllers/register.html
+msgid "Email Address"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -122,11 +119,8 @@ msgid "Leave"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
-msgid "Level"
-msgstr ""
-
 #: app/html/controllers/profile.html
-msgid "Level (please keep update)"
+msgid "Level"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -159,10 +153,6 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "OR"
-msgstr ""
-
-#: app/html/controllers/rdv.html
-msgid "PLATFORMS"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -266,7 +256,7 @@ msgid "Username"
 msgstr ""
 
 #: app/html/controllers/profile.html
-msgid "Username on this game (Psn Id, Xbox Live Id, ...)"
+msgid "Username on this game"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -279,6 +269,10 @@ msgstr ""
 
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "slots available min"
 msgstr ""
 
 #: app/html/controllers/party-create.html

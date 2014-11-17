@@ -7,7 +7,30 @@
 		width: 950px;
 		margin: 20px auto;
 		padding-bottom: 10px;
+		ul.search-tags {
+			float: left;
+			margin-bottom: 15px;
+			input {
+				width: 250px;
+				height: 25px;
+			}
+		}
+		ul.how-many {
+			float: right;
+			input {
+				width: 25px;
+				margin-left: 12px;
+				height: 20px;
+			}
+
+		}
+		.last {
+			clear: both;
+		}
 		ul.platforms {
+			float: left;
+			width: 450px;
+
 			li {
 				margin: 0 5px;
 				display: inline-block;
@@ -59,10 +82,10 @@
 					padding-left:10px;
 				}
 				&.list-platform {
-					width: 100px
+					width: 76px
 				}
 				&.list-tags {
-					width: 150px;
+					width: 185px;
 
 				}
 
