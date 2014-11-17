@@ -43,13 +43,13 @@ msgstr "Rendez vous non trouvé"
 msgid "Back"
 msgstr "Retour"
 
-#: app/html/controllers/party-waiting.html
+#: app/html/controllers/login.html
+msgid "Bad Username or Password."
+msgstr "Mauvais nom d'utilisateur ou mot de passe."
+
+#: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Class"
 msgstr "Class"
-
-#: app/html/controllers/profile.html
-msgid "Class (titan/hunter, arcanist)"
-msgstr "Class (titan/chasseur, arcanist)"
 
 #: app/html/controllers/register.html
 msgid "Confirm Password"
@@ -57,7 +57,7 @@ msgstr "Confirmez votre mot de passe"
 
 #: app/html/controllers/profile.html
 msgid "Confirm your password"
-msgstr "Confirmez votre mot de passe"
+msgstr "Confirmez votre mdp"
 
 #: app/html/controllers/rdv.html
 msgid ""
@@ -86,12 +86,12 @@ msgstr "Refuser"
 msgid "Description"
 msgstr "Description"
 
-#: app/html/controllers/register.html
-msgid "Email Address"
+#: app/html/controllers/profile.html
+msgid "Email"
 msgstr "Adresse email"
 
-#: app/html/controllers/profile.html
-msgid "Email>"
+#: app/html/controllers/register.html
+msgid "Email Address"
 msgstr "Adresse email"
 
 #: app/html/controllers/login.html
@@ -142,13 +142,9 @@ msgstr "Rejeter"
 msgid "Leave"
 msgstr "Quitter"
 
-#: app/html/controllers/party-waiting.html
+#: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Level"
 msgstr "Niveau"
-
-#: app/html/controllers/profile.html
-msgid "Level (please keep update)"
-msgstr "Niveau (merci de le mettre à jour)"
 
 #: app/html/directives/lfg-header.html
 msgid "Login"
@@ -162,6 +158,17 @@ msgstr "Connexion !"
 msgid "Logout"
 msgstr "Déconnexion"
 
+#: app/html/controllers/login.html
+msgid "Mail already send. Please check your mailBox (and your spam box)"
+msgstr ""
+"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier "
+"spam)"
+
+#: app/html/controllers/login.html
+msgid "Mail send. Please check your mailBox (and your spam box)"
+msgstr ""
+"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)"
+
 #: app/html/directives/lfg-header.html
 msgid "NEW PARTY"
 msgstr "NOUVELLE PARTIE"
@@ -170,13 +177,21 @@ msgstr "NOUVELLE PARTIE"
 msgid "New party on Destiny"
 msgstr "Nouvelle partie sur Destiny"
 
-#: app/html/controllers/rdv.html
-msgid "PLATFORMS"
-msgstr "PLATFORMES"
+#: app/html/controllers/login.html
+msgid "OR"
+msgstr "OU"
 
 #: app/html/controllers/profile.html app/html/controllers/register.html
 msgid "Password"
 msgstr "Mot de passe"
+
+#: app/html/controllers/login.html
+msgid "Password Forgotten ?"
+msgstr "Mot de passe oublié ?"
+
+#: app/html/controllers/password-update.html
+msgid "Password Updated !"
+msgstr "Mot de passe mis à jour !"
 
 #: app/html/controllers/profile.html
 msgid "Personal Infos"
@@ -214,6 +229,10 @@ msgstr "Inscription !"
 msgid "Register with your email address"
 msgstr "S'enregistrer avec votre adresse email"
 
+#: app/html/controllers/login.html
+msgid "Retrieve my account !"
+msgstr "Récupérer mon compte !"
+
 #: app/html/controllers/party-create.html app/html/controllers/rdv.html
 msgid "Start"
 msgstr "Début"
@@ -246,13 +265,21 @@ msgstr "Jusqu'à :"
 msgid "Update"
 msgstr "Mettre à jour"
 
+#: app/html/controllers/password-update.html
+msgid "Update Password"
+msgstr "Mettre à jour le mot de passe"
+
+#: app/html/controllers/password-update.html
+msgid "Update my password !"
+msgstr "Mettre à jour mon mot de passe !"
+
 #: app/html/controllers/profile.html app/html/controllers/register.html
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
 #: app/html/controllers/profile.html
-msgid "Username on this game (Psn Id, Xbox Live Id, ...)"
-msgstr "Nom d'utilisateur sur ce jeu (Psn Id, Xbox Live Id, ...)"
+msgid "Username on this game"
+msgstr "Nom d'utilisateur sur ce jeu"
 
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
@@ -262,10 +289,30 @@ msgstr "Joueurs voulant rejoindre la partie"
 msgid "When"
 msgstr "Quand:"
 
+#: app/html/controllers/password-update.html
+msgid "password doesn't match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: app/html/controllers/rdv.html
+msgid "slots available min"
+msgstr "Places dispo minimum"
+
 #: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Class (titan/hunter, arcanist)"
+#~ msgstr "Class (titan/chasseur, arcanist)"
+
+#~ msgid "Level (please keep update)"
+#~ msgstr "Niveau (merci de le mettre à jour)"
+
+#~ msgid "PLATFORMS"
+#~ msgstr "PLATFORMES"
+
+#~ msgid "slots available max"
+#~ msgstr "Places disponible max"
 
 #~ msgid "Duration: for"
 #~ msgstr "Durée:"
