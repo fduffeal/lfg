@@ -1,7 +1,9 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
             'use strict';
+
+	        $scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
 

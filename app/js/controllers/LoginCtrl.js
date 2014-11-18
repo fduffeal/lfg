@@ -1,7 +1,10 @@
 angular.module('myApp.controllers').controller('LoginCtrl',
-    ['$scope','user','redirection',
-        function ($scope,user,redirection) {
+    ['$scope','user','redirection','lang',
+        function ($scope,user,redirection,lang) {
 			'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
 			var tentative = 0;
 			var maxTentative = 2;
 			$scope.bDisplayForgetPasswordForm = false;

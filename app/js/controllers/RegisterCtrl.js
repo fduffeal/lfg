@@ -1,6 +1,8 @@
 angular.module('myApp.controllers').controller('RegisterCtrl',
-    ['$scope','user','$location',
-        function ($scope,user,$location) {
+    ['$scope','user','$location','lang',
+        function ($scope,user,$location,lang) {
+
+	        $scope.lang = lang.getCurrent();
 
 	        $scope.updateRegExpPassword = function(){
 		        $scope.regExpPassword = '/'+$scope.password+'/';
