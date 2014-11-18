@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RegisterCtrl',
-    ['$scope','user','$location','lang',
-        function ($scope,user,$location,lang) {
+    ['$scope','user','$location','lang','redirection',
+        function ($scope,user,$location,lang,redirection) {
 
 	        $scope.lang = lang.getCurrent();
 
@@ -10,7 +10,7 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 
 	        $scope.submit = function(){
 		        user.register($scope.email,$scope.password,$scope.username).success(function(data){
-			        $location.path('/welcome');
+			        redirection.goWelcomeHome();
 		        });
 	        }
 

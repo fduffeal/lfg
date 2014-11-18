@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','activity','$location',
-		function(lang,activity,$location) {
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
 			return {
 				link: function($scope, element, attrs) {
 					lang.initLang();
@@ -18,7 +18,6 @@ angular.module('myApp.directives')
 					$scope.switchLangUrlFr = switchLangUrl('fr');
 					$scope.switchLangUrlEn = switchLangUrl('en');
 
-					activity.setEvent();
 				},
 				restrict: 'E',
 				templateUrl: 'html/directives/lfg-footer.html'
