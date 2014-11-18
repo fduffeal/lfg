@@ -7,8 +7,9 @@ angular.module('myApp.directives')
 					'lfgHeader':'='
 				},
 				link: function($scope, element, attrs) {
-
+					lang.initLang();
 					$scope.lang = lang.getCurrent();
+
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;

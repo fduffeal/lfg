@@ -1,27 +1,25 @@
 angular.module('myApp.services')
-	.service('lang', ['gettextCatalog','$routeParams','$rootScope',
-		function(gettextCatalog,$routeParams,$rootScope) {
+	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
+		function(gettextCatalog,$routeParams,$rootScope,$location) {
 			'use strict';
 
-			this.setLang = function(){
+			this.initLang = function(){
 				gettextCatalog.debug = true;
 
 				if($routeParams.lang){
-					$rootScope.lang = $routeParams.lang;
-					gettextCatalog.setCurrentLanguage($routeParams.lang); // Corresponds au header 'Language' du fichier .po;
+					this.updateLang($routeParams.lang);
 				}else {
-					$rootScope.lang = 'fr';
-					gettextCatalog.setCurrentLanguage('fr'); // Corresponds au header 'Language' du fichier .po;
+					this.updateLang('fr');
 				}
 			};
 
 			this.getCurrent = function(){
-				return $rootScope.lang();
+				return $rootScope.lang;
 			};
 
-			this.change = function(newLang){
+			this.updateLang = function(newLang){
 				$rootScope.lang = newLang;
-				gettextCatalog.setCurrentLanguage(newLang);
+				gettextCatalog.setCurrentLanguage(newLang);// Corresponds au header 'Language' du fichier .po;
 			};
 		}
 	]

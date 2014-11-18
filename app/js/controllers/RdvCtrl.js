@@ -1,7 +1,9 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag',
-		function ($scope,rdv,redirection,$route,tag) {
+	['$scope','rdv','redirection','$route','tag','lang',
+		function ($scope,rdv,redirection,$route,tag,lang) {
 			'use strict';
+
+			lang.initLang();
 
 			$scope.today = new Date();
 
