@@ -114,10 +114,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			var autoRefreshData = function(){
 				stopAutoRefreshData();
 				$scope.intervalId = $interval(function(){
-					if(activity.isActiveWindow === true){
-						refreshData();
-					}
-
+					refreshData();
 				}, refreshTime);
 			};
 
