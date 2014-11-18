@@ -31,7 +31,7 @@
                 </ul>
 
                 <div class="last">
-                	<h1>Destiny {{plateformNameSelected}} : last place</h1>
+                	<h1>Destiny {{plateformNameSelected}} : LIVE</h1>
                 	<ul class="title">
                 		<li class="list-platform"><a href=""translate>Platforms</a></li>
                 		<li class="list-tags"><a href="">Tags</a></li>
@@ -41,7 +41,7 @@
                 		<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
                 		<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
                 	</ul>
-	                <a ng-href="{{partyWaitingUrlRoot}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
+	                <a ng-href="{{partyWaitingUrlRoot}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:true:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
 	                    <ul class="line">
 	                        <li class="list-platform">{{ rdv.plateform.nom }}</li>
 	                        <li class="list-tags">
@@ -66,28 +66,32 @@
                 	<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
                 	<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
                 </ul>
-                <ul class="line"  ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" ng-click="goToParty(rdv.id)">
-                	<li class="list-platform">{{ rdv.plateform.nom }}</li>
-                	<li class="list-tags">
-                		<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
-                	</li>
-                	<li class="list-infos">{{ rdv.description}} </li>
-                	<li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-                	<!--<li>{{ rdv.duree }}</li>-->
-                	<li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
-                	<li class="list-creator">{{ rdv.leader.username }}</li>
-                </ul>
-                <ul class="line" ng-if="resultsAll.length == 0" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:false |orderBy:predicate:reverse">
-                	<li class="list-platform">{{ rdv.plateform.nom }}</li>
-                	<li class="list-tags">
-                		<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
-                	</li>
-                	<li class="list-infos">{{ rdv.description}} </li>
-                	<li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-                	<!--<li>{{ rdv.duree }}</li>-->
-                	<li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
-                	<li class="list-creator">{{ rdv.leader.username }}</li>
-                </ul>
+				<a ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" >
+					<ul class="line">
+	                    <li class="list-platform">{{ rdv.plateform.nom }}</li>
+	                    <li class="list-tags">
+	                        <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+	                    </li>
+	                    <li class="list-infos">{{ rdv.description}} </li>
+	                    <li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+	                    <!--<li>{{ rdv.duree }}</li>-->
+	                    <li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
+	                    <li class="list-creator">{{ rdv.leader.username }}</li>
+	                </ul>
+				</a>
+				<a ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:false |orderBy:predicate:reverse">
+	                <ul class="line" ng-if="resultsAll.length == 0">
+	                    <li class="list-platform">{{ rdv.plateform.nom }}</li>
+	                    <li class="list-tags">
+	                        <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+	                    </li>
+	                    <li class="list-infos">{{ rdv.description}} </li>
+	                    <li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+	                    <!--<li>{{ rdv.duree }}</li>-->
+	                    <li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
+	                    <li class="list-creator">{{ rdv.leader.username }}</li>
+	                </ul>
+				</a>
             </div>
 
         </div>

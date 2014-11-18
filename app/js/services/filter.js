@@ -8,7 +8,7 @@ angular.module('myApp.services')
 			};
 
 			this.isLive = function(rdv,now){
-				return (rdv.end > now && rdv.start < now);
+				return (rdv.end > now && rdv.start < now + (5*60));
 			};
 
 			this.hasTagSelected = function(rdv,aTags){
@@ -56,8 +56,7 @@ angular.module('myApp.services')
 			};
 
 			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
-				return (rdv.nbParticipant - rdv.users.length - rdv.usersInQueue.length >= placesAvailableMini &&
-				rdv.nbParticipant - rdv.users.length  - rdv.usersInQueue.length <= placeAvailableMax);
+				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
 			};
 
 			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax){
