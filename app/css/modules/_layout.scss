@@ -51,7 +51,7 @@ html, body {
 .selected {
 	color: #ffff00;
 }
-#welcome {
+#welcome,#beta {
 	position: absolute;
 	top: 0;
 	background: black;
@@ -71,6 +71,9 @@ html, body {
 			}
 		}
 	}
+}
+#beta {
+	position: relative;
 }
 .important {
 	display: block;

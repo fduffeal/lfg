@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7beta1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/party-create.html
@@ -61,13 +61,11 @@ msgstr "Confirmez votre mdp"
 
 #: app/html/controllers/rdv.html
 msgid ""
-"Congratulation ! You are now registered on esBattle.com! You can invit, "
-"share your partys with your friends ! Do not forget to put your infos game "
-"in your <a href=\"#/profile\">Profile</a>."
+"Congratulation ! You are now registered on esBattle.com! Do not forget to "
+"put your infos game in your"
 msgstr ""
-"Bravo ! Vous êtes désormais enregistré sur esBattle.com! Vous pouvez "
-"inviter, partager vos parties avec vos amis! N'oubliez pas de mettre vos "
-"informations de jeux à jour dans <a href=\"#/profile\">Profile</a>."
+"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de "
+"mettre vos informations de jeux à jour dans "
 
 #: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
@@ -94,6 +92,10 @@ msgstr "Adresse email"
 msgid "Email Address"
 msgstr "Adresse email"
 
+#: app/html/directives/lfg-footer.html
+msgid "English"
+msgstr "Anglais"
+
 #: app/html/controllers/login.html
 msgid "Enter your login and password"
 msgstr "Entrez votre login et mot de passe"
@@ -109,6 +111,10 @@ msgstr "Durée"
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
 msgstr "Mot de passe oublié ?"
+
+#: app/html/directives/lfg-footer.html
+msgid "French"
+msgstr "Français"
 
 #: app/html/controllers/profile.html
 msgid "Game"
@@ -209,7 +215,7 @@ msgstr "Platformes"
 msgid "Profil Name"
 msgstr "Nom du profil"
 
-#: app/html/directives/lfg-header.html
+#: app/html/directives/lfg-header.html app/html/controllers/rdv.html
 msgid "Profile"
 msgstr "Compte"
 
@@ -256,6 +262,14 @@ msgstr "Partie en attente de joueurs..."
 #: app/html/controllers/register.html
 msgid "The username is already used."
 msgstr "Ce nom d'utilisateur est déjà pris"
+
+#: app/html/directives/lfg-header.html
+msgid ""
+"The website is still in beta mode, so please report your bugs/ideas to "
+"contact.esbattle@gmail.com :)"
+msgstr ""
+"Le site web est en beta, merci de reporter vos bugs/idées directement à "
+"contact.esbattle@gmail.com :)"
 
 #: app/html/controllers/party-waiting.html
 msgid "Till :"

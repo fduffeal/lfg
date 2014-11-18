@@ -362,7 +362,7 @@ html, body {
   color: #ffff00;
 }
 
-#welcome {
+#welcome, #beta {
   position: absolute;
   top: 0;
   background: black;
@@ -371,17 +371,21 @@ html, body {
   width: 100%;
   line-height: 25px;
 }
-#welcome div {
+#welcome div, #beta div {
   width: 980px;
   font-size: 13px;
   color: white;
   margin-left: 175px;
 }
-#welcome div a {
+#welcome div a, #beta div a {
   color: #06ab93;
 }
-#welcome div a:hover {
+#welcome div a:hover, #beta div a:hover {
   color: #20f7d8;
+}
+
+#beta {
+  position: relative;
 }
 
 .important {
@@ -718,7 +722,7 @@ a {
   background: url("../img/cover-register.jpg");
 }
 #signin .cover.fr {
-  background: url("../img/cover-register.jpg");
+  background: url("../img/cover-register_FR.jpg");
 }
 #signin .block {
   width: 300px;
