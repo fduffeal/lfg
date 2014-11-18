@@ -7,16 +7,20 @@ angular.module('myApp.services')
 				gettextCatalog.debug = true;
 
 				if($routeParams.lang){
-					$rootScope.lang = '/'+$routeParams.lang;
+					$rootScope.lang = $routeParams.lang;
 					gettextCatalog.setCurrentLanguage($routeParams.lang); // Corresponds au header 'Language' du fichier .po;
 				}else {
-					$rootScope.lang = '/fr';
+					$rootScope.lang = 'fr';
 					gettextCatalog.setCurrentLanguage('fr'); // Corresponds au header 'Language' du fichier .po;
 				}
 			};
 
+			this.getCurrent = function(){
+				return $rootScope.lang();
+			};
+
 			this.change = function(newLang){
-				$rootScope.lang = '/'+newLang;
+				$rootScope.lang = newLang;
 				gettextCatalog.setCurrentLanguage(newLang);
 			};
 		}
