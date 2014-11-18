@@ -5,7 +5,7 @@
 	</li>
 	<li class="page">
 		<div id="party-waiting" class="content  ">
-			<div class="cover" ng-class="{'party_completed' : (rdv.users.length === rdv.nbParticipant)}">
+			<div class="cover" ng-class="{'party_completed' : isFull}">
 			</div>
 
 			<div class="block">
@@ -90,7 +90,7 @@
 			</div>
 
 
-            <div ng-show="canJoin && profils.length > 0" class="btn" ng-click="join()" translate>Join !</div>
+            <div ng-show="canJoin && profils.length > 0 && isFull === false" class="btn" ng-click="join()" translate>Join !</div>
             <div ng-show="canJoin && profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
             <div ng-show="profils.length > 1 && canJoin">
                 <label translate>with profil :</label>

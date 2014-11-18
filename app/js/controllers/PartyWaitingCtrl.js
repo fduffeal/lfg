@@ -44,6 +44,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 		        rdv.get($routeParams.partyId).success(function (data) {
 			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
 					manageAutorisation();
 		        });
 	        };

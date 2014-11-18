@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','$rootScope','redirection',
-		function(user,rdv,tag,$rootScope,redirection) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection',
+		function(user,rdv,tag,lang,redirection) {
 			'use strict';
 			return {
 				scope:{
@@ -8,7 +8,7 @@ angular.module('myApp.directives')
 				},
 				link: function($scope, element, attrs) {
 
-					$scope.lang = $rootScope.lang;
+					$scope.lang = lang.getCurrent();
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;
