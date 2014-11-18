@@ -61,6 +61,10 @@ angular.module('myApp.services')
 				return getLang()+'/404/'+msg;
 			};
 
+			this.goWelcomeHome = function(){
+				$location.path(getLang()+'/welcome');
+			};
+
 			this.notFound = function(msg){
 				$location.path(this.getNotFoundPage(msg));
 			};
