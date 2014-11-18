@@ -1,7 +1,10 @@
 angular.module('myApp.controllers').controller('ProfileCtrl',
-    ['$scope','user','rdv','$routeParams','redirection',
-        function ($scope,user,rdv,$routeParams,redirection) {
+    ['$scope','user','rdv','$routeParams','redirection','lang',
+        function ($scope,user,rdv,$routeParams,redirection,lang) {
 			'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
 			$scope.currentUser = user.get();
 
 			rdv.getFormInfo().then(function(data){

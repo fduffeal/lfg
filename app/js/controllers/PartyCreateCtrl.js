@@ -1,8 +1,9 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope','redirection',
-		function ($scope,rdv,$location,$filter,user,$rootScope,redirection) {
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang) {
 			'use strict';
 
+			$scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
 

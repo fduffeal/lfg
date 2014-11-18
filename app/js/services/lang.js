@@ -14,6 +14,7 @@ angular.module('myApp.services')
 			};
 
 			this.getCurrent = function(){
+				this.initLang();
 				return $rootScope.lang;
 			};
 
