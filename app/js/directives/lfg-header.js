@@ -16,11 +16,16 @@ angular.module('myApp.directives')
 						redirection.goHome();
 					};
 
+					rdv.getNotifications().success(function(data){
+						$scope.notifications = data;
+					});
+
 					$scope.homeUrl = redirection.getHomePageUrl();
 					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
 					$scope.loginPageUrl = redirection.getLoginPageUrl();
 					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 
                     $scope.userInfo = user.get();
 				},

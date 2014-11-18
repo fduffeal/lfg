@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang',
-		function ($scope,rdv,redirection,$route,tag,lang) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval) {
 			'use strict';
 
 			lang.initLang();
@@ -37,14 +37,16 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			});
 
 
-			rdv.getAll().success(function(data, status, headers, config) {
-				// this callback will be called asynchronously
-				// when the response is available
-				$scope.aRdv = data;
-			}).error(function(data, status, headers, config) {
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
-			});
+			var refreshRdvData = function(){
+				rdv.getAll().success(function(data, status, headers, config) {
+					// this callback will be called asynchronously
+					// when the response is available
+					$scope.aRdv = data;
+				}).error(function(data, status, headers, config) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
+			};
 
 			$scope.plateformSelected = '';
 			$scope.plateformNameSelected = 'ALL';
@@ -54,6 +56,18 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			};
 
 			$scope.displayWelcome = ($route.current.action === 'welcome');
+
+			//autoRefresh
+			var refreshTime = 12000;
+			var autoRefreshData = function(){
+				$scope.intervalId = $interval(function(){
+					refreshRdvData();
+				}, refreshTime);
+			};
+
+			//init
+			refreshRdvData();
+			autoRefreshData();
 		}
 	]
 );

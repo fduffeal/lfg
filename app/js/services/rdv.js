@@ -46,6 +46,10 @@ angular.module('myApp.services')
 			this.promote = function(rdvId,userId,username,token){
 				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
+
+			this.getNotifications = function(){
+				return api.call('notifications/');
+			};
 		}
 	]
 );
