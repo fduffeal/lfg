@@ -41,7 +41,7 @@
                 		<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
                 		<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
                 	</ul>
-	                <a ng-href="{{partyWaitingUrlRoot}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:true:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
+	                <a ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:true:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
 	                    <ul class="line">
 	                        <li class="list-platform">{{ rdv.plateform.nom }}</li>
 	                        <li class="list-tags">
