@@ -1,22 +1,22 @@
 <div class="header">
 	<div class="content-header">
-		<a href="" ng-click="goHome()" id="logo"><img src="img/logo.png" alt="" /></a>
+		<a href="{{homeUrl}}" id="logo"><img src="img/logo.png" alt="" /></a>
 		<div class="actions not-logged" ng-if="!userInfo.username">
 			<ul class="menu left">
-				<li><a href="" ng-click="goHome()" class="selected" translate>HOME</a></li>
-				<li><a href="" ng-click="goCreateParty()" translate>NEW PARTY</a></li>
+				<li><a ng-href="{{homeUrl}}" class="selected" translate>HOME</a></li>
+				<li><a ng-href="{{partyCreateUrl}}" translate>NEW PARTY</a></li>
 			</ul>
 			<ul class="menu right">
-				<li class="signin"><a href="" ng-click="goToRegister()" translate>Register</a></li>
-				<li><a href="" ng-click="goToLogin()" class="go" translate>Login</a></li>
+				<li class="signin"><a ng-href="{{registerPageUrl}}" translate>Register</a></li>
+				<li><a ng-href="{{loginPageUrl}}" class="go" translate>Login</a></li>
 			</ul>
 		</div>
 
 		<div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
 			<ul class="menu">
 
-				<li><a href="#{{lang}}/" class="selected" translate>HOME</a></li>
-				<li><a href="#{{lang}}/party/create" translate>NEW PARTY</a></li>
+				<li><a ng-href="{{homeUrl}}" class="selected" translate>HOME</a></li>
+				<li><a ng-href="{{partyCreateUrl}}" translate>NEW PARTY</a></li>
 				<li class="notif">
 					<img src="img/ico-notif.png" />
 					<span class="nb-notif">4</span>
@@ -53,8 +53,8 @@
 				{{userInfo.username}} <img src="img/header-arrow.png" />
 				<div class="submenu">
 					<ul>
-						<li><a href="#{{lang}}/profile/" translate>Profile</a></li>
-						<li><a href=""ng-click="logout()" translate>Logout</a></li>
+						<li><a href="{{profilGameUrl}}" translate>Profile</a></li>
+						<li><a href="" ng-click="logout()" translate>Logout</a></li>
 					</ul>
 				</div>
 			</div>

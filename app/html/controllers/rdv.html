@@ -41,17 +41,19 @@
                 		<li class="list-slots"><a href="" ng-click="predicate = 'nbParticipant'; reverse=!reverse">Slots</a></li>
                 		<li class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse"translate>Creator</a></li>
                 	</ul>
-                	<ul class="line"  ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" ng-click="goToParty(rdv.id)">
-                		<li class="list-platform">{{ rdv.plateform.nom }}</li>
-                		<li class="list-tags">
-                			<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
-                		</li>
-                		<li class="list-infos">{{ rdv.description}} </li>
-                		<li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
-                		<!--<li>{{ rdv.duree }}</li>-->
-                		<li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
-                		<li class="list-creator">{{ rdv.leader.username }}</li>
-                	</ul>
+	                <a ng-href="{{partyWaitingUrlRoot}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
+	                    <ul class="line">
+	                        <li class="list-platform">{{ rdv.plateform.nom }}</li>
+	                        <li class="list-tags">
+	                            <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span>
+	                        </li>
+	                        <li class="list-infos">{{ rdv.description}} </li>
+	                        <li class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</li>
+	                        <!--<li>{{ rdv.duree }}</li>-->
+	                        <li class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</li>
+	                        <li class="list-creator">{{ rdv.leader.username }}</li>
+	                    </ul>
+	                </a>
                 </div>
 
                 <h1>Destiny {{plateformNameSelected}}</h1>

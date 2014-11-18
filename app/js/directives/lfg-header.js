@@ -15,21 +15,11 @@ angular.module('myApp.directives')
 						redirection.goHome();
 					};
 
-					$scope.goToLogin = function(){
-						redirection.goToLogin();
-					};
-
-					$scope.goToRegister = function(){
-						redirection.goToRegister();
-					};
-
-					$scope.goCreateParty = function(){
-						redirection.goCreateParty();
-					};
-
-					$scope.goHome = function(){
-						redirection.goHome();
-					};
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
 
                     $scope.userInfo = user.get();
 				},

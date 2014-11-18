@@ -13,7 +13,7 @@ angular.module('myApp', [
 ]).
 	config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 
-		$locationProvider.html5Mode(false);
+		$locationProvider.html5Mode(true);
 
 		$routeProvider.when('/:lang/matchmaking',
 			{

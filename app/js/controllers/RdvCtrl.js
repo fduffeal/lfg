@@ -11,6 +11,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.slotMinAvailable = 1;
 			$scope.slotMaxAvailable = 6;
 
+			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
 			};
