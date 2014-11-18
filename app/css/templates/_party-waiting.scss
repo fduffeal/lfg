@@ -1,8 +1,14 @@
 #party-waiting {
 	.cover {
 		background: url("../img/cover-create-waiting.jpg");
+		&.fr {
+			background: url("../img/cover-create-waiting_FR.jpg");
+		}
 		&.party_completed {
 			background: url("../img/cover-create-full.jpg");
+			&.fr {
+				background: url("../img/cover-create-full_FR.jpg");
+			}
 		}
 	}
 	h1.second {
@@ -43,54 +49,54 @@
 			&:nth-child(4) {
 				width: 200px;
 				a {
-				 color: #06ab93;
-				 &:hover {
-					text-decoration: underline;
+					color: #06ab93;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
+		.leader {
+			color :#f15641;
+		}
+		.title {
+			background: #262525;
+			color: white;
+			font-weight: bold;
+		}
 	}
-	.leader {
-	  color :#f15641;
-  }
-  .title {
-	background: #262525;
-	color: white;
-	font-weight: bold;
-}
-}
-.block2 {
-	width: 920px;
-	margin-top: 20px;
-	border: 5px solid #87cbc1;
-	padding: 10px;
-	.line {
-		&:nth-child(2) {
-			margin-bottom: 15px;
-		}
-		span {
-			font-weight: bold;
-		}
-		.platform {
-			font-size: 24px;
-			font-weight: bold;
-		}
-		.tags {
-			font-size: 20px;
-			font-weight: bold;
-		}
-		div:first-child{
-			float: left;
-			width: 600px;
-		}
-		.desc {
-			font-size: 18px;
-		}
-		.slots, .date, .duration {
-			font-size: 16px;
+	.block2 {
+		width: 920px;
+		margin-top: 20px;
+		border: 5px solid #87cbc1;
+		padding: 10px;
+		.line {
+			&:nth-child(2) {
+				margin-bottom: 15px;
+			}
+			span {
+				font-weight: bold;
+			}
+			.platform {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			.tags {
+				font-size: 20px;
+				font-weight: bold;
+			}
+			div:first-child{
+				float: left;
+				width: 600px;
+			}
+			.desc {
+				font-size: 18px;
+			}
+			.slots, .date, .duration {
+				font-size: 16px;
+
+			}
 
 		}
-
 	}
-}
 }

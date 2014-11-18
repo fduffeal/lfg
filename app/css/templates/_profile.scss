@@ -1,6 +1,9 @@
 #profile {
 	.cover {
 		background: url("../img/cover-profile.jpg");
+		&.fr {
+                background: url("../img/cover-profile_FR.jpg");
+            }
 	}
 
 	.block {

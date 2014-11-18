@@ -717,6 +717,9 @@ a {
 #signin .cover {
   background: url("../img/cover-register.jpg");
 }
+#signin .cover.fr {
+  background: url("../img/cover-register.jpg");
+}
 #signin .block {
   width: 300px;
   margin: auto;
@@ -769,6 +772,9 @@ a {
 
 #login .cover {
   background: url("../img/cover-login.jpg");
+}
+#login .cover.fr {
+  background: url("../img/cover-login_FR.jpg");
 }
 #login .block {
   width: 300px;
@@ -827,6 +833,9 @@ a {
 #profile .cover {
   background: url("../img/cover-profile.jpg");
 }
+#profile .cover.fr {
+  background: url("../img/cover-profile_FR.jpg");
+}
 #profile .block {
   width: 465px;
   padding: 10px;
@@ -875,6 +884,9 @@ a {
 
 #party-create .cover {
   background: url("../img/cover-create.jpg");
+}
+#party-create .cover.fr {
+  background: url("../img/cover-create_FR.jpg");
 }
 #party-create .block {
   width: 704px;
@@ -940,6 +952,15 @@ a {
 
 #party-waiting .cover {
   background: url("../img/cover-create-waiting.jpg");
+}
+#party-waiting .cover.fr {
+  background: url("../img/cover-create-waiting_FR.jpg");
+}
+#party-waiting .cover.party_completed {
+  background: url("../img/cover-create-full.jpg");
+}
+#party-waiting .cover.party_completed.fr {
+  background: url("../img/cover-create-full_FR.jpg");
 }
 #party-waiting h1.second {
   margin-top: 40px;

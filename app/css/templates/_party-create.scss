@@ -1,6 +1,9 @@
 #party-create {
 	.cover {
 		background: url("../img/cover-create.jpg");
+		&.fr {
+			background: url("../img/cover-create_FR.jpg");
+		}
 	}
 	.block {
 		width: 704px;
