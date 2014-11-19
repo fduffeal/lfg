@@ -519,6 +519,7 @@ input.error {
 }
 #page li {
   display: table-cell;
+  vertical-align: top;
 }
 
 .content {
