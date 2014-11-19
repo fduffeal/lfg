@@ -10,21 +10,18 @@
 
 			<div class="block">
 				<h1 translate>The Party</h1>
-				<div class="link"><a href="">{{currentUrl}}</a></div>
+
 				<div class="block2">
+
 					<div class="line">
-						<div class="platform">{{rdv.game.name}} on <span>{{rdv.plateform.nom}}</span></div>
+						<div class="platform">{{rdv.game.name}} {{rdv.plateform.nom}} </div>
 						<div class="tags"><span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span></div>
-					</div>
-					<div class="line">
-						<div class="date">
-							{{'Start the' | translate}} <span>{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</span>
-						</div>
-						<div class="duration">{{'Till : ' | translate}} <span>{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</span></div>
-					</div>
-					<div class="line">
-						<div class="desc">{{ rdv.description }}</div>
-						<div class="slots">{{ rdv.users.length }}/{{ rdv.nbParticipant }} slots</div>
+
+                        <div class="when">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
+                        <!--<div class="duration">{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</div>-->
+                        <div class="desc">" {{ rdv.description }} "</div>
+                        <div class="slots"><span class="one">{{ rdv.users.length }}</span><span class="two">{{ rdv.nbParticipant }}</span></div>
+                        <div class="link">Url: <a href="">{{currentUrl}}</a></div>
 					</div>
 
 				</div>

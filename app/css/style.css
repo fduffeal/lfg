@@ -60,9 +60,9 @@
   border: 2px solid #06ab93;
 }
 .header .actions ul.menu li.notif .notif-list {
+  -webkit-transition: opacity 0.2s ease-out;
   -moz-transition: opacity 0.2s ease-out;
   -o-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
   position: absolute;
   display: none;
@@ -102,9 +102,9 @@
   font-size: 13px;
   color: #e0e0e0;
   width: 50px;
+  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
-  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   text-align: center;
   height: 58px;
@@ -140,9 +140,9 @@
   font-size: 13px;
   color: #e0e0e0;
   width: 50px;
+  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
-  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   text-align: center;
   height: 58px;
@@ -177,9 +177,9 @@
   border: 2px solid #87cbc1;
   width: 69px;
   height: 25px;
+  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
-  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   line-height: 25px;
   margin-top: 11px;
@@ -215,9 +215,9 @@
 }
 .header .user .submenu {
   opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
   -moz-transition: opacity 0.2s ease-out;
   -o-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
   position: absolute;
   width: 111px;
@@ -238,9 +238,9 @@
 }
 .header .user .submenu ul li a {
   color: #06ab93;
+  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
-  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
 }
 .header .user .submenu ul li a:hover {
@@ -438,9 +438,9 @@ h1 {
   border: 0;
   text-align: center;
   margin: 20px auto;
+  -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 .btn:hover {
@@ -473,9 +473,9 @@ input[type=password] {
   border: 1px solid #CCC;
   padding-left: 10px;
   height: 30px;
+  -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
@@ -650,9 +650,9 @@ a {
   height: 25px;
   padding: 0 10px;
   line-height: 25px;
+  -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
-  -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   border-radius: 30px;
 }
@@ -668,9 +668,9 @@ a {
   margin: 0;
   z-index: 2;
   position: relative;
+  -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
-  -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
 #home .list ul.title:hover, #home .list ul.line:hover {
@@ -967,8 +967,8 @@ a {
 #party-waiting .cover.party_completed.fr {
   background: url("../img/cover-create-full_FR.jpg");
 }
-#party-waiting h1.second {
-  margin-top: 40px;
+#party-waiting .btn {
+  width: 950px;
 }
 #party-waiting .link a {
   color: #06ab93;
@@ -1019,34 +1019,62 @@ a {
   font-weight: bold;
 }
 #party-waiting .block2 {
-  width: 920px;
-  margin-top: 20px;
-  border: 5px solid #87cbc1;
-  padding: 10px;
+  width: 950px;
+  height: 214px;
+  background-image: url("../img/cartouche.jpg");
+  margin-top: 10px;
+  position: relative;
 }
-#party-waiting .block2 .line:nth-child(2) {
-  margin-bottom: 15px;
-}
-#party-waiting .block2 .line span {
-  font-weight: bold;
+#party-waiting .block2 .line {
+  position: absolute;
+  left: 180px;
+  color: white;
+  width: 770px;
+  height: 180px;
+  top: 10px;
 }
 #party-waiting .block2 .line .platform {
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
 }
 #party-waiting .block2 .line .tags {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 30px;
+  color: #87cbc1;
 }
-#party-waiting .block2 .line div:first-child {
-  float: left;
-  width: 600px;
+#party-waiting .block2 .line .slots span {
+  position: absolute;
+  font-size: 67px;
+  color: #cacaca;
+  top: 20px;
+}
+#party-waiting .block2 .line .slots span.one {
+  right: 123px;
+  top: 8px;
+}
+#party-waiting .block2 .line .slots span.two {
+  right: 68px;
+  top: 61px;
 }
 #party-waiting .block2 .line .desc {
-  font-size: 18px;
+  position: absolute;
+  top: 120px;
+  font-size: 30px;
 }
-#party-waiting .block2 .line .slots, #party-waiting .block2 .line .date, #party-waiting .block2 .line .duration {
-  font-size: 16px;
+#party-waiting .block2 .line .when {
+  font-size: 19px;
+  position: absolute;
+  right: 26px;
+  border: 15px;
+  bottom: -17px;
+}
+#party-waiting .block2 .line .link {
+  font-size: 18px;
+  bottom: -17px;
+  left: 0;
+  position: absolute;
+}
+#party-waiting .block2 .line .link a {
+  font-size: 18px;
 }
 
 @media screen and (max-width: 1009px) {

@@ -11,8 +11,8 @@
 			}
 		}
 	}
-	h1.second {
-		margin-top: 40px;
+	.btn {
+		width: 950px;
 	}
 	.link a{
 		color: #06ab93;
@@ -66,35 +66,64 @@
 		}
 	}
 	.block2 {
-		width: 920px;
-		margin-top: 20px;
-		border: 5px solid #87cbc1;
-		padding: 10px;
+		width: 950px;
+		height: 214px;
+		background-image: url('../img/cartouche.jpg');
+		margin-top: 10px;
+		position: relative;
 		.line {
-			&:nth-child(2) {
-				margin-bottom: 15px;
-			}
-			span {
-				font-weight: bold;
-			}
+			position: absolute;
+			left: 180px;
+			color: white;
+			width: 770px;
+			height: 180px;
+			top: 10px;
 			.platform {
-				font-size: 24px;
+				font-size: 40px;
 				font-weight: bold;
+
 			}
 			.tags {
-				font-size: 20px;
-				font-weight: bold;
+				font-size: 30px;
+				color: #87cbc1;
 			}
-			div:first-child{
-				float: left;
-				width: 600px;
+			.slots span {
+				position: absolute;
+				font-size: 67px;
+				color: #cacaca;
+
+				top: 20px;
+				&.one {
+					right: 123px;
+					top: 8px;
+
+				}
+				&.two {
+					right: 68px;
+					top: 61px;
+
+				}
 			}
 			.desc {
-				font-size: 18px;
+				position: absolute;
+				top: 120px;
+				font-size: 30px;
 			}
-			.slots, .date, .duration {
-				font-size: 16px;
-
+			.when {
+				font-size: 19px;
+				position: absolute;
+				right: 26px;
+				border: 15px;
+				bottom: -17px;
+			}
+			.link{
+				font-size: 18px;
+				bottom: -17px;
+				left: 0;
+				position: absolute;
+				a {
+					font-size: 18px;
+				}
 			}
 
 		}
