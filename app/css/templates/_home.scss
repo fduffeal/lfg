@@ -1,0 +1,123 @@
+#home {
+	.cover {
+		background: url("../img/cover-destiny.jpg");
+	}
+	.list {
+		position: relative;
+		width: 950px;
+		margin: 20px auto;
+		padding-bottom: 10px;
+		a:nth-child(even){
+			background: #d8d8d8;
+			display: block;
+		}
+		ul.search-tags {
+			float: left;
+			margin-bottom: 15px;
+			input {
+				width: 250px;
+				height: 25px;
+			}
+		}
+		ul.how-many {
+			float: right;
+			input {
+				width: 25px;
+				margin-left: 12px;
+				height: 20px;
+			}
+
+		}
+		.last {
+			clear: both;
+		}
+		ul.platforms {
+			float: left;
+			width: 450px;
+
+			li {
+				margin: 0 5px;
+				display: inline-block;
+				a {
+					display: block;
+					border: 2px solid #87cbc1;
+					color: #3d3b3b;
+					height: 25px;
+					padding: 0 10px;
+					line-height: 25px;
+					@include transition(background-color 0.2s ease-out);
+					border-radius: 30px;
+
+				}
+				a:hover, a.selected {
+					background: #87cbc1;
+					cursor: pointer;
+				}
+				&:first-child {
+					margin-right: 10px;
+				}
+			}
+		}
+		ul.title, ul.line {
+			width: 100%;
+			margin: 0;
+			z-index: 2;
+			position: relative;
+			@include transition(all 0.1s ease-in-out);
+
+
+			&:hover {
+				background: #87cbc1;
+				cursor: pointer;
+			}
+			&.title {
+				background: #262525;
+				font-weight: bold;
+			}
+			li{
+				font-size: 13px;
+				height: 25px;
+				line-height: 25px;
+				display: inline-block;
+				margin: 0 5px;
+				color: #3d3b3b;
+				&:first-child {
+					padding-left:10px;
+				}
+				&.list-platform {
+					width: 76px
+				}
+				&.list-tags {
+					width: 185px;
+
+				}
+
+				&.list-infos {
+					width: 315px;
+					div {
+						border-radius: 50% 50%;
+						width: 40px;
+						font-size: 12px;
+						text-align: center;
+						line-height: 20px;
+						height: 20px;
+					}
+				}
+				&.list-start {
+					width: 150px;
+				}
+				&.list-slots {
+					width: 30px;
+				}
+
+			}
+		}
+	}
+	.list.withplatform{
+		li {
+			&.list-infos {
+				width: 415px;
+			}
+		}
+	}
+}

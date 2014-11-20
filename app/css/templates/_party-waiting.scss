@@ -1,0 +1,131 @@
+#party-waiting {
+	.cover {
+		background: url("../img/cover-create-waiting.jpg");
+		&.fr {
+			background: url("../img/cover-create-waiting_FR.jpg");
+		}
+		&.party_completed {
+			background: url("../img/cover-create-full.jpg");
+			&.fr {
+				background: url("../img/cover-create-full_FR.jpg");
+			}
+		}
+	}
+	.btn {
+		width: 950px;
+	}
+	.link a{
+		color: #06ab93;
+		font-size: 16px;
+		text-decoration: underline;
+	}
+	.block {
+		width: 950px;
+		font-size: 13px;
+		margin: auto;
+	}
+	.team {
+		ul {
+			width: 100%;
+			&.player:nth-child(odd) {
+				background: #d8d8d8
+			}
+		}
+		li {
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+			&:nth-child(1) {
+				width: 565px;
+				padding-left: 10px;
+			}
+			&:nth-child(2) {
+				width: 100px;
+			}
+			&:nth-child(3) {
+				width: 50px;
+			}
+
+			&:nth-child(4) {
+				width: 200px;
+				a {
+					color: #06ab93;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+		.leader {
+			color :#f15641;
+		}
+		.title {
+			background: #262525;
+			color: white;
+			font-weight: bold;
+		}
+	}
+	.block2 {
+		width: 950px;
+		height: 214px;
+		background-image: url('../img/cartouche.jpg');
+		margin-top: 10px;
+		position: relative;
+		.line {
+			position: absolute;
+			left: 180px;
+			color: white;
+			width: 770px;
+			height: 180px;
+			top: 10px;
+			.platform {
+				font-size: 40px;
+				font-weight: bold;
+
+			}
+			.tags {
+				font-size: 30px;
+				color: #87cbc1;
+			}
+			.slots span {
+				position: absolute;
+				font-size: 67px;
+				color: #cacaca;
+
+				top: 20px;
+				&.one {
+					right: 123px;
+					top: 8px;
+
+				}
+				&.two {
+					right: 68px;
+					top: 61px;
+
+				}
+			}
+			.desc {
+				position: absolute;
+				top: 120px;
+				font-size: 30px;
+			}
+			.when {
+				font-size: 19px;
+				position: absolute;
+				right: 26px;
+				border: 15px;
+				bottom: -17px;
+			}
+			.link{
+				font-size: 18px;
+				bottom: -17px;
+				left: 0;
+				position: absolute;
+				a {
+					font-size: 18px;
+				}
+			}
+
+		}
+	}
+}

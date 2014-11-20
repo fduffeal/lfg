@@ -1,0 +1,286 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/html/controllers/party-create.html
+msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/profile.html
+msgid "ALL FIELDS ARE REQUIRED"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Accept"
+msgstr ""
+
+#: app/html/controllers/404.html
+msgid "Appointment not found"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Back"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Bad Username or Password."
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+#: app/html/controllers/profile.html
+msgid "Class"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Confirm Password"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
+msgid "Create a profil for this game and join !"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Creator"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Decline"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "Description"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Email"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Email Address"
+msgstr ""
+
+#: app/html/directives/lfg-footer.html
+msgid "English"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Enter your login and password"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Esbattle Username"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "For"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Forget login or password ?"
+msgstr ""
+
+#: app/html/directives/lfg-footer.html
+msgid "French"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Game"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "Game :"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Game Infos for {{game.name}}"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "HOME"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "ID in game"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Join !"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Kick"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Leave"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+#: app/html/controllers/profile.html
+msgid "Level"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Login"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Login !"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "Logout"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Mail already send. Please check your mailBox (and your spam box)"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Mail send. Please check your mailBox (and your spam box)"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "NEW PARTY"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "New party on Destiny"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "OR"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Password"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Password Forgotten ?"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "Password Updated !"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Personal Infos"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/profile.html
+msgid "Platform"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Platforms"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Profil Name"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+#: app/html/controllers/rdv.html
+msgid "Profile"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Promote"
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+#: app/html/controllers/login.html
+msgid "Register"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Register !"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Register with your email address"
+msgstr ""
+
+#: app/html/controllers/login.html
+msgid "Retrieve my account !"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/rdv.html
+msgid "Start"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "Tags"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Team"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "The Party"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "The username is already used."
+msgstr ""
+
+#: app/html/directives/lfg-header.html
+msgid "The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "This email is already used."
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Update"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "Update Password"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "Update my password !"
+msgstr ""
+
+#: app/html/controllers/profile.html
+#: app/html/controllers/register.html
+msgid "Username"
+msgstr ""
+
+#: app/html/controllers/profile.html
+msgid "Username on this game"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Waiting Players"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "When"
+msgstr ""
+
+#: app/html/controllers/password-update.html
+msgid "password doesn't match"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "slots available min"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
+msgid "with profil :"
+msgstr ""

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Esbattle.com</title>
+    <meta name="description" content="EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement !
+    Créez un profil de jeu et demander à rejoindre une partie !">
+    <meta name="keywords" content="Game,Matchmaking,Destiny,PS3,PS4,XBOX ONE,XBOX 360,RAID,Find Team,Looking for Group,Rechercher une équipe,Raid,Assault">
+    <meta name="classification" content="jeux video">
+    <meta name="language" content="fr">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/bower_components/html5-boilerplate/css/normalize.css">
+	<link rel="stylesheet" href="/bower_components/html5-boilerplate/css/main.css">
+	<link rel="icon" type="image/png" href="favicon.png"/>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="bower_components/angular-datepicker/dist/index.css"/>
+</head>
+<body>
+<base href="/">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view style="height: 100%; margin-top: -2px;"></div>
+
+<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
+<script src="bower_components/angular-datepicker/dist/index.min.js"></script>
+<script src="js/module/supercache.js"></script>
+<script src="app.js"></script>
+<script src="translations.js"></script>
+
+<script src='js/controllers/MatchmakingCtrl.js'></script>
+<script src='js/controllers/RdvCtrl.js'></script>
+<script src='js/controllers/ProfileCtrl.js'></script>
+<script src='js/controllers/RegisterCtrl.js'></script>
+<script src='js/controllers/LoginCtrl.js'></script>
+<script src='js/controllers/PartyCreateCtrl.js'></script>
+<script src='js/controllers/PartyWaitingCtrl.js'></script>
+<script src="js/controllers/404Ctrl.js"></script>
+<script src="js/controllers/PasswordUpdateCtrl.js"></script>
+<script src="js/directives/lfg-header.js"></script>
+<script src="js/directives/lfg-footer.js"></script>
+<script src="js/directives/lfg-facebook.js"></script>
+<script src="js/directives/lfg-interval.js"></script>
+<script src="js/services/rdv.js"></script>
+<script src="js/services/user.js"></script>
+<script src="js/services/storage.js"></script>
+<script src="js/services/lang.js"></script>
+<script src="js/services/tag.js"></script>
+<script src="js/services/api.js"></script>
+<script src="js/services/activity.js"></script>
+<script src="js/services/redirection.js"></script>
+<script src="js/services/filter.js"></script>
+<script src="js/filters/filterRdv.js"></script>
+<script src="js/filters/filterRdvLastPlace.js"></script>
+<script src="js/filters/filterGameProfil.js"></script>
+<script src="js/filters/filterWords.js"></script>
+<script src="js/filters/filterCharacters.js"></script>
+<script src="js/filters/filterNotification.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56835818-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<lfg-header></lfg-header>
+<ul id="page">
+	<li id="ui-left"></li>
+	<li class="page">
+		<div id="signin" class="content">
+			<div class="cover {{lang}}">
+			</div>
+			<div class="block">
+			<!--<a href="" class="register-fb"><span></span>Register with Facebook</a>
+			<span class="or">OR</span>-->
+			<h1 translate>Register with your email address</h1>
+			<form name="registerForm" ng-submit="submit()">
+				<ul>
+					<li><input type="text" ng-model="username" placeholder="{{'Username'|translate}}" name="inputUsername" required></li>
+					<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail" required></li>
+					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}" name="inputPassword" ng-change="checkPassword()" required></li>
+					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}" name="inputPasswordVerif" ng-change="checkPassword()" required></li>
+					<li><input type="submit" href="" class="btn" value="{{'Register !' | translate}}"></li>
+				</ul>
+			</form>
+		</div>
+		<div class="error-msg" ng-if="username_already_taken" translate>The username is already used.</div>
+		<div class="error-msg" ng-if="email_already_taken" translate>This email is already used.</div>
+		<div class="error-msg" ng-if="errorPassword" translate>Passwords doesn't match</div>
+	</div>
+</li>
+</ul>
+
+<lfg-footer></lfg-footer>

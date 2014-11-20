@@ -1,0 +1,60 @@
+#profile {
+	.cover {
+		background: url("../img/cover-profile.jpg");
+		&.fr {
+                background: url("../img/cover-profile_FR.jpg");
+            }
+	}
+
+	.block {
+		width: 465px;
+		padding: 10px;
+
+		font-size: 13px;
+		ul {
+			li {
+			display: block;
+			margin: 20px 0
+			}
+		}
+		.mypicture {
+			margin-top: 10px;
+			margin-bottom: 15px;
+			float: left;
+			.no-avatar {
+				background: black;
+				border-radius: 50%;
+				width: 80px;
+				height: 80px;
+				color: white;
+				line-height: 80px;
+				text-align: center;
+			}
+			a{
+				color: #87cbc1;
+				font-size: 13px;
+				margin-top: 0;
+			}
+		}
+		label {
+			width: 170px;
+			display: block;
+			float: left;
+			height: 30px;
+			margin-right: 20px;
+			line-height: 30px;
+
+		}
+		input {
+			width: 260px;
+		}
+
+		.modify-pwd {
+			color: #87cbc1;
+			float: right;
+			font-size: 13px;
+			margin-top: 0;
+		}
+
+	}
+}

@@ -1,0 +1,75 @@
+#party-create {
+	.cover {
+		background: url("../img/cover-create.jpg");
+		&.fr {
+			background: url("../img/cover-create_FR.jpg");
+		}
+	}
+	.block {
+		width: 704px;
+		font-size: 13px;
+		margin: auto;
+		padding: 10px;
+		.text {
+			text-align: justify;
+			font-weight: bold;
+			display: block;
+			span {
+				text-decoration: underline;
+			}
+		}
+		ul li {
+			display: inline-block;
+			margin: 10px 0;
+			input[type=text] {
+				width: 300px;
+			}
+			&:nth-child(odd){
+				width: 150px;
+			}
+			&:nth-child(even){
+				width: 500px;
+			}
+			ul li {
+				width: 100px!important;
+				text-align: center;
+				vertical-align: middle;
+			}
+			&.slots input {
+				width: 50px;
+			}
+		}
+		.select-platform {
+			div {
+				position: relative;
+				width: 30px;
+				margin: auto;
+				height: 30px;
+				border-radius: 50%;
+				cursor: pointer;
+				border: 3px solid #87cbc1;
+				span {
+					position: absolute;
+					width: 24px;
+					height: 24px;
+					top: 3px;
+					border-radius: 50%;
+					left: 3px;
+				}
+				&.selected {
+					span {
+						background: #f15641
+					}
+				}
+				&:hover {
+					span {
+						background: lighten(#f15641,20%);
+					}
+				}
+			}
+		}
+		.btn {
+			border: 0
+		}
+	}
+}
