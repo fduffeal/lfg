@@ -7,26 +7,22 @@
 			</div>
 			<div class="block">
 			<!--<a href="" class="register-fb"><span></span>Register with Facebook</a>
-				<span class="or">OR</span>-->
-				<h1 translate>Register with your email address</h1>
-				<form name="registerForm">
-					<ul>
-						<li><input type="text" ng-model="username" placeholder="{{'Username'|translate}}" name="inputUsername"></li>
-						<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail"></li>
-						<li><input ng-model="password" type="password" placeholder="{{'Password'|translate}}" ng-change="updateRegExpPassword()"></li>
-						<li><input type="password" placeholder="{{'Confirm Password'|translate}}" ng-pattern="regExpPassword"></li>
-						<li><a href="" ng-click="submit()" class="btn" translate>Register !</a></li>
-					</ul>
-				</form>
-			</div>
-			<div class="error-msg" ng-if="username_already_taken" translate>
-				The username is already used.
-			</div>
-            <div class="error-msg" ng-if="email_already_taken" translate>
-                This email is already used.
-            </div>
+			<span class="or">OR</span>-->
+			<h1 translate>Register with your email address</h1>
+			<form name="registerForm">
+				<ul>
+					<li><input type="text" ng-model="username" placeholder="{{'Username'|translate}}" name="inputUsername"></li>
+					<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail"></li>
+					<li><input ng-model="password" type="password" placeholder="{{'Password'|translate}}" ng-change="updateRegExpPassword()"></li>
+					<li><input type="password" placeholder="{{'Confirm Password'|translate}}" ng-pattern="regExpPassword"></li>
+					<li><a href="" ng-click="submit()" class="btn" translate>Register !</a></li>
+				</ul>
+			</form>
 		</div>
-	</li>
+		<div class="error-msg" ng-if="username_already_taken" translate>The username is already used.</div>
+		<div class="error-msg" ng-if="email_already_taken" translate>This email is already used.</div>
+	</div>
+</li>
 </ul>
 
 <lfg-footer></lfg-footer>

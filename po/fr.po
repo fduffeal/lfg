@@ -55,10 +55,6 @@ msgstr "Class"
 msgid "Confirm Password"
 msgstr "Confirmez votre mot de passe"
 
-#: app/html/controllers/profile.html
-msgid "Confirm your password"
-msgstr "Confirmez votre mdp"
-
 #: app/html/controllers/rdv.html
 msgid ""
 "Congratulation ! You are now registered on esBattle.com! Do not forget to "
@@ -187,7 +183,7 @@ msgstr "Nouvelle partie sur Destiny"
 msgid "OR"
 msgstr "OU"
 
-#: app/html/controllers/profile.html app/html/controllers/register.html
+#: app/html/controllers/register.html
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -223,7 +219,7 @@ msgstr "Compte"
 msgid "Promote"
 msgstr "Nommer chef de groupe"
 
-#: app/html/directives/lfg-header.html
+#: app/html/directives/lfg-header.html app/html/controllers/login.html
 msgid "Register"
 msgstr "Inscription"
 
@@ -242,10 +238,6 @@ msgstr "Récupérer mon compte !"
 #: app/html/controllers/party-create.html app/html/controllers/rdv.html
 msgid "Start"
 msgstr "Début"
-
-#: app/html/controllers/party-waiting.html
-msgid "Start the"
-msgstr "Démarre le"
 
 #: app/html/controllers/party-create.html
 msgid "Tags"
@@ -271,9 +263,9 @@ msgstr ""
 "Le site web est en beta, merci de reporter vos bugs/idées directement à "
 "contact.esbattle@gmail.com :)"
 
-#: app/html/controllers/party-waiting.html
-msgid "Till :"
-msgstr "Jusqu'à :"
+#: app/html/controllers/register.html
+msgid "This email is already used."
+msgstr "Cet email est déjà pris"
 
 #: app/html/controllers/profile.html
 msgid "Update"
@@ -315,6 +307,15 @@ msgstr "Places dispo minimum"
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Confirm your password"
+#~ msgstr "Confirmez votre mdp"
+
+#~ msgid "Start the"
+#~ msgstr "Démarre le"
+
+#~ msgid "Till :"
+#~ msgstr "Jusqu'à :"
 
 #~ msgid "Class (titan/hunter, arcanist)"
 #~ msgstr "Class (titan/chasseur, arcanist)"
