@@ -8,7 +8,21 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 		        $scope.regExpPassword = '/'+$scope.password+'/';
 	        };
 
+	        $scope.checkPassword = function(){
+		        $scope.errorPassword = false;
+		        if($scope.password !== $scope.passwordverif){
+			        $scope.errorPassword = true;
+			        return;
+		        }
+	        };
+
 	        $scope.submit = function(){
+
+
+		        if($scope.registerForm.$valid === false ||  $scope.errorPassword === true){
+			        return;
+		        }
+
 				$scope.username_already_taken = false;
 				$scope.email_already_taken = false;
 		        user.register($scope.email,$scope.password,$scope.username).success(function(data){
