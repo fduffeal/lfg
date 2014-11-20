@@ -37,10 +37,6 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
-#: app/html/controllers/profile.html
-msgid "Confirm your password"
-msgstr ""
-
 #: app/html/controllers/rdv.html
 msgid "Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your"
 msgstr ""
@@ -163,7 +159,6 @@ msgstr ""
 msgid "OR"
 msgstr ""
 
-#: app/html/controllers/profile.html
 #: app/html/controllers/register.html
 msgid "Password"
 msgstr ""
@@ -203,6 +198,7 @@ msgid "Promote"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
+#: app/html/controllers/login.html
 msgid "Register"
 msgstr ""
 
@@ -221,10 +217,6 @@ msgstr ""
 #: app/html/controllers/party-create.html
 #: app/html/controllers/rdv.html
 msgid "Start"
-msgstr ""
-
-#: app/html/controllers/party-waiting.html
-msgid "Start the"
 msgstr ""
 
 #: app/html/controllers/party-create.html
@@ -247,8 +239,8 @@ msgstr ""
 msgid "The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "Till :"
+#: app/html/controllers/register.html
+msgid "This email is already used."
 msgstr ""
 
 #: app/html/controllers/profile.html
