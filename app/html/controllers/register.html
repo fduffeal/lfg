@@ -19,9 +19,12 @@
 					</ul>
 				</form>
 			</div>
-			<div class="error-msg" translate>
+			<div class="error-msg" ng-if="username_already_taken" translate>
 				The username is already used.
 			</div>
+            <div class="error-msg" ng-if="email_already_taken" translate>
+                This email is already used.
+            </div>
 		</div>
 	</li>
 </ul>

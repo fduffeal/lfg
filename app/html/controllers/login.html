@@ -40,6 +40,8 @@
                             <li><input type="password" ng-model="password" placeholder="Password"/></li>
                             <li class="forget"><a href="" ng-click="displayForgetPasswordForm()" translate>Forget login or password ?</a></li>
                             <li><a href="" ng-click="login()" class="btn" translate>Login !</a></li>
+                            <span class="or" translate>OR</span>
+                            <li><a ng-href="{{registerPageUrl}}" class="btn" translate>Register</a></li>
                         </ul>
                     </form>
                     <div class="error-msg" ng-if="error">

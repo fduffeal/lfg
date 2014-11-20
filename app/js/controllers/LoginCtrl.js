@@ -5,6 +5,8 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 
 	        $scope.lang = lang.getCurrent();
 
+			$scope.registerPageUrl = redirection.getRegisterPageUrl();
+
 			var tentative = 0;
 			var maxTentative = 2;
 			$scope.bDisplayForgetPasswordForm = false;
