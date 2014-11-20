@@ -17,6 +17,10 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 			};
 
 	        $scope.login = function(){
+		        if($scope.loginForm.$valid === false){
+			        return;
+		        }
+
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.userInfo = data;
 					redirection.goBack();
