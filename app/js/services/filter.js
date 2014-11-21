@@ -80,7 +80,7 @@ angular.module('myApp.services')
 						continue;
 					}
 
-					if(onlyInFuture === true && this.isExpired(items[key],now) === false){
+					if(onlyInFuture === true && this.isExpired(items[key],now) === true){
 						continue;
 					}
 
