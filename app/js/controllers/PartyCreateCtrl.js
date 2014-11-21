@@ -51,8 +51,12 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 
             $scope.submit = function(){
+
+	            if($scope.myForm.$valid === false){
+		            return;
+	            }
                 var game = $scope.game;
-                var day = $scope.day.getTime()/1000;
+                var day = $scope.myForm.inputDayStart.$modelValue.getTime()/1000;
                 var dureeHours = $scope.dureeHours;
                 var dureeMinutes = $scope.dureeMinutes;
                 var plateform = $scope.plateform;

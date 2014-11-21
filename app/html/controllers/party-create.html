@@ -20,16 +20,7 @@
 						</li>
 						<li translate>When</li>
 						<li>
-							<input ng-class="{'required':myForm.inputDayStart.$error.required,
-							'unvalid':myForm.inputDayStart.$error.date}"
-							type="datetime-local"
-							id="start-date"
-							name="inputDayStart"
-							ng-model="day"
-							placeholder="yyyy-MM-ddTHH:mm:ss"
-							min="{{today | date:'yyyy-MM-ddTHH:mm:ss'}}"
-							max="{{dayPlusTwo| date:'yyyy-MM-ddTHH:mm:ss'}}"
-							required/>
+							<input type="datetime" id="start-date" name="inputDayStart" date-time ng-model="day" required="true">
 						</li>
 						<li translate>For</li>
 						<li>
@@ -99,14 +90,6 @@
 					<input ng-show="profils.length > 0" type="submit" id="submit" value="{{'Start' | translate}}" class="btn"/>
 					<div ng-show="profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
 
-
-
-				<span>day = {{day | date: "yyyy-MM-dd HH:mm"}}</span><br/>
-				<span>myForm.inputDayStart.$valid = {{myForm.inputDayStart.$valid}}</span><br/>
-				<span>myForm.inputDayStart.$error = {{myForm.inputDayStart.$error}}</span><br/>
-				<span>myForm.$valid = {{myForm.$valid}}</span><br/>
-				<span>myForm.$error.required = {{!!myForm.$error.required}}</span><br/>
-				<span>myForm.inputPlateform = {{plateform}}</span><br/>
 			</form>
 
 			<datalist id="tags">
