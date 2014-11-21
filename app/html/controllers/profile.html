@@ -61,7 +61,12 @@
                     </li>
                     <li>
                         <label translate>Class</label>
-                        <input type="text" ng-model="data1" placeholder="titan, hunter, arcanist" required>
+                       <!-- <input type="text" ng-model="data1" placeholder="titan, hunter, arcanist" required>-->
+                        <select  ng-model="data1">
+                            <option value="titan">titan</option>
+                            <option value="hunter">hunter</option>
+                            <option value="arcanist">hunter</option>
+                        </select>
                     </li>
                     <li>
                         <label translate>Level</label>
