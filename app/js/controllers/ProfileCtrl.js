@@ -35,6 +35,9 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 
 
 			$scope.submitFormGameInfo = function(){
+				if($scope.gameInfo.$valid === false){
+					return;
+				}
 				$scope.formGameInfoUpdate = false;
 				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
 					$scope.formGameInfoUpdate = true;

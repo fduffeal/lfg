@@ -41,7 +41,7 @@
             </div>
             <div class="block right">
                 <h1 translate>Game Infos for {{game.name}}</h1>
-                <form name="gameInfo">
+                <form name="gameInfo" ng-submit="submitFormGameInfo()">
                 <ul>
                     <li ng-show="false">
                         <label translate>Game</label>
@@ -53,26 +53,26 @@
                     </li>
                     <li>
                         <label translate>Profil Name</label>
-                        <input type="text" ng-model="profilName" placeholder="eg: titan exo">
+                        <input type="text" ng-model="profilName" placeholder="eg: titan exo" required>
                     </li>
                     <li>
                         <label translate>Username on this game</label>
-                        <input type="text" ng-model="gameUsername" placeholder="Psn Id, Xbox Live Id, ...">
+                        <input type="text" ng-model="gameUsername" placeholder="Psn Id, Xbox Live Id, ..." required>
                     </li>
                     <li>
                         <label translate>Class</label>
-                        <input type="text" ng-model="data1" placeholder="titan, hunter, arcanist">
+                        <input type="text" ng-model="data1" placeholder="titan, hunter, arcanist" required>
                     </li>
                     <li>
                         <label translate>Level</label>
-                        <input type="text" ng-model="data2">
+                        <input type="text" ng-model="data2" required>
                     </li>
                     <!--<li>
                         <label>Your rating by other players</label>
                         <div>2.341 likes / 478 dislikes</div>
                     </li>-->
                     <li>
-                        <a href="" class="btn" translate ng-click="submitFormGameInfo()">Update</a>
+	                    <input type="submit" id="submit" value="{{'Update' | translate}}" class="btn"/>
                     </li>
                     <li ng-show="formGameInfoUpdate">
                         Updated !
