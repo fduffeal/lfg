@@ -71,6 +71,30 @@
 		background-image: url('../img/cartouche.jpg');
 		margin-top: 10px;
 		position: relative;
+		.share {
+			position: absolute;
+			top: 5px;
+			right: 220px;
+			li {
+				display: inline-block;
+				margin: 0 3px;
+			}
+			a{
+				display: block;
+				background: url("../img/socials-logo.png");
+				width: 41px;
+				height: 43px;
+				float: left;
+				background-size: 100%;
+				&.facebook {
+					background-position: 0 -43px;
+				}
+				&.twitter {
+					background-position: 0 -1175px;
+				}
+			}
+
+		}
 		.line {
 			position: absolute;
 			left: 180px;

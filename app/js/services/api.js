@@ -1,10 +1,24 @@
 angular.module('myApp.services')
-	.service('api', ['$http','storage','redirection',
-		function($http,storage,redirection) {
+	.service('api', ['$http','storage','redirection','$location',
+		function($http,storage,redirection,$location) {
 			'use strict';
 
+			this.url = null;
+			this.getApiUrl = function(){
+				if(this.url !== null){
+					return this.url;
+				}
+				var host = $location.host();
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://api.esbattle.com/';
+				}else {
+					this.url = 'http://dev.esbattle.com/app_dev.php/';
+				}
+				return this.url;
+			};
+
 			this.call = function(path){
-				return $http.get('http://api.esbattle.com/'+path).error(function(data, status, headers, config){
+				return $http.get(this.getApiUrl()+path).error(function(data, status, headers, config){
 
 					switch(status){
 						case 401 :
