@@ -10,7 +10,7 @@ angular.module('myApp.services')
 				}
 				var host = $location.host();
 				if(host === 'www.esbattle.com'){
-					this.url = 'http://api.esbattle.com/';
+					this.url = 'http://api.esbattle.com/app_dev.php/';
 				}else {
 					this.url = 'http://dev.esbattle.com/app_dev.php/';
 				}
