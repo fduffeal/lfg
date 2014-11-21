@@ -15,8 +15,15 @@
 
 					<div class="line">
 						<div class="platform">{{rdv.game.name}} {{rdv.plateform.nom}} </div>
-						<div class="tags"><span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span></div>
-
+						<div class="tags">
+                            <span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span>
+                        </div>
+                        <div class="share">
+                            <ul>
+                                <li><a href="" class="facebook">&nbsp;</a></li>
+                                   <li><a href=""class="twitter">&nbsp;</a></li>
+                            </ul>
+                        </div>
                         <div class="when">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
                         <!--<div class="duration">{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</div>-->
                         <div class="desc">" {{ rdv.description }} "</div>
@@ -24,8 +31,7 @@
                         <div class="link">Url: <a href="">{{currentUrl}}</a></div>
 						<div class="fb-share-button" data-href="{{currentUrl}}" data-layout="link"></div>
 					</div>
-
-				</div>
+                </div>
 
                 <h1 class="second" translate>Team</h1>
                 <div class="team">
