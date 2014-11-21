@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection',
-		function(user,rdv,tag,lang,redirection) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval',
+		function(user,rdv,tag,lang,redirection,$interval) {
 			'use strict';
 			return {
 				scope:{
@@ -16,9 +16,8 @@ angular.module('myApp.directives')
 						redirection.goHome();
 					};
 
-					rdv.getNotifications().success(function(data){
-						$scope.notifications = data;
-					});
+
+
 
 					$scope.homeUrl = redirection.getHomePageUrl();
 					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
@@ -28,6 +27,27 @@ angular.module('myApp.directives')
 					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 
                     $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+						rdv.getNotifications().success(function(data){
+							$scope.notifications = data;
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
 				},
 				restrict: 'E',
 				templateUrl: 'html/directives/lfg-header.html'
