@@ -29,6 +29,7 @@
                                 <div ng-switch-when="you_have_been_kicked">Sorry, you have been kicked by {{notification.expediteur.username}} from</div>
                                 <div ng-switch-when="leader_leave_you_are_new_leader">{{notification.expediteur.username}} has leave. You lead</div>
                                 <div ng-switch-when="you_have_been_promoted">You have been promoted as leader by {{notification.expediteur.username}} on</div>
+                                <div ng-switch-when="one_user_leave">{{notification.expediteur.username}} leave</div>
                             </div>
                             <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}">this party</a>
                             <div class="date">{{notification.created_at*1000 | date:'HH:mm'}}</div>
