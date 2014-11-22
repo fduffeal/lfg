@@ -3,26 +3,40 @@
 		position: relative;
 		margin: 20px 10px;
 		padding-bottom: 10px;
-		a:nth-child(even){
-			background: #d8d8d8;
-			display: block;
-		}
+
 
 		a {
 			color: #2d2d2d;
+			@include transition(background-color 0.2s ease-out);
 		}
+		.line {
+
+			@include transition(background-color 0.2s ease-out);
+			background: white;
+			display: block;
+
+			&:nth-child(even){
+				background: #d8d8d8;
+
+			}
+			&:hover, &.selected {
+				background: #87cbc1;
+				cursor: pointer;
+			}
+		}
+
 		ul.search-tags {
 			@media screen and (max-width: 1185px ) {
-						float: none;
-					}
+				float: none;
+			}
 			float: right;
 			margin-bottom: 15px;
 			input {
 				width: 250px;
 				height: 25px;
 				@media screen and (max-width: 1185px ) {
-						margin-top: 20px;
-					}
+					margin-top: 20px;
+				}
 			}
 		}
 		ul.how-many {
@@ -56,8 +70,6 @@
 					line-height: 25px;
 					@include transition(background-color 0.2s ease-out);
 					border-radius: 30px;
-
-
 				}
 				a:hover, a.selected {
 					background: #87cbc1;
@@ -78,6 +90,8 @@
 			thead {
 				background: #262525;
 				font-weight: bold;
+				height: 25px;
+				line-height: 25px;
 				a {
 					color: white;
 				}
