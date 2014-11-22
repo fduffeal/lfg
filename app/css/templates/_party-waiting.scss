@@ -1,18 +1,7 @@
 #party-waiting {
-	.cover {
-		background: url("../img/cover-create-waiting.jpg");
-		&.fr {
-			background: url("../img/cover-create-waiting_FR.jpg");
-		}
-		&.party_completed {
-			background: url("../img/cover-create-full.jpg");
-			&.fr {
-				background: url("../img/cover-create-full_FR.jpg");
-			}
-		}
-	}
+
 	.btn {
-		width: 950px;
+		width: 100%;
 	}
 	.link a{
 		color: #06ab93;
@@ -20,50 +9,39 @@
 		text-decoration: underline;
 	}
 	.block {
-		width: 950px;
-		font-size: 13px;
+		width: 98%;
 		margin: auto;
 	}
-	.team {
-		ul {
-			width: 100%;
-			&.player:nth-child(odd) {
-				background: #d8d8d8
-			}
+	table {
+		width: 100%;
+		text-align: left;
+		border: 0;
+		td, th {
+			overflow: hidden;
 		}
-		li {
-			display: inline-block;
-			height: 30px;
-			line-height: 30px;
-			&:nth-child(1) {
-				width: 565px;
-				padding-left: 10px;
-			}
-			&:nth-child(2) {
-				width: 100px;
-			}
-			&:nth-child(3) {
-				width: 50px;
-			}
-
-			&:nth-child(4) {
-				width: 200px;
-				a {
-					color: #06ab93;
-					&:hover {
-						text-decoration: underline;
-					}
-				}
-			}
-		}
-		.leader {
-			color :#f15641;
-		}
-		.title {
+		thead {
 			background: #262525;
-			color: white;
 			font-weight: bold;
+
+			color: white;
+
 		}
+		.name{
+			width: 40%;
+		}
+		.class{
+			width: 20%;
+
+		}
+		.level{
+			width: 10%;
+
+		}
+		.action{
+			width: 30%;
+		}
+
+
 	}
 	.block2 {
 		width: 950px;

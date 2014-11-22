@@ -7,25 +7,22 @@
 			background: #d8d8d8;
 			display: block;
 		}
-		h1{
-			background: #f15641;
-			display: block;
-			font-size: 16px;
-			text-align: center;
-			height: 30px;
-			color: white;
-			line-height: 30px;
-			width: 100%;
-		}
+
 		a {
 			color: #2d2d2d;
 		}
 		ul.search-tags {
+			@media screen and (max-width: 1185px ) {
+						float: none;
+					}
 			float: right;
 			margin-bottom: 15px;
 			input {
 				width: 250px;
 				height: 25px;
+				@media screen and (max-width: 1185px ) {
+						margin-top: 20px;
+					}
 			}
 		}
 		ul.how-many {
@@ -47,6 +44,10 @@
 				margin: 0 5px;
 				display: inline-block;
 				a {
+					@media screen and (max-width: 600px ) {
+						padding: 0 7px;
+						font-size: 13px;
+					}
 					display: block;
 					border: 2px solid #87cbc1;
 					color: #3d3b3b;
@@ -55,6 +56,7 @@
 					line-height: 25px;
 					@include transition(background-color 0.2s ease-out);
 					border-radius: 30px;
+
 
 				}
 				a:hover, a.selected {

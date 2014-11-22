@@ -1,21 +1,37 @@
 <div class="header">
     <div class="content-header">
-        <div class="menu-left-mobile">
-            <div>Menu:</div>
-            <ul class="menu">
-                <li><a href="{{homeUrl}}">Accueil</a></li>
-                <li><a href="">Notification</a></li>
-                <li><a href="">Messages</a></li>
-            </ul>
+        <div class="menu-left-mobile" ng-if="userInfo.username">
+            <div class="menu">Menu:
+                <ul>
+                    <li><a href="{{homeUrl}}">Accueil</a></li>
+                    <li><a href="">Notification</a></li>
+                    <li><a href="">Messages</a></li>
+                    <li><a href="">Create</a></li>
+                </ul>
+            </div>
+
         </div>
-        <ul class="menu-left">
+        <ul class="menu-left" ng-if="userInfo.username">
             <li><a href="{{homeUrl}}">Accueil</a></li>
             <li><a href="">Notification</a></li>
             <li><a href="">Messages</a></li>
         </ul>
-        <ul class="menu-right">
-            <li class="username"><img src="img/logo-small.png" class="logo-s" />Cotton</li>
-            <li><a href="{{partyCreateUrl}}" class="btn">Create</a></li>
+        <ul class="menu-right"ng-if="userInfo.username">
+            <li class="username">
+                <img src="img/logo-small.png" class="logo-s" />{{userInfo.username}}
+                <img src="img/header-arrow.png" />
+                <div class="submenu">
+                    <ul>
+                        <li><a href="{{profilGameUrl}}">Account</a></li>
+                        <li><a href="" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="not-mobile"><a href="{{partyCreateUrl}}" class="btn">Create</a></li>
+        </ul>
+        <ul class="menu-right unlogged"ng-if="!userInfo.username">
+            <li><a href="{{loginPageUrl}}" class="btn">Login</a></li>
+            <li><a href="{{registerPageUrl}}" class="btn">Register</a></li>
         </ul>
     </div>
 </div>

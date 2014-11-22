@@ -35,7 +35,42 @@ $orange: #f15641;
 	}
 	.menu-left-mobile {
 		display: none;
+		float: left;
+		.menu {
+			cursor: pointer;
+			position: relative;
+			ul {
+				display: none;
+				position: absolute;
+				z-index: 9;
+				background: black;
+				width: 120px;
+				left: 62px;
+				top: 0;
+				padding: 12px 0;
+				li {
+					display: block;
+					margin-left: 10px;
+					height: 25px;
+					line-height: 25px;
+					a {
+						color: white;
+						font-size: 14px;
+					}
+				}
+			}
+			&:hover ul {
+				display: block;
+			}
+		}
 	}
+	@media screen and (max-width: 600px ) {
+		.not-mobile {
+			display: none;
+		}
+
+	}
+
 	.menu-left {
 		float: left;
 		li {
@@ -51,14 +86,66 @@ $orange: #f15641;
 		}
 	}
 	.menu-right {
+		height: 47px;
+		margin-top: -10px;
 		float: right;
+		margin-right: 40px;
+		&.unlogged {
+			margin-right: 0;
+			margin-top: -10px;
+			.btn{
+				width: 100px;
+				margin-right: 10px;
+			}
+		}
+
+		li {
+			float: left;
+		}
+		@media screen and (max-width: 600px ) {
+			margin: 0
+		}
 		.username {
 			margin-right: 40px;
+			position: relative;
+			cursor: pointer;
+			margin-top: 11px;
 		}
 		.logo-s {
 			float: left;
 			margin-top: 4px;
 			margin-right: 5px;
+		}
+		.username:hover .submenu {
+			opacity: 1
+		}
+		.submenu {
+			opacity: 0;
+			@include transition(opacity 0.2s ease-out);
+			position: absolute;
+			width: 111px;
+			line-height: 10px;
+			padding: 3px 10px;
+			z-index:9;
+			font-size: 13px;
+			text-transform: uppercase;
+			right: -30px;
+			top: 46px;
+			background: black;
+			ul li{
+				display: block;
+				color: #06ab93;
+				margin: 5px 0;
+				height: 17px;
+				a{
+					color: #06ab93;
+					@include transition(background-color 0.2s ease-out);
+					&:hover{
+						background: #06ab93;
+						color: white;
+					}
+				}
+			}
 		}
 	}
 
@@ -68,8 +155,8 @@ $orange: #f15641;
 
 		}
 		.menu-left-mobile {
-            		display: block;
-            	}
+			display: block;
+		}
 	}
 	.btn {
 		display: block;
