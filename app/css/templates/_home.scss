@@ -1,18 +1,27 @@
 #home {
-	.cover {
-		background: url("../img/cover-destiny.jpg");
-	}
 	.list {
 		position: relative;
-		width: 950px;
-		margin: 20px auto;
+		margin: 20px 10px;
 		padding-bottom: 10px;
 		a:nth-child(even){
 			background: #d8d8d8;
 			display: block;
 		}
+		h1{
+			background: #f15641;
+			display: block;
+			font-size: 16px;
+			text-align: center;
+			height: 30px;
+			color: white;
+			line-height: 30px;
+			width: 100%;
+		}
+		a {
+			color: #2d2d2d;
+		}
 		ul.search-tags {
-			float: left;
+			float: right;
 			margin-bottom: 15px;
 			input {
 				width: 250px;
@@ -33,7 +42,6 @@
 		}
 		ul.platforms {
 			float: left;
-			width: 450px;
 
 			li {
 				margin: 0 5px;
@@ -58,67 +66,53 @@
 				}
 			}
 		}
-		ul.title, ul.line {
+		table {
 			width: 100%;
-			margin: 0;
-			z-index: 2;
-			position: relative;
-			@include transition(all 0.1s ease-in-out);
-
-
-			&:hover {
-				background: #87cbc1;
-				cursor: pointer;
+			text-align: left;
+			border: 0;
+			td, th {
+				overflow: hidden;
 			}
-			&.title {
+			thead {
 				background: #262525;
 				font-weight: bold;
+				a {
+					color: white;
+				}
 			}
-			li{
-				font-size: 13px;
-				height: 25px;
-				line-height: 25px;
-				display: inline-block;
-				margin: 0 5px;
-				overflow: hidden;
-				color: #3d3b3b;
-				&:first-child {
-					padding-left:10px;
-				}
-				&.list-platform {
-					width: 76px
-				}
-				&.list-tags {
-					width: 185px;
-
-				}
-
-				&.list-infos {
-					width: 315px;
-					div {
-						border-radius: 50% 50%;
-						width: 40px;
-						font-size: 12px;
-						text-align: center;
-						line-height: 20px;
-						height: 20px;
-					}
-				}
-				&.list-start {
-					width: 150px;
-				}
-				&.list-slots {
-					width: 30px;
-				}
+			.list-platform{
+				width: 10%;
+			}
+			.list-tags{
+				width: 25%;
 
 			}
+			.list-infos{
+				width: 30%;
+				@media screen and (max-width: 980px ) {
+					display: none;
+				}
+			}
+			.list-start{
+				width: 15%;
+				@media screen and (max-width: 1415px ) {
+					width: 20%;
+				}
+			}
+			.list-slots{
+				width: 5%;
+				@media screen and (max-width: 600px ) {
+					display: none;
+				}
+			}
+			.list-creator{
+				width: 15%;
+				@media screen and (max-width: 1415px ) {
+					display: none;
+				}
+			}
+
 		}
-	}
-	.list.withplatform{
-		li {
-			&.list-infos {
-				width: 415px;
-			}
-		}
+
 	}
 }
