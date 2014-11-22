@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval',
-		function(user,rdv,tag,lang,redirection,$interval) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter',
+		function(user,rdv,tag,lang,redirection,$interval,$filter) {
 			'use strict';
 			return {
 				scope:{
@@ -34,7 +34,10 @@ angular.module('myApp.directives')
 					 */
 					var refreshDataNotif = function(){
 						rdv.getNotifications().success(function(data){
-							$scope.notifications = data;
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
 						});
 					};
 
