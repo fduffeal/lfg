@@ -1,52 +1,26 @@
 angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval',
-        function(user,rdv,tag,lang,redirection,$interval) {
+    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval','$rootScope',
+        function(user,rdv,tag,lang,redirection,$interval,$rootScope) {
             'use strict';
             return {
                 scope:{
                     'lfgProfile':'='
                 },
                 link: function($scope, element, attrs) {
-                    lang.initLang();
-                    $scope.lang = lang.getCurrent();
-
-                    $scope.logout = function(){
-                        user.logout();
-                        $scope.userInfo = null;
-                        redirection.goHome();
-                    };
-
-
-
-
-                    $scope.homeUrl = redirection.getHomePageUrl();
-                    $scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-                    $scope.profilGameUrl = redirection.getProfilGamePageUrl();
-                    $scope.loginPageUrl = redirection.getLoginPageUrl();
-                    $scope.registerPageUrl = redirection.getRegisterPageUrl();
-                    $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 
                     $scope.userInfo = user.get();
 
+					$scope.setUserGame = function(userSelected){
+						$scope.userGameSelected = userSelected;
+						$rootScope.userGameSelected = userSelected;
+						$scope.$emit('setUserGame',[userSelected]);
+					};
 
-                    /**
-                     * autoRefreshDataNotif
-                     */
-                    var refreshDataNotif = function(){
-                        rdv.getNotifications().success(function(data){
-                            $scope.notifications = data;
-                        });
-                    };
-
-                    var refreshTime = 12000;
-                    var autoRefreshDataNotif = function(){
-                        $scope.intervaNotificationId = $interval(function(){
-                            refreshDataNotif();
-                        }, refreshTime);
-                    };
-
-                    refreshDataNotif();
-                    autoRefreshDataNotif();
+					if(typeof($rootScope.userGameSelected) !== "undefined"){
+						$scope.setUserGame($rootScope.userGameSelected);
+					}	else if($scope.userInfo.userGame[0]){
+						$scope.setUserGame($scope.userInfo.userGame[0]);
+					}
 
                 },
                 restrict: 'E',
