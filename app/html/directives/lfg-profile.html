@@ -4,23 +4,20 @@
 	<div class="profile-info">
 		<div class="info">
 			<span>Profile: </span>
-			<span class="change">Titan exo <img src="img/footer-arrow.png" />
-			<div>
-				<a href="">Hunter pvp</a>
-				<a href="">Hunter pvp</a>
-				<a href="">Hunter pvp</a>
-				<a href="">Hunter pvp</a>
-			</div>
-			</span>
+			<span class="change">{{userGameSelected.gameProfilName}}<img src="img/footer-arrow.png" />
+                <div>
+                    <a href="" ng-click="setUserGame(userGame);" ng-repeat="userGame in userInfo.userGame" value="{{userGame.id}}">{{userGame.gameProfilName}}</a>
+                </div>
+            </span>
 		</div>
 		<div class="info">
-			<span>Gametag: </span> poneyMCH
+			<span>Gametag: </span> {{userGameSelected.gameUsername}}
 		</div>
 		<div class="info">
-			<span>Class: </span> Titan lvl30
+			<span>Class: </span> {{userGameSelected.data1}} {{userGameSelected.data2}}
 		</div>
 		<div class="info">
-			<span>Platform: </span> XBOX ONE
+			<span>Platform: </span> {{userGameSelected.plateform.nom}}
 		</div>
 	</div>
 </div>

@@ -65,6 +65,12 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}, refreshTime);
 			};
 
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				console.log(data);
+				$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+			});
+
 			//init
 			refreshRdvData();
 			autoRefreshData();
