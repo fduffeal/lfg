@@ -17,13 +17,15 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
-				$scope.plateform = $scope.formInfo.plateforms[0].id;
-				$scope.game = $scope.formInfo.games[0].id;
+				$scope.game = $scope.formInfo.games[0];
 			});
 
 			$scope.today = new Date();
 
 			$scope.day = new Date($scope.today.getFullYear(), $scope.today.getMonth(), $scope.today.getDate(), $scope.today.getHours(), $scope.today.getMinutes()+5,$scope.today.getSeconds());
+
+			$scope.startHours = $scope.today.getHours();
+			$scope.startMinutes = $scope.today.getMinutes();
 
 			$scope.dayPlusTwo = new Date();
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
@@ -39,7 +41,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			var updateProfilsAvailable = function(){
 				if($scope.currentUser !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game,$scope.plateform);
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,$scope.plateform.id);
 					if($scope.profils[0]){
 						$scope.profilSelected = $scope.profils[0];
 					}
@@ -55,11 +57,11 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 	            if($scope.myForm.$valid === false){
 		            return;
 	            }
-                var game = $scope.game;
+                var game = $scope.game.id;
                 var day = $scope.myForm.inputDayStart.$modelValue.getTime()/1000;
                 var dureeHours = $scope.dureeHours;
                 var dureeMinutes = $scope.dureeMinutes;
-                var plateform = $scope.plateform;
+                var plateform = $scope.plateform.id;
                 var tags = $scope.tags;
                 var description = $scope.description;
                 var slotTotal = $scope.slotTotal;
@@ -70,8 +72,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 });
             };
 
-			$scope.updatePlateform = function(id){
-				$scope.plateform = id;
+			$scope.updatePlateform = function(plateform){
+				$scope.plateform = plateform;
 			};
 
 			$scope.autocomplete = function(){
@@ -95,8 +97,14 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.game,$scope.plateform);
+				redirection.goToCreateProfilForGameAndPlateform($scope.game.id,$scope.plateform.id);
 			};
+
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				$scope.updatePlateform(userSelected.plateform);
+				$scope.profilSelected = userSelected;
+			});
 
 		}
 	]
