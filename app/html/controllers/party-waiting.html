@@ -22,6 +22,7 @@
                     <!--<div class="duration">{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</div>-->
                     <div class="desc">" {{ rdv.description }} "</div>
                     <div class="slots"><span class="one">{{ rdv.users.length }}</span><span class="two">{{ rdv.nbParticipant }}</span></div>
+                    <div class="slots-mobile">{{ rdv.users.length }} / {{ rdv.nbParticipant }} </div>
                     <div class="link">Url: <a href="">{{currentUrl}}</a></div>
                     <!--<div class="fb-share-button" data-href="{{currentUrl}}" data-layout="link"></div>-->
                 </div>

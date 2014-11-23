@@ -39,13 +39,15 @@ $orange: #f15641;
 		.menu {
 			cursor: pointer;
 			position: relative;
+			margin-right: 10px;
+			float: left;
 			ul {
 				display: none;
 				position: absolute;
 				z-index: 9;
 				background: black;
-				width: 120px;
-				left: 62px;
+				width: 150px;
+				left: 0;
 				top: 0;
 				padding: 12px 0;
 				li {
@@ -103,7 +105,8 @@ $orange: #f15641;
 			float: left;
 		}
 		@media screen and (max-width: 600px ) {
-			margin: 0
+			margin: 0;
+			margin-top: -10px;
 		}
 		.username {
 			margin-right: 40px;
@@ -156,6 +159,8 @@ $orange: #f15641;
 		}
 		.menu-left-mobile {
 			display: block;
+			width: 135px;
+
 		}
 	}
 	.btn {

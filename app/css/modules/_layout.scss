@@ -24,31 +24,7 @@ h1{
 	line-height: 30px;
 	width: 100%;
 }
-.profile {
-	width: 233px;
-	@include box-shadow(0px 4px 10px 0px rgba(50, 50, 50, 0.75));
-	background: $orange;
-	height: 200px;
-	float: left;
-	position: relative;
-	margin-left: 100px;
-	@media screen and (max-width: 1415px ) {
-		margin-left: 0px;
-	}
-	@media screen and (max-width: 980px ) {
-		display: none;
-	}
-	#logo {
-		margin-left: 45px;
-	}
-	.hide-shadow {
-		background: $orange;
-		width: 233px;
-		height: 14px;
-		position: absolute;
-		top: -13px;
-	}
-}
+
 .page {
 	@media screen and (max-width: 1415px ) {
 		width: 890px;
@@ -58,12 +34,12 @@ h1{
 	}
 	@media screen and (max-width: 980px ) {
 		width: 590px;
-		margin: 40px auto 30px;
+		margin: 10px auto 30px;
 		float: none;
 	}
 	@media screen and (max-width: 600px ) {
 		width: 390px;
-		margin: 40px auto 30px;
+		margin: 10px auto 30px;
 		float: none;
 	}
 	background: white;
