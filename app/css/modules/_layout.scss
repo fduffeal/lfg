@@ -4,6 +4,7 @@ body, html {
 	padding: 0;
 	background: #ededed;
 	font-family: arial;
+	overflow-x: hidden;
 }
 ul, li {
 	margin: 0;
@@ -45,7 +46,7 @@ h1{
 	background: white;
 	width: 1025px;
 	margin-top: 20px;
-	min-height: 700px;
+	min-height: 800px;
 	float: left;
 	margin-left: 33px;
 	border: 1px solid #dddddd;

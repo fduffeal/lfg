@@ -71,6 +71,11 @@ angular.module('myApp', [
 				templateUrl: 'html/controllers/404.html',
 				controller: '404Ctrl'
 			});
+        $routeProvider.when('/:lang/notification',
+            {
+                templateUrl: 'html/controllers/notification.html',
+                controller: 'NotificationCtrl'
+            });
 
 		$routeProvider.when('/:lang/password/forget/:username/:forgetToken',
 			{
