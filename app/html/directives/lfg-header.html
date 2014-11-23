@@ -1,20 +1,20 @@
 <div class="header">
     <div class="content-header">
         <div class="menu-left-mobile" ng-if="userInfo.username">
-            <div class="menu">Menu:
+            <div class="menu">Menu
                 <ul>
                     <li><a href="{{homeUrl}}">Accueil</a></li>
-                    <li><a href="">Notifications</a></li>
+                    <li class="notif"><a href="">Notifications</a><span class="nb-notif">0</span></li>
 
                     <li><a href="">Create</a></li>
                 </ul>
             </div>
-            Accueil
+
 
         </div>
         <ul class="menu-left" ng-if="userInfo.username">
             <li><a href="{{homeUrl}}">Accueil</a></li>
-            <li><a href="">Notification</a></li>
+            <li class="notif"><a href="">Notification</a><span class="nb-notif">0</span></li>
 
         </ul>
         <ul class="menu-right"ng-if="userInfo.username">

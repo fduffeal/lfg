@@ -24,6 +24,23 @@ $orange: #f15641;
 			width: 390px!important;
 			margin: auto;
 		}
+		.notif {
+			position: relative;
+			.nb-notif {
+				display: block;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				border-radius: 50%;
+				position: absolute;
+				top: 11px;
+				background: #2d2d2d;
+				color: white;
+				left: 86px;
+				line-height: 20px;
+				border: 2px solid #06ab93;
+			}
+		}
 
 	}
 	ul li {
@@ -36,12 +53,17 @@ $orange: #f15641;
 	.menu-left-mobile {
 		display: none;
 		float: left;
+		.notif .nb-notif {
+			top: 0
+		}
 		.menu {
 			cursor: pointer;
 			position: relative;
 			margin-right: 10px;
 			float: left;
+			font-weight: bold;
 			ul {
+				font-weight: normal;
 				display: none;
 				position: absolute;
 				z-index: 9;
