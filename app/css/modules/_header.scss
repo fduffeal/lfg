@@ -8,6 +8,9 @@ $orange: #f15641;
 	.content-header {
 		margin-left: 354px;
 		width: 1020px;
+		.notlog.mobile {
+			display: none;
+		}
 		@media screen and (max-width: 1415px ) {
 			width: 893px;
 			margin-left: 250px;
@@ -19,6 +22,10 @@ $orange: #f15641;
 		@media screen and (max-width: 980px ) {
 			width: 590px!important;
 			margin: auto;
+			.notlog.mobile {
+				margin-top: 5px;
+				display: inline;
+			}
 		}
 		@media screen and (max-width: 600px ) {
 			width: 390px!important;
