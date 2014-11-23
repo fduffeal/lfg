@@ -1,42 +1,63 @@
 #party-create {
-	.cover {
-		background: url("../img/cover-create.jpg");
-		&.fr {
-			background: url("../img/cover-create_FR.jpg");
-		}
+	.important {
+		display: block;
+		text-align: center;
+		margin-top: 10px;
+		color: black;
+		text-decoration: underline;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.btn, h1{
+		width: 98%;
+		margin: auto;
+		margin-top: 20px;
 	}
 	.block {
-		width: 704px;
-		font-size: 13px;
+		width: 98%;
 		margin: auto;
-		padding: 10px;
+
 		.text {
 			text-align: justify;
 			font-weight: bold;
 			display: block;
+			font-size: 14px;
+			width: 98%;
 			span {
 				text-decoration: underline;
 			}
 		}
+		ul.inputs {
+			width: 70%;
+			margin: auto;
+		}
 		ul li {
-			display: inline-block;
-			margin: 10px 0;
-			input[type=text] {
-				width: 300px;
+			display: block;
+			margin: 20px 0;
+
+			input[type=text], input[type=datetime] {
+				width: 70%;
 			}
-			&:nth-child(odd){
-				width: 150px;
-			}
-			&:nth-child(even){
-				width: 500px;
+			input[type=number] {
+				width: 50px;
 			}
 			ul li {
 				width: 100px!important;
 				text-align: center;
 				vertical-align: middle;
+				display: inline-block;
 			}
 			&.slots input {
 				width: 50px;
+			}
+			label{
+				display: block;
+				float: left;
+				width: 100px;
+				margin-top: 6px;
+				@media screen and (max-width: 980px ) {
+					display: none;
+				}
 			}
 		}
 		.select-platform {

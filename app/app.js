@@ -14,7 +14,7 @@ angular.module('myApp', [
 ]).
 	config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 
-		$locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(false);
 
 		/*$routeProvider.when('/:lang/matchmaking',
 			{
@@ -65,12 +65,23 @@ angular.module('myApp', [
 				controller: 'RdvCtrl',
 				action:'welcome'
 			});
+        $routeProvider.when('/:lang/games',
+            {
+                templateUrl: 'html/controllers/games-profiles.html',
+                controller: 'GamesProfilesCtrl',
+                action:'games'
+            });
 
 		$routeProvider.when('/:lang/404/:msg?',
 			{
 				templateUrl: 'html/controllers/404.html',
 				controller: '404Ctrl'
 			});
+        $routeProvider.when('/:lang/notification',
+            {
+                templateUrl: 'html/controllers/notification.html',
+                controller: 'NotificationCtrl'
+            });
 
 		$routeProvider.when('/:lang/password/forget/:username/:forgetToken',
 			{

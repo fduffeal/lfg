@@ -4,13 +4,12 @@
 	height: 110px;
 	margin-top: -17px;
 	font-size: 13px;
-	bottom: 0;
+	clear: both;
 	z-index: 1;
 	.container {
 		width: 980px;
-		position: absolute;
-		left: 175px;
-		margin-top: 10px;
+		margin-left: 375px;
+		padding-top: 10px;
 		ul li {
 			display: block;
 			margin: 2px 0;
@@ -29,8 +28,17 @@
 			}
 
 		}
+		ul.left{
+			float: left;
+		}
 		ul.right {
+			float: right;
 			margin: 0 30px;
+			.ico-lang {
+				margin-top: 0px;
+				margin-right: 9px;
+				float: left;
+			}
 			.langs {
 				cursor: pointer;
 				&:hover div{
@@ -57,5 +65,53 @@
 		.ico-lang {
 			width: 45px;
 		}
+	}
+	@media screen and (max-width: 1415px ) {
+		.container {
+			width: 900px;
+			margin-left: 270px;
+		}
+	}
+	@media screen and (max-width: 1184px ) {
+		.container {
+			width: 700px;
+		}
+	}
+	@media screen and (max-width: 980px ) {
+		.container {
+			width: 700px;
+			margin: auto;
+		}
+	}
+	@media screen and (max-width: 680px ) {
+		height: 160px;
+		.container {
+			width: 600px;
+			margin: auto;
+			ul.left {
+				margin-bottom: 10px;
+			}
+			ul.right.two {
+				margin-top: -20px;
+				clear: both;
+				margin-right: 7px;
+			}
+		}
+	}
+	@media screen and (max-width: 650px ) {
+		height: 240px;
+		.container {
+			width: 390px;
+			margin-left: 20px;
+			ul.left {
+				margin-bottom: 10px;
+				float: none;
+			}
+			ul.right {
+				margin: 20px 0 ;
+				float: none;
+			}
+		}
+
 	}
 }

@@ -1,11 +1,8 @@
 <lfg-header></lfg-header>
-<ul id="page">
-	<li id="ui-left"></li>
-	<li class="page">
-		<div id="signin" class="content">
-			<div class="cover {{lang}}">
-			</div>
-			<div class="block">
+<div id="register">
+	<lfg-profile></lfg-profile>
+	<div class="page">
+		<div class="block">
 			<!--<a href="" class="register-fb"><span></span>Register with Facebook</a>
 			<span class="or">OR</span>-->
 			<h1 translate>Register with your email address</h1>
@@ -23,7 +20,5 @@
 		<div class="error-msg" ng-if="email_already_taken" translate>This email is already used.</div>
 		<div class="error-msg" ng-if="errorPassword" translate>Passwords doesn't match</div>
 	</div>
-</li>
-</ul>
-
+</div>
 <lfg-footer></lfg-footer>

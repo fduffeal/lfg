@@ -1,60 +1,40 @@
-<div id="beta" ><div translate>The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)</div></div>
 <div class="header">
-	<div class="content-header">
-		<a href="{{homeUrl}}" id="logo"><img src="img/logo.png" alt="" /></a>
-		<div class="actions not-logged" ng-if="!userInfo.username">
-			<ul class="menu left">
-				<li><a ng-href="{{homeUrl}}" class="selected" translate>HOME</a></li>
-				<li><a ng-href="{{partyCreateUrl}}" translate>NEW PARTY</a></li>
-			</ul>
-			<ul class="menu right">
-				<li class="signin"><a ng-href="{{registerPageUrl}}" translate>Register</a></li>
-				<li><a ng-href="{{loginPageUrl}}" class="go" translate>Login</a></li>
-			</ul>
-		</div>
+    <div class="content-header">
+    <img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
+        <div class="menu-left-mobile" ng-if="userInfo.username">
+            <div class="menu">Menu
+                <ul>
+                    <li><a href="{{homeUrl}}">Accueil</a></li>
+                    <li class="notif"><a href="">Notifications</a><span class="nb-notif">0</span></li>
 
-		<div  class="actions" ng-if="userInfo.username" style="color: #ffffff">
-			<ul class="menu">
+                    <li><a href="">Create</a></li>
+                </ul>
+            </div>
 
-				<li><a ng-href="{{homeUrl}}" class="selected" translate>HOME</a></li>
-				<li><a ng-href="{{partyCreateUrl}}" translate>NEW PARTY</a></li>
-				<li class="notif">
-					<img src="img/ico-notif.png" />
-					<span class="nb-notif">{{notifications.length}}</span>
-					<div class="notif-list">
-                        <div class="line unread" ng-repeat="notification in notifications">
-                            <div class="text" ng-switch on="notification.code">
-                                <div ng-switch-when="new_player_join" translate>A new player joined your party !</div>
-                                <div ng-switch-when="you_have_been_accepted" translate>You have been accepted by {{notification.expediteur.username}} on</div>
-                                <div ng-switch-when="you_have_been_kicked" translate>Sorry, you have been kicked by {{notification.expediteur.username}} from</div>
-                                <div ng-switch-when="leader_leave_you_are_new_leader" translate>{{notification.expediteur.username}} has leave. You lead</div>
-                                <div ng-switch-when="you_have_been_promoted" translate>You have been promoted as leader by {{notification.expediteur.username}} on</div>
-                                <div ng-switch-when="one_user_leave" translate>{{notification.expediteur.username}} leave</div>
-                            </div>
-                            <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate>this party</a>
-                            <div class="date">{{notification.created_at*1000 | date:'HH:mm'}}</div>
-                        </div>
-					</div>
 
-				</li>
-			</ul>
+        </div>
+        <ul class="menu-left" ng-if="userInfo.username">
+            <li><a href="{{homeUrl}}">Accueil</a></li>
+            <li class="notif"><a href="">Notification</a><span class="nb-notif">0</span></li>
 
-			<div class="user">
-				{{userInfo.username}} <img src="img/header-arrow.png" />
-				<div class="submenu">
-					<ul>
-						<li><a href="{{profilGameUrl}}" translate>Profile</a></li>
-						<li><a href="" ng-click="logout()" translate>Logout</a></li>
-					</ul>
-				</div>
-			</div>
-			<!--<div class="picture-user"></div>-->
-
-		</div>
-	</div>
+        </ul>
+        <ul class="menu-right"ng-if="userInfo.username">
+            <li class="username">
+                <img src="img/logo-small.png" class="logo-s" />{{userInfo.username}}
+                <img src="img/footer-arrow.png" />
+                <div class="submenu">
+                    <ul>
+                        <li><a href="{{profilGameUrl}}">Account</a></li>
+                        <li><a href="{{profilGameUrl}}">Games Profiles</a></li>
+                        <li><a href="" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="not-mobile"><a href="{{partyCreateUrl}}" class="btn">Create</a></li>
+        </ul>
+        <ul class="menu-right unlogged"ng-if="!userInfo.username">
+            <li><a href="{{loginPageUrl}}" class="btn">Login</a></li>
+            <li><a href="{{registerPageUrl}}" class="btn">Register</a></li>
+        </ul>
+    </div>
 </div>
-<div lfg-interval="intervaNotificationId"></div>
-<!--<ul class="menu">
-	<li><a href="#/matchmaking">Matchmaking</a></li>
-	<li><a href="#/appointment">Appointment</a></li>
-</ul>-->
