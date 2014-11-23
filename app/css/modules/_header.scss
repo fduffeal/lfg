@@ -61,7 +61,8 @@ $orange: #f15641;
 		display: none;
 		float: left;
 		.notif .nb-notif {
-			top: 0
+			top: 0;
+			left: 95px;
 		}
 		.menu {
 			cursor: pointer;
@@ -85,8 +86,12 @@ $orange: #f15641;
 					height: 25px;
 					line-height: 25px;
 					a {
-						color: white;
-						font-size: 14px;
+						color: #06ab93;
+						@include transition(background-color 0.2s ease-out);
+						&:hover{
+							background: #06ab93;
+							color: white;
+						}
 					}
 				}
 			}
