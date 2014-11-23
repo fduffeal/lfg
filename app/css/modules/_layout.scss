@@ -43,6 +43,11 @@ h1{
 		margin: 10px auto 30px;
 		float: none;
 	}
+	@media screen and (max-width: 390px ) {
+		width: 320px;
+		margin: 10px auto 30px;
+		float: none;
+	}
 	background: white;
 	width: 1025px;
 	margin-top: 20px;

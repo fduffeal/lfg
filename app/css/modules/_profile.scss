@@ -21,6 +21,10 @@
 		width: 390px;
 		margin: auto;
 	}
+	@media screen and (max-width: 390px ) {
+		width: 320px;
+		margin: auto;
+	}
 	#logo {
 		margin-left: 45px;
 		@media screen and (max-width: 980px ) {

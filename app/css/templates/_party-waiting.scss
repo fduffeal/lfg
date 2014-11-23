@@ -38,8 +38,13 @@
 			width: 10%;
 
 		}
-		.action{
+		.actions{
 			width: 30%;
+		}
+		@media screen and (max-width: 390px ) {
+			td.actions{
+				font-size: 13px;
+			}
 		}
 
 
@@ -252,8 +257,49 @@
 						display: none;
 					}
 					.slots-mobile {
+						display: block;
 						position: absolute;
 						left: 283px;
+						top: 40px;
+						font-size: 29px;
+					}
+
+
+
+				}
+
+			}
+			@media screen and (max-width: 390px ) {
+				background-size: 187%;
+				height: 132px;
+				.line {
+					left: 5px;
+					.platform{
+						font-size: 20px;
+					}
+					.tags {
+						font-size: 24px;
+					}
+					.link {
+						bottom: 59px;
+						a {
+							font-size: 13px;
+						}
+					}
+					.desc {
+						top: 62px;
+					}
+					.when {
+						right: 506px;
+						bottom: 161px;
+						font-size: 15px;
+					}
+					.slots {
+						display: none;
+					}
+					.slots-mobile {
+						position: absolute;
+						left: 230px;
 						top: 40px;
 						font-size: 29px;
 					}

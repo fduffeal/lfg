@@ -51,6 +51,9 @@
         .name, .gamertag {width: 98%;}
 
         .platforms {
+            @media screen and (max-width: 390px ) {
+                width: 196px;
+            }
             width: 368px;
             margin: auto;
             margin-bottom: 20px;

@@ -23,6 +23,9 @@
 			display: block;
 			font-size: 14px;
 			width: 98%;
+			@media screen and (max-width: 390px ) {
+				font-size: 13px;
+			}
 			span {
 				text-decoration: underline;
 			}
@@ -30,6 +33,7 @@
 		ul.inputs {
 			width: 70%;
 			margin: auto;
+
 		}
 		ul li {
 			display: block;
@@ -37,6 +41,9 @@
 
 			input[type=text], input[type=datetime] {
 				width: 70%;
+				@media screen and (max-width: 600px ) {
+					width: 100%;
+				}
 			}
 			input[type=number] {
 				width: 50px;

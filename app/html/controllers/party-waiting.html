@@ -23,7 +23,7 @@
                     <div class="desc">" {{ rdv.description }} "</div>
                     <div class="slots"><span class="one">{{ rdv.users.length }}</span><span class="two">{{ rdv.nbParticipant }}</span></div>
                     <div class="slots-mobile">{{ rdv.users.length }} / {{ rdv.nbParticipant }} </div>
-                    <div class="link">Url: <a href="">{{currentUrl}}</a></div>
+                    <div class="link"><a href="">{{currentUrl}}</a></div>
                     <!--<div class="fb-share-button" data-href="{{currentUrl}}" data-layout="link"></div>-->
                 </div>
             </div>
@@ -48,8 +48,8 @@
                             <td class="level">{{userGame.data2}}</td>
                             <td class="actions">
                                 <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-                        <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="promote(userGame.id)" translate>Promote</a>
-                        <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
+                                <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="promote(userGame.id)" translate>Promote</a>
+                                <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
                             </td>
                         </tr>
                     </tbody>
@@ -77,38 +77,38 @@
                             <td class="class">{{userGame.data1}}</td>
                             <td class="level">{{userGame.data2}}</td>
                             <td class="actions">
-                             <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-                        <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
-                        <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                               <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+                               <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
+                               <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
+                           </td>
+                       </tr>
+                   </tbody>
+               </table>
 
 
+           </div>
+       </div>
+
+       <div class="popup confirm" ng-show="false">
+        <div class="text">
+            <span>Are you sure to kick :</span>
+            <div class="choose">
+                <a href="">Yes</a>
+                <a href="">No</a>
             </div>
+
         </div>
-
-        <div class="popup confirm" ng-show="false">
-            <div class="text">
-                <span>Are you sure to kick :</span>
-                <div class="choose">
-                    <a href="">Yes</a>
-                    <a href="">No</a>
-                </div>
-
-            </div>
-            <div class="bg"></div>
-        </div>
-
-
-        <div ng-show="canJoin && profils.length > 0 && isFull === false" class="btn" ng-click="join()" translate>Join !</div>
-        <div ng-show="canJoin && profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
-        <div ng-show="profils.length > 1 && canJoin">
-            <label translate>with profil :</label>
-            <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
-        </div>
+        <div class="bg"></div>
     </div>
+
+
+    <div ng-show="canJoin && profils.length > 0 && isFull === false" class="btn" ng-click="join()" translate>Join !</div>
+    <div ng-show="canJoin && profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
+    <div ng-show="profils.length > 1 && canJoin">
+        <label translate>with profil :</label>
+        <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
+    </div>
+</div>
 </div>
 
 <div lfg-interval="intervalId"></div>
