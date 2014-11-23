@@ -154,10 +154,10 @@ $orange: #f15641;
 			margin-right: 5px;
 		}
 		.username:hover .submenu {
-			opacity: 1
+			display:block;
 		}
 		.submenu {
-			opacity: 0;
+			display: none;
 			@include transition(opacity 0.2s ease-out);
 			position: absolute;
 			width: 140px;
