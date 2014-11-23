@@ -34,6 +34,11 @@
 		ul.right {
 			float: right;
 			margin: 0 30px;
+			.ico-lang {
+				margin-top: 0px;
+				margin-right: 9px;
+				float: left;
+			}
 			.langs {
 				cursor: pointer;
 				&:hover div{

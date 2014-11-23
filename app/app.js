@@ -65,6 +65,12 @@ angular.module('myApp', [
 				controller: 'RdvCtrl',
 				action:'welcome'
 			});
+        $routeProvider.when('/:lang/games',
+            {
+                templateUrl: 'html/controllers/games-profiles.html',
+                controller: 'GamesProfilesCtrl',
+                action:'games'
+            });
 
 		$routeProvider.when('/:lang/404/:msg?',
 			{

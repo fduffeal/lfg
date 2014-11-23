@@ -4,7 +4,7 @@
             <div class="menu">Menu:
                 <ul>
                     <li><a href="{{homeUrl}}">Accueil</a></li>
-                    <li><a href="">Notification</a></li>
+                    <li><a href="">Notifications</a></li>
 
                     <li><a href="">Create</a></li>
                 </ul>
@@ -20,10 +20,11 @@
         <ul class="menu-right"ng-if="userInfo.username">
             <li class="username">
                 <img src="img/logo-small.png" class="logo-s" />{{userInfo.username}}
-                <img src="img/header-arrow.png" />
+                <img src="img/footer-arrow.png" />
                 <div class="submenu">
                     <ul>
                         <li><a href="{{profilGameUrl}}">Account</a></li>
+                        <li><a href="{{profilGameUrl}}">Games Profiles</a></li>
                         <li><a href="" ng-click="logout()">Logout</a></li>
                     </ul>
                 </div>
