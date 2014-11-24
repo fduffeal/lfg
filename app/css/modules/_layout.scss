@@ -5,11 +5,16 @@ body, html {
 	background: #ededed;
 	font-family: arial;
 	overflow-x: hidden;
+	height: 100%;
 }
 ul, li {
 	margin: 0;
 	list-style: none;
 	padding: 0
+}
+
+.wrap {
+	height: 96%
 }
 
 a {
@@ -51,7 +56,6 @@ h1{
 	background: white;
 	width: 1025px;
 	margin-top: 20px;
-	min-height: 800px;
 	float: left;
 	margin-left: 33px;
 	border: 1px solid #dddddd;

@@ -84,6 +84,9 @@
 			width: 100%;
 			text-align: left;
 			border: 0;
+			@media screen and (max-width: 390px ) {
+					font-size: 13px;
+				}
 			td, th {
 				overflow: hidden;
 			}

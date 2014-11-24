@@ -1,0 +1,95 @@
+#matchmaking {
+	.block {
+		width: 98%;
+		margin: auto;
+	}
+	.select {
+		width: 465px;
+		margin: auto;
+		li {
+			display: inline-block;
+			width: 108px;
+			position: relative;
+			height: 170px;
+			vertical-align: middle;
+			&.selected {
+				opacity: 1;
+			}
+			&.no-selected {
+				opacity: 0.5;
+			}
+
+			a {
+				display: block;
+				width: 108px;
+				position: absolute;
+				height: 108px;
+				background-image: url('../img/sprite_ico_matchmaking.png');
+
+			}
+			span {
+				display: block;
+				position: absolute;
+				bottom: 50px;
+				text-align: center;
+				width: 108px;
+				font-weight: bold;
+
+			}
+			select {
+				bottom: 0;
+				position: absolute;
+				left: 10px
+			}
+			&.nightfall a{
+				&:hover {
+					background-position: 0 -115px;
+					top: -7px;
+				}
+			}
+			&.day a{
+
+				background-position: -111px -1px;
+				&:hover {
+					background-position: -111px -115px;
+					top: -6px;
+				}
+			}
+			&.weekly a {
+				background-position: -223px -1px;
+				&:hover {
+					background-position: -224px -115px;
+					top: -6px;
+				}
+			}
+			&.raids a {
+				background-position: -340px 0;
+				&:hover {
+					background-position: -340px -115px;
+					top: -6px;
+					left: 1px;
+				}
+			}
+		}
+	}
+
+	.loader{
+		position: absolute;
+		margin: 0 0 2em;
+		height: 300px;
+		width: 20%;
+		text-align: center;
+		padding: 1em;
+		margin: 0 auto 1em;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+	fill: #FF6700;
+}
+}
