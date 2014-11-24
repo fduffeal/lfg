@@ -5,11 +5,16 @@ body, html {
 	background: #ededed;
 	font-family: arial;
 	overflow-x: hidden;
+	height: 100%;
 }
 ul, li {
 	margin: 0;
 	list-style: none;
 	padding: 0
+}
+
+.wrap {
+	height: 96%
 }
 
 a {
