@@ -3,9 +3,11 @@
 		width: 98%;
 		margin: auto;
 	}
+	.btn {
+		width: 300px;
+	}
 	.select {
-		width: 465px;
-		margin: auto;
+		text-align: center;
 		li {
 			display: inline-block;
 			width: 108px;
@@ -72,17 +74,79 @@
 			}
 		}
 	}
+	.searching {
+		text-align: center;
+		font-size: 15px;
+		color: #2d2d2d;
+	}
 
 	.loader{
-		position: absolute;
-		margin: 0 0 2em;
-		height: 300px;
-		width: 20%;
+		height: 200px;
+		width: 200px;
 		text-align: center;
-		padding: 1em;
-		margin: 0 auto 1em;
-		display: inline-block;
-		vertical-align: top;
+		margin: 0 auto 0;
+		position: relative;
+		.slot {
+			position: absolute;
+			top: 50px;
+			left: 0
+		}
+		span {
+			color: #cacaca;
+			font-size: 55px;
+			position: absolute;
+			&.one {
+				left: 59px;
+			}
+			&.two {
+				left: 88px;
+				top: 1px;
+				font-size: 90px;
+			}
+			&.three {
+				left: 115px;
+				top: 32px;
+			}
+		}
+	}
+	.full {
+		table {
+			width: 100%;
+			text-align: left;
+			border: 0;
+			td, th {
+				overflow: hidden;
+			}
+			thead {
+				background: #262525;
+				font-weight: bold;
+				height: 25px;
+				line-height: 25px;
+				color: white;
+
+			}
+			.name{
+				width: 40%;
+			}
+			.class{
+				width: 20%;
+
+			}
+			.level{
+				width: 10%;
+
+			}
+			.actions{
+				width: 30%;
+			}
+			@media screen and (max-width: 390px ) {
+				td.actions{
+					font-size: 13px;
+				}
+			}
+
+
+		}
 	}
 
 /*
@@ -90,6 +154,6 @@
 */
 svg path,
 svg rect{
-	fill: #FF6700;
+	fill: lighten(#000,20%);
 }
 }

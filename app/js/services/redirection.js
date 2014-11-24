@@ -20,6 +20,15 @@ angular.module('myApp.services')
 			this.getRegisterPageUrl = function(){
 				return getLang()+'/register';
 			};
+			this.getNotifPageUrl = function(){
+				return getLang()+'/notification';
+			};
+			this.getMatchmakingPageUrl = function(){
+				return getLang()+'/matchmaking';
+			};
+			this.getGamesPageUrl = function(){
+				return getLang()+'/games';
+			};
 
 			this.goToRegister = function(){
 				$location.path(this.getRegisterPageUrl());

@@ -16,11 +16,11 @@ angular.module('myApp', [
 
 		$locationProvider.html5Mode(true);
 
-		/*$routeProvider.when('/:lang/matchmaking',
+		$routeProvider.when('/:lang/matchmaking',
 			{
 				templateUrl: 'html/controllers/matchmaking.html',
 				controller: 'MatchmakingCtrl'
-			});*/
+			});
 
 		$routeProvider.when('/:lang/',
 			{

@@ -25,6 +25,9 @@ angular.module('myApp.directives')
 					$scope.loginPageUrl = redirection.getLoginPageUrl();
 					$scope.registerPageUrl = redirection.getRegisterPageUrl();
 					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 
                     $scope.userInfo = user.get();
 
