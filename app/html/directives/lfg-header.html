@@ -1,23 +1,22 @@
 <div class="header">
     <div class="content-header">
     <img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
-        <div class="menu-left-mobile" ng-if="userInfo.username">
+        <div class="menu-left-mobile">
             <div class="menu">Menu
                 <ul>
                     <li><a href="{{homeUrl}}">Accueil</a></li>
-                    <li class="notif"><a href="{{notifUrl}}">Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
-                     <li><a href="{{matchmakingUrl}}">Matchmaking</a></li>
-                    <li><a href="{{partyCreateUrl}}">Create</a></li>
+                    <li  ng-if="userInfo.username"><a href="{{matchmakingUrl}}">Matchmaking</a></li>
+                    <li  ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}">Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
+                    <li  ng-if="userInfo.username"><a href="{{partyCreateUrl}}">Create</a></li>
                 </ul>
             </div>
 
 
         </div>
-        <ul class="menu-left" ng-if="userInfo.username">
+        <ul class="menu-left">
             <li><a href="{{homeUrl}}">Accueil</a></li>
-            <li class="notif"><a href="{{notifUrl}}">Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
-            <li><a href="{{matchmakingUrl}}">Matchmaking</a></li>
-
+            <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}">Matchmaking</a></li>
+            <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}">Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
         </ul>
         <ul class="menu-right"ng-if="userInfo.username">
             <li class="username">
