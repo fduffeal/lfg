@@ -2,6 +2,7 @@
 	width: 100%;
 	background: #f15641;
 	height: 110px;
+	margin-top: -110px;
 	font-size: 13px;
 	clear: both;
 	z-index: 1;
@@ -77,6 +78,7 @@
 		}
 	}
 	@media screen and (max-width: 980px ) {
+		margin-top: 0;
 		.container {
 			width: 700px;
 			margin: auto;
