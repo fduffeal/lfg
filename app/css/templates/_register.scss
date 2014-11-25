@@ -45,10 +45,27 @@
 				width: 310px;
 			}
 		}
+		@media screen and (max-width: 390px ) {
+			width: 320px;
+			h1 {
+				width: 300px;
+			}
+			ul li {
+				width: 300px;
+				.btn {
+					width: 285px;
+				}
+			}
+			ul li input {
+				width: 285px;
+			}
 
+
+		}
 	}
 	.error-msg {
 		position: relative;
 		text-align: center;
 	}
+
 }
