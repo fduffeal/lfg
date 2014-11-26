@@ -1,38 +1,18 @@
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope',
-		function ($scope) {
+	['$scope','matchmaking',
+		function ($scope,matchmaking) {
 			'use strict';
 
-			$scope.aGamers = [
-			{
-				'id': 1,
-				'gamertags': {
-					'PS4': 'PoneyMCH'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name': 'Titan',
-							'level': '26',
-							'url_info': 'http://www.bungie.net/fr/Legend/2/4611686018433351063/2305843009214841831'
-						}
-					}
-				}
-			}, {
-				'id':2,
-				'gamertags': {
-					'PS4': 'Fifoukiller84'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name':'Hunter',
-							'level':'27',
-							'url_info':'http://www.bungie.net/fr/Legend/2/4611686018430647711/2305843009215026244'
-						}
-					}
-				}
-			}];
+			$scope.currentUser = user.get();
+
+			$scope.$on('setUserGame',function(event,data){
+				$scope.profilSelected = userSelected;
+			});
+
+			$scope.join = function(){
+				var matchmakingId = 1;
+				matchmaking.join(matchmakingId,$scope.profilSelected.id);
+			}
 
 
 		}
