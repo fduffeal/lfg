@@ -1,11 +1,12 @@
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope','matchmaking',
-		function ($scope,matchmaking) {
+	['$scope','matchmaking','user',
+		function ($scope,matchmaking,user) {
 			'use strict';
 
 			$scope.currentUser = user.get();
 
 			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
 				$scope.profilSelected = userSelected;
 			});
 
@@ -13,8 +14,6 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 				var matchmakingId = 1;
 				matchmaking.join(matchmakingId,$scope.profilSelected.id);
 			}
-
-
 		}
 	]
 );

@@ -9,6 +9,7 @@ angular.module('myApp.directives')
                 link: function($scope, element, attrs) {
 
                     $scope.userInfo = user.get();
+	                $scope.userGameSelected = null;
 
 					$scope.setUserGame = function(userSelected){
 						$scope.userGameSelected = userSelected;
@@ -18,10 +19,9 @@ angular.module('myApp.directives')
 
 					if(typeof($rootScope.userGameSelected) !== "undefined"){
 						$scope.setUserGame($rootScope.userGameSelected);
-					}	else if($scope.userInfo.userGame[0]){
+					}	else if(typeof($scope.userInfo) !== "undefined" && $scope.userInfo.userGame[0]){
 						$scope.setUserGame($scope.userInfo.userGame[0]);
 					}
-
                 },
                 restrict: 'E',
                 templateUrl: 'html/directives/lfg-profile.html'
