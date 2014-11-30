@@ -5,12 +5,12 @@
         <span class="important" translate>ALL FIELDS ARE REQUIRED</span>
 
         <div class="block">
-            <h1 translate>New party on {{game.name}} {{plateform.nom}}</h1>
+            <h1><span translate>New party on </span> {{game.name}} {{plateform.nom}}</h1>
 
             <form name="myForm" ng-submit="submit()">
                 <ul class="inputs">
                     <li>
-                        <label>When</label>
+                        <label translate>When</label>
                         <input type="number" ng-model="startHours"/> :
                         <input type="number" ng-model="startMinutes"/>
                         <input type="hidden" id="start-date" name="inputDayStart" ng-model="day" required="true">
@@ -23,7 +23,7 @@
                                list="tags" ng-change="autocomplete()">
                     </li>
                     <li>
-                        <label for="">Description</label>
+                        <label for="" translate>Description</label>
                         <input ng-class="{'required':myForm.inputDescription.$error.required,
 						'unvalid':myForm.inputDescription.$error.text}"
                                type="text" name="inputDescription" ng-model="description"
@@ -46,8 +46,7 @@
                         <input ng-show="profils.length > 0" type="submit" id="submit" value="{{'Start' | translate}}"
                                class="btn"/>
 
-                        <div ng-show="profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a
-                            profil for this game and join !
+                        <div ng-show="profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !
                         </div>
                     </li>
                 </ul>
