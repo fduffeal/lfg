@@ -7,7 +7,8 @@
 			<h1>MATCHMAKING</h1>
 			<div class="select">
 				<ul>
-                    <li ng-repeat="(key,template) in groupOfTemplate" ng-class="{{template[0].icone}}">
+                    <li ng-repeat="(key,template) in groupOfTemplate" class="{{template[0].icone}}"
+                        ng-class="{'selected':(template === matchmakingTemplate),'no-selected':(template !== matchmakingTemplate && matchmakingTemplate !== null)}">
                         <a href="" ng-click="selectGroupOfTemplate(template)"></a>
                         <span>{{template[0].description}}</span>
 
@@ -21,39 +22,6 @@
                         <input type="submit" class="btn" value="Go"/>
                     </form>
                 </ul>
-
-
-
-                    <!--
-					<li class="weekly no-selected">
-						<a href=""></a>
-						<span>Epic weekly</span>
-						<select disabled="disabled" name="" id="">
-							<option selected="selected" value="">level 30</option>
-						</select>
-					</li>
-					<li class="nightfall">
-						<a href=""></a>
-						<span>Nightfall</span>
-						<select name="" id="">
-							<option value="">level 30</option>
-						</select>
-					</li>
-					<li class="day selected">
-						<a href=""></a>
-						<span>Epic day</span>
-						<select name="" id="">
-							<option value="">level 30</option>
-						</select>
-					</li>
-
-					<li class="raids">
-						<a href=""></a>
-						<span>Raids</span>
-						<select name="" id="">
-							<option value="">level 30</option>
-						</select>
-					</li>-->
 			</div>
 			<div class="searching">
 				<h1>Please waiting, we are looking for players...</h1>

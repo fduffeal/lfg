@@ -4,6 +4,7 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 			'use strict';
 
 			$scope.currentUser = user.get();
+			$scope.matchmakingTemplate = null;
 
 			matchmaking.getConf().success(function(data){
 
@@ -37,7 +38,6 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 			$scope.selectGroupOfTemplate = function(template){
 				$scope.matchmakingTemplate = template;
 				$scope.templateSelectedModel = template[0];
-				$scope.joinMatchmakingForm.templateSelectedInput.value = template[0];
 			};
 		}
 	]
