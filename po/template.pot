@@ -4,10 +4,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: app/html/directives/lfg-footer.html
-msgid "&copy; Copyright 2014 esbattle.com all rights reserved"
-msgstr ""
-
 #: app/html/controllers/party-create.html
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
 msgstr ""
@@ -68,6 +64,10 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
+msgstr ""
+
+#: app/html/directives/lfg-profile.html
+msgid "Create a profile"
 msgstr ""
 
 #: app/html/controllers/party-create.html
