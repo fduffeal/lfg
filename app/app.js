@@ -9,8 +9,7 @@ angular.module('myApp', [
 	'myApp.filters',
 	'ngCookies',
 	'gettext',
-	'superCache',
-	'datePicker'
+	'superCache'
 ]).
 	config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 

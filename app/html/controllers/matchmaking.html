@@ -7,6 +7,24 @@
 			<h1>MATCHMAKING</h1>
 			<div class="select">
 				<ul>
+                    <li ng-repeat="(key,template) in groupOfTemplate" ng-class="{{template[0].icone}}">
+                        <a href="" ng-click="selectGroupOfTemplate(template)"></a>
+                        <span>{{template[0].description}}</span>
+
+                    </li>
+                    <form name="joinMatchmakingForm" ng-submit="join()">
+                        <select name="templateSelectedInput"
+                                ng-model="templateSelectedModel"
+                                ng-options="config.concatTags for config in matchmakingTemplate"
+                                required>
+                        </select>
+                        <input type="submit" class="btn" value="Go"/>
+                    </form>
+                </ul>
+
+
+
+                    <!--
 					<li class="weekly no-selected">
 						<a href=""></a>
 						<span>Epic weekly</span>
@@ -35,9 +53,7 @@
 						<select name="" id="">
 							<option value="">level 30</option>
 						</select>
-					</li>
-				</ul>
-				<a href="" class="btn" ng-click="join()">Go</a>
+					</li>-->
 			</div>
 			<div class="searching">
 				<h1>Please waiting, we are looking for players...</h1>
