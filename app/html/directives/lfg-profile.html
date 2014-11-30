@@ -1,7 +1,7 @@
 <div class="profile loggued" ng-if="userInfo.username">
 	<div class="hide-shadow"></div>
 	<img src="img/logo.png" id="logo" />
-	<div class="profile-info" ng-if="userGame">
+	<div class="profile-info" ng-if="userGameSelected.gameProfilName">
 		<div class="info">
 			<span translate>Profile: </span>
 			<span class="change">{{userGameSelected.gameProfilName}}<img src="img/footer-arrow.png" />
@@ -20,7 +20,7 @@
 			<span translate>Platform: </span> {{userGameSelected.plateform.nom}}
 		</div>
 	</div>
-	<div class="profile-info" ng-if="!userGame">
+	<div class="profile-info" ng-if="!userGameSelected.gameProfilName">
 		<a href="{{gamesUrl}}" class="btn-new" translate>Create a profile</a>
 	</div>
 </div>
