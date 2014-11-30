@@ -46,6 +46,7 @@ angular.module('myApp.directives')
 
 					var refreshTime = 12000;
 					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
 						$scope.intervaNotificationId = $interval(function(){
 							refreshDataNotif();
 						}, refreshTime);

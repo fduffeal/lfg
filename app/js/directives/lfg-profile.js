@@ -19,7 +19,7 @@ angular.module('myApp.directives')
 
 					if(typeof($rootScope.userGameSelected) !== "undefined"){
 						$scope.setUserGame($rootScope.userGameSelected);
-					}	else if(typeof($scope.userInfo) !== "undefined" && $scope.userInfo.userGame[0]){
+					}	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
 						$scope.setUserGame($scope.userInfo.userGame[0]);
 					}
                 },

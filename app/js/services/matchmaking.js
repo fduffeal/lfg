@@ -8,8 +8,8 @@ angular.module('myApp.services')
 
 			this.join = function(matchmakingId,profilId){
 				var currentUser = user.get();
-				return api.call('matchmaking/create/'+matchmakingId+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
-			}
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+			};
 		}
 	]
 );
