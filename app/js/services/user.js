@@ -83,6 +83,11 @@ angular.module('myApp.services')
 				var currentUser = this.get();
 				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
 			};
+
+			this.updateOnline = function(){
+				var currentUser = this.get();
+				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
+			};
 		}
 	]
 );
