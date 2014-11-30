@@ -1,11 +1,14 @@
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope','matchmaking','user',
-		function ($scope,matchmaking,user) {
+	['$scope','matchmaking','user','redirection',
+		function ($scope,matchmaking,user,redirection) {
 			'use strict';
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
 
+			/**
+			 * récupère les configs pour la selection du type de matchmaking
+			 */
 			matchmaking.getConf().success(function(data){
 
 				var groupOfTemplate = {};
@@ -15,7 +18,6 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 					}
 					data[key].concatTags = "";
 					for(var keyTag in data[key].tags){
-						console.log(data[key].tags[keyTag]);
 						data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
 					}
 					groupOfTemplate[data[key].description].push(data[key]);
@@ -23,18 +25,30 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 				$scope.groupOfTemplate = groupOfTemplate;
 			});
 
+			/**
+			 * écoute le changement de profil
+			 */
 			$scope.$on('setUserGame',function(event,data){
 				var userSelected = data[0];
 				$scope.profilSelected = userSelected;
 			});
 
+			/**
+			 * lance le matchmaking
+			 */
 			$scope.join = function(){
 				if($scope.joinMatchmakingForm.$valid === false){
 					return;
 				}
-				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id);
+				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id).success(function(data){
+					redirection.goToMatchmakingId(data.id);
+				});
 			};
 
+			/**
+			 * selectionne un type de matchmaking
+			 * @param template
+			 */
 			$scope.selectGroupOfTemplate = function(template){
 				$scope.matchmakingTemplate = template;
 				$scope.templateSelectedModel = template[0];

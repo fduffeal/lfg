@@ -11,6 +11,36 @@
 	.block {
 		width: 98%;
 		margin: auto;
+
+      .loader{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+        margin: 0 auto 0;
+        position: relative;
+        .slot {
+          position: absolute;
+          top: 50px;
+          left: 0
+        }
+        span {
+          color: #cacaca;
+          font-size: 55px;
+          position: absolute;
+          &.one {
+            left: 59px;
+          }
+          &.two {
+            left: 88px;
+            top: 1px;
+            font-size: 90px;
+          }
+          &.three {
+            left: 115px;
+            top: 32px;
+          }
+        }
+      }
 	}
 	table {
 		width: 100%;

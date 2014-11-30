@@ -58,6 +58,10 @@ angular.module('myApp.services')
 				$location.path(this.getPartyWaitingByIdUrl(id));
 			};
 
+			this.goToMatchmakingId = function(id){
+				$location.path(getLang()+'/matchmaking/waiting/'+id);
+			};
+
 			this.getHomePageUrl = function(){
 				return getLang()+'/';
 			};
