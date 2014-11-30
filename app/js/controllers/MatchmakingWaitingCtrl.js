@@ -44,12 +44,15 @@ angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
 
 	        var refreshData = function() {
 
-		        rdv.get($routeParams.partyId).success(function (data) {
-			        $scope.rdv = data;
+				user.updateOnline().success(function(data){
+					rdv.get($routeParams.partyId).success(function (data) {
+						$scope.rdv = data;
 
-			        $scope.isFull = (data.users.length === data.nbParticipant);
-					manageAutorisation();
-		        });
+						$scope.isFull = (data.users.length === data.nbParticipant);
+						manageAutorisation();
+					});
+				});
+
 	        };
 
 	        $scope.leave = function(userId){
