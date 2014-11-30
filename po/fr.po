@@ -12,10 +12,6 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/html/directives/lfg-footer.html
-msgid "&copy; Copyright 2014 esbattle.com all rights reserved"
-msgstr "&copy; Copyright 2014 esbattle.com Tous droits réservés"
-
 #: app/html/controllers/party-create.html
 msgid ""
 "<span>IMPORTANT :</span>After creating the party, it will be possible to "
@@ -86,6 +82,10 @@ msgstr "Créer"
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
+
+#: app/html/directives/lfg-profile.html
+msgid "Create a profile"
+msgstr "Nouveau profil"
 
 #: app/html/controllers/party-create.html
 msgid "Create a profile for this game and join !"
@@ -338,6 +338,9 @@ msgstr "Les mots de passe ne correspondent pas"
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "&copy; Copyright 2014 esbattle.com all rights reserved"
+#~ msgstr "&copy; Copyright 2014 esbattle.com Tous droits réservés"
 
 #~ msgid ""
 #~ "Create a\r\n"

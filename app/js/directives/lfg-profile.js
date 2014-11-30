@@ -10,6 +10,7 @@ angular.module('myApp.directives')
 
                     $scope.userInfo = user.get();
 	                $scope.userGameSelected = null;
+                    $scope.gamesUrl = redirection.getGamesPageUrl();
 
 					$scope.setUserGame = function(userSelected){
 						$scope.userGameSelected = userSelected;

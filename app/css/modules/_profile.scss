@@ -32,6 +32,24 @@
 		}
 
 	}
+	.btn {
+		display: block;
+		background: #2d2d2d;
+		color: white;
+		padding: 0 20px;
+		margin: 0;
+		width: 111px;
+		text-align: center;
+		height: 25px;
+		line-height: 25px;
+		border-radius: 8px;
+		border: 2px solid #474646;
+		span {
+			color: white!important;
+			width: 111px!important;
+			font-weight: bold!important;
+		}
+	}
 	.hide-shadow {
 		background: $orange;
 		width: 233px;
