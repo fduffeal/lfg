@@ -3,7 +3,7 @@
 	<img src="img/logo.png" id="logo" />
 	<div class="profile-info">
 		<div class="info">
-			<span>Profile: </span>
+			<span translate>Profile: </span>
 			<span class="change">{{userGameSelected.gameProfilName}}<img src="img/footer-arrow.png" />
                 <div>
                     <a href="" ng-click="setUserGame(userGame);" ng-repeat="userGame in userInfo.userGame" value="{{userGame.id}}">{{userGame.gameProfilName}}</a>
@@ -11,13 +11,13 @@
             </span>
 		</div>
 		<div class="info">
-			<span>Gametag: </span> {{userGameSelected.gameUsername}}
+			<span translate>Gamertag: </span> {{userGameSelected.gameUsername}}
 		</div>
 		<div class="info">
-			<span>Class: </span> {{userGameSelected.data1}} {{userGameSelected.data2}}
+			<span translate>Class: </span> {{userGameSelected.data1}} {{userGameSelected.data2}}
 		</div>
 		<div class="info">
-			<span>Platform: </span> {{userGameSelected.plateform.nom}}
+			<span translate>Platform: </span> {{userGameSelected.plateform.nom}}
 		</div>
 	</div>
 </div>
