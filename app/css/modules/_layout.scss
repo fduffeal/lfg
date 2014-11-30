@@ -13,7 +13,8 @@ ul, li {
 	padding: 0
 }
 .wrap {
-	min-height: 100%;
+	min-height: 82%;
+	height: auto!important;
 }
 
 .ng-scope {
@@ -29,7 +30,7 @@ a {
 h1{
 	background: #f15641;
 	display: block;
-	font-size: 16px;
+	font-size: 13px;
 	text-align: center;
 	height: 30px;
 	color: white;
@@ -107,7 +108,7 @@ input.error {
 	background: #87cbc1;
 	height: 40px;
 	width: 100%;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: bold;
 	line-height: 40px;
 	color: white;

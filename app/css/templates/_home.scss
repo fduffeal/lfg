@@ -60,12 +60,13 @@
 				a {
 					@media screen and (max-width: 600px ) {
 						padding: 0 7px;
-						font-size: 13px;
+
 					}
 					display: block;
 					border: 2px solid #87cbc1;
 					color: #3d3b3b;
 					height: 25px;
+					font-size: 13px;
 					padding: 0 10px;
 					line-height: 25px;
 					@include transition(background-color 0.2s ease-out);
@@ -82,6 +83,7 @@
 		}
 		table {
 			width: 100%;
+			font-size: 13px;
 			text-align: left;
 			border: 0;
 			@media screen and (max-width: 390px ) {

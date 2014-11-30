@@ -8,6 +8,7 @@ $orange: #f15641;
 	.content-header {
 		margin-left: 370px;
 		width: 1020px;
+		font-size: 13px;
 		.notlog.mobile {
 			display: none;
 		}
@@ -136,6 +137,7 @@ $orange: #f15641;
 			.btn{
 				width: 100px;
 				margin-right: 10px;
+				font-size: 13px;
 			}
 		}
 
@@ -169,7 +171,6 @@ $orange: #f15641;
 			padding: 3px 10px;
 			z-index:9;
 			font-size: 13px;
-			text-transform: uppercase;
 			right: -30px;
 			top: 46px;
 			background: black;
@@ -178,6 +179,7 @@ $orange: #f15641;
 				color: #06ab93;
 				margin: 5px 0;
 				height: 17px;
+				float: none;
 				a{
 					color: #06ab93;
 					@include transition(background-color 0.2s ease-out);

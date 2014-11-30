@@ -16,12 +16,12 @@
 	.block {
 		width: 98%;
 		margin: auto;
-
+	font-size: 13px;
 		.text {
 			text-align: justify;
 			font-weight: bold;
 			display: block;
-			font-size: 14px;
+			font-size: 12px;
 			width: 98%;
 			@media screen and (max-width: 390px ) {
 				font-size: 13px;
