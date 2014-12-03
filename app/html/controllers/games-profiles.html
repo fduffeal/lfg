@@ -11,12 +11,13 @@
                 <a href="" class="title-profile">Arcanist PVP PS4</a>
                 <a href="" class="title-profile">Hunter exo RAID XBOX 360</a>
                 <a href="" class="title-profile">Hunter PVE PS3</a>
+                <a href="" class="title-profile" ng-repeat="profil in aProfils" ng-click="selectProfil(profil)">{{profil.gameProfilName}}</a>
             </div>
             <div class="sep"></div>
             <div class="game-profile">
-	            <form name="gameInfo" ng-submit="submitFormGameInfo()">
+	            <form name="formGameProfil" ng-submit="submitFormGameInfo()">
 	                <div class="platforms">
-		                <select ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" ng-change="updateFormData()" required></select>
+		                <select name="plateformInput" ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" required></select>
 	                </div>
 		            <input type="text" class="name" ng-model="profilName" placeholder="Profil name eg:titan 30 xbox" required><br />
 		            <input type="text" class="gamertag" ng-model="gameUsername" placeholder="Gamer tag eg:Psn Id, Xbox Live Id, ..." required><br />
@@ -24,9 +25,11 @@
 	                    <option value="" disabled selected>Class</option>
 	                    <option value="titan">titan</option>
 	                    <option value="hunter">hunter</option>
-	                    <option value="arcanist">hunter</option>
+	                    <option value="arcanist">arcanist</option>
 	                </select><br />
 		            <input type="number" min="1" max="32" ng-model="data_2" required>
+
+                    <select ng-model="game" ng-options="gameData.name for gameData in games" required></select>
 
 	                <input type="submit" class="btn">
 	            </form>
