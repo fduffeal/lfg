@@ -1,10 +1,11 @@
 angular.module('myApp.controllers').controller('NotificationCtrl',
-    ['$scope','$routeParams',
-        function ($scope,$routeParams) {
+    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval',
+        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval) {
             'use strict';
 
 	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 
+	        $scope.userInfo = user.get();
 	        /**
 	         * autoRefreshDataNotif
 	         */
