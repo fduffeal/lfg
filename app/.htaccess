@@ -4,6 +4,9 @@
 
      RewriteBase /
 
+     RewriteCond %{HTTP_HOST} ^esbattle.com
+     RewriteRule ^(.*) http://www.esbattle.com [QSA,L,R=301]
+
      RewriteCond %{REQUEST_FILENAME} !-f
      RewriteCond %{REQUEST_FILENAME} !-d
      RewriteRule ^(.*)$ /#/$1 [L]
