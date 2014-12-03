@@ -13,17 +13,17 @@ ul, li {
 	padding: 0
 }
 .wrap {
-	min-height: 82%;
+	min-height: 87%;
 	height: auto!important;
 }
 
 .ng-scope {
 	height: 100%;
-	@media screen and (max-width: 980px ) {
-		height: auto;
-	}
-}
 
+}
+#intervalId {
+	height: 0;
+}
 a {
 	text-decoration: none;
 }
@@ -100,7 +100,6 @@ input.error {
 .error-msg {
 	color: red;
 	font-size: 12px;
-	position: absolute;
 }
 
 .btn {

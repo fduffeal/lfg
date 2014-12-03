@@ -14,42 +14,22 @@
             </div>
             <div class="sep"></div>
             <div class="game-profile">
-                <div class="platforms">
-                    <ul>
-                        <li class="select-platform">
+	            <form name="gameInfo" ng-submit="submitFormGameInfo()">
+	                <div class="platforms">
+		                <select ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" ng-change="updateFormData()" required></select>
+	                </div>
+		            <input type="text" class="name" ng-model="profilName" placeholder="Profil name eg:titan 30 xbox" required><br />
+		            <input type="text" class="gamertag" ng-model="gameUsername" placeholder="Gamer tag eg:Psn Id, Xbox Live Id, ..." required><br />
+	                <select class="select-option" ng-model="data_1">
+	                    <option value="" disabled selected>Class</option>
+	                    <option value="titan">titan</option>
+	                    <option value="hunter">hunter</option>
+	                    <option value="arcanist">hunter</option>
+	                </select><br />
+		            <input type="number" min="1" max="32" ng-model="data_2" required>
 
-                            <div><span></span></div><br />PS4
-                        </li>
-                        <li class="select-platform">
-
-                            <div><span></span></div><br />PS3
-                        </li>
-                        <li class="select-platform">
-
-                            <div><span></span></div><br />XBOX ONE
-                        </li>
-                        <li class="select-platform">
-
-                            <div><span></span></div><br />XBOX 360
-                        </li>
-                    </ul>
-                </div>
-                <input type="text" class="name" placeholder="Profil name eg:titan 30 xbox"> <br />
-                <input type="text" class="gamertag" placeholder="Gamer tag"><br />
-                <select class="select-option">
-                    <option value="" disabled selected>Class</option>
-                    <option value="titan">titan</option>
-                    <option value="hunter">hunter</option>
-                    <option value="arcanist">hunter</option>
-                </select><br />
-                <select class="select-option">
-                    <option value="" disabled selected>Level</option>
-                    <option value="titan">level 1</option>
-                    <option value="hunter">level 2</option>
-                    <option value="arcanist">level 3</option>
-                </select>
-                <input type="submit"class="btn">
-
+	                <input type="submit" class="btn">
+	            </form>
             </div>
         </div>
     </div>

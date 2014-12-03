@@ -3,53 +3,24 @@
     <lfg-profile></lfg-profile>
     <div class="page">
         <div class="block">
-            <h1>You have x notifications unread</h1>
-            <div class="read-all"><a href="">mark all as read</a></div>
-            <div class="notifs">
-               <div class="line unread">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party, lremp isu in the party, lremp isu in the party, l<a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">2014.12.25 14:01</div>
-               </div>
-               <div class="sep"></div>
-               <div class="line unread">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party <a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">21 nov</div>
-               </div>
-               <div class="sep"></div>
-               <div class="line unread">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party <a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">21 nov</div>
-               </div>
-               <div class="sep"></div>
-               <div class="line">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party <a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">21 nov</div>
-               </div>
-               <div class="sep"></div>
-               <div class="line">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party <a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">21 nov</div>
-               </div>
-               <div class="sep"></div>
-               <div class="line">
-                   <div class="msg">
-                       <span>poneyMCH</span> accepts you in the party <a href="">http://www.esbattle.com/partywating/12</a>
-                   </div>
-                   <div class="date">21 nov</div>
-               </div>
-               <div class="sep"></div>
-            </div>
+            <h1>You have {{notifications.length}} notifications</h1>
+
+	        <div class="notifs" ng-if="(notifications.length > 0)">
+		        <div class="line unread" ng-repeat="notification in notifications">
+			        <div class="msg" ng-switch on="notification.code">
+				        <div ng-switch-when="new_player_join">A new player joined your party !</div>
+				        <div ng-switch-when="you_have_been_accepted">You have been accepted by {{notification.expediteur.username}} on</div>
+				        <div ng-switch-when="you_have_been_kicked">Sorry, you have been kicked by {{notification.expediteur.username}} from</div>
+				        <div ng-switch-when="leader_leave_you_are_new_leader">{{notification.expediteur.username}} has leave. You lead</div>
+				        <div ng-switch-when="you_have_been_promoted">You have been promoted as leader by {{notification.expediteur.username}} on</div>
+			        </div>
+			        <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}">this party</a>
+			        <div class="date">{{notification.created_at*1000 | date:'HH:mm'}}</div>
+			        <div class="sep"></div>
+		        </div>
+	        </div>
         </div>
     </div>
 </div>
 <lfg-footer></lfg-footer>
+<div lfg-interval="intervaNotificationId"></div>
