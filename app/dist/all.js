@@ -9,87 +9,101 @@ angular.module('myApp', [
 	'myApp.filters',
 	'ngCookies',
 	'gettext',
-	'superCache',
-	'datePicker'
+	'superCache'
 ]).
-	config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
+	config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);
 
-		/*$routeProvider.when('/:lang/matchmaking',
+		$routeProvider.when('/:lang/matchmaking',
 			{
 				templateUrl: 'html/controllers/matchmaking.html',
-				controller: 'MatchmakingCtrl'
-			});*/
+				controller : 'MatchmakingCtrl'
+			});
 
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: 'html/controllers/rdv.html',
-				controller: 'RdvCtrl'
+				controller : 'RdvCtrl'
 			});
-        $routeProvider.when('/:lang/party/create',
-            {
-                templateUrl: 'html/controllers/party-create.html',
-                controller: 'PartyCreateCtrl'
-            });
-         $routeProvider.when('/:lang/party/waiting/:partyId',
-            {
-                templateUrl: 'html/controllers/party-waiting.html',
-                controller: 'PartyWaitingCtrl'
-            });
-        $routeProvider.when('/:lang/register',
-            {
-                templateUrl: 'html/controllers/register.html',
-                controller: 'RegisterCtrl'
-            });
-        $routeProvider.when('/:lang/login',
-            {
-                templateUrl: 'html/controllers/login.html',
-                controller: 'LoginCtrl'
-            });
-        $routeProvider.when('/:lang/profile/',
-            {
-                templateUrl: 'html/controllers/profile.html',
-                controller: 'ProfileCtrl'
-            });
+		$routeProvider.when('/:lang/party/create',
+			{
+				templateUrl: 'html/controllers/party-create.html',
+				controller : 'PartyCreateCtrl'
+			});
+		$routeProvider.when('/:lang/party/waiting/:partyId',
+			{
+				templateUrl: 'html/controllers/party-waiting.html',
+				controller : 'PartyWaitingCtrl'
+			});
+		$routeProvider.when('/:lang/matchmaking/waiting/:partyId',
+			{
+				templateUrl: 'html/controllers/matchmaking-waiting.html',
+				controller : 'MatchmakingWaitingCtrl'
+			});
+		$routeProvider.when('/:lang/register',
+			{
+				templateUrl: 'html/controllers/register.html',
+				controller : 'RegisterCtrl'
+			});
+		$routeProvider.when('/:lang/login',
+			{
+				templateUrl: 'html/controllers/login.html',
+				controller : 'LoginCtrl'
+			});
+		$routeProvider.when('/:lang/profile/',
+			{
+				templateUrl: 'html/controllers/profile.html',
+				controller : 'ProfileCtrl'
+			});
 
 		$routeProvider.when('/:lang/profile/:gameId/:plateformId/',
 			{
 				templateUrl: 'html/controllers/profile.html',
-				controller: 'ProfileCtrl'
+				controller : 'ProfileCtrl'
 			});
 
 		$routeProvider.when('/:lang/welcome',
 			{
 				templateUrl: 'html/controllers/rdv.html',
-				controller: 'RdvCtrl',
-				action:'welcome'
+				controller : 'RdvCtrl',
+				action     : 'welcome'
+			});
+		$routeProvider.when('/:lang/games',
+			{
+				templateUrl: 'html/controllers/games-profiles.html',
+				controller : 'GamesProfilesCtrl',
+				action     : 'games'
 			});
 
 		$routeProvider.when('/:lang/404/:msg?',
 			{
 				templateUrl: 'html/controllers/404.html',
-				controller: '404Ctrl'
+				controller : '404Ctrl'
+			});
+		$routeProvider.when('/:lang/notification',
+			{
+				templateUrl: 'html/controllers/notification.html',
+				controller : 'NotificationCtrl'
 			});
 
 		$routeProvider.when('/:lang/password/forget/:username/:forgetToken',
 			{
 				templateUrl: 'html/controllers/password-update.html',
-				controller: 'PasswordUpdateCtrl',
-				action:'forget'
+				controller : 'PasswordUpdateCtrl',
+				action     : 'forget'
 			});
 
 		$routeProvider.when('/:lang/password/update',
 			{
 				templateUrl: 'html/controllers/password-update.html',
-				controller: 'PasswordUpdateCtrl',
-				action:'update'
+				controller : 'PasswordUpdateCtrl',
+				action     : 'update'
 			});
 
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
-
 
 angular.module('myApp.controllers', []);
 angular.module('myApp.services', []);
@@ -98,7 +112,7 @@ angular.module('myApp.filters', []);
 
 angular.module('myApp').run(['gettextCatalog', function (gettextCatalog) {
 /* jshint -W100 */
-    gettextCatalog.setStrings('fr', {"<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Appointment not found":"Rendez vous non trouvé","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your":"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de mettre vos informations de jeux à jour dans ","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Creator":"Créateur","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","English":"Anglais","Enter your login and password":"Entrez votre login et mot de passe","Esbattle Username":"Compte Esbattle","For":"Durée","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game :":"Jeu :","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","HOME":"ACCUEIL","ID in game":"ID dans le jeu","Join !":"Rejoindre !","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","NEW PARTY":"NOUVELLE PARTIE","New party on Destiny":"Nouvelle partie sur Destiny","OR":"OU","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Personal Infos":"Informations personelles","Platform":"Platformes","Platforms":"Platformes","Profil Name":"Nom du profil","Profile":"Compte","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register with your email address":"S'enregistrer avec votre adresse email","Retrieve my account !":"Récupérer mon compte !","Start":"Début","Tags":"Tags","Team":"Equipe","The Party":"Partie en attente de joueurs...","The username is already used.":"Ce nom d'utilisateur est déjà pris","The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)":"Le site web est en beta, merci de reporter vos bugs/idées directement à contact.esbattle@gmail.com :)","This email is already used.":"Cet email est déjà pris","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Waiting Players":"Joueurs voulant rejoindre la partie","When":"Quand:","password doesn't match":"Les mots de passe ne correspondent pas","slots available min":"Places dispo minimum","with profil :":"avec le profil :","Confirm your password":"Confirmez votre mdp","Start the":"Démarre le","Till :":"Jusqu'à :","Class (titan/hunter, arcanist)":"Class (titan/chasseur, arcanist)","Level (please keep update)":"Niveau (merci de le mettre à jour)","PLATFORMS":"PLATFORMES","slots available max":"Places disponible max","Duration: for":"Durée:"});
+    gettextCatalog.setStrings('fr', {"<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","ALL":"TOUS","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Account":"Compte","Actions":"Actions","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Class":"Class","Class:":"Class","Confirm Password":"Confirmez votre mot de passe","Create":"Créer","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create a profile":"Nouveau profil","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","English":"Anglais","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Gamertag":"Gamertag","Gamertag:":"Gamertag:","Games Profiles":"Vos personnages","Home":"Accueil","Join !":"Rejoindre !","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Matchmaking":"Matchmaking","New party on":"Nouvelle partie sur","New profile":"Nouveau profil:","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Profil Name":"Nom du profil","Profile:":"Profil:","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register with your email address":"S'enregistrer avec votre adresse email","Retrieve my account !":"Récupérer mon compte !","Start":"Début","Team":"Equipe","The Party":"Partie en attente de joueurs...","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Waiting Players":"Joueurs voulant rejoindre la partie","When":"Quand:","Yes":"Oui","Your games profiles":"Vos profils de jeux","password doesn't match":"Les mots de passe ne correspondent pas","with profil :":"avec le profil :","&copy; Copyright 2014 esbattle.com all rights reserved":"&copy; Copyright 2014 esbattle.com Tous droits réservés","Create a\r\n                            profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your":"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de mettre vos informations de jeux à jour dans ","For":"Durée","HOME":"ACCUEIL","ID in game":"ID dans le jeu","NEW PARTY":"NOUVELLE PARTIE","Platforms":"Platformes","Tags":"Tags","The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)":"Le site web est en beta, merci de reporter vos bugs/idées directement à contact.esbattle@gmail.com :)","slots available min":"Places dispo minimum","Confirm your password":"Confirmez votre mdp","Start the":"Démarre le","Till :":"Jusqu'à :","Class (titan/hunter, arcanist)":"Class (titan/chasseur, arcanist)","Level (please keep update)":"Niveau (merci de le mettre à jour)","PLATFORMS":"PLATFORMES","slots available max":"Places disponible max","Duration: for":"Durée:"});
 /* jshint +W100 */
 }]);
 angular.module('myApp.controllers').controller('404Ctrl',
@@ -109,6 +123,75 @@ angular.module('myApp.controllers').controller('404Ctrl',
 			console.log($scope.msg);
 		}
 	]
+);
+
+angular.module('myApp.controllers').controller('GamesProfilesCtrl',
+    ['$scope','user','rdv','$routeParams','redirection','lang',
+        function ($scope,user,rdv,$routeParams,redirection,lang) {
+            'use strict';
+	        $scope.lang = lang.getCurrent();
+
+	        $scope.currentUser = user.get();
+			$scope.aProfils = [];
+			if($scope.currentUser !== null){
+				$scope.aProfils = $scope.currentUser.userGame;
+			}
+
+
+	        rdv.getFormInfo().then(function(data){
+		        $scope.plateforms = data.plateforms;
+		        $scope.games = data.games;
+	        });
+
+
+	        $scope.submitFormGameInfo = function(){
+		        if($scope.formGameProfil.$valid === false){
+			        return;
+		        }
+		        $scope.formGameInfoUpdate = false;
+
+				if(typeof $scope.profilId  === "undefined" || $scope.profilId  === ""){
+					user.createUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
+						$scope.aProfils = data.userGame;
+						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
+					});
+				}else {
+					user.updateUserGame($scope.plateform.id,$scope.game.id,$scope.profilId,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
+						$scope.aProfils = data.userGame;
+						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
+					});
+				}
+	        };
+
+			$scope.selectProfil = function(profil){
+
+				$scope.profilId = (profil!==null) ? profil.id : '';
+				$scope.profilName = (profil!==null) ? profil.gameProfilName : '';
+				$scope.gameUsername = (profil!==null) ? profil.gameUsername : '';
+				$scope.data_1 = (profil!==null) ? profil.data1 : '';
+				$scope.data_2 = (profil!==null) ? parseInt(profil.data2) : '';
+				$scope.data_3 = (profil!==null) ? profil.data3 : '';
+				$scope.data_4 = (profil!==null) ? profil.data4 : '';
+
+				if(profil !== null){
+					for(var keyP in $scope.plateforms){
+						if($scope.plateforms[keyP].id == profil.plateform.id){
+							$scope.plateform = $scope.plateforms[keyP];
+						}
+					}
+
+					for(var keyG in $scope.games){
+						if($scope.games[keyG].id == profil.game.id){
+							$scope.game = $scope.games[keyG];
+						}
+					}
+				}
+
+			};
+        }
+    ]
 );
 
 angular.module('myApp.controllers').controller('LoginCtrl',
@@ -163,44 +246,188 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 );
 
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope',
-		function ($scope) {
+	['$scope','matchmaking','user','redirection',
+		function ($scope,matchmaking,user,redirection) {
 			'use strict';
 
-			$scope.aGamers = [
-			{
-				'id': 1,
-				'gamertags': {
-					'PS4': 'PoneyMCH'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name': 'Titan',
-							'level': '26',
-							'url_info': 'http://www.bungie.net/fr/Legend/2/4611686018433351063/2305843009214841831'
-						}
-					}
-				}
-			}, {
-				'id':2,
-				'gamertags': {
-					'PS4': 'Fifoukiller84'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name':'Hunter',
-							'level':'27',
-							'url_info':'http://www.bungie.net/fr/Legend/2/4611686018430647711/2305843009215026244'
-						}
-					}
-				}
-			}];
+			$scope.currentUser = user.get();
+			$scope.matchmakingTemplate = null;
 
+			/**
+			 * récupère les configs pour la selection du type de matchmaking
+			 */
+			matchmaking.getConf().success(function(data){
 
+				var groupOfTemplate = {};
+				for(var key in data){
+					if(!groupOfTemplate[data[key].description]) {
+						groupOfTemplate[data[key].description] = [];
+					}
+					data[key].concatTags = "";
+					for(var keyTag in data[key].tags){
+						data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+					}
+					groupOfTemplate[data[key].description].push(data[key]);
+				}
+				$scope.groupOfTemplate = groupOfTemplate;
+			});
+
+			/**
+			 * écoute le changement de profil
+			 */
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				$scope.profilSelected = userSelected;
+			});
+
+			/**
+			 * lance le matchmaking
+			 */
+			$scope.join = function(){
+				if($scope.joinMatchmakingForm.$valid === false){
+					return;
+				}
+				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id).success(function(data){
+					redirection.goToMatchmakingId(data.id);
+				});
+			};
+
+			/**
+			 * selectionne un type de matchmaking
+			 * @param template
+			 */
+			$scope.selectGroupOfTemplate = function(template){
+				$scope.matchmakingTemplate = template;
+				$scope.templateSelectedModel = template[0];
+			};
 		}
 	]
+);
+
+angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
+            'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
+			$scope.currentUser = user.get();
+
+			var manageAutorisation = function(){
+				$scope.isLeader = false;
+				$scope.canJoin = true;
+				$scope.imOnGroup = false;
+
+				if ($scope.currentUser !== null) {
+
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
+
+					if ($scope.profils[0]) {
+						$scope.profilSelected = $scope.profils[0];
+					}
+
+					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
+						$scope.isLeader = true;
+					}
+
+					for (var key in $scope.rdv.users) {
+						if ($scope.rdv.users[key].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+							$scope.imOnGroup = true;
+						}
+					}
+
+					for (var key2 in $scope.rdv.usersInQueue) {
+						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+						}
+					}
+				} else {
+					$scope.canJoin = false;
+				}
+			};
+
+
+	        var refreshData = function() {
+
+				user.updateOnline().success(function(data){
+					rdv.get($routeParams.partyId).success(function (data) {
+						$scope.rdv = data;
+
+						$scope.isFull = (data.users.length === data.nbParticipant);
+						manageAutorisation();
+					});
+				});
+
+	        };
+
+	        $scope.leave = function(userId){
+				stopAutoRefreshData();
+		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+			        $scope.rdv = data;
+					autoRefreshData();
+		        });
+	        };
+
+			$scope.currentUrl = $location.absUrl();
+
+
+			var refreshTime = 12000;
+			var autoRefreshData = function(){
+				stopAutoRefreshData();
+				$scope.intervalId = $interval(function(){
+					refreshData();
+				}, refreshTime);
+			};
+
+			var stopAutoRefreshData = function(){
+				$interval.cancel($scope.intervalId);
+			};
+
+			refreshData();
+			autoRefreshData();
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('NotificationCtrl',
+    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval',
+        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval) {
+            'use strict';
+
+	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
+	        $scope.userInfo = user.get();
+	        /**
+	         * autoRefreshDataNotif
+	         */
+	        var refreshDataNotif = function(){
+		        rdv.getNotifications().success(function(data){
+			        if($scope.userInfo === null){
+				        return;
+			        }
+			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
+		        });
+	        };
+
+	        var refreshTime = 12000;
+	        var autoRefreshDataNotif = function(){
+		        $interval.cancel($scope.intervaNotificationId);
+
+		        if (angular.isDefined($scope.intervaNotificationId)) {
+			        return;
+		        }
+
+		        $scope.intervaNotificationId = $interval(function(){
+			        refreshDataNotif();
+		        }, refreshTime);
+	        };
+
+	        refreshDataNotif();
+	        autoRefreshDataNotif();
+        }
+    ]
 );
 
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
@@ -222,13 +449,15 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
-				$scope.plateform = $scope.formInfo.plateforms[0].id;
-				$scope.game = $scope.formInfo.games[0].id;
+				$scope.game = $scope.formInfo.games[0];
 			});
 
 			$scope.today = new Date();
 
 			$scope.day = new Date($scope.today.getFullYear(), $scope.today.getMonth(), $scope.today.getDate(), $scope.today.getHours(), $scope.today.getMinutes()+5,$scope.today.getSeconds());
+
+			$scope.startHours = $scope.today.getHours();
+			$scope.startMinutes = $scope.today.getMinutes();
 
 			$scope.dayPlusTwo = new Date();
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
@@ -244,7 +473,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			var updateProfilsAvailable = function(){
 				if($scope.currentUser !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game,$scope.plateform);
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,$scope.plateform.id);
 					if($scope.profils[0]){
 						$scope.profilSelected = $scope.profils[0];
 					}
@@ -260,11 +489,11 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 	            if($scope.myForm.$valid === false){
 		            return;
 	            }
-                var game = $scope.game;
+                var game = $scope.game.id;
                 var day = $scope.myForm.inputDayStart.$modelValue.getTime()/1000;
                 var dureeHours = $scope.dureeHours;
                 var dureeMinutes = $scope.dureeMinutes;
-                var plateform = $scope.plateform;
+                var plateform = $scope.plateform.id;
                 var tags = $scope.tags;
                 var description = $scope.description;
                 var slotTotal = $scope.slotTotal;
@@ -275,8 +504,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 });
             };
 
-			$scope.updatePlateform = function(id){
-				$scope.plateform = id;
+			$scope.updatePlateform = function(plateform){
+				$scope.plateform = plateform;
 			};
 
 			$scope.autocomplete = function(){
@@ -300,8 +529,14 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.game,$scope.plateform);
+				redirection.goToCreateProfilForGameAndPlateform($scope.game.id,$scope.plateform.id);
 			};
+
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				$scope.updatePlateform(userSelected.plateform);
+				$scope.profilSelected = userSelected;
+			});
 
 		}
 	]
@@ -612,6 +847,11 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}, refreshTime);
 			};
 
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+			});
+
 			//init
 			refreshRdvData();
 			autoRefreshData();
@@ -673,120 +913,6 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -872,6 +998,9 @@ angular.module('myApp.directives')
 					$scope.loginPageUrl = redirection.getLoginPageUrl();
 					$scope.registerPageUrl = redirection.getRegisterPageUrl();
 					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 
                     $scope.userInfo = user.get();
 
@@ -890,6 +1019,12 @@ angular.module('myApp.directives')
 
 					var refreshTime = 12000;
 					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
 						$scope.intervaNotificationId = $interval(function(){
 							refreshDataNotif();
 						}, refreshTime);
@@ -913,20 +1048,61 @@ angular.module('myApp.directives')
 			return {
 				replace :true,
 				scope:{
-					'lfgInterval':'=',
-					'id': '@'
+					'lfgInterval':'='
 				},
 				link: function($scope, element, attrs) {
 
-					$scope.intervalId = $scope.id;
 					element.on('$destroy', function() {
 						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
 					});
 				},
 				restrict: 'A'
 			};
 		}
 	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval','$rootScope',
+        function(user,rdv,tag,lang,redirection,$interval,$rootScope) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.userGameSelected = null;
+                    $scope.gamesUrl = redirection.getGamesPageUrl();
+
+					$scope.setUserGame = function(userSelected){
+						$scope.userGameSelected = userSelected;
+						$rootScope.userGameSelected = userSelected;
+						$scope.$emit('setUserGame',[userSelected]);
+					};
+
+	                var initProfil = function(){
+		                $scope.userInfo = user.get();
+		                if(typeof($rootScope.userGameSelected) !== "undefined"){
+			                $scope.setUserGame($rootScope.userGameSelected);
+		                }	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
+			                $scope.setUserGame($scope.userInfo.userGame[0]);
+		                }
+	                };
+
+	                $scope.$on('refreshProfil',function(event,data){
+		                $scope.userInfo = user.get();
+		                $scope.setUserGame($scope.userInfo.userGame[0]);
+	                });
+
+	                initProfil();
+                },
+                restrict: 'E',
+                templateUrl: 'html/directives/lfg-profile.html'
+            };
+        }
+    ]
 );
 
 angular.module('myApp.filters').filter('filterCharacters', function () {
@@ -1069,6 +1245,120 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -1270,6 +1560,22 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
+	.service('matchmaking', ['$http','user','api','superCache',
+		function($http,user,api,superCache) {
+			'use strict';
+			this.getConf = function(){
+				return api.call('matchmaking/');
+			};
+
+			this.join = function(matchmakingId,profilId){
+				var currentUser = user.get();
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
 	.service('rdv', ['$http','user','api','superCache',
 		function($http,user,api,superCache) {
 			'use strict';
@@ -1347,6 +1653,15 @@ angular.module('myApp.services')
 			this.getRegisterPageUrl = function(){
 				return getLang()+'/register';
 			};
+			this.getNotifPageUrl = function(){
+				return getLang()+'/notification';
+			};
+			this.getMatchmakingPageUrl = function(){
+				return getLang()+'/matchmaking';
+			};
+			this.getGamesPageUrl = function(){
+				return getLang()+'/games';
+			};
 
 			this.goToRegister = function(){
 				$location.path(this.getRegisterPageUrl());
@@ -1376,6 +1691,10 @@ angular.module('myApp.services')
 				$location.path(this.getPartyWaitingByIdUrl(id));
 			};
 
+			this.goToMatchmakingId = function(id){
+				$location.path(getLang()+'/matchmaking/waiting/'+id);
+			};
+
 			this.getHomePageUrl = function(){
 				return getLang()+'/';
 			};
@@ -1393,7 +1712,7 @@ angular.module('myApp.services')
 			};
 
 			this.notFound = function(msg){
-				$location.path(this.getNotFoundPage(msg));
+				$location.path(this.getNotFoundPageUrl(msg));
 			};
 
 			this.getProfilGamePageUrl = function(gameId,plateformId){
@@ -1557,7 +1876,7 @@ angular.module('myApp.services')
 				storage.erasePersistant('user');
 			};
 
-			this.setUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
+			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
 
 				var currentUser = this.get();
 
@@ -1574,7 +1893,29 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
+
+				var currentUser = this.get();
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -1586,6 +1927,11 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
+			};
+
+			this.updateOnline = function(){
+				var currentUser = this.get();
+				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
 			};
 		}
 	]
