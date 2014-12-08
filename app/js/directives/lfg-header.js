@@ -40,7 +40,13 @@ angular.module('myApp.directives')
 							if($scope.userInfo === null){
 								return;
 							}
-							$scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
 						});
 					};
 

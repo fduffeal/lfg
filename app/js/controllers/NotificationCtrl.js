@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('NotificationCtrl',
-    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval',
-        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval) {
+    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval','$rootScope',
+        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval,$rootScope) {
             'use strict';
 
 	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
@@ -15,6 +15,7 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 				        return;
 			        }
 			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
+			        $rootScope.notificationsAlreadyRead = $scope.notifications;
 		        });
 	        };
 
