@@ -27,11 +27,13 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 					user.createUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
 						$scope.aProfils = data.userGame;
 						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
 					});
 				}else {
 					user.updateUserGame($scope.plateform.id,$scope.game.id,$scope.profilId,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
 						$scope.aProfils = data.userGame;
 						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
 					});
 				}
 	        };
@@ -46,17 +48,20 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 				$scope.data_3 = (profil!==null) ? profil.data3 : '';
 				$scope.data_4 = (profil!==null) ? profil.data4 : '';
 
-				for(var keyP in $scope.plateforms){
-					if($scope.plateforms[keyP].id == profil.plateform.id){
-						$scope.plateform = $scope.plateforms[keyP];
+				if(profil !== null){
+					for(var keyP in $scope.plateforms){
+						if($scope.plateforms[keyP].id == profil.plateform.id){
+							$scope.plateform = $scope.plateforms[keyP];
+						}
+					}
+
+					for(var keyG in $scope.games){
+						if($scope.games[keyG].id == profil.game.id){
+							$scope.game = $scope.games[keyG];
+						}
 					}
 				}
 
-				for(var keyG in $scope.games){
-					if($scope.games[keyG].id == profil.game.id){
-						$scope.game = $scope.games[keyG];
-					}
-				}
 			};
         }
     ]

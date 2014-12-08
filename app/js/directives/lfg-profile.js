@@ -8,7 +8,6 @@ angular.module('myApp.directives')
                 },
                 link: function($scope, element, attrs) {
 
-                    $scope.userInfo = user.get();
 	                $scope.userGameSelected = null;
                     $scope.gamesUrl = redirection.getGamesPageUrl();
 
@@ -18,11 +17,21 @@ angular.module('myApp.directives')
 						$scope.$emit('setUserGame',[userSelected]);
 					};
 
-					if(typeof($rootScope.userGameSelected) !== "undefined"){
-						$scope.setUserGame($rootScope.userGameSelected);
-					}	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
-						$scope.setUserGame($scope.userInfo.userGame[0]);
-					}
+	                var initProfil = function(){
+		                $scope.userInfo = user.get();
+		                if(typeof($rootScope.userGameSelected) !== "undefined"){
+			                $scope.setUserGame($rootScope.userGameSelected);
+		                }	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
+			                $scope.setUserGame($scope.userInfo.userGame[0]);
+		                }
+	                };
+
+	                $scope.$on('refreshProfil',function(event,data){
+		                $scope.userInfo = user.get();
+		                $scope.setUserGame($scope.userInfo.userGame[0]);
+	                });
+
+	                initProfil();
                 },
                 restrict: 'E',
                 templateUrl: 'html/directives/lfg-profile.html'
