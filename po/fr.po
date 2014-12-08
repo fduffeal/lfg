@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7beta1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/party-create.html
@@ -27,6 +27,14 @@ msgstr ""
 "sera promu en tant que créateur. Donc merci de vérifier vos informations "
 "avant de créer une partie !"
 
+#: app/html/controllers/notification.html
+msgid "A new player joined"
+msgstr "Un nouveau joueur a rejoint"
+
+#: app/html/controllers/notification.html
+msgid "A player leave"
+msgstr "Un joueur a quitté"
+
 #: app/html/controllers/rdv.html
 msgid "ALL"
 msgstr "TOUS"
@@ -38,10 +46,6 @@ msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 #: app/html/controllers/party-waiting.html
 msgid "Accept"
 msgstr "Accepter"
-
-#: app/html/directives/lfg-header.html
-msgid "Account"
-msgstr "Compte"
 
 #: app/html/controllers/party-waiting.html
 msgid "Actions"
@@ -63,6 +67,7 @@ msgstr "Retour"
 msgid "Bad Username or Password."
 msgstr "Mauvais nom d'utilisateur ou mot de passe."
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Class"
 msgstr "Class"
@@ -115,6 +120,7 @@ msgstr "Anglais"
 msgid "Enter your login and password"
 msgstr "Entrez votre login et mot de passe"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Esbattle username"
 msgstr "Compte Esbattle"
@@ -135,6 +141,7 @@ msgstr "Jeu"
 msgid "Game Infos for {{game.name}}"
 msgstr "Infos de jeux pour {{game.name}}"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Gamertag"
 msgstr "Gamertag"
@@ -163,6 +170,7 @@ msgstr "Rejeter"
 msgid "Leave"
 msgstr "Quitter"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Level"
 msgstr "Niveau"
@@ -274,10 +282,15 @@ msgstr "S'enregistrer avec votre adresse email"
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
 
+#: app/html/controllers/notification.html
+msgid "Sorry, you have been kicked by"
+msgstr "Désolé, vous avez été exclu par"
+
 #: app/html/controllers/party-create.html
 msgid "Start"
 msgstr "Début"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
 msgstr "Equipe"
@@ -327,17 +340,44 @@ msgstr "Quand:"
 msgid "Yes"
 msgstr "Oui"
 
+#: app/html/controllers/notification.html
+msgid "You have been accepted by"
+msgstr "Vous avez été accepté par"
+
+#: app/html/controllers/notification.html
+msgid "You have been promoted as leader by"
+msgstr "Vous avez été promu comme chef par"
+
 #: app/html/controllers/games-profiles.html
 msgid "Your games profiles"
 msgstr "Vos profils de jeux"
+
+#: app/html/controllers/notification.html
+msgid "from"
+msgstr "de"
+
+#: app/html/controllers/notification.html
+msgid "has leave. You lead"
+msgstr "a quitté. Vous contrôlez "
+
+#: app/html/controllers/notification.html
+msgid "on"
+msgstr "sur"
 
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
 msgstr "Les mots de passe ne correspondent pas"
 
+#: app/html/controllers/notification.html
+msgid "this party"
+msgstr "cette partie"
+
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Account"
+#~ msgstr "Compte"
 
 #~ msgid "&copy; Copyright 2014 esbattle.com all rights reserved"
 #~ msgstr "&copy; Copyright 2014 esbattle.com Tous droits réservés"

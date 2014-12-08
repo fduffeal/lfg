@@ -8,6 +8,14 @@ msgstr ""
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "A new player joined"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "A player leave"
+msgstr ""
+
 #: app/html/controllers/rdv.html
 msgid "ALL"
 msgstr ""
@@ -19,10 +27,6 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Accept"
-msgstr ""
-
-#: app/html/directives/lfg-header.html
-msgid "Account"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -45,6 +49,7 @@ msgstr ""
 msgid "Bad Username or Password."
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Class"
@@ -98,6 +103,7 @@ msgstr ""
 msgid "Enter your login and password"
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Esbattle username"
 msgstr ""
@@ -118,6 +124,7 @@ msgstr ""
 msgid "Game Infos for {{game.name}}"
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Gamertag"
 msgstr ""
@@ -146,6 +153,7 @@ msgstr ""
 msgid "Leave"
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Level"
@@ -257,10 +265,15 @@ msgstr ""
 msgid "Retrieve my account !"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "Sorry, you have been kicked by"
+msgstr ""
+
 #: app/html/controllers/party-create.html
 msgid "Start"
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
 msgstr ""
@@ -311,12 +324,36 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "You have been accepted by"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "You have been promoted as leader by"
+msgstr ""
+
 #: app/html/controllers/games-profiles.html
 msgid "Your games profiles"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "from"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "has leave. You lead"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "on"
+msgstr ""
+
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "this party"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
