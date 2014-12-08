@@ -4,14 +4,14 @@
 	<div class="profile-info" ng-if="userGameSelected.gameProfilName">
 		<div class="info">
 			<span translate>Profile: </span>
-			<span class="change">{{userGameSelected.gameProfilName}}<img src="img/footer-arrow.png" />
+			<span class="change">{{userGameSelected.gameProfilName | filterCharacters:8}}<img src="img/footer-arrow.png" />
                 <div>
                     <a href="" ng-click="setUserGame(userGame);" ng-repeat="userGame in userInfo.userGame" value="{{userGame.id}}">{{userGame.gameProfilName}}</a>
                 </div>
             </span>
 		</div>
 		<div class="info">
-			<span translate>Gamertag: </span> {{userGameSelected.gameUsername}}
+			<span translate>Gamertag: </span> {{userGameSelected.gameUsername  | filterCharacters:8}}
 		</div>
 		<div class="info">
 			<span translate>Class: </span> {{userGameSelected.data1}} {{userGameSelected.data2}}

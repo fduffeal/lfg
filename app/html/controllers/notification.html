@@ -3,18 +3,19 @@
     <lfg-profile></lfg-profile>
     <div class="page">
         <div class="block">
-            <h1>You have {{notifications.length}} notifications</h1>
+            <h1>{{notifications.length}} notifications</h1>
 
 	        <div class="notifs" ng-if="(notifications.length > 0)">
 		        <div class="line unread" ng-repeat="notification in notifications">
 			        <div class="msg" ng-switch on="notification.code">
-				        <div ng-switch-when="new_player_join">A new player joined your party !</div>
-				        <div ng-switch-when="you_have_been_accepted">You have been accepted by {{notification.expediteur.username}} on</div>
-				        <div ng-switch-when="you_have_been_kicked">Sorry, you have been kicked by {{notification.expediteur.username}} from</div>
-				        <div ng-switch-when="leader_leave_you_are_new_leader">{{notification.expediteur.username}} has leave. You lead</div>
-				        <div ng-switch-when="you_have_been_promoted">You have been promoted as leader by {{notification.expediteur.username}} on</div>
+				        <div ng-switch-when="one_user_leave" translate>A player leave</div>
+				        <div ng-switch-when="new_player_join" translate>A new player joined</div>
+				        <div ng-switch-when="you_have_been_accepted"><span translate>You have been accepted by </span>{{notification.expediteur.username}}<span translate> on</span></div>
+				        <div ng-switch-when="you_have_been_kicked"><span translate>Sorry, you have been kicked by </span>{{notification.expediteur.username}}<span translate> from</span></div>
+				        <div ng-switch-when="leader_leave_you_are_new_leader">{{notification.expediteur.username}} <span translate>has leave. You lead</span></div>
+				        <div ng-switch-when="you_have_been_promoted"><span translate>You have been promoted as leader by </span>{{notification.expediteur.username}}<span translate> on</span></div>
 			        </div>
-			        <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}">this party</a>
+			        <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate>this party</a>
 			        <div class="date">{{notification.created_at*1000 | date:'HH:mm'}}</div>
 			        <div class="sep"></div>
 		        </div>
