@@ -5,12 +5,7 @@
         <div class="block">
             <h1 translate>Your games profiles</h1>
             <div class="list-profiles">
-                <a href="" class="title-profile create" translate>New profile</a>
-                <a href="" class="title-profile selected">Titan exo PS4</a>
-                <a href="" class="title-profile">Titan éveillé XBOX ONE</a>
-                <a href="" class="title-profile">Arcanist PVP PS4</a>
-                <a href="" class="title-profile">Hunter exo RAID XBOX 360</a>
-                <a href="" class="title-profile">Hunter PVE PS3</a>
+                <a href="" class="title-profile create" ng-click="selectProfil(null)" translate>New profile</a>
                 <a href="" class="title-profile" ng-repeat="profil in aProfils" ng-click="selectProfil(profil)">{{profil.gameProfilName}}</a>
             </div>
             <div class="sep"></div>
@@ -27,9 +22,9 @@
 	                    <option value="hunter">hunter</option>
 	                    <option value="arcanist">arcanist</option>
 	                </select><br />
-		            <input type="number" min="1" max="32" ng-model="data_2" required>
+		            <label>Level :</label><input type="number" min="1" max="32" ng-model="data_2" required>
 
-                    <select ng-model="game" ng-options="gameData.name for gameData in games" required></select>
+                    <select ng-model="game" ng-options="gameData.name for gameData in games" required ng-show="false"></select>
 
 	                <input type="submit" class="btn">
 	            </form>

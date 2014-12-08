@@ -79,7 +79,7 @@ angular.module('myApp.services')
 			};
 
 			this.notFound = function(msg){
-				$location.path(this.getNotFoundPage(msg));
+				$location.path(this.getNotFoundPageUrl(msg));
 			};
 
 			this.getProfilGamePageUrl = function(gameId,plateformId){
