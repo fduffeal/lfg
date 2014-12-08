@@ -2,6 +2,7 @@
 @import 'modules/header';
 @import 'modules/footer';
 @import 'modules/layout';
+@import 'modules/profile';
 
 @import 'templates/home';
 @import 'templates/register';
@@ -9,6 +10,9 @@
 @import 'templates/profile';
 @import 'templates/party-create';
 @import 'templates/party-waiting';
+@import 'templates/notification';
+@import 'templates/games-profiles';
+@import 'templates/matchmaking';
 
 @import 'modules/layout_small';
 

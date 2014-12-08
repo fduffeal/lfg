@@ -27,6 +27,18 @@ msgstr ""
 "sera promu en tant que créateur. Donc merci de vérifier vos informations "
 "avant de créer une partie !"
 
+#: app/html/controllers/notification.html
+msgid "A new player joined"
+msgstr "Un nouveau joueur a rejoint"
+
+#: app/html/controllers/notification.html
+msgid "A player leave"
+msgstr "Un joueur a quitté"
+
+#: app/html/controllers/rdv.html
+msgid "ALL"
+msgstr "TOUS"
+
 #: app/html/controllers/party-create.html app/html/controllers/profile.html
 msgid "ALL FIELDS ARE REQUIRED"
 msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
@@ -35,9 +47,17 @@ msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 msgid "Accept"
 msgstr "Accepter"
 
+#: app/html/controllers/party-waiting.html
+msgid "Actions"
+msgstr "Actions"
+
 #: app/html/controllers/404.html
 msgid "Appointment not found"
 msgstr "Rendez vous non trouvé"
+
+#: app/html/controllers/party-waiting.html
+msgid "Are you sure to kick :"
+msgstr "Êtes-vous sûr de vouloir kicker:"
 
 #: app/html/controllers/profile.html
 msgid "Back"
@@ -47,30 +67,34 @@ msgstr "Retour"
 msgid "Bad Username or Password."
 msgstr "Mauvais nom d'utilisateur ou mot de passe."
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Class"
+msgstr "Class"
+
+#: app/html/directives/lfg-profile.html
+msgid "Class:"
 msgstr "Class"
 
 #: app/html/controllers/register.html
 msgid "Confirm Password"
 msgstr "Confirmez votre mot de passe"
 
-#: app/html/controllers/rdv.html
-msgid ""
-"Congratulation ! You are now registered on esBattle.com! Do not forget to "
-"put your infos game in your"
-msgstr ""
-"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de "
-"mettre vos informations de jeux à jour dans "
+#: app/html/directives/lfg-header.html
+msgid "Create"
+msgstr "Créer"
 
-#: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
 
-#: app/html/controllers/rdv.html
-msgid "Creator"
-msgstr "Créateur"
+#: app/html/directives/lfg-profile.html
+msgid "Create a profile"
+msgstr "Nouveau profil"
+
+#: app/html/controllers/party-create.html
+msgid "Create a profile for this game and join !"
+msgstr "Créer un profil pour ce jeu et rejoignez !"
 
 #: app/html/controllers/party-waiting.html
 msgid "Decline"
@@ -96,13 +120,10 @@ msgstr "Anglais"
 msgid "Enter your login and password"
 msgstr "Entrez votre login et mot de passe"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
-msgid "Esbattle Username"
+msgid "Esbattle username"
 msgstr "Compte Esbattle"
-
-#: app/html/controllers/party-create.html
-msgid "For"
-msgstr "Durée"
 
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
@@ -116,21 +137,26 @@ msgstr "Français"
 msgid "Game"
 msgstr "Jeu"
 
-#: app/html/controllers/party-create.html
-msgid "Game :"
-msgstr "Jeu :"
-
 #: app/html/controllers/profile.html
 msgid "Game Infos for {{game.name}}"
 msgstr "Infos de jeux pour {{game.name}}"
 
-#: app/html/directives/lfg-header.html
-msgid "HOME"
-msgstr "ACCUEIL"
-
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
-msgid "ID in game"
-msgstr "ID dans le jeu"
+msgid "Gamertag"
+msgstr "Gamertag"
+
+#: app/html/directives/lfg-profile.html
+msgid "Gamertag:"
+msgstr "Gamertag:"
+
+#: app/html/directives/lfg-header.html
+msgid "Games Profiles"
+msgstr "Vos personnages"
+
+#: app/html/directives/lfg-header.html
+msgid "Home"
+msgstr "Accueil"
 
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
@@ -144,6 +170,7 @@ msgstr "Rejeter"
 msgid "Leave"
 msgstr "Quitter"
 
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html app/html/controllers/profile.html
 msgid "Level"
 msgstr "Niveau"
@@ -172,18 +199,34 @@ msgstr ""
 "Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)"
 
 #: app/html/directives/lfg-header.html
-msgid "NEW PARTY"
-msgstr "NOUVELLE PARTIE"
+msgid "Matchmaking"
+msgstr "Matchmaking"
 
 #: app/html/controllers/party-create.html
-msgid "New party on Destiny"
-msgstr "Nouvelle partie sur Destiny"
+msgid "New party on"
+msgstr "Nouvelle partie sur"
+
+#: app/html/controllers/games-profiles.html
+msgid "New profile"
+msgstr "Nouveau profil:"
+
+#: app/html/controllers/party-waiting.html
+msgid "No"
+msgstr "Non"
+
+#: app/html/directives/lfg-header.html
+msgid "Notification"
+msgstr "Notification"
+
+#: app/html/directives/lfg-header.html
+msgid "Notifications"
+msgstr "Notifications"
 
 #: app/html/controllers/login.html
 msgid "OR"
 msgstr "OU"
 
-#: app/html/controllers/register.html
+#: app/html/controllers/login.html app/html/controllers/register.html
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -195,25 +238,29 @@ msgstr "Mot de passe oublié ?"
 msgid "Password Updated !"
 msgstr "Mot de passe mis à jour !"
 
+#: app/html/controllers/register.html
+msgid "Passwords doesn't match"
+msgstr "Les mots de passe ne correspondent pas"
+
 #: app/html/controllers/profile.html
 msgid "Personal Infos"
 msgstr "Informations personelles"
 
-#: app/html/controllers/party-create.html app/html/controllers/profile.html
+#: app/html/controllers/profile.html
 msgid "Platform"
 msgstr "Platformes"
 
-#: app/html/controllers/rdv.html
-msgid "Platforms"
-msgstr "Platformes"
+#: app/html/directives/lfg-profile.html
+msgid "Platform:"
+msgstr "Plateforme:"
 
 #: app/html/controllers/profile.html
 msgid "Profil Name"
 msgstr "Nom du profil"
 
-#: app/html/directives/lfg-header.html app/html/controllers/rdv.html
-msgid "Profile"
-msgstr "Compte"
+#: app/html/directives/lfg-profile.html
+msgid "Profile:"
+msgstr "Profil:"
 
 #: app/html/controllers/party-waiting.html
 msgid "Promote"
@@ -235,14 +282,15 @@ msgstr "S'enregistrer avec votre adresse email"
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
 
-#: app/html/controllers/party-create.html app/html/controllers/rdv.html
+#: app/html/controllers/notification.html
+msgid "Sorry, you have been kicked by"
+msgstr "Désolé, vous avez été exclu par"
+
+#: app/html/controllers/party-create.html
 msgid "Start"
 msgstr "Début"
 
-#: app/html/controllers/party-create.html
-msgid "Tags"
-msgstr "Tags"
-
+#: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
 msgstr "Equipe"
@@ -254,14 +302,6 @@ msgstr "Partie en attente de joueurs..."
 #: app/html/controllers/register.html
 msgid "The username is already used."
 msgstr "Ce nom d'utilisateur est déjà pris"
-
-#: app/html/directives/lfg-header.html
-msgid ""
-"The website is still in beta mode, so please report your bugs/ideas to "
-"contact.esbattle@gmail.com :)"
-msgstr ""
-"Le site web est en beta, merci de reporter vos bugs/idées directement à "
-"contact.esbattle@gmail.com :)"
 
 #: app/html/controllers/register.html
 msgid "This email is already used."
@@ -279,7 +319,8 @@ msgstr "Mettre à jour le mot de passe"
 msgid "Update my password !"
 msgstr "Mettre à jour mon mot de passe !"
 
-#: app/html/controllers/profile.html app/html/controllers/register.html
+#: app/html/controllers/login.html app/html/controllers/profile.html
+#: app/html/controllers/register.html
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
@@ -295,18 +336,91 @@ msgstr "Joueurs voulant rejoindre la partie"
 msgid "When"
 msgstr "Quand:"
 
+#: app/html/controllers/party-waiting.html
+msgid "Yes"
+msgstr "Oui"
+
+#: app/html/controllers/notification.html
+msgid "You have been accepted by"
+msgstr "Vous avez été accepté par"
+
+#: app/html/controllers/notification.html
+msgid "You have been promoted as leader by"
+msgstr "Vous avez été promu comme chef par"
+
+#: app/html/controllers/games-profiles.html
+msgid "Your games profiles"
+msgstr "Vos profils de jeux"
+
+#: app/html/controllers/notification.html
+msgid "from"
+msgstr "de"
+
+#: app/html/controllers/notification.html
+msgid "has leave. You lead"
+msgstr "a quitté. Vous contrôlez "
+
+#: app/html/controllers/notification.html
+msgid "on"
+msgstr "sur"
+
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: app/html/controllers/rdv.html
-msgid "slots available min"
-msgstr "Places dispo minimum"
+#: app/html/controllers/notification.html
+msgid "this party"
+msgstr "cette partie"
 
-#: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Account"
+#~ msgstr "Compte"
+
+#~ msgid "&copy; Copyright 2014 esbattle.com all rights reserved"
+#~ msgstr "&copy; Copyright 2014 esbattle.com Tous droits réservés"
+
+#~ msgid ""
+#~ "Create a\r\n"
+#~ "                            profil for this game and join !"
+#~ msgstr "Créer un profil pour ce jeu et rejoignez !"
+
+#~ msgid ""
+#~ "Congratulation ! You are now registered on esBattle.com! Do not forget to "
+#~ "put your infos game in your"
+#~ msgstr ""
+#~ "Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de "
+#~ "mettre vos informations de jeux à jour dans "
+
+#~ msgid "For"
+#~ msgstr "Durée"
+
+#~ msgid "HOME"
+#~ msgstr "ACCUEIL"
+
+#~ msgid "ID in game"
+#~ msgstr "ID dans le jeu"
+
+#~ msgid "NEW PARTY"
+#~ msgstr "NOUVELLE PARTIE"
+
+#~ msgid "Platforms"
+#~ msgstr "Platformes"
+
+#~ msgid "Tags"
+#~ msgstr "Tags"
+
+#~ msgid ""
+#~ "The website is still in beta mode, so please report your bugs/ideas to "
+#~ "contact.esbattle@gmail.com :)"
+#~ msgstr ""
+#~ "Le site web est en beta, merci de reporter vos bugs/idées directement à "
+#~ "contact.esbattle@gmail.com :)"
+
+#~ msgid "slots available min"
+#~ msgstr "Places dispo minimum"
 
 #~ msgid "Confirm your password"
 #~ msgstr "Confirmez votre mdp"

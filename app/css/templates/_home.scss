@@ -1,22 +1,42 @@
 #home {
-	.cover {
-		background: url("../img/cover-destiny.jpg");
-	}
 	.list {
 		position: relative;
-		width: 950px;
-		margin: 20px auto;
+		margin: 20px 10px;
 		padding-bottom: 10px;
-		a:nth-child(even){
-			background: #d8d8d8;
-			display: block;
+
+
+		a {
+			color: #2d2d2d;
+			@include transition(background-color 0.2s ease-out);
 		}
+		.line {
+
+			@include transition(background-color 0.2s ease-out);
+			background: white;
+			display: block;
+
+			&:nth-child(even){
+				background: #d8d8d8;
+
+			}
+			&:hover, &.selected {
+				background: #87cbc1;
+				cursor: pointer;
+			}
+		}
+
 		ul.search-tags {
-			float: left;
+			@media screen and (max-width: 1185px ) {
+				float: none;
+			}
+			float: right;
 			margin-bottom: 15px;
 			input {
 				width: 250px;
 				height: 25px;
+				@media screen and (max-width: 1185px ) {
+					margin-top: 20px;
+				}
 			}
 		}
 		ul.how-many {
@@ -33,21 +53,24 @@
 		}
 		ul.platforms {
 			float: left;
-			width: 450px;
 
 			li {
 				margin: 0 5px;
 				display: inline-block;
 				a {
+					@media screen and (max-width: 600px ) {
+						padding: 0 7px;
+
+					}
 					display: block;
 					border: 2px solid #87cbc1;
 					color: #3d3b3b;
 					height: 25px;
+					font-size: 13px;
 					padding: 0 10px;
 					line-height: 25px;
 					@include transition(background-color 0.2s ease-out);
 					border-radius: 30px;
-
 				}
 				a:hover, a.selected {
 					background: #87cbc1;
@@ -58,66 +81,62 @@
 				}
 			}
 		}
-		ul.title, ul.line {
+		table {
 			width: 100%;
-			margin: 0;
-			z-index: 2;
-			position: relative;
-			@include transition(all 0.1s ease-in-out);
-
-
-			&:hover {
-				background: #87cbc1;
-				cursor: pointer;
+			font-size: 13px;
+			text-align: left;
+			border: 0;
+			@media screen and (max-width: 390px ) {
+					font-size: 13px;
+				}
+			td, th {
+				overflow: hidden;
 			}
-			&.title {
+			thead {
 				background: #262525;
 				font-weight: bold;
-			}
-			li{
-				font-size: 13px;
 				height: 25px;
 				line-height: 25px;
-				display: inline-block;
-				margin: 0 5px;
-				color: #3d3b3b;
-				&:first-child {
-					padding-left:10px;
+				a {
+					color: white;
 				}
-				&.list-platform {
-					width: 76px
+			}
+			.list-platform{
+				width: 10%;
+				@media screen and (max-width: 390px ) {
+					display: none;
 				}
-				&.list-tags {
-					width: 185px;
-
-				}
-
-				&.list-infos {
-					width: 315px;
-					div {
-						border-radius: 50% 50%;
-						width: 40px;
-						font-size: 12px;
-						text-align: center;
-						line-height: 20px;
-						height: 20px;
-					}
-				}
-				&.list-start {
-					width: 150px;
-				}
-				&.list-slots {
-					width: 30px;
-				}
+			}
+			.list-tags{
+				width: 25%;
 
 			}
-		}
-	}
-	.list.withplatform{
-		li {
-			&.list-infos {
-				width: 415px;
+			.list-infos{
+				width: 30%;
+				@media screen and (max-width: 980px ) {
+					display: none;
+				}
 			}
+			.list-start{
+				width: 15%;
+				@media screen and (max-width: 1415px ) {
+					width: 20%;
+				}
+			}
+			.list-slots{
+				width: 5%;
+				@media screen and (max-width: 600px ) {
+					display: none;
+				}
+			}
+			.list-creator{
+				width: 15%;
+				@media screen and (max-width: 1415px ) {
+					display: none;
+				}
+			}
+
 		}
+
 	}
 }

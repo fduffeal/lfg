@@ -1,40 +1,58 @@
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope',
-		function ($scope) {
+	['$scope','matchmaking','user','redirection',
+		function ($scope,matchmaking,user,redirection) {
 			'use strict';
 
-			$scope.aGamers = [
-			{
-				'id': 1,
-				'gamertags': {
-					'PS4': 'PoneyMCH'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name': 'Titan',
-							'level': '26',
-							'url_info': 'http://www.bungie.net/fr/Legend/2/4611686018433351063/2305843009214841831'
-						}
-					}
-				}
-			}, {
-				'id':2,
-				'gamertags': {
-					'PS4': 'Fifoukiller84'
-				},
-				game: {
-					'destiny': {
-						'role': {
-							'name':'Hunter',
-							'level':'27',
-							'url_info':'http://www.bungie.net/fr/Legend/2/4611686018430647711/2305843009215026244'
-						}
-					}
-				}
-			}];
+			$scope.currentUser = user.get();
+			$scope.matchmakingTemplate = null;
 
+			/**
+			 * récupère les configs pour la selection du type de matchmaking
+			 */
+			matchmaking.getConf().success(function(data){
 
+				var groupOfTemplate = {};
+				for(var key in data){
+					if(!groupOfTemplate[data[key].description]) {
+						groupOfTemplate[data[key].description] = [];
+					}
+					data[key].concatTags = "";
+					for(var keyTag in data[key].tags){
+						data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+					}
+					groupOfTemplate[data[key].description].push(data[key]);
+				}
+				$scope.groupOfTemplate = groupOfTemplate;
+			});
+
+			/**
+			 * écoute le changement de profil
+			 */
+			$scope.$on('setUserGame',function(event,data){
+				var userSelected = data[0];
+				$scope.profilSelected = userSelected;
+			});
+
+			/**
+			 * lance le matchmaking
+			 */
+			$scope.join = function(){
+				if($scope.joinMatchmakingForm.$valid === false){
+					return;
+				}
+				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id).success(function(data){
+					redirection.goToMatchmakingId(data.id);
+				});
+			};
+
+			/**
+			 * selectionne un type de matchmaking
+			 * @param template
+			 */
+			$scope.selectGroupOfTemplate = function(template){
+				$scope.matchmakingTemplate = template;
+				$scope.templateSelectedModel = template[0];
+			};
 		}
 	]
 );

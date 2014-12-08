@@ -5,14 +5,13 @@ angular.module('myApp.directives')
 			return {
 				replace :true,
 				scope:{
-					'lfgInterval':'=',
-					'id': '@'
+					'lfgInterval':'='
 				},
 				link: function($scope, element, attrs) {
 
-					$scope.intervalId = $scope.id;
 					element.on('$destroy', function() {
 						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
 					});
 				},
 				restrict: 'A'

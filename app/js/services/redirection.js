@@ -20,6 +20,15 @@ angular.module('myApp.services')
 			this.getRegisterPageUrl = function(){
 				return getLang()+'/register';
 			};
+			this.getNotifPageUrl = function(){
+				return getLang()+'/notification';
+			};
+			this.getMatchmakingPageUrl = function(){
+				return getLang()+'/matchmaking';
+			};
+			this.getGamesPageUrl = function(){
+				return getLang()+'/games';
+			};
 
 			this.goToRegister = function(){
 				$location.path(this.getRegisterPageUrl());
@@ -49,6 +58,10 @@ angular.module('myApp.services')
 				$location.path(this.getPartyWaitingByIdUrl(id));
 			};
 
+			this.goToMatchmakingId = function(id){
+				$location.path(getLang()+'/matchmaking/waiting/'+id);
+			};
+
 			this.getHomePageUrl = function(){
 				return getLang()+'/';
 			};
@@ -66,7 +79,7 @@ angular.module('myApp.services')
 			};
 
 			this.notFound = function(msg){
-				$location.path(this.getNotFoundPage(msg));
+				$location.path(this.getNotFoundPageUrl(msg));
 			};
 
 			this.getProfilGamePageUrl = function(gameId,plateformId){

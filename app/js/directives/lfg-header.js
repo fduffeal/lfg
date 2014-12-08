@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval',
-		function(user,rdv,tag,lang,redirection,$interval) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter',
+		function(user,rdv,tag,lang,redirection,$interval,$filter) {
 			'use strict';
 			return {
 				scope:{
@@ -25,6 +25,9 @@ angular.module('myApp.directives')
 					$scope.loginPageUrl = redirection.getLoginPageUrl();
 					$scope.registerPageUrl = redirection.getRegisterPageUrl();
 					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 
                     $scope.userInfo = user.get();
 
@@ -34,12 +37,27 @@ angular.module('myApp.directives')
 					 */
 					var refreshDataNotif = function(){
 						rdv.getNotifications().success(function(data){
-							$scope.notifications = data;
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
 						});
 					};
 
 					var refreshTime = 12000;
 					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
 						$scope.intervaNotificationId = $interval(function(){
 							refreshDataNotif();
 						}, refreshTime);

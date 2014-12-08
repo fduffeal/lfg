@@ -53,7 +53,7 @@ angular.module('myApp.services')
 				storage.erasePersistant('user');
 			};
 
-			this.setUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
+			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
 
 				var currentUser = this.get();
 
@@ -70,7 +70,29 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
+
+				var currentUser = this.get();
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -82,6 +104,11 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
+			};
+
+			this.updateOnline = function(){
+				var currentUser = this.get();
+				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
 			};
 		}
 	]

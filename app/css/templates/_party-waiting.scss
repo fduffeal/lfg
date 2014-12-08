@@ -1,18 +1,7 @@
 #party-waiting {
-	.cover {
-		background: url("../img/cover-create-waiting.jpg");
-		&.fr {
-			background: url("../img/cover-create-waiting_FR.jpg");
-		}
-		&.party_completed {
-			background: url("../img/cover-create-full.jpg");
-			&.fr {
-				background: url("../img/cover-create-full_FR.jpg");
-			}
-		}
-	}
+
 	.btn {
-		width: 950px;
+		width: 100%;
 	}
 	.link a{
 		color: #06ab93;
@@ -20,57 +9,84 @@
 		text-decoration: underline;
 	}
 	.block {
-		width: 950px;
-		font-size: 13px;
+		width: 98%;
 		margin: auto;
-	}
-	.team {
-		ul {
-			width: 100%;
-			&.player:nth-child(odd) {
-				background: #d8d8d8
-			}
-		}
-		li {
-			display: inline-block;
-			height: 30px;
-			line-height: 30px;
-			&:nth-child(1) {
-				width: 565px;
-				padding-left: 10px;
-			}
-			&:nth-child(2) {
-				width: 100px;
-			}
-			&:nth-child(3) {
-				width: 50px;
-			}
 
-			&:nth-child(4) {
-				width: 200px;
-				a {
-					color: #06ab93;
-					&:hover {
-						text-decoration: underline;
-					}
-				}
+      .loader{
+        height: 200px;
+        width: 200px;
+        text-align: center;
+        margin: 0 auto 0;
+        position: relative;
+        .slot {
+          position: absolute;
+          top: 50px;
+          left: 0
+        }
+        span {
+          color: #cacaca;
+          font-size: 55px;
+          position: absolute;
+          &.one {
+            left: 59px;
+          }
+          &.two {
+            left: 88px;
+            top: 1px;
+            font-size: 90px;
+          }
+          &.three {
+            left: 115px;
+            top: 32px;
+          }
+        }
+      }
+	}
+	table {
+		width: 100%;
+		text-align: left;
+		border: 0;
+		font-size: 13px;
+		td, th {
+			overflow: hidden;
+		}
+		thead {
+			background: #262525;
+			font-weight: bold;
+			height: 25px;
+			line-height: 25px;
+			color: white;
+
+		}
+		.name{
+			width: 40%;
+		}
+		.class{
+			width: 20%;
+
+		}
+		.level{
+			width: 10%;
+
+		}
+		.actions{
+			width: 30%;
+		}
+		@media screen and (max-width: 390px ) {
+			td.actions{
+				font-size: 13px;
 			}
 		}
-		.leader {
-			color :#f15641;
-		}
-		.title {
-			background: #262525;
-			color: white;
-			font-weight: bold;
-		}
+
+
 	}
 	.block2 {
-		width: 950px;
+		width: 100%;
 		height: 214px;
 		background-image: url('../img/cartouche.jpg');
 		margin-top: 10px;
 		position: relative;
+		background-size: 100%;
 		.share {
 			position: absolute;
 			top: 5px;
@@ -97,7 +113,7 @@
 		}
 		.line {
 			position: absolute;
-			left: 180px;
+			left: 30px;
 			color: white;
 			width: 770px;
 			height: 180px;
@@ -111,6 +127,9 @@
 				font-size: 30px;
 				color: #87cbc1;
 			}
+			.slots-mobile {
+				display: none;
+			}
 			.slots span {
 				position: absolute;
 				font-size: 67px;
@@ -118,20 +137,19 @@
 
 				top: 20px;
 				&.one {
-					right: 123px;
-					top: 8px;
+					right: -90px;
+					top: 30px;
 
 				}
 				&.two {
-					right: 68px;
-					top: 61px;
-
+					right: -138px;
+					top: 88px;
 				}
 			}
 			.desc {
 				position: absolute;
 				top: 120px;
-				font-size: 30px;
+				font-size: 19px;
 			}
 			.when {
 				font-size: 19px;
@@ -143,6 +161,8 @@
 			.link{
 				font-size: 18px;
 				bottom: -17px;
+				background: #2d2d2d;
+				padding: 5px 10px;
 				left: 0;
 				position: absolute;
 				a {
@@ -150,6 +170,174 @@
 				}
 			}
 
+		}
+		@media screen and (max-width: 1415px ) {
+			background-size: 101%;
+			height: 198px;
+			.line {
+				.link {
+					bottom: 8px;
+				}
+				.desc {
+					top: 97px;
+				}
+				.when {
+					right: 90px;
+					bottom: 8px;
+				}
+				.slots span.one {
+					right: 22px;
+					top: 27px;
+				}
+				.slots span.two {
+					right: -23px;
+					top: 72px;
+				}
+			}
+
+		}
+		@media screen and (max-width: 1184px ) {
+			background-size: 101%;
+			height: 154px;
+			.line {
+				.platform{
+					font-size: 30px;
+				}
+				.link {
+					bottom: 44px;
+					font-size: 15px;
+					a {
+						font-size: 15px;
+					}
+				}
+				.desc {
+					top: 77px;
+				}
+				.when {
+					right: 253px;
+					bottom: 150px;
+				}
+				.slots span {
+					font-size: 48px;
+				}
+				.slots span.one {
+					right: 199px;
+					top: 22px;
+				}
+				.slots span.two {
+					right: 168px;
+					top: 56px;
+				}
+			}
+			@media screen and (max-width: 980px ) {
+				background-size: 101%;
+				height: 132px;
+				.line {
+					.platform{
+						font-size: 20px;
+					}
+					.tags {
+						font-size: 24px;
+					}
+					.link {
+						bottom: 67px;
+					}
+					.desc {
+						top: 64px;
+					}
+					.when {
+						right: 332px;
+						bottom: 158px;
+					}
+					.slots span {
+						font-size: 42px;
+					}
+					.slots span.one {
+						right: 283px;
+						top: 15px;
+					}
+					.slots span.two {
+						right: 257px;
+						top: 46px;
+					}
+				}
+
+			}
+			@media screen and (max-width: 600px ) {
+				background-size: 153%;
+				height: 132px;
+				.line {
+					.platform{
+						font-size: 20px;
+					}
+					.tags {
+						font-size: 24px;
+					}
+					.link {
+						bottom: 67px;
+					}
+					.desc {
+						top: 64px;
+					}
+					.when {
+						right: 433px;
+						bottom: 158px;
+						font-size: 15px;
+					}
+					.slots {
+						display: none;
+					}
+					.slots-mobile {
+						display: block;
+						position: absolute;
+						left: 283px;
+						top: 40px;
+						font-size: 29px;
+					}
+
+
+
+				}
+
+			}
+			@media screen and (max-width: 390px ) {
+				background-size: 187%;
+				height: 132px;
+				.line {
+					left: 5px;
+					.platform{
+						font-size: 20px;
+					}
+					.tags {
+						font-size: 24px;
+					}
+					.link {
+						bottom: 59px;
+						a {
+							font-size: 13px;
+						}
+					}
+					.desc {
+						top: 62px;
+					}
+					.when {
+						right: 506px;
+						bottom: 161px;
+						font-size: 15px;
+					}
+					.slots {
+						display: none;
+					}
+					.slots-mobile {
+						position: absolute;
+						left: 230px;
+						top: 40px;
+						font-size: 29px;
+					}
+
+				}
+
+			}
 		}
 	}
 }
