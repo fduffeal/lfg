@@ -104,7 +104,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.rdv.game.id,$scope.rdv.plateform.id);
+				redirection.goToGamesPage();
 			};
 
 			$scope.currentUrl = $location.absUrl();

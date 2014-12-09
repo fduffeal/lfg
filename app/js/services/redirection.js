@@ -30,6 +30,10 @@ angular.module('myApp.services')
 				return getLang()+'/games';
 			};
 
+			this.goToGamesPage = function(){
+				$location.path(this.getGamesPageUrl());
+			};
+
 			this.goToRegister = function(){
 				$location.path(this.getRegisterPageUrl());
 			};
