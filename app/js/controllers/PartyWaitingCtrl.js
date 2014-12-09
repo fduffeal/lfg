@@ -122,6 +122,19 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				$interval.cancel($scope.intervalId);
 			};
 
+	        /**
+	         * écoute le changement de profil
+	         */
+	        $scope.$on('setUserGame',function(event,data){
+		        var userSelected = data[0];
+
+		        for(var key in $scope.profils){
+			        if($scope.profils[key].id === userSelected.id){
+				        $scope.profilSelected = $scope.profils[key];
+			        }
+		        }
+	        });
+
 			refreshData();
 			autoRefreshData();
 
