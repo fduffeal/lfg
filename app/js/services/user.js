@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api',
-		function($http,storage,api) {
+	.service('user', ['$http','storage','api','$rootScope',
+		function($http,storage,api,$rootScope) {
 			'use strict';
             this.data = '';
 
@@ -50,6 +50,8 @@ angular.module('myApp.services')
 			};
 
 			this.logout = function(){
+				$rootScope.notificationsAlreadyRead = [];
+				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
 			};
 

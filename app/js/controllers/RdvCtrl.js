@@ -67,7 +67,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.$on('setUserGame',function(event,data){
 				var userSelected = data[0];
-				$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+				if(userSelected !== null){
+					$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+				}
 			});
 
 			//init

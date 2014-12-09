@@ -24,6 +24,7 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.userInfo = data;
 					redirection.goBack();
+			        $scope.$broadcast('refreshProfil');
 		        }).error(function(data){
 					$scope.error = data.msg;
 					if(data.msg==='connection_refused'){

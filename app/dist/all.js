@@ -220,6 +220,7 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.userInfo = data;
 					redirection.goBack();
+			        $scope.$broadcast('refreshProfil');
 		        }).error(function(data){
 					$scope.error = data.msg;
 					if(data.msg==='connection_refused'){
@@ -850,7 +851,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.$on('setUserGame',function(event,data){
 				var userSelected = data[0];
-				$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+				if(userSelected !== null){
+					$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
+				}
 			});
 
 			//init
@@ -1841,8 +1844,8 @@ angular.module('myApp.services')
 	]
 );
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api',
-		function($http,storage,api) {
+	.service('user', ['$http','storage','api','$rootScope',
+		function($http,storage,api,$rootScope) {
 			'use strict';
             this.data = '';
 
@@ -1892,6 +1895,8 @@ angular.module('myApp.services')
 			};
 
 			this.logout = function(){
+				$rootScope.notificationsAlreadyRead = [];
+				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
 			};
 
