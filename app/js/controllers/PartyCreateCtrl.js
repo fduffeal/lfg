@@ -15,6 +15,9 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dureeHours = 1;
 			$scope.dureeMinutes = 0;
 
+			$scope.game = null;
+			$scope.plateform = null;
+
 			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
 				$scope.game = $scope.formInfo.games[0];
@@ -40,7 +43,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			});
 
 			var updateProfilsAvailable = function(){
-				if($scope.currentUser !== null){
+				if($scope.currentUser !== null && $scope.game !== null && $scope.plateform !== null){
 					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,$scope.plateform.id);
 					if($scope.profils[0]){
 						$scope.profilSelected = $scope.profils[0];
@@ -49,8 +52,28 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			};
 
+			var updateTime = function(){
+				var rdvDate = new Date();
+				var now = new Date();
+				rdvDate.setHours($scope.startHours);
+				rdvDate.setMinutes($scope.startMinutes);
 
+				$scope.bDemain = false;
+				if(now.getTime() > rdvDate.getTime()){
+					rdvDate.setTime(rdvDate.getTime() + 1 * 24 * 3600 * 1000);
+					$scope.bDemain = true;
+				}
 
+				$scope.day = rdvDate;
+			} ;
+
+			$scope.$watch('startMinutes',function(newValue,OldValue){
+				updateTime();
+			});
+
+			$scope.$watch('startHours',function(newValue,OldValue){
+				updateTime();
+			});
 
             $scope.submit = function(){
 
