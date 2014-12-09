@@ -47,7 +47,7 @@
                         <input ng-show="profils.length > 0" type="submit" id="submit" value="{{'Start' | translate}}"
                                class="btn"/>
 
-                        <div ng-show="profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !
+                        <div ng-show="(!profils || profils.length == 0)" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !
                         </div>
                     </li>
                 </ul>
