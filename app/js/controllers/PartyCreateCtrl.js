@@ -120,7 +120,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.game.id,$scope.plateform.id);
+				redirection.goToGamesPage();
 			};
 
 			$scope.$on('setUserGame',function(event,data){

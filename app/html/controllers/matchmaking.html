@@ -21,7 +21,10 @@
                                 ng-options="config.concatTags for config in matchmakingTemplate"
                                 required>
                         </select>
-                        <input type="submit" class="btn" value="Go" ng-show="(templateSelectedModel)"/>
+                        <input ng-show="profilSelected" type="submit" class="btn" value="Go"/>
+
+	                    <div ng-show="!profilSelected" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !</div>
+
                     </form>
                 </ul>
             </div>
