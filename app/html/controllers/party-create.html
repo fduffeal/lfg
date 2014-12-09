@@ -5,14 +5,15 @@
         <span class="important" translate>ALL FIELDS ARE REQUIRED</span>
 
         <div class="block">
-            <h1><span translate>New party on </span> {{game.name}} {{plateform.nom}}</h1>
+            <h1><span translate>New party on </span> {{game.name}} {{plateform.nom}} | {{ day | date:'yyyy-MM-dd HH:mm'}}</h1>
 
             <form name="myForm" ng-submit="submit()">
                 <ul class="inputs">
                     <li>
                         <label translate>When</label>
-                        <input type="number" ng-model="startHours"/> :
-                        <input type="number" ng-model="startMinutes"/>
+                        <input type="number" ng-model="startHours" min="0" max="23"/> :
+                        <input type="number" ng-model="startMinutes"  min="0" max="59"/>
+	                    <span ng-if="bDemain" translate>Tomorrow</span>
                         <input type="hidden" id="start-date" name="inputDayStart" ng-model="day" required="true">
                     </li>
                     <li>

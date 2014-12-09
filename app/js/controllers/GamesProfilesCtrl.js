@@ -14,6 +14,8 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 	        rdv.getFormInfo().then(function(data){
 		        $scope.plateforms = data.plateforms;
 		        $scope.games = data.games;
+		        $scope.plateform = $scope.plateforms[0];
+		        $scope.game = $scope.games[0];
 	        });
 
 

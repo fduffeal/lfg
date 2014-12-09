@@ -11,3 +11,16 @@
      RewriteCond %{REQUEST_FILENAME} !-d
      RewriteRule ^(.*)$ /#/$1 [L]
 </IfModule>
+
+<FilesMatch "\.(html|js|css|gif|jpg|jpeg|png|ico)$">
+	Header set Cache-Control "max-age=3600"
+
+	Header set vary  "Accept-Encoding"
+	Header append vary "User-Agent"
+	Header append Cache-Control "public"
+
+	Header append Connection "Keep-Alive"
+	Header append Keep-Alive "timeout=5, max=100"
+
+	FileETag None
+</FilesMatch>

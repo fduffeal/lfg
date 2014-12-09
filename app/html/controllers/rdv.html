@@ -27,7 +27,7 @@
 							<th class="list-platform"><a href="">Platforms</a></th>
 							<th class="list-tags"><a href="">Tags</a></th>
 							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Status</a></th>
 							<th class="list-slots"><a href="" ng-click="predicate ='nbParticipant'; reverse=!reverse">Slots</a></th>
 							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
 						</tr>
@@ -40,7 +40,7 @@
 								<td class="list-platform">{{ rdv.plateform.nom }}</td>
 								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
 								<td class="list-infos">{{ rdv.description}}</td>
-								<td class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+								<td class="list-start">OPEN</td>
 								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
 								<td class="list-creator">{{ rdv.leader.username }}</td>
 							</tr>

@@ -104,7 +104,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.rdv.game.id,$scope.rdv.plateform.id);
+				redirection.goToGamesPage();
 			};
 
 			$scope.currentUrl = $location.absUrl();
@@ -121,6 +121,19 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			var stopAutoRefreshData = function(){
 				$interval.cancel($scope.intervalId);
 			};
+
+	        /**
+	         * écoute le changement de profil
+	         */
+	        $scope.$on('setUserGame',function(event,data){
+		        var userSelected = data[0];
+
+		        for(var key in $scope.profils){
+			        if($scope.profils[key].id === userSelected.id){
+				        $scope.profilSelected = $scope.profils[key];
+			        }
+		        }
+	        });
 
 			refreshData();
 			autoRefreshData();

@@ -158,6 +158,10 @@ msgstr "Vos personnages"
 msgid "Home"
 msgstr "Accueil"
 
+#: app/html/controllers/matchmaking-waiting.html
+msgid "If you leave this page, the matchmaking will be cancel"
+msgstr "Si vous quittez cette page, le matchmaking sera annulé"
+
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
 msgstr "Rejoindre !"
@@ -253,6 +257,10 @@ msgstr "Platformes"
 #: app/html/directives/lfg-profile.html
 msgid "Platform:"
 msgstr "Plateforme:"
+
+#: app/html/controllers/matchmaking-waiting.html
+msgid "Please waiting, we are looking for players..."
+msgstr "Merci de patienter, nous recherchons des joueurs..."
 
 #: app/html/controllers/profile.html
 msgid "Profil Name"
