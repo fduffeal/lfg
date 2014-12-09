@@ -4,7 +4,16 @@
     <div class="page">
         <div class="block">
 
+
             <h1 translate>Please waiting, we are looking for players...</h1>
+
+	        <div>
+		        {{rdv.matchmaking.description}}
+		        <div class="{{rdv.matchmaking.icone}}"></div>
+		        <div class="tags">
+			        <span ng-repeat="tag in rdv.matchmaking.tags">#{{tag.nom}} </span>
+		        </div>
+	        </div>
 
             <div class="text" translate>If you leave this page, the matchmaking will be cancel</div>
             <div class="loader" title="0">
