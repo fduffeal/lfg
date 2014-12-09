@@ -141,6 +141,10 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: app/html/controllers/matchmaking-waiting.html
+msgid "If you leave this page, the matchmaking will be cancel"
+msgstr ""
+
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
 msgstr ""
@@ -234,6 +238,10 @@ msgstr ""
 
 #: app/html/directives/lfg-profile.html
 msgid "Platform:"
+msgstr ""
+
+#: app/html/controllers/matchmaking-waiting.html
+msgid "Please waiting, we are looking for players..."
 msgstr ""
 
 #: app/html/controllers/profile.html
