@@ -5,6 +5,7 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
+			$scope.profilSelected = null;
 
 			/**
 			 * récupère les configs pour la selection du type de matchmaking
@@ -52,6 +53,10 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 			$scope.selectGroupOfTemplate = function(template){
 				$scope.matchmakingTemplate = template;
 				$scope.templateSelectedModel = template[0];
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
 			};
 		}
 	]
