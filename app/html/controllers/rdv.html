@@ -20,6 +20,37 @@
 			</ul>
 
 			<div class="last">
+				<div ng-if="currentUser">
+					<h1>Destiny {{plateformNameSelected}} : My Game</h1>
+					<table border="0">
+						<thead>
+						<tr>
+							<th class="list-platform"><a href="">Platforms</a></th>
+							<th class="list-tags"><a href="">Tags</a></th>
+							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
+							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+							<th class="list-slots"><a href="" ng-click="predicate ='nbParticipant'; reverse=!reverse">Slots</a></th>
+							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
+						</tr>
+						</thead>
+					</table>
+					<a class="line" ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" >
+						<table border="0">
+							<tbody>
+							<tr >
+								<td class="list-platform">{{ rdv.plateform.nom }}</td>
+								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
+								<td class="list-infos">{{ rdv.description}}</td>
+								<td class="list-start" ng-if="isLive(rdv)">NOW</td>
+								<td class="list-start" ng-if="!isLive(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-creator">{{ rdv.leader.username }}</td>
+							</tr>
+							</tbody>
+
+						</table>
+					</a>
+				</div>
 				<h1>Destiny {{plateformNameSelected}} : LIVE</h1>
 				<table border="0">
 					<thead>

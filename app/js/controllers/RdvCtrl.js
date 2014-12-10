@@ -1,11 +1,13 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user) {
 			'use strict';
 
 			lang.initLang();
 
-			$scope.today = new Date();
+			$scope.currentUser = user.get();
+
+			$scope.now = new Date();
 
 			$scope.demain = new Date();
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
@@ -14,6 +16,12 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.slotMaxAvailable = 6;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
+			$scope.isLive = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (rdv.start < now && rdv.end > now);
+			};
 
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
