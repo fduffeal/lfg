@@ -355,18 +355,23 @@ angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
 				}
 			};
 
+	        var getRdvDetails = function(){
+		        rdv.get($routeParams.partyId).success(function (data) {
+			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
+			        manageAutorisation();
+		        });
+	        };
 
 	        var refreshData = function() {
-
-				user.updateOnline().success(function(data){
-					rdv.get($routeParams.partyId).success(function (data) {
-						$scope.rdv = data;
-
-						$scope.isFull = (data.users.length === data.nbParticipant);
-						manageAutorisation();
-					});
-				});
-
+		        if($scope.currentUser !== null){
+			        user.updateOnline($scope.currentUser).success(function(data){
+				        getRdvDetails();
+			        });
+		        } else {
+			        getRdvDetails();
+		        }
 	        };
 
 	        $scope.leave = function(userId){
@@ -582,6 +587,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        $scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
+	        $scope.isLive = rdv.isLive;
 
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
@@ -617,18 +623,23 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				}
 			};
 
+	        var getRdvDetails = function(){
+		        rdv.get($routeParams.partyId).success(function (data) {
+			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
+			        manageAutorisation();
+		        });
+	        };
 
 	        var refreshData = function() {
-
-		        user.updateOnline().success(function(data){
-			        rdv.get($routeParams.partyId).success(function (data) {
-				        $scope.rdv = data;
-
-				        $scope.isFull = (data.users.length === data.nbParticipant);
-				        manageAutorisation();
+		        if($scope.currentUser !== null){
+			        user.updateOnline($scope.currentUser).success(function(data){
+				        getRdvDetails();
 			        });
-		        });
-
+		        } else {
+			        getRdvDetails();
+		        }
 	        };
 
 			$scope.join = function(){
@@ -829,13 +840,15 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user) {
 			'use strict';
 
 			lang.initLang();
 
-			$scope.today = new Date();
+			$scope.currentUser = user.get();
+
+			$scope.now = new Date();
 
 			$scope.demain = new Date();
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
@@ -844,6 +857,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.slotMaxAvailable = 6;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
+			$scope.isLive = rdv.isLive;
 
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
@@ -963,158 +978,6 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id === gameId && userGameProfil[key].plateform.id === plateformId){
-				aFilterdItems.push(userGameProfil[key]);
-			}
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -1313,6 +1176,168 @@ angular.module('myApp.directives')
     ]
 );
 
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id === gameId && userGameProfil[key].plateform.id === plateformId){
+				aFilterdItems.push(userGameProfil[key]);
+			}
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
 angular.module('superCache',[])
 	.factory('superCache', ['$cacheFactory','$q','$timeout',
 		function($cacheFactory,$q,$timeout) {
@@ -1595,6 +1620,53 @@ angular.module('myApp.services')
 
 				return aFilteredItems;
 			};
+
+			this.hasMeInGame = function(rdv,userId){
+
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === userId){
+						return true;
+					}
+				}
+
+				for(var key_2 in rdv.usersInQueue){
+					if(rdv.usersInQueue[key_2].user.id === userId){
+						return true;
+					}
+				}
+				return false;
+			};
+
+			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasMeInGame(items[key],currentUserId) === false){
+						continue;
+					}
+
+					if(this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(this.isExpired(items[key],now) === true){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
 		}
 	]
 );
@@ -1694,6 +1766,12 @@ angular.module('myApp.services')
 
 			this.getNotifications = function(){
 				return api.call('notifications/');
+			};
+
+			this.isLive = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
 			};
 		}
 	]
@@ -1894,10 +1972,21 @@ angular.module('myApp.services')
 	]
 );
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope',
-		function($http,storage,api,$rootScope) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout',
+		function($http,storage,api,$rootScope,$q,$timeout) {
 			'use strict';
             this.data = '';
+
+			this.fakePromise = function(){
+				var deferred = $q.defer();
+				var promise = deferred.promise;
+
+				$timeout(function(){
+					deferred.resolve();
+				},0);
+
+				return promise;
+			};
 
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
@@ -2003,8 +2092,7 @@ angular.module('myApp.services')
 				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
 			};
 
-			this.updateOnline = function(){
-				var currentUser = this.get();
+			this.updateOnline = function(currentUser){
 				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
 			};
 		}

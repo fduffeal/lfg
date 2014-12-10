@@ -1,8 +1,19 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope',
-		function($http,storage,api,$rootScope) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout',
+		function($http,storage,api,$rootScope,$q,$timeout) {
 			'use strict';
             this.data = '';
+
+			this.fakePromise = function(){
+				var deferred = $q.defer();
+				var promise = deferred.promise;
+
+				$timeout(function(){
+					deferred.resolve();
+				},0);
+
+				return promise;
+			};
 
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
@@ -108,8 +119,7 @@ angular.module('myApp.services')
 				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
 			};
 
-			this.updateOnline = function(){
-				var currentUser = this.get();
+			this.updateOnline = function(currentUser){
 				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
 			};
 		}

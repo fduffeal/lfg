@@ -93,6 +93,53 @@ angular.module('myApp.services')
 
 				return aFilteredItems;
 			};
+
+			this.hasMeInGame = function(rdv,userId){
+
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === userId){
+						return true;
+					}
+				}
+
+				for(var key_2 in rdv.usersInQueue){
+					if(rdv.usersInQueue[key_2].user.id === userId){
+						return true;
+					}
+				}
+				return false;
+			};
+
+			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasMeInGame(items[key],currentUserId) === false){
+						continue;
+					}
+
+					if(this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(this.isExpired(items[key],now) === true){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
 		}
 	]
 );
