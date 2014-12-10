@@ -41,18 +41,23 @@ angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
 				}
 			};
 
+	        var getRdvDetails = function(){
+		        rdv.get($routeParams.partyId).success(function (data) {
+			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
+			        manageAutorisation();
+		        });
+	        };
 
 	        var refreshData = function() {
-
-				user.updateOnline().success(function(data){
-					rdv.get($routeParams.partyId).success(function (data) {
-						$scope.rdv = data;
-
-						$scope.isFull = (data.users.length === data.nbParticipant);
-						manageAutorisation();
-					});
-				});
-
+		        if($scope.currentUser !== null){
+			        user.updateOnline($scope.currentUser).success(function(data){
+				        getRdvDetails();
+			        });
+		        } else {
+			        getRdvDetails();
+		        }
 	        };
 
 	        $scope.leave = function(userId){
