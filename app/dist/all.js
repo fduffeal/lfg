@@ -255,6 +255,7 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
+			$scope.profilSelected = null;
 
 			/**
 			 * récupère les configs pour la selection du type de matchmaking
@@ -302,6 +303,10 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 			$scope.selectGroupOfTemplate = function(template){
 				$scope.matchmakingTemplate = template;
 				$scope.templateSelectedModel = template[0];
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
 			};
 		}
 	]
@@ -556,7 +561,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.game.id,$scope.plateform.id);
+				redirection.goToGamesPage();
 			};
 
 			$scope.$on('setUserGame',function(event,data){
@@ -1305,6 +1310,120 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -1674,7 +1793,7 @@ angular.module('myApp.services')
 			};
 
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
-				$location.path(this.getProfilGamePageByGameAndPlateformUrl(gameId,plateformId));
+				this.goToGamesPage();
 			};
 		}
 	]
@@ -1887,119 +2006,4 @@ angular.module('myApp.services')
 			};
 		}
 	]
-);
-
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
 );
