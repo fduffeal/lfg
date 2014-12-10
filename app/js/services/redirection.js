@@ -95,7 +95,7 @@ angular.module('myApp.services')
 			};
 
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
-				$location.path(this.getProfilGamePageByGameAndPlateformUrl(gameId,plateformId));
+				this.goToGamesPage();
 			};
 		}
 	]

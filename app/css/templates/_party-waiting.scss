@@ -12,35 +12,36 @@
 		width: 98%;
 		margin: auto;
 
-      .loader{
-        height: 200px;
-        width: 200px;
-        text-align: center;
-        margin: 0 auto 0;
-        position: relative;
-        .slot {
-          position: absolute;
-          top: 50px;
-          left: 0
-        }
-        span {
-          color: #cacaca;
-          font-size: 55px;
-          position: absolute;
-          &.one {
-            left: 59px;
-          }
-          &.two {
-            left: 88px;
-            top: 1px;
-            font-size: 90px;
-          }
-          &.three {
-            left: 115px;
-            top: 32px;
-          }
-        }
-      }
+		.loader{
+			height: 200px;
+			width: 200px;
+			text-align: center;
+			margin: 0 auto 0;
+			position: relative;
+
+			.slot {
+				position: absolute;
+				top: 50px;
+				left: 0
+			}
+			span {
+				color: #cacaca;
+				font-size: 55px;
+				position: absolute;
+				&.one {
+					left: 59px;
+				}
+				&.two {
+					left: 88px;
+					top: 1px;
+					font-size: 90px;
+				}
+				&.three {
+					left: 115px;
+					top: 32px;
+				}
+			}
+		}
 	}
 	table {
 		width: 100%;
@@ -121,6 +122,101 @@
 			.platform {
 				font-size: 40px;
 				font-weight: bold;
+
+			}
+			.slotmatch {
+				position: absolute;
+				top: 1px;
+				right: -192px;
+				.loader span.two {
+					display: none;
+				}
+				@media screen and (max-width: 1415px ) {
+					right: -84px;
+					top: -1px;
+					svg {
+						width: 177px;
+						height: 177px;
+					}
+					.loader span {
+						font-size: 43px;
+					}
+				}
+				@media screen and (max-width: 1184px ) {
+					right: 92px;
+					top: -3px;
+					svg {
+						width: 137px;
+						height: 137px;
+					}
+					.loader span {
+						font-size: 31px;
+					}
+					.loader span.one {
+						left: 73px;
+					}
+					.loader .slot{
+						top: 35px;
+					}
+					.loader span.three {
+						left: 109px;
+					}
+				}
+				@media screen and (max-width: 980px ) {
+					right: 181px;
+					top: -4px;
+					.loader span {
+						font-size: 26px;
+					}
+					.loader span.one {
+						left: 77px;
+					}
+					.loader span.three {
+						left: 106px;
+						top: 26px;
+					}
+					svg {
+						width: 118px;
+						height: 118px;
+					}
+				}
+				@media screen and (max-width: 600px ) {
+					right: 366px;
+					svg {
+						width: 94px;
+						height: 94px;
+						path:first-child {
+							fill:white;
+							opacity: 0.5
+						}
+						path:last-child {
+							fill:white;
+						}
+					}
+					.loader .slot{
+						top: 27px;
+					}
+					.loader span.one {
+						left: 83px;
+					}
+					.loader span.three {
+						left: 105px;
+						top: 20px;
+					}
+					.loader span.two {
+						display: block;
+						left: 96px;
+						top: 10px;
+					}
+					.loader span {
+						font-size: 20px;
+					}
+
+				}
+				@media screen and (max-width: 390px ) {
+					right: 402px;
+					top: 36px;
+				}
 
 			}
 			.tags {
@@ -339,5 +435,10 @@
 
 			}
 		}
+	}
+	.text {
+		font-size: 13px;
+		margin-top: 10px;
+		text-align: center;
 	}
 }

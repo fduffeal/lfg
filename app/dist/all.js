@@ -255,6 +255,7 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
+			$scope.profilSelected = null;
 
 			/**
 			 * récupère les configs pour la selection du type de matchmaking
@@ -302,6 +303,10 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 			$scope.selectGroupOfTemplate = function(template){
 				$scope.matchmakingTemplate = template;
 				$scope.templateSelectedModel = template[0];
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
 			};
 		}
 	]
@@ -556,7 +561,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			};
 
 			$scope.createProfil = function(){
-				redirection.goToCreateProfilForGameAndPlateform($scope.game.id,$scope.plateform.id);
+				redirection.goToGamesPage();
 			};
 
 			$scope.$on('setUserGame',function(event,data){
@@ -615,12 +620,15 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 	        var refreshData = function() {
 
-		        rdv.get($routeParams.partyId).success(function (data) {
-			        $scope.rdv = data;
+		        user.updateOnline().success(function(data){
+			        rdv.get($routeParams.partyId).success(function (data) {
+				        $scope.rdv = data;
 
-			        $scope.isFull = (data.users.length === data.nbParticipant);
-					manageAutorisation();
+				        $scope.isFull = (data.users.length === data.nbParticipant);
+				        manageAutorisation();
+			        });
 		        });
+
 	        };
 
 			$scope.join = function(){
@@ -1788,7 +1796,7 @@ angular.module('myApp.services')
 			};
 
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
-				$location.path(this.getProfilGamePageByGameAndPlateformUrl(gameId,plateformId));
+				this.goToGamesPage();
 			};
 		}
 	]
