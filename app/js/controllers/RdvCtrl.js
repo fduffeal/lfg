@@ -17,11 +17,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 
-			$scope.isLive = function(rdv){
-				var now = new Date();
-				now = now.getTime()/1000;
-				return (rdv.start < now && rdv.end > now);
-			};
+			$scope.isLive = rdv.isLive;
 
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);

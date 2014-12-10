@@ -6,6 +6,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        $scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
+	        $scope.isLive = rdv.isLive;
 
 			var manageAutorisation = function(){
 				$scope.isLeader = false;

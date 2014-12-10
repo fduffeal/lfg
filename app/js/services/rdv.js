@@ -50,6 +50,12 @@ angular.module('myApp.services')
 			this.getNotifications = function(){
 				return api.call('notifications/');
 			};
+
+			this.isLive = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
+			};
 		}
 	]
 );
