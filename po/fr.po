@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7beta1\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/party-create.html
@@ -92,6 +92,7 @@ msgstr "Créer un profil pour ce jeu et rejoignez !"
 msgid "Create a profile"
 msgstr "Nouveau profil"
 
+#: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
 msgid "Create a profile for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
@@ -111,6 +112,10 @@ msgstr "Adresse email"
 #: app/html/controllers/register.html
 msgid "Email Address"
 msgstr "Adresse email"
+
+#: app/html/controllers/party-waiting.html
+msgid "Ended"
+msgstr "Terminé"
 
 #: app/html/directives/lfg-footer.html
 msgid "English"
@@ -230,6 +235,10 @@ msgstr "Notifications"
 msgid "OR"
 msgstr "OU"
 
+#: app/html/controllers/party-waiting.html
+msgid "Open"
+msgstr "Ouvert"
+
 #: app/html/controllers/login.html app/html/controllers/register.html
 msgid "Password"
 msgstr "Mot de passe"
@@ -314,6 +323,14 @@ msgstr "Ce nom d'utilisateur est déjà pris"
 #: app/html/controllers/register.html
 msgid "This email is already used."
 msgstr "Cet email est déjà pris"
+
+#: app/html/controllers/party-waiting.html
+msgid "This party is ended, create a new party !"
+msgstr "Cette partie est terminée, créez une nouvelle partie !"
+
+#: app/html/controllers/party-create.html
+msgid "Tomorrow"
+msgstr "Demain"
 
 #: app/html/controllers/profile.html
 msgid "Update"

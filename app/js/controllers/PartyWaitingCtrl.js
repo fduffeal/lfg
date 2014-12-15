@@ -5,8 +5,9 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 	        $scope.lang = lang.getCurrent();
 
+	        $scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+
 			$scope.currentUser = user.get();
-	        $scope.isLive = rdv.isLive;
 
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
@@ -47,6 +48,10 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        $scope.rdv = data;
 
 			        $scope.isFull = (data.users.length === data.nbParticipant);
+
+			        $scope.isEnded = rdv.isEnded($scope.rdv);
+			        $scope.isLive = rdv.isLive($scope.rdv);
+
 			        manageAutorisation();
 		        });
 	        };

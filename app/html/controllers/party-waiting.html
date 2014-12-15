@@ -18,7 +18,9 @@
                     <!--<li><a href=""class="twitter">&nbsp;</a></li>-->
                     <!--</ul>-->
                     <!--</div>-->
-                    <div class="when" ng-if="!isLive(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
+                    <div class="when" ng-if="!isLive && !isEnded">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
+                    <div class="when" ng-if="isEnded" translate>Ended</div>
+                    <div class="when" ng-if="isLive" translate>Open</div>
                     <!--<div class="duration">{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</div>-->
                     <div class="desc">" {{ rdv.description }} "</div>
                     <div class="slots"><span class="one">{{ rdv.users.length }}</span><span class="two">{{ rdv.nbParticipant }}</span></div>
@@ -100,12 +102,13 @@
     </div>
 
 
-    <div ng-show="canJoin && profils.length > 0 && isFull === false" class="btn" ng-click="join()" translate>Join !</div>
-    <div ng-show="canJoin && profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
-    <div ng-show="profils.length > 1 && canJoin">
+    <div ng-show="canJoin && profils.length > 0 && isFull === false && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
+    <div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
+    <div ng-show="profils.length > 1 && canJoin && isEnded === false">
         <label translate>with profil :</label>
         <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
     </div>
+    <a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
 </div>
 </div>
 
