@@ -17,7 +17,7 @@ $orange: #f15641;
 			margin-left: 271px;
 		}
 		@media screen and (max-width: 1184px ) {
-			width: 690px;
+			width: 790px;
 			margin-left: 250px;
 		}
 		@media screen and (max-width: 980px ) {
@@ -48,7 +48,7 @@ $orange: #f15641;
 				top: 11px;
 				background: #2d2d2d;
 				color: white;
-				left: 86px;
+				left: 66px;
 				line-height: 20px;
 				border: 2px solid #06ab93;
 			}
@@ -116,9 +116,7 @@ $orange: #f15641;
 		float: left;
 		li {
 			margin-right: 35px;
-			@media screen and (max-width: 1415px ) {
-				margin-right: 15px;
-			}
+
 			:hover {
 				border-bottom: 2px solid black;
 				display: block;
@@ -192,7 +190,7 @@ $orange: #f15641;
 		}
 	}
 
-	@media screen and (max-width: 600px ) {
+	@media screen and (max-width: 980px ) {
 		.menu-left {
 			display: none;
 

@@ -2,6 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
 
 #: app/html/controllers/party-create.html
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
@@ -54,10 +55,6 @@ msgstr ""
 msgid "Class"
 msgstr ""
 
-#: app/html/directives/lfg-profile.html
-msgid "Class:"
-msgstr ""
-
 #: app/html/controllers/register.html
 msgid "Confirm Password"
 msgstr ""
@@ -68,10 +65,6 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
-msgstr ""
-
-#: app/html/directives/lfg-profile.html
-msgid "Create a profile"
 msgstr ""
 
 #: app/html/controllers/matchmaking.html
@@ -129,13 +122,13 @@ msgstr ""
 msgid "Game Infos for {{game.name}}"
 msgstr ""
 
+#: app/html/controllers/party-create.html
+msgid "Game Profil"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Gamertag"
-msgstr ""
-
-#: app/html/directives/lfg-profile.html
-msgid "Gamertag:"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -245,20 +238,12 @@ msgstr ""
 msgid "Platform"
 msgstr ""
 
-#: app/html/directives/lfg-profile.html
-msgid "Platform:"
-msgstr ""
-
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Please waiting, we are looking for players..."
 msgstr ""
 
 #: app/html/controllers/profile.html
 msgid "Profil Name"
-msgstr ""
-
-#: app/html/directives/lfg-profile.html
-msgid "Profile:"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -280,6 +265,10 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
+msgstr ""
+
+#: app/html/controllers/party-create.html
+msgid "Slots"
 msgstr ""
 
 #: app/html/controllers/notification.html
