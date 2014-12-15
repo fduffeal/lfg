@@ -14,8 +14,8 @@
 		width: 590px;
 		margin: auto;
 		float: none;
-		background: white;
-		@include box-shadow(0px 4px 0px 0px rgba(50, 50, 50, 0.05));
+		background: none;
+		box-shadow:none;
 	}
 	@media screen and (max-width: 600px ) {
 		width: 390px;
