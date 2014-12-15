@@ -4,9 +4,13 @@ angular.module('myApp.filters').filter('filterGameProfil', [function () {
 		var aFilterdItems = [];
 
 		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id === gameId && userGameProfil[key].plateform.id === plateformId){
-				aFilterdItems.push(userGameProfil[key]);
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
 			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
 		}
 
 		return aFilterdItems;

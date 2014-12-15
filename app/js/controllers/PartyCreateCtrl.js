@@ -33,18 +33,19 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dayPlusTwo = new Date();
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
 
-
-			$scope.$watch('plateform',function(newValue,oldValue){
-				updateProfilsAvailable();
-			});
-
 			$scope.$watch('game',function(newValue,oldValue){
 				updateProfilsAvailable();
 			});
 
+			$scope.$watch('profilSelected',function(newValue,oldValue){
+				if(typeof newValue !== "undefined" ){
+					$scope.updatePlateform(newValue.plateform);
+				}
+			});
+
 			var updateProfilsAvailable = function(){
-				if($scope.currentUser !== null && $scope.game !== null && $scope.plateform !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,$scope.plateform.id);
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
 					if($scope.profils[0]){
 						$scope.profilSelected = $scope.profils[0];
 					}
@@ -122,12 +123,6 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.createProfil = function(){
 				redirection.goToGamesPage();
 			};
-
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				$scope.updatePlateform(userSelected.plateform);
-				$scope.profilSelected = userSelected;
-			});
 
 		}
 	]
