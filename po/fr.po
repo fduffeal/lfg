@@ -81,8 +81,8 @@ msgid "Confirm Password"
 msgstr "Confirmez votre mot de passe"
 
 #: app/html/directives/lfg-header.html
-msgid "Create"
-msgstr "Créer"
+msgid "Create Party"
+msgstr "Creer une partie"
 
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
@@ -113,7 +113,7 @@ msgstr "Adresse email"
 msgid "Email Address"
 msgstr "Adresse email"
 
-#: app/html/controllers/party-waiting.html
+#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
 msgid "Ended"
 msgstr "Terminé"
 
@@ -400,6 +400,9 @@ msgstr "cette partie"
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Create"
+#~ msgstr "Créer"
 
 #~ msgid "Account"
 #~ msgstr "Compte"

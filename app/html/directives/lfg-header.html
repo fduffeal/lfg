@@ -5,9 +5,10 @@
             <div class="menu">Menu
                 <ul>
                     <li><a href="{{homeUrl}}" translate>Home</a></li>
-                    <li  ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>
-                    <li  ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
-                    <li  ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create</a></li>
+                    <li ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
+                    <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>
+                    <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
+                    <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
                 </ul>
             </div>
 
@@ -15,8 +16,10 @@
         </div>
         <ul class="menu-left">
             <li><a href="{{homeUrl}}" translate>Home</a></li>
+            <li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
             <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>
             <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
+            <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
         </ul>
         <ul class="menu-right"ng-if="userInfo.username">
             <li class="username">
@@ -24,13 +27,10 @@
                 <img src="img/footer-arrow.png" />
                 <div class="submenu">
                     <ul>
-                        <!--<li><a href="{{profilGameUrl}}" translate>Account</a></li>-->
-                        <li><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
                         <li><a href="" ng-click="logout()" translate>Logout</a></li>
                     </ul>
                 </div>
             </li>
-            <li class="not-mobile"><a href="{{partyCreateUrl}}" class="btn" translate>Create</a></li>
         </ul>
         <ul class="menu-right unlogged"ng-if="!userInfo.username">
             <li><a href="{{loginPageUrl}}" class="btn" translate>Login</a></li>

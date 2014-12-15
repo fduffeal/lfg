@@ -63,7 +63,7 @@ msgid "Confirm Password"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
-msgid "Create"
+msgid "Create Party"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -96,6 +96,7 @@ msgid "Email Address"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
+#: app/html/controllers/rdv.html
 msgid "Ended"
 msgstr ""
 
