@@ -92,7 +92,7 @@
 						</tr>
 					</thead>
 				</table>
-				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:true:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" >
+				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" >
 					<table  border="0" >
 
 						<tbody>

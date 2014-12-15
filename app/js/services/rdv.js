@@ -56,6 +56,12 @@ angular.module('myApp.services')
 				now = now.getTime()/1000;
 				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
 			};
+
+			this.isEnded = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.end < now);
+			};
 		}
 	]
 );
