@@ -7,6 +7,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.predicate = 'start';
+			$scope.reverse = true;
+
 			$scope.now = new Date();
 
 			$scope.demain = new Date();
