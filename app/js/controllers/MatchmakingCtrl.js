@@ -1,11 +1,22 @@
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope','matchmaking','user','redirection',
-		function ($scope,matchmaking,user,redirection) {
+	['$scope','matchmaking','user','redirection','$filter',
+		function ($scope,matchmaking,user,redirection,$filter) {
 			'use strict';
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
 			$scope.profilSelected = null;
+
+			var updateProfilsAvailable = function(){
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,null,null);
+					if($scope.profils[0] && $scope.profilSelected === null){
+						$scope.profilSelected = $scope.profils[0];
+					}
+				}
+			};
+
+			updateProfilsAvailable();
 
 			/**
 			 * récupère les configs pour la selection du type de matchmaking
@@ -24,14 +35,6 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 					groupOfTemplate[data[key].description].push(data[key]);
 				}
 				$scope.groupOfTemplate = groupOfTemplate;
-			});
-
-			/**
-			 * écoute le changement de profil
-			 */
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				$scope.profilSelected = userSelected;
 			});
 
 			/**

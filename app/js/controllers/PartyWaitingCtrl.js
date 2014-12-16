@@ -9,6 +9,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			$scope.currentUser = user.get();
 
+	        $scope.profilSelected = null;
+
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
 				$scope.canJoin = true;
@@ -17,10 +19,6 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				if ($scope.currentUser !== null) {
 
 					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
-
-					if ($scope.profils[0]) {
-						$scope.profilSelected = $scope.profils[0];
-					}
 
 					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
 						$scope.isLeader = true;
@@ -51,6 +49,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			        $scope.isEnded = rdv.isEnded($scope.rdv);
 			        $scope.isLive = rdv.isLive($scope.rdv);
+
+			        updateProfilsAvailable();
 
 			        manageAutorisation();
 		        });
@@ -136,18 +136,14 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				$interval.cancel($scope.intervalId);
 			};
 
-	        /**
-	         * écoute le changement de profil
-	         */
-	        $scope.$on('setUserGame',function(event,data){
-		        var userSelected = data[0];
-
-		        for(var key in $scope.profils){
-			        if($scope.profils[key].id === userSelected.id){
-				        $scope.profilSelected = $scope.profils[key];
+	        var updateProfilsAvailable = function(){
+		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
+			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
+			        if($scope.profils[0] && $scope.profilSelected === null){
+				        $scope.profilSelected = $scope.profils[0];
 			        }
 		        }
-	        });
+	        };
 
 			refreshData();
 			autoRefreshData();
