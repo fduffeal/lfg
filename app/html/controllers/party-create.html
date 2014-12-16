@@ -31,7 +31,7 @@
                                placeholder="Little description" required ng-trim="true">
                     </li>
                     <li>
-                        <label for="">
+                        <label for="" translate>
                             Slots
                         </label>
                         1
@@ -41,6 +41,12 @@
                                placeholder="6"
                                type="number" name="inputSlotTotal" ng-model="slotTotal" min="1" required>
 
+                    </li>
+                    <li>
+                        <label for="" translate>
+                            Game Profil
+                        </label>
+                        <select ng-model="profilSelected" ng-options="gameData.gameProfilName group by gameData.plateform.nom for gameData in profils" required></select>
                     </li>
                     <li>
                         <span class="text" translate><span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!</span>
@@ -73,6 +79,7 @@
                        required/>
 
                 <input type="hidden" ng-model="profilSelected" required/>
+
                 <input type="hidden" ng-model="plateform" required/>
                 <input type="hidden" ng-model="game" required/>
 

@@ -7,6 +7,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.predicate = 'start';
+			$scope.reverse = true;
+
 			$scope.now = new Date();
 
 			$scope.demain = new Date();
@@ -69,13 +72,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					refreshRdvData();
 				}, refreshTime);
 			};
-
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				if(userSelected !== null){
-					$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
-				}
-			});
 
 			//init
 			refreshRdvData();

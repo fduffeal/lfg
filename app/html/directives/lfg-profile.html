@@ -1,6 +1,7 @@
 <div class="profile loggued" ng-if="userInfo.username">
 	<div class="hide-shadow"></div>
 	<img src="img/logo.png" id="logo" />
+	<!--
 	<div class="profile-info" ng-if="userGameSelected.gameProfilName">
 		<div class="info">
 			<span translate>Profile: </span>
@@ -22,10 +23,12 @@
 	</div>
 	<div class="profile-info" ng-if="!userGameSelected.gameProfilName">
 		<a href="{{gamesUrl}}" class="btn-new" translate>Create a profile</a>
-	</div>
+	</div>-->
+	<lfg-facebook></lfg-facebook>
 </div>
 <div class="profile notloggued" ng-if="!userInfo.username">
 	<div class="hide-shadow"></div>
 	<img src="img/logo.png" id="logo" />
-
+<lfg-facebook></lfg-facebook>
 </div>
+

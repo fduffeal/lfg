@@ -72,25 +72,17 @@ msgstr "Mauvais nom d'utilisateur ou mot de passe."
 msgid "Class"
 msgstr "Class"
 
-#: app/html/directives/lfg-profile.html
-msgid "Class:"
-msgstr "Class"
-
 #: app/html/controllers/register.html
 msgid "Confirm Password"
 msgstr "Confirmez votre mot de passe"
 
 #: app/html/directives/lfg-header.html
-msgid "Create"
-msgstr "Créer"
+msgid "Create Party"
+msgstr "Creer une partie"
 
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
-
-#: app/html/directives/lfg-profile.html
-msgid "Create a profile"
-msgstr "Nouveau profil"
 
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
@@ -113,7 +105,7 @@ msgstr "Adresse email"
 msgid "Email Address"
 msgstr "Adresse email"
 
-#: app/html/controllers/party-waiting.html
+#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
 msgid "Ended"
 msgstr "Terminé"
 
@@ -146,14 +138,14 @@ msgstr "Jeu"
 msgid "Game Infos for {{game.name}}"
 msgstr "Infos de jeux pour {{game.name}}"
 
+#: app/html/controllers/party-create.html
+msgid "Game Profil"
+msgstr "Profil de jeux"
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Gamertag"
 msgstr "Gamertag"
-
-#: app/html/directives/lfg-profile.html
-msgid "Gamertag:"
-msgstr "Gamertag:"
 
 #: app/html/directives/lfg-header.html
 msgid "Games Profiles"
@@ -263,10 +255,6 @@ msgstr "Informations personelles"
 msgid "Platform"
 msgstr "Platformes"
 
-#: app/html/directives/lfg-profile.html
-msgid "Platform:"
-msgstr "Plateforme:"
-
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Please waiting, we are looking for players..."
 msgstr "Merci de patienter, nous recherchons des joueurs..."
@@ -274,10 +262,6 @@ msgstr "Merci de patienter, nous recherchons des joueurs..."
 #: app/html/controllers/profile.html
 msgid "Profil Name"
 msgstr "Nom du profil"
-
-#: app/html/directives/lfg-profile.html
-msgid "Profile:"
-msgstr "Profil:"
 
 #: app/html/controllers/party-waiting.html
 msgid "Promote"
@@ -298,6 +282,10 @@ msgstr "S'enregistrer avec votre adresse email"
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
+
+#: app/html/controllers/party-create.html
+msgid "Slots"
+msgstr "Slots"
 
 #: app/html/controllers/notification.html
 msgid "Sorry, you have been kicked by"
@@ -400,6 +388,24 @@ msgstr "cette partie"
 #: app/html/controllers/party-waiting.html
 msgid "with profil :"
 msgstr "avec le profil :"
+
+#~ msgid "Class:"
+#~ msgstr "Class"
+
+#~ msgid "Create a profile"
+#~ msgstr "Nouveau profil"
+
+#~ msgid "Gamertag:"
+#~ msgstr "Gamertag:"
+
+#~ msgid "Platform:"
+#~ msgstr "Plateforme:"
+
+#~ msgid "Profile:"
+#~ msgstr "Profil:"
+
+#~ msgid "Create"
+#~ msgstr "Créer"
 
 #~ msgid "Account"
 #~ msgstr "Compte"

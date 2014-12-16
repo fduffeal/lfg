@@ -112,7 +112,7 @@ angular.module('myApp.filters', []);
 
 angular.module('myApp').run(['gettextCatalog', function (gettextCatalog) {
 /* jshint -W100 */
-    gettextCatalog.setStrings('fr', {"<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL":"TOUS","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Class":"Class","Class:":"Class","Confirm Password":"Confirmez votre mot de passe","Create":"Créer","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create a profile":"Nouveau profil","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Gamertag":"Gamertag","Gamertag:":"Gamertag:","Games Profiles":"Vos personnages","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Join !":"Rejoindre !","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Matchmaking":"Matchmaking","New party on":"Nouvelle partie sur","New profile":"Nouveau profil:","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Open":"Ouvert","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Profil Name":"Nom du profil","Profile:":"Profil:","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register with your email address":"S'enregistrer avec votre adresse email","Retrieve my account !":"Récupérer mon compte !","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Team":"Equipe","The Party":"Partie en attente de joueurs...","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Waiting Players":"Joueurs voulant rejoindre la partie","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your games profiles":"Vos profils de jeux","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","on":"sur","password doesn't match":"Les mots de passe ne correspondent pas","this party":"cette partie","with profil :":"avec le profil :","Account":"Compte","&copy; Copyright 2014 esbattle.com all rights reserved":"&copy; Copyright 2014 esbattle.com Tous droits réservés","Create a\r\n                            profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your":"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de mettre vos informations de jeux à jour dans ","For":"Durée","HOME":"ACCUEIL","ID in game":"ID dans le jeu","NEW PARTY":"NOUVELLE PARTIE","Platforms":"Platformes","Tags":"Tags","The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)":"Le site web est en beta, merci de reporter vos bugs/idées directement à contact.esbattle@gmail.com :)","slots available min":"Places dispo minimum","Confirm your password":"Confirmez votre mdp","Start the":"Démarre le","Till :":"Jusqu'à :","Class (titan/hunter, arcanist)":"Class (titan/chasseur, arcanist)","Level (please keep update)":"Niveau (merci de le mettre à jour)","PLATFORMS":"PLATFORMES","slots available max":"Places disponible max","Duration: for":"Durée:"});
+    gettextCatalog.setStrings('fr', {"<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL":"TOUS","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create Party":"Creer une partie","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","Gamertag":"Gamertag","Games Profiles":"Vos personnages","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Join !":"Rejoindre !","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Matchmaking":"Matchmaking","New party on":"Nouvelle partie sur","New profile":"Nouveau profil:","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Open":"Ouvert","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register with your email address":"S'enregistrer avec votre adresse email","Retrieve my account !":"Récupérer mon compte !","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Team":"Equipe","The Party":"Partie en attente de joueurs...","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Waiting Players":"Joueurs voulant rejoindre la partie","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your games profiles":"Vos profils de jeux","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","on":"sur","password doesn't match":"Les mots de passe ne correspondent pas","this party":"cette partie","with profil :":"avec le profil :","Class:":"Class","Create a profile":"Nouveau profil","Gamertag:":"Gamertag:","Platform:":"Plateforme:","Profile:":"Profil:","Create":"Créer","Account":"Compte","&copy; Copyright 2014 esbattle.com all rights reserved":"&copy; Copyright 2014 esbattle.com Tous droits réservés","Create a\r\n                            profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Congratulation ! You are now registered on esBattle.com! Do not forget to put your infos game in your":"Bravo ! Vous êtes désormais enregistré sur esBattle.com! N'oubliez pas de mettre vos informations de jeux à jour dans ","For":"Durée","HOME":"ACCUEIL","ID in game":"ID dans le jeu","NEW PARTY":"NOUVELLE PARTIE","Platforms":"Platformes","Tags":"Tags","The website is still in beta mode, so please report your bugs/ideas to contact.esbattle@gmail.com :)":"Le site web est en beta, merci de reporter vos bugs/idées directement à contact.esbattle@gmail.com :)","slots available min":"Places dispo minimum","Confirm your password":"Confirmez votre mdp","Start the":"Démarre le","Till :":"Jusqu'à :","Class (titan/hunter, arcanist)":"Class (titan/chasseur, arcanist)","Level (please keep update)":"Niveau (merci de le mettre à jour)","PLATFORMS":"PLATFORMES","slots available max":"Places disponible max","Duration: for":"Durée:"});
 /* jshint +W100 */
 }]);
 angular.module('myApp.controllers').controller('404Ctrl',
@@ -249,13 +249,24 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 );
 
 angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope','matchmaking','user','redirection',
-		function ($scope,matchmaking,user,redirection) {
+	['$scope','matchmaking','user','redirection','$filter',
+		function ($scope,matchmaking,user,redirection,$filter) {
 			'use strict';
 
 			$scope.currentUser = user.get();
 			$scope.matchmakingTemplate = null;
 			$scope.profilSelected = null;
+
+			var updateProfilsAvailable = function(){
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,null,null);
+					if($scope.profils[0] && $scope.profilSelected === null){
+						$scope.profilSelected = $scope.profils[0];
+					}
+				}
+			};
+
+			updateProfilsAvailable();
 
 			/**
 			 * récupère les configs pour la selection du type de matchmaking
@@ -274,14 +285,6 @@ angular.module('myApp.controllers').controller('MatchmakingCtrl',
 					groupOfTemplate[data[key].description].push(data[key]);
 				}
 				$scope.groupOfTemplate = groupOfTemplate;
-			});
-
-			/**
-			 * écoute le changement de profil
-			 */
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				$scope.profilSelected = userSelected;
 			});
 
 			/**
@@ -479,18 +482,19 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			$scope.dayPlusTwo = new Date();
 			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
 
-
-			$scope.$watch('plateform',function(newValue,oldValue){
-				updateProfilsAvailable();
-			});
-
 			$scope.$watch('game',function(newValue,oldValue){
 				updateProfilsAvailable();
 			});
 
+			$scope.$watch('profilSelected',function(newValue,oldValue){
+				if(typeof newValue !== "undefined" ){
+					$scope.updatePlateform(newValue.plateform);
+				}
+			});
+
 			var updateProfilsAvailable = function(){
-				if($scope.currentUser !== null && $scope.game !== null && $scope.plateform !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,$scope.plateform.id);
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
 					if($scope.profils[0]){
 						$scope.profilSelected = $scope.profils[0];
 					}
@@ -569,12 +573,6 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				redirection.goToGamesPage();
 			};
 
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				$scope.updatePlateform(userSelected.plateform);
-				$scope.profilSelected = userSelected;
-			});
-
 		}
 	]
 );
@@ -590,6 +588,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			$scope.currentUser = user.get();
 
+	        $scope.profilSelected = null;
+
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
 				$scope.canJoin = true;
@@ -598,10 +598,6 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				if ($scope.currentUser !== null) {
 
 					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
-
-					if ($scope.profils[0]) {
-						$scope.profilSelected = $scope.profils[0];
-					}
 
 					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
 						$scope.isLeader = true;
@@ -632,6 +628,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			        $scope.isEnded = rdv.isEnded($scope.rdv);
 			        $scope.isLive = rdv.isLive($scope.rdv);
+
+			        updateProfilsAvailable();
 
 			        manageAutorisation();
 		        });
@@ -717,18 +715,14 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 				$interval.cancel($scope.intervalId);
 			};
 
-	        /**
-	         * écoute le changement de profil
-	         */
-	        $scope.$on('setUserGame',function(event,data){
-		        var userSelected = data[0];
-
-		        for(var key in $scope.profils){
-			        if($scope.profils[key].id === userSelected.id){
-				        $scope.profilSelected = $scope.profils[key];
+	        var updateProfilsAvailable = function(){
+		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
+			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
+			        if($scope.profils[0] && $scope.profilSelected === null){
+				        $scope.profilSelected = $scope.profils[0];
 			        }
 		        }
-	        });
+	        };
 
 			refreshData();
 			autoRefreshData();
@@ -853,6 +847,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.predicate = 'start';
+			$scope.reverse = true;
+
 			$scope.now = new Date();
 
 			$scope.demain = new Date();
@@ -916,13 +913,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}, refreshTime);
 			};
 
-			$scope.$on('setUserGame',function(event,data){
-				var userSelected = data[0];
-				if(userSelected !== null){
-					$scope.updatePlateform(userSelected.plateform.id,userSelected.plateform.nom);
-				}
-			});
-
 			//init
 			refreshRdvData();
 			autoRefreshData();
@@ -984,6 +974,172 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -993,9 +1149,9 @@ angular.module('myApp.directives')
 
 					window.fbAsyncInit = function() {
 						FB.init({
-							appId      : '1490675977841857',
+							appId      : '1482107158698739',
 							xfbml      : true,
-							version    : 'v2.2'
+							version    : 'v2.0'
 						});
 					};
 
@@ -1003,7 +1159,7 @@ angular.module('myApp.directives')
 						var js, fjs = d.getElementsByTagName(s)[0];
 						if (d.getElementById(id)) {return;}
 						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/en_US/sdk.js";
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
 						fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));
 				},
@@ -1182,168 +1338,6 @@ angular.module('myApp.directives')
     ]
 );
 
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id === gameId && userGameProfil[key].plateform.id === plateformId){
-				aFilterdItems.push(userGameProfil[key]);
-			}
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
 angular.module('superCache',[])
 	.factory('superCache', ['$cacheFactory','$q','$timeout',
 		function($cacheFactory,$q,$timeout) {
