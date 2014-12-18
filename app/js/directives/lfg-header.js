@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter',
-		function(user,rdv,tag,lang,redirection,$interval,$filter) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
 			'use strict';
 			return {
 				scope:{
@@ -47,6 +47,13 @@ angular.module('myApp.directives')
 									$scope.notifications.push($scope.allMyNotifications[key]);
 								}
 							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
 						});
 					};
 
