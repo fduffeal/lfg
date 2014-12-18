@@ -35,7 +35,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="name" translate>Gamertag</th>
+                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
+                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
                             <th class="class" translate>Class</th>
                             <th class="level" translate>Level</th>
                             <th class="actions" translate>Actions</th>
@@ -43,7 +44,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="userGame in rdv.users">
-                            <td  class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
+                            <td ng-if="imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
+                            <td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</td>
                             <td class="class">{{userGame.data1}}</td>
                             <td class="level">{{userGame.data2}}</td>
                             <td class="actions">
@@ -63,7 +65,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="name" translate>Gamertag</th>
+                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
+                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
                             <th class="class" translate>Class</th>
                             <th class="level" translate>Level</th>
                             <th class="actions"></th>
@@ -71,7 +74,9 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="userGame in rdv.usersInQueue">
-                            <td class="name">{{userGame.gameUsername}}</td>
+                            <td ng-if="imOnGroup" class="name">{{userGame.gameUsername}}</td>
+                            <td ng-if="!imOnGroup" class="name">{{userGame.user.username}}</td>
+
                             <td class="class">{{userGame.data1}}</td>
                             <td class="level">{{userGame.data2}}</td>
                             <td class="actions">
@@ -106,6 +111,7 @@
         <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
     </div>
     <a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
+    <div ng-if="!imOnGroup" translate>Join this party to see player's gamertag</div>
 </div>
 </div>
 
