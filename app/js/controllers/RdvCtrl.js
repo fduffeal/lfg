@@ -7,12 +7,15 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.predicate = 'start';
+			$scope.reverse = true;
+
 			$scope.now = new Date();
 
 			$scope.demain = new Date();
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
 
-			$scope.slotMinAvailable = 1;
+			$scope.slotMinAvailable = 0;
 			$scope.slotMaxAvailable = 6;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();

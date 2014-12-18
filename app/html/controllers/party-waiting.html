@@ -35,8 +35,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
-                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
+                            <th class="name" translate>Gamertag</th>
                             <th class="class" translate>Class</th>
                             <th class="level" translate>Level</th>
                             <th class="actions" translate>Actions</th>
@@ -64,8 +63,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
-                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
+                            <th class="name" translate>Gamertag</th>
                             <th class="class" translate>Class</th>
                             <th class="level" translate>Level</th>
                             <th class="actions"></th>
@@ -73,7 +71,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="userGame in rdv.usersInQueue">
-                            <td  class="name" ng-if="imOnGroup">{{userGame.gameUsername}}</td>
+                            <td class="name">{{userGame.gameUsername}}</td>
                             <td class="class">{{userGame.data1}}</td>
                             <td class="level">{{userGame.data2}}</td>
                             <td class="actions">
@@ -101,7 +99,7 @@
         <div class="bg"></div>
     </div>
 
-    <div ng-show="canJoin && profils.length > 0 && isFull === false && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
+    <div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
     <div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
     <div ng-show="profils.length > 0 && canJoin && isEnded === false">
         <label translate>with profil :</label>
