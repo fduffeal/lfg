@@ -613,6 +613,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					for (var key2 in $scope.rdv.usersInQueue) {
 						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
 							$scope.canJoin = false;
+							$scope.imOnGroup = true;
 						}
 					}
 				} else {
@@ -974,211 +975,6 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
-angular.module('myApp.directives')
-	.directive('lfgFacebook', ['$window','$document',
-		function($window,$document) {
-			'use strict';
-			return {
-				link : function(){
-
-					window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1482107158698739',
-							xfbml      : true,
-							version    : 'v2.0'
-						});
-					};
-
-					(function(d, s, id){
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) {return;}
-						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/fr_FR/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-facebook.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','$location',
-		function(lang,$location) {
-			return {
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.updateLang = function(langSelected){
-						lang.change(langSelected);
-						$scope.lang = langSelected;
-					};
-
-					var switchLangUrl = function(newLang){
-						return $location.absUrl().replace($scope.lang,newLang);
-					};
-
-					$scope.switchLangUrlFr = switchLangUrl('fr');
-					$scope.switchLangUrlEn = switchLangUrl('en');
-
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-footer.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
-			'use strict';
-			return {
-				scope:{
-					'lfgHeader':'='
-				},
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.logout = function(){
-						user.logout();
-						$scope.userInfo = null;
-						redirection.goHome();
-					};
-
-
-
-
-					$scope.homeUrl = redirection.getHomePageUrl();
-					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
-					$scope.loginPageUrl = redirection.getLoginPageUrl();
-					$scope.registerPageUrl = redirection.getRegisterPageUrl();
-					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-					$scope.gamesUrl = redirection.getGamesPageUrl();
-					$scope.notifUrl = redirection.getNotifPageUrl();
-					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
-
-                    $scope.userInfo = user.get();
-
-
-					/**
-					 * autoRefreshDataNotif
-					 */
-					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
-							if($scope.userInfo === null){
-								return;
-							}
-							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
-							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
-									$scope.notifications.push($scope.allMyNotifications[key]);
-								}
-							}
-
-							if($scope.notifications.length > 0){
-								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
-							} else {
-								$document[0].title = 'Esbattle.com';
-							}
-
-						});
-					};
-
-					var refreshTime = 12000;
-					var autoRefreshDataNotif = function(){
-						$interval.cancel($scope.intervaNotificationId);
-
-						if (angular.isDefined($scope.intervaNotificationId)) {
-							return;
-						}
-
-						$scope.intervaNotificationId = $interval(function(){
-							refreshDataNotif();
-						}, refreshTime);
-					};
-
-					refreshDataNotif();
-					autoRefreshDataNotif();
-
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-header.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInterval', ["$interval",
-		function($interval) {
-			'use strict';
-			return {
-				replace :true,
-				scope:{
-					'lfgInterval':'='
-				},
-				link: function($scope, element, attrs) {
-
-					element.on('$destroy', function() {
-						$interval.cancel($scope.lfgInterval);
-						$scope.lfgInterval = undefined;
-					});
-				},
-				restrict: 'A'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval','$rootScope',
-        function(user,rdv,tag,lang,redirection,$interval,$rootScope) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.userGameSelected = null;
-                    $scope.gamesUrl = redirection.getGamesPageUrl();
-
-					$scope.setUserGame = function(userSelected){
-						$scope.userGameSelected = userSelected;
-						$rootScope.userGameSelected = userSelected;
-						$scope.$emit('setUserGame',[userSelected]);
-					};
-
-	                var initProfil = function(){
-		                $scope.userInfo = user.get();
-		                if(typeof($rootScope.userGameSelected) !== "undefined"){
-			                $scope.setUserGame($rootScope.userGameSelected);
-		                }	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
-			                $scope.setUserGame($scope.userInfo.userGame[0]);
-		                }
-	                };
-
-	                $scope.$on('refreshProfil',function(event,data){
-		                $scope.userInfo = user.get();
-		                $scope.setUserGame($scope.userInfo.userGame[0]);
-	                });
-
-	                initProfil();
-                },
-                restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile.html'
-            };
-        }
-    ]
-);
-
 angular.module('myApp.filters').filter('filterCharacters', function () {
 	'use strict';
 	return function (input, chars, breakOnWord) {
@@ -1459,6 +1255,211 @@ angular.module('myApp').factory(
 
     }
 );
+angular.module('myApp.directives')
+	.directive('lfgFacebook', ['$window','$document',
+		function($window,$document) {
+			'use strict';
+			return {
+				link : function(){
+
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1482107158698739',
+							xfbml      : true,
+							version    : 'v2.0'
+						});
+					};
+
+					(function(d, s, id){
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) {return;}
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
+			return {
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.updateLang = function(langSelected){
+						lang.change(langSelected);
+						$scope.lang = langSelected;
+					};
+
+					var switchLangUrl = function(newLang){
+						return $location.absUrl().replace($scope.lang,newLang);
+					};
+
+					$scope.switchLangUrlFr = switchLangUrl('fr');
+					$scope.switchLangUrlEn = switchLangUrl('en');
+
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-footer.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+			'use strict';
+			return {
+				scope:{
+					'lfgHeader':'='
+				},
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+						redirection.goHome();
+					};
+
+
+
+
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+
+                    $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+						rdv.getNotifications().success(function(data){
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-header.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInterval', ["$interval",
+		function($interval) {
+			'use strict';
+			return {
+				replace :true,
+				scope:{
+					'lfgInterval':'='
+				},
+				link: function($scope, element, attrs) {
+
+					element.on('$destroy', function() {
+						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
+					});
+				},
+				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval','$rootScope',
+        function(user,rdv,tag,lang,redirection,$interval,$rootScope) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.userGameSelected = null;
+                    $scope.gamesUrl = redirection.getGamesPageUrl();
+
+					$scope.setUserGame = function(userSelected){
+						$scope.userGameSelected = userSelected;
+						$rootScope.userGameSelected = userSelected;
+						$scope.$emit('setUserGame',[userSelected]);
+					};
+
+	                var initProfil = function(){
+		                $scope.userInfo = user.get();
+		                if(typeof($rootScope.userGameSelected) !== "undefined"){
+			                $scope.setUserGame($rootScope.userGameSelected);
+		                }	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
+			                $scope.setUserGame($scope.userInfo.userGame[0]);
+		                }
+	                };
+
+	                $scope.$on('refreshProfil',function(event,data){
+		                $scope.userInfo = user.get();
+		                $scope.setUserGame($scope.userInfo.userGame[0]);
+	                });
+
+	                initProfil();
+                },
+                restrict: 'E',
+                templateUrl: 'html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
