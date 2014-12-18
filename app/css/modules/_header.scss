@@ -117,7 +117,7 @@ $orange: #f15641;
 		li {
 			margin-right: 35px;
 
-			:hover {
+			:hover, .selected {
 				border-bottom: 2px solid black;
 				display: block;
 				height: 45px;
