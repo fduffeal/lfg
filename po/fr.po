@@ -138,6 +138,7 @@ msgstr "Jeu"
 msgid "Game Infos for {{game.name}}"
 msgstr "Infos de jeux pour {{game.name}}"
 
+#: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
 msgid "Game Profil"
 msgstr "Profil de jeux"
@@ -162,6 +163,10 @@ msgstr "Si vous quittez cette page, le matchmaking sera annulé"
 #: app/html/controllers/party-waiting.html
 msgid "Join !"
 msgstr "Rejoindre !"
+
+#: app/html/controllers/party-waiting.html
+msgid "Join this party to see player's gamertag"
+msgstr "Rejoignez cette partie pour voir le gamertag des joueurs"
 
 #: app/html/controllers/party-waiting.html
 msgid "Kick"

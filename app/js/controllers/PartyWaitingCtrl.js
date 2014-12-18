@@ -34,6 +34,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					for (var key2 in $scope.rdv.usersInQueue) {
 						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
 							$scope.canJoin = false;
+							$scope.imOnGroup = true;
 						}
 					}
 				} else {
