@@ -590,6 +590,10 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 	        $scope.profilSelected = null;
 
+	        $scope.isLeader = false;
+	        $scope.canJoin = true;
+	        $scope.imOnGroup = false;
+
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
 				$scope.canJoin = true;
@@ -1724,8 +1728,8 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
-	.service('rdv', ['$http','user','api','superCache',
-		function($http,user,api,superCache) {
+	.service('rdv', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
 			'use strict';
 			this.getAll = function(){
 				return api.call('rdv/');
@@ -1745,7 +1749,17 @@ angular.module('myApp.services')
 
             this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
                 var currentUser = user.get();
-                return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+
+	            plateform = $window.encodeURIComponent(plateform);
+	            game = $window.encodeURIComponent(game);
+	            tags = $window.encodeURIComponent(tags);
+	            description = $window.encodeURIComponent(description);
+	            start = $window.encodeURIComponent(start);
+	            duree = $window.encodeURIComponent(duree);
+	            nbParticipant = $window.encodeURIComponent(nbParticipant);
+	            profilId = $window.encodeURIComponent(profilId);
+
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
             };
 
 			this.get = function(id){

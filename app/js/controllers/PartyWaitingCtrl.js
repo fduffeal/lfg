@@ -11,6 +11,10 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 	        $scope.profilSelected = null;
 
+	        $scope.isLeader = false;
+	        $scope.canJoin = true;
+	        $scope.imOnGroup = false;
+
 			var manageAutorisation = function(){
 				$scope.isLeader = false;
 				$scope.canJoin = true;
