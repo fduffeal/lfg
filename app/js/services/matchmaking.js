@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('matchmaking', ['$http','user','api','superCache',
-		function($http,user,api,superCache) {
+	.service('matchmaking', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
 			'use strict';
 			this.getConf = function(){
 				return api.call('matchmaking/');
@@ -8,7 +8,8 @@ angular.module('myApp.services')
 
 			this.join = function(matchmakingId,profilId){
 				var currentUser = user.get();
-				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
 			};
 		}
 	]
