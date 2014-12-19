@@ -32,7 +32,7 @@
                             <select ng-model="profilSelected" ng-options="gameData.gameProfilName group by gameData.plateform.nom for gameData in profils" required></select>
                         </div>
 
-                        <input ng-show="profilSelected" type="submit" class="btn" value="Go"/>
+                        <input ng-show="profilSelected && matchmakingTemplate" type="submit" class="btn" value="Go"/>
 
 	                    <div ng-show="profils.length == 0" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !</div>
 

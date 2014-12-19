@@ -39,6 +39,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					}
 				} else {
 					$scope.canJoin = false;
+					$scope.imOnGroup = false;
+					$scope.isLeader = false;
 				}
 			};
 

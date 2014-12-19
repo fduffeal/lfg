@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout',
-		function($http,storage,api,$rootScope,$q,$timeout) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
+		function($http,storage,api,$rootScope,$q,$timeout,$window) {
 			'use strict';
             this.data = '';
 
@@ -21,18 +21,21 @@ angular.module('myApp.services')
 			};
 
 			this.log = function(username,password){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/'+username+'/'+password).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.logByToken = function(username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/token/'+username+'/'+token).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.logByForgetToken = function(username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
 					storeUser(data);
 				});
@@ -55,6 +58,9 @@ angular.module('myApp.services')
 
 			this.register = function(email,password,username){
 
+				email = $window.encodeURIComponent(email);
+				password = $window.encodeURIComponent(password);
+				username = $window.encodeURIComponent(username);
 				return api.call('register/'+email+'/'+password+'/'+username).success(function(data){
 					storeUser(data);
 				});
@@ -68,7 +74,17 @@ angular.module('myApp.services')
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
 
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
 				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
 
 				if(typeof data1 === "undefined" || data1 === ""){
 					data1='null';
@@ -83,14 +99,25 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
 
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilId = $window.encodeURIComponent(profilId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
 				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
 
 				if(typeof data1 === "undefined" || data1 === ""){
 					data1='null';
@@ -105,7 +132,7 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -116,11 +143,13 @@ angular.module('myApp.services')
 
 			this.updatePassword = function(password){
 				var currentUser = this.get();
-				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
 			};
 
 			this.updateOnline = function(currentUser){
-				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('login/online/'+username+'/'+currentUser.token);
 			};
 		}
 	]

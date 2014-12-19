@@ -618,6 +618,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 					}
 				} else {
 					$scope.canJoin = false;
+					$scope.imOnGroup = false;
+					$scope.isLeader = false;
 				}
 			};
 
@@ -1708,8 +1710,8 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
-	.service('matchmaking', ['$http','user','api','superCache',
-		function($http,user,api,superCache) {
+	.service('matchmaking', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
 			'use strict';
 			this.getConf = function(){
 				return api.call('matchmaking/');
@@ -1717,15 +1719,16 @@ angular.module('myApp.services')
 
 			this.join = function(matchmakingId,profilId){
 				var currentUser = user.get();
-				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
 			};
 		}
 	]
 );
 
 angular.module('myApp.services')
-	.service('rdv', ['$http','user','api','superCache',
-		function($http,user,api,superCache) {
+	.service('rdv', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
 			'use strict';
 			this.getAll = function(){
 				return api.call('rdv/');
@@ -1745,7 +1748,18 @@ angular.module('myApp.services')
 
             this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
                 var currentUser = user.get();
-                return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+
+	            plateform = $window.encodeURIComponent(plateform);
+	            game = $window.encodeURIComponent(game);
+	            tags = $window.encodeURIComponent(tags);
+	            description = $window.encodeURIComponent(description);
+	            start = $window.encodeURIComponent(start);
+	            duree = $window.encodeURIComponent(duree);
+	            nbParticipant = $window.encodeURIComponent(nbParticipant);
+	            profilId = $window.encodeURIComponent(profilId);
+	            var username = $window.encodeURIComponent(currentUser.username);
+
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
             };
 
 			this.get = function(id){
@@ -1753,22 +1767,27 @@ angular.module('myApp.services')
 			};
 
 			this.join = function(rdvId,userGameId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
 			};
 
 			this.acceptUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
 			};
 
 			this.kickUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
 			};
 
 			this.leave = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
 
 			this.promote = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
 
@@ -1986,8 +2005,8 @@ angular.module('myApp.services')
 	]
 );
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout',
-		function($http,storage,api,$rootScope,$q,$timeout) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
+		function($http,storage,api,$rootScope,$q,$timeout,$window) {
 			'use strict';
             this.data = '';
 
@@ -2008,18 +2027,21 @@ angular.module('myApp.services')
 			};
 
 			this.log = function(username,password){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/'+username+'/'+password).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.logByToken = function(username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/token/'+username+'/'+token).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.logByForgetToken = function(username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
 					storeUser(data);
 				});
@@ -2042,6 +2064,9 @@ angular.module('myApp.services')
 
 			this.register = function(email,password,username){
 
+				email = $window.encodeURIComponent(email);
+				password = $window.encodeURIComponent(password);
+				username = $window.encodeURIComponent(username);
 				return api.call('register/'+email+'/'+password+'/'+username).success(function(data){
 					storeUser(data);
 				});
@@ -2055,7 +2080,17 @@ angular.module('myApp.services')
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
 
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
 				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
 
 				if(typeof data1 === "undefined" || data1 === ""){
 					data1='null';
@@ -2070,14 +2105,25 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
 
 			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
 
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilId = $window.encodeURIComponent(profilId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
 				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
 
 				if(typeof data1 === "undefined" || data1 === ""){
 					data1='null';
@@ -2092,7 +2138,7 @@ angular.module('myApp.services')
 					data4='null';
 				}
 
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+currentUser.username+'/'+currentUser.token).success(function(data){
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -2103,11 +2149,13 @@ angular.module('myApp.services')
 
 			this.updatePassword = function(password){
 				var currentUser = this.get();
-				return api.call('update_password/'+password+'/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
 			};
 
 			this.updateOnline = function(currentUser){
-				return api.call('login/online/'+currentUser.username+'/'+currentUser.token);
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('login/online/'+username+'/'+currentUser.token);
 			};
 		}
 	]

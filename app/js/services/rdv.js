@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('rdv', ['$http','user','api','superCache',
-		function($http,user,api,superCache) {
+	.service('rdv', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
 			'use strict';
 			this.getAll = function(){
 				return api.call('rdv/');
@@ -20,7 +20,18 @@ angular.module('myApp.services')
 
             this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
                 var currentUser = user.get();
-                return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+currentUser.username+'/'+currentUser.token);
+
+	            plateform = $window.encodeURIComponent(plateform);
+	            game = $window.encodeURIComponent(game);
+	            tags = $window.encodeURIComponent(tags);
+	            description = $window.encodeURIComponent(description);
+	            start = $window.encodeURIComponent(start);
+	            duree = $window.encodeURIComponent(duree);
+	            nbParticipant = $window.encodeURIComponent(nbParticipant);
+	            profilId = $window.encodeURIComponent(profilId);
+	            var username = $window.encodeURIComponent(currentUser.username);
+
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
             };
 
 			this.get = function(id){
@@ -28,22 +39,27 @@ angular.module('myApp.services')
 			};
 
 			this.join = function(rdvId,userGameId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
 			};
 
 			this.acceptUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
 			};
 
 			this.kickUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
 			};
 
 			this.leave = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
 
 			this.promote = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
 				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
 			};
 
