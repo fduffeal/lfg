@@ -34,14 +34,15 @@
 
 			</table>
 			<div class="url">Url de la partie: <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
-			<a href="" class="btn2" ng-click="join()">Demander à rejoindre la partie</a>
+			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()">Demander à rejoindre la partie</a>
+			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" translate>This party is ended, create a new party !</a>
+			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profil for this game and join !</a>
+			<a href="" ng-if="imOnGroup && isEnded === false" class="btn2" style="width: 150px">Invitez des amis</a>
 		</div>
 	</div>
 	<div class="page">
 		<div class="block">
-		<div class="help">
-			Pour voir les gamerstags des joueurs, l'organisateur doit vous accepter dans la partie
-		</div>
+		<div ng-if="!imOnGroup" class="help" translate>Join this party to see player's gamertag</div>
 			<h1 class="second" translate>Team</h1>
 			<div class="team">
 				<table>
@@ -102,6 +103,37 @@
 
 
 			</div>
+			<div class="questions">
+				<h1>Posez une question à l'organisateur</h1>
+				<table>
+					<tr>
+						<td>A quelle heure se termine le raid?</td>
+						<td valign="bottom">12:41<br /> Fifoukiller</td>
+					</tr>
+					<tr>
+						<td>ser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</td>
+						<td valign="bottom">12:41<br /> Fifoukiller</td>
+					</tr>
+					<tr>
+						<td>A quelle heure se termine le raid?</td>
+						<td valign="bottom">12:41<br /> Fifoukiller</td>
+					</tr>
+					<tr>
+						<td>A quelle heure se termine le raid?</td>
+						<td valign="bottom">12:41<br /> Fifoukiller</td>
+					</tr>
+					<tr>
+						<td>A quelle heure se termine le raid?</td>
+						<td valign="bottom">12:41<br /> Fifoukiller</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text">
+						</td>
+						<td><input type="submit"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
 		<div class="popup confirm" ng-show="false">
@@ -116,14 +148,15 @@
 			<div class="bg"></div>
 		</div>
 
-		<div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
+		<!--<div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
 		<div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
 		<div ng-show="profils.length > 0 && canJoin && isEnded === false">
 			<label translate>with profil :</label>
 			<select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
 		</div>
 		<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
-		<div ng-if="!imOnGroup" translate>Join this party to see player's gamertag</div>
+		-->
+
 	</div>
 </div>
 

@@ -57,12 +57,16 @@ $color3: #06ab93; // blue
 	.menu-left-mobile {
 		display: none;
 		float: left;
+		.logo-header {
+			margin-right: 10px;
+		}
 		.notif .nb-notif {
 			top: 0;
 			left: 95px;
 		}
 		.menu {
 			cursor: pointer;
+			color: white;
 			position: relative;
 			margin-right: 10px;
 			float: left;
@@ -185,7 +189,7 @@ $color3: #06ab93; // blue
 		}
 	}
 
-	@media screen and (max-width: 980px ) {
+	@media screen and (max-width: 830px ) {
 		.menu-left {
 			display: none;
 

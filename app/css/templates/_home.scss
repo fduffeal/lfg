@@ -1,5 +1,13 @@
 #home {
-
+	.welcome {
+		.btn2 {
+			display: inline-block;
+			margin-right: 10px;
+		}
+		.social {
+			text-align: right;
+		}
+	}
 	.list {
 		position: relative;
 		margin: 20px 10px;
@@ -133,6 +141,9 @@
 			}
 			.list-start{
 				width: 15%;
+				@media screen and (max-width: 390px ) {
+					display: none;
+				}
 			}
 
 

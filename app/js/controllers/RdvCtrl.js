@@ -19,6 +19,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.slotMaxAvailable = 6;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 
 			$scope.isLive = rdv.isLive;
 			$scope.isEnded = rdv.isEnded;
