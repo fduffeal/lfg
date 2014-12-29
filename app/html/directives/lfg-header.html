@@ -1,6 +1,7 @@
 <div class="header">
     <div class="content-header">
     <img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
+    <img src="img/logo-header.png" class="logo-header" />
         <div class="menu-left-mobile">
             <div class="menu">Menu
                 <ul>
@@ -23,8 +24,8 @@
         </ul>
         <ul class="menu-right"ng-if="userInfo.username">
             <li class="username">
-                <img src="img/logo-small.png" class="logo-s" />{{userInfo.username}}
-                <img src="img/footer-arrow.png" />
+                {{userInfo.username}}
+                <img src="img/arrow-white.png" />
                 <div class="submenu">
                     <ul>
                         <li><a href="" ng-click="logout()" translate>Logout</a></li>

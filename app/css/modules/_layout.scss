@@ -3,9 +3,10 @@ body, html {
 	margin: 0;
 	padding: 0;
 	background: #ededed;
-	font-family: arial;
+	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
 	height: 100%;
+	font-size: 62.5%;
 }
 ul, li {
 	margin: 0;
@@ -43,12 +44,6 @@ h1{
 }
 
 .page {
-	@media screen and (max-width: 1415px ) {
-		width: 890px;
-	}
-	@media screen and (max-width: 1184px ) {
-		width: 690px;
-	}
 	@media screen and (max-width: 980px ) {
 		width: 590px;
 		margin: 10px auto 30px;
@@ -65,7 +60,7 @@ h1{
 		float: none;
 	}
 	background: white;
-	width: 1025px;
+	width: 95%;
 	margin-top: 20px;
 	float: left;
 	margin-left: 33px;
@@ -122,5 +117,18 @@ input.error {
 	@include transition(all 0.2s ease-in-out);
 	&:hover {
 		color: #f15641;
+	}
+}
+
+.btn2 {
+	height: 35px;
+	display: block;
+	background: $color1;
+	padding: 0 20px 0 10px;
+	color: white;
+	line-height: 35px;
+	@include transition(all 0.2s ease-in-out);
+	&:hover {
+		color: $color2;
 	}
 }
