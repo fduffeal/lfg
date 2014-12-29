@@ -46,17 +46,18 @@
 			</ul>
 
 			<div class="last">
-				<!--<div ng-if="currentUser">
+				<div ng-if="currentUser">
 					<h1>Destiny {{plateformNameSelected}} : My Game</h1>
 					<table border="0">
 						<thead>
 						<tr>
-							<th class="list-platform"><a href="">Platforms</a></th>
-							<th class="list-tags"><a href="">Tags</a></th>
-							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
-							<th class="list-slots"><a href="" ng-click="predicate ='nbParticipant'; reverse=!reverse">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
+							<th class="list-player"><a href="">Player</a></th>
+						<th class="list-type"><a href="">Type</a></th>
+						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
+						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
+							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
+						</tr>
 						</tr>
 						</thead>
 					</table>
@@ -64,19 +65,21 @@
 						<table border="0">
 							<tbody>
 							<tr >
-								<td class="list-platform">{{ rdv.plateform.nom }}</td>
-								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
-								<td class="list-infos">{{ rdv.description}}</td>
-								<td class="list-start" ng-if="isLive(rdv)">NOW</td>
-								<td class="list-start" ng-if="!isLive(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
-								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-creator">{{ rdv.leader.username }}</td>
+								<td class="list-player">
+									<span>{{ rdv.leader.username }}</span><br />
+									Titan - 31 <br />
+									{{ rdv.plateform.nom }}<br />
+								</td>
+								<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
+								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
 							</tr>
 							</tbody>
 
 						</table>
 					</a>
-				</div>
+				</div><!--
 				<h1>Destiny {{plateformNameSelected}} : LIVE</h1>
 				<table border="0">
 					<thead>
@@ -106,6 +109,7 @@
 					</table>
 				</a>
 			-->
+			<h1>Destiny {{plateformNameSelected}} </h1>
 			<table border="0">
 				<thead>
 					<tr>
