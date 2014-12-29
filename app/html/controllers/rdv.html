@@ -1,19 +1,23 @@
 <lfg-header></lfg-header>
 <div id="home" class="wrap">
-	<div class="page">
-	<div class="welcome">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis vestibulum dui. Nunc augue enim, dignissim ac ipsum sit amet, malesuada imperdiet urna. Etiam et turpis nec sem lacinia ornare nec vel diam. Quisque blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam erat, sed volutpat nulla interdum non. Cras non ornare lorem.
+	<div class="welcome">
+		<div class="marge">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis vestibulum dui. Nunc augue enim, dignissim ac ipsum sit amet, malesuada imperdiet urna. Etiam et turpis nec sem lacinia ornare nec vel diam. Quisque blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam erat, sed volutpat nulla interdum non. Cras non ornare lorem.
 
-Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci pharetra leo.
-<a href="" class="btn2">Créer une partie</a>
-</div>
+			Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci pharetra leo.
+			<a href="{{partyCreateUrl}}" class="btn2">Créer une partie</a>
+		</div>
+	</div>
+	<div class="page">
+
 		<div class="list">
 			<ul class="platforms">
-				<li ng-repeat="plateform in aPlateforms">
+				<li class="" ng-repeat="plateform in aPlateforms">
 					<a href="" ng-click="updatePlateform(plateform.id,plateform.nom);" ng-class="{'selected':(plateformSelected == plateform.id)}">{{plateform.nom}}</a>
 				</li>
 				<li class="selected">
 					<a href="" ng-click="updatePlateform('','ALL');" ng-class="{'selected':plateformSelected == ''}" translate>ALL</a>
 				</li>
+				<img src="img/arrow-white.png" />
 			</ul>
 			<ul class="search-tags">
 
@@ -24,7 +28,7 @@ Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut conval
 			</ul>
 
 			<div class="last">
-				<div ng-if="currentUser">
+				<!--<div ng-if="currentUser">
 					<h1>Destiny {{plateformNameSelected}} : My Game</h1>
 					<table border="0">
 						<thead>
@@ -83,16 +87,16 @@ Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut conval
 
 					</table>
 				</a>
-				<h1>Destiny {{plateformNameSelected}}</h1>
-				<table border="0">
-					<thead>
-						<tr>
-							<th class="list-platform"><a href="">Platforms</a></th>
-							<th class="list-tags"><a href="">Tags</a></th>
-							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
-							<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
+			-->
+			<table border="0">
+				<thead>
+					<tr>
+						<th class="list-player"><a href="">Player</a></th>
+						<th class="list-type"><a href="">Type</a></th>
+						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
+						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
+							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
 						</tr>
 					</thead>
 				</table>
@@ -101,13 +105,17 @@ Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut conval
 
 						<tbody>
 							<tr >
-								<td class="list-platform">{{ rdv.plateform.nom }}</td>
-								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
-								<td class="list-infos">{{ rdv.description}}</td>
+								<td class="list-player">
+									<span>{{ rdv.leader.username }}</span><br />
+									Titan - 31 <br />
+									{{ rdv.plateform.nom }}<br />
+								</td>
+								<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
 								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
-								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-creator">{{ rdv.leader.username }}</td>
+
+
 							</tr>
 						</tbody>
 

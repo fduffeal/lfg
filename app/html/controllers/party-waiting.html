@@ -1,118 +1,128 @@
 <lfg-header></lfg-header>
 <div id="party-waiting" class="wrap">
+	<div class="welcome">
+		<div class="marge">
+			<table>
+				<tr>
+					<td>Type:</td>
+					<td>Partie</td>
+				</tr>
+				<tr>
+					<td>Start:</td>
+					<td>
+						<div class="when" ng-if="!isLive && !isEnded">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
+						<div class="when" ng-if="isEnded" translate>Ended</div>
+						<div class="when" ng-if="isLive" translate>Open</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Slots:</td>
+					<td>{{ rdv.users.length }} / {{ rdv.nbParticipant }}</td>
+				</tr>
+				<tr>
+					<td>Tags:</td>
+					<td><span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span></td>
+				</tr>
+				<tr>
+					<td>Infos:</td>
+					<td>{{ rdv.description }} </td>
+				</tr>
+				<tr>
+					<td>Plateforme:</td>
+					<td>{{rdv.plateform.nom}}</td>
+				</tr>
 
-    <div class="page">
-        <div class="block">
-            <h1 translate>The Party</h1>
+			</table>
+			<div class="url">Url de la partie: <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
+			<a href="" class="btn2" ng-click="join()">Demander à rejoindre la partie</a>
+		</div>
+	</div>
+	<div class="page">
 
-            <div class="block2">
+		<div class="block">
+			<h1 class="second" translate>Team</h1>
+			<div class="team">
+				<table>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th ng-if="imOnGroup" class="name" translate>Gamertag</th>
+							<th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
+							<th class="perso" translate>Guardian</th>
+							<th class="actions" translate>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="userGame in rdv.users">
+							<td>{{$index + 1}}</td>
+							<td ng-if="imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
+							<td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</td>
+							<td class="perso">{{userGame.data1}} - {{userGame.data2}}</td>
+							<td class="actions">
+								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+								<a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="promote(userGame.id)" translate>Promote</a>
+								<a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-                <div class="line">
-                    <div class="platform">{{rdv.game.name}} {{rdv.plateform.nom}} </div>
-                    <div class="tags">
-                        <span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span>
-                    </div>
-                    <!--<div class="share">-->
-                    <!--<ul>-->
-                    <!--<li><a href="" class="facebook">&nbsp;</a></li>-->
-                    <!--<li><a href=""class="twitter">&nbsp;</a></li>-->
-                    <!--</ul>-->
-                    <!--</div>-->
-                    <div class="when" ng-if="!isLive && !isEnded">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
-                    <div class="when" ng-if="isEnded" translate>Ended</div>
-                    <div class="when" ng-if="isLive" translate>Open</div>
-                    <!--<div class="duration">{{ rdv.end*1000 | date:'yyyy-MM-dd HH:mm' }}</div>-->
-                    <div class="desc">" {{ rdv.description }} "</div>
-                    <div class="slots"><span class="one">{{ rdv.users.length }}</span><span class="two">{{ rdv.nbParticipant }}</span></div>
-                    <div class="slots-mobile">{{ rdv.users.length }} / {{ rdv.nbParticipant }} </div>
-                    <div class="link"><a href="">{{currentUrl}}</a></div>
-                    <!--<div class="fb-share-button" data-href="{{currentUrl}}" data-layout="link"></div>-->
-                </div>
-            </div>
-
-            <h1 class="second" translate>Team</h1>
-            <div class="team">
-                <table>
-                    <thead>
-                        <tr>
-                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
-                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
-                            <th class="class" translate>Class</th>
-                            <th class="level" translate>Level</th>
-                            <th class="actions" translate>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="userGame in rdv.users">
-                            <td ng-if="imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
-                            <td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</td>
-                            <td class="class">{{userGame.data1}}</td>
-                            <td class="level">{{userGame.data2}}</td>
-                            <td class="actions">
-                                <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-                                <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="promote(userGame.id)" translate>Promote</a>
-                                <a href="" ng-if="isLeader && userGame.user.username !== currentUser.username" ng-click="kickUser(userGame.id)" translate>Kick</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
-
-            <div class="team" ng-if="rdv.usersInQueue.length > 0">
-                <h1 class="second" translate>Waiting Players</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th ng-if="imOnGroup" class="name" translate>Gamertag</th>
-                            <th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
-                            <th class="class" translate>Class</th>
-                            <th class="level" translate>Level</th>
-                            <th class="actions"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="userGame in rdv.usersInQueue">
-                            <td ng-if="imOnGroup" class="name">{{userGame.gameUsername}}</td>
-                            <td ng-if="!imOnGroup" class="name">{{userGame.user.username}}</td>
-
-                            <td class="class">{{userGame.data1}}</td>
-                            <td class="level">{{userGame.data2}}</td>
-                            <td class="actions">
-                               <a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-                               <a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
-                               <a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
-                           </td>
-                       </tr>
-                   </tbody>
-               </table>
+			</div>
 
 
-           </div>
-       </div>
+			<div class="team" ng-if="rdv.usersInQueue.length > 0">
+				<h1 class="second" translate>Waiting Players</h1>
+				<table>
+					<thead>
+						<tr>
+							<th ng-if="imOnGroup" class="name" translate>Gamertag</th>
+							<th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
+							<th class="class" translate>Class</th>
+							<th class="level" translate>Level</th>
+							<th class="actions"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="userGame in rdv.usersInQueue">
+							<td ng-if="imOnGroup" class="name">{{userGame.gameUsername}}</td>
+							<td ng-if="!imOnGroup" class="name">{{userGame.user.username}}</td>
 
-       <div class="popup confirm" ng-show="false">
-        <div class="text">
-            <span translate>Are you sure to kick :</span>
-            <div class="choose">
-                <a href="" translate>Yes</a>
-                <a href="" translate>No</a>
-            </div>
+							<td class="class">{{userGame.data1}}</td>
+							<td class="level">{{userGame.data2}}</td>
+							<td class="actions">
+								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+								<a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
+								<a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-        </div>
-        <div class="bg"></div>
-    </div>
 
-    <div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
-    <div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
-    <div ng-show="profils.length > 0 && canJoin && isEnded === false">
-        <label translate>with profil :</label>
-        <select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
-    </div>
-    <a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
-    <div ng-if="!imOnGroup" translate>Join this party to see player's gamertag</div>
-</div>
+			</div>
+		</div>
+
+		<div class="popup confirm" ng-show="false">
+			<div class="text">
+				<span translate>Are you sure to kick :</span>
+				<div class="choose">
+					<a href="" translate>Yes</a>
+					<a href="" translate>No</a>
+				</div>
+
+			</div>
+			<div class="bg"></div>
+		</div>
+
+		<div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
+		<div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
+		<div ng-show="profils.length > 0 && canJoin && isEnded === false">
+			<label translate>with profil :</label>
+			<select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
+		</div>
+		<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
+		<div ng-if="!imOnGroup" translate>Join this party to see player's gamertag</div>
+	</div>
 </div>
 
 <div lfg-interval="intervalId" id="intervalId"></div>

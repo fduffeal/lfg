@@ -6,8 +6,8 @@
             <div class="menu">Menu
                 <ul>
                     <li><a href="{{homeUrl}}" translate>Home</a></li>
-                    <li ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
-                    <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>
+                 <!--   <li ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
+                    <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
                     <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
                     <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
                 </ul>
@@ -17,8 +17,8 @@
         </div>
         <ul class="menu-left">
             <li><a href="{{homeUrl}}" translate>Home</a></li>
-            <li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
-            <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>
+          <li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
+           <!--   <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
             <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
             <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
         </ul>

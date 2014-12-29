@@ -25,11 +25,27 @@ ul, li {
 #intervalId {
 	height: 0;
 }
+.welcome {
+	background: $color2;
+	font-size: 1.3rem;
+	margin: 20px auto 0 auto;
+	width: 95%;
+	color: white;
+	.marge {
+		padding: 20px;
+	}
+	.btn2 {
+		width: 150px;
+		font-weight: bold;
+		font-size: 1.4rem;
+		margin-top: 10px;
+	}
+}
 a {
 	text-decoration: none;
 }
 h1{
-	background: #f15641;
+	background: $color2;
 	display: block;
 	font-size: 13px;
 	text-align: center;
@@ -37,6 +53,7 @@ h1{
 	color: white;
 	line-height: 30px;
 	width: 100%;
+	margin-bottom: 0
 }
 
 .fb_iframe_widget {
@@ -61,9 +78,8 @@ h1{
 	}
 	background: white;
 	width: 95%;
+	margin:auto;
 	margin-top: 20px;
-	float: left;
-	margin-left: 33px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
 }

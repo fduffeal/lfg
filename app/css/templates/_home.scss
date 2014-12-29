@@ -1,16 +1,5 @@
 #home {
-	.welcome {
-		background: $color2;
-		font-size: 1.3rem;
-		padding: 20px;
-		color: white;
-		.btn2 {
-			width: 150px;
-			font-weight: bold;
-			font-size: 1.4rem;
-			margin-top: 10px;
-		}
-	}
+
 	.list {
 		position: relative;
 		margin: 20px 10px;
@@ -24,13 +13,12 @@
 			@include transition(background-color 0.2s ease-out);
 			background: white;
 			display: block;
-
 			&:nth-child(even){
-				background: #d8d8d8;
+				background: #e5e1e1;
 
 			}
 			&:hover, &.selected {
-				background: #87cbc1;
+				background: #e9aea6;
 				cursor: pointer;
 			}
 		}
@@ -39,8 +27,8 @@
 			@media screen and (max-width: 1185px ) {
 				float: none;
 			}
+			margin-bottom:35px;
 			float: right;
-			margin-bottom: 15px;
 			input {
 				width: 250px;
 				height: 25px;
@@ -63,44 +51,55 @@
 		}
 		ul.platforms {
 			float: left;
+			width: 150px;
+			background: $color1;
+			font-size: 1.2rem;
+			color: white;
+			position: absolute;
+			img {
+				position: absolute;
+				right: 10px;
+				top: 19px;
+			}
+			&:hover a{
+				display:block
 
+			}
 			li {
-				margin: 0 5px;
-				display: inline-block;
+				display: block;
 				a {
-					@media screen and (max-width: 600px ) {
-						padding: 0 7px;
-
-					}
-					display: block;
-					border: 2px solid #87cbc1;
-					color: #3d3b3b;
-					height: 25px;
-					font-size: 13px;
+					display: none;
+					color: white;
+					height: 35px;
 					padding: 0 10px;
-					line-height: 25px;
+					line-height: 35px;
 					@include transition(background-color 0.2s ease-out);
-					border-radius: 30px;
 				}
 				a:hover, a.selected {
 					background: #87cbc1;
 					cursor: pointer;
 				}
-				&:first-child {
-					margin-right: 10px;
-				}
+				 a.selected {
+				 	display: block;
+				 	background: $color1;
+				 }
 			}
 		}
 		table {
 			width: 100%;
-			font-size: 13px;
+			font-size: 1.2rem;
 			text-align: left;
+			border-collapse: collapse;
 			border: 0;
 			@media screen and (max-width: 390px ) {
 					font-size: 13px;
 				}
 			td, th {
 				overflow: hidden;
+				padding-left: 10px;
+			}
+			td {
+				padding: 10px;
 			}
 			thead {
 				background: #262525;
@@ -111,40 +110,31 @@
 					color: white;
 				}
 			}
-			.list-platform{
+			.list-player{
 				width: 10%;
-				@media screen and (max-width: 390px ) {
-					display: none;
+				span {
+					color: $color2;
+					font-size: 1.4rem;
 				}
-			}
-			.list-tags{
-				width: 25%;
 
 			}
+			.list-type{
+				width: 10%;
+				span {
+					font-weight: bold;
+					font-size: 1.3rem;
+				}
+			}
 			.list-infos{
-				width: 30%;
-				@media screen and (max-width: 980px ) {
-					display: none;
+				width: 50%;
+				span {
+					font-weight: bold;
 				}
 			}
 			.list-start{
 				width: 15%;
-				@media screen and (max-width: 1415px ) {
-					width: 20%;
-				}
 			}
-			.list-slots{
-				width: 5%;
-				@media screen and (max-width: 600px ) {
-					display: none;
-				}
-			}
-			.list-creator{
-				width: 15%;
-				@media screen and (max-width: 1415px ) {
-					display: none;
-				}
-			}
+
 
 		}
 
