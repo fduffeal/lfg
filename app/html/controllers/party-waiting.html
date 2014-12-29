@@ -59,7 +59,7 @@
 						<tr ng-repeat="userGame in rdv.users">
 							<td class="place">{{$index + 1}}</td>
 							<td ng-if="imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
-							<td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</td>
+							<td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">Player{{$index + 1}}</td>
 							<td class="perso">{{userGame.data1}} - {{userGame.data2}}</td>
 							<td class="actions">
 								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
@@ -79,7 +79,7 @@
 					<thead>
 						<tr>
 							<th ng-if="imOnGroup" class="name" translate>Gamertag</th>
-							<th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
+							<th ng-if="!imOnGroup" class="name" translate>Player</th>
 							<th class="class" translate>Class</th>
 							<th class="level" translate>Level</th>
 							<th class="actions"></th>
@@ -88,7 +88,7 @@
 					<tbody>
 						<tr ng-repeat="userGame in rdv.usersInQueue">
 							<td ng-if="imOnGroup" class="name">{{userGame.gameUsername}}</td>
-							<td ng-if="!imOnGroup" class="name">{{userGame.user.username}}</td>
+							<td ng-if="!imOnGroup" class="name">Player{{$index + 1}}</td>
 
 							<td class="class">{{userGame.data1}}</td>
 							<td class="level">{{userGame.data2}}</td>
