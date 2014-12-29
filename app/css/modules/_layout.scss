@@ -61,21 +61,6 @@ h1{
 }
 
 .page {
-	@media screen and (max-width: 980px ) {
-		width: 590px;
-		margin: 10px auto 30px;
-		float: none;
-	}
-	@media screen and (max-width: 600px ) {
-		width: 390px;
-		margin: 10px auto 30px;
-		float: none;
-	}
-	@media screen and (max-width: 390px ) {
-		width: 320px;
-		margin: 10px auto 30px;
-		float: none;
-	}
 	background: white;
 	width: 95%;
 	margin:auto;

@@ -5,7 +5,13 @@
 		}
 		.url{
 			margin-top: 10px;
-			font-size: 1.4rem
+			font-size: 1.4rem;
+			a{
+				color: white;
+				&:hover {
+					color: $color3;
+				}
+			}
 		}
 	}
 	.btn {
@@ -19,6 +25,11 @@
 	.block {
 		width: 98%;
 		margin: auto;
+		.help {
+			font-size: 1.3rem;
+			text-align: center;
+			margin: 10px;
+		}
 
 		.loader{
 			height: 200px;
@@ -60,6 +71,10 @@
 		td, th {
 			overflow: hidden;
 		}
+		td:first-child {
+			font-weight: bold;
+			width: 10%;
+		}
 		thead {
 			background: #262525;
 			font-weight: bold;
@@ -71,12 +86,18 @@
 		.name{
 			width: 70%;
 		}
+		.place {
+			width: 3%;
+		}
 		.perso{
 			width: 20%;
 
 		}
 		.actions{
 			width: 30%;
+			a {
+				color: $color3;
+			}
 		}
 		@media screen and (max-width: 390px ) {
 			td.actions{
@@ -86,7 +107,7 @@
 
 
 	}
-s
+	s
 	.text {
 		font-size: 13px;
 		margin-top: 10px;

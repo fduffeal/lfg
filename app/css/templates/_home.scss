@@ -24,16 +24,13 @@
 		}
 
 		ul.search-tags {
-			@media screen and (max-width: 1185px ) {
-				float: none;
-			}
 			margin-bottom:35px;
 			float: right;
 			input {
 				width: 250px;
 				height: 25px;
-				@media screen and (max-width: 1185px ) {
-					margin-top: 20px;
+				@media screen and (max-width: 660px ) {
+					visibility:hidden;
 				}
 			}
 		}
@@ -49,7 +46,7 @@
 		.last {
 			clear: both;
 		}
-		ul.platforms {
+		ul.platforms, ul.type {
 			float: left;
 			width: 150px;
 			background: $color1;
@@ -84,6 +81,9 @@
 				 	background: $color1;
 				 }
 			}
+		}
+		ul.type{
+			margin-left: 170px;
 		}
 		table {
 			width: 100%;

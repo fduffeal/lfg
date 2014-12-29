@@ -38,14 +38,16 @@
 		</div>
 	</div>
 	<div class="page">
-
 		<div class="block">
+		<div class="help">
+			Pour voir les gamerstags des joueurs, l'organisateur doit vous accepter dans la partie
+		</div>
 			<h1 class="second" translate>Team</h1>
 			<div class="team">
 				<table>
 					<thead>
 						<tr>
-							<th>#</th>
+							<th class="place">#</th>
 							<th ng-if="imOnGroup" class="name" translate>Gamertag</th>
 							<th ng-if="!imOnGroup" class="name" translate>Esbattle username</th>
 							<th class="perso" translate>Guardian</th>
@@ -54,7 +56,7 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="userGame in rdv.users">
-							<td>{{$index + 1}}</td>
+							<td class="place">{{$index + 1}}</td>
 							<td ng-if="imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.gameUsername}}</td>
 							<td ng-if="!imOnGroup" class="name" ng-class="{'leader':(userGame.user.username === rdv.leader.username)}">{{userGame.user.username}}</td>
 							<td class="perso">{{userGame.data1}} - {{userGame.data2}}</td>
