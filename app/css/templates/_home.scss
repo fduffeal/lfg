@@ -14,153 +14,156 @@
 				height: 20px;
 			}
 		}
-			.social {
-				text-align: right;
-			}
-		}
-		h1{
-			margin-top: 50px;
-		}
-		.list {
-			position: relative;
-			margin: 20px 10px;
-			padding-bottom: 10px;
-			a {
-				color: #2d2d2d;
-				@include transition(background-color 0.2s ease-out);
-			}
-			.line {
-
-				@include transition(background-color 0.2s ease-out);
-				background: white;
-				display: block;
-				&:nth-child(even){
-					background: #e5e1e1;
-
-				}
-				&:hover, &.selected {
-					background: #e9aea6;
-					cursor: pointer;
-				}
-			}
-
-			ul.search-tags {
-				margin-bottom:35px;
-				float: right;
-				input {
-					width: 250px;
-					height: 25px;
-					@media screen and (max-width: 660px ) {
-						visibility:hidden;
-					}
-				}
-			}
-			ul.how-many {
-				float: right;
-				input {
-					width: 25px;
-					margin-left: 12px;
-					height: 20px;
-				}
-
-			}
-			.last {
-				clear: both;
-			}
-			ul.platforms, ul.type {
-				float: left;
-				width: 150px;
-				background: $color1;
-				font-size: 1.2rem;
-				color: white;
-				position: absolute;
-				img {
-					position: absolute;
-					right: 10px;
-					top: 19px;
-				}
-				&:hover a{
-					display:block
-
-				}
-				li {
-					display: block;
-					a {
-						display: none;
-						color: white;
-						height: 35px;
-						padding: 0 10px;
-						line-height: 35px;
-						@include transition(background-color 0.2s ease-out);
-					}
-					a:hover, a.selected {
-						background: #87cbc1;
-						cursor: pointer;
-					}
-					a.selected {
-						display: block;
-						background: $color1;
-					}
-				}
-			}
-			ul.type{
-				margin-left: 170px;
-			}
-			table {
-				width: 100%;
-				font-size: 1.2rem;
-				text-align: left;
-				border-collapse: collapse;
-				border: 0;
-				@media screen and (max-width: 390px ) {
-					font-size: 13px;
-				}
-				td, th {
-					overflow: hidden;
-					padding-left: 10px;
-				}
-				td {
-					padding: 10px;
-				}
-				thead {
-					background: #262525;
-					font-weight: bold;
-					height: 25px;
-					line-height: 25px;
-					a {
-						color: white;
-					}
-				}
-				.list-player{
-					width: 10%;
-					span {
-						color: $color2;
-						font-size: 1.4rem;
-					}
-
-				}
-				.list-type{
-					width: 10%;
-					span {
-						font-weight: bold;
-						font-size: 1.3rem;
-					}
-				}
-				.list-infos{
-					width: 50%;
-					span {
-						font-weight: bold;
-					}
-				}
-				.list-start{
-					width: 15%;
-					@media screen and (max-width: 390px ) {
-						display: none;
-					}
-				}
-
-
-			}
-
+		.social {
+			text-align: right;
 		}
 	}
+	h1{
+		margin-top: 50px;
+	}
+	.list {
+		position: relative;
+		margin: 20px 10px;
+		padding-bottom: 10px;
+		a {
+			color: #2d2d2d;
+			@include transition(background-color 0.2s ease-out);
+		}
+		.line {
+
+			@include transition(background-color 0.2s ease-out);
+			background: white;
+			display: block;
+			&:nth-child(even){
+				background: #e5e1e1;
+
+			}
+			&:hover, &.selected {
+				background: #e9aea6;
+				cursor: pointer;
+			}
+		}
+
+		ul.search-tags {
+			margin-bottom:35px;
+			float: right;
+			input {
+				width: 250px;
+				height: 25px;
+				@media screen and (max-width: 660px ) {
+					visibility:hidden;
+				}
+			}
+		}
+		ul.how-many {
+			float: right;
+			input {
+				width: 25px;
+				margin-left: 12px;
+				height: 20px;
+			}
+
+		}
+		.last {
+			clear: both;
+		}
+		ul.platforms, ul.type {
+			float: left;
+			width: 150px;
+			background: $color1;
+			font-size: 1.2rem;
+			color: white;
+			position: absolute;
+			&:hover img {
+				@include transform(rotate(180deg));
+			}
+			img {
+				position: absolute;
+				right: 10px;
+				top: 19px;
+			}
+			&:hover a{
+				display:block
+
+			}
+			li {
+				display: block;
+				a {
+					display: none;
+					color: white;
+					height: 35px;
+					padding: 0 10px;
+					line-height: 35px;
+					@include transition(background-color 0.2s ease-out);
+				}
+				a:hover, a.selected {
+					background: #87cbc1;
+					cursor: pointer;
+				}
+				a.selected {
+					display: block;
+					background: $color1;
+				}
+			}
+		}
+		ul.type{
+			margin-left: 170px;
+		}
+		table {
+			width: 100%;
+			font-size: 1.2rem;
+			text-align: left;
+			border-collapse: collapse;
+			border: 0;
+			@media screen and (max-width: 390px ) {
+				font-size: 13px;
+			}
+			td, th {
+				overflow: hidden;
+				padding-left: 10px;
+			}
+			td {
+				padding: 10px;
+			}
+			thead {
+				background: #262525;
+				font-weight: bold;
+				height: 25px;
+				line-height: 25px;
+				a {
+					color: white;
+				}
+			}
+			.list-player{
+				width: 10%;
+				span {
+					color: $color2;
+					font-size: 1.4rem;
+				}
+
+			}
+			.list-type{
+				width: 10%;
+				span {
+					font-weight: bold;
+					font-size: 1.3rem;
+				}
+			}
+			.list-infos{
+				width: 50%;
+				span {
+					font-weight: bold;
+				}
+			}
+			.list-start{
+				width: 15%;
+				@media screen and (max-width: 390px ) {
+					display: none;
+				}
+			}
+
+
+		}
+
+	}
+}
