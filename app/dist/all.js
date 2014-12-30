@@ -101,6 +101,12 @@ angular.module('myApp', [
 				action     : 'update'
 			});
 
+		$routeProvider.when('/:lang/users/connected',
+			{
+				templateUrl: 'html/controllers/list-user.html',
+				controller : 'ListUserCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
@@ -194,6 +200,14 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 			};
         }
     ]
+);
+
+angular.module('myApp.controllers').controller('ListUserCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+		}
+	]
 );
 
 angular.module('myApp.controllers').controller('LoginCtrl',
@@ -862,6 +876,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.slotMaxAvailable = 6;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 
 			$scope.isLive = rdv.isLive;
 			$scope.isEnded = rdv.isEnded;

@@ -101,6 +101,12 @@ angular.module('myApp', [
 				action     : 'update'
 			});
 
+		$routeProvider.when('/:lang/users/connected',
+			{
+				templateUrl: 'html/controllers/list-user.html',
+				controller : 'ListUserCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
