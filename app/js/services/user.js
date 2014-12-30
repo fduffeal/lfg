@@ -24,6 +24,7 @@ angular.module('myApp.services')
 				username = $window.encodeURIComponent(username);
 				return api.call('login/'+username+'/'+password).success(function(data){
 					storeUser(data);
+					storage.createCookie('username',username);
 				});
 			};
 
