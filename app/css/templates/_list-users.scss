@@ -42,19 +42,7 @@
 		}
 		.list-etat {
 			width: 5%;
-			span {
-				display: block;
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				&.co {
-					background: green;
-				}
-				&.noco{
-					background: red
 
-				}
-			}
 		}
 		.list-action{
 			width: 15%;

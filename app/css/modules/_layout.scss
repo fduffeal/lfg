@@ -8,6 +8,19 @@ body, html {
 	height: 100%;
 	font-size: 62.5%;
 }
+span.co, span.noco{
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+span.co {
+	background: green;
+}
+span.noco{
+	background: red
+
+}
 ul, li {
 	margin: 0;
 	list-style: none;

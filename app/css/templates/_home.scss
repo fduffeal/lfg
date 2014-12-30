@@ -21,6 +21,7 @@
 	h1{
 		margin-top: 50px;
 	}
+
 	.list {
 		position: relative;
 		margin: 20px 10px;
@@ -134,11 +135,19 @@
 					color: white;
 				}
 			}
+			br {
+				clear: both;
+			}
 			.list-player{
 				width: 10%;
 				span {
 					color: $color2;
 					font-size: 1.4rem;
+					float: left;
+					&.co, &.noco {
+						margin-top:4px;
+						margin-right: 5px;
+					}
 				}
 
 			}

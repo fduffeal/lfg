@@ -98,6 +98,11 @@
 		}
 		.name{
 			width: 60%;
+			span.co, span.noco {
+						margin-top:4px;
+						float: left;
+						margin-right: 5px;
+					}
 		}
 		.place {
 			width: 3%;
