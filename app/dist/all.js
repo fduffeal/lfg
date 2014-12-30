@@ -202,7 +202,7 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
     ]
 );
 
-angular.module('myApp.controllers').controller('ListUserCtrl',
+angular.module('myApp.controllers').controller('ListUsersCtrl',
 	['$scope','$routeParams',
 		function ($scope,$routeParams) {
 			'use strict';
