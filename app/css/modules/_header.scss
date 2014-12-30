@@ -6,6 +6,9 @@ $color3: #06ab93; // blue
 	line-height: 47px;
 	background: $color1;
 	width: 100%;
+	top: 0;
+	position: fixed;
+	z-index: 999;
 	.content-header {
 		margin: auto;
 		width: 95%;
@@ -158,6 +161,9 @@ $color3: #06ab93; // blue
 		}
 		.username:hover .submenu {
 			display:block;
+		}
+		.username:hover img {
+			@include transform(rotate(180deg));
 		}
 		.submenu {
 			display: none;

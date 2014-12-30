@@ -35,9 +35,9 @@
 			</table>
 			<div class="url">Url de la partie: <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
 			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()">Demander à rejoindre la partie</a>
-			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" translate>This party is ended, create a new party !</a>
+			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" translate>This party is ended, create a new party ! <img src="img/ico-create.png"/></a>
 			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profil for this game and join !</a>
-			<a href="" ng-if="imOnGroup && isEnded === false" class="btn2" style="width: 150px">Invitez des amis</a>
+			<a href="" ng-if="imOnGroup && isEnded === false" class="btn2" style="width: 150px">Invitez des amis <img src="img/ico-friends.png"/></a>
 		</div>
 	</div>
 	<div class="page">
@@ -128,9 +128,9 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text">
+							<input type="text" placeholder="{{ 'Your message' | translate }}">
 						</td>
-						<td><input type="submit"></td>
+						<td><input type="submit" value="{{ 'Send' | translate }}" class="btn2"></td>
 					</tr>
 				</table>
 			</div>

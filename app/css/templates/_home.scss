@@ -3,6 +3,16 @@
 		.btn2 {
 			display: inline-block;
 			margin-right: 10px;
+			position: relative;
+			&.second {
+				width: 190px;
+			}
+			img{
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				height: 20px;
+			}
 		}
 		.social {
 			text-align: right;
@@ -64,6 +74,9 @@
 			font-size: 1.2rem;
 			color: white;
 			position: absolute;
+			&:hover img {
+				@include transform(rotate(180deg));
+			}
 			img {
 				position: absolute;
 				right: 10px;
@@ -87,10 +100,10 @@
 					background: #87cbc1;
 					cursor: pointer;
 				}
-				 a.selected {
-				 	display: block;
-				 	background: $color1;
-				 }
+				a.selected {
+					display: block;
+					background: $color1;
+				}
 			}
 		}
 		ul.type{
@@ -103,8 +116,8 @@
 			border-collapse: collapse;
 			border: 0;
 			@media screen and (max-width: 390px ) {
-					font-size: 13px;
-				}
+				font-size: 13px;
+			}
 			td, th {
 				overflow: hidden;
 				padding-left: 10px;
