@@ -103,8 +103,8 @@ angular.module('myApp', [
 
 		$routeProvider.when('/:lang/users/connected',
 			{
-				templateUrl: 'html/controllers/list-user.html',
-				controller : 'ListUserCtrl'
+				templateUrl: 'html/controllers/list-users.html',
+				controller : 'ListUsersCtrl'
 			});
 
 		$routeProvider.otherwise({redirectTo: '/fr'});
