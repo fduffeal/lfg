@@ -25,6 +25,7 @@
 			}
 		}
 	}
+
 	.btn {
 		width: 100%;
 	}
@@ -99,10 +100,10 @@
 		.name{
 			width: 60%;
 			span.co, span.noco {
-						margin-top:4px;
-						float: left;
-						margin-right: 5px;
-					}
+				margin-top:4px;
+				float: left;
+				margin-right: 5px;
+			}
 		}
 		.place {
 			width: 3%;
@@ -165,4 +166,66 @@
 		margin-top: 10px;
 		text-align: center;
 	}
+	.select {
+		text-align: center;
+		li {
+			display: inline-block;
+			width: 84px;
+			position: relative;
+			margin: 0 10px;
+			height: 170px;
+			vertical-align: middle;
+			&.selected {
+				opacity: 1;
+			}
+			&.no-selected {
+				opacity: 0.5;
+			}
+
+			a {
+				display: block;
+				width: 84px;
+				position: absolute;
+				height: 85px;
+				background-image: url('../img/sprite_ico_matchmaking2.png');
+				@include transition(all 0.1s ease-in-out 0s);
+				opacity: 0.85;
+				&:hover {
+
+					@include transform(rotate(5deg) scale(1.10));
+					opacity: 1;
+				}
+
+			}
+			span {
+				display: block;
+				position: absolute;
+				bottom: 50px;
+				text-align: center;
+				width: 100%;
+				font-size: 13px;
+				font-weight: bold;
+
+			}
+			select {
+				bottom: 0;
+				position: absolute;
+				left: 10px
+			}
+			&.nightfall a{
+				background-position: -97px 0;
+
+			}
+			&.day a{
+				background-position: -223px 0px;
+
+			}
+
+			&.raids a {
+				background-position: -353px;
+
+			}
+		}
+	}
+
 }
