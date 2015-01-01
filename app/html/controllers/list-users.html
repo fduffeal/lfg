@@ -22,55 +22,16 @@
 					<table  border="0" >
 
 						<tbody>
-							<tr >
+							<tr ng-repeat="user in aUsers">
+
 								<td class="list-player">
-									poneyMLCH
+									{{user.username}}
 								</td>
 								<td class="list-class">Titan</td>
 								<td class="list-level">31</td>
-								<td class="list-last">1 hour ago</td>
-								<td class="list-etat"><span class="co"></span></td>
+								<td class="list-last">{{user.onlineTime | filterSince}}</td>
+								<td class="list-etat"><span ng-class="{'co':user.connected,'noco':!user.connected}"></span></td>
 								<td class="list-action" >add to friendlist / block</td>
-							</tr>
-							<tr >
-								<td class="list-player">
-									poneyMLCH
-								</td>
-								<td class="list-class">Titan</td>
-								<td class="list-level">31</td>
-								<td class="list-last">1 hour ago</td>
-								<td class="list-etat"><span class="noco"></span></td>
-								<td class="list-action" >add to friendlist / block</td>
-							</tr>
-							<tr >
-								<td class="list-player">
-									poneyMLCH
-								</td>
-								<td class="list-class">Titan</td>
-								<td class="list-level">31</td>
-								<td class="list-last">1 hour ago</td>
-								<td class="list-etat"><span class="noco"></span></td>
-								<td class="list-action" >add to friendlist / block</td>
-							</tr>
-							<tr >
-								<td class="list-player">
-									poneyMLCH
-								</td>
-								<td class="list-class">Titan</td>
-								<td class="list-level">31</td>
-								<td class="list-last">1 hour ago</td>
-								<td class="list-etat"><span class="co"></span></td>
-								<td class="list-action" >Already in your friendlist / block</td>
-							</tr>
-							<tr >
-								<td class="list-player">
-									poneyMLCH
-								</td>
-								<td class="list-class">Titan</td>
-								<td class="list-level">31</td>
-								<td class="list-last">1 hour ago</td>
-								<td class="list-etat"><span class="co"></span></td>
-								<td class="list-action" >Already in your friendlist / block</td>
 							</tr>
 
 						</tbody>

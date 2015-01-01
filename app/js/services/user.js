@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
-		function($http,storage,api,$rootScope,$q,$timeout,$window) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
 			'use strict';
             this.data = '';
 
@@ -18,13 +18,13 @@ angular.module('myApp.services')
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 				storage.setPersistant('user',JSON.stringify(data));
+				socket.addUser(data.username);
 			};
 
 			this.log = function(username,password){
 				username = $window.encodeURIComponent(username);
 				return api.call('login/'+username+'/'+password).success(function(data){
 					storeUser(data);
-					storage.createCookie('username',username);
 				});
 			};
 
@@ -71,6 +71,7 @@ angular.module('myApp.services')
 				$rootScope.notificationsAlreadyRead = [];
 				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
+				socket.disconnect();
 			};
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
@@ -151,6 +152,10 @@ angular.module('myApp.services')
 			this.updateOnline = function(currentUser){
 				var username = $window.encodeURIComponent(currentUser.username);
 				return api.call('login/online/'+username+'/'+currentUser.token);
+			};
+
+			this.getAll = function(){
+				return api.call('users/');
 			};
 		}
 	]

@@ -28,6 +28,7 @@ angular.module('myApp.directives')
 					$scope.gamesUrl = redirection.getGamesPageUrl();
 					$scope.notifUrl = redirection.getNotifPageUrl();
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
                     $scope.userInfo = user.get();
 

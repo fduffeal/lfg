@@ -31,14 +31,10 @@
 
 <div ng-view></div>
 
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-<script src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
-
 <script type="text/javascript" src="dist/all.min.js"></script>
+<script src="http://www.esbattle.com:3000/socket.io/socket.io.js"></script>
 
-
+<lfg-init></lfg-init>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -48,37 +44,6 @@
     ga('create', 'UA-56835818-1', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
-
-</script>
-
-<script src="http://localhost:3000/socket.io/socket.io.js"></script>
-<script>
-    var socket = io.connect('http://localhost:3000');
-
-    // Whenever the server emits 'new message', update the chat body
-    socket.on('new message', function (data) {
-        console.log('new message',data);
-    });
-
-    // Whenever the server emits 'user joined', log it in the chat body
-    socket.on('user joined', function (data) {
-        console.log(data.username + ' joined');
-    });
-
-    // Whenever the server emits 'user left', log it in the chat body
-    socket.on('user left', function (data) {
-        console.log(data.username + ' left');
-    });
-
-    // Whenever the server emits 'typing', show the typing message
-    socket.on('typing', function (data) {
-        console.log('typing',data);
-    });
-
-    // Whenever the server emits 'stop typing', kill the typing message
-    socket.on('stop typing', function (data) {
-        console.log('stop typing',data);
-    });
 
 </script>
 

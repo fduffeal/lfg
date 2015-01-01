@@ -22,6 +22,7 @@
            <!--   <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
             <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
             <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>
+            <li><a href="{{listUsersUrl}}" translate>Users Connected</a></li>
         </ul>
         <ul class="menu-right"ng-if="userInfo.username">
             <li class="username">

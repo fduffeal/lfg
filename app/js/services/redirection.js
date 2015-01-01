@@ -97,6 +97,10 @@ angular.module('myApp.services')
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
 				this.goToGamesPage();
 			};
+
+			this.getListUsersUrl = function(){
+				return getLang()+'/users/connected/';
+			};
 		}
 	]
 );

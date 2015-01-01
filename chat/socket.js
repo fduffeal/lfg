@@ -21,6 +21,12 @@ var numUsers = 0;
 io.on('connection', function (socket) {
 	var addedUser = false;
 
+	socket.on('ask users list',function(data){
+		socket.broadcast.emit('users list', {
+			listUsers: usernames
+		});
+	});
+
 	// when the client emits 'new message', this listens and executes
 	socket.on('new message', function (data) {
 		// we tell the client to execute 'new message'
@@ -44,7 +50,8 @@ io.on('connection', function (socket) {
 		// echo globally (all clients) that a person has connected
 		socket.broadcast.emit('user joined', {
 			username: socket.username,
-			numUsers: numUsers
+			numUsers: numUsers,
+			listUsers: usernames
 		});
 	});
 
@@ -72,7 +79,8 @@ io.on('connection', function (socket) {
 			// echo globally that this client has left
 			socket.broadcast.emit('user left', {
 				username: socket.username,
-				numUsers: numUsers
+				numUsers: numUsers,
+				listUsers: usernames
 			});
 		}
 	});
