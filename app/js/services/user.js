@@ -154,8 +154,42 @@ angular.module('myApp.services')
 				return api.call('login/online/'+username+'/'+currentUser.token);
 			};
 
+			this.refresh = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('login/online/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
 			this.getAll = function(){
 				return api.call('users/');
+			};
+
+			this.addFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
+			};
+
+			this.removeFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
 			};
 		}
 	]

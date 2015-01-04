@@ -72,7 +72,8 @@ angular.module('myApp.services')
 
 			this.disconnect = function(){
 				var socket = this.getCurrentSocket();
-				socket.emit('disconnect');
+				socket.close();
+				//socket.emit('disconnect');
 			};
 
 			this.getUserList = function(){

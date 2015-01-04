@@ -29,9 +29,17 @@
 								</td>
 								<td class="list-class">Titan</td>
 								<td class="list-level">31</td>
-								<td class="list-last">{{user.onlineTime | filterSince}}</td>
+								<td class="list-last">
+									<span ng-if="!user.connected">{{user.onlineTime | filterSince}}</span>
+									<span ng-if="user.connected" translate>online</span>
+								</td>
 								<td class="list-etat"><span ng-class="{'co':user.connected,'noco':!user.connected}"></span></td>
-								<td class="list-action" >add to friendlist / block</td>
+								<td class="list-action">
+									<span ng-if="!user.me && user.canAddToFriendList" ng-click="addToFriendList(user.username)">add to friendlist</span>
+									<span ng-if="!user.me && !user.canAddToFriendList" ng-click="removeFromFriendList(user.username)">add to friendlist</span>
+									<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)">block</span>
+									<span ng-if="!user.me && !user.canAddToBlackList" ng-click="removeFromBlockList(user.username)">block</span>
+								</td>
 							</tr>
 
 						</tbody>
