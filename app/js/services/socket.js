@@ -35,6 +35,13 @@ angular.module('myApp.services')
 					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
 				});
 
+				// Whenever the server emits 'users list', log it in the chat body
+				socket.on('users list', function (data) {
+					console.log('users list',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
 				// Whenever the server emits 'typing', show the typing message
 				socket.on('typing', function (data) {
 					console.log('typing',data);
@@ -70,6 +77,7 @@ angular.module('myApp.services')
 
 			this.getUserList = function(){
 				var socket = this.getCurrentSocket();
+				console.log('emit : ask users list');
 				socket.emit('ask users list');
 			};
 		}

@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
 	var addedUser = false;
 
 	socket.on('ask users list',function(data){
-		socket.broadcast.emit('users list', {
+		socket.emit('users list', {
 			listUsers: usernames
 		});
 	});

@@ -9,9 +9,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 					console.log(data);
 					console.log('listuser ctrl', socket.listUsers);
 
-
-					var y2k  = new Date(2000, 0, 1);
-
 					for (var key in data) {
 						data[key].connected = false;
 						if (socket.listUsers[data[key].username]) {
