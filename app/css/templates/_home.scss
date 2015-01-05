@@ -103,6 +103,17 @@
 				pointer-events:none;
 				display:block;
 			}
+			@media screen and (max-width: 473px ) {
+				.first {
+					width: 68px;
+				}
+				select {
+					padding-right: 39px!important;
+				}
+				.desc {
+					width: 150px
+				}
+			}
 		}
 	}
 	h1{
@@ -157,7 +168,7 @@
 		}
 		ul.platforms, ul.type {
 			float: left;
-			width: 150px;
+			width: 130px;
 			background: $color1;
 			font-size: 1.2rem;
 			color: white;
@@ -195,7 +206,7 @@
 			}
 		}
 		ul.type{
-			margin-left: 170px;
+			margin-left: 156px;
 		}
 		table {
 			width: 100%;
