@@ -29,6 +29,7 @@ gulp.task('scripts', function() {
 		'app/bower_components/angular-route/angular-route.min.js',
 		'app/bower_components/angular-cookies/angular-cookies.min.js',
 		'app/bower_components/angular-gettext/dist/angular-gettext.min.js',
+		'node_modules/destiny-client/destiny.min.js',
 		'app/*.js',
 		'app/js/*/*.js'
 	])
