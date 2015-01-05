@@ -101,6 +101,10 @@ angular.module('myApp.services')
 			this.getListUsersUrl = function(){
 				return getLang()+'/users/connected/';
 			};
+
+			this.getAnnonceCreateUrl = function(){
+				return getLang()+'/annonce/create/';
+			};
 		}
 	]
 );
