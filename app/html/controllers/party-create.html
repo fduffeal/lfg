@@ -10,10 +10,11 @@
 					</label>
 					<select ng-model="profilSelected" ng-options="gameData.gameProfilName group by gameData.plateform.nom for gameData in profils" required></select>
 				</div>
+				<lfg-matchmaking></lfg-matchmaking>
 			</div>
 		</div>
 		<div class="page">
-			<lfg-matchmaking></lfg-matchmaking>
+
 			<span class="important" translate>ALL FIELDS ARE REQUIRED</span>
 
 			<div class="block">
