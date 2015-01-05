@@ -128,7 +128,6 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				var templateSelectedModel = data[0];
 				$scope.tags = templateSelectedModel.concatTags;
 				$scope.description = templateSelectedModel.description;
-				console.log('templateSelectedModel apply');
 			});
 
 		}
