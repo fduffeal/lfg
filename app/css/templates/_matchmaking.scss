@@ -6,13 +6,18 @@
 	.btn {
 		width: 300px;
 	}
+
 	.select {
 		text-align: center;
+		.tag-matchmaking{
+				margin:auto;
+				display: block;
+			}
 		li {
-			display: inline-block;
+			display: inline-block!important;
 			width: 84px;
 			position: relative;
-			margin: 0 10px;
+			margin: 0 10px!important;
 			height: 170px;
 			vertical-align: middle;
 			&.selected {

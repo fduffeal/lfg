@@ -63,7 +63,11 @@
 				appearance:none;
 				cursor:pointer;
 			}
-			.tag {
+			#plat {
+				padding-right: 103px;
+			}
+
+			.first {
 				width: 150px;
 			}
 			.desc {
@@ -72,7 +76,7 @@
 
 			/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 			@media screen and (-webkit-min-device-pixel-ratio:0) {
-				select {padding-right:36px}
+				select {padding-right:74px}
 			}
 
 			label {position:relative}
