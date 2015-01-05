@@ -6,3 +6,9 @@ tmp
 .idea
 app/.sass-cache/
 npm-debug.log
+app/bower_components/angular-translate/.bower.json
+app/bower_components/angular-translate/README.md
+app/bower_components/angular-translate/angular-translate.js
+app/bower_components/angular-translate/angular-translate.min.js
+app/bower_components/angular-translate/bower.json
+app/bower_components/express/examples/downloads/files/utf-8 한中日.txt

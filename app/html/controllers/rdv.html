@@ -6,6 +6,35 @@
 			Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci pharetra leo. <br />
 			<a href="{{partyCreateUrl}}" class="btn2">Créer une partie <img src="img/ico-create.png" /></a>
 			<a href="{{annonceCreateUrl}}" class="btn2 second">Poster une annonce <img src="img/ico-annonce.png" /></a>
+
+			<div class="add">
+				<h2>Nouvelle annonce</h2>
+				<p>Enter your informations or <a href="">create an account</a> to save your character for the next time !</p>
+				<label for="">
+					<select name="" id="">
+						<option value="">Plateforme</option>
+					</select>
+				</label>
+				<br />
+				<input type="text" placeholder="Your gamertag" style="margin-top:10px;"/>
+				<label for="">
+					<select name="" id="">
+						<option value="">Niveau</option>
+					</select>
+				</label>
+				<label>
+					<select name="" id="">
+						<option value="">Classe</option>
+					</select>
+				</label>
+				<br />
+				<input type="text" placeholder="#Tag" class="tag">
+				<input type="text" placeholder="Description" class="desc">
+				<div class="btn2">
+					Send it<img src="img/arrow-white.png" />
+
+				</div>
+			</div>
 			<div class="social">
 				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
 				<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
@@ -50,35 +79,35 @@
 					<h1>Mes parties</h1>
 					<table border="0">
 						<thead>
-						<tr>
-							<th class="list-player"><a href="">Player</a></th>
-						<th class="list-type"><a href="">Type</a></th>
-						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+							<tr>
+								<th class="list-player"><a href="">Player</a></th>
+								<th class="list-type"><a href="">Type</a></th>
+								<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
+								<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
 							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
 							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
 						</tr>
+					</tr>
+				</thead>
+			</table>
+			<a class="line" ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" >
+				<table border="0">
+					<tbody>
+						<tr >
+							<td class="list-player">
+								<span>{{ rdv.leader.username }}</span><span class="co"></span><br />
+								Titan - 31 <br />
+								{{ rdv.plateform.nom }}<br />
+							</td>
+							<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
+							<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+							<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
 						</tr>
-						</thead>
-					</table>
-					<a class="line" ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" >
-						<table border="0">
-							<tbody>
-							<tr >
-								<td class="list-player">
-									<span>{{ rdv.leader.username }}</span><span class="co"></span><br />
-									Titan - 31 <br />
-									{{ rdv.plateform.nom }}<br />
-								</td>
-								<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
-								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
-								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
-							</tr>
-							</tbody>
+					</tbody>
 
-						</table>
-					</a>
+				</table>
+			</a>
 				</div><!--
 				<h1>Destiny {{plateformNameSelected}} : LIVE</h1>
 				<table border="0">
