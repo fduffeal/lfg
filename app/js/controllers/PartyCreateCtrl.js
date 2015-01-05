@@ -124,6 +124,13 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				redirection.goToGamesPage();
 			};
 
+			$scope.$on('templateSelectedModel',function(event,data){
+				var templateSelectedModel = data[0];
+				$scope.tags = templateSelectedModel.concatTags;
+				$scope.description = templateSelectedModel.description;
+				console.log('templateSelectedModel apply');
+			});
+
 		}
 	]
 );
