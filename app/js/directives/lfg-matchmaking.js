@@ -39,7 +39,6 @@ angular.module('myApp.directives')
 	                };
 
 	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
-		               console.log('templateSelectedModel',newValue);
 		                $scope.$emit('templateSelectedModel',[newValue]);
 	                });
 
