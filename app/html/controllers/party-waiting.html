@@ -5,10 +5,10 @@
 			<table>
 				<tr>
 					<td>Type:</td>
-					<td>Partie</td>
+					<td translate>Party</td>
 				</tr>
 				<tr>
-					<td>Start:</td>
+					<td translate>Start:</td>
 					<td>
 						<div class="when" ng-if="!isLive && !isEnded">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}</div>
 						<div class="when" ng-if="isEnded" translate>Ended</div>
@@ -28,16 +28,16 @@
 					<td>{{ rdv.description }} </td>
 				</tr>
 				<tr>
-					<td>Plateforme:</td>
+					<td translate>Platform:</td>
 					<td>{{rdv.plateform.nom}}</td>
 				</tr>
 
 			</table>
-			<div class="url">Url de la partie: <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
-			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()">Demander à rejoindre la partie</a>
-			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" translate>This party is ended, create a new party ! <img src="img/ico-create.png"/></a>
+			<div class="url"><span translate> Url of the party:</span> <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
+			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()" translate>Ask to join the party</a>
+			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" ><span translate>This party is ended, create a new party !</span> <img src="img/ico-create.png"/></a>
 			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profil for this game and join !</a>
-			<a href="" ng-if="imOnGroup && isEnded === false" class="btn2" style="width: 150px">Invitez des amis <img src="img/ico-friends.png"/></a>
+
 		</div>
 	</div>
 	<div class="page">

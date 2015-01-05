@@ -12,6 +12,7 @@ msgstr ""
 "X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid ""
 "<span>IMPORTANT :</span>After creating the party, it will be possible to "
@@ -39,6 +40,7 @@ msgstr "Un joueur a quitté"
 msgid "ALL"
 msgstr "TOUS"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html app/html/controllers/profile.html
 msgid "ALL FIELDS ARE REQUIRED"
 msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
@@ -51,6 +53,14 @@ msgstr "Accepter"
 msgid "Actions"
 msgstr "Actions"
 
+#: app/html/controllers/rdv.html
+msgid "All"
+msgstr "Tous"
+
+#: app/html/controllers/rdv.html
+msgid "Announcement"
+msgstr "Annonce"
+
 #: app/html/controllers/404.html
 msgid "Appointment not found"
 msgstr "Rendez vous non trouvé"
@@ -58,6 +68,10 @@ msgstr "Rendez vous non trouvé"
 #: app/html/controllers/party-waiting.html
 msgid "Are you sure to kick :"
 msgstr "Êtes-vous sûr de vouloir kicker:"
+
+#: app/html/controllers/party-waiting.html
+msgid "Ask to join the party"
+msgstr "Demander à rejoindre la partie"
 
 #: app/html/controllers/profile.html
 msgid "Back"
@@ -76,14 +90,15 @@ msgstr "Class"
 msgid "Confirm Password"
 msgstr "Confirmez votre mot de passe"
 
-#: app/html/directives/lfg-header.html
-msgid "Create Party"
-msgstr "Creer une partie"
+#: app/html/controllers/rdv.html
+msgid "Create a party"
+msgstr "Créer une partie"
 
 #: app/html/controllers/party-waiting.html
 msgid "Create a profil for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
 msgid "Create a profile for this game and join !"
@@ -93,6 +108,7 @@ msgstr "Créer un profil pour ce jeu et rejoignez !"
 msgid "Decline"
 msgstr "Refuser"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Description"
 msgstr "Description"
@@ -112,6 +128,14 @@ msgstr "Terminé"
 #: app/html/directives/lfg-footer.html
 msgid "English"
 msgstr "Anglais"
+
+#: app/html/controllers/rdv.html
+msgid "Enter a description"
+msgstr "Entrer une description"
+
+#: app/html/controllers/rdv.html
+msgid "Enter your informations or"
+msgstr "Entrez vos informations ou"
 
 #: app/html/controllers/login.html
 msgid "Enter your login and password"
@@ -139,7 +163,6 @@ msgid "Game Infos for {{game.name}}"
 msgstr "Infos de jeux pour {{game.name}}"
 
 #: app/html/controllers/matchmaking.html
-#: app/html/controllers/party-create.html
 msgid "Game Profil"
 msgstr "Profil de jeux"
 
@@ -152,6 +175,10 @@ msgstr "Gamertag"
 msgid "Games Profiles"
 msgstr "Vos personnages"
 
+#: app/html/controllers/party-waiting.html
+msgid "Guardian"
+msgstr "Gardien"
+
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr "Accueil"
@@ -160,9 +187,9 @@ msgstr "Accueil"
 msgid "If you leave this page, the matchmaking will be cancel"
 msgstr "Si vous quittez cette page, le matchmaking sera annulé"
 
-#: app/html/controllers/party-waiting.html
-msgid "Join !"
-msgstr "Rejoindre !"
+#: app/html/controllers/rdv.html
+msgid "Infos"
+msgstr "Infos"
 
 #: app/html/controllers/party-waiting.html
 msgid "Join this party to see player's gamertag"
@@ -193,6 +220,74 @@ msgstr "Connexion !"
 msgid "Logout"
 msgstr "Déconnexion"
 
+#: app/html/controllers/rdv.html
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis "
+"vestibulum dui. Nunc augue enim, dignissim ac ipsum sit amet, malesuada "
+"imperdiet urna. Etiam et turpis nec sem lacinia ornare nec vel diam. Quisque "
+"blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam "
+"erat, sed volutpat nulla interdum non. Cras non ornare lorem.\n"
+"\n"
+"\t\t\tMauris porta tempus faucibus. Sed semper massa vitae mauris convallis, "
+"ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id "
+"accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu "
+"ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras "
+"facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus "
+"sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis "
+"lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum "
+"justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec "
+"nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim "
+"nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum "
+"in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, "
+"nec gravida quam orci pharetra leo. <br>\n"
+"\t\t\t<a href=\"{{partyCreateUrl}}\" class=\"btn2\"><span translate="
+"\"\">Create a party</span> <img src=\"img/ico-create.png\"></a>\n"
+"\t\t\t<a href=\"{{annonceCreateUrl}}\" class=\"btn2 second\"><span translate="
+"\"\">Post an announcement</span><img src=\"img/ico-annonce.png\"></a>\n"
+"\n"
+"\t\t\t<div class=\"add\">\n"
+"\t\t\t\t<h2 translate=\"\">New announcement</h2>\n"
+"\t\t\t\t<p><span translate=\"\">Enter your informations or</span> <a href="
+"\"\" translate=\"\">create an account</a> <span translate=\"\">to save your "
+"character for the next time !</span></p>\n"
+"\t\t\t\t<label for=\"\">\n"
+"\t\t\t\t\t<select name=\"\" id=\"\">\n"
+"\t\t\t\t\t\t<option value=\"\">Plateforme</option>\n"
+"\t\t\t\t\t</select>\n"
+"\t\t\t\t</label>\n"
+"\t\t\t\t<br>\n"
+"\t\t\t\t<input type=\"text\" placeholder=\"{{'Your gamertag'|translate}}\" "
+"style=\"margin-top:10px;\">\n"
+"\t\t\t\t<label for=\"\">\n"
+"\t\t\t\t\t<select name=\"\" id=\"\">\n"
+"\t\t\t\t\t\t<option value=\"\">Niveau</option>\n"
+"\t\t\t\t\t</select>\n"
+"\t\t\t\t</label>\n"
+"\t\t\t\t<label>\n"
+"\t\t\t\t\t<select name=\"\" id=\"\">\n"
+"\t\t\t\t\t\t<option value=\"\">Classe</option>\n"
+"\t\t\t\t\t</select>\n"
+"\t\t\t\t</label>\n"
+"\t\t\t\t<br>\n"
+"\t\t\t\t<input type=\"text\" placeholder=\"#Tag\" class=\"tag\">\n"
+"\t\t\t\t<input type=\"text\" placeholder=\"{{'Enter a description'|"
+"translate}}\" class=\"desc\">\n"
+"\t\t\t\t<div class=\"btn2\">\n"
+"\t\t\t\t\t<span translate=\"\">Send it</span><img src=\"img/arrow-white.png"
+"\">\n"
+"\n"
+"\t\t\t\t</div>\n"
+"\t\t\t</div>\n"
+"\t\t\t<div class=\"social\">\n"
+"\t\t\t\t<a href=\"https://www.facebook.com/esbattlelfg\" target=\"_blank"
+"\"><img src=\"img/footer-logo-fb.png\"></a>\n"
+"\t\t\t\t<a href=\"https://twitter.com/esbattle\" target=\"_blank\"><img src="
+"\"img/footer-logo-twitter.png\"></a>\n"
+"\t\t\t\t<a href=\"http://www.bungie.net/fr/Clan/Forum/595307\" target="
+"\"_blank\"><img src=\"img/footer-logo-bungie.png\"></a>\n"
+"\t\t\t</div>"
+msgstr ""
+
 #: app/html/controllers/login.html
 msgid "Mail already send. Please check your mailBox (and your spam box)"
 msgstr ""
@@ -204,17 +299,22 @@ msgid "Mail send. Please check your mailBox (and your spam box)"
 msgstr ""
 "Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)"
 
-#: app/html/directives/lfg-header.html
-msgid "Matchmaking"
-msgstr "Matchmaking"
+#: app/html/controllers/rdv.html
+msgid "My partys"
+msgstr "Mes parties"
 
+#: app/html/controllers/rdv.html
+msgid "New announcement"
+msgstr "Nouvelle annonce"
+
+#: app/html/controllers/games-profiles.html
+msgid "New character"
+msgstr "Nouveau personnage"
+
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "New party on"
 msgstr "Nouvelle partie sur"
-
-#: app/html/controllers/games-profiles.html
-msgid "New profile"
-msgstr "Nouveau profil:"
 
 #: app/html/controllers/party-waiting.html
 msgid "No"
@@ -235,6 +335,10 @@ msgstr "OU"
 #: app/html/controllers/party-waiting.html
 msgid "Open"
 msgstr "Ouvert"
+
+#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
+msgid "Party"
+msgstr "Partie"
 
 #: app/html/controllers/login.html app/html/controllers/register.html
 msgid "Password"
@@ -260,9 +364,21 @@ msgstr "Informations personelles"
 msgid "Platform"
 msgstr "Platformes"
 
+#: app/html/controllers/party-waiting.html
+msgid "Platform:"
+msgstr "Plateforme:"
+
+#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
+msgid "Player"
+msgstr "Joueur"
+
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Please waiting, we are looking for players..."
 msgstr "Merci de patienter, nous recherchons des joueurs..."
+
+#: app/html/controllers/rdv.html
+msgid "Post an announcement"
+msgstr "Poster une annonce"
 
 #: app/html/controllers/profile.html
 msgid "Profil Name"
@@ -288,6 +404,15 @@ msgstr "S'enregistrer avec votre adresse email"
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
 
+#: app/html/controllers/party-waiting.html
+msgid "Send"
+msgstr "Envoyer"
+
+#: app/html/controllers/rdv.html
+msgid "Send it"
+msgstr "Envoyer"
+
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Slots"
 msgstr "Slots"
@@ -296,18 +421,19 @@ msgstr "Slots"
 msgid "Sorry, you have been kicked by"
 msgstr "Désolé, vous avez été exclu par"
 
-#: app/html/controllers/party-create.html
+#: app/html/controllers/annonce-create.html
+#: app/html/controllers/party-create.html app/html/controllers/rdv.html
 msgid "Start"
 msgstr "Début"
+
+#: app/html/controllers/party-waiting.html
+msgid "Start:"
+msgstr "Début:"
 
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
 msgstr "Equipe"
-
-#: app/html/controllers/party-waiting.html
-msgid "The Party"
-msgstr "Partie en attente de joueurs..."
 
 #: app/html/controllers/register.html
 msgid "The username is already used."
@@ -321,6 +447,7 @@ msgstr "Cet email est déjà pris"
 msgid "This party is ended, create a new party !"
 msgstr "Cette partie est terminée, créez une nouvelle partie !"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
 msgstr "Demain"
@@ -337,6 +464,15 @@ msgstr "Mettre à jour le mot de passe"
 msgid "Update my password !"
 msgstr "Mettre à jour mon mot de passe !"
 
+#: app/html/controllers/party-waiting.html
+msgid "Url of the party:"
+msgstr "Url de la partie:"
+
+#: app/html/controllers/annonce-create.html
+#: app/html/controllers/party-create.html
+msgid "Use this character"
+msgstr "Utiliser ce personnage"
+
 #: app/html/controllers/login.html app/html/controllers/profile.html
 #: app/html/controllers/register.html
 msgid "Username"
@@ -350,6 +486,7 @@ msgstr "Nom d'utilisateur sur ce jeu"
 msgid "Waiting Players"
 msgstr "Joueurs voulant rejoindre la partie"
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "When"
 msgstr "Quand:"
@@ -366,9 +503,17 @@ msgstr "Vous avez été accepté par"
 msgid "You have been promoted as leader by"
 msgstr "Vous avez été promu comme chef par"
 
-#: app/html/controllers/games-profiles.html
-msgid "Your games profiles"
-msgstr "Vos profils de jeux"
+#: app/html/controllers/rdv.html
+msgid "Your gamertag"
+msgstr "Votre gamertag"
+
+#: app/html/controllers/party-waiting.html
+msgid "Your message"
+msgstr "Votre message"
+
+#: app/html/controllers/rdv.html
+msgid "create an account"
+msgstr "créer un compte"
 
 #: app/html/controllers/notification.html
 msgid "from"
@@ -382,6 +527,10 @@ msgstr "a quitté. Vous contrôlez "
 msgid "on"
 msgstr "sur"
 
+#: app/html/controllers/list-users.html
+msgid "online"
+msgstr "en ligne"
+
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
 msgstr "Les mots de passe ne correspondent pas"
@@ -390,9 +539,30 @@ msgstr "Les mots de passe ne correspondent pas"
 msgid "this party"
 msgstr "cette partie"
 
-#: app/html/controllers/party-waiting.html
-msgid "with profil :"
-msgstr "avec le profil :"
+#: app/html/controllers/rdv.html
+msgid "to save your character for the next time !"
+msgstr "pour sauvegarder votre personnage la prochaine fois !"
+
+#~ msgid "Create Party"
+#~ msgstr "Creer une partie"
+
+#~ msgid "Join !"
+#~ msgstr "Rejoindre !"
+
+#~ msgid "Matchmaking"
+#~ msgstr "Matchmaking"
+
+#~ msgid "New profile"
+#~ msgstr "Nouveau profil:"
+
+#~ msgid "The Party"
+#~ msgstr "Partie en attente de joueurs..."
+
+#~ msgid "Your games profiles"
+#~ msgstr "Vos profils de jeux"
+
+#~ msgid "with profil :"
+#~ msgstr "avec le profil :"
 
 #~ msgid "Class:"
 #~ msgstr "Class"
@@ -402,9 +572,6 @@ msgstr "avec le profil :"
 
 #~ msgid "Gamertag:"
 #~ msgstr "Gamertag:"
-
-#~ msgid "Platform:"
-#~ msgstr "Plateforme:"
 
 #~ msgid "Profile:"
 #~ msgstr "Profil:"

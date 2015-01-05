@@ -4,19 +4,19 @@
 		<div class="marge" translate>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis vestibulum dui. Nunc augue enim, dignissim ac ipsum sit amet, malesuada imperdiet urna. Etiam et turpis nec sem lacinia ornare nec vel diam. Quisque blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam erat, sed volutpat nulla interdum non. Cras non ornare lorem.
 
 			Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci pharetra leo. <br />
-			<a href="{{partyCreateUrl}}" class="btn2">Créer une partie <img src="img/ico-create.png" /></a>
-			<a href="{{annonceCreateUrl}}" class="btn2 second">Poster une annonce <img src="img/ico-annonce.png" /></a>
+			<a href="{{partyCreateUrl}}" class="btn2" ><span translate>Create a party</span> <img src="img/ico-create.png" /></a>
+			<a href="{{annonceCreateUrl}}" class="btn2 second" ><span translate>Post an announcement</span><img src="img/ico-annonce.png" /></a>
 
 			<div class="add">
-				<h2>Nouvelle annonce</h2>
-				<p>Enter your informations or <a href="">create an account</a> to save your character for the next time !</p>
+				<h2 translate>New announcement</h2>
+				<p><span translate>Enter your informations or</span> <a href=""translate >create an account</a> <span translate>to save your character for the next time !</span></p>
 				<label for="">
 					<select name="" id="">
 						<option value="">Plateforme</option>
 					</select>
 				</label>
 				<br />
-				<input type="text" placeholder="Your gamertag" style="margin-top:10px;"/>
+				<input type="text" placeholder="{{'Your gamertag'|translate}}" style="margin-top:10px;"/>
 				<label for="">
 					<select name="" id="">
 						<option value="">Niveau</option>
@@ -29,9 +29,9 @@
 				</label>
 				<br />
 				<input type="text" placeholder="#Tag" class="tag">
-				<input type="text" placeholder="Description" class="desc">
+				<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc">
 				<div class="btn2">
-					Send it<img src="img/arrow-white.png" />
+					<span translate>Send it</span><img src="img/arrow-white.png" />
 
 				</div>
 			</div>
@@ -56,13 +56,13 @@
 			</ul>
 			<ul class="type">
 				<li>
-					<a href="">Partie</a>
+					<a href="" translate>Party</a>
 				</li>
 				<li>
-					<a href="">Annonce</a>
+					<a href="" translate>Announcement</a>
 				</li>
 				<li>
-					<a href="" class="selected">TOUS</a>
+					<a href="" class="selected" translate>All</a>
 				</li>
 				<img src="img/arrow-white.png" />
 			</ul>
@@ -76,14 +76,14 @@
 
 			<div class="last">
 				<div ng-if="currentUser">
-					<h1>Mes parties</h1>
+					<h1 translate>My partys</h1>
 					<table border="0">
 						<thead>
 							<tr>
-								<th class="list-player"><a href="">Player</a></th>
+								<th class="list-player"><a href="" translate>Player</a></th>
 								<th class="list-type"><a href="">Type</a></th>
-								<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-								<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+								<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse"translate>Infos</a></th>
+								<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse" translate>Start</a></th>
 							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
 							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
 						</tr>
@@ -99,7 +99,7 @@
 								Titan - 31 <br />
 								{{ rdv.plateform.nom }}<br />
 							</td>
-							<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+							<td class="list-type"><span translate>Party</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
 							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
 							<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 							<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
@@ -142,10 +142,10 @@
 			<table border="0">
 				<thead>
 					<tr>
-						<th class="list-player"><a href="">Player</a></th>
+						<th class="list-player"><a href="" translate>Player</a></th>
 						<th class="list-type"><a href="">Type</a></th>
-						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
+						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse" translate>Infos</a></th>
+						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse" translate>Start</a></th>
 							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
 							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
 						</tr>
@@ -162,7 +162,7 @@
 									Titan - 31 <br />
 									{{ rdv.plateform.nom }}<br />
 								</td>
-								<td class="list-type"><span>Partie</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-type"><span translate>Party</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
 								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
 								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
