@@ -24,10 +24,10 @@
 				<ul class="mychar">
 					<li ng-repeat="character in aCharacters" class="character" style="background: url('{{character.backgroundPath}}')">
 						<a href="">
-							<img src="{{character.emblemPath}}" class="embleme"/>
+							<img ng-src="{{character.emblemPath}}" class="embleme"/>
 							<div class="left">
-								<div class="name">Fifoukiller84</div>
-								<div class="team">We love Esbattle</div>
+								<div class="name">{{character.gamerTag}}</div>
+								<div class="team">{{character.clan}}</div>
 							</div>
 							<div class="right">
 								<div class="level">{{character.level}}</div>
