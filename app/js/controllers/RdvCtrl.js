@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie) {
 			'use strict';
 
 			lang.initLang();
@@ -75,6 +75,14 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}, refreshTime);
 			};
 
+
+			$scope.getDestinyCharacters = function(){
+				console.log('getDestinyCharacters');
+				bungie.getCharacters($scope.plateforme,$scope.gamertag).success(function(data){
+					console.log(data);
+					$scope.aCharacters = data;
+				});
+			};
 			//init
 			refreshRdvData();
 			autoRefreshData();

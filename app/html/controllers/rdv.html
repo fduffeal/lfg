@@ -11,17 +11,21 @@
 				<h2 translate>New announcement</h2>
 				<p><span translate>Enter your informations or</span> <a href=""translate >create an account</a> <span translate>to save your character for the next time !</span></p>
 				<label for="">
-					<select name="" id="plat">
+					<select name="" id="plat" ng-model="plateforme">
 						<option value="">Plateforme</option>
+						<option value="1">Xbox Live</option>
+						<option value="2">PlayStation Network</option>
 					</select>
 				</label>
 				<br />
-				<input type="text" placeholder="{{'Your gamertag'|translate}}"  class="first" style="margin-top:10px;"/>
+				<input ng-model="gamertag" type="text" placeholder="{{'Your gamertag'|translate}}"  class="first" style="margin-top:10px;"/>
 				<label for="">
 					<select name="" id="">
 						<option value="">Niveau</option>
 					</select>
 				</label>
+				<a href="#" class="btn2" ng-click="getDestinyCharacters()"><span translate >Find</span><img src="img/arrow-white.png" /></a>
+
 				<label>
 					<select name="" id="class">
 						<option value="">Classe</option>
@@ -33,6 +37,14 @@
 				<div class="btn2">
 					<span translate>Send it</span><img src="img/arrow-white.png" />
 
+				</div>
+
+				<div>
+					<ul>
+						<li ng-repeat="character in aCharacters" style="background: url('{{character.backgroundPath}}')">
+							<img src="{{character.emblemPath}}"/>{{character.class}} - {{character.level}}
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="social">
