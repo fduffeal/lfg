@@ -55,6 +55,12 @@ span.noco{
 			margin-top: -10px;
 			margin-bottom: 11px;
 			color:rgba(245, 220, 86, 1);
+			&:before {
+				content: "\2726";
+				display: inline-block;
+				vertical-align: 22%;
+				font-size: 50%;
+			}
 		}
 	}
 }
