@@ -10,7 +10,7 @@ body, html {
 span.co, span.noco{
 	display: block;
 	width: 10px;
-	margin-top: 3px;
+	margin-top: 10px;
 	height: 10px;
 	border-radius: 50%;
 }
@@ -26,7 +26,7 @@ span.noco{
 	background-repeat: no-repeat!important;
 	position: relative;
 	height: 96px!important;
-	width: 475px;
+	width: 20%;
 	display: inline-block;
 	color: white;
 	margin-right: 10px;
@@ -46,18 +46,17 @@ span.noco{
 		margin: 10px;
 		.name {
 			font-size: 20px;
-			margin-bottom: 20px;
+			margin-bottom: 7px;
 		}
 	}
 	.right {
 		float: right;
 		margin: 10px;
 		text-align: center;
-		widows: 72px;
 		.level {
 			font-size: 34px;
 			margin-top: -10px;
-			margin-bottom: 11px;
+			margin-bottom: -1px;
 			color:rgba(245, 220, 86, 1);
 			&:before {
 				content: "\2726";
