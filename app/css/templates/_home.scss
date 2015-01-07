@@ -21,6 +21,9 @@
 		}
 		.add {
 			margin-top: 15px;
+			.character {
+				width: 28%;
+			}
 			a {
 				color: $color1;
 				text-decoration: underline;
@@ -239,7 +242,13 @@
 				clear: both;
 			}
 			.list-player{
-				width: 10%;
+				width: 30%;
+
+				.character {
+					height: auto!important;
+					width: 100%;
+
+				}
 				span {
 					color: $color2;
 					font-size: 1.4rem;

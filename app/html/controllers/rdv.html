@@ -173,11 +173,20 @@
 
 						<tbody>
 							<tr >
-								<td class="list-player">
-									<span class="co"></span>
-									<span>{{ rdv.leader.username }}</span><br />
-									Titan - 31 <br />
-									{{ rdv.plateform.nom }}<br />
+								<td class="list-player" >
+									<div class="character" style="background: url('https://www.bungie.net/common/destiny_content/icons/6c2570dc6f12b6816bdc887ed29b2132.jpg')">
+										<img src="https://www.bungie.net/common/destiny_content/icons/bccac528643550c0ed36986cfea4fccc.jpg" class="embleme"/>
+										<div class="left">
+											<div class="name"><span class="co"></span>{{ rdv.leader.username }}</div>
+											<div class="team">{{ rdv.plateform.nom }}</div>
+										</div>
+										<div class="right">
+										<div class="level">31</div>
+											<div class="classe">Titan</div>
+
+										</div>
+									</div>
+
 								</td>
 								<td class="list-type"><span translate>Party</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
 								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
