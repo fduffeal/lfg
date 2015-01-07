@@ -20,6 +20,44 @@ span.noco{
 	background: red
 
 }
+
+.character {
+	background-repeat: no-repeat!important;
+	position: relative;
+	height: 96px!important;
+	width: 475px;
+	display: inline-block;
+	margin-right: 10px;
+	a {
+		color: white!important;
+		height: 96px!important;
+		width: 475px;
+		display: block;
+	}
+	.embleme {
+		float: left;
+	}
+	.left {
+		float: left;
+		margin: 10px;
+		.name {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+	}
+	.right {
+		float: right;
+		margin: 10px;
+		text-align: center;
+		widows: 72px;
+		.level {
+			font-size: 34px;
+			margin-top: -10px;
+			margin-bottom: 11px;
+			color:rgba(245, 220, 86, 1);
+		}
+	}
+}
 ul, li {
 	margin: 0;
 	list-style: none;

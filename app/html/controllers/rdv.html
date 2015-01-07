@@ -39,13 +39,26 @@
 
 				</div>
 
-				<div>
-					<ul>
-						<li ng-repeat="character in aCharacters" style="background: url('{{character.backgroundPath}}')">
-							<img src="{{character.emblemPath}}"/>{{character.class}} - {{character.level}}
-						</li>
-					</ul>
-				</div>
+
+				<ul>
+					<li ng-repeat="character in aCharacters" class="character" style="background: url('{{character.backgroundPath}}')">
+						<a href="">
+							<img src="{{character.emblemPath}}" class="embleme"/>
+							<div class="left">
+								<div class="name">Fifoukiller84</div>
+								<div class="team">We love Esbattle</div>
+							</div>
+							<div class="right">
+								<div class="level">{{character.level}}</div>
+								<div class="classe">{{character.class}}</div>
+
+							</div>
+						</a>
+
+
+					</li>
+				</ul>
+
 			</div>
 			<div class="social">
 				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
