@@ -20,19 +20,8 @@
 
 				<input ng-model="gamertag" type="text" placeholder="{{'Your gamertag'|translate}}"  class="first" style="margin-top:10px;"/>
 
-				<a href="#" class="btn2" ng-click="getDestinyCharacters()"><span translate >Find</span><img src="img/arrow-white.png" /></a>
-
-
-				<br />
-				<input type="text" placeholder="#Tag" class="first">
-				<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc">
-				<div class="btn2">
-					<span translate>Send it</span><img src="img/arrow-white.png" />
-
-				</div>
-
-
-				<ul>
+				<a href="#" class="btn2" ng-click="getDestinyCharacters()"><span translate >Find</span><img src="img/arrow-white.png" /></a><br />
+				<ul class="mychar">
 					<li ng-repeat="character in aCharacters" class="character" style="background: url('{{character.backgroundPath}}')">
 						<a href="">
 							<img src="{{character.emblemPath}}" class="embleme"/>
@@ -50,6 +39,17 @@
 
 					</li>
 				</ul>
+<br style="clear:both" />
+
+				<input type="text" placeholder="#Tag" class="first">
+				<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc">
+				<div class="btn2">
+					<span translate>Send it</span><img src="img/arrow-white.png" />
+
+				</div>
+
+
+
 
 			</div>
 			<div class="social">
@@ -181,7 +181,7 @@
 											<div class="team">{{ rdv.plateform.nom }}</div>
 										</div>
 										<div class="right">
-										<div class="level">31</div>
+											<div class="level">31</div>
 											<div class="classe">Titan</div>
 
 										</div>

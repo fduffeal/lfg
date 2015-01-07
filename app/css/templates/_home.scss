@@ -21,6 +21,43 @@
 		}
 		.add {
 			margin-top: 15px;
+			.mychar {
+				height: 60px;
+				@media screen and (max-width: 607px ) {
+					margin: 10px 0;
+				}
+			}
+			.character {
+				width: 300px;
+				display: block;
+				float: left;
+				height: 60px!important;
+				@include transition (all 0.3s ease);
+				&:hover {
+
+					@include transform (scale(1.1));
+				}
+				a {
+					width: 300px;
+					height: 60px;
+
+
+
+				}
+				.name {
+					@media screen and (min-width: 1700px ) {
+						font-size: 14px;
+						margin-bottom: 2px;
+					}
+				}
+				.level {
+					@media screen and (min-width: 1700px ) {
+						font-size: 24px;
+
+					}
+				}
+			}
+
 			a {
 				color: $color1;
 				text-decoration: underline;
@@ -240,6 +277,9 @@
 			}
 			.list-player{
 				width: 20%;
+				@media screen and (min-width: 800px ) {
+					min-width: 300px;
+				}
 
 				.character {
 					height: auto!important;
