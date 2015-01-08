@@ -1224,8 +1224,8 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce) {
 			'use strict';
 
 			lang.initLang();
@@ -1273,13 +1273,20 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			var refreshRdvData = function(){
-				rdv.getAll().success(function(data) {
-					// this callback will be called asynchronously
-					// when the response is available
-					$scope.aRdv = data;
-				}).error(function(data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
+
+				annonce.get().success(function(data){
+					formatAnnonces(data);
+
+					rdv.getAll().success(function(data) {
+						// this callback will be called asynchronously
+						// when the response is available
+						$scope.aRdv = data;
+						$scope.aRdv = $scope.aRdv.concat($scope.aAnnoncesFormated);
+
+					}).error(function(data, status, headers, config) {
+						// called asynchronously if an error occurs
+						// or server returns response with an error status.
+					});
 				});
 			};
 
@@ -1316,6 +1323,35 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			//init
 			refreshRdvData();
 			autoRefreshData();
+
+			$scope.aAnnoncesFormated = [];
+
+			var formatAnnonces = function(aAnnonces){
+				var nbAnnonces = aAnnonces.length;
+
+				for(var i=0; i< nbAnnonces;i++){
+					$scope.aAnnoncesFormated[i] = {
+						'id' : aAnnonces[i].id,
+						'leader' : aAnnonces[i].author,
+						'game' : aAnnonces[i].game,
+						'plateform' : aAnnonces[i].plateform,
+						'tags' : aAnnonces[i].tags,
+						'description' : aAnnonces[i].description,
+						'start' : aAnnonces[i].created,
+						'type' : 'type_annonce'
+					};
+				}
+			};
+
+			$scope.addAnnonce = function(){
+
+				var userGameId = $scope.selectedPerso.userGameId;
+				var tags = $scope.annonce_tag;
+				var description = $scope.annonce_description;
+				annonce.create(tags,description,userGameId).success(function(data){
+					console.log(data);
+				});
+			};
 		}
 	]
 );
@@ -1980,6 +2016,35 @@ angular.module('myApp.services')
 				return $rootScope.activityOnWindow;
 			};
 		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('annonce', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
+			'use strict';
+
+			this.create = function(tags,description,userGameId){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+				tags = $window.encodeURIComponent(tags);
+				description = $window.encodeURIComponent(description);
+				userGameId = $window.encodeURIComponent(userGameId);
+				return api.call('annonce/create/'+tags+'/'+description+'/'+userGameId);
+			};
+
+			this.get = function(){
+				return api.call('annonce');
+			};
+		}
+
 	]
 );
 

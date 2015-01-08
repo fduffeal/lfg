@@ -42,15 +42,9 @@
 				</ul>
 <br style="clear:both" />
 
-				<input type="text" placeholder="#Tag" class="first">
-				<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc">
-				<div class="btn2">
-					<span translate>Send it</span><img src="img/arrow-white.png" />
-
-				</div>
-
-
-
+				<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag">
+				<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc" ng-model="annonce_description">
+				<a href="#" class="btn2" ng-click="addAnnonce()"><span translate >Send it</span><img src="img/arrow-white.png" /></a><br />
 
 			</div>
 			<div class="social">
@@ -169,7 +163,7 @@
 						</tr>
 					</thead>
 				</table>
-				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" >
+				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"ng-repeat="rdv in aRdv |orderBy:predicate:reverse as resultsAll" >
 					<table  border="0" >
 
 						<tbody>
@@ -178,7 +172,10 @@
 									<div class="character" style="background: url('https://www.bungie.net/common/destiny_content/icons/6c2570dc6f12b6816bdc887ed29b2132.jpg')">
 										<img src="https://www.bungie.net/common/destiny_content/icons/bccac528643550c0ed36986cfea4fccc.jpg" class="embleme"/>
 										<div class="left">
-											<div class="name"><span class="co"></span>{{ rdv.leader.username }}</div>
+											<div class="name" ng-if="rdv.type === 'type_annonce'"><span class="co"></span>{{ rdv.leader.gameUsername }}</div>
+											<div class="name" ng-if="rdv.type !== 'type_annonce' && user.user.id === rdv.leader.id" ng-repeat="user in rdv.users">
+												<span class="co" ></span>{{ user.gameUsername }}
+											</div>
 											<div class="team">{{ rdv.plateform.nom }}</div>
 										</div>
 										<div class="right">
@@ -189,7 +186,8 @@
 									</div>
 
 								</td>
-								<td class="list-type"><span translate>Party</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br /><br />Slots {{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
+								<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Annonce</span></td>
 								<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br /><br />{{ rdv.description}}</td>
 								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
