@@ -33,6 +33,15 @@
 				float: left;
 				height: 60px!important;
 				@include transition (all 0.3s ease);
+				@media screen and (max-width: 350px ) {
+					width: 270px!important;
+					.embleme {
+						width: 18%!important;
+					}
+					a{
+						width: 270px!important;
+					}
+				}
 				&:hover {
 
 					@include transform (scale(1.1));
