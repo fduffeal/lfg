@@ -42,7 +42,7 @@
 						width: 270px!important;
 					}
 				}
-				&:hover {
+				&:hover, &.selected {
 
 					@include transform (scale(1.1));
 				}
