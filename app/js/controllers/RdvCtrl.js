@@ -48,7 +48,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			var refreshRdvData = function(){
-				rdv.getAll().success(function(data, status, headers, config) {
+				rdv.getAll().success(function(data) {
 					// this callback will be called asynchronously
 					// when the response is available
 					$scope.aRdv = data;
@@ -82,6 +82,11 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					console.log(data);
 					$scope.aCharacters = data;
 				});
+			};
+
+			$scope.selectedPerso = null;
+			$scope.selectPerso = function(persoSelected){
+				$scope.selectedPerso = persoSelected;
 			};
 			//init
 			refreshRdvData();

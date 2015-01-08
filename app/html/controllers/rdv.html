@@ -4,8 +4,8 @@
 		<div class="marge" translate>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis vestibulum dui. Nunc augue enim, dignissim ac ipsum sit amet, malesuada imperdiet urna. Etiam et turpis nec sem lacinia ornare nec vel diam. Quisque blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam erat, sed volutpat nulla interdum non. Cras non ornare lorem.
 
 			Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci pharetra leo. <br />
-			<a href="{{partyCreateUrl}}" class="btn2" ><span translate>Create a party</span> <img src="img/ico-create.png" /></a>
-			<a href="{{annonceCreateUrl}}" class="btn2 second" ><span translate>Post an announcement</span><img src="img/ico-annonce.png" /></a>
+			<a ng-href="{{partyCreateUrl}}" class="btn2" ><span translate>Create a party</span> <img src="img/ico-create.png" /></a>
+			<a ng-href="{{annonceCreateUrl}}" class="btn2 second" ><span translate>Post an announcement</span><img src="img/ico-annonce.png" /></a>
 
 			<div class="add">
 				<h2 translate>New announcement</h2>
@@ -22,8 +22,11 @@
 
 				<a href="#" class="btn2" ng-click="getDestinyCharacters()"><span translate >Find</span><img src="img/arrow-white.png" /></a><br />
 				<ul class="mychar">
-					<li ng-repeat="character in aCharacters" class="character" style="background: url('{{character.backgroundPath}}')">
-						<a href="">
+					<li ng-repeat="character in aCharacters"
+					    ng-class="{'selected':(selectedPerso===character)}"
+					    class="character"
+					    style="background: url('{{character.backgroundPath}}')">
+						<a href="#" ng-click="selectPerso(character)">
 							<img ng-src="{{character.emblemPath}}" class="embleme"/>
 							<div class="left">
 								<div class="name">{{character.gamerTag}}</div>
