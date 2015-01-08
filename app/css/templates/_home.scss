@@ -253,8 +253,13 @@
 			text-align: left;
 			border-collapse: collapse;
 			border: 0;
-			@media screen and (max-width: 390px ) {
-				font-size: 13px;
+			@media screen and (max-width: 800px ) {
+				font-size: 10px!important;
+				.list-player {
+					div {
+						font-size: 10px!important
+					}
+				}
 			}
 			td, th {
 				overflow: hidden;
@@ -279,12 +284,6 @@
 				width: 20%;
 				@media screen and (min-width: 800px ) {
 					min-width: 300px;
-				}
-
-				.character {
-					height: auto!important;
-					width: 100%;
-
 				}
 				span {
 					color: $color2;
