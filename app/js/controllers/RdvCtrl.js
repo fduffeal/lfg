@@ -77,10 +77,10 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			$scope.getDestinyCharacters = function(){
-				console.log('getDestinyCharacters');
-				bungie.getCharacters($scope.plateforme,$scope.gamertag).success(function(data){
-					console.log(data);
+				bungie.getCharacters($scope.plateform.id,$scope.plateform.bungiePlateformId,$scope.gamertag).success(function(data){
 					$scope.aCharacters = data;
+				}).error(function(data){
+					$scope.aCharacters = [];
 				});
 			};
 

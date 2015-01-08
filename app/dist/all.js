@@ -1302,10 +1302,10 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			$scope.getDestinyCharacters = function(){
-				console.log('getDestinyCharacters');
-				bungie.getCharacters($scope.plateforme,$scope.gamertag).success(function(data){
-					console.log(data);
+				bungie.getCharacters($scope.plateform.id,$scope.plateform.bungiePlateformId,$scope.gamertag).success(function(data){
 					$scope.aCharacters = data;
+				}).error(function(data){
+					$scope.aCharacters = [];
 				});
 			};
 
@@ -2033,15 +2033,26 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
-	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window',
-		function($http,storage,api,$rootScope,$q,$timeout,$window) {
+	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
 			'use strict';
 			this.characters = null;
 
-			this.getCharacters = function(plateforme,battleTag){
+			this.getCharacters = function(plateforme,plateformeBungie,battleTag){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+
 				plateforme = $window.encodeURIComponent(plateforme);
+				plateformeBungie = $window.encodeURIComponent(plateformeBungie);
 				battleTag = $window.encodeURIComponent(battleTag);
-				return api.call('bungie/characters/'+plateforme+'/'+battleTag);
+				return api.call('bungie/characters/'+plateforme+'/'+plateformeBungie+'/'+battleTag+'/'+username+'/'+token);
 			};
 		}
 
