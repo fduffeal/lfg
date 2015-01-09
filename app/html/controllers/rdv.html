@@ -126,7 +126,7 @@
 			</ul>
 
 			<div class="last">
-				<div ng-if="currentUser">
+				<div ng-if="(aMyRdv.length > 0)">
 					<h1 translate>My partys</h1>
 					<table border="0">
 						<thead>
@@ -144,7 +144,7 @@
 						</thead>
 					</table>
 					<a class="line" ng-href="{{rdv.url}}"
-					   ng-repeat="rdv in aRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive">
+					   ng-repeat="rdv in aMyRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse">
 						<table border="0">
 							<tbody>
 							<tr>

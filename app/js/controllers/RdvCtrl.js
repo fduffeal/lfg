@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter) {
 			'use strict';
 
 			lang.initLang();
@@ -28,6 +28,15 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.aCharacters = [];
 			$scope.displayFormAnnonce = false;
 
+			$scope.aMyRdv = [];
+			$scope.aRdv = [];
+			$scope.aRdvNormaux = [];
+
+			$scope.plateformSelected = '';
+			$scope.plateformNameSelected = 'ALL';
+
+			$scope.tags = '';
+
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
 			};
@@ -52,27 +61,33 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			var refreshRdvData = function(){
 
-				annonce.get().success(function(data){
+				annonce.get().success(function(data) {
 					formatAnnonces(data);
-
-					rdv.getAll().success(function(data) {
-						// this callback will be called asynchronously
-						// when the response is available
-						for(var key in data){
-							data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
-						}
-						$scope.aRdv = data;
-						$scope.aRdv = $scope.aRdv.concat($scope.aAnnoncesFormated);
-
-					}).error(function(data, status, headers, config) {
-						// called asynchronously if an error occurs
-						// or server returns response with an error status.
-					});
+					$scope.aRdv = $scope.aAnnoncesFormated.concat($scope.aRdvNormaux);
 				});
+
+				rdv.getAll().success(function(data) {
+					// this callback will be called asynchronously
+					// when the response is available
+					for(var key in data){
+						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+					}
+
+					$scope.aRdvNormaux = data;
+					$scope.aRdv = $scope.aRdvNormaux.concat($scope.aAnnoncesFormated);
+
+					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+					if($scope.currentUser !== null){
+						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,$scope.plateformSelected,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+					}
+
+				}).error(function(data, status, headers, config) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
+
 			};
 
-			$scope.plateformSelected = '';
-			$scope.plateformNameSelected = 'ALL';
 			$scope.updatePlateform = function(id,nom){
 				$scope.plateformSelected = id;
 				$scope.plateformNameSelected = nom;
