@@ -92,13 +92,13 @@
 			</ul>
 			<ul class="type">
 				<li>
-					<a href="" translate>Party</a>
+					<a href="" ng-click="type = 'type_party';" ng-class="{'selected':(type == 'type_party')}" translate>Party</a>
 				</li>
 				<li>
-					<a href="" translate>Announcement</a>
+					<a href="" ng-click="type = 'type_annonce';" ng-class="{'selected':(type == 'type_annonce')}" translate>Announcement</a>
 				</li>
 				<li>
-					<a href="" class="selected" translate>All</a>
+					<a href="" ng-click="type = 'type_all';" ng-class="{'selected':(type == 'type_all')}" translate>All</a>
 				</li>
 				<img src="img/arrow-white.png"/>
 			</ul>
@@ -136,11 +136,13 @@
 							<tr>
 								<td class="list-player">
 									<span>{{ rdv.leader.username }}</span><span class="co"></span><br/>
-									Titan - 31 <br/>
+									{{rdv.leader.data1}} - {{rdv.leader.data2}}<br/>
 									{{ rdv.plateform.nom }}<br/>
 								</td>
-								<td class="list-type"><span translate>Party</span> <br/><br/>Slots
-									{{rdv.users.length}}/{{ rdv.nbParticipant}}
+								<td class="list-type"><span translate>Party</span> <br/><br/>
+									<span ng-if="!isEnded(rdv)">Slots
+										{{rdv.users.length}}/{{ rdv.nbParticipant}}
+									</span>
 								</td>
 								<td class="list-infos"><span
 										ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
@@ -170,7 +172,7 @@
 					</thead>
 				</table>
 				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"
-				   ng-repeat="rdv in aRdv |orderBy:predicate:reverse as resultsAll">
+				   ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse as resultsAll">
 					<table border="0">
 
 						<tbody>
@@ -180,8 +182,8 @@
 									<img ng-src="{{rdv.leader.data5}}" class="embleme"/>
 
 									<div class="left">
-										<div class="name" ng-if="rdv.type === 'type_annonce'"><span class="co"></span>{{
-											rdv.leader.gameUsername }}
+										<div class="name" ng-if="rdv.type === 'type_annonce'"><span class="co"></span>
+											{{ rdv.leader.gameUsername }}
 										</div>
 										<div class="name"
 										     ng-if="rdv.type !== 'type_annonce' && user.user.id === rdv.leader.id"
@@ -198,8 +200,10 @@
 								</div>
 
 							</td>
-							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>Slots
-								{{rdv.users.length}}/{{ rdv.nbParticipant}}
+							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>
+								<span ng-if="!isEnded(rdv)">Slots
+									{{rdv.users.length}}/{{ rdv.nbParticipant}}
+								</span>
 							</td>
 							<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Annonce</span>
 							</td>

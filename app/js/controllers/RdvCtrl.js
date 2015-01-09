@@ -127,6 +127,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					console.log(data);
 				});
 			};
+
+			$scope.type = 'type_all';
 		}
 	]
 );
