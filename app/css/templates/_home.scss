@@ -1,5 +1,13 @@
 #home {
 	.welcome {
+		.txt {
+			display: block;
+			color: white!important;
+			.tit {
+				font-weight: bold;
+
+			}
+		}
 		.btn2 {
 			display: inline-block;
 			margin-right: 10px;
@@ -22,7 +30,6 @@
 		.add {
 			margin-top: 15px;
 			.mychar {
-				height: 60px;
 				@media screen and (max-width: 607px ) {
 					margin: 10px 0;
 				}
@@ -197,7 +204,6 @@
 		}
 
 		ul.search-tags {
-			margin-bottom:35px;
 			float: right;
 			input {
 				width: 250px;
@@ -219,44 +225,15 @@
 		.last {
 			clear: both;
 		}
-		ul.platforms, ul.type {
+		.platforms, .type {
 			float: left;
+			margin-right: 20px;
+			margin-bottom: 15px;
+			z-index: 9;
 			width: 130px;
 			background: $color1;
 			font-size: 1.2rem;
 			color: white;
-			position: absolute;
-			&:hover img {
-				@include transform(rotate(180deg));
-			}
-			img {
-				position: absolute;
-				right: 10px;
-				top: 19px;
-			}
-			&:hover a{
-				display:block
-
-			}
-			li {
-				display: block;
-				a {
-					display: none;
-					color: white;
-					height: 35px;
-					padding: 0 10px;
-					line-height: 35px;
-					@include transition(background-color 0.2s ease-out);
-				}
-				a:hover, a.selected {
-					background: #87cbc1;
-					cursor: pointer;
-				}
-				a.selected {
-					display: block;
-					background: $color1;
-				}
-			}
 		}
 		ul.type{
 			margin-left: 156px;
