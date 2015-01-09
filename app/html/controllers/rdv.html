@@ -1,20 +1,15 @@
 <lfg-header></lfg-header>
 <div id="home" class="wrap">
 	<div class="welcome">
-		<div class="marge" translate>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis vestibulum dui.
-			Nunc augue enim, dignissim ac ipsum sit amet, malesuada imperdiet urna. Etiam et turpis nec sem lacinia
-			ornare nec vel diam. Quisque blandit iaculis pharetra. Nunc quis laoreet neque. Aliquam efficitur quam erat,
-			sed volutpat nulla interdum non. Cras non ornare lorem.
+		<div class="marge" >
+		<span translate class="txt faq">
+			<span class="tit">FAQ: </span><br />Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)
+		</span>
+		<span translate class="txt news">
+			<span class="tit">What's new: 10 jan 2015</span><br /> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai
+		</span>
+		<br/>
 
-			Mauris porta tempus faucibus. Sed semper massa vitae mauris convallis, ut convallis dui euismod. Fusce nec
-			nunc sem. Fusce erat neque, pulvinar id accumsan a, posuere at urna. Mauris sed enim vitae lorem dictum
-			ultricies eu ac nisl. Donec id neque felis. Donec mattis vestibulum tincidunt. Cras facilisis, nisi vitae
-			suscipit rutrum, purus eros bibendum nisi, nec maximus sem augue sit amet neque. Mauris aliquet orci et orci
-			varius, ut facilisis lectus fermentum. Mauris tristique, nisl ut imperdiet consectetur, ipsum justo tempus
-			orci, sit amet dictum eros nunc vel enim. Duis volutpat est nec nisl molestie, vitae luctus turpis
-			efficitur. Vivamus suscipit dignissim nisi. Phasellus fringilla imperdiet sapien, eget pellentesque tellus
-			dictum in. Nunc dapibus, dolor ac lacinia finibus, velit velit ullamcorper urna, nec gravida quam orci
-			pharetra leo. <br/>
 			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
 					src="img/ico-create.png"/></a>
 			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span translate>Post an announcement</span><img
@@ -30,7 +25,7 @@
 						<label for="">
 							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms"
 							        ng-change="updateFormData()" required>
-								<option value="" translate>Plateform</option>
+								<option value="" translate>Platform</option>
 							</select>
 						</label>
 
@@ -38,11 +33,11 @@
 						       style="margin-top:10px;" required/>
 
 						<span>
-							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}" /><img src="img/arrow-white.png"/>
+							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}" />
 						</span>
 
 					</div>
-					<ul class="mychar">
+					<ul class="mychar" >
 						<li ng-repeat="character in aCharacters"
 						    ng-class="{'selected':(selectedPerso===character)}"
 						    class="character"
@@ -68,13 +63,13 @@
 
 					<br style="clear:both"/>
 
-					<div ng-show="(selectedPerso !== null)">
+					<div style="margin-top:10px;" ng-show="(selectedPerso !== null)">
 						<form name="myFormAnnonce" ng-submit="addAnnonce()">
 							<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag" required>
 							<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc" ng-model="annonce_description" required>
 							<span>
 								<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)" value="{{'Send it'| translate}}">
-								<img src="img/arrow-white.png"/></a>
+
 							</span>
 							<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
 						</form>
@@ -93,29 +88,17 @@
 	<div class="page">
 
 		<div class="list">
-			<ul class="platforms">
-				<li class="" ng-repeat="plateform in aPlateforms">
-					<a href="" ng-click="updatePlateform(plateform.id,plateform.nom);"
-					   ng-class="{'selected':(plateformSelected == plateform.id)}">{{plateform.nom}}</a>
-				</li>
-				<li class="selected">
-					<a href="" ng-click="updatePlateform('','ALL');" ng-class="{'selected':plateformSelected == ''}"
-					   translate>ALL</a>
-				</li>
-				<img src="img/arrow-white.png"/>
-			</ul>
-			<ul class="type">
-				<li>
-					<a href="" ng-click="type = 'type_party';" ng-class="{'selected':(type == 'type_party')}" translate>Party</a>
-				</li>
-				<li>
-					<a href="" ng-click="type = 'type_annonce';" ng-class="{'selected':(type == 'type_annonce')}" translate>Announcement</a>
-				</li>
-				<li>
-					<a href="" ng-click="type = 'type_all';" ng-class="{'selected':(type == 'type_all')}" translate>All</a>
-				</li>
-				<img src="img/arrow-white.png"/>
-			</ul>
+
+			<select name="" id="" class="platforms" ng-model="plateformSelected">
+				<option value="" ng-repeat="plateform in aPlateforms" ng-click="updatePlateform(plateform.id,plateform.nom);">{{plateform.nom}}</option>
+				<option value="" translate>All</option>
+			</select>
+			<select name="" id="" class="type">
+				<option value="" translate ng-click="type = 'type_party';" ng-class="{'selected':(type == 'type_party')}">Party</option>
+				<option value="" translate ng-click="type = 'type_annonce';" ng-class="{'selected':(type == 'type_annonce')}">Announcement</option>
+				<option value="" translate ng-click="type = 'type_all';" ng-class="{'selected':(type == 'type_all')}">All</option>
+			</select>
+
 			<ul class="search-tags">
 
 				<li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags"
@@ -219,7 +202,7 @@
 									{{rdv.users.length}}/{{ rdv.nbParticipant}}
 								</span>
 							</td>
-							<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Annonce</span>
+							<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Announcement</span>
 							</td>
 							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{
 								rdv.description}}
