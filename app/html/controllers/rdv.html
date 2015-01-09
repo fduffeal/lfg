@@ -68,14 +68,14 @@
 
 		<div class="list">
 
-			<select name="" id="" class="platforms" ng-model="plateformSelected">
-				<option value="" ng-repeat="plateform in aPlateforms" ng-click="updatePlateform(plateform.id,plateform.nom);">{{plateform.nom}}</option>
+			<select class="platforms" ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms">
 				<option value="" translate>All</option>
 			</select>
-			<select name="" id="" class="type">
-				<option value="" translate ng-click="type = 'type_party';" ng-class="{'selected':(type == 'type_party')}">Party</option>
-				<option value="" translate ng-click="type = 'type_annonce';" ng-class="{'selected':(type == 'type_annonce')}">Announcement</option>
-				<option value="" translate ng-click="type = 'type_all';" ng-class="{'selected':(type == 'type_all')}">All</option>
+
+			<select name="" id="" class="type" ng-model="type">
+				<option value="type_party" translate>Party</option>
+				<option value="type_annonce" translate>Announcement</option>
+				<option value="type_all" translate>All</option>
 			</select>
 
 			<ul class="search-tags">
@@ -106,7 +106,7 @@
 						</thead>
 					</table>
 					<a class="line" ng-href="{{rdv.url}}"
-					   ng-repeat="rdv in aMyRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse">
+					   ng-repeat="rdv in aMyRdv | filterRdvWithMe:currentUser.id:plateform.id:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse">
 						<table border="0">
 							<tbody>
 							<tr>
@@ -132,7 +132,7 @@
 						</table>
 					</a>
 				</div>
-				<h1>Destiny {{plateformNameSelected}} </h1>
+				<h1>Destiny {{plateform.nom}} </h1>
 				<table border="0">
 					<thead>
 					<tr>
@@ -148,7 +148,7 @@
 					</thead>
 				</table>
 				<a class="line" ng-href="{{rdv.url}}"
-				   ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse as resultsAll">
+				   ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse as resultsAll">
 					<table border="0">
 
 						<tbody>

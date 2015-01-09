@@ -1316,6 +1316,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			};
 
+			$scope.$watch('')
+
 			$scope.updatePlateform = function(id,nom){
 				$scope.plateformSelected = id;
 				$scope.plateformNameSelected = nom;
@@ -2196,7 +2198,7 @@ angular.module('myApp.services')
 
 			this.hasPlateformSelected = function(rdv,plateformId){
 				var bHasPlateform = true;
-				if(plateformId !== ""){
+				if(plateformId !== "" && typeof(plateformId) !== 'undefined'){
 					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
 						bHasPlateform = false;
 					}

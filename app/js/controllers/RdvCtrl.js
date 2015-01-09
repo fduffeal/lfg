@@ -88,6 +88,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			};
 
+			$scope.$watch('')
+
 			$scope.updatePlateform = function(id,nom){
 				$scope.plateformSelected = id;
 				$scope.plateformNameSelected = nom;

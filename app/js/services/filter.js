@@ -30,7 +30,7 @@ angular.module('myApp.services')
 
 			this.hasPlateformSelected = function(rdv,plateformId){
 				var bHasPlateform = true;
-				if(plateformId !== ""){
+				if(plateformId !== "" && typeof(plateformId) !== 'undefined'){
 					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
 						bHasPlateform = false;
 					}
