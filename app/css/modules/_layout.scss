@@ -151,6 +151,50 @@ ul, li {
 	margin: 20px auto 0 auto;
 	width: 95%;
 	color: white;
+	.character {
+		width: 300px;
+		display: block;
+		float: left;
+		border: 2px solid transparent;
+		height: 60px!important;
+		@include transition (all 0.3s ease);
+		@media screen and (max-width: 350px ) {
+			width: 270px!important;
+			.embleme {
+				width: 18%!important;
+			}
+			a{
+				width: 270px!important;
+			}
+		}
+		.team {
+			font-size: 12px
+		}
+		&:hover, &.selected{
+			@include box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
+			border: 2px solid white
+		}
+
+		a {
+			width: 300px;
+			height: 60px;
+
+
+
+		}
+		.name {
+			@media screen and (min-width: 1700px ) {
+				font-size: 14px;
+				margin-bottom: 2px;
+			}
+		}
+		.level {
+			@media screen and (min-width: 1700px ) {
+				font-size: 24px;
+
+			}
+		}
+	}
 	.marge {
 		padding: 20px;
 	}

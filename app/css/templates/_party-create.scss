@@ -1,9 +1,12 @@
 #party-create {
 	.welcome {
 		.marge {
-			div {
-				margin-top: 20px;
+			#matchmaking {
+				clear:left;
+				padding-top: 30px;
 			}
+
+
 		}
 	}
 	.important {
@@ -23,7 +26,7 @@
 	.block {
 		width: 98%;
 		margin: auto;
-	font-size: 13px;
+		font-size: 13px;
 		.text {
 			text-align: justify;
 			font-weight: bold;
