@@ -12,6 +12,7 @@ angular.module('myApp.directives')
 
 	                $scope.currentUser = user.get();
 
+	                console.log($scope.currentUser.userGame);
 	                if($scope.currentUser !== null){
 		                $scope.aUserGame = $scope.currentUser.userGame;
 	                }

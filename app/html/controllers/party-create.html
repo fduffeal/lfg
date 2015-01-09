@@ -8,7 +8,7 @@
 					<label for="" translate>
 						Use this character
 					</label>
-					<select ng-model="profilSelected" ng-options="gameData.gameProfilName group by gameData.plateform.nom for gameData in profils" required></select>
+					<lfg-profile selected-perso="profilSelected" a-user-game="aUserGame"></lfg-profile>
 				</div>
 				<lfg-matchmaking></lfg-matchmaking>
 			</div>
