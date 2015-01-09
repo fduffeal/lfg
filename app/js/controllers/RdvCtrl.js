@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout) {
 			'use strict';
 
 			lang.initLang();
@@ -24,6 +24,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.isLive = rdv.isLive;
 			$scope.isEnded = rdv.isEnded;
+
+			$scope.aCharacters = [];
+			$scope.displayFormAnnonce = false;
 
 			$scope.goToParty = function(id){
 				redirection.goToRdvId(id);
@@ -55,6 +58,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					rdv.getAll().success(function(data) {
 						// this callback will be called asynchronously
 						// when the response is available
+						for(var key in data){
+							data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+						}
 						$scope.aRdv = data;
 						$scope.aRdv = $scope.aRdv.concat($scope.aAnnoncesFormated);
 
@@ -118,14 +124,37 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 			};
 
+			$scope.blockPostAnnonce = false;
+			$scope.messageFormAnnonce = null;
 			$scope.addAnnonce = function(){
+
+				$scope.messageFormAnnonce = null;
+				$scope.blockPostAnnonce = true;
 
 				var userGameId = $scope.selectedPerso.userGameId;
 				var tags = $scope.annonce_tag;
 				var description = $scope.annonce_description;
 				annonce.create(tags,description,userGameId).success(function(data){
-					console.log(data);
-				});
+					$scope.annonce_tag = '';
+					$scope.annonce_description = '';
+
+					$timeout(function(){
+						$scope.blockPostAnnonce = false;
+					},2)
+
+					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
+				}).error(function(data){
+					console.error(data);
+					$scope.annonce_tag = '';
+					$scope.annonce_description = '';
+
+					$timeout(function(){
+						$scope.blockPostAnnonce = false;
+					},2)
+
+					$scope.messageFormAnnonce = 'an error occured, please try again later, sorry for the inconvenience';
+
+				})
 			};
 
 			$scope.type = 'type_all';
