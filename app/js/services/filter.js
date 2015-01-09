@@ -51,15 +51,28 @@ angular.module('myApp.services')
 				return aTags;
 			};
 
-			this.hasPlaceAvailable = function(rdv){
-				return (rdv.users.length < rdv.nbParticipant);
-			};
-
 			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
+
+				if(!rdv.users){
+					return true;
+				}
+
 				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
 			};
 
-			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax){
+			this.hasType = function(rdv,type){
+				if(type === 'type_all'){
+					return true;
+				} else if(type === 'type_annonce' && rdv.type === type){
+					return true;
+				} else if(type === 'type_party' && rdv.type !== 'type_annonce'){
+					return true;
+				}
+
+				return false;
+			}
+
+			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
 				var aFilteredItems = [];
 
 				var aTags = this.tagsStringToArray(tags);
@@ -85,6 +98,10 @@ angular.module('myApp.services')
 					}
 
 					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					if(this.hasType(items[key],type) === false){
 						continue;
 					}
 
