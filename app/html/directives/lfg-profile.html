@@ -1,34 +1,19 @@
-<div class="profile loggued" ng-if="userInfo.username">
-	<div class="hide-shadow"></div>
-	<img src="img/logo.png" id="logo" />
-	<!--
-	<div class="profile-info" ng-if="userGameSelected.gameProfilName">
-		<div class="info">
-			<span translate>Profile: </span>
-			<span class="change">{{userGameSelected.gameProfilName | filterCharacters:8}}<img src="img/footer-arrow.png" />
-                <div>
-                    <a href="" ng-click="setUserGame(userGame);" ng-repeat="userGame in userInfo.userGame" value="{{userGame.id}}">{{userGame.gameProfilName}}</a>
-                </div>
-            </span>
-		</div>
-		<div class="info">
-			<span translate>Gamertag: </span> {{userGameSelected.gameUsername  | filterCharacters:8}}
-		</div>
-		<div class="info">
-			<span translate>Class: </span> {{userGameSelected.data1}} {{userGameSelected.data2}}
-		</div>
-		<div class="info">
-			<span translate>Platform: </span> {{userGameSelected.plateform.nom}}
-		</div>
-	</div>
-	<div class="profile-info" ng-if="!userGameSelected.gameProfilName">
-		<a href="{{gamesUrl}}" class="btn-new" translate>Create a profile</a>
-	</div>-->
-	<lfg-facebook></lfg-facebook>
-</div>
-<div class="profile notloggued" ng-if="!userInfo.username">
-	<div class="hide-shadow"></div>
-	<img src="img/logo.png" id="logo" />
-<lfg-facebook></lfg-facebook>
-</div>
+<ul class="home add mychar">
+	<li ng-repeat="userGame in aUserGame"
+	    ng-class="{'selected':(selectedPerso===userGame)}"
+	    class="character"
+	    style="background: url('{{userGame.data4}}')">
+		<a href="#" ng-click="selectPerso(userGame)">
+			<img ng-src="{{userGame.data5}}" class="embleme"/>
 
+			<div class="left">
+				<div class="name">{{userGame.gameUsername}}</div>
+				<div class="team">{{userGame.data3}}</div>
+			</div>
+			<div class="right">
+				<div class="level">{{userGame.data2}}</div>
+				<div class="classe">{{userGame.data1}}</div>
+			</div>
+		</a>
+	</li>
+</ul>

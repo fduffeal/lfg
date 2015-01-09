@@ -113,10 +113,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			};
 
 			$scope.selectedPerso = null;
-			$scope.selectPerso = function(persoSelected){
-				$scope.selectedPerso = persoSelected;
-			};
-
 
 			$scope.aAnnoncesFormated = [];
 
@@ -178,11 +174,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 				refreshRdvData();
 				autoRefreshData();
-
-				if($scope.currentUser !== null){
-					$scope.aCharacters = $scope.currentUser.userGame;
-					console.log($scope.aCharacters);
-				}
 			}
 
 			init();

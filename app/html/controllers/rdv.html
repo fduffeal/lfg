@@ -37,28 +37,7 @@
 						</span>
 
 					</div>
-					<ul class="mychar" >
-						<li ng-repeat="character in aCharacters"
-						    ng-class="{'selected':(selectedPerso===character)}"
-						    class="character"
-						    style="background: url('{{character.data4}}')">
-							<a href="#" ng-click="selectPerso(character)">
-								<img ng-src="{{character.data5}}" class="embleme"/>
-
-								<div class="left">
-									<div class="name">{{character.gameUsername}}</div>
-									<div class="team">{{character.data3}}</div>
-								</div>
-								<div class="right">
-									<div class="level">{{character.data2}}</div>
-									<div class="classe">{{character.data1}}</div>
-
-								</div>
-							</a>
-
-
-						</li>
-					</ul>
+					<lfg-profile selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
 				</form>
 
 					<br style="clear:both"/>
