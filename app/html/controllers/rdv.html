@@ -46,17 +46,17 @@
 						<li ng-repeat="character in aCharacters"
 						    ng-class="{'selected':(selectedPerso===character)}"
 						    class="character"
-						    style="background: url('{{character.backgroundPath}}')">
+						    style="background: url('{{character.data4}}')">
 							<a href="#" ng-click="selectPerso(character)">
-								<img ng-src="{{character.emblemPath}}" class="embleme"/>
+								<img ng-src="{{character.data5}}" class="embleme"/>
 
 								<div class="left">
-									<div class="name">{{character.gamerTag}}</div>
-									<div class="team">{{character.clan}}</div>
+									<div class="name">{{character.gameUsername}}</div>
+									<div class="team">{{character.data3}}</div>
 								</div>
 								<div class="right">
-									<div class="level">{{character.level}}</div>
-									<div class="classe">{{character.class}}</div>
+									<div class="level">{{character.data2}}</div>
+									<div class="classe">{{character.data1}}</div>
 
 								</div>
 							</a>

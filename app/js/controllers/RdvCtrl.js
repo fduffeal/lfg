@@ -116,9 +116,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.selectPerso = function(persoSelected){
 				$scope.selectedPerso = persoSelected;
 			};
-			//init
-			refreshRdvData();
-			autoRefreshData();
+
 
 			$scope.aAnnoncesFormated = [];
 
@@ -146,7 +144,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.messageFormAnnonce = null;
 				$scope.blockPostAnnonce = true;
 
-				var userGameId = $scope.selectedPerso.userGameId;
+				var userGameId = $scope.selectedPerso.id;
 				var tags = $scope.annonce_tag;
 				var description = $scope.annonce_description;
 				annonce.create(tags,description,userGameId).success(function(data){
@@ -173,6 +171,21 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			};
 
 			$scope.type = 'type_all';
+
+
+			//init
+			var init = function(){
+
+				refreshRdvData();
+				autoRefreshData();
+
+				if($scope.currentUser !== null){
+					$scope.aCharacters = $scope.currentUser.userGame;
+					console.log($scope.aCharacters);
+				}
+			}
+
+			init();
 		}
 	]
 );
