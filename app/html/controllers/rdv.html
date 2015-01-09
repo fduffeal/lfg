@@ -169,8 +169,8 @@
 						<tbody>
 							<tr >
 								<td class="list-player" >
-									<div class="character" style="background: url('https://www.bungie.net/common/destiny_content/icons/6c2570dc6f12b6816bdc887ed29b2132.jpg')">
-										<img src="https://www.bungie.net/common/destiny_content/icons/bccac528643550c0ed36986cfea4fccc.jpg" class="embleme"/>
+									<div class="character" style="background: url('{{rdv.leader.data4}}')">
+										<img ng-src="{{rdv.leader.data5}}" class="embleme"/>
 										<div class="left">
 											<div class="name" ng-if="rdv.type === 'type_annonce'"><span class="co"></span>{{ rdv.leader.gameUsername }}</div>
 											<div class="name" ng-if="rdv.type !== 'type_annonce' && user.user.id === rdv.leader.id" ng-repeat="user in rdv.users">
@@ -179,8 +179,8 @@
 											<div class="team">{{ rdv.plateform.nom }}</div>
 										</div>
 										<div class="right">
-											<div class="level">31</div>
-											<div class="classe">Titan</div>
+											<div class="level">{{rdv.leader.data2}}</div>
+											<div class="classe">{{rdv.leader.data1}}</div>
 
 										</div>
 									</div>
