@@ -70,7 +70,7 @@ angular.module('myApp.services')
 				}
 
 				return false;
-			}
+			};
 
 			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
 				var aFilteredItems = [];

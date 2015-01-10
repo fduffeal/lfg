@@ -111,8 +111,8 @@
 							<tbody>
 							<tr>
 								<td class="list-player">
-									<span>{{ rdv.leader.username }}</span><span class="co"></span><br/>
-									{{rdv.leader.data1}} - {{rdv.leader.data2}}<br/>
+									<span>{{ rdv.author.username }}</span><span class="co"></span><br/>
+									{{rdv.author.data1}} - {{rdv.author.data2}}<br/>
 									{{ rdv.plateform.nom }}<br/>
 								</td>
 								<td class="list-type"><span translate>Party</span> <br/><br/>
@@ -154,27 +154,7 @@
 						<tbody>
 						<tr>
 							<td class="list-player">
-								<div class="character" style="background: url('{{rdv.leader.data4}}')">
-									<img ng-src="{{rdv.leader.data5}}" class="embleme"/>
-
-									<div class="left">
-										<div class="name" ng-if="rdv.type === 'type_annonce'"><span class="co"></span>
-											{{ rdv.leader.gameUsername }}
-										</div>
-										<div class="name"
-										     ng-if="rdv.type !== 'type_annonce' && user.user.id === rdv.leader.id"
-										     ng-repeat="user in rdv.users">
-											<span class="co"></span>{{ user.gameUsername }}
-										</div>
-										<div class="team">{{ rdv.plateform.nom }}</div>
-									</div>
-									<div class="right">
-										<div class="level">{{rdv.leader.data2}}</div>
-										<div class="classe">{{rdv.leader.data1}}</div>
-
-									</div>
-								</div>
-
+								<lfg-profile-bungie user-game="rdv.author"></lfg-profile-bungie>
 							</td>
 							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>
 								<span ng-if="!isEnded(rdv)">Slots
@@ -186,9 +166,8 @@
 							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{
 								rdv.description}}
 							</td>
-							<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}
+							<td class="list-start">{{ rdv.start| filterSince}}
 							</td>
-							<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
 
 
 						</tr>

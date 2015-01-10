@@ -58,6 +58,15 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.aPlateforms = data.plateforms;
 			});
 
+			var formatRdv = function(rdv){
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === rdv.leader.id){
+						rdv.author = rdv.users[key];
+						rdv.type = 'type_party';
+					}
+				}
+			};
+
 
 			var refreshRdvData = function(){
 
@@ -71,6 +80,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					// when the response is available
 					for(var key in data){
 						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+						formatRdv(data[key]);
 					}
 
 					$scope.aRdvNormaux = data;
@@ -87,8 +97,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				});
 
 			};
-
-			$scope.$watch('')
 
 			$scope.updatePlateform = function(id,nom){
 				$scope.plateformSelected = id;
@@ -124,7 +132,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				for(var i=0; i< nbAnnonces;i++){
 					$scope.aAnnoncesFormated[i] = {
 						'id' : aAnnonces[i].id,
-						'leader' : aAnnonces[i].author,
+						'author' : aAnnonces[i].author,
 						'game' : aAnnonces[i].game,
 						'plateform' : aAnnonces[i].plateform,
 						'tags' : aAnnonces[i].tags,
