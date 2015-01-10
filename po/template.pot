@@ -5,11 +5,11 @@ msgstr ""
 "Project-Id-Version: \n"
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"tit\">FAQ: </span>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
+msgid "<span class=\"tit\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
 msgstr ""
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"tit\">What's new: 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
+msgid "<span class=\"tit\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -68,7 +68,6 @@ msgid "Bad Username or Password."
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Class"
 msgstr ""
@@ -81,13 +80,10 @@ msgstr ""
 msgid "Create a party"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "Create a profil for this game and join !"
-msgstr ""
-
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
 msgstr ""
 
@@ -130,7 +126,6 @@ msgid "Enter your login and password"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 msgid "Esbattle username"
 msgstr ""
 
@@ -159,12 +154,7 @@ msgid "Game Profil"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 msgid "Gamertag"
-msgstr ""
-
-#: app/html/directives/lfg-header.html
-msgid "Games Profiles"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -196,7 +186,6 @@ msgid "Leave"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Level"
 msgstr ""
@@ -293,7 +282,6 @@ msgstr ""
 msgid "Platform:"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
 #: app/html/controllers/rdv.html
 msgid "Player"
 msgstr ""
@@ -452,6 +440,10 @@ msgstr ""
 msgid "has leave. You lead"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "hunter"
+msgstr ""
+
 #: app/html/controllers/notification.html
 msgid "on"
 msgstr ""
@@ -468,6 +460,14 @@ msgstr ""
 msgid "this party"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "titan"
+msgstr ""
+
 #: app/html/controllers/rdv.html
 msgid "to save your character for the next time !"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "warlock"
 msgstr ""

@@ -3,15 +3,29 @@
 
 	<div class="page">
 		<div class="block">
-			<!--<a href="" class="register-fb"><span></span>Register with Facebook</a>
-			<span class="or">OR</span>-->
-			<h1 translate>Register with your email address</h1>
+			<div translate>
+				Create an esbattle account to get your character from Destiny every time on www.esbattle.com.
+				You will also be able to to schedule party and join an existing party.
+
+				Your GamerTag or PSN ID will be used to get your Destiny characters.
+
+				A valid email is required if you forgot your password, we will send you an email to verify your identity.
+			</div>
+			<h1 translate>Register on Esbattle.com</h1>
 			<form name="registerForm" ng-submit="submit()">
 				<ul>
-					<li><input type="text" ng-model="username" placeholder="{{'Username'|translate}}" name="inputUsername" required></li>
-					<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail" required></li>
+					<li><input type="text" ng-model="username" placeholder="{{'Login Esbattle'|translate}}" name="inputUsername" required></li>
 					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}" name="inputPassword" ng-change="checkPassword()" required></li>
 					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}" name="inputPasswordVerif" ng-change="checkPassword()" required></li>
+					<li>
+						<label for="">
+							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms" required>
+								<option value="" translate>Platform</option>
+							</select>
+						</label>
+					</li>
+					<li><input type="text"  ng-model="gamerTag" placeholder="{{'GamerTag or PSN ID'|translate}}" name="inputGamerTag" required></li>
+					<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail" required></li>
 					<li><input type="submit" href="" class="btn" value="{{'Register !' | translate}}"></li>
 				</ul>
 			</form>
@@ -19,6 +33,7 @@
 		<div class="error-msg" ng-if="username_already_taken" translate>The username is already used.</div>
 		<div class="error-msg" ng-if="email_already_taken" translate>This email is already used.</div>
 		<div class="error-msg" ng-if="errorPassword" translate>Passwords doesn't match</div>
+		<div class="error-msg" ng-if="gamertag_not_found" translate>Please check your GamerTag or PSN ID, we didn't found any Destiny characters</div>
 	</div>
 </div>
 <lfg-footer></lfg-footer>

@@ -57,12 +57,14 @@ angular.module('myApp.services')
 				return null;
 			};
 
-			this.register = function(email,password,username){
+			this.register = function(email,password,username,plateformId,gamertag){
 
 				email = $window.encodeURIComponent(email);
 				password = $window.encodeURIComponent(password);
 				username = $window.encodeURIComponent(username);
-				return api.call('register/'+email+'/'+password+'/'+username).success(function(data){
+				plateformId = $window.encodeURIComponent(plateformId);
+				gamertag = $window.encodeURIComponent(gamertag);
+				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
 					storeUser(data);
 				});
 			};

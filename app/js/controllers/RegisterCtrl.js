@@ -1,8 +1,12 @@
 angular.module('myApp.controllers').controller('RegisterCtrl',
-    ['$scope','user','$location','lang','redirection',
-        function ($scope,user,$location,lang,redirection) {
+    ['$scope','user','$location','lang','redirection','rdv',
+        function ($scope,user,$location,lang,redirection,rdv) {
 
 	        $scope.lang = lang.getCurrent();
+
+			rdv.getFormInfo().then(function(data){
+				$scope.aPlateforms = data.plateforms;
+			});
 
 	        $scope.updateRegExpPassword = function(){
 		        $scope.regExpPassword = '/'+$scope.password+'/';
@@ -25,7 +29,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 
 				$scope.username_already_taken = false;
 				$scope.email_already_taken = false;
-		        user.register($scope.email,$scope.password,$scope.username).success(function(data){
+				$scope.gamertag_not_found = false;
+		        user.register($scope.email,$scope.password,$scope.username,$scope.plateform.id,$scope.gamerTag).success(function(data){
 			        redirection.goWelcomeHome();
 		        }).error(function(data){
 					console.log('error',data);
@@ -42,6 +47,10 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 
 							if (data.aError[key] === 'email_already_taken') {
 								$scope.email_already_taken = true;
+							}
+
+							if (data.aError[key] === 'gamertag_not_found') {
+								$scope.gamertag_not_found = true;
 							}
 						}
 					}

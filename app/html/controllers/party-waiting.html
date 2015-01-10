@@ -36,7 +36,7 @@
 			<div class="url"><span translate> Url of the party:</span> <a href="">http://www.esbattle.com/fr/party/waiting/87</a></div>
 			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()" translate>Ask to join the party</a>
 			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" ><span translate>This party is ended, create a new party !</span> <img src="img/ico-create.png"/></a>
-			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profil for this game and join !</a>
+			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profile for this game and join !</a>
 
 		</div>
 	</div>
@@ -142,16 +142,6 @@
 			</div>
 			<div class="bg"></div>
 		</div>
-
-		<!--<div ng-show="canJoin && profils.length > 0 && isEnded === false" class="btn" ng-click="join()" translate>Join !</div>
-		<div ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn" ng-click="createProfil()" translate>Create a profil for this game and join !</div>
-		<div ng-show="profils.length > 0 && canJoin && isEnded === false">
-			<label translate>with profil :</label>
-			<select ng-model="profilSelected" ng-options="profilData.gameProfilName for profilData in profils" required></select>
-		</div>
-		<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn" translate>This party is ended, create a new party !</a>
-		-->
-
 	</div>
 </div>
 
