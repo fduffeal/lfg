@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.6.10\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
+#, fuzzy
 msgid ""
-"<span class=\"tit\">FAQ: </span><br>Without an Esbattle account, you only "
+"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only "
 "can create an accouncement. To create or join a party, an account is "
 "required :)"
 msgstr ""
@@ -23,8 +24,9 @@ msgstr ""
 "est requis :)"
 
 #: app/html/controllers/rdv.html
+#, fuzzy
 msgid ""
-"<span class=\"tit\">What's new: 10 jan 2015</span><br> With this new "
+"<span class=\"title\">What's new: 10 jan 2015</span><br> With this new "
 "version, it's more simple to user the website. Now, just with your gamertag, "
 "all your characters will be automai"
 msgstr ""
@@ -97,6 +99,10 @@ msgstr "Retour"
 msgid "Bad Username or Password."
 msgstr "Mauvais nom d'utilisateur ou mot de passe."
 
+#: app/html/controllers/rdv.html
+msgid "Choose a character"
+msgstr "Choisissez un personnage"
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/profile.html
 msgid "Class"
@@ -116,6 +122,30 @@ msgstr "Créer une partie"
 #: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
+
+#: app/html/controllers/register.html
+msgid ""
+"Create an esbattle account to get your character from Destiny every time on "
+"www.esbattle.com.\r\n"
+"\t\t\t\tYou will also be able to to schedule party and join an existing "
+"party.\r\n"
+"\r\n"
+"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters."
+"\r\n"
+"\r\n"
+"\t\t\t\tA valid email is required if you forgot your password, we will send "
+"you an email to verify your identity."
+msgstr ""
+"Create an esbattle account to get your character from Destiny every time on "
+"www.esbattle.com.\r\n"
+"\t\t\t\tYou will also be able to to schedule party and join an existing "
+"party.\r\n"
+"\r\n"
+"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters."
+"\r\n"
+"\r\n"
+"\t\t\t\tA valid email is required if you forgot your password, we will send "
+"you an email to verify your identity."
 
 #: app/html/controllers/party-waiting.html
 msgid "Decline"
@@ -182,6 +212,10 @@ msgstr "Infos de jeux pour {{game.name}}"
 msgid "Game Profil"
 msgstr "Profil de jeux"
 
+#: app/html/controllers/register.html
+msgid "GamerTag or PSN ID"
+msgstr "GamerTag ou PSN ID"
+
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Gamertag"
 msgstr "Gamertag"
@@ -226,6 +260,10 @@ msgstr "Connexion"
 #: app/html/controllers/login.html
 msgid "Login !"
 msgstr "Connexion !"
+
+#: app/html/controllers/register.html
+msgid "Login Esbattle"
+msgstr "Login Esbattle"
 
 #: app/html/directives/lfg-header.html
 msgid "Logout"
@@ -304,6 +342,7 @@ msgid "Personal Infos"
 msgstr "Informations personelles"
 
 #: app/html/controllers/profile.html app/html/controllers/rdv.html
+#: app/html/controllers/register.html
 msgid "Platform"
 msgstr "Platformes"
 
@@ -314,6 +353,13 @@ msgstr "Plateforme:"
 #: app/html/controllers/rdv.html
 msgid "Player"
 msgstr "Joueur"
+
+#: app/html/controllers/register.html
+msgid ""
+"Please check your GamerTag or PSN ID, we didn't found any Destiny characters"
+msgstr ""
+"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun "
+"personnage sur Destiny"
 
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Please waiting, we are looking for players..."
@@ -340,8 +386,8 @@ msgid "Register !"
 msgstr "Inscription !"
 
 #: app/html/controllers/register.html
-msgid "Register with your email address"
-msgstr "S'enregistrer avec votre adresse email"
+msgid "Register on Esbattle.com"
+msgstr "Inscription sur Esbattle.com"
 
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
@@ -417,7 +463,6 @@ msgid "Use this character"
 msgstr "Utiliser ce personnage"
 
 #: app/html/controllers/login.html app/html/controllers/profile.html
-#: app/html/controllers/register.html
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
@@ -497,6 +542,9 @@ msgstr "pour sauvegarder votre personnage la prochaine fois !"
 #: app/dynamique_translate.html
 msgid "warlock"
 msgstr "arcaniste"
+
+#~ msgid "Register with your email address"
+#~ msgstr "S'enregistrer avec votre adresse email"
 
 #~ msgid "Create a profil for this game and join !"
 #~ msgstr "Créer un profil pour ce jeu et rejoignez !"

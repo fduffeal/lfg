@@ -5,11 +5,11 @@ msgstr ""
 "Project-Id-Version: \n"
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"tit\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
+msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
 msgstr ""
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"tit\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
+msgid "<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -67,6 +67,10 @@ msgstr ""
 msgid "Bad Username or Password."
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "Choose a character"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/profile.html
 msgid "Class"
@@ -85,6 +89,16 @@ msgstr ""
 #: app/html/controllers/party-create.html
 #: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid ""
+"Create an esbattle account to get your character from Destiny every time on www.esbattle.com.\r\n"
+"\t\t\t\tYou will also be able to to schedule party and join an existing party.\r\n"
+"\r\n"
+"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters.\r\n"
+"\r\n"
+"\t\t\t\tA valid email is required if you forgot your password, we will send you an email to verify your identity."
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -153,6 +167,10 @@ msgstr ""
 msgid "Game Profil"
 msgstr ""
 
+#: app/html/controllers/register.html
+msgid "GamerTag or PSN ID"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Gamertag"
 msgstr ""
@@ -196,6 +214,10 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Login !"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Login Esbattle"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -275,6 +297,7 @@ msgstr ""
 
 #: app/html/controllers/profile.html
 #: app/html/controllers/rdv.html
+#: app/html/controllers/register.html
 msgid "Platform"
 msgstr ""
 
@@ -284,6 +307,10 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Player"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Please check your GamerTag or PSN ID, we didn't found any Destiny characters"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
@@ -312,7 +339,7 @@ msgid "Register !"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "Register with your email address"
+msgid "Register on Esbattle.com"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -391,7 +418,6 @@ msgstr ""
 
 #: app/html/controllers/login.html
 #: app/html/controllers/profile.html
-#: app/html/controllers/register.html
 msgid "Username"
 msgstr ""
 
