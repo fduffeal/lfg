@@ -8,8 +8,8 @@
 
 			<div class="left">
 				<div class="name">{{userGame.gameUsername}}</div>
-				<div class="team">{{userGame.data3}}</div>
-				<div class="plateform">{{ userGame.plateform.nom }}</div>
+				<div class="team" ng-if="(withPlateform != true)">{{userGame.data3}}</div>
+				<div class="plateform" ng-if="(withPlateform == true)">{{ userGame.plateform.nom }}</div>
 			</div>
 			<div class="right">
 				<div class="level">{{userGame.data2}}</div>

@@ -37,7 +37,7 @@
 						</span>
 
 					</div>
-					<lfg-profile selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
+					<lfg-profile with-plateform="true" selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
 				</form>
 
 					<br style="clear:both"/>
@@ -154,7 +154,7 @@
 						<tbody>
 						<tr>
 							<td class="list-player">
-								<lfg-profile-bungie user-game="rdv.author"></lfg-profile-bungie>
+								<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 							</td>
 							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>
 								<span ng-if="!isEnded(rdv)">Slots
