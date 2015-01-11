@@ -165,15 +165,17 @@
 									{{ rdv.plateform.nom }}
 								</span>
 							</td>
-							<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Announcement</span>
+							<td class="list-type" ng-if="rdv.type === 'type_annonce'">
+								<span translate>Announcement</span>
+								<span>
+									{{ rdv.plateform.nom }}
+								</span>
 							</td>
 							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{
 								rdv.description}}
 							</td>
 							<td class="list-start">{{ rdv.start| filterSince}}
 							</td>
-
-
 						</tr>
 						</tbody>
 
