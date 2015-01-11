@@ -113,10 +113,10 @@
 								<td class="list-player">
 									<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 								</td>
-								<td class="list-type"><span translate>Party</span> <br/><br/>
-									<span ng-if="!isEnded(rdv)">Slots
+								<td class="list-type"><span translate>Party</span> <br/>
+									<span ng-if="!isEnded(rdv)" class="slot">Slots
 										{{rdv.users.length}}/{{ rdv.nbParticipant}}
-									</span>
+									</span><br/>
 									<span>
 										{{ rdv.plateform.nom }}
 									</span>
@@ -157,16 +157,16 @@
 							<td class="list-player">
 								<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 							</td>
-							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>
-								<span ng-if="!isEnded(rdv)">Slots
+							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/>
+								<span ng-if="!isEnded(rdv)" class="slot">Slots
 									{{rdv.users.length}}/{{ rdv.nbParticipant}}
-								</span>
+								</span><br/>
 								<span>
 									{{ rdv.plateform.nom }}
 								</span>
 							</td>
 							<td class="list-type" ng-if="rdv.type === 'type_annonce'">
-								<span translate>Announcement</span>
+								<span translate>Announcement</span><br/><br/>
 								<span>
 									{{ rdv.plateform.nom }}
 								</span>
