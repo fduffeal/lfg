@@ -1106,7 +1106,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        var updateProfilsAvailable = function(){
 		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
 			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
-			        if($scope.profils[0] && $scope.profilSelected === null){
+					if($scope.profils[0] && $scope.profilSelected === null){
 				        $scope.profilSelected = $scope.profils[0];
 			        }
 		        }
@@ -1482,289 +1482,6 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
-angular.module('myApp.directives')
-	.directive('lfgFacebook', ['$window','$document',
-		function($window,$document) {
-			'use strict';
-			return {
-				link : function(){
-
-					window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1482107158698739',
-							xfbml      : true,
-							version    : 'v2.0'
-						});
-					};
-
-					(function(d, s, id){
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) {return;}
-						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/fr_FR/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-facebook.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','$location',
-		function(lang,$location) {
-			return {
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.updateLang = function(langSelected){
-						lang.change(langSelected);
-						$scope.lang = langSelected;
-					};
-
-					var switchLangUrl = function(newLang){
-						return $location.absUrl().replace($scope.lang,newLang);
-					};
-
-					$scope.switchLangUrlFr = switchLangUrl('fr');
-					$scope.switchLangUrlEn = switchLangUrl('en');
-
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-footer.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
-			'use strict';
-			return {
-				scope:{
-					'lfgHeader':'='
-				},
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.logout = function(){
-						user.logout();
-						$scope.userInfo = null;
-						redirection.goHome();
-					};
-
-
-
-
-					$scope.homeUrl = redirection.getHomePageUrl();
-					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
-					$scope.loginPageUrl = redirection.getLoginPageUrl();
-					$scope.registerPageUrl = redirection.getRegisterPageUrl();
-					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-					$scope.gamesUrl = redirection.getGamesPageUrl();
-					$scope.notifUrl = redirection.getNotifPageUrl();
-					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-
-                    $scope.userInfo = user.get();
-
-
-					/**
-					 * autoRefreshDataNotif
-					 */
-					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
-							if($scope.userInfo === null){
-								return;
-							}
-							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
-							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
-									$scope.notifications.push($scope.allMyNotifications[key]);
-								}
-							}
-
-							if($scope.notifications.length > 0){
-								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
-							} else {
-								$document[0].title = 'Esbattle.com';
-							}
-
-						});
-					};
-
-					var refreshTime = 12000;
-					var autoRefreshDataNotif = function(){
-						$interval.cancel($scope.intervaNotificationId);
-
-						if (angular.isDefined($scope.intervaNotificationId)) {
-							return;
-						}
-
-						$scope.intervaNotificationId = $interval(function(){
-							refreshDataNotif();
-						}, refreshTime);
-					};
-
-					refreshDataNotif();
-					autoRefreshDataNotif();
-
-				},
-				restrict: 'E',
-				templateUrl: 'html/directives/lfg-header.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
-			'use strict';
-			return {
-				link: function($scope, element, attrs) {
-
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
-				},
-				restrict: 'E'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInterval', ["$interval",
-		function($interval) {
-			'use strict';
-			return {
-				replace :true,
-				scope:{
-					'lfgInterval':'='
-				},
-				link: function($scope, element, attrs) {
-
-					element.on('$destroy', function() {
-						$interval.cancel($scope.lfgInterval);
-						$scope.lfgInterval = undefined;
-					});
-				},
-				restrict: 'A'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
-        function(matchmaking,user,redirection,$filter) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.matchmakingTemplate = null;
-
-	                /**
-	                 * récupère les configs pour la selection du type de matchmaking
-	                 */
-	                matchmaking.getConf().success(function(data){
-
-		                var groupOfTemplate = {};
-		                for(var key in data){
-			                if(!groupOfTemplate[data[key].description]) {
-				                groupOfTemplate[data[key].description] = [];
-			                }
-			                data[key].concatTags = "";
-			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
-			                }
-			                groupOfTemplate[data[key].description].push(data[key]);
-		                }
-		                $scope.groupOfTemplate = groupOfTemplate;
-	                });
-
-	                /**
-	                 * selectionne un type de matchmaking
-	                 * @param template
-	                 */
-	                $scope.selectGroupOfTemplate = function(template){
-		                $scope.matchmakingTemplate = template;
-		                $scope.templateSelectedModel = template[0];
-	                };
-
-	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
-		                $scope.$emit('templateSelectedModel',[newValue]);
-	                });
-
-                },
-                restrict: 'E',
-                templateUrl: 'html/directives/lfg-matchmaking.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfileBungie', [
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfileBungie':'=',
-                    'userGame':'='
-                },
-                link: function($scope, element, attrs) {
-
-                },
-                restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile-bungie.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfile', ['user',
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'=',
-	                'selectedPerso':'=',
-	                'aUserGame':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.currentUser = user.get();
-                    
-	                if($scope.currentUser !== null){
-		                $scope.aUserGame = $scope.currentUser.userGame;
-	                }
-
-	                $scope.selectPerso = function(persoSelected){
-		                $scope.selectedPerso = persoSelected;
-	                };
-                },
-                restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile.html'
-            };
-        }
-    ]
-);
-
 angular.module('superCache',[])
 	.factory('superCache', ['$cacheFactory','$q','$timeout',
 		function($cacheFactory,$q,$timeout) {
@@ -2073,6 +1790,289 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('myApp.directives')
+	.directive('lfgFacebook', ['$window','$document',
+		function($window,$document) {
+			'use strict';
+			return {
+				link : function(){
+
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1482107158698739',
+							xfbml      : true,
+							version    : 'v2.0'
+						});
+					};
+
+					(function(d, s, id){
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) {return;}
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
+			return {
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.updateLang = function(langSelected){
+						lang.change(langSelected);
+						$scope.lang = langSelected;
+					};
+
+					var switchLangUrl = function(newLang){
+						return $location.absUrl().replace($scope.lang,newLang);
+					};
+
+					$scope.switchLangUrlFr = switchLangUrl('fr');
+					$scope.switchLangUrlEn = switchLangUrl('en');
+
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-footer.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+			'use strict';
+			return {
+				scope:{
+					'lfgHeader':'='
+				},
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+						redirection.goHome();
+					};
+
+
+
+
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+                    $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+						rdv.getNotifications().success(function(data){
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
+				},
+				restrict: 'E',
+				templateUrl: 'html/directives/lfg-header.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInit', ['user','socket',
+		function(user,socket) {
+			'use strict';
+			return {
+				link: function($scope, element, attrs) {
+
+					var currentUser = user.get();
+					if(currentUser !== null){
+						socket.addUser(currentUser.username);
+					}
+
+				},
+				restrict: 'E'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInterval', ["$interval",
+		function($interval) {
+			'use strict';
+			return {
+				replace :true,
+				scope:{
+					'lfgInterval':'='
+				},
+				link: function($scope, element, attrs) {
+
+					element.on('$destroy', function() {
+						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
+					});
+				},
+				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
+        function(matchmaking,user,redirection,$filter) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.matchmakingTemplate = null;
+
+	                /**
+	                 * récupère les configs pour la selection du type de matchmaking
+	                 */
+	                matchmaking.getConf().success(function(data){
+
+		                var groupOfTemplate = {};
+		                for(var key in data){
+			                if(!groupOfTemplate[data[key].description]) {
+				                groupOfTemplate[data[key].description] = [];
+			                }
+			                data[key].concatTags = "";
+			                for(var keyTag in data[key].tags){
+				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+			                }
+			                groupOfTemplate[data[key].description].push(data[key]);
+		                }
+		                $scope.groupOfTemplate = groupOfTemplate;
+	                });
+
+	                /**
+	                 * selectionne un type de matchmaking
+	                 * @param template
+	                 */
+	                $scope.selectGroupOfTemplate = function(template){
+		                $scope.matchmakingTemplate = template;
+		                $scope.templateSelectedModel = template[0];
+	                };
+
+	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
+		                $scope.$emit('templateSelectedModel',[newValue]);
+	                });
+
+                },
+                restrict: 'E',
+                templateUrl: 'html/directives/lfg-matchmaking.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfileBungie', [
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfileBungie':'=',
+                    'userGame':'='
+                },
+                link: function($scope, element, attrs) {
+
+                },
+                restrict: 'E',
+                templateUrl: 'html/directives/lfg-profile-bungie.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user',
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'=',
+	                'selectedPerso':'=',
+	                'aUserGame':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.currentUser = user.get();
+
+	                if($scope.currentUser !== null){
+		                $scope.aUserGame = $scope.currentUser.userGame;
+	                }
+
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
+	                };
+                },
+                restrict: 'E',
+                templateUrl: 'html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {

@@ -142,7 +142,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        var updateProfilsAvailable = function(){
 		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
 			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
-			        if($scope.profils[0] && $scope.profilSelected === null){
+					if($scope.profils[0] && $scope.profilSelected === null){
 				        $scope.profilSelected = $scope.profils[0];
 			        }
 		        }
