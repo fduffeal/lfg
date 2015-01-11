@@ -191,6 +191,7 @@
 			background: $color1;
 			font-size: 1.2rem;
 			color: white;
+			cursor: pointer;
 		}
 		ul.type{
 			margin-left: 156px;
@@ -254,7 +255,15 @@
 				span {
 					font-weight: bold;
 					font-size: 1.3rem;
+					@media screen and (max-width: 800px ) {
+
+						font-size: 11px!important
+					}
 				}
+				@media screen and (max-width: 800px ) {
+
+						font-size: 11px!important
+					}
 			}
 			.list-infos{
 				width: 50%;

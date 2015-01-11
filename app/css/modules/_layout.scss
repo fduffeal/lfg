@@ -51,6 +51,12 @@ span.noco{
 
 			}
 		}
+		.team {
+			@media screen and (max-width: 800px ) {
+				display: none;
+
+			}
+		}
 	}
 	.right {
 		@media screen and (max-width: 800px ) {
@@ -96,8 +102,11 @@ span.noco{
 	}
 	.left {
 		float: left;
-		margin: 10px;
-
+		margin: 10px 0 0 10px;
+		.team {
+			font-size: 1.2rem;
+			margin-top: 5px;
+		}
 		.name {
 
 			margin-bottom: 2px;
@@ -109,7 +118,7 @@ span.noco{
 	.right {
 		float: right;
 
-		margin: 10px;
+		margin: 10px 10px 0 0;
 		text-align: center;
 		.level {
 			font-size: 24px;
