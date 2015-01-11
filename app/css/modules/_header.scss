@@ -22,14 +22,6 @@ $color3: #06ab93; // blue
 			display: none;
 		}
 
-		@media screen and (max-width: 980px ) {
-
-			.notlog.mobile {
-				margin-top: 5px;
-				display: inline;
-			}
-		}
-
 		.notif {
 			position: relative;
 			.nb-notif {
