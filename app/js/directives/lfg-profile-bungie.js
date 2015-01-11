@@ -5,7 +5,8 @@ angular.module('myApp.directives')
             return {
                 scope:{
                     'lfgProfileBungie':'=',
-                    'userGame':'='
+                    'userGame':'=',
+                    'withPlateform':'@'
                 },
                 link: function($scope, element, attrs) {
 

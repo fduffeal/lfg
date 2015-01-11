@@ -37,7 +37,7 @@
 						</span>
 
 					</div>
-					<lfg-profile selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
+					<lfg-profile with-plateform="true" selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
 				</form>
 
 					<br style="clear:both"/>
@@ -111,13 +111,14 @@
 							<tbody>
 							<tr>
 								<td class="list-player">
-									<span>{{ rdv.author.username }}</span><span class="co"></span><br/>
-									{{rdv.author.data1}} - {{rdv.author.data2}}<br/>
-									{{ rdv.plateform.nom }}<br/>
+									<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 								</td>
 								<td class="list-type"><span translate>Party</span> <br/><br/>
 									<span ng-if="!isEnded(rdv)">Slots
 										{{rdv.users.length}}/{{ rdv.nbParticipant}}
+									</span>
+									<span>
+										{{ rdv.plateform.nom }}
 									</span>
 								</td>
 								<td class="list-infos"><span
@@ -154,11 +155,14 @@
 						<tbody>
 						<tr>
 							<td class="list-player">
-								<lfg-profile-bungie user-game="rdv.author"></lfg-profile-bungie>
+								<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 							</td>
 							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/><br/>
 								<span ng-if="!isEnded(rdv)">Slots
 									{{rdv.users.length}}/{{ rdv.nbParticipant}}
+								</span>
+								<span>
+									{{ rdv.plateform.nom }}
 								</span>
 							</td>
 							<td class="list-type" ng-if="rdv.type === 'type_annonce'"><span translate>Announcement</span>

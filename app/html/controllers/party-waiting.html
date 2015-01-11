@@ -38,8 +38,8 @@
 			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" ><span translate>This party is ended, create a new party !</span> <img src="img/ico-create.png"/></a>
 			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profile for this game and join !</a>
 
-			<lfg-profile  ng-show="canJoin && profils.length > 0 && isEnded === false" selected-perso="profilSelected" a-user-game="profils"></lfg-profile>
-			<div style="clear:both"></div>
+			<lfg-profile with-plateform="true" ng-show="canJoin && profils.length > 0 && isEnded === false" selected-perso="profilSelected" a-user-game="profils"></lfg-profile>
+
 		</div>
 	</div>
 	<div class="page">
@@ -59,7 +59,7 @@
 						<tr ng-repeat="userGame in rdv.users">
 							<td class="place">{{$index + 1}}</td>
 							<td>
-								<lfg-profile-bungie user-game="userGame"></lfg-profile-bungie>
+								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 							</td>
 							<td class="actions">
 								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
@@ -86,7 +86,7 @@
 					<tbody>
 						<tr ng-repeat="userGame in rdv.usersInQueue">
 							<td>
-								<lfg-profile-bungie user-game="userGame"></lfg-profile-bungie>
+								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 							</td>
 							<td class="actions">
 								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
