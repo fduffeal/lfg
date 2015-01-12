@@ -4,28 +4,30 @@
 	<div class="page">
 		<div class="block">
 			<div translate class="text">
-				Create an esbattle account to get your character from Destiny every time on www.esbattle.com.
-				You will also be able to to schedule party and join an existing party.
-
-				Your GamerTag or PSN ID will be used to get your Destiny characters.
-
-				A valid email is required if you forgot your password, we will send you an email to verify your identity.
+				Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br/>You will also be able to to schedule party and join an existing party.<br/><br/>Your GamerTag or PSN ID will be used to get your Destiny characters.<br/><br/>A valid email is required if you forgot your password, we will send you an email to verify your	identity.<br/>
 			</div>
 			<h1 translate>Register on Esbattle.com</h1>
+
 			<form name="registerForm" ng-submit="submit()">
 				<ul>
-					<li><input type="text" ng-model="username" placeholder="{{'Login Esbattle'|translate}}" name="inputUsername" required></li>
-					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}" name="inputPassword" ng-change="checkPassword()" required></li>
-					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}" name="inputPasswordVerif" ng-change="checkPassword()" required></li>
+					<li><input type="text" ng-model="username" placeholder="{{'Login Esbattle'|translate}}"
+					           name="inputUsername" required></li>
+					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}"
+					           name="inputPassword" ng-change="checkPassword()" required></li>
+					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}"
+					           name="inputPasswordVerif" ng-change="checkPassword()" required></li>
 					<li>
 						<label for="">
-							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms" required>
+							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms"
+							        required>
 								<option value="" translate>Platform</option>
 							</select>
 						</label>
 					</li>
-					<li><input type="text"  ng-model="gamerTag" placeholder="{{'GamerTag or PSN ID'|translate}}" name="inputGamerTag" required></li>
-					<li><input type="email"  ng-model="email" placeholder="{{'Email Address'|translate}}" name="inputEmail" required></li>
+					<li><input type="text" ng-model="gamerTag" placeholder="{{'GamerTag or PSN ID'|translate}}"
+					           name="inputGamerTag" required></li>
+					<li><input type="email" ng-model="email" placeholder="{{'Email Address'|translate}}"
+					           name="inputEmail" required></li>
 					<li><input type="submit" href="" class="btn" value="{{'Register !' | translate}}"></li>
 				</ul>
 			</form>

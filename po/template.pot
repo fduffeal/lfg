@@ -2,14 +2,13 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: \n"
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
+msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)"
 msgstr ""
 
 #: app/html/controllers/rdv.html
-msgid "<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
+msgid "<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -67,6 +66,7 @@ msgstr ""
 msgid "Bad Username or Password."
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
 #: app/html/controllers/rdv.html
 msgid "Choose a character"
 msgstr ""
@@ -92,13 +92,11 @@ msgid "Create a profile for this game and join !"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid ""
-"Create an esbattle account to get your character from Destiny every time on www.esbattle.com.\r\n"
-"\t\t\t\tYou will also be able to to schedule party and join an existing party.\r\n"
-"\r\n"
-"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters.\r\n"
-"\r\n"
-"\t\t\t\tA valid email is required if you forgot your password, we will send you an email to verify your identity."
+msgid "Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Creator"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -189,10 +187,6 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Infos"
-msgstr ""
-
-#: app/html/controllers/party-waiting.html
-msgid "Join this party to see player's gamertag"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
