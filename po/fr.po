@@ -9,30 +9,36 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
-#, fuzzy
 msgid ""
 "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only "
-"can create an accouncement. To create or join a party, an account is "
+"can create an announcement. To create or join a party, an account is "
 "required :)"
 msgstr ""
-"<span class=\"tit\">FAQ: </span>Sans inscription, vous pouvez seulement "
-"poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle "
-"est requis :)"
+"<span class=\"title\">FAQ: </span><br>Sans compte Esbattle, vous pouvez "
+"seulement créer une annonce. Pour pouvoir créer ou rejoindre une partie, "
+"l'inscription au site est requis. :)"
 
 #: app/html/controllers/rdv.html
-#, fuzzy
 msgid ""
-"<span class=\"title\">What's new: 10 jan 2015</span><br> With this new "
-"version, it's more simple to user the website. Now, just with your gamertag, "
-"all your characters will be automai"
+"<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new "
+"feature :<br>Create an announcement with your destiny character, just put "
+"your plateform and your GamerTag ou PSN ID !<br>Choose your games console "
+"and watch all announcement or schedule party.<br>Use tag like #raid, "
+"#cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a "
+"schedule party easily with our new interface !"
 msgstr ""
-"<span class=\"tit\">Nouveautés du 10 jan 2015</span> With this new version, "
-"it's more simple to user the website. Now, just with your gamertag, all your "
-"characters "
+"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et "
+"nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de "
+"Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !"
+"<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les "
+"parties planifiées<br>Utilisez les tags comme #raid, #cropta, "
+"#caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!"
+"<br>Créer plus facilement une partie planifiée avec notre nouvelle "
+"interface !"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -99,7 +105,7 @@ msgstr "Retour"
 msgid "Bad Username or Password."
 msgstr "Mauvais nom d'utilisateur ou mot de passe."
 
-#: app/html/controllers/rdv.html
+#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
 msgid "Choose a character"
 msgstr "Choisissez un personnage"
 
@@ -126,26 +132,21 @@ msgstr "Créer un profil pour ce jeu et rejoignez !"
 #: app/html/controllers/register.html
 msgid ""
 "Create an esbattle account to get your character from Destiny every time on "
-"www.esbattle.com.\r\n"
-"\t\t\t\tYou will also be able to to schedule party and join an existing "
-"party.\r\n"
-"\r\n"
-"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters."
-"\r\n"
-"\r\n"
-"\t\t\t\tA valid email is required if you forgot your password, we will send "
-"you an email to verify your identity."
+"www.esbattle.com.<br>You will also be able to to schedule party and join an "
+"existing party.<br><br>Your GamerTag or PSN ID will be used to get your "
+"Destiny characters.<br><br>A valid email is required if you forgot your "
+"password, we will send you an email to verify your\tidentity.<br>"
 msgstr ""
-"Create an esbattle account to get your character from Destiny every time on "
-"www.esbattle.com.\r\n"
-"\t\t\t\tYou will also be able to to schedule party and join an existing "
-"party.\r\n"
-"\r\n"
-"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters."
-"\r\n"
-"\r\n"
-"\t\t\t\tA valid email is required if you forgot your password, we will send "
-"you an email to verify your identity."
+"Creer un compte esbatte pour avoir vos personnages de Destiny sur www."
+"esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une "
+"existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos "
+"personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez "
+"votre mot de passe, nous vous enverrons un email pour vérifier votre "
+"identité<br>"
+
+#: app/html/controllers/rdv.html
+msgid "Creator"
+msgstr "Createur"
 
 #: app/html/controllers/party-waiting.html
 msgid "Decline"
@@ -235,10 +236,6 @@ msgstr "Si vous quittez cette page, le matchmaking sera annulé"
 #: app/html/controllers/rdv.html
 msgid "Infos"
 msgstr "Infos"
-
-#: app/html/controllers/party-waiting.html
-msgid "Join this party to see player's gamertag"
-msgstr "Rejoignez cette partie pour voir le gamertag des joueurs"
 
 #: app/html/controllers/party-waiting.html
 msgid "Kick"
@@ -542,6 +539,27 @@ msgstr "pour sauvegarder votre personnage la prochaine fois !"
 #: app/dynamique_translate.html
 msgid "warlock"
 msgstr "arcaniste"
+
+#~ msgid ""
+#~ "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you "
+#~ "only can create an accouncement. To create or join a party, an account is "
+#~ "required :)"
+#~ msgstr ""
+#~ "<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement "
+#~ "poster des annonces. Pour créer ou rejoindre une partie, un compte "
+#~ "Esbattle est requis :)"
+
+#~ msgid ""
+#~ "<span class=\"title\">What's new: 10 jan 2015</span><br> With this new "
+#~ "version, it's more simple to user the website. Now, just with your "
+#~ "gamertag, all your characters will be automai"
+#~ msgstr ""
+#~ "<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new "
+#~ "version, it's more simple to user the website. Now, just with your "
+#~ "gamertag, all your characters "
+
+#~ msgid "Join this party to see player's gamertag"
+#~ msgstr "Rejoignez cette partie pour voir le gamertag des joueurs"
 
 #~ msgid "Register with your email address"
 #~ msgstr "S'enregistrer avec votre adresse email"
