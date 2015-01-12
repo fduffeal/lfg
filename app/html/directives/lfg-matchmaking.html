@@ -1,0 +1,23 @@
+<div id="matchmaking" class="wrap">
+	<div class="block">
+		<div class="select">
+			<ul>
+				<li ng-repeat="(key,template) in groupOfTemplate" class="{{template[0].icone}}"
+				ng-class="{'selected':(template === matchmakingTemplate),'no-selected':(template !== matchmakingTemplate && matchmakingTemplate !== null)}">
+				<a href="" ng-click="selectGroupOfTemplate(template)"></a>
+				<span>{{template[0].description}}</span>
+
+			</li>
+			<form name="joinMatchmakingForm" ng-submit="join()">
+				<select name="templateSelectedInput"
+				ng-show="(matchmakingTemplate.length > 0)"
+				ng-model="templateSelectedModel"
+				ng-options="config.concatTags for config in matchmakingTemplate"
+				class="tag-matchmaking"
+				required>
+			</select>
+		</form>
+	</ul>
+</div>
+</div>
+</div>

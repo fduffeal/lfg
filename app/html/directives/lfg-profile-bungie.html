@@ -1,0 +1,15 @@
+<div class="character" style="background: url('{{userGame.data4}}')">
+	<img ng-src="{{userGame.data5}}" class="embleme"/>
+
+	<div class="left">
+		<div class="name"><span class="co"></span>
+			{{ userGame.gameUsername }}
+		</div>
+		<div ng-if="(withPlateform != true)" class="team">{{ userGame.data3 }}</div>
+		<div ng-if="(withPlateform == true)" class="plateform">{{ userGame.plateform.nom }}</div>
+	</div>
+	<div class="right">
+		<div class="level">{{userGame.data2}}</div>
+		<div class="classe">{{userGame.data1 | translate}}</div>
+	</div>
+</div>

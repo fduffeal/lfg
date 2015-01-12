@@ -1,6 +1,6 @@
 <lfg-header></lfg-header>
 <div id="login" class="wrap">
-	<lfg-profile></lfg-profile>
+
 	<div class="page">
 		<div class="block">
 
@@ -33,11 +33,11 @@
              		<ul>
              			<li><input type="text" ng-model="username" placeholder="{{'Username'|translate}}" required/></li>
              			<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}" required/></li>
-             			<li class="forget"><a href="" ng-click="displayForgetPasswordForm()" translate>Forget login or password ?</a></li>
-             			<li><input type="submit" class="btn" value="{{'Login !' | translate}}"></li>
-             			<span class="or" translate>OR</span>
+						<li><input type="submit" class="btn" value="{{'Login !' | translate}}"></li>
+						<span class="or" translate>OR</span>
              			<li><a ng-href="{{registerPageUrl}}" class="btn" translate>Register</a></li>
-             		</ul>
+						<li class="forget"><a href="" ng-click="displayForgetPasswordForm()" translate>Forget login or password ?</a></li>
+					</ul>
              	</form>
              	<div class="error-msg" ng-if="error">
              		<span ng-if="error=='connection_refused'" translate>Bad Username or Password.</span>

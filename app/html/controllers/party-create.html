@@ -1,95 +1,105 @@
 <lfg-header></lfg-header>
 <div id="party-create" class="wrap">
-    <lfg-profile></lfg-profile>
-    <div class="page">
-        <span class="important" translate>ALL FIELDS ARE REQUIRED</span>
+	<form name="myForm" ng-submit="submit()">
+		<div class="welcome">
+			<div class="marge">
+				<span translate>New party on </span> {{game.name}} {{plateform.nom}} | {{ day | date:'yyyy-MM-dd HH:mm'}}<br />
+				<div>
+					<label for="" translate>
+						Use this character
+					</label>
+					<lfg-profile with-plateform="false" selected-perso="profilSelected" a-user-game="aUserGame"></lfg-profile>
+					<div style="clear:both"></div>
+				</div>
 
-        <div class="block">
-            <h1><span translate>New party on </span> {{game.name}} {{plateform.nom}} | {{ day | date:'yyyy-MM-dd HH:mm'}}</h1>
+			</div>
+		</div>
+		<div class="page">
 
-            <form name="myForm" ng-submit="submit()">
-                <ul class="inputs">
-                    <li>
-                        <label translate>When</label>
-                        <input type="number" ng-model="startHours" min="0" max="23"/> :
-                        <input type="number" ng-model="startMinutes"  min="0" max="59"/>
-	                    <span ng-if="bDemain" translate>Tomorrow</span>
-                        <input type="hidden" id="start-date" name="inputDayStart" ng-model="day" required="true">
-                    </li>
-                    <li>
-                        <label for="">Tags</label>
-                        <input ng-class="{'required':myForm.inputTags.$error.required,
+			<span class="important" translate>ALL FIELDS ARE REQUIRED</span>
+			<lfg-matchmaking></lfg-matchmaking>
+			<div class="block">
+
+
+
+				<ul class="inputs">
+					<li>
+						<label translate>When</label>
+						<input type="number" ng-model="startHours" min="0" max="23"/> :
+						<input type="number" ng-model="startMinutes"  min="0" max="59"/>
+						<span ng-if="bDemain" translate>Tomorrow</span>
+						<input type="hidden" id="start-date" name="inputDayStart" ng-model="day" required="true">
+					</li>
+					<li>
+						<label for="">Tags</label>
+						<input ng-class="{'required':myForm.inputTags.$error.required,
 						'unvalid':myForm.inputTags.$error.text}"
-                               type="text" name="inputTags" ng-model="tags" placeholder="#Tags" required ng-trim="false"
-                               list="tags" ng-change="autocomplete()">
-                    </li>
-                    <li>
-                        <label for="" translate>Description</label>
-                        <input ng-class="{'required':myForm.inputDescription.$error.required,
+						type="text" name="inputTags" ng-model="tags" placeholder="#Tags" required ng-trim="false"
+						list="tags" ng-change="autocomplete()">
+					</li>
+					<li>
+						<label for="" translate>Description</label>
+						<input ng-class="{'required':myForm.inputDescription.$error.required,
 						'unvalid':myForm.inputDescription.$error.text}"
-                               type="text" name="inputDescription" ng-model="description"
-                               placeholder="Little description" required ng-trim="true">
-                    </li>
-                    <li>
-                        <label for="" translate>
-                            Slots
-                        </label>
-                        1
-                        /
-                        <input ng-class="{'required':myForm.inputSlotTotal.$error.required,
+						type="text" name="inputDescription" ng-model="description"
+						placeholder="Little description" required ng-trim="true">
+					</li>
+					<li>
+						<label for="" translate>
+							Slots
+						</label>
+						1
+						/
+						<input ng-class="{'required':myForm.inputSlotTotal.$error.required,
 						'unvalid':myForm.inputSlotTotal.$error.text}"
-                               placeholder="6"
-                               type="number" name="inputSlotTotal" ng-model="slotTotal" min="1" required>
+						placeholder="6"
+						type="number" name="inputSlotTotal" ng-model="slotTotal" min="1" required>
 
-                    </li>
-                    <li>
-                        <label for="" translate>
-                            Game Profil
-                        </label>
-                        <select ng-model="profilSelected" ng-options="gameData.gameProfilName group by gameData.plateform.nom for gameData in profils" required></select>
-                    </li>
-                    <li>
-                        <span class="text" translate><span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!</span>
-                        <input ng-show="profils.length > 0" type="submit" id="submit" value="{{'Start' | translate}}"
-                               class="btn"/>
+					</li>
 
-                        <div ng-show="(!profils || profils.length == 0)" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !
-                        </div>
-                    </li>
-                </ul>
+					<li>
+						<span class="text" translate><span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!</span>
+						<input ng-show="profils.length > 0" type="submit" id="submit" value="{{'Start' | translate}}"
+						class="btn"/>
 
-                <input ng-class="{'required':myForm.inputHoursDuree.$error.required,
+						<div ng-show="(!profils || profils.length == 0)" class="btn" ng-click="createProfil()" translate>Create a profile for this game and join !
+						</div>
+					</li>
+				</ul>
+
+				<input ng-class="{'required':myForm.inputHoursDuree.$error.required,
 				'unvalid':myForm.inputHoursDuree.$error.time}"
-                       type="number" id="end-hours" style="visibility: hidden"
-                       name="inputHoursDuree"
-                       ng-model="dureeHours"
-                       placeholder="1"
-                       min="0"
-                       max="48"
-                       required/>
+				type="number" id="end-hours" style="visibility: hidden"
+				name="inputHoursDuree"
+				ng-model="dureeHours"
+				placeholder="1"
+				min="0"
+				max="48"
+				required/>
 
-                <input ng-class="{'required':myForm.inputMinutesDuree.$error.required,
+				<input ng-class="{'required':myForm.inputMinutesDuree.$error.required,
 				'unvalid':myForm.inputMinutesDuree.$error.time}"
-                       type="number" id="end-minutes" style="visibility: hidden"
-                       name="inputMinutesDuree"
-                       ng-model="dureeMinutes"
-                       placeholder="00"
-                       min="0"
-                       max="59"
-                       required/>
+				type="number" id="end-minutes" style="visibility: hidden"
+				name="inputMinutesDuree"
+				ng-model="dureeMinutes"
+				placeholder="00"
+				min="0"
+				max="59"
+				required/>
 
-                <input type="hidden" ng-model="profilSelected" required/>
+				<input type="hidden" ng-model="profilSelected" required/>
 
-                <input type="hidden" ng-model="plateform" required/>
-                <input type="hidden" ng-model="game" required/>
+				<input type="hidden" ng-model="plateform" required/>
+				<input type="hidden" ng-model="game" required/>
 
-            </form>
 
-            <datalist id="tags">
-                <option data-ng-repeat="item in autocompleteTag" value="{{item}}"/>
-            </datalist>
-        </div>
-    </div>
+
+				<datalist id="tags">
+					<option data-ng-repeat="item in autocompleteTag" value="{{item}}"/>
+				</datalist>
+			</div>
+		</div>
+	</form>
 </div>
 
 <lfg-footer></lfg-footer>

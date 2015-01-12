@@ -1,0 +1,53 @@
+#list-users {
+	.list {
+		position: relative;
+		margin: 20px 10px;
+		padding-bottom: 10px;
+	}
+	table {
+		width: 100%;
+		font-size: 1.2rem;
+		text-align: left;
+		border-collapse: collapse;
+		border: 0;
+		td, th {
+			overflow: hidden;
+			padding-left: 10px;
+		}
+		td {
+			padding: 10px;
+		}
+		tbody tr:nth-child(odd){
+			background: #e5e1e1;
+		}
+		thead {
+			background: #262525;
+			font-weight: bold;
+			height: 25px;
+			line-height: 25px;
+			a {
+				color: white;
+			}
+		}
+		.list-player{
+			width: 50%;
+		}
+		.list-level{
+			width: 10%;
+
+		}
+		.list-class{
+			width: 10%;
+
+		}
+		.list-etat {
+			width: 5%;
+
+		}
+		.list-action{
+			width: 15%;
+		}
+
+
+	}
+}

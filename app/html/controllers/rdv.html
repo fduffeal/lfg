@@ -1,110 +1,185 @@
 <lfg-header></lfg-header>
 <div id="home" class="wrap">
-	<lfg-profile></lfg-profile>
+	<div class="welcome">
+		<div class="marge" >
+		<span translate class="txt faq">
+			<span class="title">FAQ: </span><br />Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)
+		</span>
+		<span translate class="txt news">
+			<span class="title">What's new: 10 jan 2015</span><br /> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai
+		</span>
+		<br/>
+
+			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
+					src="img/ico-create.png"/></a>
+			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span translate>Post an announcement</span><img
+					src="img/ico-annonce.png"/></a>
+
+			<div class="add" ng-show="displayFormAnnonce">
+				<form name="myFormBattleTag" ng-submit="getDestinyCharacters()">
+					<h2 translate>New announcement</h2>
+
+					<div ng-show="(aCharacters.length === 0)">
+						<p><span translate>Enter your informations or</span> <a href="" translate>create an account</a> <span
+								translate>to save your character for the next time !</span></p>
+						<label for="">
+							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms"
+							        ng-change="updateFormData()" required>
+								<option value="" translate>Platform</option>
+							</select>
+						</label>
+
+						<input ng-model="gamertag" type="text" placeholder="{{'Your gamertag'|translate}}" class="first"
+						       style="margin-top:10px;" required/>
+
+						<span>
+							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}" />
+						</span>
+
+					</div>
+					<div ng-show="(aCharacters.length != 0)" translate>
+					Choose a character
+					</div>
+					<lfg-profile with-plateform="true" selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
+				</form>
+
+					<br style="clear:both"/>
+
+					<div style="margin-top:10px;" ng-show="(selectedPerso !== null)">
+						<form name="myFormAnnonce" ng-submit="addAnnonce()">
+							<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag" required>
+							<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc" ng-model="annonce_description" required>
+							<span>
+								<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)" value="{{'Send it'| translate}}">
+
+							</span>
+							<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
+						</form>
+					</div>
+
+
+			</div>
+			<div class="social">
+				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
+				<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
+				<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
+						src="img/footer-logo-bungie.png"/></a>
+			</div>
+		</div>
+	</div>
 	<div class="page">
+
 		<div class="list">
-			<ul class="platforms">
-				<li ng-repeat="plateform in aPlateforms">
-					<a href="" ng-click="updatePlateform(plateform.id,plateform.nom);" ng-class="{'selected':(plateformSelected == plateform.id)}">{{plateform.nom}}</a>
-				</li>
-				<li class="selected">
-					<a href="" ng-click="updatePlateform('','ALL');" ng-class="{'selected':plateformSelected == ''}" translate>ALL</a>
-				</li>
-			</ul>
+
+			<select class="platforms" ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms">
+				<option value="" translate>All</option>
+			</select>
+
+			<select name="" id="" class="type" ng-model="type">
+				<option value="type_party" translate>Party</option>
+				<option value="type_annonce" translate>Announcement</option>
+				<option value="type_all" translate>All</option>
+			</select>
+
 			<ul class="search-tags">
 
-				<li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags" ng-change="updateTags(this)" list="tagsList"></li>
+				<li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags"
+				                          ng-change="updateTags(this)" list="tagsList"></li>
 				<datalist id="tagsList">
-					<option data-ng-repeat="item in autoCompleteTags" value="{{item}}" />
+					<option data-ng-repeat="item in autoCompleteTags" value="{{item}}"/>
 				</datalist>
 			</ul>
 
 			<div class="last">
-				<div ng-if="currentUser">
-					<h1>Destiny {{plateformNameSelected}} : My Game</h1>
+				<div ng-if="(aMyRdv.length > 0)">
+					<h1 translate>My partys</h1>
 					<table border="0">
 						<thead>
 						<tr>
-							<th class="list-platform"><a href="">Platforms</a></th>
-							<th class="list-tags"><a href="">Tags</a></th>
-							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
-							<th class="list-slots"><a href="" ng-click="predicate ='nbParticipant'; reverse=!reverse">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
+							<th class="list-player"><a href="" translate>Creator</a></th>
+							<th class="list-type"><a href="">Type</a></th>
+							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse"
+							                          translate>Infos</a></th>
+							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse"
+							                          translate>Start</a></th>
+							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
+							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
+						</tr>
 						</tr>
 						</thead>
 					</table>
-					<a class="line" ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" >
+					<a class="line" ng-href="{{rdv.url}}"
+					   ng-repeat="rdv in aMyRdv | filterRdvWithMe:currentUser.id:plateform.id:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse">
 						<table border="0">
 							<tbody>
-							<tr >
-								<td class="list-platform">{{ rdv.plateform.nom }}</td>
-								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
-								<td class="list-infos">{{ rdv.description}}</td>
-								<td class="list-start" ng-if="isLive(rdv)">NOW</td>
-								<td class="list-start" ng-if="!isLive(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
-								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-creator">{{ rdv.leader.username }}</td>
+							<tr>
+								<td class="list-player">
+									<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
+								</td>
+								<td class="list-type"><span translate>Party</span> <br/>
+									<span ng-if="!isEnded(rdv)" class="slot">Slots
+										{{rdv.users.length}}/{{ rdv.nbParticipant}}
+									</span><br/>
+									<span>
+										{{ rdv.plateform.nom }}
+									</span>
+								</td>
+								<td class="list-infos"><span
+										ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
+								</td>
+								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}
+								</td>
+								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
 							</tr>
 							</tbody>
 
 						</table>
 					</a>
 				</div>
-				<h1>Destiny {{plateformNameSelected}} : LIVE</h1>
+				<h1>Destiny {{plateform.nom}} </h1>
 				<table border="0">
 					<thead>
-						<tr>
-							<th class="list-platform"><a href="">Platforms</a></th>
-							<th class="list-tags"><a href="">Tags</a></th>
-							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Status</a></th>
-							<th class="list-slots"><a href="" ng-click="predicate ='nbParticipant'; reverse=!reverse">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
-						</tr>
+					<tr>
+						<th class="list-player"><a href="" translate>Player</a></th>
+						<th class="list-type"><a href="">Type</a></th>
+						<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse"
+						                          translate>Infos</a></th>
+						<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse" translate>Start</a>
+						</th>
+						<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
+						<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
+					</tr>
 					</thead>
 				</table>
-				<a class="line" ng-href="{{partyWaitingUrlRoot}}{{rdv.id}}" ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:true:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsLive" >
+				<a class="line" ng-href="{{rdv.url}}"
+				   ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse as resultsAll">
 					<table border="0">
-						<tbody>
-							<tr >
-								<td class="list-platform">{{ rdv.plateform.nom }}</td>
-								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
-								<td class="list-infos">{{ rdv.description}}</td>
-								<td class="list-start">OPEN</td>
-								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-creator">{{ rdv.leader.username }}</td>
-							</tr>
-						</tbody>
 
-					</table>
-				</a>
-				<h1>Destiny {{plateformNameSelected}}</h1>
-				<table border="0">
-					<thead>
+						<tbody>
 						<tr>
-							<th class="list-platform"><a href="">Platforms</a></th>
-							<th class="list-tags"><a href="">Tags</a></th>
-							<th class="list-infos"><a href="" ng-click="predicate = 'description'; reverse=!reverse">Infos</a></th>
-							<th class="list-start"><a href="" ng-click="predicate = 'start'; reverse=!reverse">Start</a></th>
-							<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>
+							<td class="list-player">
+								<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
+							</td>
+							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/>
+								<span ng-if="!isEnded(rdv)" class="slot">Slots
+									{{rdv.users.length}}/{{ rdv.nbParticipant}}
+								</span><br/>
+								<span>
+									{{ rdv.plateform.nom }}
+								</span>
+							</td>
+							<td class="list-type" ng-if="rdv.type === 'type_annonce'">
+								<span translate>Announcement</span><br/><br/>
+								<span>
+									{{ rdv.plateform.nom }}
+								</span>
+							</td>
+							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>
+								{{ rdv.description}}
+							</td>
+							<td class="list-start">{{ rdv.start| filterSince}}
+							</td>
 						</tr>
-					</thead>
-				</table>
-				<a class="line" href="{{partyWaitingUrlRoot}}{{rdv.id}}"ng-repeat="rdv in aRdv | filterRdvLastPlace:plateformSelected:tags:false:false:true:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse as resultsAll" >
-					<table  border="0" >
-
-						<tbody>
-							<tr >
-								<td class="list-platform">{{ rdv.plateform.nom }}</td>
-								<td class="list-tags"> <span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span></td>
-								<td class="list-infos">{{ rdv.description}}</td>
-								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
-								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
-								<td class="list-slots">{{rdv.users.length}}/{{ rdv.nbParticipant}}</td>
-								<td class="list-creator">{{ rdv.leader.username }}</td>
-							</tr>
 						</tbody>
 
 					</table>

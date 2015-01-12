@@ -1,10 +1,146 @@
 #home {
+	.welcome {
+		.txt {
+			display: block;
+			color: white!important;
+			.tit {
+				font-weight: bold;
+
+			}
+		}
+		.btn2 {
+			display: inline-block;
+			margin-right: 10px;
+			position: relative;
+			color: white!important;
+			text-decoration: none!important;
+			&.second {
+				width: 190px;
+			}
+			img{
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				height: 20px;
+			}
+		}
+		.social {
+			text-align: right;
+		}
+		.add {
+			margin-top: 15px;
+			.mychar {
+				@media screen and (max-width: 607px ) {
+					margin: 10px 0;
+				}
+			}
+
+
+			a {
+				color: $color1;
+				text-decoration: underline;
+			}
+			h2 {
+				font-size: 1.4rem;
+
+			}
+			input[type=submit] {
+				width: 100px;
+			}
+			.btn2 {
+				width: 70px;
+				cursor: pointer;
+				img {
+					top: 14px;
+					width: auto;
+					height: auto;
+					-webkit-transform:rotate(-90deg);
+					-moz-transform:rotate(-90deg);
+					-ms-transform:rotate(-90deg);
+					transform:rotate(-90deg);
+				}
+			}
+			input, label {
+				margin: 0 5px 10px 0;
+				border: none
+			}
+			select {
+				padding:3px;
+				margin: 0;
+				-webkit-border-radius:4px;
+				-moz-border-radius:4px;
+				border-radius:4px;
+				background: #f8f8f8;
+				color:#888;
+				border:none;
+				outline:none;
+				display: inline-block;
+				-webkit-appearance:none;
+				-moz-appearance:none;
+				appearance:none;
+				cursor:pointer;
+			}
+			#plat {
+				padding-right: 103px;
+			}
+
+			.first {
+				width: 150px;
+			}
+			.desc {
+				width: 220px;
+			}
+
+			/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+			@media screen and (-webkit-min-device-pixel-ratio:0) {
+				select {padding-right:74px}
+			}
+
+			label {position:relative}
+			label:after {
+				content:'<>';
+				font:11px "Consolas", monospace;
+				color:#aaa;
+				-webkit-transform:rotate(90deg);
+				-moz-transform:rotate(90deg);
+				-ms-transform:rotate(90deg);
+				transform:rotate(90deg);
+				right:8px; top:2px;
+				padding:0 0 2px;
+				border-bottom:1px solid #ddd;
+				position:absolute;
+				pointer-events:none;
+			}
+			label:before {
+				content:'';
+				right:6px; top:0px;
+				width:20px; height:20px;
+				background:#f8f8f8;
+				position:absolute;
+				pointer-events:none;
+				display:block;
+			}
+			@media screen and (max-width: 473px ) {
+				.first {
+					width: 68px;
+				}
+				select {
+					padding-right: 39px!important;
+				}
+				.desc {
+					width: 150px
+				}
+			}
+		}
+	}
+	h1{
+		margin-top: 50px;
+	}
+
 	.list {
 		position: relative;
 		margin: 20px 10px;
 		padding-bottom: 10px;
-
-
 		a {
 			color: #2d2d2d;
 			@include transition(background-color 0.2s ease-out);
@@ -14,28 +150,23 @@
 			@include transition(background-color 0.2s ease-out);
 			background: white;
 			display: block;
-
 			&:nth-child(even){
-				background: #d8d8d8;
+				background: #e5e1e1;
 
 			}
 			&:hover, &.selected {
-				background: #87cbc1;
+				background: #e9aea6;
 				cursor: pointer;
 			}
 		}
 
 		ul.search-tags {
-			@media screen and (max-width: 1185px ) {
-				float: none;
-			}
 			float: right;
-			margin-bottom: 15px;
 			input {
 				width: 250px;
 				height: 25px;
-				@media screen and (max-width: 1185px ) {
-					margin-top: 20px;
+				@media screen and (max-width: 660px ) {
+					visibility:hidden;
 				}
 			}
 		}
@@ -51,46 +182,45 @@
 		.last {
 			clear: both;
 		}
-		ul.platforms {
+		.platforms, .type {
 			float: left;
-
-			li {
-				margin: 0 5px;
-				display: inline-block;
-				a {
-					@media screen and (max-width: 600px ) {
-						padding: 0 7px;
-
-					}
-					display: block;
-					border: 2px solid #87cbc1;
-					color: #3d3b3b;
-					height: 25px;
-					font-size: 13px;
-					padding: 0 10px;
-					line-height: 25px;
-					@include transition(background-color 0.2s ease-out);
-					border-radius: 30px;
-				}
-				a:hover, a.selected {
-					background: #87cbc1;
-					cursor: pointer;
-				}
-				&:first-child {
-					margin-right: 10px;
-				}
-			}
+			margin-right: 20px;
+			margin-bottom: 15px;
+			z-index: 9;
+			width: 130px;
+			background: $color1;
+			font-size: 1.2rem;
+			color: white;
+			cursor: pointer;
+		}
+		ul.type{
+			margin-left: 156px;
 		}
 		table {
 			width: 100%;
-			font-size: 13px;
+			font-size: 1.2rem;
 			text-align: left;
+			border-collapse: collapse;
 			border: 0;
-			@media screen and (max-width: 390px ) {
-					font-size: 13px;
+			@media screen and (max-width: 800px ) {
+				font-size: 10px!important;
+				.list-player {
+					div {
+						font-size: 10px!important
+					}
 				}
+			}
 			td, th {
 				overflow: hidden;
+				padding-left: 10px;
+			}
+			td {
+				padding: 10px;
+			}
+			.slot {
+				font-weight: normal!important;
+				font-size: 1.2rem!important;
+
 			}
 			thead {
 				background: #262525;
@@ -101,40 +231,53 @@
 					color: white;
 				}
 			}
-			.list-platform{
-				width: 10%;
-				@media screen and (max-width: 390px ) {
-					display: none;
-				}
+			br {
+				clear: both;
 			}
-			.list-tags{
-				width: 25%;
+			.list-player{
+				width: 20%;
+				@media screen and (min-width: 800px ) {
+					min-width: 300px;
+				}
+				span {
+					color: $color2;
+					font-size: 1.4rem;
+					float: left;
+					&.co, &.noco {
+						margin-top:4px;
+						margin-right: 5px;
+					}
+				}
 
 			}
+			.list-type{
+				width: 10%;
+				span {
+					font-weight: bold;
+					font-size: 1.3rem;
+					@media screen and (max-width: 800px ) {
+
+						font-size: 11px!important
+					}
+				}
+				@media screen and (max-width: 800px ) {
+
+						font-size: 11px!important
+					}
+			}
 			.list-infos{
-				width: 30%;
-				@media screen and (max-width: 980px ) {
-					display: none;
+				width: 50%;
+				span {
+					font-weight: bold;
 				}
 			}
 			.list-start{
 				width: 15%;
-				@media screen and (max-width: 1415px ) {
-					width: 20%;
-				}
-			}
-			.list-slots{
-				width: 5%;
-				@media screen and (max-width: 600px ) {
+				@media screen and (max-width: 390px ) {
 					display: none;
 				}
 			}
-			.list-creator{
-				width: 15%;
-				@media screen and (max-width: 1415px ) {
-					display: none;
-				}
-			}
+
 
 		}
 

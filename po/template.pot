@@ -2,7 +2,17 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
 
+#: app/html/controllers/rdv.html
+msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai"
+msgstr ""
+
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
 msgstr ""
@@ -15,10 +25,7 @@ msgstr ""
 msgid "A player leave"
 msgstr ""
 
-#: app/html/controllers/rdv.html
-msgid "ALL"
-msgstr ""
-
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 #: app/html/controllers/profile.html
 msgid "ALL FIELDS ARE REQUIRED"
@@ -32,12 +39,24 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "All"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Announcement"
+msgstr ""
+
 #: app/html/controllers/404.html
 msgid "Appointment not found"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Are you sure to kick :"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Ask to join the party"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -48,8 +67,11 @@ msgstr ""
 msgid "Bad Username or Password."
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "Choose a character"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Class"
 msgstr ""
@@ -58,23 +80,32 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
-#: app/html/directives/lfg-header.html
-msgid "Create Party"
+#: app/html/controllers/rdv.html
+msgid "Create a party"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "Create a profil for this game and join !"
-msgstr ""
-
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
+#: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid ""
+"Create an esbattle account to get your character from Destiny every time on www.esbattle.com.\r\n"
+"\t\t\t\tYou will also be able to to schedule party and join an existing party.\r\n"
+"\r\n"
+"\t\t\t\tYour GamerTag or PSN ID will be used to get your Destiny characters.\r\n"
+"\r\n"
+"\t\t\t\tA valid email is required if you forgot your password, we will send you an email to verify your identity."
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Decline"
 msgstr ""
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Description"
 msgstr ""
@@ -96,13 +127,24 @@ msgstr ""
 msgid "English"
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "Enter a description"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Enter your informations or"
+msgstr ""
+
 #: app/html/controllers/login.html
 msgid "Enter your login and password"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 msgid "Esbattle username"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Find"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -122,17 +164,19 @@ msgid "Game Infos for {{game.name}}"
 msgstr ""
 
 #: app/html/controllers/matchmaking.html
-#: app/html/controllers/party-create.html
 msgid "Game Profil"
 msgstr ""
 
+#: app/html/controllers/register.html
+msgid "GamerTag or PSN ID"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 msgid "Gamertag"
 msgstr ""
 
-#: app/html/directives/lfg-header.html
-msgid "Games Profiles"
+#: app/html/controllers/party-waiting.html
+msgid "Guardian"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -143,8 +187,8 @@ msgstr ""
 msgid "If you leave this page, the matchmaking will be cancel"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "Join !"
+#: app/html/controllers/rdv.html
+msgid "Infos"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -160,7 +204,6 @@ msgid "Leave"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/party-waiting.html
 #: app/html/controllers/profile.html
 msgid "Level"
 msgstr ""
@@ -171,6 +214,10 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Login !"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Login Esbattle"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -185,16 +232,21 @@ msgstr ""
 msgid "Mail send. Please check your mailBox (and your spam box)"
 msgstr ""
 
-#: app/html/directives/lfg-header.html
-msgid "Matchmaking"
+#: app/html/controllers/rdv.html
+msgid "My partys"
 msgstr ""
 
-#: app/html/controllers/party-create.html
-msgid "New party on"
+#: app/html/controllers/rdv.html
+msgid "New announcement"
 msgstr ""
 
 #: app/html/controllers/games-profiles.html
-msgid "New profile"
+msgid "New character"
+msgstr ""
+
+#: app/html/controllers/annonce-create.html
+#: app/html/controllers/party-create.html
+msgid "New party on"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -215,6 +267,11 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Open"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+#: app/html/controllers/rdv.html
+msgid "Party"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -239,11 +296,29 @@ msgid "Personal Infos"
 msgstr ""
 
 #: app/html/controllers/profile.html
+#: app/html/controllers/rdv.html
+#: app/html/controllers/register.html
 msgid "Platform"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Platform:"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Player"
+msgstr ""
+
+#: app/html/controllers/register.html
+msgid "Please check your GamerTag or PSN ID, we didn't found any Destiny characters"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Please waiting, we are looking for players..."
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Post an announcement"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -264,13 +339,22 @@ msgid "Register !"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "Register with your email address"
+msgid "Register on Esbattle.com"
 msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "Send"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Send it"
+msgstr ""
+
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Slots"
 msgstr ""
@@ -279,17 +363,19 @@ msgstr ""
 msgid "Sorry, you have been kicked by"
 msgstr ""
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
+#: app/html/controllers/rdv.html
 msgid "Start"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Start:"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
-msgstr ""
-
-#: app/html/controllers/party-waiting.html
-msgid "The Party"
 msgstr ""
 
 #: app/html/controllers/register.html
@@ -304,6 +390,7 @@ msgstr ""
 msgid "This party is ended, create a new party !"
 msgstr ""
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
 msgstr ""
@@ -320,9 +407,17 @@ msgstr ""
 msgid "Update my password !"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "Url of the party:"
+msgstr ""
+
+#: app/html/controllers/annonce-create.html
+#: app/html/controllers/party-create.html
+msgid "Use this character"
+msgstr ""
+
 #: app/html/controllers/login.html
 #: app/html/controllers/profile.html
-#: app/html/controllers/register.html
 msgid "Username"
 msgstr ""
 
@@ -334,6 +429,7 @@ msgstr ""
 msgid "Waiting Players"
 msgstr ""
 
+#: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "When"
 msgstr ""
@@ -350,8 +446,16 @@ msgstr ""
 msgid "You have been promoted as leader by"
 msgstr ""
 
-#: app/html/controllers/games-profiles.html
-msgid "Your games profiles"
+#: app/html/controllers/rdv.html
+msgid "Your gamertag"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Your message"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "create an account"
 msgstr ""
 
 #: app/html/controllers/notification.html
@@ -362,8 +466,16 @@ msgstr ""
 msgid "has leave. You lead"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "hunter"
+msgstr ""
+
 #: app/html/controllers/notification.html
 msgid "on"
+msgstr ""
+
+#: app/html/controllers/list-users.html
+msgid "online"
 msgstr ""
 
 #: app/html/controllers/password-update.html
@@ -374,6 +486,14 @@ msgstr ""
 msgid "this party"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "with profil :"
+#: app/dynamique_translate.html
+msgid "titan"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "to save your character for the next time !"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "warlock"
 msgstr ""

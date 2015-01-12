@@ -1,37 +1,25 @@
 angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','rdv','tag','lang','redirection','$interval','$rootScope',
-        function(user,rdv,tag,lang,redirection,$interval,$rootScope) {
+    .directive('lfgProfile', ['user',
+        function(user) {
             'use strict';
             return {
                 scope:{
-                    'lfgProfile':'='
+                    'lfgProfile':'=',
+	                'selectedPerso':'=',
+	                'aUserGame':'=',
+                    'withPlateform':'@'
                 },
                 link: function($scope, element, attrs) {
 
-	                $scope.userGameSelected = null;
-                    $scope.gamesUrl = redirection.getGamesPageUrl();
+	                $scope.currentUser = user.get();
 
-					$scope.setUserGame = function(userSelected){
-						$scope.userGameSelected = userSelected;
-						$rootScope.userGameSelected = userSelected;
-						$scope.$emit('setUserGame',[userSelected]);
-					};
+	                if($scope.currentUser !== null){
+		                $scope.aUserGame = $scope.currentUser.userGame;
+	                }
 
-	                var initProfil = function(){
-		                $scope.userInfo = user.get();
-		                if(typeof($rootScope.userGameSelected) !== "undefined"){
-			                $scope.setUserGame($rootScope.userGameSelected);
-		                }	else if($scope.userInfo !== null && $scope.userInfo.userGame[0]){
-			                $scope.setUserGame($scope.userInfo.userGame[0]);
-		                }
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
 	                };
-
-	                $scope.$on('refreshProfil',function(event,data){
-		                $scope.userInfo = user.get();
-		                $scope.setUserGame($scope.userInfo.userGame[0]);
-	                });
-
-	                initProfil();
                 },
                 restrict: 'E',
                 templateUrl: 'html/directives/lfg-profile.html'

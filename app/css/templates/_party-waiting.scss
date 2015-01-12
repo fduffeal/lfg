@@ -1,4 +1,30 @@
 #party-waiting {
+	.welcome {
+		.btn2 {
+			width: 300px;
+			cursor: pointer;
+			position: relative;
+			img{
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				height: 20px;
+			}
+		}
+		.btn2.long {
+			width: 400px;
+		}
+		.url{
+			margin: 10px 0;
+			font-size: 1.4rem;
+			a{
+				color: white;
+				&:hover {
+					color: $color3;
+				}
+			}
+		}
+	}
 
 	.btn {
 		width: 100%;
@@ -11,6 +37,11 @@
 	.block {
 		width: 98%;
 		margin: auto;
+		.help {
+			font-size: 1.3rem;
+			text-align: center;
+			margin: 10px;
+		}
 
 		.loader{
 			height: 200px;
@@ -47,9 +78,16 @@
 		width: 100%;
 		text-align: left;
 		border: 0;
-		font-size: 13px;
+		font-size: 1.3rem;
+		border-collapse: collapse;
 		td, th {
 			overflow: hidden;
+			padding-left: 10px;
+		}
+
+		td:first-child {
+			font-weight: bold;
+			width: 10%;
 		}
 		thead {
 			background: #262525;
@@ -60,383 +98,66 @@
 
 		}
 		.name{
-			width: 40%;
+			span.co, span.noco {
+				margin-top:4px;
+				float: left;
+				margin-right: 5px;
+			}
 		}
-		.class{
-			width: 20%;
-
+		.place {
+			width: 3%;
 		}
-		.level{
+		.perso{
 			width: 10%;
 
 		}
 		.actions{
 			width: 30%;
+			a {
+				color: $color3;
+			}
 		}
 		@media screen and (max-width: 390px ) {
 			td.actions{
 				font-size: 13px;
 			}
 		}
-
-
 	}
-	.block2 {
-		width: 100%;
-		height: 214px;
-		background-image: url('../img/cartouche.jpg');
-		margin-top: 10px;
-		position: relative;
-		background-size: 100%;
-		.share {
-			position: absolute;
-			top: 5px;
-			right: 220px;
-			li {
-				display: inline-block;
-				margin: 0 3px;
-			}
-			a{
-				display: block;
-				background: url("../img/socials-logo.png");
-				width: 41px;
-				height: 43px;
-				float: left;
-				background-size: 100%;
-				&.facebook {
-					background-position: 0 -43px;
-				}
-				&.twitter {
-					background-position: 0 -1175px;
-				}
-			}
-
+	.team {
+		tbody tr:nth-child(odd) {
+			background: #e5e1e1
 		}
-		.line {
-			position: absolute;
-			left: 30px;
-			color: white;
-			width: 770px;
-			height: 180px;
-			top: 10px;
-			.platform {
-				font-size: 40px;
-				font-weight: bold;
-
+	}
+	.questions {
+		margin-top: 50px;
+		table {
+			td {
+				padding: 10px;
+				&:first-child{
+					width:90%;
+					font-weight: normal;
+					input {
+						width: 96%
+					}
+				}
+				&:last-child {
+					font-size: 1.2rem;
+					text-align: right;
+				}
 			}
-			.slotmatch {
-				position: absolute;
-				top: 1px;
-				right: -192px;
-				.loader span.two {
-					display: none;
-				}
-				@media screen and (max-width: 1415px ) {
-					right: -84px;
-					top: -1px;
-					svg {
-						width: 177px;
-						height: 177px;
-					}
-					.loader span {
-						font-size: 43px;
-					}
-				}
-				@media screen and (max-width: 1184px ) {
-					right: 92px;
-					top: -3px;
-					svg {
-						width: 137px;
-						height: 137px;
-					}
-					.loader span {
-						font-size: 31px;
-					}
-					.loader span.one {
-						left: 73px;
-					}
-					.loader .slot{
-						top: 35px;
-					}
-					.loader span.three {
-						left: 109px;
-					}
-				}
-				@media screen and (max-width: 980px ) {
-					right: 181px;
-					top: -4px;
-					.loader span {
-						font-size: 26px;
-					}
-					.loader span.one {
-						left: 77px;
-					}
-					.loader span.three {
-						left: 106px;
-						top: 26px;
-					}
-					svg {
-						width: 118px;
-						height: 118px;
-					}
-				}
-				@media screen and (max-width: 600px ) {
-					right: 366px;
-					svg {
-						width: 94px;
-						height: 94px;
-						path:first-child {
-							fill:white;
-							opacity: 0.5
-						}
-						path:last-child {
-							fill:white;
-						}
-					}
-					.loader .slot{
-						top: 27px;
-					}
-					.loader span.one {
-						left: 83px;
-					}
-					.loader span.three {
-						left: 105px;
-						top: 20px;
-					}
-					.loader span.two {
-						display: block;
-						left: 96px;
-						top: 10px;
-					}
-					.loader span {
-						font-size: 20px;
-					}
+			tr {
+				&:nth-child(odd){
+					background: #e5e1e1;
 
 				}
-				@media screen and (max-width: 390px ) {
-					right: 402px;
-					top: 36px;
-				}
-
-			}
-			.tags {
-				font-size: 30px;
-				color: #87cbc1;
-			}
-			.slots-mobile {
-				display: none;
-			}
-			.slots span {
-				position: absolute;
-				font-size: 67px;
-				color: #cacaca;
-
-				top: 20px;
-				&.one {
-					right: -90px;
-					top: 30px;
-
-				}
-				&.two {
-					right: -138px;
-					top: 88px;
-				}
-			}
-			.desc {
-				position: absolute;
-				top: 120px;
-				font-size: 19px;
-			}
-			.when {
-				font-size: 19px;
-				position: absolute;
-				right: 26px;
-				border: 15px;
-				bottom: -17px;
-			}
-			.link{
-				font-size: 18px;
-				bottom: -17px;
-				background: #2d2d2d;
-				padding: 5px 10px;
-				left: 0;
-				position: absolute;
-				a {
-					font-size: 18px;
+				&:last-child {
+					background: white;
+					.btn2 {
+						border: 0;
+					}
 				}
 			}
 
-		}
-		@media screen and (max-width: 1415px ) {
-			background-size: 101%;
-			height: 198px;
-			.line {
-				.link {
-					bottom: 8px;
-				}
-				.desc {
-					top: 97px;
-				}
-				.when {
-					right: 90px;
-					bottom: 8px;
-				}
-				.slots span.one {
-					right: 22px;
-					top: 27px;
-				}
-				.slots span.two {
-					right: -23px;
-					top: 72px;
-				}
-			}
-
-		}
-		@media screen and (max-width: 1184px ) {
-			background-size: 101%;
-			height: 154px;
-			.line {
-				.platform{
-					font-size: 30px;
-				}
-				.link {
-					bottom: 44px;
-					font-size: 15px;
-					a {
-						font-size: 15px;
-					}
-				}
-				.desc {
-					top: 77px;
-				}
-				.when {
-					right: 253px;
-					bottom: 150px;
-				}
-				.slots span {
-					font-size: 48px;
-				}
-				.slots span.one {
-					right: 199px;
-					top: 22px;
-				}
-				.slots span.two {
-					right: 168px;
-					top: 56px;
-				}
-			}
-			@media screen and (max-width: 980px ) {
-				background-size: 101%;
-				height: 132px;
-				.line {
-					.platform{
-						font-size: 20px;
-					}
-					.tags {
-						font-size: 16px;
-					}
-					.link {
-						bottom: 67px;
-					}
-					.desc {
-						top: 64px;
-						font-size: 14px;
-					}
-					.when {
-						right: 332px;
-						bottom: 158px;
-					}
-					.slots span {
-						font-size: 42px;
-					}
-					.slots span.one {
-						right: 283px;
-						top: 15px;
-					}
-					.slots span.two {
-						right: 257px;
-						top: 46px;
-					}
-				}
-
-			}
-			@media screen and (max-width: 600px ) {
-				background-size: 153%;
-				height: 132px;
-				.line {
-					.platform{
-						font-size: 20px;
-					}
-					.tags {
-						font-size: 16px;
-					}
-					.link {
-						bottom: 67px;
-					}
-					.desc {
-						top: 64px;
-						font-size: 14px;
-					}
-					.when {
-						right: 433px;
-						bottom: 158px;
-						font-size: 15px;
-					}
-					.slots {
-						display: none;
-					}
-					.slots-mobile {
-						display: block;
-						position: absolute;
-						left: 283px;
-						top: 40px;
-						font-size: 29px;
-					}
-
-
-
-				}
-
-			}
-			@media screen and (max-width: 390px ) {
-				background-size: 187%;
-				height: 132px;
-				.line {
-					left: 5px;
-					.platform{
-						font-size: 20px;
-					}
-					.tags {
-						font-size: 16px;
-					}
-					.link {
-						bottom: 59px;
-						a {
-							font-size: 13px;
-						}
-					}
-					.desc {
-						top: 62px;
-						font-size: 14px;
-					}
-					.when {
-						right: 506px;
-						bottom: 161px;
-						font-size: 15px;
-					}
-					.slots {
-						display: none;
-					}
-					.slots-mobile {
-						position: absolute;
-						left: 230px;
-						top: 40px;
-						font-size: 29px;
-					}
-
-				}
-
-			}
 		}
 	}
 	.text {
@@ -444,4 +165,66 @@
 		margin-top: 10px;
 		text-align: center;
 	}
+	.select {
+		text-align: center;
+		li {
+			display: inline-block;
+			width: 84px;
+			position: relative;
+			margin: 0 10px;
+			height: 170px;
+			vertical-align: middle;
+			&.selected {
+				opacity: 1;
+			}
+			&.no-selected {
+				opacity: 0.5;
+			}
+
+			a {
+				display: block;
+				width: 84px;
+				position: absolute;
+				height: 85px;
+				background-image: url('../img/sprite_ico_matchmaking2.png');
+				@include transition(all 0.1s ease-in-out 0s);
+				opacity: 0.85;
+				&:hover {
+
+					@include transform(rotate(5deg) scale(1.10));
+					opacity: 1;
+				}
+
+			}
+			span {
+				display: block;
+				position: absolute;
+				bottom: 50px;
+				text-align: center;
+				width: 100%;
+				font-size: 13px;
+				font-weight: bold;
+
+			}
+			select {
+				bottom: 0;
+				position: absolute;
+				left: 10px
+			}
+			&.nightfall a{
+				background-position: -97px 0;
+
+			}
+			&.day a{
+				background-position: -223px 0px;
+
+			}
+
+			&.raids a {
+				background-position: -353px;
+
+			}
+		}
+	}
+
 }

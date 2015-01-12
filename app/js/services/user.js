@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
-		function($http,storage,api,$rootScope,$q,$timeout,$window) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
 			'use strict';
             this.data = '';
 
@@ -18,6 +18,7 @@ angular.module('myApp.services')
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 				storage.setPersistant('user',JSON.stringify(data));
+				socket.addUser(data.username);
 			};
 
 			this.log = function(username,password){
@@ -56,12 +57,14 @@ angular.module('myApp.services')
 				return null;
 			};
 
-			this.register = function(email,password,username){
+			this.register = function(email,password,username,plateformId,gamertag){
 
 				email = $window.encodeURIComponent(email);
 				password = $window.encodeURIComponent(password);
 				username = $window.encodeURIComponent(username);
-				return api.call('register/'+email+'/'+password+'/'+username).success(function(data){
+				plateformId = $window.encodeURIComponent(plateformId);
+				gamertag = $window.encodeURIComponent(gamertag);
+				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -70,6 +73,7 @@ angular.module('myApp.services')
 				$rootScope.notificationsAlreadyRead = [];
 				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
+				socket.disconnect();
 			};
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
@@ -150,6 +154,44 @@ angular.module('myApp.services')
 			this.updateOnline = function(currentUser){
 				var username = $window.encodeURIComponent(currentUser.username);
 				return api.call('login/online/'+username+'/'+currentUser.token);
+			};
+
+			this.refresh = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('login/online/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.getAll = function(){
+				return api.call('users/');
+			};
+
+			this.addFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
+			};
+
+			this.removeFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
 			};
 		}
 	]

@@ -24,7 +24,15 @@ gulp.task('sass', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-	return gulp.src(['app/*.js','app/js/*/*.js'])
+	return gulp.src([
+		'app/bower_components/angular/angular.min.js',
+		'app/bower_components/angular-route/angular-route.min.js',
+		'app/bower_components/angular-cookies/angular-cookies.min.js',
+		'app/bower_components/angular-gettext/dist/angular-gettext.min.js',
+		'node_modules/destiny-client/destiny.min.js',
+		'app/*.js',
+		'app/js/*/*.js'
+	])
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('app/dist'))
 		.pipe(rename('all.min.js'))
@@ -40,4 +48,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
+gulp.task('default', ['scripts', 'watch']);

@@ -1,98 +1,110 @@
 #games {
-    .block{
-        width: 98%;
-        margin: auto;
-    }
-    .list-profiles {
-        .title-profile {
-            display: block;
-            background: #2d2d2d;
-            color: white;
-            padding: 0 20px;
-            float: left;
-            text-align: center;
-            height: 25px;
-            line-height: 25px;
-            font-size: 13px;
-            border-radius: 8px;
-            border: 2px solid #474646;
-            margin: 10px;
-            &:hover {
-                color: #87cbc1;
-            }
-            &.selected {
-                color: #f15641
-            }
-            &.create {
-                background: #87cbc1;
-                color: #2d2d2d;
-                border: 2px solid darken(#87cbc1, 20%);
-                font-weight: bold;
-                &:hover {
-                    color: #f15641
-                }
-            }
-        }
-    }
-    .sep {
-        border-bottom: 1px solid #cacaca;
-        width: 100%;
-        height: 1px;
-        clear: both;
-    }
-    .game-profile {
-        width: 90%;
-        margin: auto;
-        margin-top: 15px;
-        font-size: 13px;
-        .name, .gamertag,.select-option {
-            width: 100%;
-            margin: 10px 0;
-        }
-        .name, .gamertag {width: 98%;}
+	.welcome {
+		.help {
+			margin-bottom: 20px
+		}
+		.btn2 {
+			display: inline;
+			height: 35px;
+			padding: 10px;
+			margin-right: 10px;
+			margin-top: 20px;
+		}
+	}
+	.block{
+		width: 98%;
+		margin: auto;
+	}
+	.list-profiles {
+		.title-profile {
+			display: block;
+			background: #2d2d2d;
+			color: white;
+			padding: 0 20px;
+			float: left;
+			text-align: center;
+			height: 25px;
+			line-height: 25px;
+			font-size: 13px;
+			border-radius: 8px;
+			border: 2px solid #474646;
+			margin: 10px;
+			&:hover {
+				color: #87cbc1;
+			}
+			&.selected {
+				color: #f15641
+			}
+			&.create {
+				background: #87cbc1;
+				color: #2d2d2d;
+				border: 2px solid darken(#87cbc1, 20%);
+				font-weight: bold;
+				&:hover {
+					color: #f15641
+				}
+			}
+		}
+	}
+	.sep {
+		border-bottom: 1px solid #cacaca;
+		width: 100%;
+		height: 1px;
+		clear: both;
+	}
+	.game-profile {
+		width: 90%;
+		margin: auto;
+		margin-top: 15px;
+		font-size: 13px;
+		.name, .gamertag,.select-option {
+			width: 100%;
+			margin: 10px 0;
+		}
+		.name, .gamertag {width: 98%;}
 
-        .platforms {
-            @media screen and (max-width: 390px ) {
-                width: 196px;
-            }
-            width: 368px;
-            ul li {
-                width: 87px!important;
-                text-align: center;
-                vertical-align: middle;
-                display: inline-block;
-                font-size: 13px;
-                font-weight: bold;
-            }
-            .select-platform {
-                div {
-                    position: relative;
-                    width: 30px;
-                    margin: auto;
-                    height: 30px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    border: 3px solid #87cbc1;
-                    span {
-                        position: absolute;
-                        width: 24px;
-                        height: 24px;
-                        top: 3px;
-                        border-radius: 50%;
-                        left: 3px;
-                    }
-                    &.selected {
-                        span {
-                            background: #f15641
-                        }
-                    }
-                    &:hover {
-                        span {
-                            background: lighten(#f15641,20%);
-                        }
-                    }
-                }
-            }
-        }
-    }
+		.platforms {
+			@media screen and (max-width: 390px ) {
+				width: 196px;
+			}
+			width: 368px;
+			ul li {
+				width: 87px!important;
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+				font-size: 13px;
+				font-weight: bold;
+			}
+			.select-platform {
+				div {
+					position: relative;
+					width: 30px;
+					margin: auto;
+					height: 30px;
+					border-radius: 50%;
+					cursor: pointer;
+					border: 3px solid #87cbc1;
+					span {
+						position: absolute;
+						width: 24px;
+						height: 24px;
+						top: 3px;
+						border-radius: 50%;
+						left: 3px;
+					}
+					&.selected {
+						span {
+							background: #f15641
+						}
+					}
+					&:hover {
+						span {
+							background: lighten(#f15641,20%);
+						}
+					}
+				}
+			}
+		}
+	}
 }

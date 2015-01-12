@@ -1,36 +1,36 @@
 <lfg-header></lfg-header>
 <div id="games" class="wrap">
-    <lfg-profile></lfg-profile>
-    <div class="page">
-        <div class="block">
-            <h1 translate>Your games profiles</h1>
-            <div class="list-profiles">
-                <a href="" class="title-profile create" ng-click="selectProfil(null)" translate>New profile</a>
-                <a href="" class="title-profile" ng-repeat="profil in aProfils" ng-click="selectProfil(profil)">{{profil.gameProfilName}}</a>
-            </div>
-            <div class="sep"></div>
-            <div class="game-profile">
-	            <form name="formGameProfil" ng-submit="submitFormGameInfo()">
-		            <select ng-model="game" ng-options="gameData.name for gameData in games" required ng-show="false"></select>
+	<div class="welcome">
+		<div class="marge">
+			<div class="help">Créez un personnage pour commencer à utiliser le site internet et n'oubliez pas de mettre à jour vos gardiens en fonction des niveaux acquis !</div>
+			<a href="" class="btn2 high" ng-click="selectProfil(null)" translate>New character</a>
+			<a href="" class="btn2" ng-repeat="profil in aProfils" ng-click="selectProfil(profil)">{{profil.gameProfilName}}</a>
+		</div>
+	</div>
+	<div class="page">
+		<div class="block">
+			<div class="game-profile">
+				<form name="formGameProfil" ng-submit="submitFormGameInfo()">
+					<select ng-model="game" ng-options="gameData.name for gameData in games" required ng-show="false"></select>
 
-		            <div class="platforms">
-		                <select name="plateformInput" ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" required></select>
-	                </div>
-		            <input type="text" class="name" ng-model="profilName" placeholder="Profil name eg:titan 30 xbox" required><br />
-		            <input type="text" class="gamertag" ng-model="gameUsername" placeholder="Gamer tag eg:Psn Id, Xbox Live Id, ..." required><br />
-	                <select class="select-option" ng-model="data_1">
-	                    <option value="" disabled selected>Class</option>
-	                    <option value="titan">titan</option>
-	                    <option value="hunter">hunter</option>
-	                    <option value="warlock">warlock</option>
-	                </select><br />
-		            <label>Level :</label><input type="number" min="1" max="32" ng-model="data_2" required>
+					<div class="platforms">
+						<select name="plateformInput" ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" required></select>
+					</div>
+					<input type="text" class="name" ng-model="profilName" placeholder="Profil name eg:titan 30 xbox" required><br />
+					<input type="text" class="gamertag" ng-model="gameUsername" placeholder="Gamer tag eg:Psn Id, Xbox Live Id, ..." required><br />
+					<select class="select-option" ng-model="data_1">
+						<option value="" disabled selected>Class</option>
+						<option value="titan">titan</option>
+						<option value="hunter">hunter</option>
+						<option value="warlock">warlock</option>
+					</select><br />
+					<label>Level : </label><input type="number" min="1" max="32" ng-model="data_2" required>
 
 
-	                <input type="submit" class="btn">
-	            </form>
-            </div>
-        </div>
-    </div>
+					<input type="submit" class="btn">
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 <lfg-footer></lfg-footer>

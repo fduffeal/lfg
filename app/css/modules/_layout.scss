@@ -3,9 +3,138 @@ body, html {
 	margin: 0;
 	padding: 0;
 	background: #ededed;
-	font-family: arial;
-	overflow-x: hidden;
+	font-family: 'Open Sans', sans-serif;
 	height: 100%;
+	font-size: 62.5%;
+}
+span.co, span.noco{
+	display: block;
+	width: 10px;
+	margin-top: 10px;
+	height: 10px;
+	border-radius: 50%;
+	@media screen and (max-width: 800px ) {
+		display: none;
+	}
+}
+span.co {
+	background: green;
+}
+span.noco{
+	background: red
+
+}
+
+.list-player {
+	.character {
+		@media screen and (max-width: 800px ) {
+			background: none!important;
+			color: black;
+			width: auto;
+			font-size: 13px!important
+		}
+	}
+	.embleme {
+		@media screen and (max-width: 800px ) {
+			height:20px!important;
+			width: 20px!important;
+		}
+	}
+	.left {
+		@media screen and (max-width: 800px ) {
+			float: none!important;
+			margin: 0!important;
+		}
+		.name {
+			@media screen and (max-width: 800px ) {
+				font-weight: bold;
+
+			}
+		}
+		.team {
+			@media screen and (max-width: 800px ) {
+				display: none;
+
+			}
+		}
+	}
+	.right {
+		@media screen and (max-width: 800px ) {
+			float: none!important;
+			text-align: left!important;
+			margin:0!important;
+			.level, .classe {
+				float: left;
+				margin-right: 5px;
+			}
+			.level {
+				margin: 0!important;
+				color: black!important;
+				float: right;
+				font-size: 14px!important;
+			}
+		}
+	}
+}
+
+.character {
+	background-repeat: no-repeat!important;
+	position: relative;
+	height: 60px;
+	width: 300px;
+	display: inline-block;
+	color: white;
+	margin-right: 10px;
+	background-size: 100%!important;
+	background-repeat: no-repeat!important;
+
+
+	a {
+		color: white!important;
+		display: block;
+	}
+	.embleme {
+		float: left;
+		width: 20%;
+
+
+
+	}
+	.left {
+		float: left;
+		margin: 10px 0 0 10px;
+		.team {
+			font-size: 1.2rem;
+			margin-top: 5px;
+		}
+		.name {
+
+			margin-bottom: 2px;
+
+
+
+		}
+	}
+	.right {
+		float: right;
+
+		margin: 10px 10px 0 0;
+		text-align: center;
+		.level {
+			font-size: 24px;
+
+			margin-top: -10px;
+			margin-bottom: -1px;
+			color:rgba(245, 220, 86, 1);
+			&:before {
+				content: "\2726";
+				display: inline-block;
+				vertical-align: 22%;
+				font-size: 50%;
+			}
+		}
+	}
+
 }
 ul, li {
 	margin: 0;
@@ -15,6 +144,7 @@ ul, li {
 .wrap {
 	min-height: 87%;
 	height: auto!important;
+	margin-top: 70px;
 }
 
 .ng-scope {
@@ -24,11 +154,71 @@ ul, li {
 #intervalId {
 	height: 0;
 }
+.welcome {
+	background: $color2;
+	font-size: 1.3rem;
+	margin: 20px auto 0 auto;
+	width: 95%;
+	color: white;
+	.character {
+		width: 300px;
+		display: block;
+		float: left;
+		border: 2px solid transparent;
+		height: 60px!important;
+		@include transition (all 0.3s ease);
+		@media screen and (max-width: 350px ) {
+			width: 270px!important;
+			.embleme {
+				width: 18%!important;
+			}
+			a{
+				width: 270px!important;
+			}
+		}
+		.team {
+			font-size: 12px
+		}
+		&:hover, &.selected{
+			@include box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
+			border: 2px solid white
+		}
+
+		a {
+			width: 300px;
+			height: 60px;
+
+
+
+		}
+		.name {
+			@media screen and (min-width: 1700px ) {
+				font-size: 14px;
+				margin-bottom: 2px;
+			}
+		}
+		.level {
+			@media screen and (min-width: 1700px ) {
+				font-size: 24px;
+
+			}
+		}
+	}
+	.marge {
+		padding: 20px;
+	}
+	.btn2 {
+		width: 150px;
+		font-weight: bold;
+		font-size: 1.4rem;
+		margin-top: 10px;
+	}
+}
 a {
 	text-decoration: none;
 }
 h1{
-	background: #f15641;
+	background: $color2;
 	display: block;
 	font-size: 13px;
 	text-align: center;
@@ -36,6 +226,7 @@ h1{
 	color: white;
 	line-height: 30px;
 	width: 100%;
+	margin-bottom: 0
 }
 
 .fb_iframe_widget {
@@ -43,32 +234,10 @@ h1{
 }
 
 .page {
-	@media screen and (max-width: 1415px ) {
-		width: 890px;
-	}
-	@media screen and (max-width: 1184px ) {
-		width: 690px;
-	}
-	@media screen and (max-width: 980px ) {
-		width: 590px;
-		margin: 10px auto 30px;
-		float: none;
-	}
-	@media screen and (max-width: 600px ) {
-		width: 390px;
-		margin: 10px auto 30px;
-		float: none;
-	}
-	@media screen and (max-width: 390px ) {
-		width: 320px;
-		margin: 10px auto 30px;
-		float: none;
-	}
 	background: white;
-	width: 1025px;
+	width: 95%;
+	margin:auto;
 	margin-top: 20px;
-	float: left;
-	margin-left: 33px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
 }
@@ -122,5 +291,18 @@ input.error {
 	@include transition(all 0.2s ease-in-out);
 	&:hover {
 		color: #f15641;
+	}
+}
+
+.btn2 {
+	height: 35px;
+	display: block;
+	background: $color1;
+	padding: 0 20px 0 10px;
+	color: white;
+	line-height: 35px;
+	@include transition(all 0.2s ease-in-out);
+	&:hover {
+		color: $color2;
 	}
 }

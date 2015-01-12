@@ -1,0 +1,56 @@
+<lfg-header></lfg-header>
+<div id="list-users" class="wrap">
+	<div class="page">
+		<div class="list">
+
+			<h1>Liste d'utilisateurs </h1>
+			<table border="0">
+				<thead>
+					<tr>
+						<th class="list-player"><a href="">Player</a></th>
+						<th class="list-class"><a href="">Class</a></th>
+						<th class="list-level"><a href="">Level</a></th>
+						<th class="list-last"><a href="">Last connection</a></th>
+						<th class="list-etat"><a href="">Etat</a></th>
+						<th class="list-action"><a href="">Action</a></th>
+							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
+							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
+						</tr>
+					</thead>
+				</table>
+				<a class="line" >
+					<table  border="0" >
+
+						<tbody>
+							<tr ng-repeat="user in aUsers">
+
+								<td class="list-player">
+									{{user.username}}
+								</td>
+								<td class="list-class">Titan</td>
+								<td class="list-level">31</td>
+								<td class="list-last">
+									<span ng-if="!user.connected">{{user.onlineTime | filterSince}}</span>
+									<span ng-if="user.connected" translate>online</span>
+								</td>
+								<td class="list-etat"><span ng-class="{'co':user.connected,'noco':!user.connected}"></span></td>
+								<td class="list-action">
+									<span ng-if="!user.me && user.canAddToFriendList" ng-click="addToFriendList(user.username)">add to friendlist</span>
+									<span ng-if="!user.me && !user.canAddToFriendList" ng-click="removeFromFriendList(user.username)">add to friendlist</span>
+									<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)">block</span>
+									<span ng-if="!user.me && !user.canAddToBlackList" ng-click="removeFromBlockList(user.username)">block</span>
+								</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+				</a>
+			</div>
+
+			<div lfg-interval="intervalId"></div>
+		</div>
+
+	</div>
+</div>
+<lfg-footer></lfg-footer>
