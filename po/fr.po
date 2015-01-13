@@ -509,6 +509,10 @@ msgstr "Votre gamertag"
 msgid "Your message"
 msgstr "Votre message"
 
+#: app/dynamique_translate.html
+msgid "an error occured, please try again later, sorry for the inconvenience"
+msgstr "une erreur est survenue, essayez plus tard, désolé pour le dérangement"
+
 #: app/html/controllers/rdv.html
 msgid "create an account"
 msgstr "créer un compte"
@@ -564,6 +568,10 @@ msgstr "pour sauvegarder votre personnage la prochaine fois !"
 #: app/dynamique_translate.html
 msgid "warlock"
 msgstr "arcaniste"
+
+#: app/dynamique_translate.html
+msgid "your annoncement has been send and will appear in few second, please wait"
+msgstr "votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de patienter"
 
 #~ msgid "Ask to join the party"
 #~ msgstr "Demander à rejoindre la partie"
