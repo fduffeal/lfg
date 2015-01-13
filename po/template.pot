@@ -466,6 +466,10 @@ msgstr ""
 msgid "Your message"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "an error occured, please try again later, sorry for the inconvenience"
+msgstr ""
+
 #: app/html/controllers/rdv.html
 msgid "create an account"
 msgstr ""
@@ -520,4 +524,8 @@ msgstr ""
 
 #: app/dynamique_translate.html
 msgid "warlock"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "your annoncement has been send and will appear in few second, please wait"
 msgstr ""

@@ -32,7 +32,7 @@ angular.module('myApp.directives')
                             }
                         }
 
-                        if($scope.selectedPerso === null){
+                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
                             $scope.selectedPerso = $scope.aUserGame[0];
                         }
                     };
