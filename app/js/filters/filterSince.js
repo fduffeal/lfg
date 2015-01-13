@@ -12,7 +12,11 @@ angular.module('myApp.filters').filter('filterSince', function () {
 			if(month < 10){
 				month = "0"+month;
 			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes();
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
 		}
 
 		var one_minute=1000*60*1;

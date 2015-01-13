@@ -18,27 +18,17 @@ msgid ""
 "can create an announcement. To create or join a party, an account is "
 "required :)"
 msgstr ""
-"<span class=\"title\">FAQ: </span><br>Sans compte Esbattle, vous pouvez "
-"seulement créer une annonce. Pour pouvoir créer ou rejoindre une partie, "
-"l'inscription au site est requis. :)"
-
-#: app/html/controllers/rdv.html
-msgid ""
-"<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new "
-"feature :<br>Create an announcement with your destiny character, just put "
-"your plateform and your GamerTag ou PSN ID !<br>Choose your games console "
-"and watch all announcement or schedule party.<br>Use tag like #raid, "
-"#cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a "
-"schedule party easily with our new interface !"
-msgstr ""
-"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et "
-"nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de "
-"Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !"
-"<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les "
-"parties planifiées<br>Utilisez les tags comme #raid, #cropta, "
-"#caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!"
-"<br>Créer plus facilement une partie planifiée avec notre nouvelle "
-"interface !"
+"<span class=\"title\"><b>FAQ: </b></span><br/>- Sans compte Esbattle, vous "
+"pouvez seulement créer une annonce. Pour pouvoir créer ou rejoindre une "
+"partie, l'inscription au site est requis.<br/>- Partie: Une partie permet de "
+"proposer aux joueurs de se regrouper pour un raid, un assaut, une mission. "
+"Vous pouvez choisir l'heure à laquelle vous souhaitez démarrer, ainsi que le "
+"nombre de slots.<br/> Annonce: Une annonce comme son nom l'indique est juste "
+"un message si par exemple, vous recherchez un joueur, ou un raid (etc) sans "
+"avoir l'envie de créer et d'organiser une partie<br/>- Créer une partie: "
+"Lorsque vous venez de créer une partie, une URL vous sera transmise pour "
+"pouvoir la partager sur des forums, ou d'autres sites internet. Lorsqu'un "
+"joueur rejoindra votre partie, une notification apparaitra."
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -93,10 +83,6 @@ msgstr "Rendez vous non trouvé"
 msgid "Are you sure to kick :"
 msgstr "Êtes-vous sûr de vouloir kicker:"
 
-#: app/html/controllers/party-waiting.html
-msgid "Ask to join the party"
-msgstr "Demander à rejoindre la partie"
-
 #: app/html/controllers/profile.html
 msgid "Back"
 msgstr "Retour"
@@ -125,7 +111,6 @@ msgstr "Créer une partie"
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
-#: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
 msgstr "Créer un profil pour ce jeu et rejoignez !"
 
@@ -148,6 +133,10 @@ msgstr ""
 msgid "Creator"
 msgstr "Createur"
 
+#: app/dynamique_translate.html
+msgid "Cropta's End"
+msgstr "La Chute de Cropta"
+
 #: app/html/controllers/party-waiting.html
 msgid "Decline"
 msgstr "Refuser"
@@ -165,7 +154,7 @@ msgstr "Adresse email"
 msgid "Email Address"
 msgstr "Adresse email"
 
-#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
+#: app/html/controllers/party-waiting.html
 msgid "Ended"
 msgstr "Terminé"
 
@@ -294,6 +283,10 @@ msgstr "Nouveau personnage"
 msgid "New party on"
 msgstr "Nouvelle partie sur"
 
+#: app/dynamique_translate.html
+msgid "Nightfall"
+msgstr "Nuit noire"
+
 #: app/html/controllers/party-waiting.html
 msgid "No"
 msgstr "Non"
@@ -416,6 +409,18 @@ msgstr "Début"
 msgid "Start:"
 msgstr "Début:"
 
+#: app/dynamique_translate.html
+msgid "Story"
+msgstr "Histoire"
+
+#: app/dynamique_translate.html
+msgid "Story Challenge"
+msgstr "Histoire épique"
+
+#: app/dynamique_translate.html
+msgid "Strike"
+msgstr "Assaut"
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
@@ -428,10 +433,6 @@ msgstr "Ce nom d'utilisateur est déjà pris"
 #: app/html/controllers/register.html
 msgid "This email is already used."
 msgstr "Cet email est déjà pris"
-
-#: app/html/controllers/party-waiting.html
-msgid "This party is ended, create a new party !"
-msgstr "Cette partie est terminée, créez une nouvelle partie !"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -467,9 +468,21 @@ msgstr "Nom d'utilisateur"
 msgid "Username on this game"
 msgstr "Nom d'utilisateur sur ce jeu"
 
+#: app/dynamique_translate.html
+msgid "Vault of Glass"
+msgstr "Caveau de Verre"
+
+#: app/dynamique_translate.html
+msgid "VaultOfGlass"
+msgstr "CaveauDeVerre"
+
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
 msgstr "Joueurs voulant rejoindre la partie"
+
+#: app/dynamique_translate.html
+msgid "Weekly Heroic Strike"
+msgstr "Assaut épique de la semaine"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -500,6 +513,14 @@ msgstr "Votre message"
 msgid "create an account"
 msgstr "créer un compte"
 
+#: app/dynamique_translate.html
+msgid "daily"
+msgstr "du jour"
+
+#: app/dynamique_translate.html
+msgid "epic"
+msgstr "épique"
+
 #: app/html/controllers/notification.html
 msgid "from"
 msgstr "de"
@@ -511,6 +532,10 @@ msgstr "a quitté. Vous contrôlez "
 #: app/dynamique_translate.html
 msgid "hunter"
 msgstr "chasseur"
+
+#: app/html/controllers/party-waiting.html
+msgid "join the party !"
+msgstr "rejoins la partie !"
 
 #: app/html/controllers/notification.html
 msgid "on"
@@ -539,6 +564,35 @@ msgstr "pour sauvegarder votre personnage la prochaine fois !"
 #: app/dynamique_translate.html
 msgid "warlock"
 msgstr "arcaniste"
+
+#~ msgid "Ask to join the party"
+#~ msgstr "Demander à rejoindre la partie"
+
+#~ msgid "Formated Party"
+#~ msgstr "Partie préformatée"
+
+#~ msgid "Personalized Party"
+#~ msgstr "Partie Personnalisée"
+
+#~ msgid "This party is ended, create a new party !"
+#~ msgstr "Cette partie est terminée, créez une nouvelle partie !"
+
+#~ msgid ""
+#~ "<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and "
+#~ "new feature :<br>Create an announcement with your destiny character, just "
+#~ "put your plateform and your GamerTag ou PSN ID !<br>Choose your games "
+#~ "console and watch all announcement or schedule party.<br>Use tag like "
+#~ "#raid, #cropta, #caveaudeverre, #level30 to find easily what you want !"
+#~ "<br>Create a schedule party easily with our new interface !"
+#~ msgstr ""
+#~ "<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et "
+#~ "nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de "
+#~ "Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !"
+#~ "<br>Sélectionnez une console de jeux et regardez toutes les annonces ou "
+#~ "les parties planifiées<br>Utilisez les tags comme #raid, #cropta, "
+#~ "#caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!"
+#~ "<br>Créer plus facilement une partie planifiée avec notre nouvelle "
+#~ "interface !"
 
 #~ msgid ""
 #~ "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you "

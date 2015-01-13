@@ -140,7 +140,7 @@ angular.module('myApp.services')
 						continue;
 					}
 
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
+					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
 						continue;
 					}
 

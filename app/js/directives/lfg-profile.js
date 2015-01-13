@@ -15,6 +15,9 @@ angular.module('myApp.directives')
 
 	                if($scope.currentUser !== null){
 		                $scope.aUserGame = $scope.currentUser.userGame;
+                        if($scope.selectedPerso === null){
+                            $scope.selectedPerso = $scope.aUserGame[0];
+                        }
 	                }
 
 	                $scope.selectPerso = function(persoSelected){

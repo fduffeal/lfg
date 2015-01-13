@@ -5,9 +5,9 @@
 		<span translate class="txt faq">
 			<span class="title">FAQ: </span><br/>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)
 		</span>
-		<span translate class="txt news">
-			<span class="title">What's new: 12 jan 2015</span><br/>New Design and new feature :<br/>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br/>Choose your games console and watch all announcement or schedule party.<br/>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br/>Create a schedule party easily with our new interface !
-		</span>
+		<!--<span translate class="txt news">-->
+			<!--<span class="title">What's new: 12 jan 2015</span><br/>New Design and new feature :<br/>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br/>Choose your games console and watch all announcement or schedule party.<br/>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br/>Create a schedule party easily with our new interface !-->
+		<!--</span>-->
 			<br/>
 
 			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
@@ -124,7 +124,7 @@
 									                    user-game="rdv.author"></lfg-profile-bungie>
 								</td>
 								<td class="list-type"><span translate>Party</span> <br/>
-									<span ng-if="!isEnded(rdv)" class="slot">Slots
+									<span class="slot">Slots
 										{{rdv.users.length}}/{{ rdv.nbParticipant}}
 									</span><br/>
 									<span>
@@ -134,10 +134,7 @@
 								<td class="list-infos"><span
 										ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
 								</td>
-								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd
-									HH:mm'}}
-								</td>
-								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
+								<td class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 							</tr>
 							</tbody>
 
@@ -169,7 +166,7 @@
 								<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
 							</td>
 							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/>
-								<span ng-if="!isEnded(rdv)" class="slot">Slots
+								<span class="slot">Slots
 									{{rdv.users.length}}/{{ rdv.nbParticipant}}
 								</span><br/>
 								<span>

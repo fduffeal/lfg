@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang',
-		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang) {
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang','gettextCatalog',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang,gettextCatalog) {
 			'use strict';
 
 			$scope.lang = lang.getCurrent();
@@ -17,6 +17,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			$scope.game = null;
 			$scope.plateform = null;
+			$scope.profilSelected = null;
 
 			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
@@ -46,11 +47,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			var updateProfilsAvailable = function(){
 				if($scope.currentUser !== null && $scope.game !== null){
 					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
-					if($scope.profils[0]){
-						$scope.profilSelected = $scope.profils[0];
-					}
 				}
-
 			};
 
 			var updateTime = function(){
@@ -130,7 +127,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 					return;
 				}
 				$scope.tags = templateSelectedModel.concatTags;
-				$scope.description = templateSelectedModel.description;
+				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
+				$scope.slotTotal = templateSelectedModel.nbParticipant;
 			});
 
 		}

@@ -7,10 +7,6 @@ msgstr ""
 msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)"
 msgstr ""
 
-#: app/html/controllers/rdv.html
-msgid "<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !"
-msgstr ""
-
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
@@ -54,10 +50,6 @@ msgstr ""
 msgid "Are you sure to kick :"
 msgstr ""
 
-#: app/html/controllers/party-waiting.html
-msgid "Ask to join the party"
-msgstr ""
-
 #: app/html/controllers/profile.html
 msgid "Back"
 msgstr ""
@@ -87,7 +79,6 @@ msgstr ""
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/matchmaking.html
 #: app/html/controllers/party-create.html
-#: app/html/controllers/party-waiting.html
 msgid "Create a profile for this game and join !"
 msgstr ""
 
@@ -97,6 +88,10 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Creator"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Cropta's End"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -117,7 +112,6 @@ msgid "Email Address"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
-#: app/html/controllers/rdv.html
 msgid "Ended"
 msgstr ""
 
@@ -241,6 +235,10 @@ msgstr ""
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "New party on"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Nightfall"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -367,6 +365,18 @@ msgstr ""
 msgid "Start:"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Story"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Story Challenge"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Strike"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
@@ -378,10 +388,6 @@ msgstr ""
 
 #: app/html/controllers/register.html
 msgid "This email is already used."
-msgstr ""
-
-#: app/html/controllers/party-waiting.html
-msgid "This party is ended, create a new party !"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -419,8 +425,20 @@ msgstr ""
 msgid "Username on this game"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Vault of Glass"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "VaultOfGlass"
+msgstr ""
+
 #: app/html/controllers/party-waiting.html
 msgid "Waiting Players"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Weekly Heroic Strike"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -452,6 +470,14 @@ msgstr ""
 msgid "create an account"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "daily"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "epic"
+msgstr ""
+
 #: app/html/controllers/notification.html
 msgid "from"
 msgstr ""
@@ -462,6 +488,10 @@ msgstr ""
 
 #: app/dynamique_translate.html
 msgid "hunter"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "join the party !"
 msgstr ""
 
 #: app/html/controllers/notification.html
