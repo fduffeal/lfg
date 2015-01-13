@@ -864,7 +864,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			});
 
 			$scope.$watch('profilSelected',function(newValue,oldValue){
-				if(typeof newValue !== "undefined" ){
+				if(typeof newValue !== "undefined" && newValue !== null){
 					$scope.updatePlateform(newValue.plateform);
 				}
 			});
@@ -1766,8 +1766,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-    .directive('lfgProfile', ['user',
-        function(user) {
+    .directive('lfgProfile', ['user','storage',
+        function(user,storage) {
             'use strict';
             return {
                 scope:{
@@ -1780,16 +1780,31 @@ angular.module('myApp.directives')
 
 	                $scope.currentUser = user.get();
 
-	                if($scope.currentUser !== null){
-		                $scope.aUserGame = $scope.currentUser.userGame;
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
+                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
+	                };
+
+                    var setSelectedPerso = function(){
+                        if($scope.currentUser !== null){
+                            $scope.aUserGame = $scope.currentUser.userGame;
+                        }
+
+                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
+                        if(typeof selectedProfilCookieId !== "undefined"){
+                            for(var key in $scope.aUserGame){
+                                if($scope.aUserGame[key].id == selectedProfilCookieId){
+                                    $scope.selectedPerso = $scope.aUserGame[key];
+                                }
+                            }
+                        }
+
                         if($scope.selectedPerso === null){
                             $scope.selectedPerso = $scope.aUserGame[0];
                         }
-	                }
+                    };
 
-	                $scope.selectPerso = function(persoSelected){
-		                $scope.selectedPerso = persoSelected;
-	                };
+                    setSelectedPerso();
                 },
                 restrict: 'E',
                 templateUrl: 'html/directives/lfg-profile.html'
