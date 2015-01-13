@@ -405,7 +405,7 @@ angular.module('myApp.filters', []);
 
 angular.module('myApp').run(['gettextCatalog', function (gettextCatalog) {
 /* jshint -W100 */
-    gettextCatalog.setStrings('fr', {"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span><br>Sans compte Esbattle, vous pouvez seulement créer une annonce. Pour pouvoir créer ou rejoindre une partie, l'inscription au site est requis. :)","<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !":"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les parties planifiées<br>Utilisez les tags comme #raid, #cropta, #caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!<br>Créer plus facilement une partie planifiée avec notre nouvelle interface !","<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","All":"Tous","Announcement":"Annonce","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Ask to join the party":"Demander à rejoindre la partie","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Choose a character":"Choisissez un personnage","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create a party":"Créer une partie","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>":"Creer un compte esbatte pour avoir vos personnages de Destiny sur www.esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez votre mot de passe, nous vous enverrons un email pour vérifier votre identité<br>","Creator":"Createur","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter a description":"Entrer une description","Enter your informations or":"Entrez vos informations ou","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Find":"Chercher","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","GamerTag or PSN ID":"GamerTag ou PSN ID","Gamertag":"Gamertag","Guardian":"Gardien","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Infos":"Infos","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Login Esbattle":"Login Esbattle","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","My partys":"Mes parties","New announcement":"Nouvelle annonce","New character":"Nouveau personnage","New party on":"Nouvelle partie sur","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Open":"Ouvert","Party":"Partie","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Player":"Joueur","Please check your GamerTag or PSN ID, we didn't found any Destiny characters":"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun personnage sur Destiny","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Post an announcement":"Poster une annonce","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register on Esbattle.com":"Inscription sur Esbattle.com","Retrieve my account !":"Récupérer mon compte !","Send":"Envoyer","Send it":"Envoyer","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Start:":"Début:","Team":"Equipe","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Url of the party:":"Url de la partie:","Use this character":"Utiliser ce personnage","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Waiting Players":"Joueurs voulant rejoindre la partie","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your gamertag":"Votre gamertag","Your message":"Votre message","create an account":"créer un compte","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","hunter":"chasseur","on":"sur","online":"en ligne","password doesn't match":"Les mots de passe ne correspondent pas","this party":"cette partie","titan":"titan","to save your character for the next time !":"pour sauvegarder votre personnage la prochaine fois !","warlock":"arcaniste","<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle est requis :)","<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai":"<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters ","Join this party to see player's gamertag":"Rejoignez cette partie pour voir le gamertag des joueurs","Register with your email address":"S'enregistrer avec votre adresse email","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !"});
+    gettextCatalog.setStrings('fr', {"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)":"<span class=\"title\"><b>FAQ: </b></span><br/>- Sans compte Esbattle, vous pouvez seulement créer une annonce. Pour pouvoir créer ou rejoindre une partie, l'inscription au site est requis.<br/>- Partie: Une partie permet de proposer aux joueurs de se regrouper pour un raid, un assaut, une mission. Vous pouvez choisir l'heure à laquelle vous souhaitez démarrer, ainsi que le nombre de slots.<br/> Annonce: Une annonce comme son nom l'indique est juste un message si par exemple, vous recherchez un joueur, ou un raid (etc) sans avoir l'envie de créer et d'organiser une partie<br/>- Créer une partie: Lorsque vous venez de créer une partie, une URL vous sera transmise pour pouvoir la partager sur des forums, ou d'autres sites internet. Lorsqu'un joueur rejoindra votre partie, une notification apparaitra.","<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","All":"Tous","Announcement":"Annonce","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Choose a character":"Choisissez un personnage","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create a party":"Créer une partie","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>":"Creer un compte esbatte pour avoir vos personnages de Destiny sur www.esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez votre mot de passe, nous vous enverrons un email pour vérifier votre identité<br>","Creator":"Createur","Cropta's End":"La Chute de Cropta","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter a description":"Entrer une description","Enter your informations or":"Entrez vos informations ou","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Find":"Chercher","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","GamerTag or PSN ID":"GamerTag ou PSN ID","Gamertag":"Gamertag","Guardian":"Gardien","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Infos":"Infos","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Login Esbattle":"Login Esbattle","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","My partys":"Mes parties","New announcement":"Nouvelle annonce","New character":"Nouveau personnage","New party on":"Nouvelle partie sur","Nightfall":"Nuit noire","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Open":"Ouvert","Party":"Partie","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Player":"Joueur","Please check your GamerTag or PSN ID, we didn't found any Destiny characters":"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun personnage sur Destiny","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Post an announcement":"Poster une annonce","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register on Esbattle.com":"Inscription sur Esbattle.com","Retrieve my account !":"Récupérer mon compte !","Send":"Envoyer","Send it":"Envoyer","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Start:":"Début:","Story":"Histoire","Story Challenge":"Histoire épique","Strike":"Assaut","Team":"Equipe","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Url of the party:":"Url de la partie:","Use this character":"Utiliser ce personnage","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Vault of Glass":"Caveau de Verre","VaultOfGlass":"CaveauDeVerre","Waiting Players":"Joueurs voulant rejoindre la partie","Weekly Heroic Strike":"Assaut épique de la semaine","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your gamertag":"Votre gamertag","Your message":"Votre message","create an account":"créer un compte","daily":"du jour","epic":"épique","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","hunter":"chasseur","join the party !":"rejoins la partie !","on":"sur","online":"en ligne","password doesn't match":"Les mots de passe ne correspondent pas","this party":"cette partie","titan":"titan","to save your character for the next time !":"pour sauvegarder votre personnage la prochaine fois !","warlock":"arcaniste","Ask to join the party":"Demander à rejoindre la partie","Formated Party":"Partie préformatée","Personalized Party":"Partie Personnalisée","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !":"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les parties planifiées<br>Utilisez les tags comme #raid, #cropta, #caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!<br>Créer plus facilement une partie planifiée avec notre nouvelle interface !","<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle est requis :)","<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai":"<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters ","Join this party to see player's gamertag":"Rejoignez cette partie pour voir le gamertag des joueurs","Register with your email address":"S'enregistrer avec votre adresse email","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !"});
 /* jshint +W100 */
 }]);
 angular.module('myApp.controllers').controller('404Ctrl',
@@ -824,8 +824,8 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 );
 
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang',
-		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang) {
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang','gettextCatalog',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang,gettextCatalog) {
 			'use strict';
 
 			$scope.lang = lang.getCurrent();
@@ -842,6 +842,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 
 			$scope.game = null;
 			$scope.plateform = null;
+			$scope.profilSelected = null;
 
 			rdv.getFormInfo().then(function(data){
 				$scope.formInfo = data;
@@ -871,11 +872,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			var updateProfilsAvailable = function(){
 				if($scope.currentUser !== null && $scope.game !== null){
 					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
-					if($scope.profils[0]){
-						$scope.profilSelected = $scope.profils[0];
-					}
 				}
-
 			};
 
 			var updateTime = function(){
@@ -955,7 +952,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 					return;
 				}
 				$scope.tags = templateSelectedModel.concatTags;
-				$scope.description = templateSelectedModel.description;
+				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
+				$scope.slotTotal = templateSelectedModel.nbParticipant;
 			});
 
 		}
@@ -1227,8 +1225,8 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage) {
 			'use strict';
 
 			lang.initLang();
@@ -1260,9 +1258,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.aRdv = [];
 			$scope.aRdvNormaux = [];
 
-			$scope.plateformSelected = '';
-			$scope.plateformNameSelected = 'ALL';
-
 			$scope.tags = '';
 
 			$scope.goToParty = function(id){
@@ -1284,6 +1279,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.allTags = data.tags;
 				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
 				$scope.aPlateforms = data.plateforms;
+				setPlateformCookie();
 			});
 
 			var formatRdv = function(rdv){
@@ -1316,7 +1312,15 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
 					if($scope.currentUser !== null){
-						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,$scope.plateformSelected,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+
+						if(typeof $scope.plateform === "undefined"){
+							var plateformId = null;
+						}else {
+							var plateformId = $scope.plateform.id;
+						}
+
+						//if($scope.plateform)
+						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 					}
 
 				}).error(function(data, status, headers, config) {
@@ -1324,11 +1328,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					// or server returns response with an error status.
 				});
 
-			};
-
-			$scope.updatePlateform = function(id,nom){
-				$scope.plateformSelected = id;
-				$scope.plateformNameSelected = nom;
 			};
 
 			$scope.displayWelcome = ($route.current.action === 'welcome');
@@ -1404,14 +1403,43 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				})
 			};
 
-			$scope.type = 'type_all';
+
+			var setTypeFilter = function(){
+				var type_rdv = storage.getPersistant('cookie_type_rdv');
+				if(typeof type_rdv === "undefined"){
+					$scope.type = 'type_all';
+				} else {
+					$scope.type = type_rdv;
+				}
+				$scope.$watch('type',function(newValue, oldValue){
+					storage.setPersistant('cookie_type_rdv',newValue);
+				});
+			};
+
+
+			var setPlateformCookie = function(){
+				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
+				if(typeof plateform_rdv !== "undefined"){
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].id == plateform_rdv){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				}
+
+				$scope.$watch('plateform',function(newValue, oldValue){
+					if(typeof newValue !== "undefined" && newValue !== null){
+						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
+					}
+				});
+			};
 
 
 			//init
 			var init = function(){
-
 				refreshRdvData();
 				autoRefreshData();
+				setTypeFilter();
 			}
 
 			init();
@@ -1754,6 +1782,9 @@ angular.module('myApp.directives')
 
 	                if($scope.currentUser !== null){
 		                $scope.aUserGame = $scope.currentUser.userGame;
+                        if($scope.selectedPerso === null){
+                            $scope.selectedPerso = $scope.aUserGame[0];
+                        }
 	                }
 
 	                $scope.selectPerso = function(persoSelected){
@@ -1929,7 +1960,11 @@ angular.module('myApp.filters').filter('filterSince', function () {
 			if(month < 10){
 				month = "0"+month;
 			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes();
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
 		}
 
 		var one_minute=1000*60*1;
@@ -2355,7 +2390,7 @@ angular.module('myApp.services')
 						continue;
 					}
 
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
+					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
 						continue;
 					}
 

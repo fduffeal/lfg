@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage) {
 			'use strict';
 
 			lang.initLang();
@@ -32,9 +32,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.aRdv = [];
 			$scope.aRdvNormaux = [];
 
-			$scope.plateformSelected = '';
-			$scope.plateformNameSelected = 'ALL';
-
 			$scope.tags = '';
 
 			$scope.goToParty = function(id){
@@ -56,6 +53,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.allTags = data.tags;
 				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
 				$scope.aPlateforms = data.plateforms;
+				setPlateformCookie();
 			});
 
 			var formatRdv = function(rdv){
@@ -88,7 +86,15 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
 					if($scope.currentUser !== null){
-						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,$scope.plateformSelected,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+
+						if(typeof $scope.plateform === "undefined"){
+							var plateformId = null;
+						}else {
+							var plateformId = $scope.plateform.id;
+						}
+
+						//if($scope.plateform)
+						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 					}
 
 				}).error(function(data, status, headers, config) {
@@ -96,11 +102,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					// or server returns response with an error status.
 				});
 
-			};
-
-			$scope.updatePlateform = function(id,nom){
-				$scope.plateformSelected = id;
-				$scope.plateformNameSelected = nom;
 			};
 
 			$scope.displayWelcome = ($route.current.action === 'welcome');
@@ -176,14 +177,43 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				})
 			};
 
-			$scope.type = 'type_all';
+
+			var setTypeFilter = function(){
+				var type_rdv = storage.getPersistant('cookie_type_rdv');
+				if(typeof type_rdv === "undefined"){
+					$scope.type = 'type_all';
+				} else {
+					$scope.type = type_rdv;
+				}
+				$scope.$watch('type',function(newValue, oldValue){
+					storage.setPersistant('cookie_type_rdv',newValue);
+				});
+			};
+
+
+			var setPlateformCookie = function(){
+				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
+				if(typeof plateform_rdv !== "undefined"){
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].id == plateform_rdv){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				}
+
+				$scope.$watch('plateform',function(newValue, oldValue){
+					if(typeof newValue !== "undefined" && newValue !== null){
+						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
+					}
+				});
+			};
 
 
 			//init
 			var init = function(){
-
 				refreshRdvData();
 				autoRefreshData();
+				setTypeFilter();
 			}
 
 			init();

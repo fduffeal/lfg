@@ -5,7 +5,7 @@
 				<li ng-repeat="(key,template) in groupOfTemplate" class="{{template[0].icone}}"
 				ng-class="{'selected':(template === matchmakingTemplate),'no-selected':(template !== matchmakingTemplate && matchmakingTemplate !== null)}">
 				<a href="" ng-click="selectGroupOfTemplate(template)"></a>
-				<span>{{template[0].description}}</span>
+				<span>{{template[0].description | translate}}</span>
 
 			</li>
 			<form name="joinMatchmakingForm" ng-submit="join()">

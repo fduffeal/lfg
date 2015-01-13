@@ -38,10 +38,7 @@
 			<lfg-profile with-plateform="true" ng-show="canJoin && profils.length > 0 && isEnded === false" selected-perso="profilSelected" a-user-game="profils"></lfg-profile>
 			<div style="clear:both"></div>
 
-			<a href="" class="btn2"ng-show="canJoin && profils.length > 0 && isEnded === false"  ng-click="join()" translate>Ask to join the party</a>
-			<a href="{{partyCreateUrl}}" ng-show="isEnded === true" class="btn2 long" ><span translate>This party is ended, create a new party !</span> <img src="img/ico-create.png"/></a>
-			<a ng-show="canJoin && profils.length == 0 && isEnded === false" class="btn2 long" ng-click="createProfil()" translate>Create a profile for this game and join !</a>
-
+			<a href="" class="btn2"ng-show="canJoin && profils.length > 0"  ng-click="join()" translate>join the party !</a>
 
 			<div style="clear:both"></div>
 		</div>
