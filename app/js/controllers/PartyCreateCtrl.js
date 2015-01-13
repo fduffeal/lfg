@@ -39,7 +39,7 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 			});
 
 			$scope.$watch('profilSelected',function(newValue,oldValue){
-				if(typeof newValue !== "undefined" ){
+				if(typeof newValue !== "undefined" && newValue !== null){
 					$scope.updatePlateform(newValue.plateform);
 				}
 			});
