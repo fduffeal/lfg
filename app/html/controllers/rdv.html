@@ -1,18 +1,19 @@
 <lfg-header></lfg-header>
 <div id="home" class="wrap">
 	<div class="welcome">
-		<div class="marge" >
+		<div class="marge">
 		<span translate class="txt faq">
-			<span class="title">FAQ: </span><br />Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)
+			<span class="title">FAQ: </span><br/>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)
 		</span>
 		<span translate class="txt news">
-			<span class="title">What's new: 10 jan 2015</span><br /> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai
+			<span class="title">What's new: 12 jan 2015</span><br/>New Design and new feature :<br/>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br/>Choose your games console and watch all announcement or schedule party.<br/>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br/>Create a schedule party easily with our new interface !
 		</span>
-		<br/>
+			<br/>
 
 			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
 					src="img/ico-create.png"/></a>
-			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span translate>Post an announcement</span><img
+			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span
+					translate>Post an announcement</span><img
 					src="img/ico-annonce.png"/></a>
 
 			<div class="add" ng-show="displayFormAnnonce">
@@ -33,29 +34,33 @@
 						       style="margin-top:10px;" required/>
 
 						<span>
-							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}" />
+							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}"/>
 						</span>
 
 					</div>
 					<div ng-show="(aCharacters.length != 0)" translate>
-					Choose a character
+						Choose a character
 					</div>
-					<lfg-profile with-plateform="true" selected-perso="selectedPerso" a-user-game="aCharacters"></lfg-profile>
+					<lfg-profile with-plateform="true" selected-perso="selectedPerso"
+					             a-user-game="aCharacters"></lfg-profile>
 				</form>
 
-					<br style="clear:both"/>
+				<br style="clear:both"/>
 
-					<div style="margin-top:10px;" ng-show="(selectedPerso !== null)">
-						<form name="myFormAnnonce" ng-submit="addAnnonce()">
-							<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag" required>
-							<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc" ng-model="annonce_description" required>
+				<div style="margin-top:10px;" ng-show="(selectedPerso !== null)">
+					<form name="myFormAnnonce" ng-submit="addAnnonce()">
+						<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag" required>
+						<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc"
+						       ng-model="annonce_description" required>
 							<span>
-								<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)" value="{{'Send it'| translate}}">
+								<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)"
+								       value="{{'Send it'| translate}}">
 
 							</span>
-							<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
-						</form>
-					</div>
+
+						<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
+					</form>
+				</div>
 
 
 			</div>
@@ -71,7 +76,8 @@
 
 		<div class="list">
 
-			<select class="platforms" ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms">
+			<select class="platforms" ng-model="plateform"
+			        ng-options="plateformData.nom for plateformData in aPlateforms">
 				<option value="" translate>All</option>
 			</select>
 
@@ -114,7 +120,8 @@
 							<tbody>
 							<tr>
 								<td class="list-player">
-									<lfg-profile-bungie with-plateform="false" user-game="rdv.author"></lfg-profile-bungie>
+									<lfg-profile-bungie with-plateform="false"
+									                    user-game="rdv.author"></lfg-profile-bungie>
 								</td>
 								<td class="list-type"><span translate>Party</span> <br/>
 									<span ng-if="!isEnded(rdv)" class="slot">Slots
@@ -127,7 +134,8 @@
 								<td class="list-infos"><span
 										ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
 								</td>
-								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}
+								<td class="list-start" ng-if="!isEnded(rdv)">{{ rdv.start*1000 | date:'yyyy-MM-dd
+									HH:mm'}}
 								</td>
 								<td class="list-start" ng-if="isEnded(rdv)" translate>Ended</td>
 							</tr>
