@@ -12,6 +12,7 @@
 		.tag-matchmaking{
 				margin:auto;
 				display: block;
+				margin-top: 20px;
 			}
 		li {
 			display: inline-block!important;
@@ -30,7 +31,6 @@
 			a {
 				display: block;
 				width: 84px;
-				position: absolute;
 				height: 85px;
 				background-image: url('../img/sprite_ico_matchmaking2.png');
 				@include transition(all 0.1s ease-in-out 0s);
@@ -44,8 +44,6 @@
 			}
 			span {
 				display: block;
-				position: absolute;
-				bottom: 10px;
 				text-align: center;
 				width: 100%;
 				font-size: 13px;
