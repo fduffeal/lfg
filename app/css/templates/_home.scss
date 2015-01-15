@@ -150,7 +150,7 @@
 			@include transition(background-color 0.2s ease-out);
 			background: white;
 			display: block;
-			&:nth-child(even){
+			&:nth-child(even), &.colored{
 				background: #e5e1e1;
 
 			}
@@ -206,8 +206,24 @@
 				font-size: 10px!important;
 				.list-player {
 					div {
-						font-size: 10px!important
+						font-size: 10px!important;
+						float: left;
+						clear:both;
 					}
+				}
+			}
+			.mobile-hour  {
+
+				display:none;
+				td{
+					background: #262525;
+					color:#FFF;
+					height: 20px;
+					padding: 0;
+					vertical-align: middle;
+				}
+				@media screen and (max-width: 390px ) {
+					display: table-row;
 				}
 			}
 			td, th {
@@ -262,8 +278,8 @@
 				}
 				@media screen and (max-width: 800px ) {
 
-						font-size: 11px!important
-					}
+					font-size: 11px!important
+				}
 			}
 			.list-infos{
 				width: 50%;
