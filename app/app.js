@@ -119,6 +119,12 @@ angular.module('myApp', [
 				controller : 'ForumCtrl'
 			});
 
+		$routeProvider.when('/:lang/forum/topic/',
+			{
+				templateUrl: 'html/controllers/topic.html',
+				controller : 'TopicCtrl'
+			});
+
 		$routeProvider.when('/:lang/destiny/profile/:username',
 			{
 				templateUrl: 'html/controllers/profile-destiny.html',
