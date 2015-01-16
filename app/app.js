@@ -113,6 +113,18 @@ angular.module('myApp', [
 				controller : 'AnnonceCreateCtrl'
 			});
 
+		$routeProvider.when('/:lang/forum/',
+			{
+				templateUrl: 'html/controllers/forum.html',
+				controller : 'ForumCtrl'
+			});
+
+		$routeProvider.when('/:lang/destiny/profile/:username',
+			{
+				templateUrl: 'html/controllers/profile-destiny.html',
+				controller : 'ProfileDestinyCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
