@@ -394,6 +394,18 @@ angular.module('myApp', [
 				controller : 'AnnonceCreateCtrl'
 			});
 
+		$routeProvider.when('/:lang/forum/',
+			{
+				templateUrl: 'html/controllers/forum.html',
+				controller : 'ForumCtrl'
+			});
+
+		$routeProvider.when('/:lang/destiny/profile/:username',
+			{
+				templateUrl: 'html/controllers/profile-destiny.html',
+				controller : 'ProfileDestinyCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr'});
 
 	}]);
@@ -426,6 +438,15 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 			$scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('ForumCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
 
 		}
 	]
@@ -1222,6 +1243,15 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 
         }
     ]
+);
+
+angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+
+		}
+	]
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
@@ -2199,7 +2229,7 @@ angular.module('myApp.services')
 				}
 				var host = $location.host();
 				if(host === 'www.esbattle.com'){
-					this.url = 'http://api.esbattle.com/app_dev.php/';
+					this.url = 'http://api.esbattle.com/';
 				}else {
 					this.url = 'http://lfg.esbattle.com/app_dev.php/';
 				}
@@ -2727,7 +2757,7 @@ angular.module('myApp.services')
 			};
 
 			this.initSocket = function(){
-				if(this.currentSocket === null){
+				if(this.currentSocket === null && typeof(io) !== "undefined"){
 					this.currentSocket = io.connect('http://www.esbattle.com:3000');
 					this.initListener(this.currentSocket);
 				}
