@@ -80,6 +80,16 @@
 		border: 0;
 		font-size: 1.3rem;
 		border-collapse: collapse;
+		@media screen and (max-width: 800px ) {
+			font-size: 10px!important;
+			.list-player {
+				div {
+					font-size: 10px!important;
+					float: left;
+					clear:both;
+				}
+			}
+		}
 		td, th {
 			overflow: hidden;
 			padding-left: 10px;
