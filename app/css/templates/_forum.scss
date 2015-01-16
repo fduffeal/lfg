@@ -1,4 +1,21 @@
 #forum {
+	.new {
+		h2 {
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+		input[type=text]{
+			width:100%;
+		}
+		textarea{
+			width: 100%;
+			margin: 10px 0;
+			height: auto;
+		}
+		.btn2 {
+			border: 0;
+		}
+	}
 	.block {
 		padding: 10px
 	}

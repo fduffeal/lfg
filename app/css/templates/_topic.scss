@@ -1,0 +1,56 @@
+#topic {
+	.new {
+		h2 {
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+		input[type=text]{
+			width:100%;
+		}
+		textarea{
+			width: 100%;
+			margin: 10px 0;
+			height: auto;
+		}
+		.btn2 {
+			border: 0;
+		}
+	}
+	.page {
+		background: transparent;
+		border: none;
+	}
+	table {
+		font-size: 1.2rem;
+		text-align: left;
+		width:100%;
+
+		.msg {
+			padding: 10px;
+			background: #fff;
+			border:1px solid #dddddd;
+		}
+		tr{
+
+		}
+		.to-avatar {
+			width: 10%;
+			img {
+				width: 100px;
+
+				height: 100px;
+			}
+
+		}
+		.to-info {
+			width:90%;
+			.left {
+				float: left;
+				font-weight:bold;
+			}
+			.right{
+				float: right
+			}
+		}
+	}
+}
