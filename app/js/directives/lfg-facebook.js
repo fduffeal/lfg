@@ -22,7 +22,7 @@ angular.module('myApp.directives')
 					}(document, 'script', 'facebook-jssdk'));
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-facebook.html'
+				templateUrl: '/html/directives/lfg-facebook.html'
 			};
 		}
 	]

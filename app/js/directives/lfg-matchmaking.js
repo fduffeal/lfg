@@ -44,7 +44,7 @@ angular.module('myApp.directives')
 
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-matchmaking.html'
+                templateUrl: '/html/directives/lfg-matchmaking.html'
             };
         }
     ]

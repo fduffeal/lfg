@@ -12,7 +12,7 @@ angular.module('myApp.directives')
 
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile-bungie.html'
+                templateUrl: '/html/directives/lfg-profile-bungie.html'
             };
         }
     ]

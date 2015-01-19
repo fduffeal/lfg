@@ -20,7 +20,7 @@ angular.module('myApp.directives')
 
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-footer.html'
+				templateUrl: '/html/directives/lfg-footer.html'
 			};
 		}
 	]
