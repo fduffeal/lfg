@@ -40,7 +40,7 @@ angular.module('myApp.directives')
                     setSelectedPerso();
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile.html'
+                templateUrl: '/html/directives/lfg-profile.html'
             };
         }
     ]

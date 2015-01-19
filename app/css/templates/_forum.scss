@@ -1,0 +1,94 @@
+#forum {
+	.new {
+		h2 {
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+		input[type=text]{
+			width:100%;
+		}
+		textarea{
+			width: 100%;
+			margin: 10px 0;
+			height: auto;
+		}
+		.btn2 {
+			border: 0;
+		}
+	}
+	.block {
+		padding: 10px
+	}
+	.list-topics {
+		width: 100%;
+		font-size: 1.2rem;
+		text-align: left;
+		border-collapse: collapse;
+		thead {
+			text-transform: uppercase;
+			background: #262525;
+			font-weight: bold;
+			color:white;
+		}
+		tr{
+			height: 20px;
+			line-height: 20px;
+		}
+		tr:nth-child(even) td{
+			background: #e5e1e1;
+		}
+		tr:hover td {
+			background: #e9aea6 !important;
+			&.fo-sujet a{
+				color: white
+			}
+		}
+		a {
+			color:#f15641;
+			&:visited {
+				color:#000;
+			}
+			&.modo {
+				color: #06ab93;
+			}
+		}
+
+		.fo-type {
+			width: 2%;
+			div {
+				width: 20px;
+				height: 20px;
+				background-size: 80%;
+				margin: 4px 0 0 5px;
+				background-repeat: no-repeat;
+
+				&.postit {
+					background-image: url('../img/ico-fo/001_36.png');
+				}
+				&.high {
+					background-image: url('../img/ico-fo/001_58.png');
+				}
+				&.normal {
+					background-image: url('../img/ico-fo/001_60.png');
+				}
+				&.blocked {
+					background-image: url('../img/ico-fo/001_08.png');
+				}
+			}
+		}
+		.fo-sujet {
+			width:58%;
+			font-weight: bold;
+		}
+		.fo-author {
+			width: 20%;
+		}
+		.fo-nb {
+			width: 10%;
+		}
+		.fo-last {
+			width: 10%;
+		}
+
+	}
+}

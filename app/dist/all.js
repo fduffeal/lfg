@@ -304,94 +304,112 @@ angular.module('myApp', [
 
 		$routeProvider.when('/:lang/',
 			{
-				templateUrl: 'html/controllers/rdv.html',
+				templateUrl: '/html/controllers/rdv.html',
 				controller : 'RdvCtrl'
 			});
 		$routeProvider.when('/:lang/party/create',
 			{
-				templateUrl: 'html/controllers/party-create.html',
+				templateUrl: '/html/controllers/party-create.html',
 				controller : 'PartyCreateCtrl'
 			});
 		$routeProvider.when('/:lang/party/waiting/:partyId',
 			{
-				templateUrl: 'html/controllers/party-waiting.html',
+				templateUrl: '/html/controllers/party-waiting.html',
 				controller : 'PartyWaitingCtrl'
 			});
 		$routeProvider.when('/:lang/matchmaking/waiting/:partyId',
 			{
-				templateUrl: 'html/controllers/matchmaking-waiting.html',
+				templateUrl: '/html/controllers/matchmaking-waiting.html',
 				controller : 'MatchmakingWaitingCtrl'
 			});
 		$routeProvider.when('/:lang/register',
 			{
-				templateUrl: 'html/controllers/register.html',
+				templateUrl: '/html/controllers/register.html',
 				controller : 'RegisterCtrl'
 			});
 		$routeProvider.when('/:lang/login',
 			{
-				templateUrl: 'html/controllers/login.html',
+				templateUrl: '/html/controllers/login.html',
 				controller : 'LoginCtrl'
 			});
 		$routeProvider.when('/:lang/profile/',
 			{
-				templateUrl: 'html/controllers/profile.html',
+				templateUrl: '/html/controllers/profile.html',
 				controller : 'ProfileCtrl'
 			});
 
 		$routeProvider.when('/:lang/profile/:gameId/:plateformId/',
 			{
-				templateUrl: 'html/controllers/profile.html',
+				templateUrl: '/html/controllers/profile.html',
 				controller : 'ProfileCtrl'
 			});
 
 		$routeProvider.when('/:lang/welcome',
 			{
-				templateUrl: 'html/controllers/rdv.html',
+				templateUrl: '/html/controllers/rdv.html',
 				controller : 'RdvCtrl',
 				action     : 'welcome'
 			});
 		$routeProvider.when('/:lang/games',
 			{
-				templateUrl: 'html/controllers/games-profiles.html',
+				templateUrl: '/html/controllers/games-profiles.html',
 				controller : 'GamesProfilesCtrl',
 				action     : 'games'
 			});
 
 		$routeProvider.when('/:lang/404/:msg?',
 			{
-				templateUrl: 'html/controllers/404.html',
+				templateUrl: '/html/controllers/404.html',
 				controller : '404Ctrl'
 			});
 		$routeProvider.when('/:lang/notification',
 			{
-				templateUrl: 'html/controllers/notification.html',
+				templateUrl: '/html/controllers/notification.html',
 				controller : 'NotificationCtrl'
 			});
 
 		$routeProvider.when('/:lang/password/forget/:username/:forgetToken',
 			{
-				templateUrl: 'html/controllers/password-update.html',
+				templateUrl: '/html/controllers/password-update.html',
 				controller : 'PasswordUpdateCtrl',
 				action     : 'forget'
 			});
 
 		$routeProvider.when('/:lang/password/update',
 			{
-				templateUrl: 'html/controllers/password-update.html',
+				templateUrl: '/html/controllers/password-update.html',
 				controller : 'PasswordUpdateCtrl',
 				action     : 'update'
 			});
 
 		$routeProvider.when('/:lang/users/connected',
 			{
-				templateUrl: 'html/controllers/list-users.html',
+				templateUrl: '/html/controllers/list-users.html',
 				controller : 'ListUsersCtrl'
 			});
 
 		$routeProvider.when('/:lang/annonce/create',
 			{
-				templateUrl: 'html/controllers/annonce-create.html',
+				templateUrl: '/html/controllers/annonce-create.html',
 				controller : 'AnnonceCreateCtrl'
+			});
+
+		$routeProvider.when('/:lang/forum/',
+			{
+				templateUrl: '/html/controllers/forum.html',
+				controller : 'ForumCtrl'
+			});
+
+		$routeProvider.when('/:lang/forum/topic/',
+			{
+				templateUrl: '/html/controllers/topic.html',
+				controller : 'TopicCtrl'
+			});
+
+		$routeProvider.when('/:lang/destiny/profile/:username',
+			{
+				templateUrl: '/html/controllers/profile-destiny.html',
+				controller : 'ProfileDestinyCtrl'
 			});
 
 		$routeProvider.otherwise({redirectTo: '/fr'});
@@ -426,6 +444,15 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 			$scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('ForumCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
 
 		}
 	]
@@ -1224,6 +1251,15 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
     ]
 );
 
+angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+
+		}
+	]
+);
+
 angular.module('myApp.controllers').controller('RdvCtrl',
 	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage',
 		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage) {
@@ -1510,6 +1546,15 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
+angular.module('myApp.controllers').controller('ForumCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+
+		}
+	]
+);
+
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -1534,7 +1579,7 @@ angular.module('myApp.directives')
 					}(document, 'script', 'facebook-jssdk'));
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-facebook.html'
+				templateUrl: '/html/directives/lfg-facebook.html'
 			};
 		}
 	]
@@ -1562,7 +1607,7 @@ angular.module('myApp.directives')
 
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-footer.html'
+				templateUrl: '/html/directives/lfg-footer.html'
 			};
 		}
 	]
@@ -1646,7 +1691,7 @@ angular.module('myApp.directives')
 
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-header.html'
+				templateUrl: '/html/directives/lfg-header.html'
 			};
 		}
 	]
@@ -1739,7 +1784,7 @@ angular.module('myApp.directives')
 
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-matchmaking.html'
+                templateUrl: '/html/directives/lfg-matchmaking.html'
             };
         }
     ]
@@ -1759,7 +1804,7 @@ angular.module('myApp.directives')
 
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile-bungie.html'
+                templateUrl: '/html/directives/lfg-profile-bungie.html'
             };
         }
     ]
@@ -1807,126 +1852,12 @@ angular.module('myApp.directives')
                     setSelectedPerso();
                 },
                 restrict: 'E',
-                templateUrl: 'html/directives/lfg-profile.html'
+                templateUrl: '/html/directives/lfg-profile.html'
             };
         }
     ]
 );
 
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.filters').filter('filterCharacters', function () {
 	'use strict';
 	return function (input, chars, breakOnWord) {
@@ -2134,6 +2065,120 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -2567,7 +2612,7 @@ angular.module('myApp.services')
 			};
 
 			this.getLoginPageUrl = function(){
-				return getLang()+'/login';
+				return '/'+getLang()+'/login';
 			};
 
 			this.goToLogin = function(){
@@ -2575,16 +2620,16 @@ angular.module('myApp.services')
 			};
 
 			this.getRegisterPageUrl = function(){
-				return getLang()+'/register';
+				return '/'+getLang()+'/register';
 			};
 			this.getNotifPageUrl = function(){
-				return getLang()+'/notification';
+				return '/'+getLang()+'/notification';
 			};
 			this.getMatchmakingPageUrl = function(){
-				return getLang()+'/matchmaking';
+				return '/'+getLang()+'/matchmaking';
 			};
 			this.getGamesPageUrl = function(){
-				return getLang()+'/games';
+				return '/'+getLang()+'/games';
 			};
 
 			this.goToGamesPage = function(){
@@ -2596,7 +2641,7 @@ angular.module('myApp.services')
 			};
 
 			this.getCreatePartyPageUrl = function(){
-				return getLang()+'/party/create';
+				return '/'+getLang()+'/party/create';
 			};
 
 			this.goCreateParty = function(){
@@ -2608,7 +2653,7 @@ angular.module('myApp.services')
 			};
 
 			this.getPartyWaitingUrlRoot = function(){
-				return getLang()+'/party/waiting/';
+				return '/'+getLang()+'/party/waiting/';
 			};
 
 			this.getPartyWaitingByIdUrl = function(id){
@@ -2620,11 +2665,11 @@ angular.module('myApp.services')
 			};
 
 			this.goToMatchmakingId = function(id){
-				$location.path(getLang()+'/matchmaking/waiting/'+id);
+				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
 			};
 
 			this.getHomePageUrl = function(){
-				return getLang()+'/';
+				return '/'+getLang()+'/';
 			};
 
 			this.goHome = function(id){
@@ -2632,11 +2677,11 @@ angular.module('myApp.services')
 			};
 
 			this.getNotFoundPageUrl = function(msg){
-				return getLang()+'/404/'+msg;
+				return '/'+getLang()+'/404/'+msg;
 			};
 
 			this.goWelcomeHome = function(){
-				$location.path(getLang()+'/welcome');
+				$location.path('/'+getLang()+'/welcome');
 			};
 
 			this.notFound = function(msg){
@@ -2644,11 +2689,11 @@ angular.module('myApp.services')
 			};
 
 			this.getProfilGamePageUrl = function(gameId,plateformId){
-				return getLang()+'/profile/'+gameId+'/'+plateformId;
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
 			};
 
 			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
-				return getLang()+'/profile/'+gameId+'/'+plateformId;
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
 			};
 
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
@@ -2656,11 +2701,11 @@ angular.module('myApp.services')
 			};
 
 			this.getListUsersUrl = function(){
-				return getLang()+'/users/connected/';
+				return '/'+getLang()+'/users/connected/';
 			};
 
 			this.getAnnonceCreateUrl = function(){
-				return getLang()+'/annonce/create/';
+				return '/'+getLang()+'/annonce/create/';
 			};
 		}
 	]
@@ -2727,7 +2772,7 @@ angular.module('myApp.services')
 			};
 
 			this.initSocket = function(){
-				if(this.currentSocket === null){
+				if(this.currentSocket === null && typeof(io) !== "undefined"){
 					this.currentSocket = io.connect('http://www.esbattle.com:3000');
 					this.initListener(this.currentSocket);
 				}

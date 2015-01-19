@@ -76,7 +76,7 @@ angular.module('myApp.directives')
 
 				},
 				restrict: 'E',
-				templateUrl: 'html/directives/lfg-header.html'
+				templateUrl: '/html/directives/lfg-header.html'
 			};
 		}
 	]

@@ -59,7 +59,7 @@ angular.module('myApp.services')
 			};
 
 			this.initSocket = function(){
-				if(this.currentSocket === null){
+				if(this.currentSocket === null && typeof(io) !== "undefined"){
 					this.currentSocket = io.connect('http://www.esbattle.com:3000');
 					this.initListener(this.currentSocket);
 				}
