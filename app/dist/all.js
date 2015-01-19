@@ -2612,7 +2612,7 @@ angular.module('myApp.services')
 			};
 
 			this.getLoginPageUrl = function(){
-				return getLang()+'/login';
+				return '/'+getLang()+'/login';
 			};
 
 			this.goToLogin = function(){
@@ -2620,16 +2620,16 @@ angular.module('myApp.services')
 			};
 
 			this.getRegisterPageUrl = function(){
-				return getLang()+'/register';
+				return '/'+getLang()+'/register';
 			};
 			this.getNotifPageUrl = function(){
-				return getLang()+'/notification';
+				return '/'+getLang()+'/notification';
 			};
 			this.getMatchmakingPageUrl = function(){
-				return getLang()+'/matchmaking';
+				return '/'+getLang()+'/matchmaking';
 			};
 			this.getGamesPageUrl = function(){
-				return getLang()+'/games';
+				return '/'+getLang()+'/games';
 			};
 
 			this.goToGamesPage = function(){
@@ -2641,7 +2641,7 @@ angular.module('myApp.services')
 			};
 
 			this.getCreatePartyPageUrl = function(){
-				return getLang()+'/party/create';
+				return '/'+getLang()+'/party/create';
 			};
 
 			this.goCreateParty = function(){
@@ -2653,7 +2653,7 @@ angular.module('myApp.services')
 			};
 
 			this.getPartyWaitingUrlRoot = function(){
-				return getLang()+'/party/waiting/';
+				return '/'+getLang()+'/party/waiting/';
 			};
 
 			this.getPartyWaitingByIdUrl = function(id){
@@ -2665,11 +2665,11 @@ angular.module('myApp.services')
 			};
 
 			this.goToMatchmakingId = function(id){
-				$location.path(getLang()+'/matchmaking/waiting/'+id);
+				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
 			};
 
 			this.getHomePageUrl = function(){
-				return getLang()+'/';
+				return '/'+getLang()+'/';
 			};
 
 			this.goHome = function(id){
@@ -2677,11 +2677,11 @@ angular.module('myApp.services')
 			};
 
 			this.getNotFoundPageUrl = function(msg){
-				return getLang()+'/404/'+msg;
+				return '/'+getLang()+'/404/'+msg;
 			};
 
 			this.goWelcomeHome = function(){
-				$location.path(getLang()+'/welcome');
+				$location.path('/'+getLang()+'/welcome');
 			};
 
 			this.notFound = function(msg){
@@ -2689,11 +2689,11 @@ angular.module('myApp.services')
 			};
 
 			this.getProfilGamePageUrl = function(gameId,plateformId){
-				return getLang()+'/profile/'+gameId+'/'+plateformId;
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
 			};
 
 			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
-				return getLang()+'/profile/'+gameId+'/'+plateformId;
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
 			};
 
 			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
@@ -2701,11 +2701,11 @@ angular.module('myApp.services')
 			};
 
 			this.getListUsersUrl = function(){
-				return getLang()+'/users/connected/';
+				return '/'+getLang()+'/users/connected/';
 			};
 
 			this.getAnnonceCreateUrl = function(){
-				return getLang()+'/annonce/create/';
+				return '/'+getLang()+'/annonce/create/';
 			};
 		}
 	]
