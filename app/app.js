@@ -26,6 +26,19 @@ angular.module('myApp', [
 				templateUrl: '/html/controllers/rdv.html',
 				controller : 'RdvCtrl'
 			});
+
+		$routeProvider.when('/:lang/destiny/',
+			{
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl'
+			});
+
+		$routeProvider.when('/:lang/destiny/:plateform',
+			{
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl'
+			});
+
 		$routeProvider.when('/:lang/party/create',
 			{
 				templateUrl: '/html/controllers/party-create.html',

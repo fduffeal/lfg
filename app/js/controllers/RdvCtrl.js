@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams) {
 			'use strict';
 
 			lang.initLang();
@@ -190,10 +190,18 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				});
 			};
 
-
 			var setPlateformCookie = function(){
 				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
-				if(typeof plateform_rdv !== "undefined"){
+				var plateform_rdv_url = $routeParams.plateform;
+
+				if(typeof plateform_rdv_url !== "undefined"){
+					plateform_rdv_url = plateform_rdv_url.replace('_',' ');
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].nom == plateform_rdv_url){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				} else if(typeof plateform_rdv !== "undefined"){
 					for(var key in $scope.aPlateforms){
 						if($scope.aPlateforms[key].id == plateform_rdv){
 							$scope.plateform = $scope.aPlateforms[key];
