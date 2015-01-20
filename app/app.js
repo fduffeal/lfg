@@ -24,19 +24,22 @@ angular.module('myApp', [
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/destiny/',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/destiny/:plateform',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/party/create',

@@ -305,19 +305,22 @@ angular.module('myApp', [
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/destiny/',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/destiny/:plateform',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/party/create',
@@ -1274,8 +1277,8 @@ angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location) {
 			'use strict';
 
 			lang.initLang();
@@ -1371,7 +1374,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						//if($scope.plateform)
 						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 					}
-
 				}).error(function(data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
@@ -1438,8 +1440,10 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					},2)
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
+
+					$scope.aRdv.push(data);
+
 				}).error(function(data){
-					console.error(data);
 					$scope.annonce_tag = '';
 					$scope.annonce_description = '';
 
@@ -1485,10 +1489,30 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 
 				$scope.$watch('plateform',function(newValue, oldValue){
+
+					var homeUrl = redirection.getHomePageDestinyUrl();
 					if(typeof newValue !== "undefined" && newValue !== null){
 						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
+						var plateformNameUrl = newValue.nom.replace(' ','_');
+						$location.path(homeUrl+plateformNameUrl).replace();
+					}else {
+						storage.erasePersistant('cookie_plateform_rdv_id');
+						$location.path(homeUrl).replace();
 					}
 				});
+			};
+
+			var initTags = function(){
+				$scope.$watch('tags',function(newValue,oldValue){
+					if(newValue !== '' || oldValue !== ''){
+						$location.search('tags', newValue);
+					}
+				});
+
+				var searchObject = $location.search();
+				if(searchObject.tags){
+					$scope.tags = searchObject.tags;
+				}
 			};
 
 
@@ -1497,7 +1521,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				refreshRdvData();
 				autoRefreshData();
 				setTypeFilter();
-			}
+				initTags();
+			};
 
 			init();
 		}
@@ -2691,6 +2716,10 @@ angular.module('myApp.services')
 
 			this.getHomePageUrl = function(){
 				return '/'+getLang()+'/';
+			};
+
+			this.getHomePageDestinyUrl = function(){
+				return '/'+getLang()+'/destiny/';
 			};
 
 			this.goHome = function(id){
