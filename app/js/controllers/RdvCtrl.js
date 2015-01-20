@@ -1,11 +1,11 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location','socket',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location,socket) {
 			'use strict';
 
 			lang.initLang();
 
-			$scope.currentUser = user.get();
+			$scope.currentUser = null;
 
 			$scope.predicate = 'start';
 			$scope.reverse = true;
@@ -60,6 +60,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
 						rdv.author = rdv.users[key];
+						rdv.user = rdv.users[key].user;
 						rdv.type = 'type_party';
 					}
 				}
@@ -126,22 +127,29 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.aAnnoncesFormated = [];
 
+			var formatAnnonce = function(annonce){
+				return {
+					'id' : annonce.id,
+					'author' : annonce.author,
+					'game' : annonce.game,
+					'plateform' : annonce.plateform,
+					'tags' : annonce.tags,
+					'description' : annonce.description,
+					'start' : annonce.created,
+					'type' : 'type_annonce',
+					'user' : annonce.user
+				};
+			};
+
 			var formatAnnonces = function(aAnnonces){
 				var nbAnnonces = aAnnonces.length;
 
 				for(var i=0; i< nbAnnonces;i++){
-					$scope.aAnnoncesFormated[i] = {
-						'id' : aAnnonces[i].id,
-						'author' : aAnnonces[i].author,
-						'game' : aAnnonces[i].game,
-						'plateform' : aAnnonces[i].plateform,
-						'tags' : aAnnonces[i].tags,
-						'description' : aAnnonces[i].description,
-						'start' : aAnnonces[i].created,
-						'type' : 'type_annonce'
-					};
+					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
 				}
 			};
+
+
 
 			$scope.blockPostAnnonce = false;
 			$scope.messageFormAnnonce = null;
@@ -163,7 +171,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
 
-					$scope.aRdv.push(data);
+					$scope.aRdv.push(formatAnnonce(data));
 
 				}).error(function(data){
 					$scope.annonce_tag = '';
@@ -238,12 +246,38 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			};
 
 
-			//init
-			var init = function(){
+			/**
+			 * launch after init !
+			 */
+			var launchRdvCtrl = function(){
 				refreshRdvData();
 				autoRefreshData();
 				setTypeFilter();
 				initTags();
+				socket.getUserList();
+			};
+
+
+
+			$scope.$on('updateListUsers',function(event,data){
+				if(data[0]){
+					$scope.listUser = data[0];
+				}
+			});
+
+			/**
+			 * init : connect and launch
+			 */
+			var init = function(){
+				var refreshPromise = user.refresh();
+				if(refreshPromise !== false){
+					refreshPromise.success(function(data){
+						$scope.currentUser = data;
+						launchRdvCtrl();
+					});
+				} else {
+					launchRdvCtrl();
+				}
 			};
 
 			init();

@@ -147,7 +147,7 @@ angular.module('myApp', [
 				controller : 'ProfileDestinyCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/fr'});
+		$routeProvider.otherwise({redirectTo: '/fr/destiny'});
 
 	}]);
 
