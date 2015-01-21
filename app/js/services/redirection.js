@@ -70,6 +70,10 @@ angular.module('myApp.services')
 				return '/'+getLang()+'/';
 			};
 
+			this.getHomePageDestinyUrl = function(){
+				return '/'+getLang()+'/destiny/';
+			};
+
 			this.goHome = function(id){
 				$location.path(this.getHomePageUrl());
 			};

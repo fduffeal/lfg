@@ -24,8 +24,24 @@ angular.module('myApp', [
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl'
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
 			});
+
+		$routeProvider.when('/:lang/destiny/',
+			{
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
+			});
+
+		$routeProvider.when('/:lang/destiny/:plateform',
+			{
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl',
+				reloadOnSearch: false
+			});
+
 		$routeProvider.when('/:lang/party/create',
 			{
 				templateUrl: '/html/controllers/party-create.html',
@@ -131,7 +147,7 @@ angular.module('myApp', [
 				controller : 'ProfileDestinyCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/fr'});
+		$routeProvider.otherwise({redirectTo: '/fr/destiny'});
 
 	}]);
 

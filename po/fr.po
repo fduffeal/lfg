@@ -214,6 +214,10 @@ msgstr "Gamertag"
 msgid "Guardian"
 msgstr "Gardien"
 
+#: app/html/controllers/party-waiting.html
+msgid "Hi, we are looking for"
+msgstr "Bonjour, nous recherchons"
+
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr "Accueil"
@@ -379,6 +383,10 @@ msgstr "Inscription !"
 msgid "Register on Esbattle.com"
 msgstr "Inscription sur Esbattle.com"
 
+#: app/html/controllers/party-waiting.html
+msgid "Register to join the party !"
+msgstr "Inscrits toi pour rejoindre la partie !"
+
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
@@ -390,6 +398,13 @@ msgstr "Envoyer"
 #: app/html/controllers/rdv.html
 msgid "Send it"
 msgstr "Envoyer"
+
+#: app/html/controllers/party-waiting.html
+msgid ""
+"Share this information on your favorite forum, social network and friends :"
+msgstr ""
+"Partage cette information sur ton forum favori, ton réseau social et tes "
+"amis :"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -425,6 +440,10 @@ msgstr "Assaut"
 #: app/html/controllers/party-waiting.html
 msgid "Team"
 msgstr "Equipe"
+
+#: app/html/controllers/party-waiting.html
+msgid "Thanks"
+msgstr "Merci"
 
 #: app/html/controllers/register.html
 msgid "The username is already used."
@@ -513,6 +532,10 @@ msgstr "Votre message"
 msgid "an error occured, please try again later, sorry for the inconvenience"
 msgstr "une erreur est survenue, essayez plus tard, désolé pour le dérangement"
 
+#: app/html/controllers/party-waiting.html
+msgid "apply on"
+msgstr "rejoins sur "
+
 #: app/html/controllers/rdv.html
 msgid "create an account"
 msgstr "créer un compte"
@@ -553,6 +576,14 @@ msgstr "en ligne"
 msgid "password doesn't match"
 msgstr "Les mots de passe ne correspondent pas"
 
+#: app/html/controllers/party-waiting.html
+msgid "player(s)"
+msgstr "joueur(s)"
+
+#: app/html/controllers/party-waiting.html
+msgid "start at"
+msgstr "commence à"
+
 #: app/html/controllers/notification.html
 msgid "this party"
 msgstr "cette partie"
@@ -570,8 +601,11 @@ msgid "warlock"
 msgstr "arcaniste"
 
 #: app/dynamique_translate.html
-msgid "your annoncement has been send and will appear in few second, please wait"
-msgstr "votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de patienter"
+msgid ""
+"your annoncement has been send and will appear in few second, please wait"
+msgstr ""
+"votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de "
+"patienter"
 
 #~ msgid "Ask to join the party"
 #~ msgstr "Demander à rejoindre la partie"

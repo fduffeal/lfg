@@ -34,13 +34,25 @@
 
 			</table>
 			<div class="url"><span translate> Url of the party:</span> <a href="">{{currentUrl}}</a></div>
-			<div ng-show="canJoin && profils.length > 0 && isEnded === false" translate> Choose a character</div>
+			<div ng-show="canJoin && profils.length > 0" translate> Choose a character</div>
 			<lfg-profile with-plateform="true" ng-show="canJoin && profils.length > 0 && isEnded === false" selected-perso="profilSelected" a-user-game="profils"></lfg-profile>
 			<div style="clear:both"></div>
 
 			<a href="" class="btn2"ng-show="canJoin && profils.length > 0"  ng-click="join()" translate>join the party !</a>
+			<a ng-show="!canJoin && !imOnGroup" class="btn2 long" ng-href="{{registerUrl}}" translate>Register to join the party !</a>
 
 			<div style="clear:both"></div>
+		</div>
+		<div class="marge">
+			<p translate>Share this information on your favorite forum, social network and friends :</p>
+			<br/>
+			<p>
+				<span translate>Hi, we are looking for</span> {{ rdv.nbParticipant - rdv.users.length }} <span translate>player(s)</span>
+				<br/>"{{ rdv.description }}" <span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span>
+				<br/><span translate>start at</span> {{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}
+				<br/><span translate>apply on</span> {{currentUrl}}
+				<br/><span translate>Thanks</span>
+			</p>
 		</div>
 	</div>
 	<div class="page">

@@ -78,6 +78,7 @@ span.noco{
 }
 
 .character {
+	border-left: 5px solid transparent;
 	background-repeat: no-repeat!important;
 	position: relative;
 	height: 60px;
@@ -87,6 +88,9 @@ span.noco{
 	margin-right: 10px;
 	background-size: 100%!important;
 	background-repeat: no-repeat!important;
+	&.co {
+		border-left: 5px solid #49c100;
+	}
 
 
 	a {

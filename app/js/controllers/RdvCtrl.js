@@ -1,11 +1,11 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location','socket',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location,socket) {
 			'use strict';
 
 			lang.initLang();
 
-			$scope.currentUser = user.get();
+			$scope.currentUser = null;
 
 			$scope.predicate = 'start';
 			$scope.reverse = true;
@@ -60,6 +60,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
 						rdv.author = rdv.users[key];
+						rdv.user = rdv.users[key].user;
 						rdv.type = 'type_party';
 					}
 				}
@@ -96,7 +97,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						//if($scope.plateform)
 						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 					}
-
 				}).error(function(data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
@@ -116,7 +116,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			$scope.getDestinyCharacters = function(){
-				bungie.getCharacters($scope.plateform.id,$scope.plateform.bungiePlateformId,$scope.gamertag).success(function(data){
+				bungie.getCharacters($scope.plateformAnnonce.id,$scope.plateformAnnonce.bungiePlateformId,$scope.gamertag).success(function(data){
 					$scope.aCharacters = data;
 				}).error(function(data){
 					$scope.aCharacters = [];
@@ -127,22 +127,29 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.aAnnoncesFormated = [];
 
+			var formatAnnonce = function(annonce){
+				return {
+					'id' : annonce.id,
+					'author' : annonce.author,
+					'game' : annonce.game,
+					'plateform' : annonce.plateform,
+					'tags' : annonce.tags,
+					'description' : annonce.description,
+					'start' : annonce.created,
+					'type' : 'type_annonce',
+					'user' : annonce.user
+				};
+			};
+
 			var formatAnnonces = function(aAnnonces){
 				var nbAnnonces = aAnnonces.length;
 
 				for(var i=0; i< nbAnnonces;i++){
-					$scope.aAnnoncesFormated[i] = {
-						'id' : aAnnonces[i].id,
-						'author' : aAnnonces[i].author,
-						'game' : aAnnonces[i].game,
-						'plateform' : aAnnonces[i].plateform,
-						'tags' : aAnnonces[i].tags,
-						'description' : aAnnonces[i].description,
-						'start' : aAnnonces[i].created,
-						'type' : 'type_annonce'
-					};
+					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
 				}
 			};
+
+
 
 			$scope.blockPostAnnonce = false;
 			$scope.messageFormAnnonce = null;
@@ -163,8 +170,10 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					},2)
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
+
+					//$scope.aRdv.push(formatAnnonce(data));
+
 				}).error(function(data){
-					console.error(data);
 					$scope.annonce_tag = '';
 					$scope.annonce_description = '';
 
@@ -190,10 +199,18 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				});
 			};
 
-
 			var setPlateformCookie = function(){
 				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
-				if(typeof plateform_rdv !== "undefined"){
+				var plateform_rdv_url = $routeParams.plateform;
+
+				if(typeof plateform_rdv_url !== "undefined"){
+					plateform_rdv_url = plateform_rdv_url.replace('_',' ');
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].nom == plateform_rdv_url){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				} else if(typeof plateform_rdv !== "undefined"){
 					for(var key in $scope.aPlateforms){
 						if($scope.aPlateforms[key].id == plateform_rdv){
 							$scope.plateform = $scope.aPlateforms[key];
@@ -202,19 +219,66 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 
 				$scope.$watch('plateform',function(newValue, oldValue){
+
+					var homeUrl = redirection.getHomePageDestinyUrl();
 					if(typeof newValue !== "undefined" && newValue !== null){
 						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
+						var plateformNameUrl = newValue.nom.replace(' ','_');
+						//$location.path(homeUrl+plateformNameUrl).replace();
+					}else {
+						storage.erasePersistant('cookie_plateform_rdv_id');
+						//$location.path(homeUrl).replace();
 					}
 				});
 			};
 
+			var initTags = function(){
+				$scope.$watch('tags',function(newValue,oldValue){
+					if(newValue !== '' || oldValue !== ''){
+						$location.search('tags', newValue);
+					}
+				});
 
-			//init
-			var init = function(){
+				var searchObject = $location.search();
+				if(searchObject.tags){
+					$scope.tags = searchObject.tags;
+				}
+			};
+
+
+			/**
+			 * launch after init !
+			 */
+			var launchRdvCtrl = function(){
 				refreshRdvData();
 				autoRefreshData();
 				setTypeFilter();
-			}
+				initTags();
+				socket.getUserList();
+			};
+
+
+
+			$scope.$on('updateListUsers',function(event,data){
+				if(data[0]){
+					$scope.listUser = data[0];
+				}
+			});
+
+			/**
+			 * init : connect and launch
+			 */
+			var init = function(){
+				var refreshPromise = user.refresh();
+				if(refreshPromise !== false){
+					refreshPromise.success(function(data){
+						$scope.currentUser = data;
+						launchRdvCtrl();
+					});
+				} else {
+					launchRdvCtrl();
+				}
+			};
 
 			init();
 		}

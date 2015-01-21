@@ -6,10 +6,17 @@ angular.module('myApp.directives')
                 scope:{
                     'lfgProfileBungie':'=',
                     'userGame':'=',
-                    'withPlateform':'@'
+                    'withPlateform':'@',
+                    'user':'=',
+                    'listUser':'='
                 },
                 link: function($scope, element, attrs) {
-
+                    $scope.isConnected = false;
+                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
+                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
+                            $scope.isConnected = true;
+                        }
+                    }
                 },
                 restrict: 'E',
                 templateUrl: '/html/directives/lfg-profile-bungie.html'
