@@ -171,6 +171,10 @@ msgstr ""
 msgid "Guardian"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "Hi, we are looking for"
+msgstr ""
+
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr ""
@@ -334,6 +338,10 @@ msgstr ""
 msgid "Register on Esbattle.com"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "Register to join the party !"
+msgstr ""
+
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
 msgstr ""
@@ -344,6 +352,10 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Send it"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Share this information on your favorite forum, social network and friends :"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -380,6 +392,10 @@ msgstr ""
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Thanks"
 msgstr ""
 
 #: app/html/controllers/register.html
@@ -470,6 +486,10 @@ msgstr ""
 msgid "an error occured, please try again later, sorry for the inconvenience"
 msgstr ""
 
+#: app/html/controllers/party-waiting.html
+msgid "apply on"
+msgstr ""
+
 #: app/html/controllers/rdv.html
 msgid "create an account"
 msgstr ""
@@ -508,6 +528,14 @@ msgstr ""
 
 #: app/html/controllers/password-update.html
 msgid "password doesn't match"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "player(s)"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "start at"
 msgstr ""
 
 #: app/html/controllers/notification.html

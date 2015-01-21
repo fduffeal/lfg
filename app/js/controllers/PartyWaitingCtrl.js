@@ -6,6 +6,7 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 	        $scope.lang = lang.getCurrent();
 
 	        $scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+	        $scope.registerUrl = redirection.getRegisterPageUrl();
 
 			$scope.currentUser = user.get();
 

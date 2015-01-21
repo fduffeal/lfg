@@ -116,7 +116,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 
 			$scope.getDestinyCharacters = function(){
-				bungie.getCharacters($scope.plateform.id,$scope.plateform.bungiePlateformId,$scope.gamertag).success(function(data){
+				bungie.getCharacters($scope.plateformAnnonce.id,$scope.plateformAnnonce.bungiePlateformId,$scope.gamertag).success(function(data){
 					$scope.aCharacters = data;
 				}).error(function(data){
 					$scope.aCharacters = [];
@@ -171,7 +171,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
 
-					$scope.aRdv.push(formatAnnonce(data));
+					//$scope.aRdv.push(formatAnnonce(data));
 
 				}).error(function(data){
 					$scope.annonce_tag = '';
