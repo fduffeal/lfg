@@ -224,10 +224,10 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					if(typeof newValue !== "undefined" && newValue !== null){
 						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
 						var plateformNameUrl = newValue.nom.replace(' ','_');
-						$location.path(homeUrl+plateformNameUrl).replace();
+						//$location.path(homeUrl+plateformNameUrl).replace();
 					}else {
 						storage.erasePersistant('cookie_plateform_rdv_id');
-						$location.path(homeUrl).replace();
+						//$location.path(homeUrl).replace();
 					}
 				});
 			};
