@@ -25,11 +25,10 @@ gulp.task('sass', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/bower_components/angular/angular.min.js',
-		'app/bower_components/angular-route/angular-route.min.js',
-		'app/bower_components/angular-cookies/angular-cookies.min.js',
-		'app/bower_components/angular-gettext/dist/angular-gettext.min.js',
-		'node_modules/destiny-client/destiny.min.js',
+		'app/bower_components/angular/angular.js',
+		'app/bower_components/angular-route/angular-route.js',
+		'app/bower_components/angular-cookies/angular-cookies.js',
+		'app/bower_components/angular-gettext/dist/angular-gettext.js',
 		'app/*.js',
 		'app/js/*/*.js'
 	])
