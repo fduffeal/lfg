@@ -27581,7 +27581,7 @@ angular.module('myApp', [
 ]).
 	config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-		$locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(false);
 
 		$routeProvider.when('/:lang/matchmaking',
 			{
@@ -27703,7 +27703,7 @@ angular.module('myApp', [
 				controller : 'ForumCtrl'
 			});
 
-		$routeProvider.when('/:lang/forum/topic/',
+		$routeProvider.when('/:lang/forum/topic/:id/:page/:titre',
 			{
 				templateUrl: '/html/controllers/topic.html',
 				controller : 'TopicCtrl'
@@ -27753,10 +27753,16 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
+	['$scope','$routeParams','forum','redirection',
+		function ($scope,$routeParams,forum,redirection) {
 			'use strict';
 
+			forum.getAllTopic().success(function(data) {
+				for(var key in data){
+					data[key].url = redirection.getTopicUrl(data[key]);
+				}
+				$scope.aTopic = data;
+			});
 		}
 	]
 );
@@ -28914,222 +28920,57 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
     ]
 );
 
-angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
+angular.module('myApp.controllers').controller('TopicCtrl',
+	['$scope','$routeParams','forum',
+		function ($scope,$routeParams,forum) {
 			'use strict';
+
+			var id = $routeParams.id;
+			var page = $routeParams.page;
+			var result = 20;
+
+			$scope.modeEdit = 1;
+			$scope.modeModify = 2;
+			$scope.modeDelete = 3;
+
+			$scope.mode = $scope.modeEdit;
+
+			forum.getTopic(id, page, result).success(function(data) {
+				$scope.topic = data;
+			});
+
+			$scope.submit = function(){
+				if($scope.myForm.$valid === false){
+					return;
+				}
+				console.log('REPLY');
+
+				switch($scope.mode){
+					case $scope.modeEdit :
+						forum.reply(id,$scope.texte,page,result).success(function(data){
+							$scope.topic = data;
+						});
+						break;
+
+					case $scope.modeModify:
+						forum.updateMessage(id,$scope.texte).success(function(data){
+							$scope.topic = data;
+						});
+						break;
+				}
+
+			}
+
+			$scope.modify = function(message){
+				$scope.mode = $scope.modeModify;
+				$scope.texte = message.texte;
+			}
+
 
 		}
 	]
 );
 
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', function () {
-	'use strict';
-	return function (date2_ms) {
-		var now = new Date();
-		var date1_ms = now.getTime();
-		// Calculate the difference in milliseconds
-		var difference_ms = date1_ms - (date2_ms*1000);
-
-		if(difference_ms < 0){
-			now.setTime(date2_ms*1000);
-			var month = now.getMonth()+1;
-			if(month < 10){
-				month = "0"+month;
-			}
-			var minutes = now.getMinutes();
-			if(minutes < 10){
-				minutes = "0"+minutes;
-			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
-		}
-
-		var one_minute=1000*60*1;
-
-		var diffMinutes = Math.round(difference_ms/one_minute);
-		if(diffMinutes < 60){
-			return diffMinutes+' minutes ago';
-		}
-
-		var one_hour=1000*60*60*1;
-		var diffHours = Math.round(difference_ms/one_hour);
-		if(diffHours < 24){
-			return diffHours+' hours ago';
-		}
-
-		//Get 1 day in milliseconds
-		var one_day=1000*60*60*24;
-		var diffDays = Math.round(difference_ms/one_day);
-		return diffDays+' days ago';
-
-	};
-});
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -29442,6 +29283,224 @@ angular.module('myApp.directives')
     ]
 );
 
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', function () {
+	'use strict';
+	return function (date2_ms) {
+		var now = new Date();
+		var date1_ms = now.getTime();
+		// Calculate the difference in milliseconds
+		var difference_ms = date1_ms - (date2_ms*1000);
+
+		if(difference_ms < 0){
+			now.setTime(date2_ms*1000);
+			var month = now.getMonth()+1;
+			if(month < 10){
+				month = "0"+month;
+			}
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
+		}
+
+		var one_minute=1000*60*1;
+
+		var diffMinutes = Math.round(difference_ms/one_minute);
+		if(diffMinutes < 60){
+			return diffMinutes+' minutes ago';
+		}
+
+		var one_hour=1000*60*60*1;
+		var diffHours = Math.round(difference_ms/one_hour);
+		if(diffHours < 24){
+			return diffHours+' hours ago';
+		}
+
+		//Get 1 day in milliseconds
+		var one_day=1000*60*60*24;
+		var diffDays = Math.round(difference_ms/one_day);
+		return diffDays+' days ago';
+
+	};
+});
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
 angular.module('superCache',[])
 	.factory('superCache', ['$cacheFactory','$q','$timeout',
 		function($cacheFactory,$q,$timeout) {
@@ -29615,23 +29674,57 @@ angular.module('myApp.services')
 			'use strict';
 
 			this.url = null;
-			this.getApiUrl = function(){
-				if(this.url !== null){
+			this.getApiUrl = function () {
+				if (this.url !== null) {
 					return this.url;
 				}
 				var host = $location.host();
-				if(host === 'www.esbattle.com'){
+				if (host === 'www.esbattle.com') {
 					this.url = 'http://api.esbattle.com/';
-				}else {
+				} else {
 					this.url = 'http://lfg.esbattle.com/app_dev.php/';
 				}
 				return this.url;
 			};
 
-			this.call = function(path){
-				return $http.get(this.getApiUrl()+path).error(function(data, status, headers, config){
+			this.call = function (path) {
+				return $http.get(this.getApiUrl() + path).error(function (data, status, headers, config) {
 
-					switch(status){
+					switch (status) {
+						case 401 :
+							storage.erasePersistant('user');
+							redirection.goToLogin();
+							break;
+
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
+						case 308:
+							redirection.goHome();
+							break;
+
+						case 404:
+							redirection.notFound(data.msg);
+							break;
+
+						default:
+							break;
+					}
+				});
+			};
+
+			this.post = function (path, params) {
+
+				var url = this.getApiUrl() + path;
+				return $http({
+					method: 'POST',
+					url: url,
+					data: params,
+					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
+				}).error(function (data, status, headers, config) {
+
+					switch (status) {
 						case 401 :
 							storage.erasePersistant('user');
 							redirection.goToLogin();
@@ -29843,6 +29936,58 @@ angular.module('myApp.services')
 				}
 
 				return aFilteredItems;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('forum', ['api','$window','user',
+		function(api,$window,user) {
+			'use strict';
+
+			this.getAllTopic = function(){
+				return api.call('forum');
+			};
+
+			this.getTopic = function(id,page,nbResult){
+				return api.call('forum/topic/'+id+'/'+page+'/'+nbResult);
+			};
+
+			this.reply = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.updateMessage = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.logout = function(){
+				//email = $window.encodeURIComponent(email);
+				//password = $window.encodeURIComponent(password);
+				//username = $window.encodeURIComponent(username);
+				//plateformId = $window.encodeURIComponent(plateformId);
+				//gamertag = $window.encodeURIComponent(gamertag);
 			};
 		}
 	]
@@ -30087,6 +30232,20 @@ angular.module('myApp.services')
 
 			this.getAnnonceCreateUrl = function(){
 				return '/'+getLang()+'/annonce/create/';
+			};
+
+			this.getTopicUrl = function(topic){
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return '/'+getLang()+'/forum/topic/'+topic.id+'/1/'+titre;
 			};
 		}
 	]

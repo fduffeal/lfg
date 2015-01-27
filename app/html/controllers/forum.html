@@ -26,68 +26,12 @@
 				</thead>
 
 				<tbody>
-					<tr>
-						<td class="fo-type"><div class="postit"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="" class="modo">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="postit"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="" class="modo">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="postit"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="" class="modo">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="high"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="normal"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="normal"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="high"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="normal"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
-					</tr>
-					<tr>
-						<td class="fo-type"><div class="normal"></div></td>
-						<td class="fo-sujet"><a href="">Topic de test est-ce que ça marche?</a></td>
-						<td class="fo-author"><a href="">poneyMCH</a></td>
-						<td class="fo-nb">9485</td>
-						<td class="fo-last">15:00:08</td>
+					<tr ng-repeat="topic in aTopic">
+						<td class="fo-type"><div ng-class="{'postit':(topic.position == '1'),'normal':(topic.position != '1'),'high':(true == false)}"></div></td>
+						<td class="fo-sujet"><a ng-href="{{topic.url}}">{{topic.titre}}</a></td>
+						<td class="fo-author"><a href="" class="modo" ng-class="{'modo':(topic.user.username == 'moi')}">{{topic.user.username}}</a></td>
+						<td class="fo-nb">{{topic.nbMessages}}</td>
+						<td class="fo-last">{{topic.updated *1000 | date:'yyyy-MM-dd HH:mm'}}</td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,8 +1,14 @@
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
+	['$scope','$routeParams','forum','redirection',
+		function ($scope,$routeParams,forum,redirection) {
 			'use strict';
 
+			forum.getAllTopic().success(function(data) {
+				for(var key in data){
+					data[key].url = redirection.getTopicUrl(data[key]);
+				}
+				$scope.aTopic = data;
+			});
 		}
 	]
 );
