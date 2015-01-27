@@ -24,6 +24,12 @@
 				}
 			}
 		}
+		@media screen and (max-width: 390px ){
+			.btn2.long, .btn2 {
+				width: auto;
+				font-size: 12px;
+			}
+		}
 	}
 
 	.btn {
@@ -74,7 +80,7 @@
 			}
 		}
 	}
-	table {
+	.page table {
 		width: 100%;
 		text-align: left;
 		border: 0;
