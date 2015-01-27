@@ -3,12 +3,12 @@
     <img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
         <div class="menu-left-mobile">
         <img src="img/logo-header-small.png"  class="logo-header" />
-            <div class="menu">Menu
+            <div class="menu"><a href="{{homeUrl}}" translate>Home</a> <a href="{{notifUrl}}" class="notif" ng-if="userInfo.username" ><span class="nb-notif">{{notifications.length}}</span></a>
                 <ul>
-                    <li><a href="{{homeUrl}}" translate>Home</a></li>
+          <!--           <li><a href="{{homeUrl}}" translate>Home</a></li> -->
                  <!--   <li ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
                     <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
-                    <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li>
+                 <!--    <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li> -->
                 <!--    <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>-->
                 </ul>
             </div>

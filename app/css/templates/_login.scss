@@ -1,57 +1,61 @@
 #login {
-    .block {
-        h1 {
+	.block {
+		h1 {
 
-            height: 40px;
-            line-height: 40px;
-        }
-        .login-fb {
-            display: block;
-            background: #3b5997;
-            height: 40px;
-            width: 310px;
-            font-size: 15px;
-            font-weight: bold;
-            line-height: 40px;
-            text-align: center;
-            margin:20px auto;
-            span {
-                display: block;
-                float: left;
-                width: 15px;
-                margin: 6px 0 0 15px;
-                height: 29px;
-                background: url('../img/logo-fb.png') no-repeat;
-            }
-        }
-        .or{
-            display: block;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        width: 300px;
-        margin: auto;
-        padding: 10px;
+			height: 40px;
+			line-height: 40px;
+		}
+		.login-fb {
+			display: block;
+			background: #3b5997;
+			height: 40px;
+			width: 310px;
+			font-size: 15px;
+			font-weight: bold;
+			line-height: 40px;
+			text-align: center;
+			margin:20px auto;
+			span {
+				display: block;
+				float: left;
+				width: 15px;
+				margin: 6px 0 0 15px;
+				height: 29px;
+				background: url('../img/logo-fb.png') no-repeat;
+			}
+		}
+		.or{
+			display: block;
+			text-align: center;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		width: 300px;
+		margin: auto;
+		padding: 10px;
+		@media screen and (max-width: 390px ) {
+			width: 285px;
+		}
 
-        ul li {
-            display: block;
-            margin: 20px 0;
-            &.forget a{
-                color:#87cbc1;
-                font-size: 13px;
-            }
-            input {
-                width: 95%;
-            }
-            .btn {
-                cursor: pointer;
-            }
-        }
+		ul li {
+			display: block;
+			margin: 20px 0;
+			&.forget a{
+				color:#87cbc1;
+				font-size: 13px;
+			}
+			input {
+				width: 95%;
+			}
+			.btn {
+				cursor: pointer;
+				width: 100%!important
+			}
+		}
 
-    }
-    .error-msg {
-        top: 286px;
-        right: 62px;
-    }
+	}
+	.error-msg {
+		top: 286px;
+		right: 62px;
+	}
 }
