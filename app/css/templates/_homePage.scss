@@ -5,6 +5,34 @@
 			margin-right: 0;
 		}
 	}
+	.carousel {
+		a {
+			width: 100%;
+			height: 220px;
+			display: block;
+			background: url('/img/hm-carousel.jpg')no-repeat;
+			position: relative;
+			text-align: right;
+			background-position: right;
+			color: #FFF;
+			.logo-destiny {
+				margin-top: 10px;
+			}
+			.text {
+				font-size: 3rem;
+				margin-right: 20px;
+			}
+			.bt {
+				background: $orange;
+				float: right;
+				padding: 10px 20px;
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+				font-size: 2rem	;
+			}
+		}
+	}
 	.page {
 		width: 940px;
 		margin: auto;
@@ -191,4 +219,34 @@
 			}
 		}
 	}
+	@media screen and (max-width: 990px ) {
+		.content-header {
+			width: 95%;
+		}
+		.page {
+			width: 94%;
+		}
+		.block-right {
+			display: none;
+		}
+	}
+	@media screen and (max-width: 620px) {
+		.page {
+			width: 90%;
+		}
+		.block-left {
+			width: 100%
+		}
+		.carousel a .text {
+			font-size: 2.5rem;
+		}
+		.post-image {
+			display: none;
+		}
+		.article .post-text {
+			float: none;
+			width: 94%;
+		}
+	}
+
 }
