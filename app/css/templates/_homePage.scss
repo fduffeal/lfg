@@ -2,7 +2,7 @@
 	.content-header {
 		width: 940px;
 		.menu-right {
-			margin-right: 0
+			margin-right: 0;
 		}
 	}
 	.page {
@@ -23,13 +23,22 @@
 	}
 	h2 {
 		font-size: 1.8rem;
-		margin: 0
+		margin: 0;
+		&.second {
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}
 	}
 	.clear {
 		clear:both;
 	}
 
 	.article {
+		font-size: 1.4rem;
+		margin-top: 10px;
+		border-bottom: 1px solid #eee;
+		height: 150px;
+		padding-bottom: 10px;
 		.post-image {
 			float: left;
 			width: 220px;
@@ -40,6 +49,146 @@
 			float: right;
 			width: 360px;
 			overflow: hidden;
+			.post-title {
+				.title {
+					font-weight: bold;
+					font-size: 1.6rem;
+					color:black;
+					display: inline-block;
+				}
+				span {
+					display: inline-block;
+					font-size: 1.1rem;
+					color: #999;
+					&.comment:before {
+						content: "☻";
+						font-size: 1.8rem;
+						margin: -4px 5px;
+						float: left;
+					}
+					a{
+						color: $orange;
+						&:hover {
+							text-decoration: underline
+						}
+					}
+				}
+			}
+			.text {
+				font-size: 1.3rem;
+				margin-top: 10px;
+				height: 80px;
+			}
+			.read {
+				font-size: 1.3rem;
+				color: $orange;
+				&:hover {
+					text-decoration: underline
+				}
+				&:before {
+					content: "➭";
+					font-size: 2rem;
+					float: left;
+					margin: -3px 5px;
+				}
+
+			}
+		}
+	}
+
+	.party {
+		display: block;
+		border: 1px solid transparent;
+		margin-top: 5px;
+		padding-bottom: 5px;
+		table-layout:fixed;
+		border-bottom: 1px solid #eee;
+		@include transition(background 0.1s ease-out);
+		&:hover {
+			background-color: rgba(6,171,147,0.2);
+		}
+		.hidden{
+			overflow:hidden;
+			white-space: normal;
+			height: 44px;
+		}
+		.perso {
+			height: 30px;
+			width: 281px;
+			position:relative;
+			background-size: cover!important;
+			background-repeat: no-repeat;
+			color:#FFF;
+			img {
+				float: left;
+				background-repeat: no-repeat;
+				width: 30px;
+				height: 30px;
+				background-size: cover;
+			}
+			.perso-box {
+				float: left;
+				width: 250px;
+				.name {
+					font-size: 1.4rem;
+					float: left;
+					margin: -11px 5px;
+				}
+				.level {
+					float: right;
+					color:#f5dc56;
+					font-size: 2.2rem	;
+					margin: -10px 10px;
+					&:before {
+						content: "\2726";
+						display: inline-block;
+						vertical-align: 22%;
+						font-size: 50%;
+					}
+				}
+				.class {
+					clear: both;
+					float: left;
+					margin-left: 5px;
+					font-size: 1.1rem;
+					margin-top: -4px;
+				}
+			}
+		}
+		.line {
+			font-size: 1.1rem;
+			color: black;
+
+			span {
+				font-weight: bold;
+			}
+			.l1 {
+				width: 50px;
+			}
+			.l2 {
+				width: 180px;
+			}
+			.l3 {
+				width: 70px;
+				text-align: right;
+				a{
+					color:$orange;
+					&:hover {
+						text-decoration: underline
+					}
+				}
+
+			}
+		}
+	}
+	.socials {
+		img {
+			margin-right: 5px;
+			opacity: 0.6;
+			@include transition(opacity 0.2s ease-out);
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 }
