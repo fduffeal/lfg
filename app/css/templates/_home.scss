@@ -1,5 +1,8 @@
 #home {
 	.welcome {
+		.hide, .show {
+			color: black;
+		}
 		.txt {
 			display: block;
 			color: white!important;
@@ -7,6 +10,9 @@
 				font-weight: bold;
 
 			}
+		}
+		.fb_iframe_widget {
+			margin: 0;
 		}
 		.btn2 {
 			display: inline-block;
