@@ -36,7 +36,18 @@ angular.module('myApp.services')
 				texte = texte.replace(/\n/g,'<br/>');
 				//texte = $window.encodeURI(texte);
 				var data = {texte:texte};
-				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+				return api.post('forum/topic/message/update/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.deleteMessage = function(id,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
 			};
 
 			this.logout = function(){

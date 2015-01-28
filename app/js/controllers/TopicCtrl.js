@@ -9,7 +9,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.modeEdit = 1;
 			$scope.modeModify = 2;
-			$scope.modeDelete = 3;
 
 			$scope.mode = $scope.modeEdit;
 
@@ -21,8 +20,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 				if($scope.myForm.$valid === false){
 					return;
 				}
-				console.log('REPLY');
-
 				switch($scope.mode){
 					case $scope.modeEdit :
 						forum.reply(id,$scope.texte,page,result).success(function(data){
@@ -31,20 +28,31 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 						break;
 
 					case $scope.modeModify:
-						forum.updateMessage(id,$scope.texte).success(function(data){
+						forum.updateMessage($scope.messageId,$scope.texte,page,result).success(function(data){
 							$scope.topic = data;
 						});
 						break;
+
+					default:
+						break;
 				}
+
+				$scope.texte = "";
+				$scope.mode = $scope.modeEdit;
 
 			}
 
 			$scope.modify = function(message){
 				$scope.mode = $scope.modeModify;
-				$scope.texte = message.texte;
+				$scope.messageId = message.id;
+				$scope.texte = message.texte.replace(/<br\/>/ig,'\n');
 			}
 
-
+			$scope.delete = function(message){
+				forum.deleteMessage(message.id,page,result).success(function(data){
+					$scope.topic = data;
+				});
+			}
 		}
 	]
 );
