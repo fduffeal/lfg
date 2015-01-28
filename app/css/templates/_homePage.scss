@@ -1,0 +1,45 @@
+#homePage {
+	.content-header {
+		width: 940px;
+		.menu-right {
+			margin-right: 0
+		}
+	}
+	.page {
+		width: 940px;
+		margin: auto;
+		padding: 20px;
+		margin-bottom: 10px;
+	}
+
+	.block-left {
+		float: left;
+		width: 600px;
+	}
+	.block-right {
+		float: right;
+		width: 300px;
+
+	}
+	h2 {
+		font-size: 1.8rem;
+		margin: 0
+	}
+	.clear {
+		clear:both;
+	}
+
+	.article {
+		.post-image {
+			float: left;
+			width: 220px;
+			margin-right: 20px;
+			overflow: hidden;
+		}
+		.post-text {
+			float: right;
+			width: 360px;
+			overflow: hidden;
+		}
+	}
+}
