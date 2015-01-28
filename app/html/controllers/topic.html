@@ -5,10 +5,15 @@
 		<h1>{{topic.topic.titre}}</h1>
 		<div class="marge">
 			<a href="" class="btn2">Actualiser</a>
+			<a href="" class="btn2" ng-click="goToBottom()">Bottom</a>
+			<a href="" class="btn2" ng-click="goToLastPage()">LAST PAge</a>
 		</div>
 	</div>
 
 	<div class="page">
+
+		<lfg-pagination id="top" a-page="aPage" current-page="currentPage" max-page="6"></lfg-pagination>
+
 		<div class="block">
 			<table class="list-message" border="0">
 
@@ -38,9 +43,12 @@
 				</tr>
 			</table>
 		</div>
+
+		<lfg-pagination id="bottom" a-page="aPage" current-page="currentPage" max-page="6"></lfg-pagination>
+
 	</div>
 
-	<div class="welcome">
+	<div class="welcome" ng-show="canPost">
 		<div class="marge">
 			<div class="new">
 				<h2 ng-if="(mode === modeEdit)">Répondre</h2>

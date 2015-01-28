@@ -28921,21 +28921,42 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum',
-		function ($scope,$routeParams,forum) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout) {
 			'use strict';
 
 			var id = $routeParams.id;
 			var page = $routeParams.page;
+			$scope.currentPage = parseInt(page);
 			var result = 20;
 
+			$scope.canPost = false;
 			$scope.modeEdit = 1;
 			$scope.modeModify = 2;
 
+			$scope.aPage = [];
+
 			$scope.mode = $scope.modeEdit;
 
-			forum.getTopic(id, page, result).success(function(data) {
+			var setTopicData = function(data){
 				$scope.topic = data;
+				$scope.nbPage = Math.ceil(data.topic.nbMessages/result);
+
+				$scope.aPage = [];
+				for(var i = 0;i< $scope.nbPage;i++){
+					$scope.aPage.push(redirection.getTopicUrl($scope.topic.topic,i+1));
+				}
+				$scope.canPost = true;
+			}
+
+			$scope.goToLastPage = function(){
+				if($scope.aPage.length > $scope.currentPage){
+					$location.path($scope.aPage[$scope.aPage.length-1]);
+				}
+			}
+
+			forum.getTopic(id, page, result).success(function(data) {
+				setTopicData(data);
 			});
 
 			$scope.submit = function(){
@@ -28945,13 +28966,17 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 				switch($scope.mode){
 					case $scope.modeEdit :
 						forum.reply(id,$scope.texte,page,result).success(function(data){
-							$scope.topic = data;
+							setTopicData(data);
+
+							$scope.goToLastPage();
+							$scope.goToBottom();
 						});
 						break;
 
 					case $scope.modeModify:
 						forum.updateMessage($scope.messageId,$scope.texte,page,result).success(function(data){
-							$scope.topic = data;
+							setTopicData(data);
+							$scope.goToBottom();
 						});
 						break;
 
@@ -28972,8 +28997,19 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.delete = function(message){
 				forum.deleteMessage(message.id,page,result).success(function(data){
-					$scope.topic = data;
+					setTopicData(data);
+
+					$scope.goToBottom();
 				});
+			}
+
+			$scope.goToBottom = function(){
+
+				$timeout(function(){
+					$location.hash('bottom');
+					$anchorScroll();
+				},0);
+
 			}
 		}
 	]
@@ -29214,6 +29250,25 @@ angular.module('myApp.directives')
             };
         }
     ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgPagination', [
+		function() {
+			return {
+				scope:{
+					aPage: '=',
+					currentPage : '=',
+					maxPage:'='
+				},
+				link: function($scope, element, attrs) {
+					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-pagination.html'
+			};
+		}
+	]
 );
 
 angular.module('myApp.directives')
@@ -30253,7 +30308,11 @@ angular.module('myApp.services')
 				return '/'+getLang()+'/annonce/create/';
 			};
 
-			this.getTopicUrl = function(topic){
+			this.getTopicUrl = function(topic,page){
+
+				if(!page){
+					page = 1;
+				}
 
 				/* Remove unwanted characters, only accept alphanumeric and space */
 				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
@@ -30264,7 +30323,7 @@ angular.module('myApp.services')
 				/* Replace space with a '-' symbol */
 				titre = titre.replace(/\s/g, "-");
 
-				return '/'+getLang()+'/forum/topic/'+topic.id+'/1/'+titre;
+				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
 			};
 		}
 	]
