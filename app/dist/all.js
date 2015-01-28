@@ -27653,6 +27653,11 @@ angular.module('myApp', [
 				controller : 'RdvCtrl',
 				action     : 'welcome'
 			});
+		$routeProvider.when('/:lang/home',
+			{
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl'
+			});
 		$routeProvider.when('/:lang/games',
 			{
 				templateUrl: '/html/controllers/games-profiles.html',
@@ -27836,6 +27841,16 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 			};
         }
     ]
+);
+
+angular.module('myApp.controllers').controller('HomeCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+			$scope.msg = $routeParams.msg;
+			console.log($scope.msg);
+		}
+	]
 );
 
 angular.module('myApp.controllers').controller('ListUsersCtrl',
