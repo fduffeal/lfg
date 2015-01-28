@@ -27731,9 +27731,1720 @@ angular.module('myApp.filters', []);
 
 angular.module('myApp').run(['gettextCatalog', function (gettextCatalog) {
 /* jshint -W100 */
-    gettextCatalog.setStrings('fr', {"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)":"<span class=\"title\"><b>FAQ: </b></span><br/>- Sans compte Esbattle, vous pouvez seulement créer une annonce. Pour pouvoir créer ou rejoindre une partie, l'inscription au site est requis.<br/>- Partie: Une partie permet de proposer aux joueurs de se regrouper pour un raid, un assaut, une mission. Vous pouvez choisir l'heure à laquelle vous souhaitez démarrer, ainsi que le nombre de slots.<br/> Annonce: Une annonce comme son nom l'indique est juste un message si par exemple, vous recherchez un joueur, ou un raid (etc) sans avoir l'envie de créer et d'organiser une partie<br/>- Créer une partie: Lorsque vous venez de créer une partie, une URL vous sera transmise pour pouvoir la partager sur des forums, ou d'autres sites internet. Lorsqu'un joueur rejoindra votre partie, une notification apparaitra.","<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","All":"Tous","Announcement":"Annonce","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Choose a character":"Choisissez un personnage","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create a party":"Créer une partie","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>":"Creer un compte esbatte pour avoir vos personnages de Destiny sur www.esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez votre mot de passe, nous vous enverrons un email pour vérifier votre identité<br>","Creator":"Createur","Cropta's End":"La Chute de Cropta","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter a description":"Entrer une description","Enter your informations or":"Entrez vos informations ou","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Find":"Chercher","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","GamerTag or PSN ID":"GamerTag ou PSN ID","Gamertag":"Gamertag","Guardian":"Gardien","Hi, we are looking for":"Bonjour, nous recherchons","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Infos":"Infos","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Login Esbattle":"Login Esbattle","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","My partys":"Mes parties","New announcement":"Nouvelle annonce","New character":"Nouveau personnage","New party on":"Nouvelle partie sur","Nightfall":"Nuit noire","No":"Non","Notification":"Notification","Notifications":"Notifications","OR":"OU","Open":"Ouvert","Party":"Partie","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Player":"Joueur","Please check your GamerTag or PSN ID, we didn't found any Destiny characters":"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun personnage sur Destiny","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Post an announcement":"Poster une annonce","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register on Esbattle.com":"Inscription sur Esbattle.com","Register to join the party !":"Inscrits toi pour rejoindre la partie !","Retrieve my account !":"Récupérer mon compte !","Send":"Envoyer","Send it":"Envoyer","Share this information on your favorite forum, social network and friends :":"Partage cette information sur ton forum favori, ton réseau social et tes amis :","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Start:":"Début:","Story":"Histoire","Story Challenge":"Histoire épique","Strike":"Assaut","Team":"Equipe","Thanks":"Merci","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Url of the party:":"Url de la partie:","Use this character":"Utiliser ce personnage","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Vault of Glass":"Caveau de Verre","VaultOfGlass":"CaveauDeVerre","Waiting Players":"Joueurs voulant rejoindre la partie","Weekly Heroic Strike":"Assaut épique de la semaine","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your gamertag":"Votre gamertag","Your message":"Votre message","an error occured, please try again later, sorry for the inconvenience":"une erreur est survenue, essayez plus tard, désolé pour le dérangement","apply on":"rejoins sur ","create an account":"créer un compte","daily":"du jour","epic":"épique","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","hunter":"chasseur","join the party !":"rejoins la partie !","on":"sur","online":"en ligne","password doesn't match":"Les mots de passe ne correspondent pas","player(s)":"joueur(s)","start at":"commence à","this party":"cette partie","titan":"titan","to save your character for the next time !":"pour sauvegarder votre personnage la prochaine fois !","warlock":"arcaniste","your annoncement has been send and will appear in few second, please wait":"votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de patienter","Ask to join the party":"Demander à rejoindre la partie","Formated Party":"Partie préformatée","Personalized Party":"Partie Personnalisée","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !":"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les parties planifiées<br>Utilisez les tags comme #raid, #cropta, #caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!<br>Créer plus facilement une partie planifiée avec notre nouvelle interface !","<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle est requis :)","<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai":"<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters ","Join this party to see player's gamertag":"Rejoignez cette partie pour voir le gamertag des joueurs","Register with your email address":"S'enregistrer avec votre adresse email","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !"});
+    gettextCatalog.setStrings('fr', {"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)":"<span class=\"title\"><b>Comment ça marche? </b></span><br/>- Sans compte vous pouvez créer une annonce. En vous inscrivant vous aurez en plus la possibilité de <b>Créer</b> ou de <b>Rejoindre</b> une partie. De plus, vos personnages seront sauvegardés. Plus besoin de rentrer votre PSN ID ou Gamertag.<br /><b>Annonce:</b><br/> Une annonce est juste un message pour dire par exemple \"dispo caveau\".<br/><b>Partie:</b><br/>- Une partie permet de proposer aux autres joueurs un raid, un assaut, une nuit noire.<br />- Choisissez l'heure et le nombre de places.<br/>- Une fois créée, les joueurs pourront rejoindre votre partie. Vous recevrez alors une notification. <br/>- Une url sera transmise pour que vous puissiez la partager sur des forums ou des réseaux sociaux. ","<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","All":"Tous","Announcement":"Annonce","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Choose a character":"Choisissez un personnage","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create a party":"Créer une partie","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>":"Creer un compte esbatte pour avoir vos personnages de Destiny sur www.esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez votre mot de passe, nous vous enverrons un email pour vérifier votre identité<br>","Creator":"Createur","Cropta's End":"La Chute de Cropta","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter a description":"Entrer une description","Enter your informations or":"Entrez vos informations ou","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Find":"Chercher","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","GamerTag or PSN ID":"GamerTag ou PSN ID","Gamertag":"Gamertag","Guardian":"Gardien","Hi, we are looking for":"Bonjour, nous recherchons","Hide":"Cacher","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Infos":"Infos","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Login Esbattle":"Login Esbattle","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","My partys":"Mes parties","New announcement":"Nouvelle annonce","New character":"Nouveau personnage","New party on":"Nouvelle partie sur","Nightfall":"Nuit noire","No":"Non","Notification":"Notification","OR":"OU","Open":"Ouvert","Party":"Partie","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Player":"Joueur","Please check your GamerTag or PSN ID, we didn't found any Destiny characters":"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun personnage sur Destiny","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Post an announcement":"Poster une annonce","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register on Esbattle.com":"Inscription sur Esbattle.com","Register to join the party !":"Inscrits toi pour rejoindre la partie !","Retrieve my account !":"Récupérer mon compte !","Send":"Envoyer","Send it":"Envoyer","Share this information on your favorite forum, social network and friends :":"Partage cette information sur ton forum favori, ton réseau social et tes amis :","Show Help":"Montrer l'aide","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Start:":"Début:","Story":"Histoire","Story Challenge":"Histoire épique","Strike":"Assaut","Team":"Equipe","Thanks":"Merci","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Url of the party:":"Url de la partie:","Use this character":"Utiliser ce personnage","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Vault of Glass":"Caveau de Verre","VaultOfGlass":"CaveauDeVerre","Waiting Players":"Joueurs voulant rejoindre la partie","Weekly Heroic Strike":"Assaut épique de la semaine","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your gamertag":"Votre gamertag","Your message":"Votre message","an error occured, please try again later, sorry for the inconvenience":"une erreur est survenue, essayez plus tard, désolé pour le dérangement","apply on":"rejoins sur ","create an account":"créer un compte","daily":"du jour","epic":"épique","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","hunter":"chasseur","join the party !":"rejoins la partie !","on":"sur","online":"en ligne","password doesn't match":"Les mots de passe ne correspondent pas","player(s)":"joueur(s)","start at":"commence à","this party":"cette partie","titan":"titan","to save your character for the next time !":"pour sauvegarder votre personnage la prochaine fois !","warlock":"arcaniste","your annoncement has been send and will appear in few second, please wait":"votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de patienter","Notifications":"Notifications","Ask to join the party":"Demander à rejoindre la partie","Formated Party":"Partie préformatée","Personalized Party":"Partie Personnalisée","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !":"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les parties planifiées<br>Utilisez les tags comme #raid, #cropta, #caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!<br>Créer plus facilement une partie planifiée avec notre nouvelle interface !","<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle est requis :)","<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai":"<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters ","Join this party to see player's gamertag":"Rejoignez cette partie pour voir le gamertag des joueurs","Register with your email address":"S'enregistrer avec votre adresse email","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !"});
 /* jshint +W100 */
 }]);
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', function () {
+	'use strict';
+	return function (date2_ms) {
+		var now = new Date();
+		var date1_ms = now.getTime();
+		// Calculate the difference in milliseconds
+		var difference_ms = date1_ms - (date2_ms*1000);
+
+		if(difference_ms < 0){
+			now.setTime(date2_ms*1000);
+			var month = now.getMonth()+1;
+			if(month < 10){
+				month = "0"+month;
+			}
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
+		}
+
+		var one_minute=1000*60*1;
+
+		var diffMinutes = Math.round(difference_ms/one_minute);
+		if(diffMinutes < 60){
+			return diffMinutes+' minutes ago';
+		}
+
+		var one_hour=1000*60*60*1;
+		var diffHours = Math.round(difference_ms/one_hour);
+		if(diffHours < 24){
+			return diffHours+' hours ago';
+		}
+
+		//Get 1 day in milliseconds
+		var one_day=1000*60*60*24;
+		var diffDays = Math.round(difference_ms/one_day);
+		return diffDays+' days ago';
+
+	};
+});
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
+angular.module('myApp.directives')
+	.directive('lfgFacebook', ['$window','$document',
+		function($window,$document) {
+			'use strict';
+			return {
+				link : function(){
+
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1482107158698739',
+							xfbml      : true,
+							version    : 'v2.0'
+						});
+					};
+
+					(function(d, s, id){
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) {return;}
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
+			return {
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.updateLang = function(langSelected){
+						lang.change(langSelected);
+						$scope.lang = langSelected;
+					};
+
+					var switchLangUrl = function(newLang){
+						return $location.absUrl().replace($scope.lang,newLang);
+					};
+
+					$scope.switchLangUrlFr = switchLangUrl('fr');
+					$scope.switchLangUrlEn = switchLangUrl('en');
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-footer.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+			'use strict';
+			return {
+				scope:{
+					'lfgHeader':'='
+				},
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+						redirection.goHome();
+					};
+
+
+
+
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+                    $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+						rdv.getNotifications().success(function(data){
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-header.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInit', ['user','socket',
+		function(user,socket) {
+			'use strict';
+			return {
+				scope:{
+					'init':'='
+				},
+				link: function($scope, element, attrs) {
+					var currentUser = user.get();
+					if(currentUser !== null){
+						socket.addUser(currentUser.username);
+					}
+
+				},
+				restrict: 'E'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInterval', ["$interval",
+		function($interval) {
+			'use strict';
+			return {
+				replace :true,
+				scope:{
+					'lfgInterval':'='
+				},
+				link: function($scope, element, attrs) {
+
+					element.on('$destroy', function() {
+						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
+					});
+				},
+				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
+        function(matchmaking,user,redirection,$filter) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.matchmakingTemplate = null;
+
+	                /**
+	                 * récupère les configs pour la selection du type de matchmaking
+	                 */
+	                matchmaking.getConf().success(function(data){
+
+		                var groupOfTemplate = {};
+		                for(var key in data){
+			                if(!groupOfTemplate[data[key].description]) {
+				                groupOfTemplate[data[key].description] = [];
+			                }
+			                data[key].concatTags = "";
+			                for(var keyTag in data[key].tags){
+				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+			                }
+			                groupOfTemplate[data[key].description].push(data[key]);
+		                }
+		                $scope.groupOfTemplate = groupOfTemplate;
+	                });
+
+	                /**
+	                 * selectionne un type de matchmaking
+	                 * @param template
+	                 */
+	                $scope.selectGroupOfTemplate = function(template){
+		                $scope.matchmakingTemplate = template;
+		                $scope.templateSelectedModel = template[0];
+	                };
+
+	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
+		                $scope.$emit('templateSelectedModel',[newValue]);
+	                });
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-matchmaking.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgPagination', [
+		function() {
+			return {
+				scope:{
+					aPage: '=',
+					currentPage : '=',
+					maxPage:'='
+				},
+				link: function($scope, element, attrs) {
+					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-pagination.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfileBungie', [
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfileBungie':'=',
+                    'userGame':'=',
+                    'withPlateform':'@',
+                    'user':'=',
+                    'listUser':'='
+                },
+                link: function($scope, element, attrs) {
+                    $scope.isConnected = false;
+                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
+                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
+                            $scope.isConnected = true;
+                        }
+                    }
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile-bungie.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user','storage',
+        function(user,storage) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'=',
+	                'selectedPerso':'=',
+	                'aUserGame':'=',
+                    'withPlateform':'@'
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.currentUser = user.get();
+
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
+                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
+	                };
+
+                    var setSelectedPerso = function(){
+                        if($scope.currentUser !== null){
+                            $scope.aUserGame = $scope.currentUser.userGame;
+                        }
+
+                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
+                        if(typeof selectedProfilCookieId !== "undefined"){
+                            for(var key in $scope.aUserGame){
+                                if($scope.aUserGame[key].id == selectedProfilCookieId){
+                                    $scope.selectedPerso = $scope.aUserGame[key];
+                                }
+                            }
+                        }
+
+                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
+                            $scope.selectedPerso = $scope.aUserGame[0];
+                        }
+                    };
+
+                    setSelectedPerso();
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
+angular.module('myApp.services')
+	.service('activity', ['$rootScope','$window',
+		function($rootScope,$window) {
+			'use strict';
+
+			var sendInactivityAfer = 10 * 60 * 1000;
+			var timeoutInactivity = null;
+			this.setEvent = function(){
+				$window.onfocus = function(){
+					$rootScope.activityOnWindow = true;
+				};
+
+				$window.onblur = function (){
+					$rootScope.activityOnWindow = false;
+				};
+			};
+
+			this.isActiveWindow = function(){
+				return $rootScope.activityOnWindow;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('annonce', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
+			'use strict';
+
+			this.create = function(tags,description,userGameId){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+				tags = $window.encodeURIComponent(tags);
+				description = $window.encodeURIComponent(description);
+				userGameId = $window.encodeURIComponent(userGameId);
+				return api.call('annonce/create/'+tags+'/'+description+'/'+userGameId);
+			};
+
+			this.get = function(){
+				return api.call('annonce');
+			};
+		}
+
+	]
+);
+
+angular.module('myApp.services')
+	.service('api', ['$http','storage','redirection','$location',
+		function($http,storage,redirection,$location) {
+			'use strict';
+
+			this.url = null;
+			this.getApiUrl = function () {
+				if (this.url !== null) {
+					return this.url;
+				}
+				var host = $location.host();
+				if (host === 'www.esbattle.com') {
+					this.url = 'http://api.esbattle.com/';
+				} else {
+					this.url = 'http://lfg.esbattle.com/app_dev.php/';
+				}
+				return this.url;
+			};
+
+			this.call = function (path) {
+				return $http.get(this.getApiUrl() + path).error(function (data, status, headers, config) {
+
+					switch (status) {
+						case 401 :
+							storage.erasePersistant('user');
+							redirection.goToLogin();
+							break;
+
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
+						case 308:
+							redirection.goHome();
+							break;
+
+						case 404:
+							redirection.notFound(data.msg);
+							break;
+
+						default:
+							break;
+					}
+				});
+			};
+
+			this.post = function (path, params) {
+
+				var url = this.getApiUrl() + path;
+				return $http({
+					method: 'POST',
+					url: url,
+					data: params,
+					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
+				}).error(function (data, status, headers, config) {
+
+					switch (status) {
+						case 401 :
+							storage.erasePersistant('user');
+							redirection.goToLogin();
+							break;
+
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
+						case 308:
+							redirection.goHome();
+							break;
+
+						case 404:
+							redirection.notFound(data.msg);
+							break;
+
+						default:
+							break;
+					}
+				});
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
+			'use strict';
+			this.characters = null;
+
+			this.getCharacters = function(plateforme,plateformeBungie,battleTag){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+
+				plateforme = $window.encodeURIComponent(plateforme);
+				plateformeBungie = $window.encodeURIComponent(plateformeBungie);
+				battleTag = $window.encodeURIComponent(battleTag);
+				return api.call('bungie/characters/'+plateforme+'/'+plateformeBungie+'/'+battleTag+'/'+username+'/'+token);
+			};
+		}
+
+	]
+);
+
+angular.module('myApp.services')
+	.service('filter', [
+		function() {
+			'use strict';
+
+			this.isExpired = function(rdv,now){
+				return (rdv.end < now);
+			};
+
+			this.isLive = function(rdv,now){
+				return (rdv.end > now && rdv.start < now + (5*60));
+			};
+
+			this.hasTagSelected = function(rdv,aTags){
+
+				var aTagItem = [];
+				for(var keyTagItem in rdv.tags){
+					aTagItem.push(rdv.tags[keyTagItem].nom.toLowerCase());
+				}
+
+				var asTag = true;
+				for(var keyTag in aTags){
+					if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+						asTag = false;
+					}
+				}
+
+				return asTag;
+			};
+
+			this.hasPlateformSelected = function(rdv,plateformId){
+				var bHasPlateform = true;
+				if(plateformId !== "" && typeof(plateformId) !== 'undefined'){
+					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
+						bHasPlateform = false;
+					}
+				}
+
+				return bHasPlateform;
+			};
+
+			this.getCurrentTimestampInSeconds = function(){
+				return new Date().getTime()/1000;
+			};
+
+			this.tagsStringToArray = function(tags){
+				var aTags = [];
+				if(typeof tags === "string" && tags !== ""){
+					aTags = tags.split(' ');
+				}
+				return aTags;
+			};
+
+			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
+
+				if(!rdv.users){
+					return true;
+				}
+
+				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
+			};
+
+			this.hasType = function(rdv,type){
+				if(type === 'type_all'){
+					return true;
+				} else if(type === 'type_annonce' && rdv.type === type){
+					return true;
+				} else if(type === 'type_party' && rdv.type !== 'type_annonce'){
+					return true;
+				}
+
+				return false;
+			};
+
+			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(onlyWithPlace === true && this.hasPlaceAvailable(items[key],nbPlaceAvailableMin,nbPlaceAvailableMax) === false){
+						continue;
+					}
+
+					if(onlyLive === true && this.isLive(items[key],now) === false){
+						continue;
+					}
+
+					if(onlyInFuture === true && (this.isExpired(items[key],now) === true || this.isLive(items[key],now) === true)){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					if(this.hasType(items[key],type) === false){
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
+
+			this.hasMeInGame = function(rdv,userId){
+
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === userId){
+						return true;
+					}
+				}
+
+				for(var key_2 in rdv.usersInQueue){
+					if(rdv.usersInQueue[key_2].user.id === userId){
+						return true;
+					}
+				}
+				return false;
+			};
+
+			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasMeInGame(items[key],currentUserId) === false){
+						continue;
+					}
+
+					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(this.isExpired(items[key],now) === true){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('forum', ['api','$window','user',
+		function(api,$window,user) {
+			'use strict';
+
+			this.getAllTopic = function(){
+				return api.call('forum');
+			};
+
+			this.getTopic = function(id,page,nbResult){
+				return api.call('forum/topic/'+id+'/'+page+'/'+nbResult);
+			};
+
+			this.reply = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.updateMessage = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/update/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.deleteMessage = function(id,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
+			};
+
+			this.logout = function(){
+				//email = $window.encodeURIComponent(email);
+				//password = $window.encodeURIComponent(password);
+				//username = $window.encodeURIComponent(username);
+				//plateformId = $window.encodeURIComponent(plateformId);
+				//gamertag = $window.encodeURIComponent(gamertag);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
+		function(gettextCatalog,$routeParams,$rootScope,$location) {
+			'use strict';
+
+			this.initLang = function(){
+				gettextCatalog.debug = true;
+
+				if($routeParams.lang){
+					this.updateLang($routeParams.lang);
+				}else {
+					this.updateLang('fr');
+				}
+			};
+
+			this.getCurrent = function(){
+				this.initLang();
+				return $rootScope.lang;
+			};
+
+			this.updateLang = function(newLang){
+				$rootScope.lang = newLang;
+				gettextCatalog.setCurrentLanguage(newLang);// Corresponds au header 'Language' du fichier .po;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('matchmaking', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
+			'use strict';
+			this.getConf = function(){
+				return api.call('matchmaking/');
+			};
+
+			this.join = function(matchmakingId,profilId){
+				var currentUser = user.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('rdv', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
+			'use strict';
+			this.getAll = function(){
+				return api.call('rdv/');
+			};
+
+			this.getFormInfo = function(){
+				var cache = superCache.promise('getFormInfo');
+				if(cache !== false){
+					return cache;
+				}
+				return api.call('rdv/form_info').success(function(data){
+					superCache.put('getFormInfo',data);
+				}).then(function(promise){
+					return promise.data;
+				});
+			};
+
+            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
+                var currentUser = user.get();
+
+	            plateform = $window.encodeURIComponent(plateform);
+	            game = $window.encodeURIComponent(game);
+	            tags = $window.encodeURIComponent(tags);
+	            description = $window.encodeURIComponent(description);
+	            start = $window.encodeURIComponent(start);
+	            duree = $window.encodeURIComponent(duree);
+	            nbParticipant = $window.encodeURIComponent(nbParticipant);
+	            profilId = $window.encodeURIComponent(profilId);
+	            var username = $window.encodeURIComponent(currentUser.username);
+
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
+            };
+
+			this.get = function(id){
+				return api.call('rdv/get/'+id);
+			};
+
+			this.join = function(rdvId,userGameId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
+			};
+
+			this.acceptUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.kickUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.leave = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
+			};
+
+			this.promote = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
+			};
+
+			this.getNotifications = function(){
+				return api.call('notifications/');
+			};
+
+			this.isLive = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
+			};
+
+			this.isEnded = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.end < now);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('redirection', ['$location','$rootScope','$window',
+		function($location,$rootScope,$window) {
+			'use strict';
+			var getLang = function(){
+				if($rootScope.lang === undefined){
+					return 'fr';
+				}
+				return $rootScope.lang;
+			};
+
+			this.getLoginPageUrl = function(){
+				return '/'+getLang()+'/login';
+			};
+
+			this.goToLogin = function(){
+				$location.path(this.getLoginPageUrl());
+			};
+
+			this.getRegisterPageUrl = function(){
+				return '/'+getLang()+'/register';
+			};
+			this.getNotifPageUrl = function(){
+				return '/'+getLang()+'/notification';
+			};
+			this.getMatchmakingPageUrl = function(){
+				return '/'+getLang()+'/matchmaking';
+			};
+			this.getGamesPageUrl = function(){
+				return '/'+getLang()+'/games';
+			};
+
+			this.goToGamesPage = function(){
+				$location.path(this.getGamesPageUrl());
+			};
+
+			this.goToRegister = function(){
+				$location.path(this.getRegisterPageUrl());
+			};
+
+			this.getCreatePartyPageUrl = function(){
+				return '/'+getLang()+'/party/create';
+			};
+
+			this.goCreateParty = function(){
+				$location.path(this.getCreatePartyPageUrl());
+			};
+
+			this.goBack = function(){
+				$window.history.back();
+			};
+
+			this.getPartyWaitingUrlRoot = function(){
+				return '/'+getLang()+'/party/waiting/';
+			};
+
+			this.getPartyWaitingByIdUrl = function(id){
+				return this.getPartyWaitingUrlRoot()+id;
+			};
+
+			this.goToRdvId = function(id){
+				$location.path(this.getPartyWaitingByIdUrl(id));
+			};
+
+			this.goToMatchmakingId = function(id){
+				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
+			};
+
+			this.getHomePageUrl = function(){
+				return '/'+getLang()+'/';
+			};
+
+			this.getHomePageDestinyUrl = function(){
+				return '/'+getLang()+'/destiny/';
+			};
+
+			this.goHome = function(id){
+				$location.path(this.getHomePageUrl());
+			};
+
+			this.getNotFoundPageUrl = function(msg){
+				return '/'+getLang()+'/404/'+msg;
+			};
+
+			this.goWelcomeHome = function(){
+				$location.path('/'+getLang()+'/welcome');
+			};
+
+			this.notFound = function(msg){
+				$location.path(this.getNotFoundPageUrl(msg));
+			};
+
+			this.getProfilGamePageUrl = function(gameId,plateformId){
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
+			};
+
+			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
+			};
+
+			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
+				this.goToGamesPage();
+			};
+
+			this.getListUsersUrl = function(){
+				return '/'+getLang()+'/users/connected/';
+			};
+
+			this.getAnnonceCreateUrl = function(){
+				return '/'+getLang()+'/annonce/create/';
+			};
+
+			this.getTopicUrl = function(topic,page){
+
+				if(!page){
+					page = 1;
+				}
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('socket', ['$rootScope','$location',
+		function($rootScope,$location) {
+			'use strict';
+			this.currentSocket = null;
+			this.listUsers = {};
+			this.url = null;
+
+			this.getSocketUrl = function(){
+				if(this.url !== null){
+					return this.url;
+				}
+				var host = $location.host();
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://www.esbattle.com:3000';
+				}else {
+					this.url = 'http://www.esbattle.com:3030';
+				}
+				return this.url;
+			};
+
+			this.on = function(event,callback){
+				var socket = this.getCurrentSocket();
+				socket.on(event, function (data) {
+					console.log('event global',data);
+					callback();
+				});
+			};
+
+			this.initListener = function(socket){
+
+				var that = this;
+				// Whenever the server emits 'new message', update the chat body
+				socket.on('new message', function (data) {
+					console.log('new message',data);
+				});
+
+				// Whenever the server emits 'user joined', log it in the chat body
+				socket.on('user joined', function (data) {
+					console.log('user join',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'user left', log it in the chat body
+				socket.on('user left', function (data) {
+					console.log('user left',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'users list', log it in the chat body
+				socket.on('users list', function (data) {
+					console.log('users list',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'typing', show the typing message
+				socket.on('typing', function (data) {
+					console.log('typing',data);
+				});
+
+				// Whenever the server emits 'stop typing', kill the typing message
+				socket.on('stop typing', function (data) {
+					console.log('stop typing',data);
+				});
+			};
+
+			this.getCurrentSocket = function(){
+				if(this.currentSocket === null && typeof(io) !== "undefined"){
+					var url = this.getSocketUrl();
+					this.currentSocket = io.connect(url);
+					this.initListener(this.currentSocket);
+				}
+
+				return this.currentSocket;
+			};
+
+			this.addUser = function(username){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				socket.emit('add user', username);
+			};
+
+			this.disconnect = function(){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				socket.close();
+				//socket.emit('disconnect');
+			};
+
+			this.getUserList = function(){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				console.log('emit : ask users list');
+				socket.emit('ask users list');
+			};
+		}
+	]
+);
+/**
+ * Ce service permet de gérer les stockage de données
+ *
+ * dans cet ordre de priorité
+ * soit en localStorage et sessionStorage si disponible
+ * soit avec une fonction propre au device
+ * soit en cookie
+ */
+'use strict';
+angular.module('myApp.services').service('storage',['$rootScope','$cookies',
+	function($rootScope,$cookies){
+
+		this.createCookie = function(name,value,days) {
+			var expires = "";
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				expires = "; expires="+date.toGMTString();
+			}
+			document.cookie = name+"="+value+expires+"; path=/";
+		};
+
+		this.eraseCookie = function(name) {
+			document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
+
+		this.erasePersistant = function(name) {
+
+			if(localStorage !== null){
+				localStorage[name] = null;
+			} else {
+				document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			}
+		};
+
+		this.getPersistant = function(name){
+
+			if(localStorage !== null){
+				return localStorage[name];
+			}
+			var data = $cookies[name];
+			return data;
+		};
+
+		this.setPersistant = function(name,value){
+
+			if(localStorage !== null){
+				localStorage[name]=value;
+				return;
+			}
+			this.createCookie(name,value,360);
+		};
+	}
+]);
+
+
+angular.module('myApp.services')
+	.service('tag', ['rdv',
+		function(rdv) {
+			'use strict';
+			/**
+			 * @desc autoCompleteUserTags retourne les tags utilisateurs complétés des autres tags disponibles
+			 * @param aTags tags utilisateurs
+			 */
+			this.autoCompleteUserTags = function(aTags,allTags){
+
+
+				var previousTags = '';
+				var aPreviousTags = [];
+				for(var i = 0; i < aTags.length -1; i++){
+					previousTags =  previousTags+aTags[i]+' ';
+					aPreviousTags.push(aTags[i]);
+				}
+
+				var autocompleteTag = [];
+				for(var key in allTags){
+
+					if(aPreviousTags.indexOf(allTags[key].nom) > -1){
+						continue;
+					}
+					autocompleteTag.push(previousTags +allTags[key].nom);
+				}
+
+				return autocompleteTag;
+
+
+			};
+
+		}
+	]
+);
+angular.module('myApp.services')
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
+			'use strict';
+            this.data = '';
+
+			this.fakePromise = function(){
+				var deferred = $q.defer();
+				var promise = deferred.promise;
+
+				$timeout(function(){
+					deferred.resolve();
+				},0);
+
+				return promise;
+			};
+
+			var storeUser = function(data){
+				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
+				storage.setPersistant('user',JSON.stringify(data));
+				socket.addUser(data.username);
+			};
+
+			this.log = function(username,password){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/'+username+'/'+password).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logByToken = function(username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/token/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logByForgetToken = function(username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.get = function(){
+				var courantUser = storage.getPersistant('user');
+				if(typeof(courantUser) !== "undefined"){
+					var user = JSON.parse(courantUser);
+					if(user !== null && user.ttl < new Date().getTime()){
+						this.logout();
+						this.logByToken(user.username,user.token).then(function(data){
+							user = data;
+						});
+					}
+					return user;
+				}
+				return null;
+			};
+
+			this.register = function(email,password,username,plateformId,gamertag){
+
+				email = $window.encodeURIComponent(email);
+				password = $window.encodeURIComponent(password);
+				username = $window.encodeURIComponent(username);
+				plateformId = $window.encodeURIComponent(plateformId);
+				gamertag = $window.encodeURIComponent(gamertag);
+				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logout = function(){
+				$rootScope.notificationsAlreadyRead = [];
+				$rootScope.userGameSelected = null;
+				storage.erasePersistant('user');
+				socket.disconnect();
+			};
+
+			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
+
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
+
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilId = $window.encodeURIComponent(profilId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.forgetPassword = function(email){
+				return api.call('forget_password/'+email);
+			};
+
+			this.updatePassword = function(password){
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
+			};
+
+			this.updateOnline = function(currentUser){
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('login/online/'+username+'/'+currentUser.token);
+			};
+
+			this.refresh = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('login/online/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.getAll = function(){
+				return api.call('users/');
+			};
+
+			this.addFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
+			};
+
+			this.removeFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
+			};
+		}
+	]
+);
+
 angular.module('myApp.controllers').controller('404Ctrl',
 	['$scope','$routeParams',
 		function ($scope,$routeParams) {
@@ -29026,1722 +30737,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 				},0);
 
 			}
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFacebook', ['$window','$document',
-		function($window,$document) {
-			'use strict';
-			return {
-				link : function(){
-
-					window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1482107158698739',
-							xfbml      : true,
-							version    : 'v2.0'
-						});
-					};
-
-					(function(d, s, id){
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) {return;}
-						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/fr_FR/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-facebook.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','$location',
-		function(lang,$location) {
-			return {
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.updateLang = function(langSelected){
-						lang.change(langSelected);
-						$scope.lang = langSelected;
-					};
-
-					var switchLangUrl = function(newLang){
-						return $location.absUrl().replace($scope.lang,newLang);
-					};
-
-					$scope.switchLangUrlFr = switchLangUrl('fr');
-					$scope.switchLangUrlEn = switchLangUrl('en');
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-footer.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
-			'use strict';
-			return {
-				scope:{
-					'lfgHeader':'='
-				},
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.logout = function(){
-						user.logout();
-						$scope.userInfo = null;
-						redirection.goHome();
-					};
-
-
-
-
-					$scope.homeUrl = redirection.getHomePageUrl();
-					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
-					$scope.loginPageUrl = redirection.getLoginPageUrl();
-					$scope.registerPageUrl = redirection.getRegisterPageUrl();
-					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-					$scope.gamesUrl = redirection.getGamesPageUrl();
-					$scope.notifUrl = redirection.getNotifPageUrl();
-					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-					$scope.forumUrl = redirection.getForumUrl();
-
-                    $scope.userInfo = user.get();
-
-
-					/**
-					 * autoRefreshDataNotif
-					 */
-					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
-							if($scope.userInfo === null){
-								return;
-							}
-							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
-							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
-									$scope.notifications.push($scope.allMyNotifications[key]);
-								}
-							}
-
-							if($scope.notifications.length > 0){
-								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
-							} else {
-								$document[0].title = 'Esbattle.com';
-							}
-
-						});
-					};
-
-					var refreshTime = 12000;
-					var autoRefreshDataNotif = function(){
-						$interval.cancel($scope.intervaNotificationId);
-
-						if (angular.isDefined($scope.intervaNotificationId)) {
-							return;
-						}
-
-						$scope.intervaNotificationId = $interval(function(){
-							refreshDataNotif();
-						}, refreshTime);
-					};
-
-					refreshDataNotif();
-					autoRefreshDataNotif();
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-header.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
-			'use strict';
-			return {
-				scope:{
-					'init':'='
-				},
-				link: function($scope, element, attrs) {
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
-				},
-				restrict: 'E'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInterval', ["$interval",
-		function($interval) {
-			'use strict';
-			return {
-				replace :true,
-				scope:{
-					'lfgInterval':'='
-				},
-				link: function($scope, element, attrs) {
-
-					element.on('$destroy', function() {
-						$interval.cancel($scope.lfgInterval);
-						$scope.lfgInterval = undefined;
-					});
-				},
-				restrict: 'A'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
-        function(matchmaking,user,redirection,$filter) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.matchmakingTemplate = null;
-
-	                /**
-	                 * récupère les configs pour la selection du type de matchmaking
-	                 */
-	                matchmaking.getConf().success(function(data){
-
-		                var groupOfTemplate = {};
-		                for(var key in data){
-			                if(!groupOfTemplate[data[key].description]) {
-				                groupOfTemplate[data[key].description] = [];
-			                }
-			                data[key].concatTags = "";
-			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
-			                }
-			                groupOfTemplate[data[key].description].push(data[key]);
-		                }
-		                $scope.groupOfTemplate = groupOfTemplate;
-	                });
-
-	                /**
-	                 * selectionne un type de matchmaking
-	                 * @param template
-	                 */
-	                $scope.selectGroupOfTemplate = function(template){
-		                $scope.matchmakingTemplate = template;
-		                $scope.templateSelectedModel = template[0];
-	                };
-
-	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
-		                $scope.$emit('templateSelectedModel',[newValue]);
-	                });
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-matchmaking.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgPagination', [
-		function() {
-			return {
-				scope:{
-					aPage: '=',
-					currentPage : '=',
-					maxPage:'='
-				},
-				link: function($scope, element, attrs) {
-					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-pagination.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfileBungie', [
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfileBungie':'=',
-                    'userGame':'=',
-                    'withPlateform':'@',
-                    'user':'=',
-                    'listUser':'='
-                },
-                link: function($scope, element, attrs) {
-                    $scope.isConnected = false;
-                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
-                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
-                            $scope.isConnected = true;
-                        }
-                    }
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile-bungie.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','storage',
-        function(user,storage) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'=',
-	                'selectedPerso':'=',
-	                'aUserGame':'=',
-                    'withPlateform':'@'
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.currentUser = user.get();
-
-	                $scope.selectPerso = function(persoSelected){
-		                $scope.selectedPerso = persoSelected;
-                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
-	                };
-
-                    var setSelectedPerso = function(){
-                        if($scope.currentUser !== null){
-                            $scope.aUserGame = $scope.currentUser.userGame;
-                        }
-
-                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
-                        if(typeof selectedProfilCookieId !== "undefined"){
-                            for(var key in $scope.aUserGame){
-                                if($scope.aUserGame[key].id == selectedProfilCookieId){
-                                    $scope.selectedPerso = $scope.aUserGame[key];
-                                }
-                            }
-                        }
-
-                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
-                            $scope.selectedPerso = $scope.aUserGame[0];
-                        }
-                    };
-
-                    setSelectedPerso();
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile.html'
-            };
-        }
-    ]
-);
-
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterHtml', ['$sce',
-	function ($sce) {
-	'use strict';
-	return function (input) {
-
-		if (input) {
-			input = $sce.trustAsHtml(input);
-		}
-		return input;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', function () {
-	'use strict';
-	return function (date2_ms) {
-		var now = new Date();
-		var date1_ms = now.getTime();
-		// Calculate the difference in milliseconds
-		var difference_ms = date1_ms - (date2_ms*1000);
-
-		if(difference_ms < 0){
-			now.setTime(date2_ms*1000);
-			var month = now.getMonth()+1;
-			if(month < 10){
-				month = "0"+month;
-			}
-			var minutes = now.getMinutes();
-			if(minutes < 10){
-				minutes = "0"+minutes;
-			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
-		}
-
-		var one_minute=1000*60*1;
-
-		var diffMinutes = Math.round(difference_ms/one_minute);
-		if(diffMinutes < 60){
-			return diffMinutes+' minutes ago';
-		}
-
-		var one_hour=1000*60*60*1;
-		var diffHours = Math.round(difference_ms/one_hour);
-		if(diffHours < 24){
-			return diffHours+' hours ago';
-		}
-
-		//Get 1 day in milliseconds
-		var one_day=1000*60*60*24;
-		var diffDays = Math.round(difference_ms/one_day);
-		return diffDays+' days ago';
-
-	};
-});
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
-angular.module('myApp.services')
-	.service('activity', ['$rootScope','$window',
-		function($rootScope,$window) {
-			'use strict';
-
-			var sendInactivityAfer = 10 * 60 * 1000;
-			var timeoutInactivity = null;
-			this.setEvent = function(){
-				$window.onfocus = function(){
-					$rootScope.activityOnWindow = true;
-				};
-
-				$window.onblur = function (){
-					$rootScope.activityOnWindow = false;
-				};
-			};
-
-			this.isActiveWindow = function(){
-				return $rootScope.activityOnWindow;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('annonce', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
-			'use strict';
-
-			this.create = function(tags,description,userGameId){
-
-				var username = null;
-				var token = null;
-				var currentUser = user.get();
-				if(currentUser !== null){
-					var username = $window.encodeURIComponent(currentUser.username);
-					var token = $window.encodeURIComponent(currentUser.token);
-				}
-
-				tags = $window.encodeURIComponent(tags);
-				description = $window.encodeURIComponent(description);
-				userGameId = $window.encodeURIComponent(userGameId);
-				return api.call('annonce/create/'+tags+'/'+description+'/'+userGameId);
-			};
-
-			this.get = function(){
-				return api.call('annonce');
-			};
-		}
-
-	]
-);
-
-angular.module('myApp.services')
-	.service('api', ['$http','storage','redirection','$location',
-		function($http,storage,redirection,$location) {
-			'use strict';
-
-			this.url = null;
-			this.getApiUrl = function () {
-				if (this.url !== null) {
-					return this.url;
-				}
-				var host = $location.host();
-				if (host === 'www.esbattle.com') {
-					this.url = 'http://api.esbattle.com/';
-				} else {
-					this.url = 'http://lfg.esbattle.com/app_dev.php/';
-				}
-				return this.url;
-			};
-
-			this.call = function (path) {
-				return $http.get(this.getApiUrl() + path).error(function (data, status, headers, config) {
-
-					switch (status) {
-						case 401 :
-							storage.erasePersistant('user');
-							redirection.goToLogin();
-							break;
-
-						case 403:
-							//on ne fait rien, la requete n'est pas authorisée
-							break;
-
-						case 308:
-							redirection.goHome();
-							break;
-
-						case 404:
-							redirection.notFound(data.msg);
-							break;
-
-						default:
-							break;
-					}
-				});
-			};
-
-			this.post = function (path, params) {
-
-				var url = this.getApiUrl() + path;
-				return $http({
-					method: 'POST',
-					url: url,
-					data: params,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
-				}).error(function (data, status, headers, config) {
-
-					switch (status) {
-						case 401 :
-							storage.erasePersistant('user');
-							redirection.goToLogin();
-							break;
-
-						case 403:
-							//on ne fait rien, la requete n'est pas authorisée
-							break;
-
-						case 308:
-							redirection.goHome();
-							break;
-
-						case 404:
-							redirection.notFound(data.msg);
-							break;
-
-						default:
-							break;
-					}
-				});
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
-			'use strict';
-			this.characters = null;
-
-			this.getCharacters = function(plateforme,plateformeBungie,battleTag){
-
-				var username = null;
-				var token = null;
-				var currentUser = user.get();
-				if(currentUser !== null){
-					var username = $window.encodeURIComponent(currentUser.username);
-					var token = $window.encodeURIComponent(currentUser.token);
-				}
-
-
-				plateforme = $window.encodeURIComponent(plateforme);
-				plateformeBungie = $window.encodeURIComponent(plateformeBungie);
-				battleTag = $window.encodeURIComponent(battleTag);
-				return api.call('bungie/characters/'+plateforme+'/'+plateformeBungie+'/'+battleTag+'/'+username+'/'+token);
-			};
-		}
-
-	]
-);
-
-angular.module('myApp.services')
-	.service('filter', [
-		function() {
-			'use strict';
-
-			this.isExpired = function(rdv,now){
-				return (rdv.end < now);
-			};
-
-			this.isLive = function(rdv,now){
-				return (rdv.end > now && rdv.start < now + (5*60));
-			};
-
-			this.hasTagSelected = function(rdv,aTags){
-
-				var aTagItem = [];
-				for(var keyTagItem in rdv.tags){
-					aTagItem.push(rdv.tags[keyTagItem].nom.toLowerCase());
-				}
-
-				var asTag = true;
-				for(var keyTag in aTags){
-					if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-						asTag = false;
-					}
-				}
-
-				return asTag;
-			};
-
-			this.hasPlateformSelected = function(rdv,plateformId){
-				var bHasPlateform = true;
-				if(plateformId !== "" && typeof(plateformId) !== 'undefined'){
-					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
-						bHasPlateform = false;
-					}
-				}
-
-				return bHasPlateform;
-			};
-
-			this.getCurrentTimestampInSeconds = function(){
-				return new Date().getTime()/1000;
-			};
-
-			this.tagsStringToArray = function(tags){
-				var aTags = [];
-				if(typeof tags === "string" && tags !== ""){
-					aTags = tags.split(' ');
-				}
-				return aTags;
-			};
-
-			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
-
-				if(!rdv.users){
-					return true;
-				}
-
-				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
-			};
-
-			this.hasType = function(rdv,type){
-				if(type === 'type_all'){
-					return true;
-				} else if(type === 'type_annonce' && rdv.type === type){
-					return true;
-				} else if(type === 'type_party' && rdv.type !== 'type_annonce'){
-					return true;
-				}
-
-				return false;
-			};
-
-			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
-				var aFilteredItems = [];
-
-				var aTags = this.tagsStringToArray(tags);
-
-				var now = this.getCurrentTimestampInSeconds();
-
-				for(var key in items){
-
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
-						continue;
-					}
-
-					if(onlyWithPlace === true && this.hasPlaceAvailable(items[key],nbPlaceAvailableMin,nbPlaceAvailableMax) === false){
-						continue;
-					}
-
-					if(onlyLive === true && this.isLive(items[key],now) === false){
-						continue;
-					}
-
-					if(onlyInFuture === true && (this.isExpired(items[key],now) === true || this.isLive(items[key],now) === true)){
-						continue;
-					}
-
-					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
-						continue;
-					}
-
-					if(this.hasType(items[key],type) === false){
-						continue;
-					}
-
-					aFilteredItems.push(items[key]);
-				}
-
-				return aFilteredItems;
-			};
-
-			this.hasMeInGame = function(rdv,userId){
-
-				for(var key in rdv.users){
-					if(rdv.users[key].user.id === userId){
-						return true;
-					}
-				}
-
-				for(var key_2 in rdv.usersInQueue){
-					if(rdv.usersInQueue[key_2].user.id === userId){
-						return true;
-					}
-				}
-				return false;
-			};
-
-			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
-				var aFilteredItems = [];
-
-				var aTags = this.tagsStringToArray(tags);
-
-				var now = this.getCurrentTimestampInSeconds();
-
-				for(var key in items){
-
-					if(this.hasMeInGame(items[key],currentUserId) === false){
-						continue;
-					}
-
-					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
-						continue;
-					}
-
-					if(this.isExpired(items[key],now) === true){
-						continue;
-					}
-
-					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
-						continue;
-					}
-
-					aFilteredItems.push(items[key]);
-				}
-
-				return aFilteredItems;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('forum', ['api','$window','user',
-		function(api,$window,user) {
-			'use strict';
-
-			this.getAllTopic = function(){
-				return api.call('forum');
-			};
-
-			this.getTopic = function(id,page,nbResult){
-				return api.call('forum/topic/'+id+'/'+page+'/'+nbResult);
-			};
-
-			this.reply = function(id,texte,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				texte = texte.replace(/\n/g,'<br/>');
-				//texte = $window.encodeURI(texte);
-				var data = {texte:texte};
-				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
-			};
-
-			this.updateMessage = function(id,texte,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				texte = texte.replace(/\n/g,'<br/>');
-				//texte = $window.encodeURI(texte);
-				var data = {texte:texte};
-				return api.post('forum/topic/message/update/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
-			};
-
-			this.deleteMessage = function(id,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
-			};
-
-			this.logout = function(){
-				//email = $window.encodeURIComponent(email);
-				//password = $window.encodeURIComponent(password);
-				//username = $window.encodeURIComponent(username);
-				//plateformId = $window.encodeURIComponent(plateformId);
-				//gamertag = $window.encodeURIComponent(gamertag);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
-		function(gettextCatalog,$routeParams,$rootScope,$location) {
-			'use strict';
-
-			this.initLang = function(){
-				gettextCatalog.debug = true;
-
-				if($routeParams.lang){
-					this.updateLang($routeParams.lang);
-				}else {
-					this.updateLang('fr');
-				}
-			};
-
-			this.getCurrent = function(){
-				this.initLang();
-				return $rootScope.lang;
-			};
-
-			this.updateLang = function(newLang){
-				$rootScope.lang = newLang;
-				gettextCatalog.setCurrentLanguage(newLang);// Corresponds au header 'Language' du fichier .po;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('matchmaking', ['$http','user','api','superCache','$window',
-		function($http,user,api,superCache,$window) {
-			'use strict';
-			this.getConf = function(){
-				return api.call('matchmaking/');
-			};
-
-			this.join = function(matchmakingId,profilId){
-				var currentUser = user.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('rdv', ['$http','user','api','superCache','$window',
-		function($http,user,api,superCache,$window) {
-			'use strict';
-			this.getAll = function(){
-				return api.call('rdv/');
-			};
-
-			this.getFormInfo = function(){
-				var cache = superCache.promise('getFormInfo');
-				if(cache !== false){
-					return cache;
-				}
-				return api.call('rdv/form_info').success(function(data){
-					superCache.put('getFormInfo',data);
-				}).then(function(promise){
-					return promise.data;
-				});
-			};
-
-            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
-                var currentUser = user.get();
-
-	            plateform = $window.encodeURIComponent(plateform);
-	            game = $window.encodeURIComponent(game);
-	            tags = $window.encodeURIComponent(tags);
-	            description = $window.encodeURIComponent(description);
-	            start = $window.encodeURIComponent(start);
-	            duree = $window.encodeURIComponent(duree);
-	            nbParticipant = $window.encodeURIComponent(nbParticipant);
-	            profilId = $window.encodeURIComponent(profilId);
-	            var username = $window.encodeURIComponent(currentUser.username);
-
-	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
-            };
-
-			this.get = function(id){
-				return api.call('rdv/get/'+id);
-			};
-
-			this.join = function(rdvId,userGameId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
-			};
-
-			this.acceptUser = function(userId,rdvId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
-			};
-
-			this.kickUser = function(userId,rdvId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
-			};
-
-			this.leave = function(rdvId,userId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
-			};
-
-			this.promote = function(rdvId,userId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
-			};
-
-			this.getNotifications = function(){
-				return api.call('notifications/');
-			};
-
-			this.isLive = function(rdv){
-				var now = new Date();
-				now = now.getTime()/1000;
-				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
-			};
-
-			this.isEnded = function(rdv){
-				var now = new Date();
-				now = now.getTime()/1000;
-				return (typeof rdv !== "undefined" && rdv.end < now);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('redirection', ['$location','$rootScope','$window',
-		function($location,$rootScope,$window) {
-			'use strict';
-			var getLang = function(){
-				if($rootScope.lang === undefined){
-					return 'fr';
-				}
-				return $rootScope.lang;
-			};
-
-			this.getLoginPageUrl = function(){
-				return '/'+getLang()+'/login';
-			};
-
-			this.goToLogin = function(){
-				$location.path(this.getLoginPageUrl());
-			};
-
-			this.getRegisterPageUrl = function(){
-				return '/'+getLang()+'/register';
-			};
-			this.getNotifPageUrl = function(){
-				return '/'+getLang()+'/notification';
-			};
-			this.getMatchmakingPageUrl = function(){
-				return '/'+getLang()+'/matchmaking';
-			};
-			this.getGamesPageUrl = function(){
-				return '/'+getLang()+'/games';
-			};
-
-			this.goToGamesPage = function(){
-				$location.path(this.getGamesPageUrl());
-			};
-
-			this.goToRegister = function(){
-				$location.path(this.getRegisterPageUrl());
-			};
-
-			this.getCreatePartyPageUrl = function(){
-				return '/'+getLang()+'/party/create';
-			};
-
-			this.goCreateParty = function(){
-				$location.path(this.getCreatePartyPageUrl());
-			};
-
-			this.goBack = function(){
-				$window.history.back();
-			};
-
-			this.getPartyWaitingUrlRoot = function(){
-				return '/'+getLang()+'/party/waiting/';
-			};
-
-			this.getPartyWaitingByIdUrl = function(id){
-				return this.getPartyWaitingUrlRoot()+id;
-			};
-
-			this.goToRdvId = function(id){
-				$location.path(this.getPartyWaitingByIdUrl(id));
-			};
-
-			this.goToMatchmakingId = function(id){
-				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
-			};
-
-			this.getHomePageUrl = function(){
-				return '/'+getLang()+'/';
-			};
-
-			this.getHomePageDestinyUrl = function(){
-				return '/'+getLang()+'/destiny/';
-			};
-
-			this.goHome = function(id){
-				$location.path(this.getHomePageUrl());
-			};
-
-			this.getNotFoundPageUrl = function(msg){
-				return '/'+getLang()+'/404/'+msg;
-			};
-
-			this.goWelcomeHome = function(){
-				$location.path('/'+getLang()+'/welcome');
-			};
-
-			this.notFound = function(msg){
-				$location.path(this.getNotFoundPageUrl(msg));
-			};
-
-			this.getProfilGamePageUrl = function(gameId,plateformId){
-				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
-			};
-
-			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
-				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
-			};
-
-			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
-				this.goToGamesPage();
-			};
-
-			this.getListUsersUrl = function(){
-				return '/'+getLang()+'/users/connected/';
-			};
-
-			this.getAnnonceCreateUrl = function(){
-				return '/'+getLang()+'/annonce/create/';
-			};
-
-			this.getForumUrl = function(){
-				return '/'+getLang()+'/forum/';
-			};
-
-			this.getTopicUrl = function(topic,page){
-
-				if(!page){
-					page = 1;
-				}
-
-				/* Remove unwanted characters, only accept alphanumeric and space */
-				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
-
-				/* Replace multi spaces with a single space */
-				titre = titre.replace(/\s{2,}/g,' ');
-
-				/* Replace space with a '-' symbol */
-				titre = titre.replace(/\s/g, "-");
-
-				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('socket', ['$rootScope','$location',
-		function($rootScope,$location) {
-			'use strict';
-			this.currentSocket = null;
-			this.listUsers = {};
-			this.url = null;
-
-			this.getSocketUrl = function(){
-				if(this.url !== null){
-					return this.url;
-				}
-				var host = $location.host();
-				if(host === 'www.esbattle.com'){
-					this.url = 'http://www.esbattle.com:3000';
-				}else {
-					this.url = 'http://www.esbattle.com:3030';
-				}
-				return this.url;
-			};
-
-			this.on = function(event,callback){
-				var socket = this.getCurrentSocket();
-				socket.on(event, function (data) {
-					console.log('event global',data);
-					callback();
-				});
-			};
-
-			this.initListener = function(socket){
-
-				var that = this;
-				// Whenever the server emits 'new message', update the chat body
-				socket.on('new message', function (data) {
-					console.log('new message',data);
-				});
-
-				// Whenever the server emits 'user joined', log it in the chat body
-				socket.on('user joined', function (data) {
-					console.log('user join',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'user left', log it in the chat body
-				socket.on('user left', function (data) {
-					console.log('user left',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'users list', log it in the chat body
-				socket.on('users list', function (data) {
-					console.log('users list',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'typing', show the typing message
-				socket.on('typing', function (data) {
-					console.log('typing',data);
-				});
-
-				// Whenever the server emits 'stop typing', kill the typing message
-				socket.on('stop typing', function (data) {
-					console.log('stop typing',data);
-				});
-			};
-
-			this.getCurrentSocket = function(){
-				if(this.currentSocket === null && typeof(io) !== "undefined"){
-					var url = this.getSocketUrl();
-					this.currentSocket = io.connect(url);
-					this.initListener(this.currentSocket);
-				}
-
-				return this.currentSocket;
-			};
-
-			this.addUser = function(username){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				socket.emit('add user', username);
-			};
-
-			this.disconnect = function(){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				socket.close();
-				//socket.emit('disconnect');
-			};
-
-			this.getUserList = function(){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				console.log('emit : ask users list');
-				socket.emit('ask users list');
-			};
-		}
-	]
-);
-/**
- * Ce service permet de gérer les stockage de données
- *
- * dans cet ordre de priorité
- * soit en localStorage et sessionStorage si disponible
- * soit avec une fonction propre au device
- * soit en cookie
- */
-'use strict';
-angular.module('myApp.services').service('storage',['$rootScope','$cookies',
-	function($rootScope,$cookies){
-
-		this.createCookie = function(name,value,days) {
-			var expires = "";
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				expires = "; expires="+date.toGMTString();
-			}
-			document.cookie = name+"="+value+expires+"; path=/";
-		};
-
-		this.eraseCookie = function(name) {
-			document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-		};
-
-		this.erasePersistant = function(name) {
-
-			if(localStorage !== null){
-				localStorage[name] = null;
-			} else {
-				document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			}
-		};
-
-		this.getPersistant = function(name){
-
-			if(localStorage !== null){
-				return localStorage[name];
-			}
-			var data = $cookies[name];
-			return data;
-		};
-
-		this.setPersistant = function(name,value){
-
-			if(localStorage !== null){
-				localStorage[name]=value;
-				return;
-			}
-			this.createCookie(name,value,360);
-		};
-	}
-]);
-
-
-angular.module('myApp.services')
-	.service('tag', ['rdv',
-		function(rdv) {
-			'use strict';
-			/**
-			 * @desc autoCompleteUserTags retourne les tags utilisateurs complétés des autres tags disponibles
-			 * @param aTags tags utilisateurs
-			 */
-			this.autoCompleteUserTags = function(aTags,allTags){
-
-
-				var previousTags = '';
-				var aPreviousTags = [];
-				for(var i = 0; i < aTags.length -1; i++){
-					previousTags =  previousTags+aTags[i]+' ';
-					aPreviousTags.push(aTags[i]);
-				}
-
-				var autocompleteTag = [];
-				for(var key in allTags){
-
-					if(aPreviousTags.indexOf(allTags[key].nom) > -1){
-						continue;
-					}
-					autocompleteTag.push(previousTags +allTags[key].nom);
-				}
-
-				return autocompleteTag;
-
-
-			};
-
-		}
-	]
-);
-angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
-			'use strict';
-            this.data = '';
-
-			this.fakePromise = function(){
-				var deferred = $q.defer();
-				var promise = deferred.promise;
-
-				$timeout(function(){
-					deferred.resolve();
-				},0);
-
-				return promise;
-			};
-
-			var storeUser = function(data){
-				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
-				storage.setPersistant('user',JSON.stringify(data));
-				socket.addUser(data.username);
-			};
-
-			this.log = function(username,password){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/'+username+'/'+password).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logByToken = function(username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/token/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logByForgetToken = function(username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.get = function(){
-				var courantUser = storage.getPersistant('user');
-				if(typeof(courantUser) !== "undefined"){
-					var user = JSON.parse(courantUser);
-					if(user !== null && user.ttl < new Date().getTime()){
-						this.logout();
-						this.logByToken(user.username,user.token).then(function(data){
-							user = data;
-						});
-					}
-					return user;
-				}
-				return null;
-			};
-
-			this.register = function(email,password,username,plateformId,gamertag){
-
-				email = $window.encodeURIComponent(email);
-				password = $window.encodeURIComponent(password);
-				username = $window.encodeURIComponent(username);
-				plateformId = $window.encodeURIComponent(plateformId);
-				gamertag = $window.encodeURIComponent(gamertag);
-				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logout = function(){
-				$rootScope.notificationsAlreadyRead = [];
-				$rootScope.userGameSelected = null;
-				storage.erasePersistant('user');
-				socket.disconnect();
-			};
-
-			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
-
-				plateformId = $window.encodeURIComponent(plateformId);
-				gameId = $window.encodeURIComponent(gameId);
-				profilName = $window.encodeURIComponent(profilName);
-				gameUsername = $window.encodeURIComponent(gameUsername);
-				data1 = $window.encodeURIComponent(data1);
-				data2 = $window.encodeURIComponent(data2);
-				data3 = $window.encodeURIComponent(data3);
-				data4 = $window.encodeURIComponent(data4);
-
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-
-				if(typeof data1 === "undefined" || data1 === ""){
-					data1='null';
-				}
-				if(typeof data2 === "undefined" || data2 === ""){
-					data2='null';
-				}
-				if(typeof data3 === "undefined" || data3 === ""){
-					data3='null';
-				}
-				if(typeof data4 === "undefined" || data4 === ""){
-					data4='null';
-				}
-
-				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
-
-				plateformId = $window.encodeURIComponent(plateformId);
-				gameId = $window.encodeURIComponent(gameId);
-				profilId = $window.encodeURIComponent(profilId);
-				profilName = $window.encodeURIComponent(profilName);
-				gameUsername = $window.encodeURIComponent(gameUsername);
-				data1 = $window.encodeURIComponent(data1);
-				data2 = $window.encodeURIComponent(data2);
-				data3 = $window.encodeURIComponent(data3);
-				data4 = $window.encodeURIComponent(data4);
-
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-
-				if(typeof data1 === "undefined" || data1 === ""){
-					data1='null';
-				}
-				if(typeof data2 === "undefined" || data2 === ""){
-					data2='null';
-				}
-				if(typeof data3 === "undefined" || data3 === ""){
-					data3='null';
-				}
-				if(typeof data4 === "undefined" || data4 === ""){
-					data4='null';
-				}
-
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.forgetPassword = function(email){
-				return api.call('forget_password/'+email);
-			};
-
-			this.updatePassword = function(password){
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
-			};
-
-			this.updateOnline = function(currentUser){
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('login/online/'+username+'/'+currentUser.token);
-			};
-
-			this.refresh = function(){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				return api.call('login/online/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.getAll = function(){
-				return api.call('users/');
-			};
-
-			this.addFriend = function(friendUsername){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				friendUsername = $window.encodeURIComponent(friendUsername);
-				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
-			};
-
-			this.removeFriend = function(friendUsername){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				friendUsername = $window.encodeURIComponent(friendUsername);
-				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
-			};
 		}
 	]
 );

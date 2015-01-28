@@ -2,6 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
 
 #: app/html/controllers/rdv.html
 msgid "<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)"
@@ -175,6 +176,10 @@ msgstr ""
 msgid "Hi, we are looking for"
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "Hide"
+msgstr ""
+
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr ""
@@ -251,10 +256,6 @@ msgstr ""
 
 #: app/html/directives/lfg-header.html
 msgid "Notification"
-msgstr ""
-
-#: app/html/directives/lfg-header.html
-msgid "Notifications"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -356,6 +357,10 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Share this information on your favorite forum, social network and friends :"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Show Help"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
