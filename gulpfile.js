@@ -63,7 +63,8 @@ gulp.task('server', function() {
 	return gulp.src(__dirname + '/app')
 		.pipe(
 		webserver({
-			livereload: true
+			livereload: true,
+			fallback: 'index.html'
 		})
 	);
 });
