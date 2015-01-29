@@ -1,12 +1,14 @@
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user) {
 			'use strict';
 
 			var id = $routeParams.id;
 			var page = $routeParams.page;
 			$scope.currentPage = parseInt(page);
 			var result = 20;
+
+			$scope.currentUser = user.get();
 
 			$scope.canPost = false;
 			$scope.modeEdit = 1;

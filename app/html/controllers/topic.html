@@ -36,8 +36,8 @@
 									</div>
 									<div class="right">
 										{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}
-										<a href="" ng-click="delete(message)" class="delete"><span></span></a>
-										<a href="" ng-click="modify(message)" class="modify"><span></span></a>
+										<a href="" ng-click="delete(message)" ng-if="message.user.id === currentUser.id" class="delete"><span></span></a>
+										<a href="" ng-click="modify(message)" ng-if="message.user.id === currentUser.id" class="modify"><span></span></a>
 
 									</div>
 								</td>

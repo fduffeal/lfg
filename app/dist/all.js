@@ -28940,14 +28940,16 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user) {
 			'use strict';
 
 			var id = $routeParams.id;
 			var page = $routeParams.page;
 			$scope.currentPage = parseInt(page);
 			var result = 20;
+
+			$scope.currentUser = user.get();
 
 			$scope.canPost = false;
 			$scope.modeEdit = 1;
@@ -29034,6 +29036,670 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
+angular.module('myApp.directives')
+	.directive('lfgFacebook', ['$window','$document',
+		function($window,$document) {
+			'use strict';
+			return {
+				link : function(){
+
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1482107158698739',
+							xfbml      : true,
+							version    : 'v2.0'
+						});
+					};
+
+					(function(d, s, id){
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) {return;}
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
+			return {
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.updateLang = function(langSelected){
+						lang.change(langSelected);
+						$scope.lang = langSelected;
+					};
+
+					var switchLangUrl = function(newLang){
+						return $location.absUrl().replace($scope.lang,newLang);
+					};
+
+					$scope.switchLangUrlFr = switchLangUrl('fr');
+					$scope.switchLangUrlEn = switchLangUrl('en');
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-footer.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+			'use strict';
+			return {
+				scope:{
+					'lfgHeader':'='
+				},
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+						redirection.goHome();
+					};
+
+
+
+
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.forumUrl = redirection.getForumUrl();
+
+                    $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+						rdv.getNotifications().success(function(data){
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].unread === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-header.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInit', ['user','socket',
+		function(user,socket) {
+			'use strict';
+			return {
+				scope:{
+					'init':'='
+				},
+				link: function($scope, element, attrs) {
+					var currentUser = user.get();
+					if(currentUser !== null){
+						socket.addUser(currentUser.username);
+					}
+
+				},
+				restrict: 'E'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInterval', ["$interval",
+		function($interval) {
+			'use strict';
+			return {
+				replace :true,
+				scope:{
+					'lfgInterval':'='
+				},
+				link: function($scope, element, attrs) {
+
+					element.on('$destroy', function() {
+						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
+					});
+				},
+				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
+        function(matchmaking,user,redirection,$filter) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.matchmakingTemplate = null;
+
+	                /**
+	                 * récupère les configs pour la selection du type de matchmaking
+	                 */
+	                matchmaking.getConf().success(function(data){
+
+		                var groupOfTemplate = {};
+		                for(var key in data){
+			                if(!groupOfTemplate[data[key].description]) {
+				                groupOfTemplate[data[key].description] = [];
+			                }
+			                data[key].concatTags = "";
+			                for(var keyTag in data[key].tags){
+				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+			                }
+			                groupOfTemplate[data[key].description].push(data[key]);
+		                }
+		                $scope.groupOfTemplate = groupOfTemplate;
+	                });
+
+	                /**
+	                 * selectionne un type de matchmaking
+	                 * @param template
+	                 */
+	                $scope.selectGroupOfTemplate = function(template){
+		                $scope.matchmakingTemplate = template;
+		                $scope.templateSelectedModel = template[0];
+	                };
+
+	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
+		                $scope.$emit('templateSelectedModel',[newValue]);
+	                });
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-matchmaking.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgPagination', [
+		function() {
+			return {
+				scope:{
+					aPage: '=',
+					currentPage : '=',
+					maxPage:'='
+				},
+				link: function($scope, element, attrs) {
+					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-pagination.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfileBungie', [
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfileBungie':'=',
+                    'userGame':'=',
+                    'withPlateform':'@',
+                    'user':'=',
+                    'listUser':'='
+                },
+                link: function($scope, element, attrs) {
+                    $scope.isConnected = false;
+                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
+                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
+                            $scope.isConnected = true;
+                        }
+                    }
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile-bungie.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user','storage',
+        function(user,storage) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'=',
+	                'selectedPerso':'=',
+	                'aUserGame':'=',
+                    'withPlateform':'@'
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.currentUser = user.get();
+
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
+                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
+	                };
+
+                    var setSelectedPerso = function(){
+                        if($scope.currentUser !== null){
+                            $scope.aUserGame = $scope.currentUser.userGame;
+                        }
+
+                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
+                        if(typeof selectedProfilCookieId !== "undefined"){
+                            for(var key in $scope.aUserGame){
+                                if($scope.aUserGame[key].id == selectedProfilCookieId){
+                                    $scope.selectedPerso = $scope.aUserGame[key];
+                                }
+                            }
+                        }
+
+                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
+                            $scope.selectedPerso = $scope.aUserGame[0];
+                        }
+                    };
+
+                    setSelectedPerso();
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', function () {
+	'use strict';
+	return function (date2_ms) {
+		var now = new Date();
+		var date1_ms = now.getTime();
+		// Calculate the difference in milliseconds
+		var difference_ms = date1_ms - (date2_ms*1000);
+
+		if(difference_ms < 0){
+			now.setTime(date2_ms*1000);
+			var month = now.getMonth()+1;
+			if(month < 10){
+				month = "0"+month;
+			}
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
+		}
+
+		var one_minute=1000*60*1;
+
+		var diffMinutes = Math.round(difference_ms/one_minute);
+		if(diffMinutes < 60){
+			return diffMinutes+' minutes ago';
+		}
+
+		var one_hour=1000*60*60*1;
+		var diffHours = Math.round(difference_ms/one_hour);
+		if(diffHours < 24){
+			return diffHours+' hours ago';
+		}
+
+		//Get 1 day in milliseconds
+		var one_day=1000*60*60*24;
+		var diffDays = Math.round(difference_ms/one_day);
+		return diffDays+' days ago';
+
+	};
+});
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -30091,668 +30757,3 @@ angular.module('myApp.services')
 		}
 	]
 );
-
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
-angular.module('myApp.directives')
-	.directive('lfgFacebook', ['$window','$document',
-		function($window,$document) {
-			'use strict';
-			return {
-				link : function(){
-
-					window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1482107158698739',
-							xfbml      : true,
-							version    : 'v2.0'
-						});
-					};
-
-					(function(d, s, id){
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) {return;}
-						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/fr_FR/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-facebook.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','$location',
-		function(lang,$location) {
-			return {
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.updateLang = function(langSelected){
-						lang.change(langSelected);
-						$scope.lang = langSelected;
-					};
-
-					var switchLangUrl = function(newLang){
-						return $location.absUrl().replace($scope.lang,newLang);
-					};
-
-					$scope.switchLangUrlFr = switchLangUrl('fr');
-					$scope.switchLangUrlEn = switchLangUrl('en');
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-footer.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
-			'use strict';
-			return {
-				scope:{
-					'lfgHeader':'='
-				},
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.logout = function(){
-						user.logout();
-						$scope.userInfo = null;
-						redirection.goHome();
-					};
-
-
-
-
-					$scope.homeUrl = redirection.getHomePageUrl();
-					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
-					$scope.loginPageUrl = redirection.getLoginPageUrl();
-					$scope.registerPageUrl = redirection.getRegisterPageUrl();
-					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-					$scope.gamesUrl = redirection.getGamesPageUrl();
-					$scope.notifUrl = redirection.getNotifPageUrl();
-					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-					$scope.forumUrl = redirection.getForumUrl();
-
-                    $scope.userInfo = user.get();
-
-
-					/**
-					 * autoRefreshDataNotif
-					 */
-					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
-							if($scope.userInfo === null){
-								return;
-							}
-							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
-							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
-									$scope.notifications.push($scope.allMyNotifications[key]);
-								}
-							}
-
-							if($scope.notifications.length > 0){
-								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
-							} else {
-								$document[0].title = 'Esbattle.com';
-							}
-
-						});
-					};
-
-					var refreshTime = 12000;
-					var autoRefreshDataNotif = function(){
-						$interval.cancel($scope.intervaNotificationId);
-
-						if (angular.isDefined($scope.intervaNotificationId)) {
-							return;
-						}
-
-						$scope.intervaNotificationId = $interval(function(){
-							refreshDataNotif();
-						}, refreshTime);
-					};
-
-					refreshDataNotif();
-					autoRefreshDataNotif();
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-header.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
-			'use strict';
-			return {
-				scope:{
-					'init':'='
-				},
-				link: function($scope, element, attrs) {
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
-				},
-				restrict: 'E'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInterval', ["$interval",
-		function($interval) {
-			'use strict';
-			return {
-				replace :true,
-				scope:{
-					'lfgInterval':'='
-				},
-				link: function($scope, element, attrs) {
-
-					element.on('$destroy', function() {
-						$interval.cancel($scope.lfgInterval);
-						$scope.lfgInterval = undefined;
-					});
-				},
-				restrict: 'A'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
-        function(matchmaking,user,redirection,$filter) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.matchmakingTemplate = null;
-
-	                /**
-	                 * récupère les configs pour la selection du type de matchmaking
-	                 */
-	                matchmaking.getConf().success(function(data){
-
-		                var groupOfTemplate = {};
-		                for(var key in data){
-			                if(!groupOfTemplate[data[key].description]) {
-				                groupOfTemplate[data[key].description] = [];
-			                }
-			                data[key].concatTags = "";
-			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
-			                }
-			                groupOfTemplate[data[key].description].push(data[key]);
-		                }
-		                $scope.groupOfTemplate = groupOfTemplate;
-	                });
-
-	                /**
-	                 * selectionne un type de matchmaking
-	                 * @param template
-	                 */
-	                $scope.selectGroupOfTemplate = function(template){
-		                $scope.matchmakingTemplate = template;
-		                $scope.templateSelectedModel = template[0];
-	                };
-
-	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
-		                $scope.$emit('templateSelectedModel',[newValue]);
-	                });
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-matchmaking.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgPagination', [
-		function() {
-			return {
-				scope:{
-					aPage: '=',
-					currentPage : '=',
-					maxPage:'='
-				},
-				link: function($scope, element, attrs) {
-					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-pagination.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfileBungie', [
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfileBungie':'=',
-                    'userGame':'=',
-                    'withPlateform':'@',
-                    'user':'=',
-                    'listUser':'='
-                },
-                link: function($scope, element, attrs) {
-                    $scope.isConnected = false;
-                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
-                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
-                            $scope.isConnected = true;
-                        }
-                    }
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile-bungie.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','storage',
-        function(user,storage) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'=',
-	                'selectedPerso':'=',
-	                'aUserGame':'=',
-                    'withPlateform':'@'
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.currentUser = user.get();
-
-	                $scope.selectPerso = function(persoSelected){
-		                $scope.selectedPerso = persoSelected;
-                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
-	                };
-
-                    var setSelectedPerso = function(){
-                        if($scope.currentUser !== null){
-                            $scope.aUserGame = $scope.currentUser.userGame;
-                        }
-
-                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
-                        if(typeof selectedProfilCookieId !== "undefined"){
-                            for(var key in $scope.aUserGame){
-                                if($scope.aUserGame[key].id == selectedProfilCookieId){
-                                    $scope.selectedPerso = $scope.aUserGame[key];
-                                }
-                            }
-                        }
-
-                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
-                            $scope.selectedPerso = $scope.aUserGame[0];
-                        }
-                    };
-
-                    setSelectedPerso();
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterHtml', ['$sce',
-	function ($sce) {
-	'use strict';
-	return function (input) {
-
-		if (input) {
-			input = $sce.trustAsHtml(input);
-		}
-		return input;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', function () {
-	'use strict';
-	return function (date2_ms) {
-		var now = new Date();
-		var date1_ms = now.getTime();
-		// Calculate the difference in milliseconds
-		var difference_ms = date1_ms - (date2_ms*1000);
-
-		if(difference_ms < 0){
-			now.setTime(date2_ms*1000);
-			var month = now.getMonth()+1;
-			if(month < 10){
-				month = "0"+month;
-			}
-			var minutes = now.getMinutes();
-			if(minutes < 10){
-				minutes = "0"+minutes;
-			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
-		}
-
-		var one_minute=1000*60*1;
-
-		var diffMinutes = Math.round(difference_ms/one_minute);
-		if(diffMinutes < 60){
-			return diffMinutes+' minutes ago';
-		}
-
-		var one_hour=1000*60*60*1;
-		var diffHours = Math.round(difference_ms/one_hour);
-		if(diffHours < 24){
-			return diffHours+' hours ago';
-		}
-
-		//Get 1 day in milliseconds
-		var one_day=1000*60*60*24;
-		var diffDays = Math.round(difference_ms/one_day);
-		return diffDays+' days ago';
-
-	};
-});
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
