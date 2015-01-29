@@ -27762,6 +27762,7 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 		function ($scope,$routeParams,forum,redirection) {
 			'use strict';
 
+			$scope.displayForm = false;
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
