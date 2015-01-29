@@ -7,11 +7,16 @@
 	}
 	.welcome {
 		width: 940px;
+		background: #fff;
+	}
+	.btn2 {
+		background: #f15641;
 	}
 
 	.new {
 		h2 {
 			font-weight: bold;
+			color:black;
 			font-size: 1.5rem;
 		}
 		input[type=text]{

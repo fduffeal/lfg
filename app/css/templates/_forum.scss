@@ -1,4 +1,8 @@
 #forum {
+	.welcome {
+		background: #fff;
+		border-top: 1px solid #ccc;
+	}
 	.content-header {
 		width: 940px;
 		.menu-right {
@@ -10,10 +14,16 @@
 		font-weight: bold;
 		font-size: 1.4rem;
 		margin-top: 10px;
+		background: #f15641;
 	}
 	.refresh {
 		float: right;
 		margin-bottom: 20px;
+		width: 100px;
+		&:before {
+			content: "✽";
+			float: right;
+		}
 	}
 	.newsujet {
 		float: left;
@@ -31,8 +41,16 @@
 	.new {
 		h2 {
 			font-weight: bold;
+			color: black;
 			font-size: 1.5rem;
 			margin-top: 0;
+			&:before {
+				content: "✉";
+				color: black;
+				float: left;
+				margin:-3px 5px  0 0px;
+				font-size: 2rem;
+			}
 		}
 		input[type=text]{
 			width:100%;
@@ -44,6 +62,7 @@
 		}
 		.btn2 {
 			border: 0;
+
 		}
 	}
 	.block {
