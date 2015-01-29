@@ -50,6 +50,15 @@
 									<span ng-bind-html="message.texte | filterHtml "></span>
 								</td>
 							</tr>
+							<tr>
+							<td></td>
+								<td class="to-sign">
+									<span ng-repeat="usergame in message.user.userGame" >
+									{{usergame.data1}} {{usergame.data2}} |
+									</span>
+
+								</td>
+							</tr>
 						</table>
 					</td>
 				</tr>

@@ -87,6 +87,7 @@
 		font-size: 1.2rem;
 		text-align: left;
 		width:100%;
+		border-spacing: 0 15px;
 
 		.msg {
 			padding: 10px;
@@ -95,6 +96,13 @@
 		}
 		tr{
 
+		}
+		.to-sign {
+			font-size: 1.2rem;
+			color: #999;
+			border-top: 1px dotted #999;
+			padding-top: 5px;
+			font-style: italic;
 		}
 		.to-avatar {
 			width: 10%;
