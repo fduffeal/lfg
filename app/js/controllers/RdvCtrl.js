@@ -7,6 +7,17 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.currentUser = null;
 
+			$scope.displayhelp = (storage.getPersistant('displayhelp')== 'false')?false:true;
+
+			$scope.showHelp = function(){
+				$scope.displayhelp = true;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
+			$scope.hideHelp = function(){
+				$scope.displayhelp = false;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
+
 			$scope.predicate = 'start';
 			$scope.reverse = true;
 
