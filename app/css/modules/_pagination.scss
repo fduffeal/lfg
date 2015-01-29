@@ -1,0 +1,16 @@
+.pagination {
+	float: right;
+
+	span {
+		display:inline-block;
+		font-size: 1.3rem;
+		margin: 5px;
+		font-weight:bold;
+		a{
+			color: $orange;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}

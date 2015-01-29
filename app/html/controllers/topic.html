@@ -1,5 +1,6 @@
-<lfg-header></lfg-header>
 <div id="topic" class="wrap">
+<lfg-header></lfg-header>
+
 
 	<div class="welcome">
 		<h1>{{topic.topic.titre}}</h1>
@@ -28,8 +29,9 @@
 									</div>
 									<div class="right">
 										{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}
-										<a href="" ng-click="modify(message)">modify</a>
-										<a href="" ng-click="delete(message)">delete</a>
+										<a href="" ng-click="delete(message)" class="delete"><span></span></a>
+										<a href="" ng-click="modify(message)" class="modify"><span></span></a>
+
 									</div>
 								</td>
 							</tr>

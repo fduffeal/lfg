@@ -1,4 +1,14 @@
 #topic {
+	.content-header {
+		width: 940px;
+		.menu-right {
+			margin-right: 0;
+		}
+	}
+	.welcome {
+		width: 940px;
+	}
+
 	.new {
 		h2 {
 			font-weight: bold;
@@ -19,6 +29,9 @@
 	.page {
 		background: transparent;
 		border: none;
+		width: 940px;
+		margin: auto;
+		margin-bottom: 10px;
 	}
 	table {
 		font-size: 1.2rem;
@@ -42,14 +55,48 @@
 			}
 
 		}
+		.to-msg {
+			padding-left: 10px;
+		}
 		.to-info {
+			height: 20px;
 			width:90%;
 			.left {
 				float: left;
 				font-weight:bold;
+				padding-left: 10px;
 			}
 			.right{
-				float: right
+				float: right;
+				color: #999;
+				.modify span:before {
+					content: "✎";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					margin-left: 10px;
+					opacity: 0.7;
+
+				}
+				.delete span:before {
+					content: "✖";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					opacity: 0.7;
+
+				}
+				a:hover span:before {
+					opacity: 1;
+				}
 			}
 		}
 	}
