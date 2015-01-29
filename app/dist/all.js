@@ -27758,17 +27758,27 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection',
-		function ($scope,$routeParams,forum,redirection) {
+	['$scope','$routeParams','forum','redirection','$location',
+		function ($scope,$routeParams,forum,redirection,$location) {
 			'use strict';
 
-			$scope.displayForm = false;
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
 				}
 				$scope.aTopic = data;
 			});
+
+			$scope.submit = function(){
+				if($scope.myForm.$valid === false){
+					return;
+				}
+
+				forum.createTopic($scope.title,$scope.texte).success(function(data){
+					var url = redirection.getTopicUrl(data,1)
+					$location.path(url);
+				});
+			}
 		}
 	]
 );
@@ -30024,7 +30034,7 @@ angular.module('myApp.services')
 			};
 
 			this.getTopic = function(id,page,nbResult){
-				return api.call('forum/topic/'+id+'/'+page+'/'+nbResult);
+				return api.call('forum/topic/get/'+id+'/'+page+'/'+nbResult);
 			};
 
 			this.reply = function(id,texte,page,nbResult){
@@ -30066,13 +30076,19 @@ angular.module('myApp.services')
 				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
 			};
 
-			this.logout = function(){
-				//email = $window.encodeURIComponent(email);
-				//password = $window.encodeURIComponent(password);
-				//username = $window.encodeURIComponent(username);
-				//plateformId = $window.encodeURIComponent(plateformId);
-				//gamertag = $window.encodeURIComponent(gamertag);
+			this.createTopic = function(title,texte){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				var data = {title:title,texte:texte};
+				return api.post('forum/topic/create/'+username+'/'+token,data);
 			};
+
 		}
 	]
 );

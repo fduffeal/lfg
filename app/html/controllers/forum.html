@@ -25,15 +25,16 @@
 					</tr>
 				</tbody>
 			</table>
-			<a href="" class="btn2 newsujet" ng-click="displayForm = true;">Nouveau sujet</a>
 			<a href="" class="btn2 refresh">Actualiser</a>
-			<div class="welcome" ng-show="displayForm">
+			<div class="welcome">
 				<div class="marge">
 					<div class="new">
 						<h2>Nouveau sujet</h2>
-						<input type="text" /><br />
-						<textarea name="" id="" cols="30" rows="10"></textarea><br />
-						<input type="submit" class="btn2" value="POSTER">
+						<form name="myForm" ng-submit="submit()">
+							<input type="text" ng-model="title"/><br />
+							<textarea name="" id="" cols="30" rows="10" ng-model="texte"></textarea><br />
+							<input type="submit" class="btn2" value="POSTER">
+						</form>
 					</div>
 				</div>
 			</div>
