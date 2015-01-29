@@ -22,15 +22,13 @@
 							<tr>
 								<td class="to-avatar" rowspan="2" valign="top">
 
-								<div class="one-perso" style="background-image:url('http://avatarmaker.net/free-avatars/avatars/various_227/eye_horror_avatar_100x100_12291.jpg')">
+								<div ng-if="message.user.userGame.length === 1" class="one-perso" style="background-image:url('{{message.user.userGame.data5}}')">
 									<img src="img/forum/avatar.png" alt=""/>
 								</div>
-								<!-- <div class="persos">
-									<div style="background: url('https://www.bungie.net/common/destiny_content/icons/cd6908c0ef600a52d335bcf77f4a01d1.jpg')"></div>
-									<div style="background: url('https://www.bungie.net/common/destiny_content/icons/51ed24bc16805c4c993daac2a17f1da7.jpg')"></div>
-									<div style=""></div>
+								<div class="persos" ng-if="message.user.userGame.length > 1">
+									<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
 									<div><img src="img/forum/avatar.png" alt=""/></div>
-								</div> -->
+								</div>
 								</td>
 								<td class="to-info" valign="top">
 									<div class="left">
