@@ -110,6 +110,10 @@ angular.module('myApp.services')
 				return '/'+getLang()+'/annonce/create/';
 			};
 
+			this.getForumUrl = function(){
+				return '/'+getLang()+'/forum/';
+			};
+
 			this.getTopicUrl = function(topic,page){
 
 				if(!page){

@@ -29,6 +29,7 @@ angular.module('myApp.directives')
 					$scope.notifUrl = redirection.getNotifPageUrl();
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.forumUrl = redirection.getForumUrl();
 
                     $scope.userInfo = user.get();
 
