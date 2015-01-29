@@ -1,4 +1,13 @@
 #forum {
+	.content-header {
+		width: 940px;
+		.menu-right {
+			margin-right: 0;
+		}
+	}
+	.welcome {
+		width: 940px;
+	}
 	.new {
 		h2 {
 			font-weight: bold;
