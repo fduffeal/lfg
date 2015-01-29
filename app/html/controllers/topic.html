@@ -1,14 +1,15 @@
 <div id="topic" class="wrap">
-<lfg-header></lfg-header>
+	<lfg-header></lfg-header>
 
-	<div>
-		<a ng-href="{{forumUrl}}">Forum</a> > {{topic.topic.titre}} - <span>Page</span> {{currentPage}}
-	</div>
 	<div class="welcome">
-		<h1>{{topic.topic.titre}}</h1>
+
+
 		<div class="marge">
-			<a href="" class="btn2" ng-click="refresh()">Actualiser</a>
+			<div class="filariane"><a ng-href="{{forumUrl}}">Forum</a> > {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
+			<h2 class="sujet"><span>Sujet :</span> {{topic.topic.titre}}</h2>
+			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
 		</div>
+		<div class="clear"></div>
 	</div>
 
 	<div class="page">
@@ -24,13 +25,13 @@
 							<tr>
 								<td class="to-avatar" rowspan="2" valign="top">
 
-								<div ng-if="message.user.userGame.length === 1" class="one-perso" style="background-image:url('{{message.user.userGame.data5}}')">
-									<img src="img/forum/avatar.png" alt=""/>
-								</div>
-								<div class="persos" ng-if="message.user.userGame.length > 1">
-									<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
-									<div><img src="img/forum/avatar.png" alt=""/></div>
-								</div>
+									<div ng-if="message.user.userGame.length === 1" class="one-perso" style="background-image:url('{{message.user.userGame.data5}}')">
+										<img src="img/forum/avatar.png" alt=""/>
+									</div>
+									<div class="persos" ng-if="message.user.userGame.length > 1">
+										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
+										<div><img src="img/forum/avatar.png" alt=""/></div>
+									</div>
 								</td>
 								<td class="to-info" valign="top">
 									<div class="left">

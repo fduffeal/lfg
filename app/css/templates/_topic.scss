@@ -1,21 +1,66 @@
 #topic {
+	.clear	{
+		clear:both;
+	}
 	.content-header {
 		width: 940px;
 		.menu-right {
 			margin-right: 0;
 		}
 	}
+	.filariane {
+		color: #999;
+		font-weight:bold;
+		a {
+			color: $orange;
+		}
+	}
 	.welcome {
 		width: 940px;
+		border: 1px solid #ccc;
 		background: #fff;
+		clear: both;
+		h2.sujet {
+			float: left;
+			margin-top:10px;
+			color: black;
+			font-size: 2rem;
+			span {
+				color: #999;
+			}
+			&:before {
+				content: "✪";
+				display:inline-block;
+				margin:2px 5px 0 0;
+
+
+			}
+		}
+		h2 {
+			margin:0;
+		}
+		.refresh {
+			float: right;
+			margin-bottom: 20px;
+			width: 100px;
+			&:before {
+				content: "✽";
+				float: right;
+			}
+		}
 	}
 	.btn2 {
 		background: #f15641;
+		cursor: pointer;
+		&:hover {
+			color:black;
+		}
 	}
 
 	.new {
 		h2 {
 			font-weight: bold;
+
 			color:black;
 			font-size: 1.5rem;
 		}
