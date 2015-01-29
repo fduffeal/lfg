@@ -48,10 +48,36 @@
 		}
 		.to-avatar {
 			width: 10%;
-			img {
-				width: 100px;
+			.one-perso {
+				width: 96px;
+				height: 96px;
+				position: relative;
+				img {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 48px;
+					height: 48px;
 
-				height: 100px;
+				}
+
+			}
+			.persos {
+				width: 96px;
+				height: 96px;
+				position: relative;
+
+				div {
+					background-size: cover!important;
+					float: left;
+					background-color: black;
+					width: 48px;
+					height: 48px;
+					img {
+						width: 48px;
+						height: 48px;
+					}
+				}
 			}
 
 		}
