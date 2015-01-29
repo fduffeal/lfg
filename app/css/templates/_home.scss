@@ -167,13 +167,14 @@
 		}
 
 		ul.search-tags {
-			float: right;
+			@media screen and (max-width: 660px ) {
+					display:none;
+				}
+			float: left;
 			input {
 				width: 250px;
 				height: 25px;
-				@media screen and (max-width: 660px ) {
-					visibility:hidden;
-				}
+
 			}
 		}
 		ul.how-many {
@@ -304,4 +305,20 @@
 		}
 
 	}
+	.loader{
+		width: 40px;
+		text-align: center;
+		float: right;
+		display: inline-block;
+		vertical-align: top;
+
+	}
+
+/*
+  Set the color of the icon
+  */
+  svg path,
+  svg rect{
+  	fill: #FF6700;
+  }
 }
