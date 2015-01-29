@@ -28963,6 +28963,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.mode = $scope.modeEdit;
 
+			$scope.forumUrl = redirection.getForumUrl();
+
 			var setTopicData = function(data){
 				$scope.topic = data;
 				$scope.nbPage = Math.ceil(data.topic.nbMessages/result);
