@@ -269,15 +269,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			 * init : connect and launch
 			 */
 			var init = function(){
-				var refreshPromise = user.refresh();
-				if(refreshPromise !== false){
-					refreshPromise.success(function(data){
-						$scope.currentUser = data;
-						launchRdvCtrl();
-					});
-				} else {
-					launchRdvCtrl();
-				}
+				$scope.currentUser = user.get();
+				launchRdvCtrl();
 			};
 
 			init();
