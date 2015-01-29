@@ -27758,8 +27758,8 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location',
-		function ($scope,$routeParams,forum,redirection,$location) {
+	['$scope','$routeParams','forum','redirection','$location','$route',
+		function ($scope,$routeParams,forum,redirection,$location,$route) {
 			'use strict';
 
 			forum.getAllTopic().success(function(data) {
@@ -27778,6 +27778,10 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 					var url = redirection.getTopicUrl(data,1)
 					$location.path(url);
 				});
+			}
+
+			$scope.refresh = function(){
+				$route.reload();
 			}
 		}
 	]
@@ -28940,8 +28944,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
 			'use strict';
 
 			var id = $routeParams.id;
@@ -29031,6 +29035,10 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 					$anchorScroll();
 				},0);
 
+			}
+
+			$scope.refresh = function(){
+				$route.reload();
 			}
 		}
 	]
