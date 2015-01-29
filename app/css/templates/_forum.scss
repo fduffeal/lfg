@@ -148,4 +148,15 @@
 		}
 
 	}
+	@media screen and (max-width: 990px ) {
+		.content-header {
+			width: 95%;
+		}
+		.page {
+			width: 94%;
+		}
+		.block-right {
+			display: none;
+		}
+	}
 }
