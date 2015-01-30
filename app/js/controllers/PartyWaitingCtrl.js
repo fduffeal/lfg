@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang','meta',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang,meta) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
             'use strict';
 
 	        $scope.lang = lang.getCurrent();
@@ -58,7 +58,6 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			        manageAutorisation();
 
-			        meta.setDescription(data.description+' partie '+data.id);
 		        });
 	        };
 

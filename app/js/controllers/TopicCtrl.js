@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route','meta',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
@@ -43,8 +43,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			forum.getTopic(id, page, result).success(function(data) {
 				setTopicData(data);
-
-				meta.setDescription('Esbattle.com | Forum | '+data.topic.titre+ ' | page '+page);
 			});
 
 			$scope.submit = function(){

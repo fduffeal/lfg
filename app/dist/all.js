@@ -27758,8 +27758,8 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route','meta','user',
-		function ($scope,$routeParams,forum,redirection,$location,$route,meta,user) {
+	['$scope','$routeParams','forum','redirection','$location','$route','user',
+		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
 			'use strict';
 
 			$scope.currentUser = user.get();
@@ -27768,7 +27768,6 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
 
-			meta.setDescription('Esbattle.com | Forum');
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
@@ -28340,8 +28339,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang','meta',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang,meta) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
             'use strict';
 
 	        $scope.lang = lang.getCurrent();
@@ -28399,7 +28398,6 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 
 			        manageAutorisation();
 
-			        meta.setDescription(data.description+' partie '+data.id);
 		        });
 	        };
 
@@ -28617,14 +28615,12 @@ angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
 
 angular.module('myApp.controllers').controller('RdvCtrl',
 	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
-		'$filter','storage','$routeParams','$location','socket','meta',
+		'$filter','storage','$routeParams','$location','socket',
 		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
-		          $filter,storage,$routeParams,$location,socket,meta) {
+		          $filter,storage,$routeParams,$location,socket) {
 			'use strict';
 
 			lang.initLang();
-
-			meta.setDescription('EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !');
 
 			$scope.currentUser = null;
 
@@ -28974,8 +28970,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route','meta',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
@@ -29018,8 +29014,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			forum.getTopic(id, page, result).success(function(data) {
 				setTopicData(data);
-
-				meta.setDescription('Esbattle.com | Forum | '+data.topic.titre+ ' | page '+page);
 			});
 
 			$scope.submit = function(){
