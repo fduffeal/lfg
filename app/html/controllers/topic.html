@@ -27,13 +27,17 @@
 							<tr>
 								<td class="to-avatar" rowspan="2" valign="top">
 
-									<div ng-if="message.user.userGame.length === 1" class="one-perso" style="background-image:url('{{message.user.userGame.data5}}')">
+									<div ng-if="message.user.userGame.length === 1 && (message.user.role != 'modo')" class="one-perso" style="background-image:url('{{message.user.userGame.data5}}')">
 										<img src="img/forum/avatar.png" alt=""/>
 									</div>
-									<div class="persos" ng-if="message.user.userGame.length > 1">
-										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
-										<div><img src="img/forum/avatar.png" alt=""/></div>
+									<div ng-if="(message.user.role == 'modo')" class="modo-avatar">
+<img src="img/forum/avatar-modo.png" alt=""/>
 									</div>
+									<div class="persos" ng-if="message.user.userGame.length > 1 && (message.user.role != 'modo')">
+										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
+										<div ><img src="img/forum/avatar.png" alt=""/></div>
+									</div>
+
 								</td>
 								<td class="to-info" valign="top">
 									<div class="left" ng-class="{'modo':(message.user.role == 'modo')}">
