@@ -27758,10 +27758,17 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route',
-		function ($scope,$routeParams,forum,redirection,$location,$route) {
+	['$scope','$routeParams','forum','redirection','$location','$route','meta','user',
+		function ($scope,$routeParams,forum,redirection,$location,$route,meta,user) {
 			'use strict';
 
+			$scope.currentUser = user.get();
+
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+			$scope.loginUrl = redirection.getLoginPageUrl();
+
+
+			meta.setDescription('Esbattle.com | Forum');
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
@@ -27774,7 +27781,13 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 					return;
 				}
 
-				forum.createTopic($scope.title,$scope.texte).success(function(data){
+				var createTopicPromise = forum.createTopic($scope.title,$scope.texte);
+
+				if(createTopicPromise === null){
+					redirection.goToLogin();
+				}
+
+				createTopicPromise.success(function(data){
 					var url = redirection.getTopicUrl(data,1)
 					$location.path(url);
 				});
@@ -28327,8 +28340,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang','meta',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang,meta) {
             'use strict';
 
 	        $scope.lang = lang.getCurrent();
@@ -28385,6 +28398,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        updateProfilsAvailable();
 
 			        manageAutorisation();
+
+			        meta.setDescription(data.description+' partie '+data.id);
 		        });
 	        };
 
@@ -28601,11 +28616,15 @@ angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location','socket',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location,socket) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
+		'$filter','storage','$routeParams','$location','socket','meta',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
+		          $filter,storage,$routeParams,$location,socket,meta) {
 			'use strict';
 
 			lang.initLang();
+
+			meta.setDescription('EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !');
 
 			$scope.currentUser = null;
 
@@ -28955,8 +28974,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route','meta',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
 			'use strict';
 
 			var id = $routeParams.id;
@@ -28995,6 +29014,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			forum.getTopic(id, page, result).success(function(data) {
 				setTopicData(data);
+
+				meta.setDescription('Esbattle.com | Forum | '+data.topic.titre+ ' | page '+page);
 			});
 
 			$scope.submit = function(){
@@ -29057,224 +29078,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterHtml', ['$sce',
-	function ($sce) {
-	'use strict';
-	return function (input) {
-
-		if (input) {
-			input = $sce.trustAsHtml(input);
-		}
-		return input;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', function () {
-	'use strict';
-	return function (date2_ms) {
-		var now = new Date();
-		var date1_ms = now.getTime();
-		// Calculate the difference in milliseconds
-		var difference_ms = date1_ms - (date2_ms*1000);
-
-		if(difference_ms < 0){
-			now.setTime(date2_ms*1000);
-			var month = now.getMonth()+1;
-			if(month < 10){
-				month = "0"+month;
-			}
-			var minutes = now.getMinutes();
-			if(minutes < 10){
-				minutes = "0"+minutes;
-			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
-		}
-
-		var one_minute=1000*60*1;
-
-		var diffMinutes = Math.round(difference_ms/one_minute);
-		if(diffMinutes < 60){
-			return diffMinutes+' minutes ago';
-		}
-
-		var one_hour=1000*60*60*1;
-		var diffHours = Math.round(difference_ms/one_hour);
-		if(diffHours < 24){
-			return diffHours+' hours ago';
-		}
-
-		//Get 1 day in milliseconds
-		var one_day=1000*60*60*24;
-		var diffDays = Math.round(difference_ms/one_day);
-		return diffDays+' days ago';
-
-	};
-});
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -29514,6 +29317,44 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
+	.directive('lfgMeta', ['meta','$rootScope',
+		function(meta,$rootScope) {
+			'use strict';
+			return {
+				scope:{
+					'name': '@'
+				},
+				link: function($scope, element, attrs) {
+					element[0].name = $scope.name;
+
+					var content = '';
+					switch($scope.name){
+						case 'description':
+							content = $rootScope.description;
+							$rootScope.$watch('description',function(newValue,oldValue){
+								element[0].content = newValue;
+							});
+							break;
+
+						default :
+							content =  $rootScope.description;
+							break;
+
+
+					}
+					element[0].content = content;
+
+
+				},
+				restrict: 'E',
+				replace: true,
+				templateUrl: '/html/directives/lfg-meta.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
 	.directive('lfgPagination', [
 		function() {
 			return {
@@ -29607,6 +29448,224 @@ angular.module('myApp.directives')
     ]
 );
 
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', function () {
+	'use strict';
+	return function (date2_ms) {
+		var now = new Date();
+		var date1_ms = now.getTime();
+		// Calculate the difference in milliseconds
+		var difference_ms = date1_ms - (date2_ms*1000);
+
+		if(difference_ms < 0){
+			now.setTime(date2_ms*1000);
+			var month = now.getMonth()+1;
+			if(month < 10){
+				month = "0"+month;
+			}
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
+		}
+
+		var one_minute=1000*60*1;
+
+		var diffMinutes = Math.round(difference_ms/one_minute);
+		if(diffMinutes < 60){
+			return diffMinutes+' minutes ago';
+		}
+
+		var one_hour=1000*60*60*1;
+		var diffHours = Math.round(difference_ms/one_hour);
+		if(diffHours < 24){
+			return diffHours+' hours ago';
+		}
+
+		//Get 1 day in milliseconds
+		var one_day=1000*60*60*24;
+		var diffDays = Math.round(difference_ms/one_day);
+		return diffDays+' days ago';
+
+	};
+});
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
 angular.module('superCache',[])
 	.factory('superCache', ['$cacheFactory','$q','$timeout',
 		function($cacheFactory,$q,$timeout) {
@@ -30157,6 +30216,22 @@ angular.module('myApp.services')
 				var username = $window.encodeURIComponent(currentUser.username);
 				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
 			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('meta', ['$rootScope',
+		function($rootScope) {
+			'use strict';
+			$rootScope.description = 'EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !',
+			this.getDescription = function(){
+				return  $rootScope.description;
+			}
+
+			this.setDescription = function(newDesc){
+				$rootScope.description = newDesc;
+			}
 		}
 	]
 );
