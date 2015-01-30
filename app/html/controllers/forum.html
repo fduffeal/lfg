@@ -33,11 +33,19 @@
 						<form name="myForm" ng-submit="submit()">
 							<input type="text" ng-model="title"/><br />
 							<textarea name="" id="" cols="30" rows="10" ng-model="texte"></textarea><br />
-							<input type="submit" class="btn2" value="POSTER">
+							<input type="submit" class="btn2" value="POSTER" ng-if="currentUser !== null">
+
+							<div class="welcome" ng-if="currentUser === null">
+								<a class="btn2 long" ng-href="{{loginUrl}}" translate>Login to reply</a>
+								<a class="btn2 long" ng-href="{{registerUrl}}" translate>or Register !</a>
+							</div>
+
 						</form>
 					</div>
 				</div>
 			</div>
+
+
 
 		</div>
 	</div>
