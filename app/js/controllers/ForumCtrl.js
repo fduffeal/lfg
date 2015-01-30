@@ -6,8 +6,6 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 			$scope.currentUser = user.get();
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
-			$scope.loginUrl = redirection.getLoginPageUrl();
-
 
 			meta.setDescription('Esbattle.com | Forum');
 			forum.getAllTopic().success(function(data) {
