@@ -3,6 +3,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
 			'use strict';
 
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+
 			var id = $routeParams.id;
 			var page = $routeParams.page;
 			$scope.currentPage = parseInt(page);
