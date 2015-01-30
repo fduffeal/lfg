@@ -27758,10 +27758,11 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route',
-		function ($scope,$routeParams,forum,redirection,$location,$route) {
+	['$scope','$routeParams','forum','redirection','$location','$route','meta',
+		function ($scope,$routeParams,forum,redirection,$location,$route,meta) {
 			'use strict';
 
+			meta.setDescription('Esbattle.com | Forum');
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
@@ -28327,8 +28328,8 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang','meta',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang,meta) {
             'use strict';
 
 	        $scope.lang = lang.getCurrent();
@@ -28385,6 +28386,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        updateProfilsAvailable();
 
 			        manageAutorisation();
+
+			        meta.setDescription(data.description+' partie '+data.id);
 		        });
 	        };
 
@@ -28601,11 +28604,15 @@ angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location','socket',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location,socket) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
+		'$filter','storage','$routeParams','$location','socket','meta',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
+		          $filter,storage,$routeParams,$location,socket,meta) {
 			'use strict';
 
 			lang.initLang();
+
+			meta.setDescription('EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !');
 
 			$scope.currentUser = null;
 
@@ -28955,8 +28962,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route','meta',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
 			'use strict';
 
 			var id = $routeParams.id;
@@ -28995,6 +29002,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			forum.getTopic(id, page, result).success(function(data) {
 				setTopicData(data);
+
+				meta.setDescription('Esbattle.com | Forum | '+data.topic.titre+ ' | page '+page);
 			});
 
 			$scope.submit = function(){
@@ -29057,120 +29066,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -29407,6 +29302,44 @@ angular.module('myApp.directives')
             };
         }
     ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgMeta', ['meta','$rootScope',
+		function(meta,$rootScope) {
+			'use strict';
+			return {
+				scope:{
+					'name': '@'
+				},
+				link: function($scope, element, attrs) {
+					element[0].name = $scope.name;
+
+					var content = '';
+					switch($scope.name){
+						case 'description':
+							content = $rootScope.description;
+							$rootScope.$watch('description',function(newValue,oldValue){
+								element[0].content = newValue;
+							});
+							break;
+
+						default :
+							content =  $rootScope.description;
+							break;
+
+
+					}
+					element[0].content = content;
+
+
+				},
+				restrict: 'E',
+				replace: true,
+				templateUrl: '/html/directives/lfg-meta.html'
+			};
+		}
+	]
 );
 
 angular.module('myApp.directives')
@@ -29721,6 +29654,120 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -30157,6 +30204,22 @@ angular.module('myApp.services')
 				var username = $window.encodeURIComponent(currentUser.username);
 				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
 			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('meta', ['$rootScope',
+		function($rootScope) {
+			'use strict';
+			$rootScope.description = 'EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !',
+			this.getDescription = function(){
+				return  $rootScope.description;
+			}
+
+			this.setDescription = function(newDesc){
+				$rootScope.description = newDesc;
+			}
 		}
 	]
 );

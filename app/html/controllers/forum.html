@@ -16,8 +16,8 @@
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="topic in aTopic">
-						<td class="fo-type"><div ng-class="{'postit':(topic.position == '3'),'normal':(topic.position == '1'),'high':(topic.position == '2')}"></div></td>
+					<tr ng-repeat="topic in aTopic  |orderBy:'updated':true |orderBy:'position':true" >
+						<td class="fo-type"><div ng-class="{'postit':(topic.status == 'postit'),'normal':(topic.status == 'normal'),'high':(topic.status == 'high')}"></div></td>
 						<td class="fo-sujet"><a ng-href="{{topic.url}}">{{topic.titre}}</a></td>
 						<td class="fo-author"><a href="" class="modo" ng-class="{'modo':(topic.user.username == 'moi')}">{{topic.user.username}}</a></td>
 						<td class="fo-nb">{{topic.nbMessages}}</td>

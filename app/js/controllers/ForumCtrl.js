@@ -1,8 +1,9 @@
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route',
-		function ($scope,$routeParams,forum,redirection,$location,$route) {
+	['$scope','$routeParams','forum','redirection','$location','$route','meta',
+		function ($scope,$routeParams,forum,redirection,$location,$route,meta) {
 			'use strict';
 
+			meta.setDescription('Esbattle.com | Forum');
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
