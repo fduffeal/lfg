@@ -1,7 +1,11 @@
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route','meta',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route,meta) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
 			'use strict';
+
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+
+			$scope.texte = "";
 
 			var id = $routeParams.id;
 			var page = $routeParams.page;
@@ -9,6 +13,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 			var result = 20;
 
 			$scope.currentUser = user.get();
+
+			console.log($scope.currentUser);
 
 			$scope.canPost = false;
 			$scope.modeEdit = 1;
@@ -39,8 +45,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			forum.getTopic(id, page, result).success(function(data) {
 				setTopicData(data);
-
-				meta.setDescription('Esbattle.com | Forum | '+data.topic.titre+ ' | page '+page);
 			});
 
 			$scope.submit = function(){

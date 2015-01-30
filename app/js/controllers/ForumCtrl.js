@@ -1,9 +1,14 @@
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route','meta',
-		function ($scope,$routeParams,forum,redirection,$location,$route,meta) {
+	['$scope','$routeParams','forum','redirection','$location','$route','user',
+		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
 			'use strict';
 
-			meta.setDescription('Esbattle.com | Forum');
+			$scope.currentUser = user.get();
+
+			$scope.title = $scope.texte = "";
+
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+
 			forum.getAllTopic().success(function(data) {
 				for(var key in data){
 					data[key].url = redirection.getTopicUrl(data[key]);
@@ -16,7 +21,13 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 					return;
 				}
 
-				forum.createTopic($scope.title,$scope.texte).success(function(data){
+				var createTopicPromise = forum.createTopic($scope.title,$scope.texte);
+
+				if(createTopicPromise === null){
+					redirection.goToLogin();
+				}
+
+				createTopicPromise.success(function(data){
 					var url = redirection.getTopicUrl(data,1)
 					$location.path(url);
 				});

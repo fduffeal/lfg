@@ -39,6 +39,11 @@
 		h2 {
 			margin:0;
 		}
+		.toussujet {
+			width: 60px;
+			float: right;
+			margin-right: 10px;
+		}
 		.refresh {
 			float: right;
 			margin-bottom: 20px;
@@ -193,30 +198,34 @@
 		}
 		table {
 			.to-avatar {
-			.one-perso {
-				width: 48px;
-				height: 48px;
-				img {
-					width: 24px;
-					height: 24px;
-
+				.modo-avatar img {
+					width: 48px;
+					height: 48px;
 				}
-
-			}
-			.persos {
-				width: 48px;
-				height: 48px;
-				div {
-					width: 24px;
-					height: 24px;
+				.one-perso {
+					width: 48px;
+					height: 48px;
 					img {
 						width: 24px;
 						height: 24px;
+
+					}
+
+				}
+				.persos {
+					width: 48px;
+					height: 48px;
+					div {
+						width: 24px;
+						height: 24px;
+						img {
+							width: 24px;
+							height: 24px;
+						}
 					}
 				}
-			}
 
-		}
+			}
 		}
 	}
 }

@@ -11,12 +11,15 @@ $color3: #06ab93; // blue
 	z-index: 999;
 	.content-header {
 		margin: auto;
-		width: 95%;
+		width: 940px;
 		font-size: 13px;
 		font-size: 1.3rem;
+		@media screen and (max-width: 980px ) {
+		width: 95%;
+			}
 		.logo-header {
 			float: left;
-			margin: 3px 70px 0 0;
+			margin: 3px 20px 0 0;
 		}
 		.notlog.mobile {
 			display: none;
@@ -73,7 +76,7 @@ $color3: #06ab93; // blue
 				left: 20px;
 			}
 
-			/* ul {
+			 ul {
 				font-weight: normal;
 				display: none;
 				position: absolute;
@@ -100,7 +103,7 @@ $color3: #06ab93; // blue
 			}
 			&:hover ul {
 				display: block;
-				} */
+				}
 			}
 		}
 		@media screen and (max-width: 600px ) {
