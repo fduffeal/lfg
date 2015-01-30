@@ -85,6 +85,11 @@ angular.module('myApp', [
 				controller : 'RdvCtrl',
 				action     : 'welcome'
 			});
+		$routeProvider.when('/:lang/home',
+			{
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl'
+			});
 		$routeProvider.when('/:lang/games',
 			{
 				templateUrl: '/html/controllers/games-profiles.html',
@@ -135,7 +140,7 @@ angular.module('myApp', [
 				controller : 'ForumCtrl'
 			});
 
-		$routeProvider.when('/:lang/forum/topic/',
+		$routeProvider.when('/:lang/forum/topic/:id/:page/:titre',
 			{
 				templateUrl: '/html/controllers/topic.html',
 				controller : 'TopicCtrl'

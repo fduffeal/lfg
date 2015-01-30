@@ -7,6 +7,10 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+// SERVER
+webserver	= require('gulp-webserver'),					// permet de monter un serveur de fichier en local avec le livereload (rechargement du navigateur à chaque modification d'un fichier du projet) inclus.
+sourcemaps	= require('gulp-sourcemaps'),					// facilite le débugage en dév/prod sur le code minifié. Permet de faire la relation entre le code minifié et le code de dév (qui est non minifié et commenté)
+
 
 // Lint Task
 gulp.task('lint', function() {
@@ -25,18 +29,19 @@ gulp.task('sass', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/bower_components/angular/angular.min.js',
-		'app/bower_components/angular-route/angular-route.min.js',
-		'app/bower_components/angular-cookies/angular-cookies.min.js',
-		'app/bower_components/angular-gettext/dist/angular-gettext.min.js',
-		'node_modules/destiny-client/destiny.min.js',
+		'app/bower_components/angular/angular.js',
+		'app/bower_components/angular-route/angular-route.js',
+		'app/bower_components/angular-cookies/angular-cookies.js',
+		'app/bower_components/angular-gettext/dist/angular-gettext.js',
 		'app/*.js',
 		'app/js/*/*.js'
 	])
+		.pipe(sourcemaps.init())
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('app/dist'))
 		.pipe(rename('all.min.js'))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('app/dist'));
 });
 
@@ -47,5 +52,28 @@ gulp.task('watch', function() {
 	gulp.watch('scss/*.scss', ['sass']);
 });
 
+/*
+ *
+ * SERVEUR LOCALHOST + LIVERELOAD
+ *		- server : lancement d'un serveur http://localhost:8000/
+ *		- watch : fonctionnalité livereload (rechargement du navigateur à la modification d'un fichier)
+ *
+ */
+gulp.task('server', function() {
+	return gulp.src(__dirname + '/app')
+		.pipe(
+		webserver({
+			livereload: true,
+			fallback: 'index.html'
+		})
+	);
+});
+
+gulp.task('livereload', ['server'], function() {
+	return gulp.watch('app/**/*.html', function(file) {
+		console.log(file.path + ' has changed');
+	});
+});
+
 // Default Task
-gulp.task('default', ['scripts', 'watch']);
+gulp.task('default', ['scripts', 'watch','server','livereload']);

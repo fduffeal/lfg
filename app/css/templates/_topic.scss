@@ -1,7 +1,67 @@
 #topic {
+	.clear	{
+		clear:both;
+	}
+	.content-header {
+		width: 940px;
+		.menu-right {
+			margin-right: 0;
+		}
+	}
+	.filariane {
+		color: #999;
+		font-weight:bold;
+		a {
+			color: $orange;
+		}
+	}
+	.welcome {
+		width: 940px;
+		border: 1px solid #ccc;
+		background: #fff;
+		clear: both;
+		h2.sujet {
+			float: left;
+			margin-top:10px;
+			color: black;
+			font-size: 2rem;
+			span {
+				color: #999;
+			}
+			&:before {
+				content: "✪";
+				display:inline-block;
+				margin:2px 5px 0 0;
+
+
+			}
+		}
+		h2 {
+			margin:0;
+		}
+		.refresh {
+			float: right;
+			margin-bottom: 20px;
+			width: 100px;
+			&:before {
+				content: "✽";
+				float: right;
+			}
+		}
+	}
+	.btn2 {
+		background: #f15641;
+		cursor: pointer;
+		&:hover {
+			color:black;
+		}
+	}
+
 	.new {
 		h2 {
 			font-weight: bold;
+
+			color:black;
 			font-size: 1.5rem;
 		}
 		input[type=text]{
@@ -19,11 +79,15 @@
 	.page {
 		background: transparent;
 		border: none;
+		width: 940px;
+		margin: auto;
+		margin-bottom: 10px;
 	}
 	table {
 		font-size: 1.2rem;
 		text-align: left;
 		width:100%;
+		border-spacing: 0 10px;
 
 		.msg {
 			padding: 10px;
@@ -33,24 +97,126 @@
 		tr{
 
 		}
+		.to-sign {
+			font-size: 1.2rem;
+			color: #999;
+			border-top: 1px dotted #999;
+			padding-top: 5px;
+			font-style: italic;
+		}
 		.to-avatar {
 			width: 10%;
-			img {
-				width: 100px;
+			.one-perso {
+				width: 96px;
+				height: 96px;
+				position: relative;
+				img {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 48px;
+					height: 48px;
 
-				height: 100px;
+				}
+
+			}
+			.persos {
+				width: 96px;
+				height: 96px;
+				position: relative;
+
+				div {
+					background-size: cover!important;
+					float: left;
+					background-color: black;
+					width: 48px;
+					height: 48px;
+					img {
+						width: 48px;
+						height: 48px;
+					}
+				}
 			}
 
 		}
+		.to-msg {
+			padding-left: 10px;
+		}
 		.to-info {
+			height: 20px;
 			width:90%;
 			.left {
 				float: left;
 				font-weight:bold;
+				padding-left: 10px;
 			}
 			.right{
-				float: right
+				float: right;
+				color: #999;
+				.modify span:before {
+					content: "✎";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					margin-left: 10px;
+					opacity: 0.7;
+
+				}
+				.delete span:before {
+					content: "✖";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					opacity: 0.7;
+
+				}
+				a:hover span:before {
+					opacity: 1;
+				}
 			}
+		}
+	}
+	@media screen and (max-width: 990px ) {
+		.content-header {
+			width: 95%;
+		}
+		.page, .welcome {
+			width: 94%;
+		}
+		table {
+			.to-avatar {
+			.one-perso {
+				width: 48px;
+				height: 48px;
+				img {
+					width: 24px;
+					height: 24px;
+
+				}
+
+			}
+			.persos {
+				width: 48px;
+				height: 48px;
+				div {
+					width: 24px;
+					height: 24px;
+					img {
+						width: 24px;
+						height: 24px;
+					}
+				}
+			}
+
+		}
 		}
 	}
 }

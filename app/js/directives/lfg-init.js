@@ -3,8 +3,10 @@ angular.module('myApp.directives')
 		function(user,socket) {
 			'use strict';
 			return {
+				scope:{
+					'init':'='
+				},
 				link: function($scope, element, attrs) {
-
 					var currentUser = user.get();
 					if(currentUser !== null){
 						socket.addUser(currentUser.username);

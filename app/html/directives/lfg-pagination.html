@@ -1,0 +1,6 @@
+<div class="pagination">
+        <span ng-repeat="page in aPage"
+              ng-if="($index+1 > currentPage-maxPageDisplayedWithoutFirstAndLast && $index-1 < currentPage+maxPageDisplayedWithoutFirstAndLast) || $index == 0 || $index+1 == aPage.length">
+            <a ng-href="{{page}}">{{$index+1}}</a>
+        </span>
+</div>

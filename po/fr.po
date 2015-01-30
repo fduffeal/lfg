@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
@@ -18,17 +18,17 @@ msgid ""
 "can create an announcement. To create or join a party, an account is "
 "required :)"
 msgstr ""
-"<span class=\"title\"><b>FAQ: </b></span><br/>- Sans compte Esbattle, vous "
-"pouvez seulement créer une annonce. Pour pouvoir créer ou rejoindre une "
-"partie, l'inscription au site est requis.<br/>- Partie: Une partie permet de "
-"proposer aux joueurs de se regrouper pour un raid, un assaut, une mission. "
-"Vous pouvez choisir l'heure à laquelle vous souhaitez démarrer, ainsi que le "
-"nombre de slots.<br/> Annonce: Une annonce comme son nom l'indique est juste "
-"un message si par exemple, vous recherchez un joueur, ou un raid (etc) sans "
-"avoir l'envie de créer et d'organiser une partie<br/>- Créer une partie: "
-"Lorsque vous venez de créer une partie, une URL vous sera transmise pour "
-"pouvoir la partager sur des forums, ou d'autres sites internet. Lorsqu'un "
-"joueur rejoindra votre partie, une notification apparaitra."
+"<span class=\"title\"><b>Comment ça marche? </b></span><br/>- Sans compte "
+"vous pouvez créer une annonce. En vous inscrivant vous aurez en plus la "
+"possibilité de <b>Créer</b> ou de <b>Rejoindre</b> une partie. De plus, vos "
+"personnages seront sauvegardés. Plus besoin de rentrer votre PSN ID ou "
+"Gamertag.<br /><b>Annonce:</b><br/> Une annonce est juste un message pour "
+"dire par exemple \"dispo caveau\".<br/><b>Partie:</b><br/>- Une partie "
+"permet de proposer aux autres joueurs un raid, un assaut, une nuit noire."
+"<br />- Choisissez l'heure et le nombre de places.<br/>- Une fois créée, les "
+"joueurs pourront rejoindre votre partie. Vous recevrez alors une "
+"notification. <br/>- Une url sera transmise pour que vous puissiez la "
+"partager sur des forums ou des réseaux sociaux. "
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -218,6 +218,10 @@ msgstr "Gardien"
 msgid "Hi, we are looking for"
 msgstr "Bonjour, nous recherchons"
 
+#: app/html/controllers/rdv.html
+msgid "Hide"
+msgstr "Cacher"
+
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr "Accueil"
@@ -298,10 +302,6 @@ msgstr "Non"
 #: app/html/directives/lfg-header.html
 msgid "Notification"
 msgstr "Notification"
-
-#: app/html/directives/lfg-header.html
-msgid "Notifications"
-msgstr "Notifications"
 
 #: app/html/controllers/login.html
 msgid "OR"
@@ -405,6 +405,10 @@ msgid ""
 msgstr ""
 "Partage cette information sur ton forum favori, ton réseau social et tes "
 "amis :"
+
+#: app/html/controllers/rdv.html
+msgid "Show Help"
+msgstr "Montrer l'aide"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
@@ -606,6 +610,9 @@ msgid ""
 msgstr ""
 "votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de "
 "patienter"
+
+#~ msgid "Notifications"
+#~ msgstr "Notifications"
 
 #~ msgid "Ask to join the party"
 #~ msgstr "Demander à rejoindre la partie"

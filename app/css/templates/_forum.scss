@@ -1,8 +1,61 @@
 #forum {
+	.welcome {
+		background: #fff;
+		border-top: 1px solid #ccc;
+
+	}
+	.content-header {
+		width: 940px;
+		.menu-right {
+			margin-right: 0;
+		}
+	}
+	.btn2 {
+		width: 150px;
+		font-weight: bold;
+		font-size: 1.4rem;
+		margin-top: 10px;
+		background: #f15641;
+		cursor: pointer;
+		&:hover {
+			color:black;
+		}
+	}
+	.refresh {
+		float: right;
+		margin-bottom: 20px;
+		width: 100px;
+		&:before {
+			content: "✽";
+			float: right;
+		}
+	}
+	.newsujet {
+		float: left;
+		margin-bottom: 20px;
+	}
+	.welcome {
+		width: 100%;
+		clear:both;
+	}
+	.page {
+		width: 940px;
+		margin: auto;
+		margin-bottom: 10px;
+	}
 	.new {
 		h2 {
 			font-weight: bold;
+			color: black;
 			font-size: 1.5rem;
+			margin-top: 0;
+			&:before {
+				content: "✉";
+				color: black;
+				float: left;
+				margin:-3px 5px  0 0px;
+				font-size: 2rem;
+			}
 		}
 		input[type=text]{
 			width:100%;
@@ -14,6 +67,7 @@
 		}
 		.btn2 {
 			border: 0;
+
 		}
 	}
 	.block {
@@ -45,6 +99,9 @@
 		}
 		a {
 			color:#f15641;
+			display: block;
+			height: 20px;
+			overflow: hidden;
 			&:visited {
 				color:#000;
 			}
@@ -84,11 +141,22 @@
 			width: 20%;
 		}
 		.fo-nb {
-			width: 10%;
+			width: 7%;
 		}
 		.fo-last {
-			width: 10%;
+			width: 15%;
 		}
 
+	}
+	@media screen and (max-width: 990px ) {
+		.content-header {
+			width: 95%;
+		}
+		.page {
+			width: 94%;
+		}
+		.block-right {
+			display: none;
+		}
 	}
 }

@@ -42,18 +42,19 @@
 			<a ng-show="!canJoin && !imOnGroup" class="btn2 long" ng-href="{{registerUrl}}" translate>Register to join the party !</a>
 
 			<div style="clear:both"></div>
+			<div >
+				<p translate>Share this information on your favorite forum, social network and friends :</p>
+
+				<p>
+					<span translate>Hi, we are looking for</span> {{ rdv.nbParticipant - rdv.users.length }} <span translate>player(s)</span>
+					<br/>"{{ rdv.description }}" <span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span>
+					<br/><span translate>start at</span> {{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}
+					<br/><span translate>apply on</span> {{currentUrl}}
+					<br/><span translate>Thanks</span>
+				</p>
+			</div>
 		</div>
-		<div class="marge">
-			<p translate>Share this information on your favorite forum, social network and friends :</p>
-			<br/>
-			<p>
-				<span translate>Hi, we are looking for</span> {{ rdv.nbParticipant - rdv.users.length }} <span translate>player(s)</span>
-				<br/>"{{ rdv.description }}" <span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span>
-				<br/><span translate>start at</span> {{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm' }}
-				<br/><span translate>apply on</span> {{currentUrl}}
-				<br/><span translate>Thanks</span>
-			</p>
-		</div>
+
 	</div>
 	<div class="page">
 		<div class="block">
@@ -88,27 +89,29 @@
 
 			<div class="team" ng-if="rdv.usersInQueue.length > 0">
 				<h1 class="second" translate>Waiting Players</h1>
-				<table>
-					<thead>
-						<tr>
-							<th class="place">#</th>
-							<th class="name" translate>Guardian</th>
-							<th class="actions" translate>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="userGame in rdv.usersInQueue">
-							<td>
-								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
-							</td>
-							<td class="actions">
-								<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
-								<a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
-								<a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="team">
+					<table>
+						<thead>
+							<tr>
+								<th class="place">#</th>
+								<th class="name" translate>Guardian</th>
+								<th class="actions" translate>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="userGame in rdv.usersInQueue">
+								<td>
+									<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
+								</td>
+								<td class="actions">
+									<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
+									<a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
+									<a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
 
 			</div>

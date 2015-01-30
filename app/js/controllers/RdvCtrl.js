@@ -1,11 +1,26 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout','$filter','storage','$routeParams','$location','socket',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,$filter,storage,$routeParams,$location,socket) {
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
+		'$filter','storage','$routeParams','$location','socket','meta',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
+		          $filter,storage,$routeParams,$location,socket,meta) {
 			'use strict';
 
 			lang.initLang();
 
+			meta.setDescription('EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !');
+
 			$scope.currentUser = null;
+
+			$scope.displayhelp = (storage.getPersistant('displayhelp')== 'false')?false:true;
+
+			$scope.showHelp = function(){
+				$scope.displayhelp = true;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
+			$scope.hideHelp = function(){
+				$scope.displayhelp = false;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
 
 			$scope.predicate = 'start';
 			$scope.reverse = true;
@@ -269,15 +284,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			 * init : connect and launch
 			 */
 			var init = function(){
-				var refreshPromise = user.refresh();
-				if(refreshPromise !== false){
-					refreshPromise.success(function(data){
-						$scope.currentUser = data;
-						launchRdvCtrl();
-					});
-				} else {
-					launchRdvCtrl();
-				}
+				$scope.currentUser = user.get();
+				launchRdvCtrl();
 			};
 
 			init();

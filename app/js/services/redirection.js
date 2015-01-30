@@ -109,6 +109,28 @@ angular.module('myApp.services')
 			this.getAnnonceCreateUrl = function(){
 				return '/'+getLang()+'/annonce/create/';
 			};
+
+			this.getForumUrl = function(){
+				return '/'+getLang()+'/forum/';
+			};
+
+			this.getTopicUrl = function(topic,page){
+
+				if(!page){
+					page = 1;
+				}
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
+			};
 		}
 	]
 );

@@ -1,9 +1,23 @@
 angular.module('myApp.services')
-	.service('socket', ['$rootScope',
-		function($rootScope) {
+	.service('socket', ['$rootScope','$location',
+		function($rootScope,$location) {
 			'use strict';
 			this.currentSocket = null;
 			this.listUsers = {};
+			this.url = null;
+
+			this.getSocketUrl = function(){
+				if(this.url !== null){
+					return this.url;
+				}
+				var host = $location.host();
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://www.esbattle.com:3000';
+				}else {
+					this.url = 'http://www.esbattle.com:3030';
+				}
+				return this.url;
+			};
 
 			this.on = function(event,callback){
 				var socket = this.getCurrentSocket();
@@ -54,30 +68,37 @@ angular.module('myApp.services')
 			};
 
 			this.getCurrentSocket = function(){
-				this.initSocket();
-				return this.currentSocket;
-			};
-
-			this.initSocket = function(){
 				if(this.currentSocket === null && typeof(io) !== "undefined"){
-					this.currentSocket = io.connect('http://www.esbattle.com:3000');
+					var url = this.getSocketUrl();
+					this.currentSocket = io.connect(url);
 					this.initListener(this.currentSocket);
 				}
+
+				return this.currentSocket;
 			};
 
 			this.addUser = function(username){
 				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
 				socket.emit('add user', username);
 			};
 
 			this.disconnect = function(){
 				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
 				socket.close();
 				//socket.emit('disconnect');
 			};
 
 			this.getUserList = function(){
 				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
 				console.log('emit : ask users list');
 				socket.emit('ask users list');
 			};
