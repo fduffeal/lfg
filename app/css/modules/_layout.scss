@@ -162,7 +162,10 @@ ul, li {
 	background: $color2;
 	font-size: 1.3rem;
 	margin: 20px auto 0 auto;
-	width: 95%;
+	width: 940px;
+	@media screen and (max-width: 980px ) {
+		width: 95%;
+	}
 	color: white;
 	.character {
 		width: 300px;
@@ -239,11 +242,14 @@ h1{
 
 .page {
 	background: white;
-	width: 95%;
+	width: 940px;
 	margin:auto;
 	margin-top: 20px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
+	@media screen and (max-width: 980px ) {
+		width: 95%;
+	}
 }
 
 input[type=text],
