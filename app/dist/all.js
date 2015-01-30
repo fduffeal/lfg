@@ -27734,1348 +27734,6 @@ angular.module('myApp').run(['gettextCatalog', function (gettextCatalog) {
     gettextCatalog.setStrings('fr', {"<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an announcement. To create or join a party, an account is required :)":"<span class=\"title\"><b>Comment ça marche? </b></span><br/>- Sans compte vous pouvez créer une annonce. En vous inscrivant vous aurez en plus la possibilité de <b>Créer</b> ou de <b>Rejoindre</b> une partie. De plus, vos personnages seront sauvegardés. Plus besoin de rentrer votre PSN ID ou Gamertag.<br /><b>Annonce:</b><br/> Une annonce est juste un message pour dire par exemple \"dispo caveau\".<br/><b>Partie:</b><br/>- Une partie permet de proposer aux autres joueurs un raid, un assaut, une nuit noire.<br />- Choisissez l'heure et le nombre de places.<br/>- Une fois créée, les joueurs pourront rejoindre votre partie. Vous recevrez alors une notification. <br/>- Une url sera transmise pour que vous puissiez la partager sur des forums ou des réseaux sociaux. ","<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!":"<span>IMPORTANT :</span>Après avoir créé la partie, il sera possible d'inviter des joueur, d'annuler la partie mais pas de la modifier. Cependant, lorsque deux joueurs sont confirmés dans la partie, il n'est plus possible d'annuler la partie. Si vous quittez la partie, le second joueur sera promu en tant que créateur. Donc merci de vérifier vos informations avant de créer une partie !","A new player joined":"Un nouveau joueur a rejoint","A player leave":"Un joueur a quitté","ALL FIELDS ARE REQUIRED":"TOUS LES CHAMPS DOIVENT ETRE REMPLIS","Accept":"Accepter","Actions":"Actions","All":"Tous","Announcement":"Annonce","Appointment not found":"Rendez vous non trouvé","Are you sure to kick :":"Êtes-vous sûr de vouloir kicker:","Back":"Retour","Bad Username or Password.":"Mauvais nom d'utilisateur ou mot de passe.","Choose a character":"Choisissez un personnage","Class":"Class","Confirm Password":"Confirmez votre mot de passe","Create a party":"Créer une partie","Create a profile for this game and join !":"Créer un profil pour ce jeu et rejoignez !","Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br>You will also be able to to schedule party and join an existing party.<br><br>Your GamerTag or PSN ID will be used to get your Destiny characters.<br><br>A valid email is required if you forgot your password, we will send you an email to verify your\tidentity.<br>":"Creer un compte esbatte pour avoir vos personnages de Destiny sur www.esbattle.com.<br>Vous pourrez alors préparer une partie ou en rejoindre une existante<br><br>VotreGamerTag ou PSN ID sera utilisé pour récupérer vos personnages de Destiny<br><br>Un email valide est nécessaire si vous oubliez votre mot de passe, nous vous enverrons un email pour vérifier votre identité<br>","Creator":"Createur","Cropta's End":"La Chute de Cropta","Decline":"Refuser","Description":"Description","Email":"Adresse email","Email Address":"Adresse email","Ended":"Terminé","English":"Anglais","Enter a description":"Entrer une description","Enter your informations or":"Entrez vos informations ou","Enter your login and password":"Entrez votre login et mot de passe","Esbattle username":"Compte Esbattle","Find":"Chercher","Forget login or password ?":"Mot de passe oublié ?","French":"Français","Game":"Jeu","Game Infos for {{game.name}}":"Infos de jeux pour {{game.name}}","Game Profil":"Profil de jeux","GamerTag or PSN ID":"GamerTag ou PSN ID","Gamertag":"Gamertag","Guardian":"Gardien","Hi, we are looking for":"Bonjour, nous recherchons","Hide":"Cacher","Home":"Accueil","If you leave this page, the matchmaking will be cancel":"Si vous quittez cette page, le matchmaking sera annulé","Infos":"Infos","Kick":"Rejeter","Leave":"Quitter","Level":"Niveau","Login":"Connexion","Login !":"Connexion !","Login Esbattle":"Login Esbattle","Logout":"Déconnexion","Mail already send. Please check your mailBox (and your spam box)":"Email déjà envoyé. Merci de vérifier votre boite email (et votre dossier spam)","Mail send. Please check your mailBox (and your spam box)":"Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)","My partys":"Mes parties","New announcement":"Nouvelle annonce","New character":"Nouveau personnage","New party on":"Nouvelle partie sur","Nightfall":"Nuit noire","No":"Non","Notification":"Notification","OR":"OU","Open":"Ouvert","Party":"Partie","Password":"Mot de passe","Password Forgotten ?":"Mot de passe oublié ?","Password Updated !":"Mot de passe mis à jour !","Passwords doesn't match":"Les mots de passe ne correspondent pas","Personal Infos":"Informations personelles","Platform":"Platformes","Platform:":"Plateforme:","Player":"Joueur","Please check your GamerTag or PSN ID, we didn't found any Destiny characters":"Merci de vérifier votre GamerTag ou PSN ID, nous ne trouvons aucun personnage sur Destiny","Please waiting, we are looking for players...":"Merci de patienter, nous recherchons des joueurs...","Post an announcement":"Poster une annonce","Profil Name":"Nom du profil","Promote":"Nommer chef de groupe","Register":"Inscription","Register !":"Inscription !","Register on Esbattle.com":"Inscription sur Esbattle.com","Register to join the party !":"Inscrits toi pour rejoindre la partie !","Retrieve my account !":"Récupérer mon compte !","Send":"Envoyer","Send it":"Envoyer","Share this information on your favorite forum, social network and friends :":"Partage cette information sur ton forum favori, ton réseau social et tes amis :","Show Help":"Montrer l'aide","Slots":"Slots","Sorry, you have been kicked by":"Désolé, vous avez été exclu par","Start":"Début","Start:":"Début:","Story":"Histoire","Story Challenge":"Histoire épique","Strike":"Assaut","Team":"Equipe","Thanks":"Merci","The username is already used.":"Ce nom d'utilisateur est déjà pris","This email is already used.":"Cet email est déjà pris","Tomorrow":"Demain","Update":"Mettre à jour","Update Password":"Mettre à jour le mot de passe","Update my password !":"Mettre à jour mon mot de passe !","Url of the party:":"Url de la partie:","Use this character":"Utiliser ce personnage","Username":"Nom d'utilisateur","Username on this game":"Nom d'utilisateur sur ce jeu","Vault of Glass":"Caveau de Verre","VaultOfGlass":"CaveauDeVerre","Waiting Players":"Joueurs voulant rejoindre la partie","Weekly Heroic Strike":"Assaut épique de la semaine","When":"Quand:","Yes":"Oui","You have been accepted by":"Vous avez été accepté par","You have been promoted as leader by":"Vous avez été promu comme chef par","Your gamertag":"Votre gamertag","Your message":"Votre message","an error occured, please try again later, sorry for the inconvenience":"une erreur est survenue, essayez plus tard, désolé pour le dérangement","apply on":"rejoins sur ","create an account":"créer un compte","daily":"du jour","epic":"épique","from":"de","has leave. You lead":"a quitté. Vous contrôlez ","hunter":"chasseur","join the party !":"rejoins la partie !","on":"sur","online":"en ligne","password doesn't match":"Les mots de passe ne correspondent pas","player(s)":"joueur(s)","start at":"commence à","this party":"cette partie","titan":"titan","to save your character for the next time !":"pour sauvegarder votre personnage la prochaine fois !","warlock":"arcaniste","your annoncement has been send and will appear in few second, please wait":"votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de patienter","Notifications":"Notifications","Ask to join the party":"Demander à rejoindre la partie","Formated Party":"Partie préformatée","Personalized Party":"Partie Personnalisée","This party is ended, create a new party !":"Cette partie est terminée, créez une nouvelle partie !","<span class=\"title\">What's new: 12 jan 2015</span><br>New Design and new feature :<br>Create an announcement with your destiny character, just put your plateform and your GamerTag ou PSN ID !<br>Choose your games console and watch all announcement or schedule party.<br>Use tag like #raid, #cropta, #caveaudeverre, #level30 to find easily what you want !<br>Create a schedule party easily with our new interface !":"<span class=\"title\">What's new: 12 jan 2015</span><br>Nouveau design et nouvelle fonctionnalité :<br>Créer une annonce avec votre personnage de Destiny, renseignez juste votre platefome et votre GamerTag ou PSN ID !<br>Sélectionnez une console de jeux et regardez toutes les annonces ou les parties planifiées<br>Utilisez les tags comme #raid, #cropta, #caveaudeverre, #level30 pour trouvez facilement ce que vous voulez!<br>Créer plus facilement une partie planifiée avec notre nouvelle interface !","<span class=\"title\">FAQ: </span><br>Without an Esbattle account, you only can create an accouncement. To create or join a party, an account is required :)":"<span class=\"title\">FAQ: </span>Sans inscription, vous pouvez seulement poster des annonces. Pour créer ou rejoindre une partie, un compte Esbattle est requis :)","<span class=\"title\">What's new: 10 jan 2015</span><br> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters will be automai":"<span class=\"title\">Nouveautés du 10 jan 2015</span> With this new version, it's more simple to user the website. Now, just with your gamertag, all your characters ","Join this party to see player's gamertag":"Rejoignez cette partie pour voir le gamertag des joueurs","Register with your email address":"S'enregistrer avec votre adresse email","Create a profil for this game and join !":"Créer un profil pour ce jeu et rejoignez !"});
 /* jshint +W100 */
 }]);
-angular.module('myApp.controllers').controller('404Ctrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
-			'use strict';
-			$scope.msg = $routeParams.msg;
-			console.log($scope.msg);
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang',
-		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang) {
-			'use strict';
-
-			$scope.lang = lang.getCurrent();
-
-			$scope.currentUser = user.get();
-
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route','user',
-		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
-			'use strict';
-
-			$scope.currentUser = user.get();
-
-			$scope.title = $scope.texte = "";
-
-			$scope.registerUrl = redirection.getRegisterPageUrl();
-
-			forum.getAllTopic().success(function(data) {
-				for(var key in data){
-					data[key].url = redirection.getTopicUrl(data[key]);
-				}
-				$scope.aTopic = data;
-			});
-
-			$scope.submit = function(){
-				if($scope.myForm.$valid === false){
-					return;
-				}
-
-				var createTopicPromise = forum.createTopic($scope.title,$scope.texte);
-
-				if(createTopicPromise === null){
-					redirection.goToLogin();
-				}
-
-				createTopicPromise.success(function(data){
-					var url = redirection.getTopicUrl(data,1)
-					$location.path(url);
-				});
-			}
-
-			$scope.refresh = function(){
-				$route.reload();
-			}
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('GamesProfilesCtrl',
-    ['$scope','user','rdv','$routeParams','redirection','lang',
-        function ($scope,user,rdv,$routeParams,redirection,lang) {
-            'use strict';
-	        $scope.lang = lang.getCurrent();
-
-	        $scope.currentUser = user.get();
-			$scope.aProfils = [];
-			if($scope.currentUser !== null){
-				$scope.aProfils = $scope.currentUser.userGame;
-			}
-
-
-	        rdv.getFormInfo().then(function(data){
-		        $scope.plateforms = data.plateforms;
-		        $scope.games = data.games;
-		        $scope.plateform = $scope.plateforms[0];
-		        $scope.game = $scope.games[0];
-	        });
-
-
-	        $scope.submitFormGameInfo = function(){
-		        if($scope.formGameProfil.$valid === false){
-			        return;
-		        }
-		        $scope.formGameInfoUpdate = false;
-
-				if(typeof $scope.profilId  === "undefined" || $scope.profilId  === ""){
-					user.createUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
-						$scope.aProfils = data.userGame;
-						$scope.formGameInfoUpdate = true;
-						$scope.$broadcast('refreshProfil');
-					});
-				}else {
-					user.updateUserGame($scope.plateform.id,$scope.game.id,$scope.profilId,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
-						$scope.aProfils = data.userGame;
-						$scope.formGameInfoUpdate = true;
-						$scope.$broadcast('refreshProfil');
-					});
-				}
-	        };
-
-			$scope.selectProfil = function(profil){
-
-				$scope.profilId = (profil!==null) ? profil.id : '';
-				$scope.profilName = (profil!==null) ? profil.gameProfilName : '';
-				$scope.gameUsername = (profil!==null) ? profil.gameUsername : '';
-				$scope.data_1 = (profil!==null) ? profil.data1 : '';
-				$scope.data_2 = (profil!==null) ? parseInt(profil.data2) : '';
-				$scope.data_3 = (profil!==null) ? profil.data3 : '';
-				$scope.data_4 = (profil!==null) ? profil.data4 : '';
-
-				if(profil !== null){
-					for(var keyP in $scope.plateforms){
-						if($scope.plateforms[keyP].id == profil.plateform.id){
-							$scope.plateform = $scope.plateforms[keyP];
-						}
-					}
-
-					for(var keyG in $scope.games){
-						if($scope.games[keyG].id == profil.game.id){
-							$scope.game = $scope.games[keyG];
-						}
-					}
-				}
-
-			};
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
-			'use strict';
-			$scope.msg = $routeParams.msg;
-			console.log($scope.msg);
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket',
-		function ($scope,$routeParams,user,socket) {
-			'use strict';
-
-
-			var currentUser = null;
-
-			var refreshData = function() {
-				user.getAll().success(function (data, status, headers, config) {
-					console.log(data);
-					console.log('listuser ctrl', socket.listUsers);
-
-					for (var key in data) {
-						data[key].connected = false;
-						data[key].me = false;
-						data[key].canAddToFriendList = true;
-						data[key].canAddToBlackList = true;
-
-						if (socket.listUsers[data[key].username]) {
-							data[key].connected = true;
-						}
-
-						if(currentUser !== null && data[key].username === currentUser.username){
-							data[key].me = true;
-						}
-					}
-
-					$scope.aUsers = data;
-				});
-
-			};
-
-
-			var init = function(){
-				var refreshPromise = user.refresh();
-				if(refreshPromise !== false){
-					refreshPromise.success(function(data){
-						console.log('user refresh',data);
-						currentUser = data;
-						socket.getUserList();
-					});
-				} else {
-					socket.getUserList();
-				}
-			};
-
-
-			$scope.$on('updateListUsers',function(event,data){
-				console.log('updateListUsers',data);
-				refreshData();
-			});
-
-			$scope.addToFriendList = function(friendUsername){
-				var addFriendPromise = user.addFriend(friendUsername);
-				if(addFriendPromise !== false){
-					addFriendPromise(friendUsername).success(function(data){
-
-					});
-				}
-			};
-
-			$scope.removeFromFriendList = user.removeFriend;
-
-			init();
-
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('LoginCtrl',
-    ['$scope','user','redirection','lang',
-        function ($scope,user,redirection,lang) {
-			'use strict';
-
-	        $scope.lang = lang.getCurrent();
-
-			$scope.registerPageUrl = redirection.getRegisterPageUrl();
-
-			var tentative = 0;
-			var maxTentative = 2;
-			$scope.bDisplayForgetPasswordForm = false;
-			$scope.bDisplayForgetPasswordFormMailSend = false;
-
-			$scope.displayForgetPasswordForm = function(){
-				$scope.bDisplayForgetPasswordForm = true;
-			};
-
-	        $scope.login = function(){
-		        if($scope.loginForm.$valid === false){
-			        return;
-		        }
-
-		        user.log($scope.username,$scope.password).success(function(data){
-			        $scope.userInfo = data;
-					redirection.goBack();
-			        $scope.$broadcast('refreshProfil');
-		        }).error(function(data){
-					$scope.error = data.msg;
-					if(data.msg==='connection_refused'){
-						tentative++;
-
-						if(tentative > maxTentative){
-							$scope.displayForgetPasswordForm();
-						}
-					}
-				});
-	        };
-
-			$scope.forgetPassword = function(){
-				user.forgetPassword($scope.email).success(function(data){
-					$scope.bDisplayForgetPasswordFormMailSend = true;
-
-				}).error(function(data){
-					$scope.errorForgetPassword = data.msg;
-				});
-			};
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('MatchmakingCtrl',
-	['$scope','matchmaking','user','redirection','$filter',
-		function ($scope,matchmaking,user,redirection,$filter) {
-			'use strict';
-
-			$scope.currentUser = user.get();
-			$scope.matchmakingTemplate = null;
-			$scope.profilSelected = null;
-
-			var updateProfilsAvailable = function(){
-				if($scope.currentUser !== null && $scope.game !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,null,null);
-					if($scope.profils[0] && $scope.profilSelected === null){
-						$scope.profilSelected = $scope.profils[0];
-					}
-				}
-			};
-
-			updateProfilsAvailable();
-
-			/**
-			 * récupère les configs pour la selection du type de matchmaking
-			 */
-			matchmaking.getConf().success(function(data){
-
-				var groupOfTemplate = {};
-				for(var key in data){
-					if(!groupOfTemplate[data[key].description]) {
-						groupOfTemplate[data[key].description] = [];
-					}
-					data[key].concatTags = "";
-					for(var keyTag in data[key].tags){
-						data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
-					}
-					groupOfTemplate[data[key].description].push(data[key]);
-				}
-				$scope.groupOfTemplate = groupOfTemplate;
-			});
-
-			/**
-			 * lance le matchmaking
-			 */
-			$scope.join = function(){
-				if($scope.joinMatchmakingForm.$valid === false){
-					return;
-				}
-				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id).success(function(data){
-					redirection.goToMatchmakingId(data.id);
-				});
-			};
-
-			/**
-			 * selectionne un type de matchmaking
-			 * @param template
-			 */
-			$scope.selectGroupOfTemplate = function(template){
-				$scope.matchmakingTemplate = template;
-				$scope.templateSelectedModel = template[0];
-			};
-
-			$scope.createProfil = function(){
-				redirection.goToGamesPage();
-			};
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
-            'use strict';
-
-	        $scope.lang = lang.getCurrent();
-
-			$scope.currentUser = user.get();
-
-			var manageAutorisation = function(){
-				$scope.isLeader = false;
-				$scope.canJoin = true;
-				$scope.imOnGroup = false;
-
-				if ($scope.currentUser !== null) {
-
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
-
-					if ($scope.profils[0]) {
-						$scope.profilSelected = $scope.profils[0];
-					}
-
-					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
-						$scope.isLeader = true;
-					}
-
-					for (var key in $scope.rdv.users) {
-						if ($scope.rdv.users[key].user.username === $scope.currentUser.username) {
-							$scope.canJoin = false;
-							$scope.imOnGroup = true;
-						}
-					}
-
-					for (var key2 in $scope.rdv.usersInQueue) {
-						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
-							$scope.canJoin = false;
-						}
-					}
-				} else {
-					$scope.canJoin = false;
-				}
-			};
-
-	        var getRdvDetails = function(){
-		        rdv.get($routeParams.partyId).success(function (data) {
-			        $scope.rdv = data;
-
-			        $scope.isFull = (data.users.length === data.nbParticipant);
-			        manageAutorisation();
-		        });
-	        };
-
-	        var refreshData = function() {
-		        if($scope.currentUser !== null){
-			        user.updateOnline($scope.currentUser).success(function(data){
-				        getRdvDetails();
-			        });
-		        } else {
-			        getRdvDetails();
-		        }
-	        };
-
-	        $scope.leave = function(userId){
-				stopAutoRefreshData();
-		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-			        $scope.rdv = data;
-					autoRefreshData();
-		        });
-	        };
-
-			$scope.currentUrl = $location.absUrl();
-
-
-			var refreshTime = 12000;
-			var autoRefreshData = function(){
-				stopAutoRefreshData();
-				$scope.intervalId = $interval(function(){
-					refreshData();
-				}, refreshTime);
-			};
-
-			var stopAutoRefreshData = function(){
-				$interval.cancel($scope.intervalId);
-			};
-
-			refreshData();
-			autoRefreshData();
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('NotificationCtrl',
-    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval','$rootScope',
-        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval,$rootScope) {
-            'use strict';
-
-	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-
-	        $scope.userInfo = user.get();
-	        /**
-	         * autoRefreshDataNotif
-	         */
-	        var refreshDataNotif = function(){
-		        rdv.getNotifications().success(function(data){
-			        if($scope.userInfo === null){
-				        return;
-			        }
-			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
-			        $rootScope.notificationsAlreadyRead = $scope.notifications;
-		        });
-	        };
-
-	        var refreshTime = 12000;
-	        var autoRefreshDataNotif = function(){
-		        $interval.cancel($scope.intervaNotificationId);
-
-		        if (angular.isDefined($scope.intervaNotificationId)) {
-			        return;
-		        }
-
-		        $scope.intervaNotificationId = $interval(function(){
-			        refreshDataNotif();
-		        }, refreshTime);
-	        };
-
-	        refreshDataNotif();
-	        autoRefreshDataNotif();
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('PartyCreateCtrl',
-	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang','gettextCatalog',
-		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang,gettextCatalog) {
-			'use strict';
-
-			$scope.lang = lang.getCurrent();
-
-			$scope.currentUser = user.get();
-
-			if($scope.currentUser === null){
-				redirection.goToLogin();
-				return;
-			}
-
-			$scope.dureeHours = 1;
-			$scope.dureeMinutes = 0;
-
-			$scope.game = null;
-			$scope.plateform = null;
-			$scope.profilSelected = null;
-
-			rdv.getFormInfo().then(function(data){
-				$scope.formInfo = data;
-				$scope.game = $scope.formInfo.games[0];
-			});
-
-			$scope.today = new Date();
-
-			$scope.day = new Date($scope.today.getFullYear(), $scope.today.getMonth(), $scope.today.getDate(), $scope.today.getHours(), $scope.today.getMinutes()+5,$scope.today.getSeconds());
-
-			$scope.startHours = $scope.today.getHours();
-			$scope.startMinutes = $scope.today.getMinutes();
-
-			$scope.dayPlusTwo = new Date();
-			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
-
-			$scope.$watch('game',function(newValue,oldValue){
-				updateProfilsAvailable();
-			});
-
-			$scope.$watch('profilSelected',function(newValue,oldValue){
-				if(typeof newValue !== "undefined" && newValue !== null){
-					$scope.updatePlateform(newValue.plateform);
-				}
-			});
-
-			var updateProfilsAvailable = function(){
-				if($scope.currentUser !== null && $scope.game !== null){
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
-				}
-			};
-
-			var updateTime = function(){
-				var rdvDate = new Date();
-				var now = new Date();
-				rdvDate.setHours($scope.startHours);
-				rdvDate.setMinutes($scope.startMinutes);
-
-				$scope.bDemain = false;
-				if(now.getTime() > rdvDate.getTime()){
-					rdvDate.setTime(rdvDate.getTime() + 1 * 24 * 3600 * 1000);
-					$scope.bDemain = true;
-				}
-
-				$scope.day = rdvDate;
-			} ;
-
-			$scope.$watch('startMinutes',function(newValue,OldValue){
-				updateTime();
-			});
-
-			$scope.$watch('startHours',function(newValue,OldValue){
-				updateTime();
-			});
-
-            $scope.submit = function(){
-
-	            if($scope.myForm.$valid === false){
-		            return;
-	            }
-                var game = $scope.game.id;
-                var day = $scope.myForm.inputDayStart.$modelValue.getTime()/1000;
-                var dureeHours = $scope.dureeHours;
-                var dureeMinutes = $scope.dureeMinutes;
-                var plateform = $scope.plateform.id;
-                var tags = $scope.tags;
-                var description = $scope.description;
-                var slotTotal = $scope.slotTotal;
-				var profilId = $scope.profilSelected.id
-
-                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
-					redirection.goToRdvId(data.id);
-                });
-            };
-
-			$scope.updatePlateform = function(plateform){
-				$scope.plateform = plateform;
-			};
-
-			$scope.autocomplete = function(){
-				var aTags = $scope.tags.split(' ');
-
-				var previousTags = '';
-				var aPreviousTags = [];
-				for(var i = 0; i < aTags.length -1; i++){
-					previousTags =  previousTags+aTags[i]+' ';
-					aPreviousTags.push(aTags[i]);
-				}
-
-				$scope.autocompleteTag = [];
-				for(var key in $scope.formInfo.tags){
-
-					if(aPreviousTags.indexOf($scope.formInfo.tags[key].nom) > -1){
-						continue;
-					}
-					$scope.autocompleteTag.push(previousTags +$scope.formInfo.tags[key].nom);
-				}
-			};
-
-			$scope.createProfil = function(){
-				redirection.goToGamesPage();
-			};
-
-			$scope.$on('templateSelectedModel',function(event,data){
-				var templateSelectedModel = data[0];
-				if(typeof templateSelectedModel == "undefined"){
-					return;
-				}
-				$scope.tags = templateSelectedModel.concatTags;
-				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
-				$scope.slotTotal = templateSelectedModel.nbParticipant;
-			});
-
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('PartyWaitingCtrl',
-    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
-        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
-            'use strict';
-
-	        $scope.lang = lang.getCurrent();
-
-	        $scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-	        $scope.registerUrl = redirection.getRegisterPageUrl();
-
-			$scope.currentUser = user.get();
-
-	        $scope.profilSelected = null;
-
-			var manageAutorisation = function(){
-				$scope.isLeader = false;
-				$scope.canJoin = true;
-				$scope.imOnGroup = false;
-
-				if ($scope.currentUser !== null) {
-
-					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
-
-					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
-						$scope.isLeader = true;
-					}
-
-					for (var key in $scope.rdv.users) {
-						if ($scope.rdv.users[key].user.username === $scope.currentUser.username) {
-							$scope.canJoin = false;
-							$scope.imOnGroup = true;
-						}
-					}
-
-					for (var key2 in $scope.rdv.usersInQueue) {
-						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
-							$scope.canJoin = false;
-							$scope.imOnGroup = true;
-						}
-					}
-				} else {
-					$scope.canJoin = false;
-					$scope.imOnGroup = false;
-					$scope.isLeader = false;
-				}
-			};
-
-	        var getRdvDetails = function(){
-		        rdv.get($routeParams.partyId).success(function (data) {
-			        $scope.rdv = data;
-
-			        $scope.isFull = (data.users.length === data.nbParticipant);
-
-			        $scope.isEnded = rdv.isEnded($scope.rdv);
-			        $scope.isLive = rdv.isLive($scope.rdv);
-
-			        updateProfilsAvailable();
-
-			        manageAutorisation();
-
-		        });
-	        };
-
-	        var refreshData = function() {
-		        if($scope.currentUser !== null){
-			        user.updateOnline($scope.currentUser).success(function(data){
-				        getRdvDetails();
-			        });
-		        } else {
-			        getRdvDetails();
-		        }
-	        };
-
-			$scope.join = function(){
-				if($scope.currentUser === null){
-//@todo rediriger vers la page connexion / register
-					return;
-				}
-				stopAutoRefreshData();
-
-				rdv.join($scope.rdv.id,$scope.profilSelected.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-					$scope.rdv = data;
-					manageAutorisation();
-					autoRefreshData();
-				});
-			};
-
-			$scope.acceptUser = function(userId){
-				stopAutoRefreshData();
-				rdv.acceptUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-					$scope.rdv = data;
-					manageAutorisation();
-					autoRefreshData();
-				});
-			};
-
-			$scope.kickUser = function(userId){
-				stopAutoRefreshData();
-				rdv.kickUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-					$scope.rdv = data;
-					manageAutorisation();
-					autoRefreshData();
-				});
-			};
-
-
-	        $scope.leave = function(userId){
-				stopAutoRefreshData();
-		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-			        $scope.rdv = data;
-					manageAutorisation();
-					autoRefreshData();
-		        });
-	        };
-
-			$scope.promote = function(userId){
-				stopAutoRefreshData();
-				rdv.promote($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
-					$scope.rdv = data;
-					manageAutorisation();
-					autoRefreshData();
-				});
-			};
-
-			$scope.createProfil = function(){
-				redirection.goToGamesPage();
-			};
-
-			$scope.currentUrl = $location.absUrl();
-
-
-			var refreshTime = 12000;
-			var autoRefreshData = function(){
-				stopAutoRefreshData();
-				$scope.intervalId = $interval(function(){
-					refreshData();
-				}, refreshTime);
-			};
-
-			var stopAutoRefreshData = function(){
-				$interval.cancel($scope.intervalId);
-			};
-
-	        var updateProfilsAvailable = function(){
-		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
-			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
-					if($scope.profils[0] && $scope.profilSelected === null){
-				        $scope.profilSelected = $scope.profils[0];
-			        }
-		        }
-	        };
-
-			refreshData();
-			autoRefreshData();
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
-    ['$scope','user','$route','$routeParams',
-        function ($scope,user,$route,$routeParams) {
-			'use strict';
-
-			if($route.current.action === 'forget'){
-				user.logByForgetToken($routeParams.username,$routeParams.forgetToken).error(function(data){
-					$scope.error = data.msg;
-				});
-			}
-
-			$scope.bDisplayUpdatePassword = false;
-
-			$scope.updatePassword = function(){
-
-				if($scope.password !== $scope.passwordVerif){
-					$scope.error = 'password_not_equal';
-				} else {
-					user.updatePassword($scope.password).success(function(data){
-						$scope.bDisplayUpdatePassword = true;
-					}).error(function(data){
-						$scope.error = data.msg;
-					});
-				}
-
-
-
-			};
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('ProfileCtrl',
-    ['$scope','user','rdv','$routeParams','redirection','lang',
-        function ($scope,user,rdv,$routeParams,redirection,lang) {
-			'use strict';
-
-	        $scope.lang = lang.getCurrent();
-
-			$scope.currentUser = user.get();
-
-			rdv.getFormInfo().then(function(data){
-				$scope.plateforms = data.plateforms;
-				$scope.games = data.games;
-
-				$scope.plateform = data.plateforms[0];
-				if($routeParams.plateformId){
-					for(var key in data.plateforms){
-						if(data.plateforms[key].id == $routeParams.plateformId){
-							$scope.plateform = data.plateforms[key];
-						}
-					}
-				}
-
-				$scope.game = data.games[0];
-				if($routeParams.gameId){
-					for(var key in data.games){
-						if(data.games[key].id == $routeParams.gameId){
-							$scope.game = data.games[key];
-						}
-					}
-				}
-
-				$scope.updateFormData();
-
-			});
-
-
-			$scope.submitFormGameInfo = function(){
-				if($scope.gameInfo.$valid === false){
-					return;
-				}
-				$scope.formGameInfoUpdate = false;
-				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
-					$scope.formGameInfoUpdate = true;
-				});
-			};
-
-			$scope.updateFormData = function(){
-				$scope.formGameInfoUpdate = false;
-				$scope.profilName = '';
-				$scope.gameUsername = '';
-				$scope.data1 = '';
-				$scope.data2 = '';
-				$scope.data3 = '';
-				$scope.data4 = '';
-				for(var key in $scope.currentUser.userGame){
-					if($scope.currentUser.userGame[key].plateform.id === $scope.plateform.id){
-						$scope.profilName = $scope.currentUser.userGame[key].gameProfilName;
-						$scope.gameUsername = $scope.currentUser.userGame[key].gameUsername;
-						$scope.data2 = $scope.currentUser.userGame[key].data2;
-						$scope.data3 = $scope.currentUser.userGame[key].data3;
-						$scope.data4 = $scope.currentUser.userGame[key].data4;
-						$scope.data1 = $scope.currentUser.userGame[key].data1;
-					}
-				}
-			};
-
-			$scope.goBack = function(){
-				redirection.goBack();
-			};
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
-			'use strict';
-
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('RdvCtrl',
-	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
-		'$filter','storage','$routeParams','$location','socket',
-		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
-		          $filter,storage,$routeParams,$location,socket) {
-			'use strict';
-
-			lang.initLang();
-
-			$scope.currentUser = null;
-
-			$scope.displayhelp = (storage.getPersistant('displayhelp')== 'false')?false:true;
-
-			$scope.showHelp = function(){
-				$scope.displayhelp = true;
-				storage.setPersistant('displayhelp',$scope.displayhelp);
-			}
-			$scope.hideHelp = function(){
-				$scope.displayhelp = false;
-				storage.setPersistant('displayhelp',$scope.displayhelp);
-			}
-
-			$scope.predicate = 'start';
-			$scope.reverse = true;
-
-			$scope.now = new Date();
-
-			$scope.demain = new Date();
-			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
-
-			$scope.slotMinAvailable = 0;
-			$scope.slotMaxAvailable = 6;
-
-			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-			$scope.annonceCreateUrl = redirection.getAnnonceCreateUrl();
-
-			$scope.isLive = rdv.isLive;
-			$scope.isEnded = rdv.isEnded;
-
-			$scope.aCharacters = [];
-			$scope.displayFormAnnonce = false;
-
-			$scope.aMyRdv = [];
-			$scope.aRdv = [];
-			$scope.aRdvNormaux = [];
-
-			$scope.tags = '';
-
-			$scope.goToParty = function(id){
-				redirection.goToRdvId(id);
-			};
-
-
-			$scope.updateTags = function(){
-				var aTags = $scope.tags.split(' ');
-				$scope.autoCompleteTags = tag.autoCompleteUserTags(aTags,$scope.allTags);
-
-			};
-
-			$scope.autoCompleteTags = [];
-
-			$scope.allTags = [];
-
-			rdv.getFormInfo().then(function(data){
-				$scope.allTags = data.tags;
-				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
-				$scope.aPlateforms = data.plateforms;
-				setPlateformCookie();
-			});
-
-			var formatRdv = function(rdv){
-				for(var key in rdv.users){
-					if(rdv.users[key].user.id === rdv.leader.id){
-						rdv.author = rdv.users[key];
-						rdv.user = rdv.users[key].user;
-						rdv.type = 'type_party';
-					}
-				}
-			};
-
-
-			var refreshRdvData = function(){
-
-				annonce.get().success(function(data) {
-					formatAnnonces(data);
-					$scope.aRdv = $scope.aAnnoncesFormated.concat($scope.aRdvNormaux);
-				});
-
-				rdv.getAll().success(function(data) {
-					// this callback will be called asynchronously
-					// when the response is available
-					for(var key in data){
-						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
-						formatRdv(data[key]);
-					}
-
-					$scope.aRdvNormaux = data;
-					$scope.aRdv = $scope.aRdvNormaux.concat($scope.aAnnoncesFormated);
-
-					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
-					if($scope.currentUser !== null){
-
-						if(typeof $scope.plateform === "undefined"){
-							var plateformId = null;
-						}else {
-							var plateformId = $scope.plateform.id;
-						}
-
-						//if($scope.plateform)
-						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
-					}
-				}).error(function(data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
-				});
-
-			};
-
-			$scope.displayWelcome = ($route.current.action === 'welcome');
-
-			//autoRefresh
-			var refreshTime = 12000;
-			var autoRefreshData = function(){
-				$scope.intervalId = $interval(function(){
-					refreshRdvData();
-				}, refreshTime);
-			};
-
-
-			$scope.getDestinyCharacters = function(){
-				bungie.getCharacters($scope.plateformAnnonce.id,$scope.plateformAnnonce.bungiePlateformId,$scope.gamertag).success(function(data){
-					$scope.aCharacters = data;
-				}).error(function(data){
-					$scope.aCharacters = [];
-				});
-			};
-
-			$scope.selectedPerso = null;
-
-			$scope.aAnnoncesFormated = [];
-
-			var formatAnnonce = function(annonce){
-				return {
-					'id' : annonce.id,
-					'author' : annonce.author,
-					'game' : annonce.game,
-					'plateform' : annonce.plateform,
-					'tags' : annonce.tags,
-					'description' : annonce.description,
-					'start' : annonce.created,
-					'type' : 'type_annonce',
-					'user' : annonce.user
-				};
-			};
-
-			var formatAnnonces = function(aAnnonces){
-				var nbAnnonces = aAnnonces.length;
-
-				for(var i=0; i< nbAnnonces;i++){
-					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
-				}
-			};
-
-
-
-			$scope.blockPostAnnonce = false;
-			$scope.messageFormAnnonce = null;
-			$scope.addAnnonce = function(){
-
-				$scope.messageFormAnnonce = null;
-				$scope.blockPostAnnonce = true;
-
-				var userGameId = $scope.selectedPerso.id;
-				var tags = $scope.annonce_tag;
-				var description = $scope.annonce_description;
-				annonce.create(tags,description,userGameId).success(function(data){
-					$scope.annonce_tag = '';
-					$scope.annonce_description = '';
-
-					$timeout(function(){
-						$scope.blockPostAnnonce = false;
-					},2)
-
-					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
-
-					//$scope.aRdv.push(formatAnnonce(data));
-
-				}).error(function(data){
-					$scope.annonce_tag = '';
-					$scope.annonce_description = '';
-
-					$timeout(function(){
-						$scope.blockPostAnnonce = false;
-					},2)
-
-					$scope.messageFormAnnonce = 'an error occured, please try again later, sorry for the inconvenience';
-
-				})
-			};
-
-
-			var setTypeFilter = function(){
-				var type_rdv = storage.getPersistant('cookie_type_rdv');
-				if(typeof type_rdv === "undefined"){
-					$scope.type = 'type_all';
-				} else {
-					$scope.type = type_rdv;
-				}
-				$scope.$watch('type',function(newValue, oldValue){
-					storage.setPersistant('cookie_type_rdv',newValue);
-				});
-			};
-
-			var setPlateformCookie = function(){
-				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
-				var plateform_rdv_url = $routeParams.plateform;
-
-				if(typeof plateform_rdv_url !== "undefined"){
-					plateform_rdv_url = plateform_rdv_url.replace('_',' ');
-					for(var key in $scope.aPlateforms){
-						if($scope.aPlateforms[key].nom == plateform_rdv_url){
-							$scope.plateform = $scope.aPlateforms[key];
-						}
-					}
-				} else if(typeof plateform_rdv !== "undefined"){
-					for(var key in $scope.aPlateforms){
-						if($scope.aPlateforms[key].id == plateform_rdv){
-							$scope.plateform = $scope.aPlateforms[key];
-						}
-					}
-				}
-
-				$scope.$watch('plateform',function(newValue, oldValue){
-
-					var homeUrl = redirection.getHomePageDestinyUrl();
-					if(typeof newValue !== "undefined" && newValue !== null){
-						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
-						var plateformNameUrl = newValue.nom.replace(' ','_');
-						//$location.path(homeUrl+plateformNameUrl).replace();
-					}else {
-						storage.erasePersistant('cookie_plateform_rdv_id');
-						//$location.path(homeUrl).replace();
-					}
-				});
-			};
-
-			var initTags = function(){
-				$scope.$watch('tags',function(newValue,oldValue){
-					if(newValue !== '' || oldValue !== ''){
-						$location.search('tags', newValue);
-					}
-				});
-
-				var searchObject = $location.search();
-				if(searchObject.tags){
-					$scope.tags = searchObject.tags;
-				}
-			};
-
-
-			/**
-			 * launch after init !
-			 */
-			var launchRdvCtrl = function(){
-				refreshRdvData();
-				autoRefreshData();
-				setTypeFilter();
-				initTags();
-				socket.getUserList();
-			};
-
-
-
-			$scope.$on('updateListUsers',function(event,data){
-				if(data[0]){
-					$scope.listUser = data[0];
-				}
-			});
-
-			/**
-			 * init : connect and launch
-			 */
-			var init = function(){
-				$scope.currentUser = user.get();
-				launchRdvCtrl();
-			};
-
-			init();
-		}
-	]
-);
-
-angular.module('myApp.controllers').controller('RegisterCtrl',
-    ['$scope','user','$location','lang','redirection','rdv',
-        function ($scope,user,$location,lang,redirection,rdv) {
-
-	        $scope.lang = lang.getCurrent();
-
-			rdv.getFormInfo().then(function(data){
-				$scope.aPlateforms = data.plateforms;
-			});
-
-	        $scope.updateRegExpPassword = function(){
-		        $scope.regExpPassword = '/'+$scope.password+'/';
-	        };
-
-	        $scope.checkPassword = function(){
-		        $scope.errorPassword = false;
-		        if($scope.password !== $scope.passwordverif){
-			        $scope.errorPassword = true;
-			        return;
-		        }
-	        };
-
-	        $scope.submit = function(){
-
-
-		        if($scope.registerForm.$valid === false ||  $scope.errorPassword === true){
-			        return;
-		        }
-
-				$scope.username_already_taken = false;
-				$scope.email_already_taken = false;
-				$scope.gamertag_not_found = false;
-		        user.register($scope.email,$scope.password,$scope.username,$scope.plateform.id,$scope.gamerTag).success(function(data){
-			        redirection.goWelcomeHome();
-		        }).error(function(data){
-					console.log('error',data);
-					$scope.aError = data;
-
-					if(data.aError) {
-
-						for (var key in data.aError) {
-
-							console.log(data.aError[key]);
-							if (data.aError[key] === 'username_already_taken') {
-								$scope.username_already_taken = true;
-							}
-
-							if (data.aError[key] === 'email_already_taken') {
-								$scope.email_already_taken = true;
-							}
-
-							if (data.aError[key] === 'gamertag_not_found') {
-								$scope.gamertag_not_found = true;
-							}
-						}
-					}
-				});
-	        };
-
-        }
-    ]
-);
-
-angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
-			'use strict';
-
-			$scope.registerUrl = redirection.getRegisterPageUrl();
-
-			$scope.texte = "";
-
-			var id = $routeParams.id;
-			var page = $routeParams.page;
-			$scope.currentPage = parseInt(page);
-			var result = 20;
-
-			$scope.currentUser = user.get();
-
-			$scope.canPost = false;
-			$scope.modeEdit = 1;
-			$scope.modeModify = 2;
-
-			$scope.aPage = [];
-
-			$scope.mode = $scope.modeEdit;
-
-			$scope.forumUrl = redirection.getForumUrl();
-
-			var setTopicData = function(data){
-				$scope.topic = data;
-				$scope.nbPage = Math.ceil(data.topic.nbMessages/result);
-
-				$scope.aPage = [];
-				for(var i = 0;i< $scope.nbPage;i++){
-					$scope.aPage.push(redirection.getTopicUrl($scope.topic.topic,i+1));
-				}
-				$scope.canPost = true;
-			}
-
-			$scope.goToLastPage = function(){
-				if($scope.aPage.length > $scope.currentPage){
-					$location.path($scope.aPage[$scope.aPage.length-1]);
-				}
-			}
-
-			forum.getTopic(id, page, result).success(function(data) {
-				setTopicData(data);
-			});
-
-			$scope.submit = function(){
-				if($scope.myForm.$valid === false){
-					return;
-				}
-				switch($scope.mode){
-					case $scope.modeEdit :
-						forum.reply(id,$scope.texte,page,result).success(function(data){
-							setTopicData(data);
-
-							$scope.goToLastPage();
-							$scope.goToBottom();
-						});
-						break;
-
-					case $scope.modeModify:
-						forum.updateMessage($scope.messageId,$scope.texte,page,result).success(function(data){
-							setTopicData(data);
-							$scope.goToBottom();
-						});
-						break;
-
-					default:
-						break;
-				}
-
-				$scope.texte = "";
-				$scope.mode = $scope.modeEdit;
-
-			}
-
-			$scope.modify = function(message){
-				$scope.mode = $scope.modeModify;
-				$scope.messageId = message.id;
-				$scope.texte = message.texte.replace(/<br\/>/ig,'\n');
-			}
-
-			$scope.delete = function(message){
-				forum.deleteMessage(message.id,page,result).success(function(data){
-					setTopicData(data);
-
-					$scope.goToBottom();
-				});
-			}
-
-			$scope.goToBottom = function(){
-
-				$timeout(function(){
-					$location.hash('bottom');
-					$anchorScroll();
-				},0);
-
-			}
-
-			$scope.refresh = function(){
-				$route.reload();
-			}
-		}
-	]
-);
-
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -30848,6 +29506,1350 @@ angular.module('myApp.services')
 				friendUsername = $window.encodeURIComponent(friendUsername);
 				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
 			};
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('404Ctrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+			$scope.msg = $routeParams.msg;
+			console.log($scope.msg);
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang) {
+			'use strict';
+
+			$scope.lang = lang.getCurrent();
+
+			$scope.currentUser = user.get();
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('ForumCtrl',
+	['$scope','$routeParams','forum','redirection','$location','$route','user',
+		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
+			'use strict';
+
+			$scope.currentUser = user.get();
+
+			$scope.title = $scope.texte = "";
+
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+
+			forum.getAllTopic().success(function(data) {
+				for(var key in data){
+					data[key].url = redirection.getTopicUrl(data[key]);
+				}
+				$scope.aTopic = data;
+			});
+
+			$scope.submit = function(){
+				if($scope.myForm.$valid === false){
+					return;
+				}
+
+				var createTopicPromise = forum.createTopic($scope.title,$scope.texte);
+
+				if(createTopicPromise === null){
+					redirection.goToLogin();
+				}
+
+				createTopicPromise.success(function(data){
+					var url = redirection.getTopicUrl(data,1)
+					$location.path(url);
+				});
+			}
+
+			$scope.refresh = function(){
+				$route.reload();
+			}
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('GamesProfilesCtrl',
+    ['$scope','user','rdv','$routeParams','redirection','lang',
+        function ($scope,user,rdv,$routeParams,redirection,lang) {
+            'use strict';
+	        $scope.lang = lang.getCurrent();
+
+	        $scope.currentUser = user.get();
+			$scope.aProfils = [];
+			if($scope.currentUser !== null){
+				$scope.aProfils = $scope.currentUser.userGame;
+			}
+
+
+	        rdv.getFormInfo().then(function(data){
+		        $scope.plateforms = data.plateforms;
+		        $scope.games = data.games;
+		        $scope.plateform = $scope.plateforms[0];
+		        $scope.game = $scope.games[0];
+	        });
+
+
+	        $scope.submitFormGameInfo = function(){
+		        if($scope.formGameProfil.$valid === false){
+			        return;
+		        }
+		        $scope.formGameInfoUpdate = false;
+
+				if(typeof $scope.profilId  === "undefined" || $scope.profilId  === ""){
+					user.createUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
+						$scope.aProfils = data.userGame;
+						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
+					});
+				}else {
+					user.updateUserGame($scope.plateform.id,$scope.game.id,$scope.profilId,$scope.profilName,$scope.gameUsername,$scope.data_1,$scope.data_2,$scope.data_3,$scope.data_4).success(function(data){
+						$scope.aProfils = data.userGame;
+						$scope.formGameInfoUpdate = true;
+						$scope.$broadcast('refreshProfil');
+					});
+				}
+	        };
+
+			$scope.selectProfil = function(profil){
+
+				$scope.profilId = (profil!==null) ? profil.id : '';
+				$scope.profilName = (profil!==null) ? profil.gameProfilName : '';
+				$scope.gameUsername = (profil!==null) ? profil.gameUsername : '';
+				$scope.data_1 = (profil!==null) ? profil.data1 : '';
+				$scope.data_2 = (profil!==null) ? parseInt(profil.data2) : '';
+				$scope.data_3 = (profil!==null) ? profil.data3 : '';
+				$scope.data_4 = (profil!==null) ? profil.data4 : '';
+
+				if(profil !== null){
+					for(var keyP in $scope.plateforms){
+						if($scope.plateforms[keyP].id == profil.plateform.id){
+							$scope.plateform = $scope.plateforms[keyP];
+						}
+					}
+
+					for(var keyG in $scope.games){
+						if($scope.games[keyG].id == profil.game.id){
+							$scope.game = $scope.games[keyG];
+						}
+					}
+				}
+
+			};
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('HomeCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+			$scope.msg = $routeParams.msg;
+			console.log($scope.msg);
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('ListUsersCtrl',
+	['$scope','$routeParams','user','socket',
+		function ($scope,$routeParams,user,socket) {
+			'use strict';
+
+
+			var currentUser = null;
+
+			var refreshData = function() {
+				user.getAll().success(function (data, status, headers, config) {
+					console.log(data);
+					console.log('listuser ctrl', socket.listUsers);
+
+					for (var key in data) {
+						data[key].connected = false;
+						data[key].me = false;
+						data[key].canAddToFriendList = true;
+						data[key].canAddToBlackList = true;
+
+						if (socket.listUsers[data[key].username]) {
+							data[key].connected = true;
+						}
+
+						if(currentUser !== null && data[key].username === currentUser.username){
+							data[key].me = true;
+						}
+					}
+
+					$scope.aUsers = data;
+				});
+
+			};
+
+
+			var init = function(){
+				var refreshPromise = user.refresh();
+				if(refreshPromise !== false){
+					refreshPromise.success(function(data){
+						console.log('user refresh',data);
+						currentUser = data;
+						socket.getUserList();
+					});
+				} else {
+					socket.getUserList();
+				}
+			};
+
+
+			$scope.$on('updateListUsers',function(event,data){
+				console.log('updateListUsers',data);
+				refreshData();
+			});
+
+			$scope.addToFriendList = function(friendUsername){
+				var addFriendPromise = user.addFriend(friendUsername);
+				if(addFriendPromise !== false){
+					addFriendPromise(friendUsername).success(function(data){
+
+					});
+				}
+			};
+
+			$scope.removeFromFriendList = user.removeFriend;
+
+			init();
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('LoginCtrl',
+    ['$scope','user','redirection','lang',
+        function ($scope,user,redirection,lang) {
+			'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
+			$scope.registerPageUrl = redirection.getRegisterPageUrl();
+
+			var tentative = 0;
+			var maxTentative = 2;
+			$scope.bDisplayForgetPasswordForm = false;
+			$scope.bDisplayForgetPasswordFormMailSend = false;
+
+			$scope.displayForgetPasswordForm = function(){
+				$scope.bDisplayForgetPasswordForm = true;
+			};
+
+	        $scope.login = function(){
+		        if($scope.loginForm.$valid === false){
+			        return;
+		        }
+
+		        user.log($scope.username,$scope.password).success(function(data){
+			        $scope.userInfo = data;
+					redirection.goBack();
+			        $scope.$broadcast('refreshProfil');
+		        }).error(function(data){
+					$scope.error = data.msg;
+					if(data.msg==='connection_refused'){
+						tentative++;
+
+						if(tentative > maxTentative){
+							$scope.displayForgetPasswordForm();
+						}
+					}
+				});
+	        };
+
+			$scope.forgetPassword = function(){
+				user.forgetPassword($scope.email).success(function(data){
+					$scope.bDisplayForgetPasswordFormMailSend = true;
+
+				}).error(function(data){
+					$scope.errorForgetPassword = data.msg;
+				});
+			};
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('MatchmakingCtrl',
+	['$scope','matchmaking','user','redirection','$filter',
+		function ($scope,matchmaking,user,redirection,$filter) {
+			'use strict';
+
+			$scope.currentUser = user.get();
+			$scope.matchmakingTemplate = null;
+			$scope.profilSelected = null;
+
+			var updateProfilsAvailable = function(){
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,null,null);
+					if($scope.profils[0] && $scope.profilSelected === null){
+						$scope.profilSelected = $scope.profils[0];
+					}
+				}
+			};
+
+			updateProfilsAvailable();
+
+			/**
+			 * récupère les configs pour la selection du type de matchmaking
+			 */
+			matchmaking.getConf().success(function(data){
+
+				var groupOfTemplate = {};
+				for(var key in data){
+					if(!groupOfTemplate[data[key].description]) {
+						groupOfTemplate[data[key].description] = [];
+					}
+					data[key].concatTags = "";
+					for(var keyTag in data[key].tags){
+						data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+					}
+					groupOfTemplate[data[key].description].push(data[key]);
+				}
+				$scope.groupOfTemplate = groupOfTemplate;
+			});
+
+			/**
+			 * lance le matchmaking
+			 */
+			$scope.join = function(){
+				if($scope.joinMatchmakingForm.$valid === false){
+					return;
+				}
+				matchmaking.join($scope.templateSelectedModel.id,$scope.profilSelected.id).success(function(data){
+					redirection.goToMatchmakingId(data.id);
+				});
+			};
+
+			/**
+			 * selectionne un type de matchmaking
+			 * @param template
+			 */
+			$scope.selectGroupOfTemplate = function(template){
+				$scope.matchmakingTemplate = template;
+				$scope.templateSelectedModel = template[0];
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
+			};
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('MatchmakingWaitingCtrl',
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
+            'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
+			$scope.currentUser = user.get();
+
+			var manageAutorisation = function(){
+				$scope.isLeader = false;
+				$scope.canJoin = true;
+				$scope.imOnGroup = false;
+
+				if ($scope.currentUser !== null) {
+
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
+
+					if ($scope.profils[0]) {
+						$scope.profilSelected = $scope.profils[0];
+					}
+
+					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
+						$scope.isLeader = true;
+					}
+
+					for (var key in $scope.rdv.users) {
+						if ($scope.rdv.users[key].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+							$scope.imOnGroup = true;
+						}
+					}
+
+					for (var key2 in $scope.rdv.usersInQueue) {
+						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+						}
+					}
+				} else {
+					$scope.canJoin = false;
+				}
+			};
+
+	        var getRdvDetails = function(){
+		        rdv.get($routeParams.partyId).success(function (data) {
+			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
+			        manageAutorisation();
+		        });
+	        };
+
+	        var refreshData = function() {
+		        if($scope.currentUser !== null){
+			        user.updateOnline($scope.currentUser).success(function(data){
+				        getRdvDetails();
+			        });
+		        } else {
+			        getRdvDetails();
+		        }
+	        };
+
+	        $scope.leave = function(userId){
+				stopAutoRefreshData();
+		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+			        $scope.rdv = data;
+					autoRefreshData();
+		        });
+	        };
+
+			$scope.currentUrl = $location.absUrl();
+
+
+			var refreshTime = 12000;
+			var autoRefreshData = function(){
+				stopAutoRefreshData();
+				$scope.intervalId = $interval(function(){
+					refreshData();
+				}, refreshTime);
+			};
+
+			var stopAutoRefreshData = function(){
+				$interval.cancel($scope.intervalId);
+			};
+
+			refreshData();
+			autoRefreshData();
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('NotificationCtrl',
+    ['$scope','$routeParams','redirection','rdv','$filter','user','$interval','$rootScope',
+        function ($scope,$routeParams,redirection,rdv,$filter,user,$interval,$rootScope) {
+            'use strict';
+
+	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
+	        $scope.userInfo = user.get();
+	        /**
+	         * autoRefreshDataNotif
+	         */
+	        var refreshDataNotif = function(){
+		        rdv.getNotifications().success(function(data){
+			        if($scope.userInfo === null){
+				        return;
+			        }
+			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
+			        $rootScope.notificationsAlreadyRead = $scope.notifications;
+		        });
+	        };
+
+	        var refreshTime = 12000;
+	        var autoRefreshDataNotif = function(){
+		        $interval.cancel($scope.intervaNotificationId);
+
+		        if (angular.isDefined($scope.intervaNotificationId)) {
+			        return;
+		        }
+
+		        $scope.intervaNotificationId = $interval(function(){
+			        refreshDataNotif();
+		        }, refreshTime);
+	        };
+
+	        refreshDataNotif();
+	        autoRefreshDataNotif();
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('PartyCreateCtrl',
+	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang','gettextCatalog',
+		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang,gettextCatalog) {
+			'use strict';
+
+			$scope.lang = lang.getCurrent();
+
+			$scope.currentUser = user.get();
+
+			if($scope.currentUser === null){
+				redirection.goToLogin();
+				return;
+			}
+
+			$scope.dureeHours = 1;
+			$scope.dureeMinutes = 0;
+
+			$scope.game = null;
+			$scope.plateform = null;
+			$scope.profilSelected = null;
+
+			rdv.getFormInfo().then(function(data){
+				$scope.formInfo = data;
+				$scope.game = $scope.formInfo.games[0];
+			});
+
+			$scope.today = new Date();
+
+			$scope.day = new Date($scope.today.getFullYear(), $scope.today.getMonth(), $scope.today.getDate(), $scope.today.getHours(), $scope.today.getMinutes()+5,$scope.today.getSeconds());
+
+			$scope.startHours = $scope.today.getHours();
+			$scope.startMinutes = $scope.today.getMinutes();
+
+			$scope.dayPlusTwo = new Date();
+			$scope.dayPlusTwo.setTime($scope.dayPlusTwo.getTime() + 2 * 24 * 3600 * 1000);
+
+			$scope.$watch('game',function(newValue,oldValue){
+				updateProfilsAvailable();
+			});
+
+			$scope.$watch('profilSelected',function(newValue,oldValue){
+				if(typeof newValue !== "undefined" && newValue !== null){
+					$scope.updatePlateform(newValue.plateform);
+				}
+			});
+
+			var updateProfilsAvailable = function(){
+				if($scope.currentUser !== null && $scope.game !== null){
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.game.id,null);
+				}
+			};
+
+			var updateTime = function(){
+				var rdvDate = new Date();
+				var now = new Date();
+				rdvDate.setHours($scope.startHours);
+				rdvDate.setMinutes($scope.startMinutes);
+
+				$scope.bDemain = false;
+				if(now.getTime() > rdvDate.getTime()){
+					rdvDate.setTime(rdvDate.getTime() + 1 * 24 * 3600 * 1000);
+					$scope.bDemain = true;
+				}
+
+				$scope.day = rdvDate;
+			} ;
+
+			$scope.$watch('startMinutes',function(newValue,OldValue){
+				updateTime();
+			});
+
+			$scope.$watch('startHours',function(newValue,OldValue){
+				updateTime();
+			});
+
+            $scope.submit = function(){
+
+	            if($scope.myForm.$valid === false){
+		            return;
+	            }
+                var game = $scope.game.id;
+                var day = $scope.myForm.inputDayStart.$modelValue.getTime()/1000;
+                var dureeHours = $scope.dureeHours;
+                var dureeMinutes = $scope.dureeMinutes;
+                var plateform = $scope.plateform.id;
+                var tags = $scope.tags;
+                var description = $scope.description;
+                var slotTotal = $scope.slotTotal;
+				var profilId = $scope.profilSelected.id
+
+                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
+					redirection.goToRdvId(data.id);
+                });
+            };
+
+			$scope.updatePlateform = function(plateform){
+				$scope.plateform = plateform;
+			};
+
+			$scope.autocomplete = function(){
+				var aTags = $scope.tags.split(' ');
+
+				var previousTags = '';
+				var aPreviousTags = [];
+				for(var i = 0; i < aTags.length -1; i++){
+					previousTags =  previousTags+aTags[i]+' ';
+					aPreviousTags.push(aTags[i]);
+				}
+
+				$scope.autocompleteTag = [];
+				for(var key in $scope.formInfo.tags){
+
+					if(aPreviousTags.indexOf($scope.formInfo.tags[key].nom) > -1){
+						continue;
+					}
+					$scope.autocompleteTag.push(previousTags +$scope.formInfo.tags[key].nom);
+				}
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
+			};
+
+			$scope.$on('templateSelectedModel',function(event,data){
+				var templateSelectedModel = data[0];
+				if(typeof templateSelectedModel == "undefined"){
+					return;
+				}
+				$scope.tags = templateSelectedModel.concatTags;
+				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
+				$scope.slotTotal = templateSelectedModel.nbParticipant;
+			});
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('PartyWaitingCtrl',
+    ['$scope','rdv','$routeParams','user','$location','$filter','redirection','$interval','activity','lang',
+        function ($scope,rdv,$routeParams,user,$location,$filter,redirection,$interval,activity,lang) {
+            'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
+	        $scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+	        $scope.registerUrl = redirection.getRegisterPageUrl();
+
+			$scope.currentUser = user.get();
+
+	        $scope.profilSelected = null;
+
+			var manageAutorisation = function(){
+				$scope.isLeader = false;
+				$scope.canJoin = true;
+				$scope.imOnGroup = false;
+
+				if ($scope.currentUser !== null) {
+
+					$scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame, $scope.rdv.game.id, $scope.rdv.plateform.id);
+
+					if ($scope.rdv.leader && $scope.rdv.leader.username === $scope.currentUser.username) {
+						$scope.isLeader = true;
+					}
+
+					for (var key in $scope.rdv.users) {
+						if ($scope.rdv.users[key].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+							$scope.imOnGroup = true;
+						}
+					}
+
+					for (var key2 in $scope.rdv.usersInQueue) {
+						if ($scope.rdv.usersInQueue[key2].user.username === $scope.currentUser.username) {
+							$scope.canJoin = false;
+							$scope.imOnGroup = true;
+						}
+					}
+				} else {
+					$scope.canJoin = false;
+					$scope.imOnGroup = false;
+					$scope.isLeader = false;
+				}
+			};
+
+	        var getRdvDetails = function(){
+		        rdv.get($routeParams.partyId).success(function (data) {
+			        $scope.rdv = data;
+
+			        $scope.isFull = (data.users.length === data.nbParticipant);
+
+			        $scope.isEnded = rdv.isEnded($scope.rdv);
+			        $scope.isLive = rdv.isLive($scope.rdv);
+
+			        updateProfilsAvailable();
+
+			        manageAutorisation();
+
+		        });
+	        };
+
+	        var refreshData = function() {
+		        if($scope.currentUser !== null){
+			        user.updateOnline($scope.currentUser).success(function(data){
+				        getRdvDetails();
+			        });
+		        } else {
+			        getRdvDetails();
+		        }
+	        };
+
+			$scope.join = function(){
+				if($scope.currentUser === null){
+//@todo rediriger vers la page connexion / register
+					return;
+				}
+				stopAutoRefreshData();
+
+				rdv.join($scope.rdv.id,$scope.profilSelected.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+					$scope.rdv = data;
+					manageAutorisation();
+					autoRefreshData();
+				});
+			};
+
+			$scope.acceptUser = function(userId){
+				stopAutoRefreshData();
+				rdv.acceptUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+					$scope.rdv = data;
+					manageAutorisation();
+					autoRefreshData();
+				});
+			};
+
+			$scope.kickUser = function(userId){
+				stopAutoRefreshData();
+				rdv.kickUser(userId,$scope.rdv.id,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+					$scope.rdv = data;
+					manageAutorisation();
+					autoRefreshData();
+				});
+			};
+
+
+	        $scope.leave = function(userId){
+				stopAutoRefreshData();
+		        rdv.leave($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+			        $scope.rdv = data;
+					manageAutorisation();
+					autoRefreshData();
+		        });
+	        };
+
+			$scope.promote = function(userId){
+				stopAutoRefreshData();
+				rdv.promote($scope.rdv.id,userId,$scope.currentUser.username,$scope.currentUser.token).success(function(data){
+					$scope.rdv = data;
+					manageAutorisation();
+					autoRefreshData();
+				});
+			};
+
+			$scope.createProfil = function(){
+				redirection.goToGamesPage();
+			};
+
+			$scope.currentUrl = $location.absUrl();
+
+
+			var refreshTime = 12000;
+			var autoRefreshData = function(){
+				stopAutoRefreshData();
+				$scope.intervalId = $interval(function(){
+					refreshData();
+				}, refreshTime);
+			};
+
+			var stopAutoRefreshData = function(){
+				$interval.cancel($scope.intervalId);
+			};
+
+	        var updateProfilsAvailable = function(){
+		        if($scope.currentUser !== null && $scope.rdv !== null && $scope.rdv.game !== null && $scope.rdv.plateform !== null){
+			        $scope.profils = $filter('filterGameProfil')($scope.currentUser.userGame,$scope.rdv.game.id,$scope.rdv.plateform.id);
+					if($scope.profils[0] && $scope.profilSelected === null){
+				        $scope.profilSelected = $scope.profils[0];
+			        }
+		        }
+	        };
+
+			refreshData();
+			autoRefreshData();
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
+    ['$scope','user','$route','$routeParams',
+        function ($scope,user,$route,$routeParams) {
+			'use strict';
+
+			if($route.current.action === 'forget'){
+				user.logByForgetToken($routeParams.username,$routeParams.forgetToken).error(function(data){
+					$scope.error = data.msg;
+				});
+			}
+
+			$scope.bDisplayUpdatePassword = false;
+
+			$scope.updatePassword = function(){
+
+				if($scope.password !== $scope.passwordVerif){
+					$scope.error = 'password_not_equal';
+				} else {
+					user.updatePassword($scope.password).success(function(data){
+						$scope.bDisplayUpdatePassword = true;
+					}).error(function(data){
+						$scope.error = data.msg;
+					});
+				}
+
+
+
+			};
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('ProfileCtrl',
+    ['$scope','user','rdv','$routeParams','redirection','lang',
+        function ($scope,user,rdv,$routeParams,redirection,lang) {
+			'use strict';
+
+	        $scope.lang = lang.getCurrent();
+
+			$scope.currentUser = user.get();
+
+			rdv.getFormInfo().then(function(data){
+				$scope.plateforms = data.plateforms;
+				$scope.games = data.games;
+
+				$scope.plateform = data.plateforms[0];
+				if($routeParams.plateformId){
+					for(var key in data.plateforms){
+						if(data.plateforms[key].id == $routeParams.plateformId){
+							$scope.plateform = data.plateforms[key];
+						}
+					}
+				}
+
+				$scope.game = data.games[0];
+				if($routeParams.gameId){
+					for(var key in data.games){
+						if(data.games[key].id == $routeParams.gameId){
+							$scope.game = data.games[key];
+						}
+					}
+				}
+
+				$scope.updateFormData();
+
+			});
+
+
+			$scope.submitFormGameInfo = function(){
+				if($scope.gameInfo.$valid === false){
+					return;
+				}
+				$scope.formGameInfoUpdate = false;
+				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
+					$scope.formGameInfoUpdate = true;
+				});
+			};
+
+			$scope.updateFormData = function(){
+				$scope.formGameInfoUpdate = false;
+				$scope.profilName = '';
+				$scope.gameUsername = '';
+				$scope.data1 = '';
+				$scope.data2 = '';
+				$scope.data3 = '';
+				$scope.data4 = '';
+				for(var key in $scope.currentUser.userGame){
+					if($scope.currentUser.userGame[key].plateform.id === $scope.plateform.id){
+						$scope.profilName = $scope.currentUser.userGame[key].gameProfilName;
+						$scope.gameUsername = $scope.currentUser.userGame[key].gameUsername;
+						$scope.data2 = $scope.currentUser.userGame[key].data2;
+						$scope.data3 = $scope.currentUser.userGame[key].data3;
+						$scope.data4 = $scope.currentUser.userGame[key].data4;
+						$scope.data1 = $scope.currentUser.userGame[key].data1;
+					}
+				}
+			};
+
+			$scope.goBack = function(){
+				redirection.goBack();
+			};
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
+	['$scope','$routeParams',
+		function ($scope,$routeParams) {
+			'use strict';
+
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('RdvCtrl',
+	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
+		'$filter','storage','$routeParams','$location','socket',
+		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
+		          $filter,storage,$routeParams,$location,socket) {
+			'use strict';
+
+			lang.initLang();
+
+			$scope.currentUser = null;
+
+			$scope.displayhelp = (storage.getPersistant('displayhelp')== 'false')?false:true;
+
+			$scope.showHelp = function(){
+				$scope.displayhelp = true;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
+			$scope.hideHelp = function(){
+				$scope.displayhelp = false;
+				storage.setPersistant('displayhelp',$scope.displayhelp);
+			}
+
+			$scope.predicate = 'start';
+			$scope.reverse = true;
+
+			$scope.now = new Date();
+
+			$scope.demain = new Date();
+			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
+
+			$scope.slotMinAvailable = 0;
+			$scope.slotMaxAvailable = 6;
+
+			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+			$scope.annonceCreateUrl = redirection.getAnnonceCreateUrl();
+
+			$scope.isLive = rdv.isLive;
+			$scope.isEnded = rdv.isEnded;
+
+			$scope.aCharacters = [];
+			$scope.displayFormAnnonce = false;
+
+			$scope.aMyRdv = [];
+			$scope.aRdv = [];
+			$scope.aRdvNormaux = [];
+
+			$scope.tags = '';
+
+			$scope.goToParty = function(id){
+				redirection.goToRdvId(id);
+			};
+
+
+			$scope.updateTags = function(){
+				var aTags = $scope.tags.split(' ');
+				$scope.autoCompleteTags = tag.autoCompleteUserTags(aTags,$scope.allTags);
+
+			};
+
+			$scope.autoCompleteTags = [];
+
+			$scope.allTags = [];
+
+			rdv.getFormInfo().then(function(data){
+				$scope.allTags = data.tags;
+				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
+				$scope.aPlateforms = data.plateforms;
+				setPlateformCookie();
+			});
+
+			var formatRdv = function(rdv){
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === rdv.leader.id){
+						rdv.author = rdv.users[key];
+						rdv.user = rdv.users[key].user;
+						rdv.type = 'type_party';
+					}
+				}
+			};
+
+
+			var refreshRdvData = function(){
+
+				annonce.get().success(function(data) {
+					formatAnnonces(data);
+					$scope.aRdv = $scope.aAnnoncesFormated.concat($scope.aRdvNormaux);
+				});
+
+				rdv.getAll().success(function(data) {
+					// this callback will be called asynchronously
+					// when the response is available
+					for(var key in data){
+						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+						formatRdv(data[key]);
+					}
+
+					$scope.aRdvNormaux = data;
+					$scope.aRdv = $scope.aRdvNormaux.concat($scope.aAnnoncesFormated);
+
+					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+					if($scope.currentUser !== null){
+
+						if(typeof $scope.plateform === "undefined"){
+							var plateformId = null;
+						}else {
+							var plateformId = $scope.plateform.id;
+						}
+
+						//if($scope.plateform)
+						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+					}
+				}).error(function(data, status, headers, config) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
+
+			};
+
+			$scope.displayWelcome = ($route.current.action === 'welcome');
+
+			//autoRefresh
+			var refreshTime = 12000;
+			var autoRefreshData = function(){
+				$scope.intervalId = $interval(function(){
+					refreshRdvData();
+				}, refreshTime);
+			};
+
+
+			$scope.getDestinyCharacters = function(){
+				bungie.getCharacters($scope.plateformAnnonce.id,$scope.plateformAnnonce.bungiePlateformId,$scope.gamertag).success(function(data){
+					$scope.aCharacters = data;
+				}).error(function(data){
+					$scope.aCharacters = [];
+				});
+			};
+
+			$scope.selectedPerso = null;
+
+			$scope.aAnnoncesFormated = [];
+
+			var formatAnnonce = function(annonce){
+				return {
+					'id' : annonce.id,
+					'author' : annonce.author,
+					'game' : annonce.game,
+					'plateform' : annonce.plateform,
+					'tags' : annonce.tags,
+					'description' : annonce.description,
+					'start' : annonce.created,
+					'type' : 'type_annonce',
+					'user' : annonce.user
+				};
+			};
+
+			var formatAnnonces = function(aAnnonces){
+				var nbAnnonces = aAnnonces.length;
+
+				for(var i=0; i< nbAnnonces;i++){
+					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
+				}
+			};
+
+
+
+			$scope.blockPostAnnonce = false;
+			$scope.messageFormAnnonce = null;
+			$scope.addAnnonce = function(){
+
+				$scope.messageFormAnnonce = null;
+				$scope.blockPostAnnonce = true;
+
+				var userGameId = $scope.selectedPerso.id;
+				var tags = $scope.annonce_tag;
+				var description = $scope.annonce_description;
+				annonce.create(tags,description,userGameId).success(function(data){
+					$scope.annonce_tag = '';
+					$scope.annonce_description = '';
+
+					$timeout(function(){
+						$scope.blockPostAnnonce = false;
+					},2)
+
+					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
+
+					//$scope.aRdv.push(formatAnnonce(data));
+
+				}).error(function(data){
+					$scope.annonce_tag = '';
+					$scope.annonce_description = '';
+
+					$timeout(function(){
+						$scope.blockPostAnnonce = false;
+					},2)
+
+					$scope.messageFormAnnonce = 'an error occured, please try again later, sorry for the inconvenience';
+
+				})
+			};
+
+
+			var setTypeFilter = function(){
+				var type_rdv = storage.getPersistant('cookie_type_rdv');
+				if(typeof type_rdv === "undefined"){
+					$scope.type = 'type_all';
+				} else {
+					$scope.type = type_rdv;
+				}
+				$scope.$watch('type',function(newValue, oldValue){
+					storage.setPersistant('cookie_type_rdv',newValue);
+				});
+			};
+
+			var setPlateformCookie = function(){
+				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
+				var plateform_rdv_url = $routeParams.plateform;
+
+				if(typeof plateform_rdv_url !== "undefined"){
+					plateform_rdv_url = plateform_rdv_url.replace('_',' ');
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].nom == plateform_rdv_url){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				} else if(typeof plateform_rdv !== "undefined"){
+					for(var key in $scope.aPlateforms){
+						if($scope.aPlateforms[key].id == plateform_rdv){
+							$scope.plateform = $scope.aPlateforms[key];
+						}
+					}
+				}
+
+				$scope.$watch('plateform',function(newValue, oldValue){
+
+					var homeUrl = redirection.getHomePageDestinyUrl();
+					if(typeof newValue !== "undefined" && newValue !== null){
+						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
+						var plateformNameUrl = newValue.nom.replace(' ','_');
+						//$location.path(homeUrl+plateformNameUrl).replace();
+					}else {
+						storage.erasePersistant('cookie_plateform_rdv_id');
+						//$location.path(homeUrl).replace();
+					}
+				});
+			};
+
+			var initTags = function(){
+				$scope.$watch('tags',function(newValue,oldValue){
+					if(newValue !== '' || oldValue !== ''){
+						$location.search('tags', newValue);
+					}
+				});
+
+				var searchObject = $location.search();
+				if(searchObject.tags){
+					$scope.tags = searchObject.tags;
+				}
+			};
+
+
+			/**
+			 * launch after init !
+			 */
+			var launchRdvCtrl = function(){
+				refreshRdvData();
+				autoRefreshData();
+				setTypeFilter();
+				initTags();
+				socket.getUserList();
+			};
+
+
+
+			$scope.$on('updateListUsers',function(event,data){
+				if(data[0]){
+					$scope.listUser = data[0];
+				}
+			});
+
+			/**
+			 * init : connect and launch
+			 */
+			var init = function(){
+				$scope.currentUser = user.get();
+				launchRdvCtrl();
+			};
+
+			init();
+		}
+	]
+);
+
+angular.module('myApp.controllers').controller('RegisterCtrl',
+    ['$scope','user','$location','lang','redirection','rdv',
+        function ($scope,user,$location,lang,redirection,rdv) {
+
+	        $scope.lang = lang.getCurrent();
+
+			rdv.getFormInfo().then(function(data){
+				$scope.aPlateforms = data.plateforms;
+			});
+
+	        $scope.updateRegExpPassword = function(){
+		        $scope.regExpPassword = '/'+$scope.password+'/';
+	        };
+
+	        $scope.checkPassword = function(){
+		        $scope.errorPassword = false;
+		        if($scope.password !== $scope.passwordverif){
+			        $scope.errorPassword = true;
+			        return;
+		        }
+	        };
+
+	        $scope.submit = function(){
+
+
+		        if($scope.registerForm.$valid === false ||  $scope.errorPassword === true){
+			        return;
+		        }
+
+				$scope.username_already_taken = false;
+				$scope.email_already_taken = false;
+				$scope.gamertag_not_found = false;
+		        user.register($scope.email,$scope.password,$scope.username,$scope.plateform.id,$scope.gamerTag).success(function(data){
+			        redirection.goWelcomeHome();
+		        }).error(function(data){
+					console.log('error',data);
+					$scope.aError = data;
+
+					if(data.aError) {
+
+						for (var key in data.aError) {
+
+							console.log(data.aError[key]);
+							if (data.aError[key] === 'username_already_taken') {
+								$scope.username_already_taken = true;
+							}
+
+							if (data.aError[key] === 'email_already_taken') {
+								$scope.email_already_taken = true;
+							}
+
+							if (data.aError[key] === 'gamertag_not_found') {
+								$scope.gamertag_not_found = true;
+							}
+						}
+					}
+				});
+	        };
+
+        }
+    ]
+);
+
+angular.module('myApp.controllers').controller('TopicCtrl',
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
+			'use strict';
+
+			$scope.registerUrl = redirection.getRegisterPageUrl();
+
+			$scope.texte = "";
+
+			var id = $routeParams.id;
+			var page = $routeParams.page;
+			$scope.currentPage = parseInt(page);
+			var result = 20;
+
+			$scope.currentUser = user.get();
+
+			console.log($scope.currentUser);
+
+			$scope.canPost = false;
+			$scope.modeEdit = 1;
+			$scope.modeModify = 2;
+
+			$scope.aPage = [];
+
+			$scope.mode = $scope.modeEdit;
+
+			$scope.forumUrl = redirection.getForumUrl();
+
+			var setTopicData = function(data){
+				$scope.topic = data;
+				$scope.nbPage = Math.ceil(data.topic.nbMessages/result);
+
+				$scope.aPage = [];
+				for(var i = 0;i< $scope.nbPage;i++){
+					$scope.aPage.push(redirection.getTopicUrl($scope.topic.topic,i+1));
+				}
+				$scope.canPost = true;
+			}
+
+			$scope.goToLastPage = function(){
+				if($scope.aPage.length > $scope.currentPage){
+					$location.path($scope.aPage[$scope.aPage.length-1]);
+				}
+			}
+
+			forum.getTopic(id, page, result).success(function(data) {
+				setTopicData(data);
+			});
+
+			$scope.submit = function(){
+				if($scope.myForm.$valid === false){
+					return;
+				}
+				switch($scope.mode){
+					case $scope.modeEdit :
+						forum.reply(id,$scope.texte,page,result).success(function(data){
+							setTopicData(data);
+
+							$scope.goToLastPage();
+							$scope.goToBottom();
+						});
+						break;
+
+					case $scope.modeModify:
+						forum.updateMessage($scope.messageId,$scope.texte,page,result).success(function(data){
+							setTopicData(data);
+							$scope.goToBottom();
+						});
+						break;
+
+					default:
+						break;
+				}
+
+				$scope.texte = "";
+				$scope.mode = $scope.modeEdit;
+
+			}
+
+			$scope.modify = function(message){
+				$scope.mode = $scope.modeModify;
+				$scope.messageId = message.id;
+				$scope.texte = message.texte.replace(/<br\/>/ig,'\n');
+			}
+
+			$scope.delete = function(message){
+				forum.deleteMessage(message.id,page,result).success(function(data){
+					setTopicData(data);
+
+					$scope.goToBottom();
+				});
+			}
+
+			$scope.goToBottom = function(){
+
+				$timeout(function(){
+					$location.hash('bottom');
+					$anchorScroll();
+				},0);
+
+			}
+
+			$scope.refresh = function(){
+				$route.reload();
+			}
 		}
 	]
 );
