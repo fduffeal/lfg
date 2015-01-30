@@ -27764,6 +27764,8 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.title = $scope.texte = "";
+
 			$scope.registerUrl = redirection.getRegisterPageUrl();
 
 			meta.setDescription('Esbattle.com | Forum');
@@ -28978,6 +28980,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
 
+			$scope.texte = "";
+
 			var id = $routeParams.id;
 			var page = $routeParams.page;
 			$scope.currentPage = parseInt(page);
@@ -29078,6 +29082,224 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterNotification', [
+	'filter','user','$rootScope',
+	function (filter,user,$rootScope) {
+		'use strict';
+		return function (items,userId) {
+
+			var aNotifRead = [];
+			if($rootScope.notificationsAlreadyRead){
+				for(var key in $rootScope.notificationsAlreadyRead){
+					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
+				}
+			}
+
+			var aFilteredItems = [];
+			if(userId !== null) {
+				for (var key in items) {
+					if (items[key].destinataire.id === userId) {
+
+						if(aNotifRead.indexOf(items[key].id) === -1){
+							items[key].unread = true;
+						}
+						aFilteredItems.push(items[key]);
+					}
+				}
+			}
+
+			return aFilteredItems;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', function () {
+	'use strict';
+	return function (date2_ms) {
+		var now = new Date();
+		var date1_ms = now.getTime();
+		// Calculate the difference in milliseconds
+		var difference_ms = date1_ms - (date2_ms*1000);
+
+		if(difference_ms < 0){
+			now.setTime(date2_ms*1000);
+			var month = now.getMonth()+1;
+			if(month < 10){
+				month = "0"+month;
+			}
+			var minutes = now.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes;
+			}
+			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
+		}
+
+		var one_minute=1000*60*1;
+
+		var diffMinutes = Math.round(difference_ms/one_minute);
+		if(diffMinutes < 60){
+			return diffMinutes+' minutes ago';
+		}
+
+		var one_hour=1000*60*60*1;
+		var diffHours = Math.round(difference_ms/one_hour);
+		if(diffHours < 24){
+			return diffHours+' hours ago';
+		}
+
+		//Get 1 day in milliseconds
+		var one_day=1000*60*60*24;
+		var diffDays = Math.round(difference_ms/one_day);
+		return diffDays+' days ago';
+
+	};
+});
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -29562,224 +29784,6 @@ angular.module('myApp').factory(
 
     }
 );
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterHtml', ['$sce',
-	function ($sce) {
-	'use strict';
-	return function (input) {
-
-		if (input) {
-			input = $sce.trustAsHtml(input);
-		}
-		return input;
-	};
-}]);
-angular.module('myApp.filters').filter('filterNotification', [
-	'filter','user','$rootScope',
-	function (filter,user,$rootScope) {
-		'use strict';
-		return function (items,userId) {
-
-			var aNotifRead = [];
-			if($rootScope.notificationsAlreadyRead){
-				for(var key in $rootScope.notificationsAlreadyRead){
-					aNotifRead.push($rootScope.notificationsAlreadyRead[key].id);
-				}
-			}
-
-			var aFilteredItems = [];
-			if(userId !== null) {
-				for (var key in items) {
-					if (items[key].destinataire.id === userId) {
-
-						if(aNotifRead.indexOf(items[key].id) === -1){
-							items[key].unread = true;
-						}
-						aFilteredItems.push(items[key]);
-					}
-				}
-			}
-
-			return aFilteredItems;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', function () {
-	'use strict';
-	return function (date2_ms) {
-		var now = new Date();
-		var date1_ms = now.getTime();
-		// Calculate the difference in milliseconds
-		var difference_ms = date1_ms - (date2_ms*1000);
-
-		if(difference_ms < 0){
-			now.setTime(date2_ms*1000);
-			var month = now.getMonth()+1;
-			if(month < 10){
-				month = "0"+month;
-			}
-			var minutes = now.getMinutes();
-			if(minutes < 10){
-				minutes = "0"+minutes;
-			}
-			return now.getFullYear()+"-"+month+"-"+now.getDate()+" "+now.getHours()+":"+minutes;
-		}
-
-		var one_minute=1000*60*1;
-
-		var diffMinutes = Math.round(difference_ms/one_minute);
-		if(diffMinutes < 60){
-			return diffMinutes+' minutes ago';
-		}
-
-		var one_hour=1000*60*60*1;
-		var diffHours = Math.round(difference_ms/one_hour);
-		if(diffHours < 24){
-			return diffHours+' hours ago';
-		}
-
-		//Get 1 day in milliseconds
-		var one_day=1000*60*60*24;
-		var diffDays = Math.round(difference_ms/one_day);
-		return diffDays+' days ago';
-
-	};
-});
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {

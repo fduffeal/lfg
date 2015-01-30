@@ -5,6 +5,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
 
+			$scope.texte = "";
+
 			var id = $routeParams.id;
 			var page = $routeParams.page;
 			$scope.currentPage = parseInt(page);
