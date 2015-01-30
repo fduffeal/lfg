@@ -27764,6 +27764,8 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 
 			$scope.currentUser = user.get();
 
+			$scope.title = $scope.texte = "";
+
 			$scope.registerUrl = redirection.getRegisterPageUrl();
 
 			meta.setDescription('Esbattle.com | Forum');
@@ -28977,6 +28979,8 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
+
+			$scope.texte = "";
 
 			var id = $routeParams.id;
 			var page = $routeParams.page;
