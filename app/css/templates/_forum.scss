@@ -139,6 +139,10 @@
 		}
 		.fo-author {
 			width: 20%;
+			@media screen and (max-width: 490px ) {
+				display:none;
+			}
+
 		}
 		.fo-nb {
 			width: 7%;
