@@ -40,7 +40,7 @@
 
 								</td>
 								<td class="to-info" valign="top">
-									<div class="left modo" ng-class="{'modo':(message.user.role == 'modo')}">
+									<div class="left " ng-class="{'modo':(message.user.role == 'modo')}">
 										{{message.user.username}}
 									</div>
 									<div class="right">
@@ -77,6 +77,7 @@
 
 	<div class="welcome" ng-show="canPost" style="margin-bottom: 20px;">
 		<div class="marge">
+
 			<div class="new">
 				<h2 ng-if="(mode === modeEdit)">Répondre</h2>
 				<h2 ng-if="(mode === modeModify)">Modifier</h2>
