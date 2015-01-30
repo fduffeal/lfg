@@ -7,7 +7,9 @@
 		<div class="marge">
 			<div class="filariane"><a ng-href="{{forumUrl}}">Forum</a> > {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
 			<h2 class="sujet"><span>Sujet :</span> {{topic.topic.titre}}</h2>
+
 			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
+			<a ng-href="{{forumUrl}}" class="toussujet btn2" >Sujets</a>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -69,7 +71,7 @@
 
 	</div>
 
-	<div class="welcome" ng-show="canPost">
+	<div class="welcome" ng-show="canPost" style="margin-bottom: 20px;">
 		<div class="marge">
 			<div class="new">
 				<h2 ng-if="(mode === modeEdit)">Répondre</h2>
