@@ -14,8 +14,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 
 			$scope.currentUser = user.get();
 
-			console.log($scope.currentUser);
-
 			$scope.canPost = false;
 			$scope.modeEdit = 1;
 			$scope.modeModify = 2;
