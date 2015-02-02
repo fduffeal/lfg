@@ -21,7 +21,7 @@
 						<td class="fo-sujet"><a ng-href="{{topic.url}}">{{topic.titre}}</a></td>
 						<td class="fo-author"><a href="" ng-class="{'modo':(topic.user.role == 'modo')}">{{topic.user.username}}</a></td>
 						<td class="fo-nb">{{topic.nbMessages}}</td>
-						<td class="fo-last">{{topic.updated *1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td class="fo-last">{{topic.updated | filterDateForum}}</td>
 					</tr>
 				</tbody>
 			</table>
