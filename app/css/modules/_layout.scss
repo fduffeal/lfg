@@ -24,7 +24,28 @@ span.noco{
 	background: red
 
 }
-
+#error404 {
+	background-size: cover;
+	background-image: url('/img/bg-404.jpg');
+	margin-top:47px!important;
+	text-align:center;
+	@media screen and (max-width: 490px ) {
+			height: 550px!important;
+		}
+	img.picto-404 {
+		width: 250px;
+		margin-top: 2%;
+		@media screen and (max-width: 490px ) {
+			width: 200px;
+		}
+	}
+	.link-404 {
+		margin-top: 20px;
+		font-size: 1.2rem;
+		color: white;
+		display: block;
+	}
+}
 .list-player {
 	.character {
 		@media screen and (max-width: 800px ) {
@@ -124,9 +145,9 @@ span.noco{
 
 		margin: 10px 10px 0 0;
 		text-align: center;
-		.perso-box {
+		.perso-box, .level {
 			font-size: 24px;
-
+			text-align: right;
 			margin-top: -10px;
 			margin-bottom: -1px;
 			color:rgba(245, 220, 86, 1);

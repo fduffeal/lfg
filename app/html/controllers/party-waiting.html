@@ -90,17 +90,17 @@
 			<div class="team" ng-if="rdv.usersInQueue.length > 0">
 				<h1 class="second" translate>Waiting Players</h1>
 				<div class="team">
-					<table>
+					<table class="queue">
 						<thead>
 							<tr>
-								<th class="place">#</th>
+
 								<th class="name" translate>Guardian</th>
 								<th class="actions" translate>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="userGame in rdv.usersInQueue">
-								<td>
+								<td class="list-player">
 									<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 								</td>
 								<td class="actions">
