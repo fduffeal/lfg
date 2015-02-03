@@ -30,7 +30,7 @@
 <img src="img/forum/avatar-modo.png" alt=""/>
 									</div>
 									<div class="persos" ng-if="message.user.userGame.length > 0 && (message.user.role != 'modo')">
-										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
+										<div ng-repeat="usergame in message.user.userGame | filterAvatar" style="background: url('{{usergame.data5}}')"></div>
 										<div ><img src="img/forum/avatar.png" alt=""/></div>
 									</div>
 
