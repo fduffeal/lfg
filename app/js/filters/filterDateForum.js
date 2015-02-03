@@ -7,17 +7,12 @@ angular.module('myApp.filters').filter('filterDateForum', [
 
 			var now = new Date();
 			var date1_ms = now.getTime();
-			// Calculate the difference in milliseconds
-			var difference_ms = date1_ms - (date2_ms);
 
-			var one_day=1000*60*60*24;
-			if(difference_ms > one_day){
-				return $filter('date')(date2_ms, 'd/MM/yy');
+			var dayDisplay = $filter('date')(date2_ms, 'd/MM/yy');
+			if(dayDisplay !== $filter('date')(date1_ms, 'd/MM/yy')){
+				return dayDisplay;
 			}
-
 			return $filter('date')(date2_ms, 'H:mm');
-
-
 		};
 	}
 ]);
