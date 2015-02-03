@@ -27,9 +27,20 @@
 							<tr>
 								<td class="to-avatar" rowspan="2" valign="top">
 									<div ng-if="(message.user.role == 'modo')" class="modo-avatar">
-<img src="img/forum/avatar-modo.png" alt=""/>
+										<img src="img/forum/avatar-modo.png" alt=""/>
 									</div>
-									<div class="persos" ng-if="message.user.userGame.length > 0 && (message.user.role != 'modo')">
+									<div class="persos" ng-if="message.user.userGame.length == 1&& (message.user.role != 'modo')">
+										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
+										<div></div>
+										<div></div>
+										<div ><img src="img/forum/avatar.png" alt=""/></div>
+									</div>
+									<div class="persos" ng-if="message.user.userGame.length == 2 && (message.user.role != 'modo')">
+										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
+										<div></div>
+										<div ><img src="img/forum/avatar.png" alt=""/></div>
+									</div>
+									<div class="persos" ng-if="message.user.userGame.length == 3 && (message.user.role != 'modo')">
 										<div ng-repeat="usergame in message.user.userGame" ng-if="$index < 3" style="background: url('{{usergame.data5}}')"></div>
 										<div ><img src="img/forum/avatar.png" alt=""/></div>
 									</div>
@@ -53,10 +64,10 @@
 								</td>
 							</tr>
 							<tr>
-							<td></td>
+								<td></td>
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
-									{{usergame.data1 | translate}} {{usergame.data2}} |
+										{{usergame.data1 | translate}} {{usergame.data2}} |
 									</span>
 									<br/>
 									<b>{{message.user.userGame[0].data3}}</b>
