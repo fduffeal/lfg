@@ -64,7 +64,7 @@
 				}
 				.level {
 					position: absolute;
-					color: white;
+					color: rgba(245, 220, 86, 1);
 					top: 0px;
 					right: 7px;
 					font-size: 1.5rem;
@@ -76,6 +76,7 @@
 			width: 10%;
 			a {
 				color:$orange;
+				font-weight:bold;
 			}
 
 		}
@@ -86,7 +87,7 @@
 				color: green;
 			}
 			.offline {
-				color:red;
+				color:black;
 			}
 
 		}
