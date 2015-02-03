@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
@@ -74,10 +74,6 @@ msgstr "Tous"
 #: app/html/controllers/rdv.html
 msgid "Announcement"
 msgstr "Annonce"
-
-#: app/html/controllers/404.html
-msgid "Appointment not found"
-msgstr "Rendez vous non trouvé"
 
 #: app/html/controllers/party-waiting.html
 msgid "Are you sure to kick :"
@@ -371,7 +367,8 @@ msgstr "Nom du profil"
 msgid "Promote"
 msgstr "Nommer chef de groupe"
 
-#: app/html/directives/lfg-header.html app/html/controllers/login.html
+#: app/html/directives/lfg-header.html app/html/controllers/forum.html
+#: app/html/controllers/login.html app/html/controllers/topic.html
 msgid "Register"
 msgstr "Inscription"
 
@@ -585,8 +582,8 @@ msgid "player(s)"
 msgstr "joueur(s)"
 
 #: app/html/controllers/party-waiting.html
-msgid "start at"
-msgstr "commence à"
+msgid "start"
+msgstr "commence"
 
 #: app/html/controllers/notification.html
 msgid "this party"
@@ -601,6 +598,14 @@ msgid "to save your character for the next time !"
 msgstr "pour sauvegarder votre personnage la prochaine fois !"
 
 #: app/dynamique_translate.html
+msgid "today at {{time}}"
+msgstr "aujourd'hui à {{time}}"
+
+#: app/dynamique_translate.html
+msgid "tomorrow at {{time}}"
+msgstr "demain à {{time}}"
+
+#: app/dynamique_translate.html
 msgid "warlock"
 msgstr "arcaniste"
 
@@ -610,6 +615,24 @@ msgid ""
 msgstr ""
 "votre annonce a été envoyé et va apparaitre dans quelques secondes, merci de "
 "patienter"
+
+#: app/dynamique_translate.html
+msgid "{{days}} days ago"
+msgstr "il y a {{days}} jours"
+
+#: app/dynamique_translate.html
+msgid "{{hours}} hours ago"
+msgstr "il y a {{hours}} heures"
+
+#: app/dynamique_translate.html
+msgid "{{minutes}} minutes ago"
+msgstr "il y a {{minutes}} minutes"
+
+#~ msgid "start at"
+#~ msgstr "commence à"
+
+#~ msgid "Appointment not found"
+#~ msgstr "Rendez vous non trouvé"
 
 #~ msgid "Notifications"
 #~ msgstr "Notifications"

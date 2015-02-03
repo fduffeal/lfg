@@ -156,7 +156,7 @@
 						<td class="list-infos"><span
 							ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
 						</td>
-						<td class="list-start">{{ rdv.start*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td class="list-start">{{ rdv.start | filterSince}}</td>
 					</tr>
 				</tbody>
 

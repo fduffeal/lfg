@@ -43,10 +43,6 @@ msgstr ""
 msgid "Announcement"
 msgstr ""
 
-#: app/html/controllers/404.html
-msgid "Appointment not found"
-msgstr ""
-
 #: app/html/controllers/party-waiting.html
 msgid "Are you sure to kick :"
 msgstr ""
@@ -327,7 +323,9 @@ msgid "Promote"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
+#: app/html/controllers/forum.html
 #: app/html/controllers/login.html
+#: app/html/controllers/topic.html
 msgid "Register"
 msgstr ""
 
@@ -540,7 +538,7 @@ msgid "player(s)"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
-msgid "start at"
+msgid "start"
 msgstr ""
 
 #: app/html/controllers/notification.html
@@ -556,9 +554,29 @@ msgid "to save your character for the next time !"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "today at {{time}}"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "tomorrow at {{time}}"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "warlock"
 msgstr ""
 
 #: app/dynamique_translate.html
 msgid "your annoncement has been send and will appear in few second, please wait"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{days}} days ago"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{hours}} hours ago"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{minutes}} minutes ago"
 msgstr ""
