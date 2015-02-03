@@ -27886,7 +27886,12 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			'use strict';
 
 
-			var currentUser = null;
+			$scope.currentUser = user.get();
+
+			$scope.sort = 'onlineTime';
+			$scope.reverse = true;
+			$scope.onlyFriends = false;
+			$scope.username = '';
 
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
@@ -27903,7 +27908,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 							data[key].connected = true;
 						}
 
-						if(currentUser !== null && data[key].username === currentUser.username){
+						if($scope.currentUser !== null && data[key].username === $scope.currentUser.username){
 							data[key].me = true;
 						}
 					}
@@ -27913,19 +27918,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 			};
 
-
-			var init = function(){
-				var refreshPromise = user.refresh();
-				if(refreshPromise !== false){
-					refreshPromise.success(function(data){
-						console.log('user refresh',data);
-						currentUser = data;
-						socket.getUserList();
-					});
-				} else {
-					socket.getUserList();
-				}
-			};
 
 
 			$scope.$on('updateListUsers',function(event,data){
@@ -27943,6 +27935,11 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			};
 
 			$scope.removeFromFriendList = user.removeFriend;
+
+
+			var init = function(){
+				socket.getUserList();
+			};
 
 			init();
 
@@ -29687,6 +29684,30 @@ angular.module('myApp.filters').filter('filterSince', [
 			var one_day=1000*60*60*24;
 			var diffDays = Math.round(difference_ms/one_day);
 			return gettextCatalog.getString("{{days}} days ago", { days: diffDays });
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterUser', [
+	function () {
+		'use strict';
+		return function (userList,usernameSearch,onlyFriends) {
+
+
+
+			if(usernameSearch == ''){
+				return userList;
+			}
+
+			usernameSearch = usernameSearch.toLowerCase();
+
+			var userFiltered = [];
+			for(var key in userList){
+				if(userList[key].username.toLowerCase().indexOf(usernameSearch) != -1){
+					userFiltered.push(userList[key]);
+				}
+			}
+			console.log(userList,usernameSearch,onlyFriends);
+			return userFiltered;
 		};
 	}
 ]);

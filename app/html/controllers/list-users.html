@@ -4,13 +4,19 @@
 		<div class="list">
 
 			<h1>Liste d'utilisateurs </h1>
+			<div>
+				<input type="text" ng-model="username">
+				<label>
+					only Friends
+				</label><input type="checkbox" ng-model="onlyFriends">
+			</div>
 			<table border="0">
 				<thead>
 					<tr>
-						<th class="list-player"><a href="">Player</a></th>
+						<th class="list-player"><a href="" ng-click="sort = 'username'; reverse=!reverse">Player</a></th>
 						<th class="list-class"><a href="">Class</a></th>
 						<th class="list-level"><a href="">Level</a></th>
-						<th class="list-last"><a href="">Last connection</a></th>
+						<th class="list-last"><a href="" ng-click="sort = 'onlineTime'; reverse=!reverse">Last connection</a></th>
 						<th class="list-etat"><a href="">Etat</a></th>
 						<th class="list-action"><a href="">Action</a></th>
 							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
@@ -22,7 +28,7 @@
 					<table  border="0" >
 
 						<tbody>
-							<tr ng-repeat="user in aUsers">
+							<tr ng-repeat="user in aUsers | filterUser:username:onlyFriends |orderBy:sort:reverse">
 
 								<td class="list-player">
 									{{user.username}}
