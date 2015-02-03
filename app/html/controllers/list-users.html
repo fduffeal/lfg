@@ -4,13 +4,14 @@
 		<div class="list">
 
 			<h1>Liste d'utilisateurs </h1>
+			<input type="text" ng-model="username">
 			<table border="0">
 				<thead>
 					<tr>
-						<th class="list-gardien" ng-click="sort = 'username'; reverse=!reverse"><a href="">Gardien</a></th>
+						<th class="list-gardien" ><a href="" ng-click="sort = 'username'; reverse=!reverse">Gardien</a></th>
 						<th class="list-perso"><a href="">Persos</a></th>
 						<th class="list-clan"><a href="">Clan</a></th>
-						<th class="list-etat"><a href="">Etat</a></th>
+						<th class="list-etat" ><a href="" ng-click="sort = 'onlineTime'; reverse=!reverse">Etat</a></th>
 						<th class="list-action"><a href="">Action</a></th>
 							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
 							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
@@ -21,17 +22,17 @@
 					<table  border="0" >
 
 						<tbody>
-							<tr ng-repeat="user in aUsers">
+							<tr ng-repeat="user in aUsers | filterUser:username:onlyFriends |orderBy:sort:reverse">
 								<th class="list-gardien" >{{user.username}}</a></th>
 								<th class="list-perso">
-									<div class="xs-character" style="background: url('https://www.bungie.net/common/destiny_content/icons/2c73bcd2e874e640f158197bb9f2c55d.jpg')">
-									<img src="http://www.bungie.net/common/destiny_content/icons/117285c72a9c89626cd7b3fa3d7226ee.jpg" alt="">
-										<div class="class">Titan</div>
-										<div class="level">31</div>
+									<div class="xs-character" ng-repeat="userGames in user.userGame" style="background: url('{{userGames.data4}}')">
+									<img src="{{userGames.data5}}" alt="">
+										<div class="class">{{userGames.data1}}</div>
+										<div class="level">{{userGames.data2}}</div>
 									</div>
 
 								</th>
-								<th class="list-clan"><a href="">Clan</a></th>
+								<th class="list-clan"><a href="">{{user.userGame[0].data3}}</a></th>
 								<th class="list-etat">
 									<span ng-if="!user.connected" class="offline">{{user.onlineTime | filterSince}}</span>
 									<span ng-if="user.connected" class="online" translate>online</span>
