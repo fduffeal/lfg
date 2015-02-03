@@ -141,6 +141,7 @@
 				.lay {
 					position: absolute;
 					bottom: 0;
+					height: auto;
 					right: 0;
 				}
 			}
@@ -198,6 +199,7 @@
 		.content-header {
 			width: 95%;
 		}
+
 		.page, .welcome {
 			width: 94%;
 		}
@@ -218,6 +220,7 @@
 					}
 					img.lay {
 						width: 48px;
+
 					}
 				}
 
