@@ -4,7 +4,12 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			'use strict';
 
 
-			var currentUser = null;
+			$scope.currentUser = user.get();
+
+			$scope.sort = 'onlineTime';
+			$scope.reverse = true;
+			$scope.onlyFriends = false;
+			$scope.username = '';
 
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
@@ -21,7 +26,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 							data[key].connected = true;
 						}
 
-						if(currentUser !== null && data[key].username === currentUser.username){
+						if($scope.currentUser !== null && data[key].username === $scope.currentUser.username){
 							data[key].me = true;
 						}
 					}
@@ -31,19 +36,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 			};
 
-
-			var init = function(){
-				var refreshPromise = user.refresh();
-				if(refreshPromise !== false){
-					refreshPromise.success(function(data){
-						console.log('user refresh',data);
-						currentUser = data;
-						socket.getUserList();
-					});
-				} else {
-					socket.getUserList();
-				}
-			};
 
 
 			$scope.$on('updateListUsers',function(event,data){
@@ -61,6 +53,11 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			};
 
 			$scope.removeFromFriendList = user.removeFriend;
+
+
+			var init = function(){
+				socket.getUserList();
+			};
 
 			init();
 
