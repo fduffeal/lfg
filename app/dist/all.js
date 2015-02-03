@@ -30515,7 +30515,7 @@ angular.module('myApp.services')
 				if(host === 'www.esbattle.com'){
 					this.url = 'http://www.esbattle.com:3000';
 				}else {
-					this.url = 'http://www.esbattle.com:3030';
+					this.url = 'http://www.esbattle.com:3000';
 				}
 				return this.url;
 			};
