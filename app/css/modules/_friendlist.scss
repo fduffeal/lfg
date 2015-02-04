@@ -11,6 +11,7 @@
 		background: $orange;
 		height: 20px;
 		line-height: 20px;
+		cursor: pointer;
 		text-align: center;
 		font-size: 1.3rem;
 		margin: 0;
@@ -50,14 +51,27 @@
 		top: auto;
 		right: 50px;
 		bottom: 0;
-		padding-bottom: 50px;
+
+		.fl-friend {
+			display:none;
+		}
 		h5 {
 			display:block;
 		}
 		#search-box {
 			width: 205px!important;
+			display:none;
 			input {
 				width: 155px;
+			}
+		}
+		&.active {
+			padding-bottom: 50px;
+			.fl-friend {
+				display:block;
+			}
+			#search-box {
+				display:block;
 			}
 		}
 	}
