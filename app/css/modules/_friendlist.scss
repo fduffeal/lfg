@@ -49,7 +49,7 @@
 		border-top: 1px solid #999;
 		height: auto;
 		top: auto;
-		right: 50px;
+		right:20px;
 		bottom: 0;
 
 		.fl-friend {
@@ -62,7 +62,7 @@
 			width: 205px!important;
 			display:none;
 			input {
-				width: 155px;
+				width: 155px!important;
 			}
 		}
 		&.active {
@@ -75,7 +75,24 @@
 			}
 		}
 	}
+	@media screen and (max-width: 635px )  {
+		.fl-friend {
+			img.xs-avatar {
 
+			}
+		}
+		.xl-info {
+			background: white!important;
+			width: 184px !important;
+			right: 0 !important;
+			z-index: 999;
+			top: 45px!important;
+			border-bottom:45px;
+			.embleme {
+				display: none;
+			}
+		}
+	}
 	.fl-friend{
 		&:hover .xl-info {
 			display: block;

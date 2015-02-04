@@ -30,33 +30,44 @@ span.noco{
 }
 .icon-actions {
 	span {
-		width: 30px;
-		cursor: pointer;
-		font-weight:bold;
-		height: 30px;
-		font-size: 2.1rem;
+		height: 16px;
+		display:block;
+		float: left;
 		margin-right: 10px;
-		color:$orange;
+		background-repeat: no-repeat;
+		line-height: 16px;
+		cursor: pointer;
 		&:hover {
-			color: black;
+			@include filter(grayscale(30%));
 		}
-		&.add:before{
-			content: "+";
+		&.add{
+			background-image: url('../img/ico-add.png');
+			width: 16px;
 		}
-		&.remove:before {
-			content: "-";
+		&.remove {
+			background-image: url('../img/ico-delete.png');
+			width: 16px;
 		}
-		&.block:before {
-			content: "☹";
+		&.block {
+			background-image: url('../img/ico-block.png');
+			width: 13px;
+			margin-top: -1px;
 		}
-		&.unblock:before {
-			content: "☺";
+		&.unblock {
+			background-image: url('../img/ico-unblock.png');
+			width: 13px;
+			margin-top: -1px;
 		}
-		&.msg:before {
-			content: "✉";
+		&.msg {
+			background-image: url('../img/ico-msg.png');
+			width: 23px;
+			background-size: 90%;
+			margin-top: 2px;
 		}
-		&.invit:before {
-			content: "➜";
+		&.invit {
+			background-image: url('../img/ico-party.png');
+			width: 23px;
+			margin-top: -1px;
 		}
 	}
 }
