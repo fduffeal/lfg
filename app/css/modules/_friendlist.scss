@@ -7,12 +7,14 @@
 	top: 47px;
 	height: 100%;
 	background: #ededed;
+
 	.xl-info {
 		background: url('../img/fl-xl-info.png');
 		width: 364px;
 		height: 102px;
 		position:absolute;
 		right: 196px;
+		display: none;
 		top: 0;
 		padding: 10px;
 		.embleme {
@@ -41,6 +43,9 @@
 		}
 	}
 	.fl-friend{
+		&:hover .xl-info {
+		display: block;
+	}
 		padding: 10px 5px;
 		font-size: 1.1rem;
 		position:relative;
