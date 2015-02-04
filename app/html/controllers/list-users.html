@@ -37,7 +37,7 @@
 									<span ng-if="!user.connected" class="offline">{{user.onlineTime | filterSince}}</span>
 									<span ng-if="user.connected" class="online" translate>online</span>
 								</th>
-								<th class="list-action">
+								<th class="list-action icon-actions">
 									<span ng-if="!user.me && user.canAddToFriendList" ng-click="addToFriendList(user.username)" class="add"></span>
 									<span ng-if="!user.me && !user.canAddToFriendList" ng-click="removeFromFriendList(user.username)"class="remove"></span>
 									<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>

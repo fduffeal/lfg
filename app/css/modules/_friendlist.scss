@@ -1,0 +1,109 @@
+#friendlist {
+	z-index: 999;
+	position:fixed;
+	border-left: 1px solid #999;
+	width: 205px;
+	right: 0;
+	top: 47px;
+	height: 100%;
+	background: #ededed;
+	.xl-info {
+		background: url('../img/fl-xl-info.png');
+		width: 364px;
+		height: 102px;
+		position:absolute;
+		right: 196px;
+		top: 0;
+		padding: 10px;
+		.embleme {
+			float: left;
+			width: 96px;
+			height: 96px;
+			position: relative;
+			img {
+				position: absolute;
+				bottom: 0;
+
+
+			}
+		}
+		.xl-info-right {
+			float: left;
+			margin-left: 10px;
+			height: 96px;
+			position:relative;
+			.fl-actions {
+				position:absolute;
+				bottom: 0;
+				height: 23px;
+				left: 0;
+			}
+		}
+	}
+	.fl-friend{
+		padding: 10px 5px;
+		font-size: 1.1rem;
+		position:relative;
+		height: 32px;
+		line-height: 32px;
+		border: 1px solid transparent;
+		cursor: pointer;
+		&:hover {
+			background: lighten(#999, 80%);
+			border-top: 1px solid #999;
+			border-bottom: 1px solid #999;
+		}
+		img.xs-avatar {
+			width: 32px;
+			height: 32px;
+			float: left;
+		}
+
+		.fl-name {
+			width: 90px;
+			display: block;
+			float: left;
+			margin-left: 5px;
+			overflow: hidden;
+		}
+		.fl-etat {
+			color: #999;
+			display: block;
+			float: left;
+			margin-left: 5px;
+			&.online {
+				color:green;
+				&:after{
+					content: "☻";
+					margin-left: 5px;
+				}
+			}
+		}
+	}
+	#search-box {
+		position:fixed;
+		bottom:0;
+		background: white;
+		height: 25px;
+		width: 100%;
+		padding-bottom:5px;
+		&:before {
+				content: "☌";
+				font-size: 3rem;
+				margin-left: 10px;
+				color: #999;
+				margin-top: -5px;
+				float: left;
+				@include transform(rotate(90deg));
+			}
+		input {
+			border: 0;
+			width: 165px;
+			&:hover, &:focus {
+				border: 0;
+				box-shadow: none;
+			}
+
+		}
+	}
+}
