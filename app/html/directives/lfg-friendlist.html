@@ -13,7 +13,8 @@
 			<div class="xl-info">
 				<div class="embleme" ng-repeat="usergame in user.userGame | filterAvatar"
 				     style="background: url('{{usergame.data5}}')">
-					<img src="img/forum/lay-bar-modo.png" alt=""/>
+					<img src="img/forum/lay-bar-modo.png" alt="" ng-if="(user.role == 'modo')"/>
+					<img src="img/forum/lay-bar.png" alt="" ng-if="(user.role != 'modo')"/>
 				</div>
 				<div class="xl-info-right">
 					<div class="xs-character" ng-repeat="usergame in user.userGame" ng-if="$index < 3"
