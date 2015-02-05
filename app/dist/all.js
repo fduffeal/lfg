@@ -29808,7 +29808,6 @@ angular.module('myApp.filters').filter('filterUser', [
 					userFiltered.push(userList[key]);
 				}
 			}
-			console.log(userList,usernameSearch,onlyFriends);
 			return userFiltered;
 		};
 	}
