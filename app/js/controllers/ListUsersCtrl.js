@@ -13,9 +13,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
-					console.log(data);
-					console.log('listuser ctrl', socket.listUsers);
-
 					for (var key in data) {
 						data[key].connected = false;
 						data[key].me = false;
