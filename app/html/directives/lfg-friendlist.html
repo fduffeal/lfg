@@ -16,7 +16,7 @@
 					<img src="img/forum/lay-bar-modo.png" alt=""/>
 				</div>
 				<div class="xl-info-right">
-					<div class="xs-character" ng-repeat="usergame in user.userGame"
+					<div class="xs-character" ng-repeat="usergame in user.userGame" ng-if="$index < 3"
 					     style="background: url('{{usergame.data4}}')">
 						<img ng-src="{{usergame.data5}}" alt=""/>
 
