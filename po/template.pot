@@ -144,6 +144,10 @@ msgstr ""
 msgid "French"
 msgstr ""
 
+#: app/html/directives/lfg-friendlist.html
+msgid "Friend's list"
+msgstr ""
+
 #: app/html/controllers/profile.html
 msgid "Game"
 msgstr ""
@@ -525,6 +529,7 @@ msgstr ""
 msgid "on"
 msgstr ""
 
+#: app/html/directives/lfg-friendlist.html
 #: app/html/controllers/list-users.html
 msgid "online"
 msgstr ""
@@ -570,11 +575,23 @@ msgid "your annoncement has been send and will appear in few second, please wait
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "{{days}} days"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "{{days}} days ago"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "{{hours}} hours"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "{{hours}} hours ago"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{minutes}} minutes"
 msgstr ""
 
 #: app/dynamique_translate.html

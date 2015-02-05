@@ -186,6 +186,10 @@ msgstr "Mot de passe oublié ?"
 msgid "French"
 msgstr "Français"
 
+#: app/html/directives/lfg-friendlist.html
+msgid "Friend's list"
+msgstr "Liste d'amis"
+
 #: app/html/controllers/profile.html
 msgid "Game"
 msgstr "Jeu"
@@ -569,6 +573,7 @@ msgstr "rejoins la partie !"
 msgid "on"
 msgstr "sur"
 
+#: app/html/directives/lfg-friendlist.html
 #: app/html/controllers/list-users.html
 msgid "online"
 msgstr "en ligne"
@@ -617,12 +622,24 @@ msgstr ""
 "patienter"
 
 #: app/dynamique_translate.html
+msgid "{{days}} days"
+msgstr "{{days}} jours"
+
+#: app/dynamique_translate.html
 msgid "{{days}} days ago"
 msgstr "il y a {{days}} jours"
 
 #: app/dynamique_translate.html
+msgid "{{hours}} hours"
+msgstr "{{hours}} heures"
+
+#: app/dynamique_translate.html
 msgid "{{hours}} hours ago"
 msgstr "il y a {{hours}} heures"
+
+#: app/dynamique_translate.html
+msgid "{{minutes}} minutes"
+msgstr "{{minutes}} minutes"
 
 #: app/dynamique_translate.html
 msgid "{{minutes}} minutes ago"
