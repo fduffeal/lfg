@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket',
-		function ($scope,$routeParams,user,socket) {
+	['$scope','$routeParams','user','socket','$filter',
+		function ($scope,$routeParams,user,socket,$filter) {
 			'use strict';
 
 
@@ -32,14 +32,19 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 					}
 
 					$scope.aUsers = data;
+					filterData();
 				});
-
 			};
 
+			var filterData = function(){
+				$scope.aUsers = $filter('filterUser')($scope.aUsers,$scope.username,$scope.onlyFriends);
+			};
 
+			$scope.$watch('username',function(){
+				filterData();
+			});
 
 			$scope.$on('updateListUsers',function(event,data){
-				console.log('updateListUsers',data);
 				refreshData();
 			});
 

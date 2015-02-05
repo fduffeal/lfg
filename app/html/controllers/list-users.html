@@ -22,8 +22,8 @@
 					<table  border="0" >
 
 						<tbody>
-							<tr ng-repeat="user in aUsers | filterUser:username:onlyFriends |orderBy:sort:reverse">
-								<th class="list-gardien" >{{user.username}}</a></th>
+							<tr ng-repeat="user in aUsers |orderBy:sort:reverse">
+								<th class="list-gardien" >{{user.username}}</th>
 								<th class="list-perso">
 									<div class="xs-character" ng-repeat="userGames in user.userGame" style="background: url('{{userGames.data4}}')">
 									<img src="{{userGames.data5}}" alt="">
