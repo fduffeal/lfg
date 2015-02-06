@@ -12,29 +12,39 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.username = '';
 			$scope.aAllUsers = [];
 
+
+			$scope.aFriendsId = [];
+			var updateAFriendsId = function(data){
+				$scope.aFriendsId = [];
+				for (var key in data) {
+					$scope.aFriendsId.push(data[key].id);
+				}
+			};
+
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
-					for (var key in data) {
-						data[key].connected = false;
-						data[key].me = false;
-						data[key].canAddToFriendList = true;
-						data[key].canAddToBlackList = true;
-
-						if (socket.listUsers[data[key].username]) {
-							data[key].connected = true;
-						}
-
-						if($scope.currentUser !== null && data[key].username === $scope.currentUser.username){
-							data[key].me = true;
-						}
-					}
-
 					$scope.aAllUsers = data;
 					filterData();
 				});
 			};
 
 			var filterData = function(){
+				for (var key in $scope.aAllUsers){
+					$scope.aAllUsers[key].connected = false;
+					$scope.aAllUsers[key].me = false;
+					$scope.aAllUsers[key].canAddToFriendList = true;
+					$scope.aAllUsers[key].canAddToBlackList = true;
+
+					if (socket.listUsers[$scope.aAllUsers[key].username]) {
+						$scope.aAllUsers[key].connected = true;
+					}
+
+					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
+						$scope.aAllUsers[key].me = true;
+					}
+
+					$scope.aAllUsers[key].isFriend = ($scope.aFriendsId.indexOf($scope.aAllUsers[key].id) > -1);
+				}
 				$scope.aUsers = $filter('filterUser')($scope.aAllUsers,$scope.username,$scope.onlyFriends);
 			};
 
@@ -50,16 +60,35 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				var addFriendPromise = user.addFriend(friendUsername);
 				if(addFriendPromise !== false){
 					addFriendPromise.success(function(data){
-
+						updateAFriendsId(data);
+						filterData();
 					});
 				}
 			};
 
-			$scope.removeFromFriendList = user.removeFriend;
+			$scope.removeFromFriendList = function(friendUsername){
+				var removeFriendPromise = user.removeFriend(friendUsername);
+				if(removeFriendPromise !== false){
+					removeFriendPromise.success(function(data){
+						updateAFriendsId(data);
+						filterData();
+					});
+				}
+			};
 
 
 			var init = function(){
-				socket.getUserList();
+
+				var getFriendsPromise = user.getFriends();
+				if(getFriendsPromise !== false){
+					user.getFriends().success(function (data, status, headers, config) {
+						updateAFriendsId(data);
+					}).then(function(data){
+						socket.getUserList();
+					});
+				}else {
+					socket.getUserList();
+				}
 			};
 
 			init();
