@@ -132,6 +132,9 @@
 	.welcome {
 		margin-top: 0;
 		color: black;
+		.marge {
+			padding: 10px 20px 0 20px!important;
+		}
 		.hide, .show {
 			color: black;
 			float: right;
@@ -169,6 +172,7 @@
 			color: white!important;
 			text-decoration: none!important;
 			font-size: 1.3rem;
+			margin-top: 0;
 			background: $orange;
 			img{
 				position: absolute;
