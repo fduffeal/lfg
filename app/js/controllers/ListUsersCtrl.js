@@ -10,6 +10,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.reverse = true;
 			$scope.onlyFriends = false;
 			$scope.username = '';
+			$scope.aAllUsers = [];
 
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
@@ -28,13 +29,13 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 						}
 					}
 
-					$scope.aUsers = data;
+					$scope.aAllUsers = data;
 					filterData();
 				});
 			};
 
 			var filterData = function(){
-				$scope.aUsers = $filter('filterUser')($scope.aUsers,$scope.username,$scope.onlyFriends);
+				$scope.aUsers = $filter('filterUser')($scope.aAllUsers,$scope.username,$scope.onlyFriends);
 			};
 
 			$scope.$watch('username',function(){
@@ -48,7 +49,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.addToFriendList = function(friendUsername){
 				var addFriendPromise = user.addFriend(friendUsername);
 				if(addFriendPromise !== false){
-					addFriendPromise(friendUsername).success(function(data){
+					addFriendPromise.success(function(data){
 
 					});
 				}

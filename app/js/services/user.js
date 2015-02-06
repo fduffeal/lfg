@@ -172,6 +172,16 @@ angular.module('myApp.services')
 				return api.call('users/');
 			};
 
+			this.getFriends = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('user/friend/get/'+username+'/'+token);
+			};
+
 			this.addFriend = function(friendUsername){
 				var currentUser = this.get();
 				if(currentUser === null){

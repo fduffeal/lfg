@@ -18,7 +18,7 @@ angular.module('myApp.directives')
 
 
 					var refreshData = function() {
-						user.getAll().success(function (data, status, headers, config) {
+						user.getFriends().success(function (data, status, headers, config) {
 							for (var key in data) {
 								data[key].connected = false;
 								data[key].me = false;

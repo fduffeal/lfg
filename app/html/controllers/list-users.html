@@ -3,20 +3,20 @@
 	<div class="page">
 		<div class="list">
 
+			<input type="text" ng-model="username" placeholder="{{'Search'|translate}}">
+
 			<h1>Liste d'utilisateurs </h1>
-			<input type="text" ng-model="username">
+
 			<table border="0">
 				<thead>
 					<tr>
 						<th class="list-gardien" ><a href="" ng-click="sort = 'username'; reverse=!reverse">Gardien</a></th>
 						<th class="list-perso"><a href="">Persos</a></th>
 						<th class="list-clan"><a href="">Clan</a></th>
-						<th class="list-etat" ><a href="" ng-click="sort = 'onlineTime'; reverse=!reverse">Etat</a></th>
+						<th class="list-etat" ><a href="">Etat</a></th>
 						<th class="list-action"><a href="">Action</a></th>
-							<!--<th class="list-slots"><a href=" ng-click="predicate = 'nbParticipant'; reverse=!reverse"">Slots</a></th>
-							<th class="list-creator"><a href="" ng-click="predicate = 'name'; reverse=!reverse">Creator</a></th>-->
-						</tr>
-					</thead>
+					</tr>
+				</thead>
 				</table>
 				<a class="line" >
 					<table  border="0" >
@@ -34,7 +34,6 @@
 								</th>
 								<th class="list-clan"><a href="">{{user.userGame[0].data3}}</a></th>
 								<th class="list-etat">
-									<span ng-if="!user.connected" class="offline">{{user.onlineTime | filterSince}}</span>
 									<span ng-if="user.connected" class="online" translate>online</span>
 								</th>
 								<th class="list-action icon-actions">
@@ -42,25 +41,9 @@
 									<span ng-if="!user.me && !user.canAddToFriendList" ng-click="removeFromFriendList(user.username)"class="remove"></span>
 									<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>
 									<span ng-if="!user.me && !user.canAddToBlackList" ng-click="removeFromBlockList(user.username)"class="unblock"></span>
-									<span class="msg"></span>
-									<span class="invit"></span>
+									<span ng-if="!user.me" class="msg"></span>
+									<span ng-if="!user.me" class="invit"></span>
 								</th>
-							<!-- 	<td class="list-player">
-									{{user.username}}
-								</td>
-								<td class="list-class">Titan</td>
-								<td class="list-level">31</td>
-								<td class="list-last">
-									<span ng-if="!user.connected">{{user.onlineTime | filterSince}}</span>
-									<span ng-if="user.connected" translate>online</span>
-								</td>
-								<td class="list-etat"><span ng-class="{'co':user.connected,'noco':!user.connected}"></span></td>
-								<td class="list-action">
-									<span ng-if="!user.me && user.canAddToFriendList" ng-click="addToFriendList(user.username)">add to friendlist</span>
-									<span ng-if="!user.me && !user.canAddToFriendList" ng-click="removeFromFriendList(user.username)">add to friendlist</span>
-									<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)">block</span>
-									<span ng-if="!user.me && !user.canAddToBlackList" ng-click="removeFromBlockList(user.username)">block</span>
-								</td> -->
 							</tr>
 
 						</tbody>
