@@ -348,7 +348,10 @@ h1{
 	margin-top: 20px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
-	@media screen and (max-width: 980px ) {
+	@media screen and (max-width: 1065px ) {
+		width: 84%;
+	}
+	@media screen and (max-width: 550px ) {
 		width: 95%;
 	}
 }

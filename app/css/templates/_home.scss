@@ -1,9 +1,12 @@
 #home {
 	.home-profile {
-		@media screen and (max-width: 980px ) {
+
+		@media screen and (max-width: 1065px ) {
+			width: 84%;
+		}
+		@media screen and (max-width: 550px ) {
 			width: 95%;
 		}
-
 		background: #111;
 		width: 940px;
 		font-family: "Open Sans", sans-serif;
@@ -36,8 +39,8 @@
 					left: 92px;
 					font-size: 16px;
 					@media screen and (max-width: 400px ) {
-							font-size: 12px;
-						}
+						font-size: 12px;
+					}
 					h6 {
 						margin: 0;
 						padding: 0;
@@ -85,7 +88,7 @@
 				}
 			}
 			.alts {
-				@media screen and (max-width: 760px ) {
+				@media screen and (max-width: 857px ) {
 					display:none
 				}
 				position: absolute;
@@ -145,8 +148,8 @@
 				color: $orange;
 			}
 			&:hover:before {
-					color: #06ab93;
-				}
+				color: #06ab93;
+			}
 		}
 		.txt {
 			display: block;
