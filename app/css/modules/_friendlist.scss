@@ -7,6 +7,9 @@
 	top: 47px;
 	height: 100%;
 	background: #ededed;
+	.toggle {
+		display: none;
+	}
 	h5 {
 		background: $orange;
 		height: 20px;
@@ -18,31 +21,71 @@
 		color:white;
 		display:none;
 	}
+	.remisansamis {
+		background: $orange;
+		width: 206px;
+		text-align: center;
+		padding: 20px 0px 20px 0;
+		@media screen and (min-width: 1067px) and (max-width: 1380px ) {
+			img {
+				display: none;
+
+			}
+			a {
+				display: block;
+				width: 16px;
+				margin: 20px auto ;
+				height: 16px;
+				background: url('../img/ico-add.png');
+
+			}
+			width: auto;
+			background: transparent;
+		}
+	}
 	@media screen and (min-width: 1067px) and (max-width: 1380px ) {
-		width: 49px;
-		.fl-friend {
-			.xs-avatar {
-				border: 2px solid transparent;
+
+		.toggle {
+			width: 50px;
+			display: block;
+			height: 61px;
+			background: url('../img/toggle-friendlist.png');
+			position: absolute;
+			top: 50%;
+			position: absolute;
+			right: 205px;
+			cursor: pointer;
+		}
+		&.active {
+			width: 49px;
+			.toggle {
+				right: 49px;
 			}
-			&.on .xs-avatar {
-				border: 2px solid #49c100;
-			}
-			.fl-name {
-				display:none!important
-			}
-			.fl-etat {
-				display:none!important;
-				&:after {
-					display:block!important;
+			.fl-friend {
+				.xs-avatar {
+					border: 2px solid transparent;
+				}
+				&.on .xs-avatar {
+					border: 2px solid #49c100;
+				}
+				.fl-name {
+					display:none!important
+				}
+				.fl-etat {
+					display:none!important;
+					&:after {
+						display:block!important;
+					}
 				}
 			}
+			.xl-info {
+				right: 42px!important;
+			}
+			#search-box {
+				display: none;
+			}
 		}
-		.xl-info {
-			right: 42px!important;
-		}
-		#search-box {
-			display: none;
-		}
+
 	}
 	@media screen and (max-width: 1067px ) {
 		border-right: 1px solid #999;
@@ -52,9 +95,10 @@
 		right:20px;
 		bottom: 0;
 
-		.fl-friend {
+		.fl-friend,.remisansamis  {
 			display:none;
 		}
+
 		h5 {
 			display:block;
 		}
@@ -67,7 +111,7 @@
 		}
 		&.active {
 			padding-bottom: 50px;
-			.fl-friend {
+			.fl-friend,.remisansamis  {
 				display:block;
 			}
 			#search-box {

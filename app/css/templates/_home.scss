@@ -1,5 +1,9 @@
 #home {
 	.home-profile {
+		@media screen and (max-width: 980px ) {
+			width: 95%;
+		}
+
 		background: #111;
 		width: 940px;
 		font-family: "Open Sans", sans-serif;
@@ -16,6 +20,9 @@
 				width: 474px;
 				height: 96px;
 				text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+				@media screen and (max-width: 520px ) {
+					width: 100%;
+				}
 				img {
 					position: absolute;
 					top: 0;
@@ -28,6 +35,9 @@
 					top: 18px;
 					left: 92px;
 					font-size: 16px;
+					@media screen and (max-width: 400px ) {
+							font-size: 12px;
+						}
 					h6 {
 						margin: 0;
 						padding: 0;
@@ -35,6 +45,9 @@
 						color: #ffffff;
 						margin-top: 0;
 						text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+						@media screen and (max-width: 400px ) {
+							font-size: 18px;
+						}
 					}
 				}
 				.stats {
@@ -72,6 +85,9 @@
 				}
 			}
 			.alts {
+				@media screen and (max-width: 760px ) {
+					display:none
+				}
 				position: absolute;
 				left: 474px;
 				height: 96px;
@@ -115,6 +131,22 @@
 		color: black;
 		.hide, .show {
 			color: black;
+			float: right;
+			color: $orange;
+			&:hover {
+				color: #06ab93;
+			}
+		}
+		.hide {
+
+			&:before {
+				content: "✖";
+				font-size: 2rem;
+				color: $orange;
+			}
+			&:hover:before {
+					color: #06ab93;
+				}
 		}
 		.txt {
 			display: block;
@@ -125,6 +157,7 @@
 		}
 		.fb_iframe_widget {
 			margin: 0;
+			float: left;
 		}
 		.btn2 {
 			display: inline-block;
@@ -179,7 +212,7 @@
 			}
 			input, label {
 				margin: 0 5px 10px 0;
-				border: none
+				border: 1px solid #999;
 			}
 			select {
 				padding:3px;

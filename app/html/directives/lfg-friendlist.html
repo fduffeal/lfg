@@ -1,4 +1,6 @@
 <div id="friendlist" ng-class="{' active': isActive}">
+<div class="toggle" ng-init="isActive = false"
+			ng-click="isActive = !isActive" ></div>
 	<h5
 			ng-init="isActive = true"
 			ng-click="isActive = !isActive" translate>Friend's list</h5>
@@ -35,11 +37,11 @@
 				</div>
 			</div>
 		</div>
-		<div ng-if="aUsers.length == 0">
-			PAS d'amis :'(
+		<div class="remisansamis" ng-if="aUsers.length == 0">
+			<a href=""><img src="img/nofriend.png" alt=""></a>
 		</div>
 	</div>
-	<div id="search-box">
+	<div id="search-box"  ng-if="aUsers.length != 0">
 		<input type="text" placeholder="Chercher" ng-model="username">
 	</div>
 </div>
