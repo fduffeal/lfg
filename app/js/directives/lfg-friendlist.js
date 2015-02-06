@@ -11,8 +11,27 @@ angular.module('myApp.directives')
 					$scope.currentUser = user.get();
 					$scope.username = '';
 
+					$scope.allUsers = [];
+					$scope.aUsers = [];
+
 
 					var filterData = function(){
+
+						for (var key in $scope.allUsers) {
+							$scope.allUsers[key].connected = false;
+							$scope.allUsers[key].me = false;
+							$scope.allUsers[key].canAddToFriendList = true;
+							$scope.allUsers[key].canAddToBlackList = true;
+
+							if (socket.listUsers[$scope.allUsers[key].username]) {
+								$scope.allUsers[key].connected = true;
+							}
+
+							if($scope.currentUser !== null && $scope.allUsers[key].username === $scope.currentUser.username){
+								$scope.allUsers[key].me = true;
+							}
+						}
+
 						$scope.aUsers = $filter('filterUser')($scope.allUsers,$scope.username,$scope.onlyFriends);
 					};
 
@@ -23,21 +42,6 @@ angular.module('myApp.directives')
 							return;
 						}
 						getFriendsPromise.success(function (data, status, headers, config) {
-							for (var key in data) {
-								data[key].connected = false;
-								data[key].me = false;
-								data[key].canAddToFriendList = true;
-								data[key].canAddToBlackList = true;
-
-								if (socket.listUsers[data[key].username]) {
-									data[key].connected = true;
-								}
-
-								if($scope.currentUser !== null && data[key].username === $scope.currentUser.username){
-									data[key].me = true;
-								}
-							}
-
 							$scope.allUsers = data;
 							filterData();
 						});
@@ -45,7 +49,7 @@ angular.module('myApp.directives')
 
 
 					$scope.$on('updateListUsers',function(event,data){
-						refreshData();
+						filterData();
 					});
 
 					$scope.$watch('username',function(){
@@ -57,7 +61,7 @@ angular.module('myApp.directives')
 						socket.getUserList();
 					};
 
-
+					init();
 				},
 				restrict: 'E',
 				templateUrl: '/html/directives/lfg-friendlist.html'
