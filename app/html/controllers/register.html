@@ -2,7 +2,7 @@
 <div id="register" class="wrap">
 
 	<div class="page">
-		<div class="block">
+		<div class="block" ng-show="promiseRegisterInProgress == false">
 			<div translate class="text">
 				Create an esbattle account to get your character from Destiny every time on www.esbattle.com.<br/>You will also be able to to schedule party and join an existing party.<br/><br/>Your GamerTag or PSN ID will be used to get your Destiny characters.<br/><br/>A valid email is required if you forgot your password, we will send you an email to verify your	identity.<br/>
 			</div>
@@ -10,12 +10,6 @@
 
 			<form name="registerForm" ng-submit="submit()">
 				<ul>
-					<li><input type="text" ng-model="username" placeholder="{{'Login Esbattle'|translate}}"
-					           name="inputUsername" required></li>
-					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}"
-					           name="inputPassword" ng-change="checkPassword()" required></li>
-					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}"
-					           name="inputPasswordVerif" ng-change="checkPassword()" required></li>
 					<li>
 						<label for="">
 							<select ng-model="plateform" ng-options="plateformData.nom for plateformData in aPlateforms"
@@ -24,15 +18,26 @@
 							</select>
 						</label>
 					</li>
-					<li><input type="text" ng-model="gamerTag" placeholder="{{'GamerTag or PSN ID'|translate}}"
-					           name="inputGamerTag" required></li>
+					<li><input type="text" ng-model="gamerTag" placeholder="{{'GamerTag or PSN ID : Login Esbattle'|translate}}"
+					           name="inputGamerTag" required  ng-class="{'error':gamertag_not_found}"></li>
+					<li><input type="password" ng-model="password" placeholder="{{'Password'|translate}}"
+					           name="inputPassword" ng-change="checkPassword()" required  ng-class="{'error':errorPassword}"></li>
+					<li><input type="password" ng-model="passwordverif" placeholder="{{'Confirm Password'|translate}}"
+					           name="inputPasswordVerif" ng-change="checkPassword()" required  ng-class="{'error':errorPassword}"></li>
 					<li><input type="email" ng-model="email" placeholder="{{'Email Address'|translate}}"
-					           name="inputEmail" required></li>
+					           name="inputEmail" required ng-class="{'error':email_already_taken}"></li>
+					<li><input type="text" ng-model="username" placeholder="{{'Login Esbattle'|translate}}"
+					           name="inputUsername" required ng-show="username_already_taken" ng-class="{'error':username_already_taken}"></li>
 					<li><input type="submit" href="" class="btn" value="{{'Register !' | translate}}"></li>
 				</ul>
 			</form>
 		</div>
-		<div class="error-msg" ng-if="username_already_taken" translate>The username is already used.</div>
+
+		<div ng-show="promiseRegisterInProgress == true">
+			<lfg-loader></lfg-loader><span translate>please wait ... game's data update is in progress</span>
+		</div>
+
+		<div class="error-msg" ng-if="username_already_taken" translate>This gamerTag or PSN ID is already used as Esbattle account, please choose an other name for your Esbattle account.</div>
 		<div class="error-msg" ng-if="email_already_taken" translate>This email is already used.</div>
 		<div class="error-msg" ng-if="errorPassword" translate>Passwords doesn't match</div>
 		<div class="error-msg" ng-if="gamertag_not_found" translate>Please check your GamerTag or PSN ID, we didn't found any Destiny characters</div>

@@ -9,6 +9,8 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 
 			var tentative = 0;
 			var maxTentative = 2;
+
+	        $scope.promiseLoginInProgress = false;
 			$scope.bDisplayForgetPasswordForm = false;
 			$scope.bDisplayForgetPasswordFormMailSend = false;
 
@@ -21,11 +23,14 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 			        return;
 		        }
 
+		        $scope.promiseLoginInProgress = true;
+
 		        user.log($scope.username,$scope.password).success(function(data){
+			        $scope.promiseLoginInProgress = false;
 			        $scope.userInfo = data;
 					redirection.goBack();
-			        $scope.$broadcast('refreshProfil');
 		        }).error(function(data){
+			        $scope.promiseLoginInProgress = false;
 					$scope.error = data.msg;
 					if(data.msg==='connection_refused'){
 						tentative++;

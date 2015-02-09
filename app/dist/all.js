@@ -27990,6 +27990,8 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 
 			var tentative = 0;
 			var maxTentative = 2;
+
+	        $scope.promiseLoginInProgress = false;
 			$scope.bDisplayForgetPasswordForm = false;
 			$scope.bDisplayForgetPasswordFormMailSend = false;
 
@@ -28002,11 +28004,14 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 			        return;
 		        }
 
+		        $scope.promiseLoginInProgress = true;
+
 		        user.log($scope.username,$scope.password).success(function(data){
+			        $scope.promiseLoginInProgress = false;
 			        $scope.userInfo = data;
 					redirection.goBack();
-			        $scope.$broadcast('refreshProfil');
 		        }).error(function(data){
+			        $scope.promiseLoginInProgress = false;
 					$scope.error = data.msg;
 					if(data.msg==='connection_refused'){
 						tentative++;
@@ -28941,6 +28946,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 
 	        $scope.lang = lang.getCurrent();
 
+	        $scope.promiseRegisterInProgress = false;
+
 			rdv.getFormInfo().then(function(data){
 				$scope.aPlateforms = data.plateforms;
 			});
@@ -28957,6 +28964,12 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 		        }
 	        };
 
+
+	        $scope.$watch('gamerTag',function(newValue,oldValue){
+		        console.log('gamertag',newValue);
+		        $scope.username = newValue;
+	        });
+
 	        $scope.submit = function(){
 
 
@@ -28967,17 +28980,18 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 				$scope.username_already_taken = false;
 				$scope.email_already_taken = false;
 				$scope.gamertag_not_found = false;
+		        $scope.promiseRegisterInProgress = true;
 		        user.register($scope.email,$scope.password,$scope.username,$scope.plateform.id,$scope.gamerTag).success(function(data){
+			        $scope.promiseRegisterInProgress = false;
 			        redirection.goWelcomeHome();
 		        }).error(function(data){
-					console.log('error',data);
+			        $scope.promiseRegisterInProgress = false;
 					$scope.aError = data;
 
 					if(data.aError) {
 
 						for (var key in data.aError) {
 
-							console.log(data.aError[key]);
 							if (data.aError[key] === 'username_already_taken') {
 								$scope.username_already_taken = true;
 							}
@@ -29358,6 +29372,20 @@ angular.module('myApp.directives')
 					});
 				},
 				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgLoader', [
+		function() {
+			return {
+				link: function() {
+				},
+				restrict: 'E',
+				replace:false,
+				templateUrl: '/html/directives/lfg-loader.html'
 			};
 		}
 	]
