@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
 			'use strict';
 			return {
 				scope:{
@@ -13,7 +13,7 @@ angular.module('myApp.directives')
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;
-						redirection.goHome();
+						$window.location.reload();
 					};
 
 

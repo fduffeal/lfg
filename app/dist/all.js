@@ -27758,8 +27758,8 @@ angular.module('myApp.controllers').controller('AnnonceCreateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route','user',
-		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
+	['$scope','$routeParams','forum','redirection','$location','$window','user',
+		function ($scope,$routeParams,forum,redirection,$location,$window,user) {
 			'use strict';
 
 			$scope.currentUser = user.get();
@@ -27793,7 +27793,7 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 			}
 
 			$scope.refresh = function(){
-				$route.reload();
+				$window.location.reload();
 			}
 		}
 	]
@@ -29013,8 +29013,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 );
 
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$window',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$window) {
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
@@ -29113,7 +29113,7 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 			}
 
 			$scope.refresh = function(){
-				$route.reload();
+				$window.location.reload();
 			}
 		}
 	]
@@ -29250,8 +29250,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
 			'use strict';
 			return {
 				scope:{
@@ -29264,7 +29264,7 @@ angular.module('myApp.directives')
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;
-						redirection.goHome();
+						$window.location.reload();
 					};
 
 

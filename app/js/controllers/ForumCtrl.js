@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ForumCtrl',
-	['$scope','$routeParams','forum','redirection','$location','$route','user',
-		function ($scope,$routeParams,forum,redirection,$location,$route,user) {
+	['$scope','$routeParams','forum','redirection','$location','$window','user',
+		function ($scope,$routeParams,forum,redirection,$location,$window,user) {
 			'use strict';
 
 			$scope.currentUser = user.get();
@@ -34,7 +34,7 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 			}
 
 			$scope.refresh = function(){
-				$route.reload();
+				$window.location.reload();
 			}
 		}
 	]
