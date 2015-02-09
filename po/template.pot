@@ -35,8 +35,8 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: app/html/controllers/rdv.html
-msgid "All"
+#: app/html/directives/lfg-profile-header.html
+msgid "Alternate Guardians"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -161,7 +161,7 @@ msgid "Game Profil"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "GamerTag or PSN ID"
+msgid "GamerTag or PSN ID : Login Esbattle"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
@@ -174,10 +174,6 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Hi, we are looking for"
-msgstr ""
-
-#: app/html/controllers/rdv.html
-msgid "Hide"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
@@ -292,6 +288,10 @@ msgstr ""
 msgid "Personal Infos"
 msgstr ""
 
+#: app/html/controllers/rdv.html
+msgid "Plateform"
+msgstr ""
+
 #: app/html/controllers/profile.html
 #: app/html/controllers/rdv.html
 #: app/html/controllers/register.html
@@ -347,6 +347,10 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Retrieve my account !"
+msgstr ""
+
+#: app/html/controllers/list-users.html
+msgid "Search"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -406,16 +410,20 @@ msgid "Thanks"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "The username is already used."
+msgid "This email is already used."
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "This email is already used."
+msgid "This gamerTag or PSN ID is already used as Esbattle account, please choose an other name for your Esbattle account."
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Type"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -540,6 +548,11 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "player(s)"
+msgstr ""
+
+#: app/html/controllers/login.html
+#: app/html/controllers/register.html
+msgid "please wait ... game's data update is in progress"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html

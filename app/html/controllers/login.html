@@ -17,9 +17,7 @@
 				<div class="error-msg" ng-if="errorForgetPassword">
 					<span ng-if="errorForgetPassword=='mail_already_send'" translate>Mail already send. Please check your mailBox (and your spam box)</span>
 				</div>
-				<div ng-if="bDisplayForgetPasswordFormMailSend" translate>Mail send. Please check your mailBox (and your
-					spam box)
-				</div>
+				<div ng-if="bDisplayForgetPasswordFormMailSend" translate>Mail send. Please check your mailBox (and your spam box)</div>
 
 				<span class="or" translate>OR</span>
 
@@ -37,8 +35,7 @@
 						<li><input type="submit" class="btn" value="{{'Login !' | translate}}"></li>
 						<span class="or" translate>OR</span>
 						<li><a ng-href="{{registerPageUrl}}" class="btn" translate>Register</a></li>
-						<li class="forget"><a href="" ng-click="displayForgetPasswordForm()" translate>Forget login or
-							password ?</a></li>
+						<li class="forget"><a href="" ng-click="displayForgetPasswordForm()" translate>Forget login or password ?</a></li>
 					</ul>
 				</form>
 				<div class="error-msg" ng-if="error">
