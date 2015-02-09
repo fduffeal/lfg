@@ -102,7 +102,7 @@
 								<span>
 									<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)"
 									value="{{'Send it'| translate}}">
-
+									<lfg-loader ng-if="(blockPostAnnonce == true)"></lfg-loader>
 								</span>
 
 								<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
