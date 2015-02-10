@@ -3,6 +3,11 @@
 	<div class="page">
 		<div class="list">
 
+			<select class="platforms" ng-model="plateform"
+			        ng-options="plateformData.nom for plateformData in aPlateforms">
+				<option value="" translate>Plateform</option>
+			</select>
+
 			<input type="text" ng-model="username" placeholder="{{'Search'|translate}}">
 
 			<h1>Liste d'utilisateurs </h1>
@@ -42,7 +47,7 @@
 									<!--<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>-->
 									<!--<span ng-if="!user.me && !user.canAddToBlackList" ng-click="removeFromBlockList(user.username)"class="unblock"></span>-->
 									<!--<span ng-if="!user.me" class="msg"></span>-->
-									<span ng-if="!user.me" class="invit"></span>
+									<span ng-if="!user.me  && user.isFriend == true" class="invit"></span>
 								</th>
 							</tr>
 
@@ -50,6 +55,15 @@
 
 					</table>
 				</a>
+			</div>
+
+			<div>
+				<form name="inviteForm" ng-submit="invit()">
+					<select ng-model="rdvInvit" ng-options="rdv.description for rdv in aMyRdv" ng-show="aMyRdv.length>1">
+					</select>
+
+					<input type="submit" href="" class="btn" value="{{'Invit !' | translate}}">
+				</form>
 			</div>
 
 			<div lfg-interval="intervalId"></div>
