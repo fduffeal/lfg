@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgFriendlist', ['$window','socket','user','$filter',
-		function($window,socket,user,$filter) {
+	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
+		function($window,socket,user,$filter,redirection) {
 			'use strict';
 			return {
 				scope:{
@@ -13,6 +13,8 @@ angular.module('myApp.directives')
 
 					$scope.allUsers = [];
 					$scope.aUsers = [];
+
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
 
 					var filterData = function(){
