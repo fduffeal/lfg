@@ -1,7 +1,7 @@
 <div class="home-profile" ng-show="currentUser">
 	<div class="hm-guardian">
 		<div class="hm-emblem" style="background: url('{{profilSelected.data4}}')">
-			<img src="{{profilSelected.data5}}" alt="">
+			<img ng-src="{{profilSelected.data5}}" alt="">
 			<div class="details">
 				<h6>{{profilSelected.gameUsername}}</h6>
 				{{profilSelected.data1 | translate}}
@@ -17,7 +17,7 @@
 			<h4 translate>Alternate Guardians</h4>
 			<div class="alt" ng-repeat="profil in profilNotSelected" style="background-image:url('{{profil.data4}}');" ng-if="$index < 2">
 				<a href="" ng-click="selectProfil(profil)">
-					<img src="{{profil.data5}}">
+					<img ng-src="{{profil.data5}}">
 						<span>
 							<i>{{profil.data2}}</i>
 							{{profil.data1 | translate}}
