@@ -320,6 +320,14 @@
 				background: #e9aea6;
 				cursor: pointer;
 			}
+		  	&.ng-enter{
+			  @include transition(background-color 1s ease-out);
+			  background-color: #e9aea6;
+			}
+			&.ng-enter-active{
+			  @include transition(background-color 1s ease-out);
+			  background-color: white;
+			}
 		}
 
 		ul.search-tags {

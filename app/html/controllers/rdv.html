@@ -1,15 +1,3 @@
-<style type="text/css">
-	.ng-enter, .ng-leave {
-		-webkit-transition:0.5s linear all;
-		transition:0.5s linear all;
-	}
-
-	.ng-enter { }        /* starting animations for enter */
-	.ng-enter.ng-enter-active { } /* terminal animations for enter */
-	.ng-leave { }        /* starting animations for leave */
-	.ng-leave.ng-leave-active { } /* terminal animations for leave */
-</style>
-
 <lfg-header></lfg-header>
 <lfg-friendlist></lfg-friendlist>
 <div id="home" class="wrap">
@@ -178,7 +166,7 @@
 					</tr>
 				</thead>
 			</table>
-			<a class="line" ng-href="{{rdv.url}}"
+			<a class="line" ng-href="{{rdv.url}}" ng-animate
 			ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse">
 			<table border="0">
 
