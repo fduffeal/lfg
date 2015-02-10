@@ -104,6 +104,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						array.push(newDataArray[j]);
 					}
 				}
+
+				updateMyRdv();
+				updateRdvLastPlace();
 			};
 
 
@@ -122,6 +125,21 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 			};
 
+			$scope.aRdvLastPlace =[];
+			var updateRdvLastPlace = function(){
+
+				//console.log('$scope.aRdvLastPlace',$scope.aRdvLastPlace,$scope.aRdv);
+
+				if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+					var plateformId = null;
+				}else {
+					var plateformId = $scope.plateform.id;
+				}
+
+				$scope.aRdvLastPlace = $filter('filterRdvLastPlace')($scope.aRdv,plateformId,$scope.tags,false,false,true,$scope.slotMinAvailable,$scope.slotMaxAvailable,$scope.type);
+
+			};
+
 
 
 			var refreshRdvData = function(){
@@ -137,9 +155,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
 						formatRdv(data[key]);
 					}
-
 					addNewData($scope.aRdv,data);
-					updateMyRdv();
 
 				}).error(function(data, status, headers, config) {
 					// called asynchronously if an error occurs
@@ -224,8 +240,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					addNewData($scope.aRdv,newAnnonce);
 
-					console.log(newAnnonce,$scope.aRdv);
-
 				}).error(function(data){
 					$scope.annonce_tag = '';
 					$scope.annonce_description = '';
@@ -249,6 +263,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 				$scope.$watch('type',function(newValue, oldValue){
 					storage.setPersistant('cookie_type_rdv',newValue);
+					updateMyRdv();
+					updateRdvLastPlace();
 				});
 			};
 
@@ -282,6 +298,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						storage.erasePersistant('cookie_plateform_rdv_id');
 						//$location.path(homeUrl).replace();
 					}
+
+					updateMyRdv();
+					updateRdvLastPlace();
 				});
 			};
 
@@ -289,6 +308,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.$watch('tags',function(newValue,oldValue){
 					if(newValue !== '' || oldValue !== ''){
 						$location.search('tags', newValue);
+						updateMyRdv();
+						updateRdvLastPlace();
 					}
 				});
 
