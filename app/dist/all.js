@@ -31434,8 +31434,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-	.directive('lfgFriendlist', ['$window','socket','user','$filter',
-		function($window,socket,user,$filter) {
+	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
+		function($window,socket,user,$filter,redirection) {
 			'use strict';
 			return {
 				scope:{
@@ -31448,6 +31448,8 @@ angular.module('myApp.directives')
 
 					$scope.allUsers = [];
 					$scope.aUsers = [];
+
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
 
 					var filterData = function(){
@@ -31537,6 +31539,7 @@ angular.module('myApp.directives')
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
                     $scope.userInfo = user.get();
 

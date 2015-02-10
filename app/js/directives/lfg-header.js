@@ -30,6 +30,7 @@ angular.module('myApp.directives')
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
                     $scope.userInfo = user.get();
 

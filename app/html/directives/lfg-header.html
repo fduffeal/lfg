@@ -6,7 +6,8 @@
 			<div class="menu">MENU<!-- <a href="{{homeUrl}}" translate>Home</a> --><!--  <a href="{{forumUrl}}">Forum</a> -->  <a href="{{notifUrl}}" class="notif" ng-if="userInfo.username" ><span class="nb-notif">{{notifications.length}}</span></a>
 				<ul>
 				       <li><a href="{{homeUrl}}" translate>Home</a></li>
-				       <li> <a href="{{forumUrl}}">Forum</a></li>
+				       <li><a href="{{forumUrl}}">Forum</a></li>
+				       <li><a href="{{listUsersUrl}}">Users</a></li>
 				 <!--   <li ng-if="userInfo.username"><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
 				 <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
 				 <!--    <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a><span class="nb-notif">{{notifications.length}}</span></li> -->
@@ -20,6 +21,7 @@
 		<img src="img/logo-header.png" class="logo-header" />
 		<li><a href="{{homeUrl}}" translate>Home</a></li>
 		 <li><a href="{{forumUrl}}">Forum</a></li>
+		 <li><a href="{{listUsersUrl}}">Users</a></li>
 		  <!--<li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
 		  <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
 		  <li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
