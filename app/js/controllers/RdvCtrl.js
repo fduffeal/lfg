@@ -90,6 +90,11 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				return a;
 			};
 
+			var updateAllRdv = function(){
+				updateMyRdv();
+				updateRdvLastPlace();
+			};
+
 			var addNewData = function(array,newDataArray){
 				for(var j=0;j<newDataArray.length;j++){
 					var alreadyAdded = false;
@@ -105,8 +110,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 					}
 				}
 
-				updateMyRdv();
-				updateRdvLastPlace();
+				updateAllRdv();
 			};
 
 
@@ -122,6 +126,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					//if($scope.plateform)
 					$scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+					$scope.aMyRdv = $filter('orderBy')($scope.aMyRdv, $scope.predicate, $scope.reverse);
 				}
 			};
 
@@ -137,7 +142,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 
 				$scope.aRdvLastPlace = $filter('filterRdvLastPlace')($scope.aRdv,plateformId,$scope.tags,false,false,true,$scope.slotMinAvailable,$scope.slotMaxAvailable,$scope.type);
-
+				$scope.aRdvLastPlace = $filter('orderBy')($scope.aRdvLastPlace, $scope.predicate, $scope.reverse);
 			};
 
 
@@ -263,8 +268,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 				$scope.$watch('type',function(newValue, oldValue){
 					storage.setPersistant('cookie_type_rdv',newValue);
-					updateMyRdv();
-					updateRdvLastPlace();
+					updateAllRdv();
 				});
 			};
 
@@ -299,8 +303,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						//$location.path(homeUrl).replace();
 					}
 
-					updateMyRdv();
-					updateRdvLastPlace();
+					updateAllRdv();
 				});
 			};
 
@@ -308,8 +311,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.$watch('tags',function(newValue,oldValue){
 					if(newValue !== '' || oldValue !== ''){
 						$location.search('tags', newValue);
-						updateMyRdv();
-						updateRdvLastPlace();
+						updateAllRdv();
 					}
 				});
 
