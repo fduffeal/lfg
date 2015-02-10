@@ -144,7 +144,7 @@
 						<td class="list-infos"><span
 							ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
 						</td>
-						<td class="list-start">{{ rdv.start | filterSince}}</td>
+						<td class="list-start"><lfg-since time="{{rdv.start}}"></td>
 					</tr>
 				</tbody>
 
@@ -167,13 +167,13 @@
 				</thead>
 			</table>
 			<a class="line" ng-href="{{rdv.url}}" ng-animate
-			ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse">
+			ng-repeat="rdv in aRdv |orderBy:predicate:reverse">
 			<table border="0">
 
 				<tbody>
 					<tr class="mobile-hour" >
 						<td align="center" colspan="5">
-							{{ rdv.start| filterSince}}
+							<lfg-since time="{{rdv.start}}">
 						</td>
 					</tr>
 					<tr>
@@ -197,7 +197,7 @@
 						<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>
 							{{ rdv.description}}
 						</td>
-						<td class="list-start">{{ rdv.start| filterSince}}
+						<td class="list-start"><lfg-since time="{{rdv.start}}"></lfg-since>
 						</td>
 					</tr>
 				</tbody>
