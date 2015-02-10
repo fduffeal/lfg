@@ -79,12 +79,55 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 			};
 
+			var arrayUnique = function(array) {
+				var a = array.concat();
+				for(var i=0; i<a.length; ++i) {
+					for(var j=i+1; j<a.length; ++j) {
+						if(a[i] === a[j])
+							a.splice(j--, 1);
+					}
+				}
+				return a;
+			};
+
+			var addNewData = function(array,newDataArray){
+				for(var j=0;j<newDataArray.length;j++){
+					var alreadyAdded = false;
+					for(var i=0;i< array.length;i++){
+
+						if(newDataArray[j].id === array[i].id && newDataArray[j].type === array[i].type){
+							alreadyAdded = true;
+						}
+					}
+
+					if(alreadyAdded === false){
+						array.push(newDataArray[j]);
+					}
+				}
+			};
+
+
+			var updateMyRdv = function(){
+				//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+				if($scope.currentUser !== null){
+
+					if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+						var plateformId = null;
+					}else {
+						var plateformId = $scope.plateform.id;
+					}
+
+					//if($scope.plateform)
+					$scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+				}
+			};
+
+
 
 			var refreshRdvData = function(){
 
 				annonce.get().success(function(data) {
-					formatAnnonces(data);
-					$scope.aRdv = $scope.aAnnoncesFormated.concat($scope.aRdvNormaux);
+					addNewData($scope.aRdv,formatAnnonces(data));
 				});
 
 				rdv.getAll().success(function(data) {
@@ -95,21 +138,9 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						formatRdv(data[key]);
 					}
 
-					$scope.aRdvNormaux = data;
-					$scope.aRdv = $scope.aRdvNormaux.concat($scope.aAnnoncesFormated);
+					addNewData($scope.aRdv,data);
+					updateMyRdv();
 
-					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
-					if($scope.currentUser !== null){
-
-						if(typeof $scope.plateform === "undefined"){
-							var plateformId = null;
-						}else {
-							var plateformId = $scope.plateform.id;
-						}
-
-						//if($scope.plateform)
-						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
-					}
 				}).error(function(data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
@@ -120,7 +151,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.displayWelcome = ($route.current.action === 'welcome');
 
 			//autoRefresh
-			var refreshTime = 12000;
+			var refreshTime = 20000;
 			var autoRefreshData = function(){
 				$scope.intervalId = $interval(function(){
 					refreshRdvData();
@@ -157,9 +188,12 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			var formatAnnonces = function(aAnnonces){
 				var nbAnnonces = aAnnonces.length;
 
+
 				for(var i=0; i< nbAnnonces;i++){
-					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
+					aAnnonces[i] = formatAnnonce(aAnnonces[i]);
 				}
+
+				return aAnnonces;
 			};
 
 
@@ -184,7 +218,13 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
 
-					//$scope.aRdv.push(formatAnnonce(data));
+					var newAnnonce = [];
+					newAnnonce.push(formatAnnonce(data));
+
+
+					addNewData($scope.aRdv,newAnnonce);
+
+					console.log(newAnnonce,$scope.aRdv);
 
 				}).error(function(data){
 					$scope.annonce_tag = '';

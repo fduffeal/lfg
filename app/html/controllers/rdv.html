@@ -1,3 +1,15 @@
+<style type="text/css">
+	.ng-enter, .ng-leave {
+		-webkit-transition:0.5s linear all;
+		transition:0.5s linear all;
+	}
+
+	.ng-enter { }        /* starting animations for enter */
+	.ng-enter.ng-enter-active { } /* terminal animations for enter */
+	.ng-leave { }        /* starting animations for leave */
+	.ng-leave.ng-leave-active { } /* terminal animations for leave */
+</style>
+
 <lfg-header></lfg-header>
 <lfg-friendlist></lfg-friendlist>
 <div id="home" class="wrap">
@@ -98,12 +110,14 @@
 						<ul class="search-tags">
 
 							<li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags"
-								ng-change="updateTags(this)" list="tagsList"></li>
-								<datalist id="tagsList">
-									<option data-ng-repeat="item in autoCompleteTags" value="{{item}}"/>
-								</datalist>
-							</ul>
-							<lfg-loader></lfg-loader>
+								ng-change="updateTags(this)" list="tagsList">
+							</li>
+							<datalist id="tagsList">
+								<option data-ng-repeat="item in autoCompleteTags" value="{{item}}"/>
+							</datalist>
+						</ul>
+
+						<lfg-loader></lfg-loader>
 					<div class="last">
 						<div ng-if="(aMyRdv.length > 0)">
 							<h1 translate>My partys</h1>
@@ -123,7 +137,7 @@
 				</thead>
 			</table>
 			<a class="line" ng-href="{{rdv.url}}"
-			ng-repeat="rdv in aMyRdv | filterRdvWithMe:currentUser.id:plateform.id:tags:slotMinAvailable:slotMaxAvailable |orderBy:predicate:reverse">
+			ng-repeat="rdv in aMyRdv |orderBy:predicate:reverse">
 			<table border="0">
 				<tbody>
 
@@ -165,7 +179,7 @@
 				</thead>
 			</table>
 			<a class="line" ng-href="{{rdv.url}}"
-			ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse as resultsAll">
+			ng-repeat="rdv in aRdv | filterRdvLastPlace:plateform.id:tags:false:false:true:slotMinAvailable:slotMaxAvailable:type |orderBy:predicate:reverse">
 			<table border="0">
 
 				<tbody>
