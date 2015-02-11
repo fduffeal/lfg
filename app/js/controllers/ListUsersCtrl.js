@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv','invite',
-		function ($scope,$routeParams,user,socket,$filter,rdv,invite) {
+	['$scope','$routeParams','user','socket','$filter','rdv',
+		function ($scope,$routeParams,user,socket,$filter,rdv) {
 			'use strict';
 
 

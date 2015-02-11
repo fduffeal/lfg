@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-    .directive('lfgInvitePopup', ['rdv','$filter','user','invite',
-        function(rdv,$filter,user,invite) {
+    .directive('lfgInvitePopup', ['rdv','$filter','user',
+        function(rdv,$filter,user) {
             'use strict';
             return {
                 scope:{
@@ -73,7 +73,7 @@ angular.module('myApp.directives')
                             return;
                         }
 
-                        var invitePromise = invite.send($scope.userInvite,$scope.rdvInvite);
+                        var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
                         if(invitePromise !== false){
                             invitePromise.then(function(data){
                                 console.log('invitePromise',data);

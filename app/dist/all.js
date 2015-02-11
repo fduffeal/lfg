@@ -30074,8 +30074,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 );
 
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv','invite',
-		function ($scope,$routeParams,user,socket,$filter,rdv,invite) {
+	['$scope','$routeParams','user','socket','$filter','rdv',
+		function ($scope,$routeParams,user,socket,$filter,rdv) {
 			'use strict';
 
 
@@ -31662,8 +31662,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-    .directive('lfgInvitePopup', ['rdv','$filter','user','invite',
-        function(rdv,$filter,user,invite) {
+    .directive('lfgInvitePopup', ['rdv','$filter','user',
+        function(rdv,$filter,user) {
             'use strict';
             return {
                 scope:{
@@ -31736,7 +31736,7 @@ angular.module('myApp.directives')
                             return;
                         }
 
-                        var invitePromise = invite.send($scope.userInvite,$scope.rdvInvite);
+                        var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
                         if(invitePromise !== false){
                             invitePromise.then(function(data){
                                 console.log('invitePromise',data);
@@ -32837,26 +32837,6 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
-	.service('invite', ['$http','api','user','$window',
-		function($http,api,user,$window) {
-			'use strict';
-
-			this.send = function(destinataire,rdv){
-
-				var currentUser = user.get();
-				if(currentUser === null) {
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				return api.call('invite/send/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
-			};
-		}
-
-	]
-);
-
-angular.module('myApp.services')
 	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
 		function(gettextCatalog,$routeParams,$rootScope,$location) {
 			'use strict';
@@ -32996,6 +32976,17 @@ angular.module('myApp.services')
 				var now = new Date();
 				now = now.getTime()/1000;
 				return (typeof rdv !== "undefined" && rdv.end < now);
+			};
+
+			this.invite = function(destinataire,rdv){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('rdv/invite/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
 			};
 		}
 	]

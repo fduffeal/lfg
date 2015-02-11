@@ -78,6 +78,17 @@ angular.module('myApp.services')
 				now = now.getTime()/1000;
 				return (typeof rdv !== "undefined" && rdv.end < now);
 			};
+
+			this.invite = function(destinataire,rdv){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('rdv/invite/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
+			};
 		}
 	]
 );
