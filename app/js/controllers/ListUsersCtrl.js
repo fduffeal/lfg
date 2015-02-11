@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv',
-		function ($scope,$routeParams,user,socket,$filter,rdv) {
+	['$scope','$routeParams','user','socket','$filter','rdv','invite',
+		function ($scope,$routeParams,user,socket,$filter,rdv,invite) {
 			'use strict';
 
 
@@ -95,55 +95,14 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				});
 			};
 
-			$scope.aRdv = [];
 
-			var getRdv = function(){
-				rdv.getAll().success(function(data) {
-					// this callback will be called asynchronously
-					// when the response is available
-					$scope.aRdv = data;
-
-					updateMyRdv();
-
-				}).error(function(data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
-				});
-			}
-
-
-			$scope.rdvInvit = null;
-			var updateMyRdv = function(){
-				//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
-				if($scope.currentUser !== null){
-
-					if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
-						var plateformId = null;
-					}else {
-						var plateformId = $scope.plateform.id;
-					}
-
-
-
-					//if($scope.plateform)
-					$scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
-
-					for(var i in $scope.aMyRdv){
-						$scope.aMyRdv[i].description = $scope.aMyRdv[i].description +' '+ $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
-					}
-					$scope.rdvInvit = $scope.aMyRdv[0];
-				}
+			$scope.invite = function(user){
+				$scope.$broadcast('invite',[user]);
 			};
-
-			$scope.invit = function(){
-				console.log($scope.rdvInvit);
-			};
-
 
 			var init = function(){
 
 				fillPlateforms();
-				getRdv();
 
 				var getFriendsPromise = user.getFriends();
 				if(getFriendsPromise !== false){

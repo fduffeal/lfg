@@ -1,0 +1,11 @@
+<div ng-show="displayInvite">
+	<form name="inviteForm" ng-submit="submitInvite()" ng-show="aMyRdv.length>0">
+		<select ng-model="rdvInvite" ng-options="rdv.description for rdv in aMyRdv" ng-show="aMyRdv.length>1">
+		</select>
+
+		<input ng-model="userInvite" type="hidden" required/>
+
+		<input type="submit" href="" class="btn" value="{{'Invit !' | translate}}">
+	</form>
+	<span ng-show="aMyRdv.length==0" translate>First you have to create a party, then you will be able to invite your friends !</span>
+</div>
