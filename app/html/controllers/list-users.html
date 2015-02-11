@@ -28,7 +28,7 @@
 
 						<tbody>
 							<tr ng-repeat="user in aUsers |orderBy:sort:reverse">
-								<th class="list-gardien" >{{user.username}}</th>
+								<th class="list-gardien" >{{user.userGame[0].gameUsername}}</th>
 								<th class="list-perso">
 									<div class="xs-character" ng-repeat="userGames in user.userGame" style="background: url('{{userGames.data4}}')">
 									<img src="{{userGames.data5}}" alt="">
