@@ -71,7 +71,7 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="userGame in rdv.users">
-							<td class="place" ng-class="{'leader':isLeader}">{{$index + 1}}</td>
+							<td class="place" ng-class="{'leader':rdv.leader.username === userGame.user.username}">{{$index + 1}}</td>
 							<td class="list-player">
 								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 							</td>
