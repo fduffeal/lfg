@@ -39,7 +39,14 @@ angular.module('myApp.directives')
 					 * autoRefreshDataNotif
 					 */
 					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
+
+						var promiseNotification = rdv.getNotifications();
+
+						if(promiseNotification === false){
+							return;
+						}
+
+						promiseNotification.success(function(data){
 							if($scope.userInfo === null){
 								return;
 							}
