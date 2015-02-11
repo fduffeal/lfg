@@ -44,9 +44,9 @@ angular.module('myApp.directives')
 								return;
 							}
 							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							$scope.allMyNotifications = data;
 							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
+								if($scope.allMyNotifications[key].new === true){
 									$scope.notifications.push($scope.allMyNotifications[key]);
 								}
 							}

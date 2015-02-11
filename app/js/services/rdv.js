@@ -64,7 +64,13 @@ angular.module('myApp.services')
 			};
 
 			this.getNotifications = function(){
-				return api.call('notifications/');
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/'+currentUser.id);
 			};
 
 			this.isLive = function(rdv){

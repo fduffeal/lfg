@@ -14,7 +14,7 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 			        if($scope.userInfo === null){
 				        return;
 			        }
-			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
+			        $scope.notifications = data;
 			        $rootScope.notificationsAlreadyRead = $scope.notifications;
 		        });
 	        };
