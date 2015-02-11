@@ -1,6 +1,6 @@
 <div id="invite_popup" ng-show="displayInvite">
 	<form name="inviteForm" ng-submit="submitInvite()" ng-show="aMyRdv.length>0">
-		<select ng-model="rdvInvite" ng-options="rdv.description for rdv in aMyRdv" ng-show="aMyRdv.length>1">
+		<select ng-model="rdvInvite" ng-options="rdv.description for rdv in aMyRdv">
 		</select>
 
 		<input ng-model="userInvite" type="hidden" required/>
