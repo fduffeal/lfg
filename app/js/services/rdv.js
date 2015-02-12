@@ -73,6 +73,16 @@ angular.module('myApp.services')
 				return api.call('notifications/'+currentUser.id);
 			};
 
+			this.markNotificationRead = function(ids){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/read/'+currentUser.id+'/'+ids);
+			};
+
 			this.isLive = function(rdv){
 				var now = new Date();
 				now = now.getTime()/1000;

@@ -8,21 +8,27 @@
 	        <div class="notifs" ng-if="(notifications.length > 0)">
 		        <div class="line unread" ng-repeat="notification in notifications">
 			        <div class="msg" ng-switch on="notification.code">
-				        <span ng-switch-when="one_user_leave" translate>A player leave </span>
-				        <span ng-switch-when="new_player_join" translate>A new player joined </span>
-				        <span ng-switch-when="you_have_been_accepted"><span translate>You have been accepted by </span> {{notification.expediteur.username}} <span translate> on</span></span>
-				        <span ng-switch-when="you_have_been_kicked"><span translate>Sorry, you have been kicked by </span> {{notification.expediteur.username}} <span translate> from</span></span>
-				        <span ng-switch-when="leader_leave_you_are_new_leader">{{notification.expediteur.username}} <span translate> has leave. You lead </span></span>
-				        <span ng-switch-when="you_have_been_promoted"><span translate>You have been promoted as leader by </span> {{notification.expediteur.username}} <span translate> on</span></span>
+				        <span ng-switch-when="new_invitation" translate>{{notification.expediteur.username}} send you an invitation to</span>
+				        <span ng-switch-when="one_user_leave" translate>{{notification.expediteur.username}} leave</span>
+				        <span ng-switch-when="new_player_join" translate>{{notification.expediteur.username}} joined</span>
+				        <span ng-switch-when="you_have_been_accepted" translate>You have been accepted by {{notification.expediteur.username}} on</span>
+				        <span ng-switch-when="you_have_been_kicked" translate>Sorry, you have been kicked by {{notification.expediteur.username}} from</span>
+				        <span ng-switch-when="leader_leave_you_are_new_leader" translate>{{notification.expediteur.username}} has leave. You lead </span>
+				        <span ng-switch-when="you_have_been_promoted" translate>You have been promoted as leader by {{notification.expediteur.username}} on</span>
 				        <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate> this party</a>
 			        </div>
+			        <div class="date">
+				        <lfg-since time="{{notification.created_at}}"></lfg-since>
+				        <br/>
+				        <a href="" ng-click="markRead(notification.id)" translate>Mark as read</a>
+			        </div>
 
-			        <div class="date">{{notification.created_at*1000 | date:'HH:mm'}}</div>
 			        <div class="sep"></div>
 		        </div>
 	        </div>
+
+	        <a href="" class="btn" ng-click="markAllAsRead()" translate>Mark all as read</a>
         </div>
     </div>
 </div>
 <lfg-footer></lfg-footer>
-<div lfg-interval="intervaNotificationId"></div>

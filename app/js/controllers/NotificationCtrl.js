@@ -17,29 +17,31 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 			        return;
 		        }
 		        promiseNotification.success(function(data){
-			        if($scope.userInfo === null){
-				        return;
-			        }
 			        $scope.notifications = data;
-			        $rootScope.notificationsAlreadyRead = $scope.notifications;
 		        });
 	        };
 
-	        var refreshTime = 12000;
-	        var autoRefreshDataNotif = function(){
-		        $interval.cancel($scope.intervaNotificationId);
+	        $scope.markRead = function(id){
+		        var promiseMarkNotificationRead = rdv.markNotificationRead(id);
 
-		        if (angular.isDefined($scope.intervaNotificationId)) {
+		        if(promiseMarkNotificationRead === false){
 			        return;
 		        }
+		        promiseMarkNotificationRead.success(function(data){
+			        $scope.notifications = data;
+		        });
+	        };
 
-		        $scope.intervaNotificationId = $interval(function(){
-			        refreshDataNotif();
-		        }, refreshTime);
+	        $scope.markAllAsRead = function(){
+		        var listId = [];
+		        for(var key in $scope.notifications){
+			        listId.push($scope.notifications[key].id);
+		        }
+
+		        $scope.markRead(listId.join('-'));
 	        };
 
 	        refreshDataNotif();
-	        autoRefreshDataNotif();
         }
     ]
 );
