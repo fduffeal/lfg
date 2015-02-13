@@ -71,7 +71,8 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="userGame in rdv.users">
-							<td class="place" ng-class="{'leader':rdv.leader.username === userGame.user.username}">{{$index + 1}}</td>
+							<td class="place" ng-if="rdv.leader.username === userGame.user.username"> <img src="img/ico-chef.png"style="width: 13px; height:29px!important" alt=""></td>
+							<td class="place" ng-if="rdv.leader.username != userGame.user.username">{{$index + 1}}</td>
 							<td class="list-player">
 								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 							</td>
