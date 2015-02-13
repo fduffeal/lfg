@@ -45,7 +45,7 @@
 								</th>
 								<th class="list-action icon-actions">
 									<span ng-if="!user.me  && user.isFriend == true" class="invit" ng-click="invite(user)"></span>
-									<span ng-if="!user.me && user.isFriend == false && user.isFriendResquest == false" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add':!user.isFriendPending}" class="add"></span>
+									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>
 									<span ng-if="user.isFriendPending" translate>friend request</span>
 									<span ng-if="!user.me && user.isFriend == true" ng-click="removeFromFriendList(user.username)"class="remove"></span>
 									<!--<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>-->

@@ -31456,629 +31456,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
-angular.module('myApp.directives')
-	.directive('lfgFacebook', ['$window','$document',
-		function($window,$document) {
-			'use strict';
-			return {
-				link : function(){
-
-					window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1482107158698739',
-							xfbml      : true,
-							version    : 'v2.0'
-						});
-					};
-
-					(function(d, s, id){
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) {return;}
-						js = d.createElement(s); js.id = id;
-						js.src = "//connect.facebook.net/fr_FR/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-facebook.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFooter', ['lang','$location',
-		function(lang,$location) {
-			return {
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.updateLang = function(langSelected){
-						lang.change(langSelected);
-						$scope.lang = langSelected;
-					};
-
-					var switchLangUrl = function(newLang){
-						return $location.absUrl().replace($scope.lang,newLang);
-					};
-
-					$scope.switchLangUrlFr = switchLangUrl('fr');
-					$scope.switchLangUrlEn = switchLangUrl('en');
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-footer.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
-		function($window,socket,user,$filter,redirection) {
-			'use strict';
-			return {
-				scope:{
-
-				},
-				link : function($scope){
-
-					$scope.currentUser = user.get();
-					$scope.username = '';
-
-					$scope.allUsers = [];
-					$scope.aUsers = [];
-
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-
-
-					var filterData = function(){
-
-						for (var key in $scope.allUsers) {
-							$scope.allUsers[key].connected = false;
-							$scope.allUsers[key].me = false;
-							$scope.allUsers[key].canAddToFriendList = true;
-							$scope.allUsers[key].canAddToBlackList = true;
-
-							if (socket.listUsers[$scope.allUsers[key].username]) {
-								$scope.allUsers[key].connected = true;
-							}
-
-							if($scope.currentUser !== null && $scope.allUsers[key].username === $scope.currentUser.username){
-								$scope.allUsers[key].me = true;
-							}
-						}
-
-						$scope.aUsers = $filter('filterUser')($scope.allUsers,$scope.username,$scope.onlyFriends);
-					};
-
-
-					var refreshData = function() {
-						var getFriendsPromise = user.getFriends();
-						if(getFriendsPromise === false){
-							return;
-						}
-						getFriendsPromise.success(function (data, status, headers, config) {
-							$scope.allUsers = data;
-							filterData();
-						});
-					};
-
-
-					$scope.$on('updateListUsers',function(event,data){
-						filterData();
-					});
-
-					$scope.$watch('username',function(){
-						filterData();
-					});
-
-					var init = function(){
-						refreshData();
-						socket.getUserList();
-					};
-
-					init();
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-friendlist.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
-			'use strict';
-			return {
-				scope:{
-					'lfgHeader':'='
-				},
-				link: function($scope, element, attrs) {
-					lang.initLang();
-					$scope.lang = lang.getCurrent();
-
-					$scope.logout = function(){
-						user.logout();
-						$scope.userInfo = null;
-						$window.location.reload();
-					};
-
-
-
-
-					$scope.homeUrl = redirection.getHomePageUrl();
-					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
-					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
-					$scope.loginPageUrl = redirection.getLoginPageUrl();
-					$scope.registerPageUrl = redirection.getRegisterPageUrl();
-					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-					$scope.gamesUrl = redirection.getGamesPageUrl();
-					$scope.notifUrl = redirection.getNotifPageUrl();
-					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-					$scope.forumUrl = redirection.getForumUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
-
-                    $scope.userInfo = user.get();
-
-
-					/**
-					 * autoRefreshDataNotif
-					 */
-					var refreshDataNotif = function(){
-
-						var promiseNotification = rdv.getNotifications();
-
-						if(promiseNotification === false){
-							return;
-						}
-
-						promiseNotification.success(function(data){
-							if($scope.userInfo === null){
-								return;
-							}
-							$scope.notifications = [];
-							$scope.allMyNotifications = data;
-							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].new === true){
-									$scope.notifications.push($scope.allMyNotifications[key]);
-								}
-							}
-
-							if($scope.notifications.length > 0){
-								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
-							} else {
-								$document[0].title = 'Esbattle.com';
-							}
-
-						});
-					};
-
-					var refreshTime = 12000;
-					var autoRefreshDataNotif = function(){
-						$interval.cancel($scope.intervaNotificationId);
-
-						if (angular.isDefined($scope.intervaNotificationId)) {
-							return;
-						}
-
-						$scope.intervaNotificationId = $interval(function(){
-							refreshDataNotif();
-						}, refreshTime);
-					};
-
-					refreshDataNotif();
-					autoRefreshDataNotif();
-
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-header.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
-			'use strict';
-			return {
-				scope:{
-					'init':'='
-				},
-				link: function($scope, element, attrs) {
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
-				},
-				restrict: 'E'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgInterval', ["$interval",
-		function($interval) {
-			'use strict';
-			return {
-				replace :true,
-				scope:{
-					'lfgInterval':'='
-				},
-				link: function($scope, element, attrs) {
-
-					element.on('$destroy', function() {
-						$interval.cancel($scope.lfgInterval);
-						$scope.lfgInterval = undefined;
-					});
-				},
-				restrict: 'A'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgInvitePopup', ['rdv','$filter','user',
-        function(rdv,$filter,user) {
-            'use strict';
-            return {
-                scope:{
-
-                },
-                link: function($scope, element, attrs) {
-
-                    $scope.currentUser = user.get();
-
-                    $scope.aRdv = [];
-
-                    var getRdv = function(){
-                        rdv.getAll().success(function(data) {
-                            // this callback will be called asynchronously
-                            // when the response is available
-                            $scope.aRdv = data;
-
-                            updateMyRdv();
-
-                        }).error(function(data, status, headers, config) {
-                            // called asynchronously if an error occurs
-                            // or server returns response with an error status.
-                        });
-                    }
-
-
-                    $scope.rdvInvite = null;
-                    var updateMyRdv = function(){
-                        //filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
-                        if($scope.currentUser !== null){
-
-                            if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
-                                var plateformId = null;
-                            }else {
-                                var plateformId = $scope.plateform.id;
-                            }
-
-
-
-                            //if($scope.plateform)
-                            $scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
-
-                            for(var i in $scope.aMyRdv){
-                                $scope.aMyRdv[i].description = $scope.aMyRdv[i].description +' '+ $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
-                            }
-                            $scope.rdvInvite = $scope.aMyRdv[0];
-                        }
-                    };
-
-
-                    $scope.displayInvite = false;
-
-                    $scope.$on('invite',function(event,data){
-
-                        console.log('userInvite',data);
-                        if(typeof data == "undefined"){
-                            return;
-                        }
-                        $scope.userInvite = data[0];
-                        $scope.displayInvite = true;
-
-
-                        console.log('popup',$scope.displayInvite,$scope.userInvite);
-                    });
-
-
-                    $scope.submitInvite = function(){
-                        console.log('submitInvite',$scope.inviteForm);
-                        if($scope.inviteForm.$valid === false){
-                            return;
-                        }
-
-                        var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
-                        if(invitePromise !== false){
-                            invitePromise.then(function(data){
-                                console.log('invitePromise',data);
-                            });
-                        }
-                    };
-
-                    getRdv();
-
-
-
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-invite-popup.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgLoader', [
-		function() {
-			return {
-				link: function() {
-				},
-				restrict: 'E',
-				replace:false,
-				templateUrl: '/html/directives/lfg-loader.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
-        function(matchmaking,user,redirection,$filter) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'='
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.matchmakingTemplate = null;
-
-	                /**
-	                 * récupère les configs pour la selection du type de matchmaking
-	                 */
-	                matchmaking.getConf().success(function(data){
-
-		                var groupOfTemplate = {};
-		                for(var key in data){
-			                if(!groupOfTemplate[data[key].description]) {
-				                groupOfTemplate[data[key].description] = [];
-			                }
-			                data[key].concatTags = "";
-			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
-			                }
-			                groupOfTemplate[data[key].description].push(data[key]);
-		                }
-		                $scope.groupOfTemplate = groupOfTemplate;
-	                });
-
-	                /**
-	                 * selectionne un type de matchmaking
-	                 * @param template
-	                 */
-	                $scope.selectGroupOfTemplate = function(template){
-		                $scope.matchmakingTemplate = template;
-		                $scope.templateSelectedModel = template[0];
-	                };
-
-	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
-		                $scope.$emit('templateSelectedModel',[newValue]);
-	                });
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-matchmaking.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgMeta', ['meta','$rootScope',
-		function(meta,$rootScope) {
-			'use strict';
-			return {
-				scope:{
-					'name': '@'
-				},
-				link: function($scope, element, attrs) {
-					element[0].name = $scope.name;
-
-					var content = '';
-					switch($scope.name){
-						case 'description':
-							content = $rootScope.description;
-							$rootScope.$watch('description',function(newValue,oldValue){
-								element[0].content = newValue;
-							});
-							break;
-
-						default :
-							content =  $rootScope.description;
-							break;
-
-
-					}
-					element[0].content = content;
-
-
-				},
-				restrict: 'E',
-				replace: true,
-				templateUrl: '/html/directives/lfg-meta.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-	.directive('lfgPagination', [
-		function() {
-			return {
-				scope:{
-					aPage: '=',
-					currentPage : '=',
-					maxPage:'='
-				},
-				link: function($scope, element, attrs) {
-					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
-				},
-				restrict: 'E',
-				templateUrl: '/html/directives/lfg-pagination.html'
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfileBungie', [
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfileBungie':'=',
-                    'userGame':'=',
-                    'withPlateform':'@',
-                    'user':'=',
-                    'listUser':'='
-                },
-                link: function($scope, element, attrs) {
-                    $scope.isConnected = false;
-                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
-                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
-                            $scope.isConnected = true;
-                        }
-                    }
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile-bungie.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfileHeader', ['user',
-        function(user) {
-            'use strict';
-            return {
-                scope:{
-
-                },
-                link: function($scope, element, attrs) {
-                    $scope.currentUser = user.get();
-
-                    $scope.selectProfil = function(profil){
-                        $scope.profilNotSelected = [];
-                        $scope.profilSelected = profil;
-
-                        for(var key in $scope.currentUser.userGame){
-                            if($scope.currentUser.userGame[key] != profil){
-                                $scope.profilNotSelected.push($scope.currentUser.userGame[key]);
-                            }
-                        }
-                    };
-
-                    if($scope.currentUser != null){
-                        $scope.selectProfil($scope.currentUser.userGame[0]);
-                    }
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile-header.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgProfile', ['user','storage',
-        function(user,storage) {
-            'use strict';
-            return {
-                scope:{
-                    'lfgProfile':'=',
-	                'selectedPerso':'=',
-	                'aUserGame':'=',
-                    'withPlateform':'@'
-                },
-                link: function($scope, element, attrs) {
-
-	                $scope.currentUser = user.get();
-
-	                $scope.selectPerso = function(persoSelected){
-		                $scope.selectedPerso = persoSelected;
-                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
-	                };
-
-                    var setSelectedPerso = function(){
-                        if($scope.currentUser !== null){
-                            $scope.aUserGame = $scope.currentUser.userGame;
-                        }
-
-                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
-                        if(typeof selectedProfilCookieId !== "undefined"){
-                            for(var key in $scope.aUserGame){
-                                if($scope.aUserGame[key].id == selectedProfilCookieId){
-                                    $scope.selectedPerso = $scope.aUserGame[key];
-                                }
-                            }
-                        }
-
-                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
-                            $scope.selectedPerso = $scope.aUserGame[0];
-                        }
-                    };
-
-                    setSelectedPerso();
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-profile.html'
-            };
-        }
-    ]
-);
-
-angular.module('myApp.directives')
-    .directive('lfgSince', ['tools','$timeout',
-        function(tools,$timeout) {
-            'use strict';
-            return {
-                scope:{
-                    time : '@'
-                },
-                link: function($scope, element, attrs) {
-
-                    var update = function(){
-                        $scope.message = tools.getSinceTimeMessage($scope.time);
-                        $timeout(function() {
-                            update();
-                        }, 60000);
-                    };
-
-                    update();
-
-                },
-                restrict: 'E',
-                templateUrl: '/html/directives/lfg-since.html'
-            };
-        }
-    ]
-);
-
 angular.module('myApp.filters').filter('filterAvatar', [function () {
 	'use strict';
 	return function (userGameProfil) {
@@ -32359,120 +31736,6 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -33656,4 +32919,741 @@ angular.module('myApp.services')
 			}
 		}
 	]
+);
+
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
+angular.module('myApp.directives')
+	.directive('lfgFacebook', ['$window','$document',
+		function($window,$document) {
+			'use strict';
+			return {
+				link : function(){
+
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1482107158698739',
+							xfbml      : true,
+							version    : 'v2.0'
+						});
+					};
+
+					(function(d, s, id){
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) {return;}
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/fr_FR/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFooter', ['lang','$location',
+		function(lang,$location) {
+			return {
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.updateLang = function(langSelected){
+						lang.change(langSelected);
+						$scope.lang = langSelected;
+					};
+
+					var switchLangUrl = function(newLang){
+						return $location.absUrl().replace($scope.lang,newLang);
+					};
+
+					$scope.switchLangUrlFr = switchLangUrl('fr');
+					$scope.switchLangUrlEn = switchLangUrl('en');
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-footer.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
+		function($window,socket,user,$filter,redirection) {
+			'use strict';
+			return {
+				scope:{
+
+				},
+				link : function($scope){
+
+					$scope.currentUser = user.get();
+					$scope.username = '';
+
+					$scope.allUsers = [];
+					$scope.aUsers = [];
+
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+
+					var filterData = function(){
+
+						for (var key in $scope.allUsers) {
+							$scope.allUsers[key].connected = false;
+							$scope.allUsers[key].me = false;
+							$scope.allUsers[key].canAddToFriendList = true;
+							$scope.allUsers[key].canAddToBlackList = true;
+
+							if (socket.listUsers[$scope.allUsers[key].username]) {
+								$scope.allUsers[key].connected = true;
+							}
+
+							if($scope.currentUser !== null && $scope.allUsers[key].username === $scope.currentUser.username){
+								$scope.allUsers[key].me = true;
+							}
+						}
+
+						$scope.aUsers = $filter('filterUser')($scope.allUsers,$scope.username,$scope.onlyFriends);
+					};
+
+
+					var refreshData = function() {
+						var getFriendsPromise = user.getFriends();
+						if(getFriendsPromise === false){
+							return;
+						}
+						getFriendsPromise.success(function (data, status, headers, config) {
+							$scope.allUsers = data;
+							filterData();
+						});
+					};
+
+
+					$scope.$on('updateListUsers',function(event,data){
+						filterData();
+					});
+
+					$scope.$watch('username',function(){
+						filterData();
+					});
+
+					var init = function(){
+						refreshData();
+						socket.getUserList();
+					};
+
+					init();
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-friendlist.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
+			'use strict';
+			return {
+				scope:{
+					'lfgHeader':'='
+				},
+				link: function($scope, element, attrs) {
+					lang.initLang();
+					$scope.lang = lang.getCurrent();
+
+					$scope.logout = function(){
+						user.logout();
+						$scope.userInfo = null;
+						$window.location.reload();
+					};
+
+
+
+
+					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
+					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
+					$scope.loginPageUrl = redirection.getLoginPageUrl();
+					$scope.registerPageUrl = redirection.getRegisterPageUrl();
+					$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+					$scope.gamesUrl = redirection.getGamesPageUrl();
+					$scope.notifUrl = redirection.getNotifPageUrl();
+					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.forumUrl = redirection.getForumUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+                    $scope.userInfo = user.get();
+
+
+					/**
+					 * autoRefreshDataNotif
+					 */
+					var refreshDataNotif = function(){
+
+						var promiseNotification = rdv.getNotifications();
+
+						if(promiseNotification === false){
+							return;
+						}
+
+						promiseNotification.success(function(data){
+							if($scope.userInfo === null){
+								return;
+							}
+							$scope.notifications = [];
+							$scope.allMyNotifications = data;
+							for(var key in $scope.allMyNotifications){
+								if($scope.allMyNotifications[key].new === true){
+									$scope.notifications.push($scope.allMyNotifications[key]);
+								}
+							}
+
+							if($scope.notifications.length > 0){
+								$document[0].title = '('+$scope.notifications.length+') Esbattle.com';
+							} else {
+								$document[0].title = 'Esbattle.com';
+							}
+
+						});
+					};
+
+					var refreshTime = 12000;
+					var autoRefreshDataNotif = function(){
+						$interval.cancel($scope.intervaNotificationId);
+
+						if (angular.isDefined($scope.intervaNotificationId)) {
+							return;
+						}
+
+						$scope.intervaNotificationId = $interval(function(){
+							refreshDataNotif();
+						}, refreshTime);
+					};
+
+					refreshDataNotif();
+					autoRefreshDataNotif();
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-header.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInit', ['user','socket',
+		function(user,socket) {
+			'use strict';
+			return {
+				scope:{
+					'init':'='
+				},
+				link: function($scope, element, attrs) {
+					var currentUser = user.get();
+					if(currentUser !== null){
+						socket.addUser(currentUser.username);
+					}
+
+				},
+				restrict: 'E'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgInterval', ["$interval",
+		function($interval) {
+			'use strict';
+			return {
+				replace :true,
+				scope:{
+					'lfgInterval':'='
+				},
+				link: function($scope, element, attrs) {
+
+					element.on('$destroy', function() {
+						$interval.cancel($scope.lfgInterval);
+						$scope.lfgInterval = undefined;
+					});
+				},
+				restrict: 'A'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgInvitePopup', ['rdv','$filter','user',
+        function(rdv,$filter,user) {
+            'use strict';
+            return {
+                scope:{
+
+                },
+                link: function($scope, element, attrs) {
+
+                    $scope.currentUser = user.get();
+
+                    $scope.aRdv = [];
+
+                    var getRdv = function(){
+                        rdv.getAll().success(function(data) {
+                            // this callback will be called asynchronously
+                            // when the response is available
+                            $scope.aRdv = data;
+
+                            updateMyRdv();
+
+                        }).error(function(data, status, headers, config) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
+                    }
+
+
+                    $scope.rdvInvite = null;
+                    var updateMyRdv = function(){
+                        //filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+                        if($scope.currentUser !== null){
+
+                            if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+                                var plateformId = null;
+                            }else {
+                                var plateformId = $scope.plateform.id;
+                            }
+
+
+
+                            //if($scope.plateform)
+                            $scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+
+                            for(var i in $scope.aMyRdv){
+                                $scope.aMyRdv[i].description = $scope.aMyRdv[i].description +' '+ $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
+                            }
+                            $scope.rdvInvite = $scope.aMyRdv[0];
+                        }
+                    };
+
+
+                    $scope.displayInvite = false;
+
+                    $scope.$on('invite',function(event,data){
+
+                        console.log('userInvite',data);
+                        if(typeof data == "undefined"){
+                            return;
+                        }
+                        $scope.userInvite = data[0];
+                        $scope.displayInvite = true;
+
+
+                        console.log('popup',$scope.displayInvite,$scope.userInvite);
+                    });
+
+
+                    $scope.submitInvite = function(){
+                        console.log('submitInvite',$scope.inviteForm);
+                        if($scope.inviteForm.$valid === false){
+                            return;
+                        }
+
+                        var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
+                        if(invitePromise !== false){
+                            invitePromise.then(function(data){
+                                console.log('invitePromise',data);
+                            });
+                        }
+                    };
+
+                    getRdv();
+
+
+
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-invite-popup.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgLoader', [
+		function() {
+			return {
+				link: function() {
+				},
+				restrict: 'E',
+				replace:false,
+				templateUrl: '/html/directives/lfg-loader.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgMatchmaking', ['matchmaking','user','redirection','$filter',
+        function(matchmaking,user,redirection,$filter) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'='
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.matchmakingTemplate = null;
+
+	                /**
+	                 * récupère les configs pour la selection du type de matchmaking
+	                 */
+	                matchmaking.getConf().success(function(data){
+
+		                var groupOfTemplate = {};
+		                for(var key in data){
+			                if(!groupOfTemplate[data[key].description]) {
+				                groupOfTemplate[data[key].description] = [];
+			                }
+			                data[key].concatTags = "";
+			                for(var keyTag in data[key].tags){
+				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+			                }
+			                groupOfTemplate[data[key].description].push(data[key]);
+		                }
+		                $scope.groupOfTemplate = groupOfTemplate;
+	                });
+
+	                /**
+	                 * selectionne un type de matchmaking
+	                 * @param template
+	                 */
+	                $scope.selectGroupOfTemplate = function(template){
+		                $scope.matchmakingTemplate = template;
+		                $scope.templateSelectedModel = template[0];
+	                };
+
+	                $scope.$watch('templateSelectedModel',function(newValue,oldValue){
+		                $scope.$emit('templateSelectedModel',[newValue]);
+	                });
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-matchmaking.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgMeta', ['meta','$rootScope',
+		function(meta,$rootScope) {
+			'use strict';
+			return {
+				scope:{
+					'name': '@'
+				},
+				link: function($scope, element, attrs) {
+					element[0].name = $scope.name;
+
+					var content = '';
+					switch($scope.name){
+						case 'description':
+							content = $rootScope.description;
+							$rootScope.$watch('description',function(newValue,oldValue){
+								element[0].content = newValue;
+							});
+							break;
+
+						default :
+							content =  $rootScope.description;
+							break;
+
+
+					}
+					element[0].content = content;
+
+
+				},
+				restrict: 'E',
+				replace: true,
+				templateUrl: '/html/directives/lfg-meta.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgPagination', [
+		function() {
+			return {
+				scope:{
+					aPage: '=',
+					currentPage : '=',
+					maxPage:'='
+				},
+				link: function($scope, element, attrs) {
+					$scope.maxPageDisplayedWithoutFirstAndLast = $scope.maxPage-2;
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-pagination.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfileBungie', [
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfileBungie':'=',
+                    'userGame':'=',
+                    'withPlateform':'@',
+                    'user':'=',
+                    'listUser':'='
+                },
+                link: function($scope, element, attrs) {
+                    $scope.isConnected = false;
+                    if(typeof $scope.user !== "undefined" && $scope.user !== null && $scope.listUser !== null){
+                        if(typeof $scope.listUser !== "undefined" && $scope.listUser[$scope.user.username]){
+                            $scope.isConnected = true;
+                        }
+                    }
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile-bungie.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfileHeader', ['user',
+        function(user) {
+            'use strict';
+            return {
+                scope:{
+
+                },
+                link: function($scope, element, attrs) {
+                    $scope.currentUser = user.get();
+
+                    $scope.selectProfil = function(profil){
+                        $scope.profilNotSelected = [];
+                        $scope.profilSelected = profil;
+
+                        for(var key in $scope.currentUser.userGame){
+                            if($scope.currentUser.userGame[key] != profil){
+                                $scope.profilNotSelected.push($scope.currentUser.userGame[key]);
+                            }
+                        }
+                    };
+
+                    if($scope.currentUser != null){
+                        $scope.selectProfil($scope.currentUser.userGame[0]);
+                    }
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile-header.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgProfile', ['user','storage',
+        function(user,storage) {
+            'use strict';
+            return {
+                scope:{
+                    'lfgProfile':'=',
+	                'selectedPerso':'=',
+	                'aUserGame':'=',
+                    'withPlateform':'@'
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.currentUser = user.get();
+
+	                $scope.selectPerso = function(persoSelected){
+		                $scope.selectedPerso = persoSelected;
+                        storage.setPersistant('cookie_selected_profil_id',persoSelected.id);
+	                };
+
+                    var setSelectedPerso = function(){
+                        if($scope.currentUser !== null){
+                            $scope.aUserGame = $scope.currentUser.userGame;
+                        }
+
+                        var selectedProfilCookieId = storage.getPersistant('cookie_selected_profil_id');
+                        if(typeof selectedProfilCookieId !== "undefined"){
+                            for(var key in $scope.aUserGame){
+                                if($scope.aUserGame[key].id == selectedProfilCookieId){
+                                    $scope.selectedPerso = $scope.aUserGame[key];
+                                }
+                            }
+                        }
+
+                        if($scope.selectedPerso === null && $scope.currentUser !== null && $scope.aUserGame.length > 0){
+                            $scope.selectedPerso = $scope.aUserGame[0];
+                        }
+                    };
+
+                    setSelectedPerso();
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgSince', ['tools','$timeout',
+        function(tools,$timeout) {
+            'use strict';
+            return {
+                scope:{
+                    time : '@'
+                },
+                link: function($scope, element, attrs) {
+
+                    var update = function(){
+                        $scope.message = tools.getSinceTimeMessage($scope.time);
+                        $timeout(function() {
+                            update();
+                        }, 60000);
+                    };
+
+                    update();
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-since.html'
+            };
+        }
+    ]
 );
