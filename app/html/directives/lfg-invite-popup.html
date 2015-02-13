@@ -1,4 +1,5 @@
 <div id="invite_popup" ng-show="displayInvite">
+
 	<form name="inviteForm" ng-submit="submitInvite()" ng-show="aMyRdv.length>0">
 		<select ng-model="rdvInvite" ng-options="rdv.description for rdv in aMyRdv">
 		</select>
@@ -7,5 +8,8 @@
 
 		<input type="submit" href="" class="btn" value="{{'Invit !' | translate}}">
 	</form>
+
+	<a class="btn" href="" class="hide" ng-click="hide()">hide</a>
+
 	<span ng-show="aMyRdv.length==0" translate>First you have to create a party, then you will be able to invite your friends !</span>
 </div>

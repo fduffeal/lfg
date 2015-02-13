@@ -63,6 +63,10 @@ angular.module('myApp.directives')
 						socket.getUserList();
 					};
 
+					$scope.invite = function(user){
+						$scope.$broadcast('invite',[user]);
+					};
+
 					init();
 				},
 				restrict: 'E',

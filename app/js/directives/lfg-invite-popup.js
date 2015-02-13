@@ -23,8 +23,10 @@ angular.module('myApp.directives')
                         }).error(function(data, status, headers, config) {
                             // called asynchronously if an error occurs
                             // or server returns response with an error status.
+                        }).then(function(data){
+                            $scope.displayInvite = true;
                         });
-                    }
+                    };
 
 
                     $scope.rdvInvite = null;
@@ -55,20 +57,16 @@ angular.module('myApp.directives')
 
                     $scope.$on('invite',function(event,data){
 
-                        console.log('userInvite',data);
                         if(typeof data == "undefined"){
                             return;
                         }
                         $scope.userInvite = data[0];
-                        $scope.displayInvite = true;
 
-
-                        console.log('popup',$scope.displayInvite,$scope.userInvite);
+                        getRdv();
                     });
 
 
                     $scope.submitInvite = function(){
-                        console.log('submitInvite',$scope.inviteForm);
                         if($scope.inviteForm.$valid === false){
                             return;
                         }
@@ -81,10 +79,9 @@ angular.module('myApp.directives')
                         }
                     };
 
-                    getRdv();
-
-
-
+                    $scope.hide = function(){
+                        $scope.displayInvite = false;
+                    };
 
                 },
                 restrict: 'E',
