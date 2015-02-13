@@ -203,6 +203,30 @@ angular.module('myApp.services')
 				friendUsername = $window.encodeURIComponent(friendUsername);
 				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
 			};
+
+			/**
+			 * les utilisateurs à qui j'ai demandé d'être amis
+			 * @returns {*}
+			 */
+			this.getFriendsRequest = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/'+currentUser.id);
+			}
+
+			/**
+			 * les utilisateurs qui m'ont demandé en amis
+			 * @returns {*}
+			 */
+			this.getFriendsPending = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/pending/'+currentUser.id);
+			}
 		}
 	]
 );

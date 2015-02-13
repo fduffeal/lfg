@@ -277,6 +277,14 @@ msgid "Mail send. Please check your mailBox (and your spam box)"
 msgstr ""
 "Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)"
 
+#: app/html/controllers/notification.html
+msgid "Mark all as read"
+msgstr "Marquer tout comme lu"
+
+#: app/html/controllers/notification.html
+msgid "Mark as read"
+msgstr "Marquer comme lu"
+
 #: app/html/controllers/rdv.html
 msgid "My partys"
 msgstr "Mes parties"
@@ -576,6 +584,10 @@ msgstr "du jour"
 #: app/dynamique_translate.html
 msgid "epic"
 msgstr "épique"
+
+#: app/html/controllers/list-users.html
+msgid "friend request"
+msgstr "demande d'ami"
 
 #: app/dynamique_translate.html
 msgid "hunter"

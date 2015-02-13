@@ -23,6 +23,22 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				}
 			};
 
+			$scope.aFriendsPendingId = [];
+			var updateAFriendsPendingId = function(data){
+				$scope.aFriendsPendingId = [];
+				for (var key in data) {
+					$scope.aFriendsPendingId.push(data[key].id);
+				}
+			};
+
+			$scope.aFriendsRequestPendingId = [];
+			var updateAFriendsRequestId = function(data){
+				$scope.aFriendsRequestPendingId = [];
+				for (var key in data) {
+					$scope.aFriendsRequestPendingId.push(data[key].id);
+				}
+			};
+
 			var refreshData = function() {
 				user.getAll().success(function (data, status, headers, config) {
 					$scope.aAllUsers = data;
@@ -46,6 +62,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 					}
 
 					$scope.aAllUsers[key].isFriend = ($scope.aFriendsId.indexOf($scope.aAllUsers[key].id) > -1);
+					$scope.aAllUsers[key].isFriendPending = ($scope.aFriendsPendingId.indexOf($scope.aAllUsers[key].id) > -1);
+					$scope.aAllUsers[key].isFriendResquest = ($scope.aFriendsRequestPendingId.indexOf($scope.aAllUsers[key].id) > -1);
 				}
 
 				var plateformId = null;
@@ -100,18 +118,48 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				$scope.$broadcast('invite',[user]);
 			};
 
-			var init = function(){
+			var getFriendRequest = function(){
+				var getFriendsRequestPromise = user.getFriends();
+				if(getFriendsRequestPromise !== false){
+					user.getFriendsRequest().success(function (data, status, headers, config) {
+						updateAFriendsRequestId(data);
+					}).then(function(data){
+						filterData();
+					});
+				}
+			};
 
-				fillPlateforms();
+			var getFriendsRequestPending = function(){
+				var getFriendsRequestPendingPromise = user.getFriends();
+				if(getFriendsRequestPendingPromise !== false){
+					user.getFriendsPending().success(function (data, status, headers, config) {
+						updateAFriendsPendingId(data);
+					}).then(function(data){
+						filterData();
+					});
+				}
+			};
 
+			var getFriends = function(){
 				var getFriendsPromise = user.getFriends();
 				if(getFriendsPromise !== false){
 					user.getFriends().success(function (data, status, headers, config) {
 						updateAFriendsId(data);
 					}).then(function(data){
-						refreshData();
+						filterData();
 					});
 				}
+			};
+
+			var init = function(){
+
+				fillPlateforms();
+
+				getFriends();
+				getFriendsRequestPending();
+				getFriendRequest();
+
+				refreshData();
 
 				socket.getUserList();
 			};
