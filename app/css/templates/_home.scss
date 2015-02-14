@@ -131,14 +131,15 @@
 	}
 	.welcome {
 		margin-top: 0;
-		color: black;
+		color: white;
+		background: $orange;
 		.marge {
 			padding: 10px 20px 0 20px!important;
 		}
 		.hide, .show {
 			color: black;
 			float: right;
-			color: $orange;
+			color: white;
 			&:hover {
 				color: #06ab93;
 			}
@@ -148,7 +149,7 @@
 			&:before {
 				content: "✖";
 				font-size: 2rem;
-				color: $orange;
+				color: white;
 			}
 			&:hover:before {
 				color: #06ab93;
@@ -173,7 +174,7 @@
 			text-decoration: none!important;
 			font-size: 1.3rem;
 			margin-top: 0;
-			background: $orange;
+			background: black;
 			margin-bottom: 10px;
 			&:hover {
 				background: #000;
