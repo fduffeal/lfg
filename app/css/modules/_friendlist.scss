@@ -136,6 +136,9 @@
 				display: none;
 			}
 		}
+		.fl-friend.last .xl-info {
+			top: -4px!important;
+		}
 	}
 	.fl-friend{
 		&:hover .xl-info {
