@@ -4,6 +4,7 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
             'use strict';
 
 	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+	        $scope.listUsersUrl = redirection.getListUsersUrl();
 
 	        $scope.userInfo = user.get();
 	        /**

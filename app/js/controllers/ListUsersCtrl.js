@@ -53,6 +53,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 						if (newDataArray[j].id === array[i].id) {
 							alreadyAdded = true;
+							array[i] = newDataArray[j];
+
 						}
 					}
 
@@ -152,8 +154,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				var addFriendPromise = user.addFriend(friendUsername);
 				if(addFriendPromise !== false){
 					addFriendPromise.success(function(data){
-						updateAFriendsId(data);
-						filterData();
+						updateFriendsStatus();
 					});
 				}
 			};
@@ -162,8 +163,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				var removeFriendPromise = user.removeFriend(friendUsername);
 				if(removeFriendPromise !== false){
 					removeFriendPromise.success(function(data){
-						updateAFriendsId(data);
-						filterData();
+						updateFriendsStatus();
 					});
 				}
 			};
@@ -213,13 +213,17 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				}
 			};
 
+			var updateFriendsStatus = function(){
+				getFriends();
+				getFriendsRequestPending();
+				getFriendRequest();
+			};
+
 			var init = function(){
 
 				fillPlateforms();
 
-				getFriends();
-				getFriendsRequestPending();
-				getFriendRequest();
+				updateFriendsStatus();
 
 				refreshData();
 

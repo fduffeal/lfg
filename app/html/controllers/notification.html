@@ -15,7 +15,8 @@
 				        <span ng-switch-when="you_have_been_kicked" translate>Sorry, you have been kicked by {{notification.expediteur.username}} from</span>
 				        <span ng-switch-when="leader_leave_you_are_new_leader" translate>{{notification.expediteur.username}} has leave. You lead </span>
 				        <span ng-switch-when="you_have_been_promoted" translate>You have been promoted as leader by {{notification.expediteur.username}} on</span>
-				        <a href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate> this party</a>
+				        <span ng-switch-when="add_friend" translate>{{notification.expediteur.username}} had you as friend, if he isn't on your friend list accept him on <a ng-href="{{listUsersUrl}}">users list page</a></span>
+				        <a ng-if="notification.rdv" href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate> this party</a>
 			        </div>
 			        <div class="date">
 				        <lfg-since time="{{notification.created_at}}"></lfg-since>

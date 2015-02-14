@@ -5,7 +5,7 @@
 		ng-click="isActive = !isActive" translate>Friend's list</h5>
 
 	<div class="fl-friends">
-		<div class="fl-friend on" ng-repeat="user in aUsers">
+		<div class="fl-friend on" ng-repeat="user in aUsers" ng-class="{'last':$last}">
 			<img class="xs-avatar" ng-repeat="usergame in user.userGame | filterAvatar" src="{{usergame.data5}}" alt=""/>
 			<span class="fl-name">{{user.userGame[0].gameUsername}}</span>
 			<span class="fl-etat online" ng-if="user.connected" translate>online</span>
