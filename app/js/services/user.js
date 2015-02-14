@@ -172,6 +172,19 @@ angular.module('myApp.services')
 				return api.call('users/');
 			};
 
+			this.getByPage = function(page,nbResult){
+				return api.call('users/page/'+page+'/'+nbResult);
+			};
+
+			this.getByPlateform = function(plateformId,page,nbResult){
+				return api.call('users/plateform/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
+			this.getByUsername = function(username,plateformId,page,nbResult){
+				username = $window.encodeURIComponent(username);
+				return api.call('users/search/'+username+'/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
 			this.getFriends = function(){
 				var currentUser = this.get();
 				if(currentUser === null){

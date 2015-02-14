@@ -39,9 +39,60 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				}
 			};
 
+			$scope.page = 1;
+			$scope.searchPlateform = null;
+			$scope.searchUsername = null;
+			$scope.searchMethode = null;
+			$scope.searchMore = true;
+			var nbResult = 30;
+
+			var addNewData = function(array,newDataArray) {
+				for (var j = 0; j < newDataArray.length; j++) {
+					var alreadyAdded = false;
+					for (var i = 0; i < array.length; i++) {
+
+						if (newDataArray[j].id === array[i].id) {
+							alreadyAdded = true;
+						}
+					}
+
+					if (alreadyAdded === false) {
+						array.push(newDataArray[j]);
+					}
+				}
+			};
+
 			var refreshData = function() {
-				user.getAll().success(function (data, status, headers, config) {
-					$scope.aAllUsers = data;
+
+				var plateformId = null;
+				if(typeof $scope.plateform !== "undefined" && $scope.plateform  !== null){
+					plateformId = $scope.plateform.id;
+				}
+
+				var username = null;
+				if($scope.username.length >= 1){
+					username = $scope.username ;
+				}
+
+				if($scope.searchPlateform !== plateformId){
+					$scope.aAllUsers = [];
+				}
+
+				if ($scope.searchPlateform !== plateformId || $scope.searchUsername !== username){
+					$scope.page = 1;
+					$scope.searchMore = true;
+				}
+
+				$scope.searchPlateform = plateformId;
+				$scope.searchUsername = username;
+
+				user.getByUsername($scope.searchUsername,$scope.searchPlateform,$scope.page,nbResult).success(function (data, status, headers, config) {
+
+					if(data.length === 0){
+						$scope.searchMore = false;
+					}
+					addNewData($scope.aAllUsers,data);
+
 					filterData();
 				});
 			};
@@ -74,16 +125,27 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				$scope.aUsers = $filter('filterUser')($scope.aAllUsers,$scope.username,$scope.onlyFriends,plateformId);
 			};
 
+			$scope.addMore = function(){
+				$scope.page++;
+				refreshData();
+			};
+
 			$scope.$watch('username',function(){
 				filterData();
+				if($scope.aUsers.length === 0){
+					refreshData();
+				}
 			});
 
 			$scope.$watch('plateform',function(){
 				filterData();
+				if($scope.aUsers.length === 0){
+					refreshData();
+				}
 			});
 
 			$scope.$on('updateListUsers',function(event,data){
-				refreshData();
+				filterData();
 			});
 
 			$scope.addToFriendList = function(friendUsername){

@@ -34,6 +34,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 			$scope.annonceCreateUrl = redirection.getAnnonceCreateUrl();
+			$scope.registerPageUrl = redirection.getRegisterPageUrl();
 
 			$scope.isLive = rdv.isLive;
 			$scope.isEnded = rdv.isEnded;
