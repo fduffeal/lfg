@@ -29,7 +29,7 @@
 					<h2 translate>New announcement</h2>
 
 					<div ng-show="(aCharacters.length === 0)">
-						<p><span translate>Enter your informations or</span> <a href="" translate>create an account</a> <span
+						<p><span translate>Enter your informations or</span> <a ng-href="{{registerPageUrl}}" translate>create an account</a> <span
 								translate>to save your character for the next time !</span></p>
 						<label for="">
 							<select ng-model="plateformAnnonce"
