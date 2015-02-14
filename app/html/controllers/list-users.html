@@ -43,7 +43,8 @@
 								<th class="list-clan"><a href="">{{user.userGame[0].data3}}</a></th>
 								<th class="list-etat">
 									<span ng-if="user.connected" class="online" translate>online</span>
-								</th>
+                                    <span ng-if="!user.connected" class="offline">{{user.onlineTime | filterSince}}</span>
+                                </th>
 								<th class="list-action icon-actions">
 									<span ng-if="!user.me  && user.isFriend == true" class="invit" ng-click="invite(user)"></span>
 									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>

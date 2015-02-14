@@ -108,6 +108,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 					if (socket.listUsers[$scope.aAllUsers[key].username]) {
 						$scope.aAllUsers[key].connected = true;
+						$scope.aAllUsers[key].onlineTime = 99999999999999999;
 					}
 
 					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
