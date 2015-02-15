@@ -30183,6 +30183,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 					if (socket.listUsers[$scope.aAllUsers[key].username]) {
 						$scope.aAllUsers[key].connected = true;
+						$scope.aAllUsers[key].onlineTime = 99999999999999999;
 					}
 
 					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
@@ -31518,400 +31519,6 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 	]
 );
 
-angular.module('myApp.filters').filter('filterAvatar', [function () {
-	'use strict';
-	return function (userGameProfil) {
-
-
-		var aFilteredItems = [];
-		var maxLevel = 0;
-
-		for(var key in userGameProfil){
-			var currentLevel = parseInt(userGameProfil[key].data2);
-			if(currentLevel < maxLevel){
-				continue;
-			}
-			maxLevel = currentLevel;
-			aFilteredItems = [];
-			aFilteredItems.push(userGameProfil[key]);
-
-		}
-		return aFilteredItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterCharacters', function () {
-	'use strict';
-	return function (input, chars, breakOnWord) {
-		if (isNaN(chars)) {
-			return input;
-		}
-		if (chars <= 0) {
-			return '';
-		}
-		if (input && input.length > chars) {
-			input = input.substring(0, chars);
-
-			if (!breakOnWord) {
-				var lastspace = input.lastIndexOf(' ');
-				//get last space
-				if (lastspace !== -1) {
-					input = input.substr(0, lastspace);
-				}
-			} else {
-				while (input.charAt(input.length - 1) === ' ') {
-					input = input.substr(0, input.length - 1);
-				}
-			}
-			return input + '...';
-		}
-		return input;
-	};
-});
-angular.module('myApp.filters').filter('filterDateForum', [
-	'$filter',
-	function ($filter) {
-		'use strict';
-		return function (date2_s) {
-			var date2_ms = date2_s*1000;
-
-			var now = new Date();
-			var date1_ms = now.getTime();
-
-			var dayDisplay = $filter('date')(date2_ms, 'd/MM/yy');
-			if(dayDisplay !== $filter('date')(date1_ms, 'd/MM/yy')){
-				return dayDisplay;
-			}
-			return $filter('date')(date2_ms, 'H:mm');
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterGameProfil', [function () {
-	'use strict';
-	return function (userGameProfil,gameId,plateformId) {
-		var aFilterdItems = [];
-
-		for(var key in userGameProfil){
-			if(userGameProfil[key].game.id !== gameId && gameId !== null){
-				continue;
-			}
-			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
-				continue;
-			}
-			aFilterdItems.push(userGameProfil[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterHtml', ['$sce',
-	function ($sce) {
-	'use strict';
-	return function (input) {
-
-		if (input) {
-			input = $sce.trustAsHtml(input);
-		}
-		return input;
-	};
-}]);
-angular.module('myApp.filters').filter('filterOnlineTime', [
-	'$filter','gettextCatalog',
-	function ($filter,gettextCatalog) {
-		'use strict';
-		return function (date2_s) {
-			var date2_ms = date2_s*1000;
-			var currentDate = new Date(date2_ms);
-
-			var now = new Date();
-			var date1_ms = now.getTime();
-			// Calculate the difference in milliseconds
-			var difference_ms = date1_ms - date2_ms;
-
-			var tomorrow = new Date(date1_ms + 24 * 60 * 60 * 1000);
-
-			var one_minute=1000*60*1;
-
-			var diffMinutes = Math.round(difference_ms/one_minute);
-			if(diffMinutes < 60){
-				return gettextCatalog.getString("{{minutes}} minutes", { minutes: diffMinutes });
-			}
-
-			var one_hour=1000*60*60*1;
-			var diffHours = Math.round(difference_ms/one_hour);
-			if(diffHours < 24){
-				return gettextCatalog.getString("{{hours}} hours", { hours: diffHours });
-
-			}
-
-			//Get 1 day in milliseconds
-			var one_day=1000*60*60*24;
-			var diffDays = Math.round(difference_ms/one_day);
-			return gettextCatalog.getString("{{days}} days", { days: diffDays });
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterRdv', [function () {
-	'use strict';
-	return function (items,plateformId,tags) {
-
-		var aFilterdItems = [];
-
-		var aTags = [];
-		if(typeof tags === "string" && tags !== ""){
-			aTags = tags.split(' ');
-		}
-
-		var d = new Date();
-		var now = d.getTime()/1000;
-
-		for(var key in items){
-			if(plateformId !== ""){
-				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
-					continue;
-				}
-			}
-
-			if(items[key].end < now){
-				continue;
-			}
-
-			if(aTags.length === 0){
-				aFilterdItems.push(items[key]);
-				continue;
-			}
-
-			var aTagItem = [];
-			for(var keyTagItem in items[key].tags){
-				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
-			}
-
-			var asTag = true;
-			for(var keyTag in aTags){
-				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
-					asTag = false;
-				}
-			}
-
-			if(asTag === false){
-				continue;
-			}
-
-			aFilterdItems.push(items[key]);
-		}
-
-		return aFilterdItems;
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvLastPlace', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
-
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterRdvWithMe', [
-	'filter',
-	function (filter) {
-	'use strict';
-	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
-
-		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
-
-	};
-}]);
-angular.module('myApp.filters').filter('filterSince', ['tools',
-	function (tools) {
-		'use strict';
-		return function (time_s) {
-			return tools.getSinceTimeMessage(time_s);
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterUser', [
-	function () {
-		'use strict';
-		return function (userList,usernameSearch,onlyFriends,plateformId) {
-
-			if(usernameSearch == '' && plateformId === null){
-				return userList;
-			}
-
-			usernameSearch = usernameSearch.toLowerCase();
-
-			var userFiltered = [];
-			for(var key in userList){
-
-				var isGoodPlateform = true;
-
-				if(plateformId !== null && typeof plateformId !== "undefined"){
-					isGoodPlateform = false;
-					for(var i in userList[key].userGame){
-						if(userList[key].userGame[i].plateform.id === plateformId){
-							isGoodPlateform = true;
-							break;
-						}
-					}
-				}
-
-				if(isGoodPlateform === false){
-					continue;
-				}
-
-
-				var findUser = false;
-				for(var i in userList[key].userGame){
-					if(userList[key].userGame[i].gameUsername.toLowerCase().indexOf(usernameSearch) != -1){
-						findUser = true;
-						break;
-					}
-				}
-
-				if(findUser === false){
-					continue;
-				}
-
-				userFiltered.push(userList[key]);
-
-			}
-			return userFiltered;
-		};
-	}
-]);
-angular.module('myApp.filters').filter('filterWords', function () {
-	'use strict';
-	return function (input, words) {
-		if (isNaN(words)) {
-			return input;
-		}
-		if (words <= 0) {
-			return '';
-		}
-		if (input) {
-			var inputWords = input.split(/\s+/);
-			if (inputWords.length > words) {
-				input = inputWords.slice(0, words).join(' ') + '...';
-			}
-		}
-		return input;
-	};
-});
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -32536,6 +32143,400 @@ angular.module('myApp.directives')
     ]
 );
 
+angular.module('myApp.filters').filter('filterAvatar', [function () {
+	'use strict';
+	return function (userGameProfil) {
+
+
+		var aFilteredItems = [];
+		var maxLevel = 0;
+
+		for(var key in userGameProfil){
+			var currentLevel = parseInt(userGameProfil[key].data2);
+			if(currentLevel < maxLevel){
+				continue;
+			}
+			maxLevel = currentLevel;
+			aFilteredItems = [];
+			aFilteredItems.push(userGameProfil[key]);
+
+		}
+		return aFilteredItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterCharacters', function () {
+	'use strict';
+	return function (input, chars, breakOnWord) {
+		if (isNaN(chars)) {
+			return input;
+		}
+		if (chars <= 0) {
+			return '';
+		}
+		if (input && input.length > chars) {
+			input = input.substring(0, chars);
+
+			if (!breakOnWord) {
+				var lastspace = input.lastIndexOf(' ');
+				//get last space
+				if (lastspace !== -1) {
+					input = input.substr(0, lastspace);
+				}
+			} else {
+				while (input.charAt(input.length - 1) === ' ') {
+					input = input.substr(0, input.length - 1);
+				}
+			}
+			return input + '...';
+		}
+		return input;
+	};
+});
+angular.module('myApp.filters').filter('filterDateForum', [
+	'$filter',
+	function ($filter) {
+		'use strict';
+		return function (date2_s) {
+			var date2_ms = date2_s*1000;
+
+			var now = new Date();
+			var date1_ms = now.getTime();
+
+			var dayDisplay = $filter('date')(date2_ms, 'd/MM/yy');
+			if(dayDisplay !== $filter('date')(date1_ms, 'd/MM/yy')){
+				return dayDisplay;
+			}
+			return $filter('date')(date2_ms, 'H:mm');
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterGameProfil', [function () {
+	'use strict';
+	return function (userGameProfil,gameId,plateformId) {
+		var aFilterdItems = [];
+
+		for(var key in userGameProfil){
+			if(userGameProfil[key].game.id !== gameId && gameId !== null){
+				continue;
+			}
+			if(userGameProfil[key].plateform.id !== plateformId && plateformId !== null){
+				continue;
+			}
+			aFilterdItems.push(userGameProfil[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterHtml', ['$sce',
+	function ($sce) {
+	'use strict';
+	return function (input) {
+
+		if (input) {
+			input = $sce.trustAsHtml(input);
+		}
+		return input;
+	};
+}]);
+angular.module('myApp.filters').filter('filterOnlineTime', [
+	'$filter','gettextCatalog',
+	function ($filter,gettextCatalog) {
+		'use strict';
+		return function (date2_s) {
+			var date2_ms = date2_s*1000;
+			var currentDate = new Date(date2_ms);
+
+			var now = new Date();
+			var date1_ms = now.getTime();
+			// Calculate the difference in milliseconds
+			var difference_ms = date1_ms - date2_ms;
+
+			var tomorrow = new Date(date1_ms + 24 * 60 * 60 * 1000);
+
+			var one_minute=1000*60*1;
+
+			var diffMinutes = Math.round(difference_ms/one_minute);
+			if(diffMinutes < 60){
+				return gettextCatalog.getString("{{minutes}} minutes", { minutes: diffMinutes });
+			}
+
+			var one_hour=1000*60*60*1;
+			var diffHours = Math.round(difference_ms/one_hour);
+			if(diffHours < 24){
+				return gettextCatalog.getString("{{hours}} hours", { hours: diffHours });
+
+			}
+
+			//Get 1 day in milliseconds
+			var one_day=1000*60*60*24;
+			var diffDays = Math.round(difference_ms/one_day);
+			return gettextCatalog.getString("{{days}} days", { days: diffDays });
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterRdv', [function () {
+	'use strict';
+	return function (items,plateformId,tags) {
+
+		var aFilterdItems = [];
+
+		var aTags = [];
+		if(typeof tags === "string" && tags !== ""){
+			aTags = tags.split(' ');
+		}
+
+		var d = new Date();
+		var now = d.getTime()/1000;
+
+		for(var key in items){
+			if(plateformId !== ""){
+				if(items[key].plateform === null || items[key].plateform.id !== plateformId){
+					continue;
+				}
+			}
+
+			if(items[key].end < now){
+				continue;
+			}
+
+			if(aTags.length === 0){
+				aFilterdItems.push(items[key]);
+				continue;
+			}
+
+			var aTagItem = [];
+			for(var keyTagItem in items[key].tags){
+				aTagItem.push(items[key].tags[keyTagItem].nom.toLowerCase());
+			}
+
+			var asTag = true;
+			for(var keyTag in aTags){
+				if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					asTag = false;
+				}
+			}
+
+			if(asTag === false){
+				continue;
+			}
+
+			aFilterdItems.push(items[key]);
+		}
+
+		return aFilterdItems;
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvLastPlace', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterRdvWithMe', [
+	'filter',
+	function (filter) {
+	'use strict';
+	return function (items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable) {
+
+		return filter.byPlateformsAndTagsWithMe(items,currentUserId,plateformId,tags,onlyOnePlace,nbPlaceAvailable);
+
+	};
+}]);
+angular.module('myApp.filters').filter('filterSince', ['tools',
+	function (tools) {
+		'use strict';
+		return function (time_s) {
+			return tools.getSinceTimeMessage(time_s);
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterUser', [
+	function () {
+		'use strict';
+		return function (userList,usernameSearch,onlyFriends,plateformId) {
+
+			if(usernameSearch == '' && plateformId === null){
+				return userList;
+			}
+
+			usernameSearch = usernameSearch.toLowerCase();
+
+			var userFiltered = [];
+			for(var key in userList){
+
+				var isGoodPlateform = true;
+
+				if(plateformId !== null && typeof plateformId !== "undefined"){
+					isGoodPlateform = false;
+					for(var i in userList[key].userGame){
+						if(userList[key].userGame[i].plateform.id === plateformId){
+							isGoodPlateform = true;
+							break;
+						}
+					}
+				}
+
+				if(isGoodPlateform === false){
+					continue;
+				}
+
+
+				var findUser = false;
+				for(var i in userList[key].userGame){
+					if(userList[key].userGame[i].gameUsername.toLowerCase().indexOf(usernameSearch) != -1){
+						findUser = true;
+						break;
+					}
+				}
+
+				if(findUser === false){
+					continue;
+				}
+
+				userFiltered.push(userList[key]);
+
+			}
+			return userFiltered;
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterWords', function () {
+	'use strict';
+	return function (input, words) {
+		if (isNaN(words)) {
+			return input;
+		}
+		if (words <= 0) {
+			return '';
+		}
+		if (input) {
+			var inputWords = input.split(/\s+/);
+			if (inputWords.length > words) {
+				input = inputWords.slice(0, words).join(' ') + '...';
+			}
+		}
+		return input;
+	};
+});
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
