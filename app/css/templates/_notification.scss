@@ -26,6 +26,7 @@
         vertical-align: top;
         margin: 5px 0;
         color:#2d2d2d;
+        font-size: 1.3rem;
         &.unread {
             background: lighten(#cacaca, 15%);
             .msg {
@@ -36,7 +37,7 @@
             width: 70%;
             float: left;
             margin: 10px;
-            font-size: 13px;
+            font-size: 1.3rem;
             line-height: 21px;
         }
         .date {
@@ -52,6 +53,7 @@
             color: #f15641;
         }
         a {
+            font-size: 1.3rem;
             span {
                 color: #06ab93!important;
             }
