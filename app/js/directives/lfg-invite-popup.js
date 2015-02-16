@@ -72,11 +72,13 @@ angular.module('myApp.directives')
                         }
 
                         var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
+
                         if(invitePromise !== false){
                             invitePromise.then(function(data){
-                                $scope.hide();
+
                             });
                         }
+	                    $scope.hide();
                     };
 
                     $scope.hide = function(){
