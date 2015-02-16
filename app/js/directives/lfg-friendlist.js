@@ -14,6 +14,8 @@ angular.module('myApp.directives')
 					$scope.allUsers = [];
 					$scope.aUsers = [];
 
+					$scope.ready = false;
+
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 
 
@@ -46,6 +48,7 @@ angular.module('myApp.directives')
 						getFriendsPromise.success(function (data, status, headers, config) {
 							$scope.allUsers = data;
 							filterData();
+							$scope.ready = true;
 						});
 					};
 

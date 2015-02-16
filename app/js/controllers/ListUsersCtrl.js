@@ -44,7 +44,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.searchUsername = null;
 			$scope.searchMethode = null;
 			$scope.searchMore = true;
-			var nbResult = 30;
+			var nbResult = 60;
 
 			var addNewData = function(array,newDataArray) {
 				for (var j = 0; j < newDataArray.length; j++) {
