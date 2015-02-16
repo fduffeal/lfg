@@ -43,6 +43,7 @@ angular.module('myApp.directives')
 					var refreshData = function() {
 						var getFriendsPromise = user.getFriends();
 						if(getFriendsPromise === false){
+							$scope.ready = true;
 							return;
 						}
 						getFriendsPromise.success(function (data, status, headers, config) {
