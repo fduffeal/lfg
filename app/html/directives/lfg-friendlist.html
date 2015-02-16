@@ -5,7 +5,9 @@
 		ng-click="isActive = !isActive" translate>Friend's list</h5>
 
 	<div class="fl-friends">
-		<div class="fl-friend on" ng-repeat="user in aUsers" ng-class="{'last':$last}">
+        <div ng-click="scrollUp()" ng-show="firstDisplay>0">-</div>
+        <div ng-click="scrollDown()" ng-show="firstDisplay<aUsers.length-1">+</div>
+		<div class="fl-friend on" ng-repeat="user in aUsers" ng-class="{'last':$last}" ng-if="firstDisplay<=$index">
 			<img class="xs-avatar" ng-repeat="usergame in user.userGame | filterAvatar" src="{{usergame.data5}}" alt=""/>
 			<span class="fl-name">{{user.userGame[0].gameUsername}}</span>
 			<span class="fl-etat online" ng-if="user.connected" translate>online</span>
@@ -29,6 +31,7 @@
 						<!--<span class="remove"></span>-->
 						<!--<span class="msg"></span>-->
 						<span class="invit" ng-click="invite(user)"></span>
+                        <span>{{user.userGame[0].gameUsername}}</span>
 					</div>
 				</div>
 			</div>
@@ -37,7 +40,7 @@
 			<a ng-href="{{listUsersUrl}}"><img src="img/nofriend.png" alt=""></a>
 		</div>
 	</div>
-	<div id="search-box"  ng-if="aUsers.length != 0">
+	<div id="search-box">
 		<input type="text" placeholder="Chercher" ng-model="username">
 	</div>
 </div>

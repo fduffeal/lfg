@@ -18,6 +18,16 @@ angular.module('myApp.directives')
 
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 
+					$scope.firstDisplay = 0;
+
+					$scope.scrollUp=function(){
+						$scope.firstDisplay--;
+					};
+
+					$scope.scrollDown=function(){
+						$scope.firstDisplay++;
+					};
+
 
 					var filterData = function(){
 
@@ -59,6 +69,7 @@ angular.module('myApp.directives')
 					});
 
 					$scope.$watch('username',function(){
+						$scope.firstDisplay = 0;
 						filterData();
 					});
 
