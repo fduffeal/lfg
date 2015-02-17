@@ -28,8 +28,8 @@
 
 						<tbody>
 							<tr ng-repeat="user in aUsers |orderBy:sort:reverse">
-								<th class="list-gardien" >{{user.username}}
-									<br/><i ng-if="user.userGame[0].gameUsername !== user.username">"{{user.userGame[0].gameUsername}}"</i>
+								<th class="list-gardien" >
+									{{user.userGame[0].gameUsername}}
 								</th>
 								<th class="list-perso">
 									<div class="xs-character" ng-repeat="userGames in user.userGame" style="background: url('{{userGames.data4}}')">
@@ -46,7 +46,7 @@
                                 </th>
 								<th class="list-action icon-actions">
 									<span ng-if="!user.me  && user.isFriend == true" class="invit" ng-click="invite(user)"></span>
-									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>
+									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest && currentUser!==null" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>
 									<span  ng-if="user.isFriendPending"><img src="img/ico-check.png" alt=""><span translate>friend request</span></span>
 									<span ng-if="!user.me && (user.isFriendResquest == true || user.isFriend == true)" ng-click="removeFromFriendList(user.username)"class="remove"></span>
 									<!--<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>-->
@@ -64,6 +64,7 @@
             <div ng-show="searchMore == true" class="btn" ng-click="addMore()">View more</div>
 
 			<lfg-invite-popup></lfg-invite-popup>
+			<lfg-popup></lfg-popup>
 		</div>
 
 	</div>

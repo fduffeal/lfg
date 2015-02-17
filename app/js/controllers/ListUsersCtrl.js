@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv',
-		function ($scope,$routeParams,user,socket,$filter,rdv) {
+	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog',
+		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog) {
 			'use strict';
 
 
@@ -158,6 +158,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 						updateFriendsStatus();
 					});
 				}
+				var message = gettextCatalog.getString("{{name}} added on your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
 			};
 
 			$scope.removeFromFriendList = function(friendUsername){
@@ -167,6 +169,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 						updateFriendsStatus();
 					});
 				}
+				var message = gettextCatalog.getString("{{name}} removed from your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
 			};
 
 

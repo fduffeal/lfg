@@ -30074,8 +30074,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 );
 
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv',
-		function ($scope,$routeParams,user,socket,$filter,rdv) {
+	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog',
+		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog) {
 			'use strict';
 
 
@@ -30233,6 +30233,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 						updateFriendsStatus();
 					});
 				}
+				var message = gettextCatalog.getString("{{name}} added on your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
 			};
 
 			$scope.removeFromFriendList = function(friendUsername){
@@ -30242,6 +30244,8 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 						updateFriendsStatus();
 					});
 				}
+				var message = gettextCatalog.getString("{{name}} removed from your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
 			};
 
 
@@ -30551,6 +30555,16 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 	        $scope.listUsersUrl = redirection.getListUsersUrl();
 
 	        $scope.userInfo = user.get();
+
+	        $scope.displayNew = true;
+
+	        $scope.displayNewfn = function(){
+		        $scope.displayNew = true;
+	        };
+
+	        $scope.displayAllfn = function(){
+		        $scope.displayNew = false;
+	        };
 	        /**
 	         * autoRefreshDataNotif
 	         */
@@ -30586,7 +30600,23 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 		        $scope.markRead(listId.join('-'));
 	        };
 
+	        /**
+	         * autoRefreshDataNotif
+	         */
+	        var getAllNotif = function(){
+
+		        var promiseNotification = rdv.getAllNotifications();
+
+		        if(promiseNotification === false){
+			        return;
+		        }
+		        promiseNotification.success(function(data){
+			        $scope.allNotifications = data;
+		        });
+	        };
+
 	        refreshDataNotif();
+	        getAllNotif();
         }
     ]
 );
@@ -31821,8 +31851,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-    .directive('lfgInvitePopup', ['rdv','$filter','user',
-        function(rdv,$filter,user) {
+    .directive('lfgInvitePopup', ['rdv','$filter','user','gettextCatalog','$rootScope',
+        function(rdv,$filter,user,gettextCatalog,$rootScope) {
             'use strict';
             return {
                 scope:{
@@ -31900,6 +31930,8 @@ angular.module('myApp.directives')
 
                             });
                         }
+	                    var message = gettextCatalog.getString("you have send a invite to {{name}}", { name: $scope.userInvite.username });
+	                    $rootScope.$broadcast('popup',[message]);
 	                    $scope.hide();
                     };
 
@@ -32036,6 +32068,33 @@ angular.module('myApp.directives')
 			};
 		}
 	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgPopup', [
+        function() {
+            'use strict';
+            return {
+                scope:{
+
+                },
+                link: function($scope, element, attrs) {
+
+	                $scope.$on('popup',function(event,data){
+		                $scope.displayPopup = true;
+		                $scope.message = data[0];
+	                });
+
+	                $scope.hide = function(){
+		                $scope.displayPopup = false;
+	                };
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-popup.html'
+            };
+        }
+    ]
 );
 
 angular.module('myApp.directives')
@@ -33098,6 +33157,15 @@ angular.module('myApp.services')
 				}
 
 				return api.call('notifications/'+currentUser.id);
+			};
+			this.getAllNotifications = function(){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/all/'+currentUser.id);
 			};
 
 			this.markNotificationRead = function(ids){

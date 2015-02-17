@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-    .directive('lfgInvitePopup', ['rdv','$filter','user',
-        function(rdv,$filter,user) {
+    .directive('lfgInvitePopup', ['rdv','$filter','user','gettextCatalog','$rootScope',
+        function(rdv,$filter,user,gettextCatalog,$rootScope) {
             'use strict';
             return {
                 scope:{
@@ -78,6 +78,8 @@ angular.module('myApp.directives')
 
                             });
                         }
+	                    var message = gettextCatalog.getString("you have send a invite to {{name}}", { name: $scope.userInvite.username });
+	                    $rootScope.$broadcast('popup',[message]);
 	                    $scope.hide();
                     };
 

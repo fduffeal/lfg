@@ -6,7 +6,7 @@
         <div class="block">
             <h1>{{notifications.length}} notifications</h1>
 
-	        <div class="notifs" ng-if="(notifications.length > 0)">
+	        <div class="notifs" ng-show="displayNew">
 		        <div class="line unread" ng-repeat="notification in notifications">
 			        <div class="msg" ng-switch on="notification.code">
 				        <span ng-switch-when="new_invitation" translate>{{notification.expediteur.username}} send you an invitation to</span>
@@ -29,7 +29,30 @@
 		        </div>
 	        </div>
 
+	        <div class="notifs" ng-show="!displayNew">
+		        <div class="line" ng-repeat="notification in allNotifications">
+			        <div class="msg" ng-switch on="notification.code">
+				        <span ng-switch-when="new_invitation" translate>{{notification.expediteur.username}} send you an invitation to</span>
+				        <span ng-switch-when="one_user_leave" translate>{{notification.expediteur.username}} leave</span>
+				        <span ng-switch-when="new_player_join" translate>{{notification.expediteur.username}} joined</span>
+				        <span ng-switch-when="you_have_been_accepted" translate>You have been accepted by {{notification.expediteur.username}} on</span>
+				        <span ng-switch-when="you_have_been_kicked" translate>Sorry, you have been kicked by {{notification.expediteur.username}} from</span>
+				        <span ng-switch-when="leader_leave_you_are_new_leader" translate>{{notification.expediteur.username}} has leave. You lead </span>
+				        <span ng-switch-when="you_have_been_promoted" translate>You have been promoted as leader by {{notification.expediteur.username}} on</span>
+				        <span ng-switch-when="add_friend" translate>{{notification.expediteur.username}} had you as friend, if he isn't on your friend list accept him on <a ng-href="{{listUsersUrl}}">users list page</a></span>
+				        <a ng-if="notification.rdv" href="{{partyWaitingUrlRoot}}{{notification.rdv.id}}" translate> this party</a>
+			        </div>
+			        <div class="date">
+				        <lfg-since time="{{notification.created_at}}"></lfg-since>
+			        </div>
+
+			        <div class="sep"></div>
+		        </div>
+	        </div>
+
 	        <a href="" class="btn" ng-click="markAllAsRead()" translate>Mark all as read</a>
+	        <a href="" class="btn" ng-click="displayAllfn()" ng-show="displayNew" translate>Display all</a>
+	        <a href="" class="btn" ng-click="displayNewfn()" ng-show="!displayNew" translate>Display new</a>
         </div>
     </div>
 </div>

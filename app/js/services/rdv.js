@@ -72,6 +72,15 @@ angular.module('myApp.services')
 
 				return api.call('notifications/'+currentUser.id);
 			};
+			this.getAllNotifications = function(){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/all/'+currentUser.id);
+			};
 
 			this.markNotificationRead = function(ids){
 

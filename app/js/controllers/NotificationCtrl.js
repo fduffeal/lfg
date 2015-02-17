@@ -7,6 +7,16 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 	        $scope.listUsersUrl = redirection.getListUsersUrl();
 
 	        $scope.userInfo = user.get();
+
+	        $scope.displayNew = true;
+
+	        $scope.displayNewfn = function(){
+		        $scope.displayNew = true;
+	        };
+
+	        $scope.displayAllfn = function(){
+		        $scope.displayNew = false;
+	        };
 	        /**
 	         * autoRefreshDataNotif
 	         */
@@ -42,7 +52,23 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
 		        $scope.markRead(listId.join('-'));
 	        };
 
+	        /**
+	         * autoRefreshDataNotif
+	         */
+	        var getAllNotif = function(){
+
+		        var promiseNotification = rdv.getAllNotifications();
+
+		        if(promiseNotification === false){
+			        return;
+		        }
+		        promiseNotification.success(function(data){
+			        $scope.allNotifications = data;
+		        });
+	        };
+
 	        refreshDataNotif();
+	        getAllNotif();
         }
     ]
 );
