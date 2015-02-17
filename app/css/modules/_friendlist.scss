@@ -10,6 +10,53 @@
 	.toggle {
 		display: none;
 	}
+	.scrollup,.scrolldown{
+		text-align: center;
+		background: $orange;
+		color: white;
+		cursor: pointer;
+		span:before{
+			content: "❮";
+			display: block;
+			font-size: 2rem;
+			@include transform(rotate(90deg));
+			display: inline-block;
+		}
+		&:hover {
+			background: black;
+			color: $orange;
+		}
+	}
+	@media screen and (min-width: 550px) and (max-width: 1380px ){
+		&.active {
+			.scrolldown {
+				display: none;
+			}
+		}
+		.scrolldown{
+			display: block;
+		}
+	}
+	@media screen and (max-width: 550px ) {
+		&.active {
+			.scrolldown {
+				bottom: 30px;
+				display: block;
+			}
+		}
+		.scrolldown{
+			display: none;
+		}
+	}
+	.scrolldown {
+		bottom: 77px;
+		width: 205px;
+		position: absolute;
+
+		span:before {
+			@include transform(rotate(-90deg));
+		}
+	}
 	h5 {
 		background: $orange;
 		height: 20px;
@@ -87,7 +134,7 @@
 		}
 
 	}
-	 @media screen and (max-width: 550px ) {
+	@media screen and (max-width: 550px ) {
 		border-right: 1px solid #999;
 		border-top: 1px solid #999;
 		height: auto;
