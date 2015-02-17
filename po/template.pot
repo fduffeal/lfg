@@ -92,6 +92,14 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "Display all"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "Display new"
+msgstr ""
+
 #: app/html/controllers/profile.html
 msgid "Email"
 msgstr ""
@@ -215,10 +223,6 @@ msgstr ""
 
 #: app/html/controllers/register.html
 msgid "Login Esbattle"
-msgstr ""
-
-#: app/html/directives/lfg-header.html
-msgid "Logout"
 msgstr ""
 
 #: app/html/controllers/login.html
@@ -589,6 +593,10 @@ msgid "warlock"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "you have send a invite to {{name}}"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "your annoncement has been send and will appear in few second, please wait"
 msgstr ""
 
@@ -614,6 +622,18 @@ msgstr ""
 
 #: app/dynamique_translate.html
 msgid "{{minutes}} minutes ago"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{name}} added on your friend list"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{name}} removed from your friend list"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} had you as friend, if he isn't on your friend list accept him on <a ng-href=\"{{listUsersUrl}}\">users list page</a>"
 msgstr ""
 
 #: app/html/controllers/notification.html

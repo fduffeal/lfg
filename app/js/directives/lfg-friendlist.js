@@ -17,6 +17,7 @@ angular.module('myApp.directives')
 					$scope.ready = false;
 
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
 					$scope.firstDisplay = 0;
 

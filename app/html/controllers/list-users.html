@@ -19,7 +19,7 @@
 						<th class="list-perso"><a href="">Persos</a></th>
 						<th class="list-clan"><a href="">Clan</a></th>
 						<th class="list-etat" ><a href="">Etat</a></th>
-						<th class="list-action"><a href="">Action</a></th>
+						<th class="list-action" ng-show="currentUser!==null"><a href="">Action</a></th>
 					</tr>
 				</thead>
 				</table>
@@ -44,9 +44,9 @@
 									<span ng-if="user.connected" class="online" translate>online</span>
                                     <span ng-if="!user.connected" class="offline">{{user.onlineTime | filterSince}}</span>
                                 </th>
-								<th class="list-action icon-actions">
+								<th class="list-action icon-actions" ng-show="currentUser!==null">
 									<span ng-if="!user.me  && user.isFriend == true" class="invit" ng-click="invite(user)"></span>
-									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest && currentUser!==null" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>
+									<span ng-if="!user.me && user.isFriend == false && !user.isFriendResquest" ng-click="addToFriendList(user.username)" ng-class="{'add-pending':user.isFriendPending,'add-normal':!user.isFriendPending}" class="add"></span>
 									<span  ng-if="user.isFriendPending"><img src="img/ico-check.png" alt=""><span translate>friend request</span></span>
 									<span ng-if="!user.me && (user.isFriendResquest == true || user.isFriend == true)" ng-click="removeFromFriendList(user.username)"class="remove"></span>
 									<!--<span ng-if="!user.me && user.canAddToBlackList" ng-click="addToBlockList(user.username)"class="block"></span>-->
