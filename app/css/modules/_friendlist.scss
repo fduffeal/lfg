@@ -39,6 +39,7 @@
 	}
 	@media screen and (max-width: 550px ) {
 		&.active {
+			height: 300px;
 			.scrolldown {
 				bottom: 30px;
 				display: block;
