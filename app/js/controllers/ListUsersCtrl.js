@@ -173,6 +173,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			var fillPlateforms = function(){
 				rdv.getFormInfo().then(function(data){
 					$scope.aPlateforms = data.plateforms;
+					setDefaultFilterPlateform();
 				});
 			};
 
@@ -219,6 +220,19 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				getFriendsRequestPending();
 				getFriendRequest();
 			};
+
+			var setDefaultFilterPlateform = function(){
+				if($scope.currentUser === null){
+					return;
+				}
+
+				var firstPlateform = $scope.currentUser.userGame[0].plateform;
+				for(var key in $scope.aPlateforms){
+					if($scope.aPlateforms[key].id === firstPlateform.id){
+						$scope.plateform = $scope.aPlateforms[key];
+					}
+				}
+			}
 
 			var init = function(){
 

@@ -10,7 +10,7 @@
 
 			<input type="text" ng-model="username" placeholder="{{'Search'|translate}}">
 
-			<h1>Liste d'utilisateurs </h1>
+			<h1>Liste d'utilisateurs <span ng-if="plateform">{{plateform.nom}}</span></h1>
 
 			<table border="0">
 				<thead>
