@@ -44,7 +44,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.searchUsername = null;
 			$scope.searchMethode = null;
 			$scope.searchMore = true;
-			var nbResult = 30;
+			var nbResult = 60;
 
 			var addNewData = function(array,newDataArray) {
 				for (var j = 0; j < newDataArray.length; j++) {
@@ -173,6 +173,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			var fillPlateforms = function(){
 				rdv.getFormInfo().then(function(data){
 					$scope.aPlateforms = data.plateforms;
+					setDefaultFilterPlateform();
 				});
 			};
 
@@ -219,6 +220,19 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				getFriendsRequestPending();
 				getFriendRequest();
 			};
+
+			var setDefaultFilterPlateform = function(){
+				if($scope.currentUser === null){
+					return;
+				}
+
+				var firstPlateform = $scope.currentUser.userGame[0].plateform;
+				for(var key in $scope.aPlateforms){
+					if($scope.aPlateforms[key].id === firstPlateform.id){
+						$scope.plateform = $scope.aPlateforms[key];
+					}
+				}
+			}
 
 			var init = function(){
 

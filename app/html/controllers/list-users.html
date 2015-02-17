@@ -1,5 +1,4 @@
 <lfg-header></lfg-header>
-<lfg-friendlist></lfg-friendlist>
 <div id="list-users" class="wrap">
 	<div class="page">
 		<div class="list">
@@ -11,7 +10,7 @@
 
 			<input type="text" ng-model="username" placeholder="{{'Search'|translate}}">
 
-			<h1>Liste d'utilisateurs </h1>
+			<h1>Liste d'utilisateurs <span ng-if="plateform">{{plateform.nom}}</span></h1>
 
 			<table border="0">
 				<thead>

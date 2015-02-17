@@ -14,7 +14,19 @@ angular.module('myApp.directives')
 					$scope.allUsers = [];
 					$scope.aUsers = [];
 
+					$scope.ready = false;
+
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+					$scope.firstDisplay = 0;
+
+					$scope.scrollUp=function(){
+						$scope.firstDisplay--;
+					};
+
+					$scope.scrollDown=function(){
+						$scope.firstDisplay++;
+					};
 
 
 					var filterData = function(){
@@ -41,11 +53,13 @@ angular.module('myApp.directives')
 					var refreshData = function() {
 						var getFriendsPromise = user.getFriends();
 						if(getFriendsPromise === false){
+							$scope.ready = true;
 							return;
 						}
 						getFriendsPromise.success(function (data, status, headers, config) {
 							$scope.allUsers = data;
 							filterData();
+							$scope.ready = true;
 						});
 					};
 
@@ -55,6 +69,7 @@ angular.module('myApp.directives')
 					});
 
 					$scope.$watch('username',function(){
+						$scope.firstDisplay = 0;
 						filterData();
 					});
 

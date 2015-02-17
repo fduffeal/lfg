@@ -30119,7 +30119,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.searchUsername = null;
 			$scope.searchMethode = null;
 			$scope.searchMore = true;
-			var nbResult = 30;
+			var nbResult = 60;
 
 			var addNewData = function(array,newDataArray) {
 				for (var j = 0; j < newDataArray.length; j++) {
@@ -30248,6 +30248,7 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			var fillPlateforms = function(){
 				rdv.getFormInfo().then(function(data){
 					$scope.aPlateforms = data.plateforms;
+					setDefaultFilterPlateform();
 				});
 			};
 
@@ -30294,6 +30295,19 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				getFriendsRequestPending();
 				getFriendRequest();
 			};
+
+			var setDefaultFilterPlateform = function(){
+				if($scope.currentUser === null){
+					return;
+				}
+
+				var firstPlateform = $scope.currentUser.userGame[0].plateform;
+				for(var key in $scope.aPlateforms){
+					if($scope.aPlateforms[key].id === firstPlateform.id){
+						$scope.plateform = $scope.aPlateforms[key];
+					}
+				}
+			}
 
 			var init = function(){
 
@@ -31593,7 +31607,19 @@ angular.module('myApp.directives')
 					$scope.allUsers = [];
 					$scope.aUsers = [];
 
+					$scope.ready = false;
+
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+
+					$scope.firstDisplay = 0;
+
+					$scope.scrollUp=function(){
+						$scope.firstDisplay--;
+					};
+
+					$scope.scrollDown=function(){
+						$scope.firstDisplay++;
+					};
 
 
 					var filterData = function(){
@@ -31620,11 +31646,13 @@ angular.module('myApp.directives')
 					var refreshData = function() {
 						var getFriendsPromise = user.getFriends();
 						if(getFriendsPromise === false){
+							$scope.ready = true;
 							return;
 						}
 						getFriendsPromise.success(function (data, status, headers, config) {
 							$scope.allUsers = data;
 							filterData();
+							$scope.ready = true;
 						});
 					};
 
@@ -31634,6 +31662,7 @@ angular.module('myApp.directives')
 					});
 
 					$scope.$watch('username',function(){
+						$scope.firstDisplay = 0;
 						filterData();
 					});
 
@@ -31865,11 +31894,13 @@ angular.module('myApp.directives')
                         }
 
                         var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
+
                         if(invitePromise !== false){
                             invitePromise.then(function(data){
-                                $scope.hide();
+
                             });
                         }
+	                    $scope.hide();
                     };
 
                     $scope.hide = function(){
