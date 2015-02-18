@@ -1,4 +1,5 @@
 <lfg-header></lfg-header>
+<lfg-friendlist></lfg-friendlist>
 <div id="party-waiting" class="wrap">
 	<div class="welcome">
 		<div class="marge">
@@ -71,7 +72,8 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="userGame in rdv.users">
-							<td class="place">{{$index + 1}}</td>
+							<td class="place" ng-if="rdv.leader.username === userGame.user.username"> <img src="img/ico-chef.png"style="width: 13px; height:29px!important" alt=""></td>
+							<td class="place" ng-if="rdv.leader.username != userGame.user.username">{{$index + 1}}</td>
 							<td class="list-player">
 								<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
 							</td>
@@ -87,8 +89,8 @@
 			</div>
 
 
-			<div class="team" ng-if="rdv.usersInQueue.length > 0">
-				<h1 class="second" translate>Waiting Players</h1>
+			<div class="team" ng-if="rdv.usersInQueue.length > 0 || rdv.usersInvite.length > 0">
+				<h1 class="second" translate>Waiting / Guest Players</h1>
 				<div class="team">
 					<table class="queue">
 						<thead>
@@ -107,6 +109,14 @@
 									<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="leave(userGame.id)" translate>Leave</a>
 									<a href="" ng-if="isLeader" ng-click="acceptUser(userGame.id)" translate>Accept</a>
 									<a href="" ng-if="isLeader" ng-click="kickUser(userGame.id)" translate>Decline</a>
+								</td>
+							</tr>
+							<tr ng-repeat="userGame in rdv.usersInvite">
+								<td class="list-player">
+									<lfg-profile-bungie with-plateform="false" user-game="userGame"></lfg-profile-bungie>
+								</td>
+								<td class="actions">
+									<a href="" ng-if="userGame.user.username === currentUser.username"  ng-click="join()" translate>Join</a>
 								</td>
 							</tr>
 						</tbody>

@@ -13,14 +13,6 @@ msgstr ""
 msgid "<span>IMPORTANT :</span>After creating the party, it will be possible to invit/promote some players or cancel the party. However, after two players in the party, it will unfortunately not be possible to cancel the party! If you leave the party, the second player will be promoted as the creator of the party. Please check your information before creating!"
 msgstr ""
 
-#: app/html/controllers/notification.html
-msgid "A new player joined"
-msgstr ""
-
-#: app/html/controllers/notification.html
-msgid "A player leave"
-msgstr ""
-
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 #: app/html/controllers/profile.html
@@ -35,8 +27,8 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: app/html/controllers/rdv.html
-msgid "All"
+#: app/html/directives/lfg-profile-header.html
+msgid "Alternate Guardians"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -100,6 +92,14 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: app/html/controllers/notification.html
+msgid "Display all"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "Display new"
+msgstr ""
+
 #: app/html/controllers/profile.html
 msgid "Email"
 msgstr ""
@@ -136,12 +136,20 @@ msgstr ""
 msgid "Find"
 msgstr ""
 
+#: app/html/directives/lfg-invite-popup.html
+msgid "First you have to create a party, then you will be able to invite your friends !"
+msgstr ""
+
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
 msgstr ""
 
 #: app/html/directives/lfg-footer.html
 msgid "French"
+msgstr ""
+
+#: app/html/directives/lfg-friendlist.html
+msgid "Friend's list"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -157,7 +165,7 @@ msgid "Game Profil"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "GamerTag or PSN ID"
+msgid "GamerTag or PSN ID : Login Esbattle"
 msgstr ""
 
 #: app/html/controllers/matchmaking-waiting.html
@@ -172,10 +180,6 @@ msgstr ""
 msgid "Hi, we are looking for"
 msgstr ""
 
-#: app/html/controllers/rdv.html
-msgid "Hide"
-msgstr ""
-
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr ""
@@ -186,6 +190,14 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Infos"
+msgstr ""
+
+#: app/html/directives/lfg-invite-popup.html
+msgid "Invit !"
+msgstr ""
+
+#: app/html/controllers/party-waiting.html
+msgid "Join"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -213,16 +225,20 @@ msgstr ""
 msgid "Login Esbattle"
 msgstr ""
 
-#: app/html/directives/lfg-header.html
-msgid "Logout"
-msgstr ""
-
 #: app/html/controllers/login.html
 msgid "Mail already send. Please check your mailBox (and your spam box)"
 msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Mail send. Please check your mailBox (and your spam box)"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "Mark all as read"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "Mark as read"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -288,6 +304,11 @@ msgstr ""
 msgid "Personal Infos"
 msgstr ""
 
+#: app/html/controllers/list-users.html
+#: app/html/controllers/rdv.html
+msgid "Plateform"
+msgstr ""
+
 #: app/html/controllers/profile.html
 #: app/html/controllers/rdv.html
 #: app/html/controllers/register.html
@@ -345,6 +366,10 @@ msgstr ""
 msgid "Retrieve my account !"
 msgstr ""
 
+#: app/html/controllers/list-users.html
+msgid "Search"
+msgstr ""
+
 #: app/html/controllers/party-waiting.html
 msgid "Send"
 msgstr ""
@@ -367,7 +392,7 @@ msgid "Slots"
 msgstr ""
 
 #: app/html/controllers/notification.html
-msgid "Sorry, you have been kicked by"
+msgid "Sorry, you have been kicked by {{notification.expediteur.username}} from"
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
@@ -402,16 +427,20 @@ msgid "Thanks"
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "The username is already used."
+msgid "This email is already used."
 msgstr ""
 
 #: app/html/controllers/register.html
-msgid "This email is already used."
+msgid "This gamerTag or PSN ID is already used as Esbattle account, please choose an other name for your Esbattle account."
 msgstr ""
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
+msgstr ""
+
+#: app/html/controllers/rdv.html
+msgid "Type"
 msgstr ""
 
 #: app/html/controllers/profile.html
@@ -453,7 +482,7 @@ msgid "VaultOfGlass"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
-msgid "Waiting Players"
+msgid "Waiting / Guest Players"
 msgstr ""
 
 #: app/dynamique_translate.html
@@ -470,11 +499,11 @@ msgid "Yes"
 msgstr ""
 
 #: app/html/controllers/notification.html
-msgid "You have been accepted by"
+msgid "You have been accepted by {{notification.expediteur.username}} on"
 msgstr ""
 
 #: app/html/controllers/notification.html
-msgid "You have been promoted as leader by"
+msgid "You have been promoted as leader by {{notification.expediteur.username}} on"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -505,12 +534,8 @@ msgstr ""
 msgid "epic"
 msgstr ""
 
-#: app/html/controllers/notification.html
-msgid "from"
-msgstr ""
-
-#: app/html/controllers/notification.html
-msgid "has leave. You lead"
+#: app/html/controllers/list-users.html
+msgid "friend request"
 msgstr ""
 
 #: app/dynamique_translate.html
@@ -521,10 +546,7 @@ msgstr ""
 msgid "join the party !"
 msgstr ""
 
-#: app/html/controllers/notification.html
-msgid "on"
-msgstr ""
-
+#: app/html/directives/lfg-friendlist.html
 #: app/html/controllers/list-users.html
 msgid "online"
 msgstr ""
@@ -535,6 +557,11 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "player(s)"
+msgstr ""
+
+#: app/html/controllers/login.html
+#: app/html/controllers/register.html
+msgid "please wait ... game's data update is in progress"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -566,7 +593,15 @@ msgid "warlock"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "you have send a invite to {{name}}"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "your annoncement has been send and will appear in few second, please wait"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{days}} days"
 msgstr ""
 
 #: app/dynamique_translate.html
@@ -574,9 +609,45 @@ msgid "{{days}} days ago"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "{{hours}} hours"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "{{hours}} hours ago"
 msgstr ""
 
 #: app/dynamique_translate.html
+msgid "{{minutes}} minutes"
+msgstr ""
+
+#: app/dynamique_translate.html
 msgid "{{minutes}} minutes ago"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{name}} added on your friend list"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "{{name}} removed from your friend list"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} had you as friend, if he isn't on your friend list accept him on <a ng-href=\"{{listUsersUrl}}\">users list page</a>"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} has leave. You lead"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} joined"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} leave"
+msgstr ""
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} send you an invitation to"
 msgstr ""

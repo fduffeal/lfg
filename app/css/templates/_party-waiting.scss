@@ -129,6 +129,9 @@
 		}
 		.place {
 			width: 3%;
+		  	&.leader{
+			  background: red;
+			}
 		}
 		.perso{
 			width: 10%;

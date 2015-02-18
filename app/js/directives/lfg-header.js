@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
 			'use strict';
 			return {
 				scope:{
@@ -13,7 +13,7 @@ angular.module('myApp.directives')
 					$scope.logout = function(){
 						user.logout();
 						$scope.userInfo = null;
-						redirection.goHome();
+						$window.location.reload();
 					};
 
 
@@ -30,6 +30,7 @@ angular.module('myApp.directives')
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
+					$scope.listUsersUrl = redirection.getListUsersUrl();
 
                     $scope.userInfo = user.get();
 
@@ -38,14 +39,21 @@ angular.module('myApp.directives')
 					 * autoRefreshDataNotif
 					 */
 					var refreshDataNotif = function(){
-						rdv.getNotifications().success(function(data){
+
+						var promiseNotification = rdv.getNotifications();
+
+						if(promiseNotification === false){
+							return;
+						}
+
+						promiseNotification.success(function(data){
 							if($scope.userInfo === null){
 								return;
 							}
 							$scope.notifications = [];
-							$scope.allMyNotifications = $filter('filterNotification')(data,$scope.userInfo.id);
+							$scope.allMyNotifications = data;
 							for(var key in $scope.allMyNotifications){
-								if($scope.allMyNotifications[key].unread === true){
+								if($scope.allMyNotifications[key].new === true){
 									$scope.notifications.push($scope.allMyNotifications[key]);
 								}
 							}

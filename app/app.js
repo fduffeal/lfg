@@ -9,7 +9,8 @@ angular.module('myApp', [
 	'myApp.filters',
 	'ngCookies',
 	'gettext',
-	'superCache'
+	'superCache',
+	'ngAnimate'
 ]).
 	config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 

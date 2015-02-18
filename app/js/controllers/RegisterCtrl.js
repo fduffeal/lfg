@@ -4,6 +4,8 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 
 	        $scope.lang = lang.getCurrent();
 
+	        $scope.promiseRegisterInProgress = false;
+
 			rdv.getFormInfo().then(function(data){
 				$scope.aPlateforms = data.plateforms;
 			});
@@ -20,6 +22,12 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 		        }
 	        };
 
+
+	        $scope.$watch('gamerTag',function(newValue,oldValue){
+		        console.log('gamertag',newValue);
+		        $scope.username = newValue;
+	        });
+
 	        $scope.submit = function(){
 
 
@@ -30,17 +38,18 @@ angular.module('myApp.controllers').controller('RegisterCtrl',
 				$scope.username_already_taken = false;
 				$scope.email_already_taken = false;
 				$scope.gamertag_not_found = false;
+		        $scope.promiseRegisterInProgress = true;
 		        user.register($scope.email,$scope.password,$scope.username,$scope.plateform.id,$scope.gamerTag).success(function(data){
+			        $scope.promiseRegisterInProgress = false;
 			        redirection.goWelcomeHome();
 		        }).error(function(data){
-					console.log('error',data);
+			        $scope.promiseRegisterInProgress = false;
 					$scope.aError = data;
 
 					if(data.aError) {
 
 						for (var key in data.aError) {
 
-							console.log(data.aError[key]);
 							if (data.aError[key] === 'username_already_taken') {
 								$scope.username_already_taken = true;
 							}

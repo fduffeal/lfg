@@ -32,48 +32,20 @@
 		}
 		.list-gardien{
 			width: 20%;
+
 		}
 		.list-perso{
 			width: 20%;
-			.xs-character {
-				width: 150px;
-				height: 20px;
-				background: rgba(30,36,43,0.5);
-				padding: 0 0 0 25px;
-				margin: 0 0 1px 0;
-				position: relative;
-				background-size: cover;
-				color: white;
-				img {
-					position: absolute;
-					top: 2px;
-					left: 2px;
-					width: 16px;
-					height: 16px;
-					background-color: rgba(0, 0, 0, 0.2);
-					background-size: cover;
-					transition: 0.25s ease;
+			@media screen and (max-width: 660px ) {
+					display:none;
 				}
-				.class {
-					position: relative;
-					display: block;
-					top: 0px;
-					color: white;
-					font-size: 1.5rem;
-					font-weight: 400;
-				}
-				.level {
-					position: absolute;
-					color: rgba(245, 220, 86, 1);
-					top: 0px;
-					right: 7px;
-					font-size: 1.5rem;
-					font-weight: 200;
-				}
-			}
+
 		}
 		.list-clan{
 			width: 10%;
+			@media screen and (max-width: 780px ) {
+					display:none;
+				}
 			a {
 				color:$orange;
 				font-weight:bold;
@@ -93,36 +65,7 @@
 		}
 		.list-action{
 			width: 15%;
-			span {
-				width: 30px;
-				cursor: pointer;
-				font-weight:bold;
-				height: 30px;
-				font-size: 2.1rem;
-				margin-right: 10px;
-				color:$orange;
-				&:hover {
-					color: black;
-				}
-				&.add:before{
-					content: "+";
-				}
-				&.remove:before {
-					content: "-";
-				}
-				&.block:before {
-					content: "☹";
-				}
-				&.unblock:before {
-					content: "☺";
-				}
-				&.msg:before {
-					content: "✉";
-				}
-				&.invit:before {
-					content: "➜";
-				}
-			}
+
 		}
 
 

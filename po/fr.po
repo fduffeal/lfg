@@ -46,14 +46,6 @@ msgstr ""
 "sera promu en tant que créateur. Donc merci de vérifier vos informations "
 "avant de créer une partie !"
 
-#: app/html/controllers/notification.html
-msgid "A new player joined"
-msgstr "Un nouveau joueur a rejoint"
-
-#: app/html/controllers/notification.html
-msgid "A player leave"
-msgstr "Un joueur a quitté"
-
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html app/html/controllers/profile.html
 msgid "ALL FIELDS ARE REQUIRED"
@@ -67,9 +59,9 @@ msgstr "Accepter"
 msgid "Actions"
 msgstr "Actions"
 
-#: app/html/controllers/rdv.html
-msgid "All"
-msgstr "Tous"
+#: app/html/directives/lfg-profile-header.html
+msgid "Alternate Guardians"
+msgstr "Autre Gardiens"
 
 #: app/html/controllers/rdv.html
 msgid "Announcement"
@@ -142,6 +134,14 @@ msgstr "Refuser"
 msgid "Description"
 msgstr "Description"
 
+#: app/html/controllers/notification.html
+msgid "Display all"
+msgstr "Afficher tout"
+
+#: app/html/controllers/notification.html
+msgid "Display new"
+msgstr "Afficher les nouvelles"
+
 #: app/html/controllers/profile.html
 msgid "Email"
 msgstr "Adresse email"
@@ -178,6 +178,13 @@ msgstr "Compte Esbattle"
 msgid "Find"
 msgstr "Chercher"
 
+#: app/html/directives/lfg-invite-popup.html
+msgid ""
+"First you have to create a party, then you will be able to invite your "
+"friends !"
+msgstr ""
+"Vous devez d'abord créer une partie, après vous pourrez inviter vos amis !"
+
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
 msgstr "Mot de passe oublié ?"
@@ -185,6 +192,10 @@ msgstr "Mot de passe oublié ?"
 #: app/html/directives/lfg-footer.html
 msgid "French"
 msgstr "Français"
+
+#: app/html/directives/lfg-friendlist.html
+msgid "Friend's list"
+msgstr "Liste d'amis"
 
 #: app/html/controllers/profile.html
 msgid "Game"
@@ -199,8 +210,8 @@ msgid "Game Profil"
 msgstr "Profil de jeux"
 
 #: app/html/controllers/register.html
-msgid "GamerTag or PSN ID"
-msgstr "GamerTag ou PSN ID"
+msgid "GamerTag or PSN ID : Login Esbattle"
+msgstr "GamerTag ou PSN ID : Login Esbattle"
 
 #: app/html/controllers/matchmaking-waiting.html
 msgid "Gamertag"
@@ -214,10 +225,6 @@ msgstr "Gardien"
 msgid "Hi, we are looking for"
 msgstr "Bonjour, nous recherchons"
 
-#: app/html/controllers/rdv.html
-msgid "Hide"
-msgstr "Cacher"
-
 #: app/html/directives/lfg-header.html
 msgid "Home"
 msgstr "Accueil"
@@ -229,6 +236,14 @@ msgstr "Si vous quittez cette page, le matchmaking sera annulé"
 #: app/html/controllers/rdv.html
 msgid "Infos"
 msgstr "Infos"
+
+#: app/html/directives/lfg-invite-popup.html
+msgid "Invit !"
+msgstr "Invites !"
+
+#: app/html/controllers/party-waiting.html
+msgid "Join"
+msgstr "Rejoins"
 
 #: app/html/controllers/party-waiting.html
 msgid "Kick"
@@ -255,10 +270,6 @@ msgstr "Connexion !"
 msgid "Login Esbattle"
 msgstr "Login Esbattle"
 
-#: app/html/directives/lfg-header.html
-msgid "Logout"
-msgstr "Déconnexion"
-
 #: app/html/controllers/login.html
 msgid "Mail already send. Please check your mailBox (and your spam box)"
 msgstr ""
@@ -269,6 +280,14 @@ msgstr ""
 msgid "Mail send. Please check your mailBox (and your spam box)"
 msgstr ""
 "Email envoyé. Merci de vérifier votre boite email (et votre dossier spam)"
+
+#: app/html/controllers/notification.html
+msgid "Mark all as read"
+msgstr "Marquer tout comme lu"
+
+#: app/html/controllers/notification.html
+msgid "Mark as read"
+msgstr "Marquer comme lu"
 
 #: app/html/controllers/rdv.html
 msgid "My partys"
@@ -331,6 +350,10 @@ msgstr "Les mots de passe ne correspondent pas"
 msgid "Personal Infos"
 msgstr "Informations personelles"
 
+#: app/html/controllers/list-users.html app/html/controllers/rdv.html
+msgid "Plateform"
+msgstr "Plateforme"
+
 #: app/html/controllers/profile.html app/html/controllers/rdv.html
 #: app/html/controllers/register.html
 msgid "Platform"
@@ -388,6 +411,10 @@ msgstr "Inscrits toi pour rejoindre la partie !"
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
 
+#: app/html/controllers/list-users.html
+msgid "Search"
+msgstr "Recherche"
+
 #: app/html/controllers/party-waiting.html
 msgid "Send"
 msgstr "Envoyer"
@@ -413,8 +440,10 @@ msgid "Slots"
 msgstr "Slots"
 
 #: app/html/controllers/notification.html
-msgid "Sorry, you have been kicked by"
-msgstr "Désolé, vous avez été exclu par"
+msgid ""
+"Sorry, you have been kicked by {{notification.expediteur.username}} from"
+msgstr ""
+"Désolé, vous avez été exclus par  {{notification.expediteur.username}} de"
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html app/html/controllers/rdv.html
@@ -447,17 +476,25 @@ msgid "Thanks"
 msgstr "Merci"
 
 #: app/html/controllers/register.html
-msgid "The username is already used."
-msgstr "Ce nom d'utilisateur est déjà pris"
-
-#: app/html/controllers/register.html
 msgid "This email is already used."
 msgstr "Cet email est déjà pris"
+
+#: app/html/controllers/register.html
+msgid ""
+"This gamerTag or PSN ID is already used as Esbattle account, please choose "
+"an other name for your Esbattle account."
+msgstr ""
+"Ce gamerTag ou PSN ID est déjà utilisé comme nom de compte Esbattle, s'il "
+"vous plait choississez un autre nom pour votre compte Esbattle."
 
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
 msgstr "Demain"
+
+#: app/html/controllers/rdv.html
+msgid "Type"
+msgstr "Type"
 
 #: app/html/controllers/profile.html
 msgid "Update"
@@ -497,8 +534,8 @@ msgid "VaultOfGlass"
 msgstr "CaveauDeVerre"
 
 #: app/html/controllers/party-waiting.html
-msgid "Waiting Players"
-msgstr "Joueurs voulant rejoindre la partie"
+msgid "Waiting / Guest Players"
+msgstr "Joueurs invités / en attente "
 
 #: app/dynamique_translate.html
 msgid "Weekly Heroic Strike"
@@ -514,12 +551,15 @@ msgid "Yes"
 msgstr "Oui"
 
 #: app/html/controllers/notification.html
-msgid "You have been accepted by"
-msgstr "Vous avez été accepté par"
+msgid "You have been accepted by {{notification.expediteur.username}} on"
+msgstr "Vous avez été accepté par {{notification.expediteur.username}} sur"
 
 #: app/html/controllers/notification.html
-msgid "You have been promoted as leader by"
-msgstr "Vous avez été promu comme chef par"
+msgid ""
+"You have been promoted as leader by {{notification.expediteur.username}} on"
+msgstr ""
+"Vous avez été promu organisateur par  {{notification.expediteur.username}} "
+"sur"
 
 #: app/html/controllers/rdv.html
 msgid "Your gamertag"
@@ -549,13 +589,9 @@ msgstr "du jour"
 msgid "epic"
 msgstr "épique"
 
-#: app/html/controllers/notification.html
-msgid "from"
-msgstr "de"
-
-#: app/html/controllers/notification.html
-msgid "has leave. You lead"
-msgstr "a quitté. Vous contrôlez "
+#: app/html/controllers/list-users.html
+msgid "friend request"
+msgstr "demande d'ami"
 
 #: app/dynamique_translate.html
 msgid "hunter"
@@ -565,10 +601,7 @@ msgstr "chasseur"
 msgid "join the party !"
 msgstr "rejoins la partie !"
 
-#: app/html/controllers/notification.html
-msgid "on"
-msgstr "sur"
-
+#: app/html/directives/lfg-friendlist.html
 #: app/html/controllers/list-users.html
 msgid "online"
 msgstr "en ligne"
@@ -580,6 +613,10 @@ msgstr "Les mots de passe ne correspondent pas"
 #: app/html/controllers/party-waiting.html
 msgid "player(s)"
 msgstr "joueur(s)"
+
+#: app/html/controllers/login.html app/html/controllers/register.html
+msgid "please wait ... game's data update is in progress"
+msgstr "patientez s'il vous plait ... mise à jour des données du jeu en cours"
 
 #: app/html/controllers/party-waiting.html
 msgid "start"
@@ -610,6 +647,10 @@ msgid "warlock"
 msgstr "arcaniste"
 
 #: app/dynamique_translate.html
+msgid "you have send a invite to {{name}}"
+msgstr "vous avez envoyé une invitation à {{name}}"
+
+#: app/dynamique_translate.html
 msgid ""
 "your annoncement has been send and will appear in few second, please wait"
 msgstr ""
@@ -617,16 +658,103 @@ msgstr ""
 "patienter"
 
 #: app/dynamique_translate.html
+msgid "{{days}} days"
+msgstr "{{days}} jours"
+
+#: app/dynamique_translate.html
 msgid "{{days}} days ago"
 msgstr "il y a {{days}} jours"
+
+#: app/dynamique_translate.html
+msgid "{{hours}} hours"
+msgstr "{{hours}} heures"
 
 #: app/dynamique_translate.html
 msgid "{{hours}} hours ago"
 msgstr "il y a {{hours}} heures"
 
 #: app/dynamique_translate.html
+msgid "{{minutes}} minutes"
+msgstr "{{minutes}} minutes"
+
+#: app/dynamique_translate.html
 msgid "{{minutes}} minutes ago"
 msgstr "il y a {{minutes}} minutes"
+
+#: app/dynamique_translate.html
+msgid "{{name}} added on your friend list"
+msgstr "{{name}} a été ajouté à votre liste d'ami"
+
+#: app/dynamique_translate.html
+msgid "{{name}} removed from your friend list"
+msgstr "{{name}} a été supprimé de votre liste d'amis"
+
+#: app/html/controllers/notification.html
+msgid ""
+"{{notification.expediteur.username}} had you as friend, if he isn't on your "
+"friend list accept him on <a ng-href=\"{{listUsersUrl}}\">users list page</a>"
+msgstr ""
+"{{notification.expediteur.username}} vous a ajouté comme amis, si il n'est "
+"pas dans votre liste d'amis ajouté le depuis <a ng-href="
+"\"{{listUsersUrl}}\">la page utilisateur</a>"
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} has leave. You lead"
+msgstr "{{notification.expediteur.username}} a quitté. Vous organisez"
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} joined"
+msgstr "{{notification.expediteur.username}} a rejoins"
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} leave"
+msgstr "{{notification.expediteur.username}} a quitté"
+
+#: app/html/controllers/notification.html
+msgid "{{notification.expediteur.username}} send you an invitation to"
+msgstr "{{notification.expediteur.username}} vous a envoyé une invitation pour"
+
+#~ msgid "Logout"
+#~ msgstr "Déconnexion"
+
+#~ msgid "A new player joined"
+#~ msgstr "Un nouveau joueur a rejoint"
+
+#~ msgid "A player leave"
+#~ msgstr "Un joueur a quitté"
+
+#~ msgid "Sorry, you have been kicked by"
+#~ msgstr "Désolé, vous avez été exclu par"
+
+#~ msgid "Waiting Players"
+#~ msgstr "Joueurs voulant rejoindre la partie"
+
+#~ msgid "You have been accepted by"
+#~ msgstr "Vous avez été accepté par"
+
+#~ msgid "You have been promoted as leader by"
+#~ msgstr "Vous avez été promu comme chef par"
+
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgid "has leave. You lead"
+#~ msgstr "a quitté. Vous contrôlez "
+
+#~ msgid "on"
+#~ msgstr "sur"
+
+#~ msgid "All"
+#~ msgstr "Tous"
+
+#~ msgid "GamerTag or PSN ID"
+#~ msgstr "GamerTag ou PSN ID"
+
+#~ msgid "Hide"
+#~ msgstr "Cacher"
+
+#~ msgid "The username is already used."
+#~ msgstr "Ce nom d'utilisateur est déjà pris"
 
 #~ msgid "start at"
 #~ msgstr "commence à"

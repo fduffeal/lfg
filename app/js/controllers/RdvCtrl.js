@@ -34,6 +34,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 			$scope.annonceCreateUrl = redirection.getAnnonceCreateUrl();
+			$scope.registerPageUrl = redirection.getRegisterPageUrl();
 
 			$scope.isLive = rdv.isLive;
 			$scope.isEnded = rdv.isEnded;
@@ -79,12 +80,78 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 			};
 
+			var arrayUnique = function(array) {
+				var a = array.concat();
+				for(var i=0; i<a.length; ++i) {
+					for(var j=i+1; j<a.length; ++j) {
+						if(a[i] === a[j])
+							a.splice(j--, 1);
+					}
+				}
+				return a;
+			};
+
+			var updateAllRdv = function(){
+				updateMyRdv();
+				updateRdvLastPlace();
+			};
+
+			var addNewData = function(array,newDataArray){
+				for(var j=0;j<newDataArray.length;j++){
+					var alreadyAdded = false;
+					for(var i=0;i< array.length;i++){
+
+						if(newDataArray[j].id === array[i].id && newDataArray[j].type === array[i].type){
+							alreadyAdded = true;
+						}
+					}
+
+					if(alreadyAdded === false){
+						array.push(newDataArray[j]);
+					}
+				}
+
+				updateAllRdv();
+			};
+
+
+			var updateMyRdv = function(){
+				//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+				if($scope.currentUser !== null){
+
+					if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+						var plateformId = null;
+					}else {
+						var plateformId = $scope.plateform.id;
+					}
+
+					//if($scope.plateform)
+					$scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+					$scope.aMyRdv = $filter('orderBy')($scope.aMyRdv, $scope.predicate, $scope.reverse);
+				}
+			};
+
+			$scope.aRdvLastPlace =[];
+			var updateRdvLastPlace = function(){
+
+				//console.log('$scope.aRdvLastPlace',$scope.aRdvLastPlace,$scope.aRdv);
+
+				if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+					var plateformId = null;
+				}else {
+					var plateformId = $scope.plateform.id;
+				}
+
+				$scope.aRdvLastPlace = $filter('filterRdvLastPlace')($scope.aRdv,plateformId,$scope.tags,false,false,true,$scope.slotMinAvailable,$scope.slotMaxAvailable,$scope.type);
+				$scope.aRdvLastPlace = $filter('orderBy')($scope.aRdvLastPlace, $scope.predicate, $scope.reverse);
+			};
+
+
 
 			var refreshRdvData = function(){
 
 				annonce.get().success(function(data) {
-					formatAnnonces(data);
-					$scope.aRdv = $scope.aAnnoncesFormated.concat($scope.aRdvNormaux);
+					addNewData($scope.aRdv,formatAnnonces(data));
 				});
 
 				rdv.getAll().success(function(data) {
@@ -94,22 +161,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
 						formatRdv(data[key]);
 					}
+					addNewData($scope.aRdv,data);
 
-					$scope.aRdvNormaux = data;
-					$scope.aRdv = $scope.aRdvNormaux.concat($scope.aAnnoncesFormated);
-
-					//filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
-					if($scope.currentUser !== null){
-
-						if(typeof $scope.plateform === "undefined"){
-							var plateformId = null;
-						}else {
-							var plateformId = $scope.plateform.id;
-						}
-
-						//if($scope.plateform)
-						$scope.aMyRdv = $filter('filterRdvWithMe')(data,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
-					}
 				}).error(function(data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
@@ -120,7 +173,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.displayWelcome = ($route.current.action === 'welcome');
 
 			//autoRefresh
-			var refreshTime = 12000;
+			var refreshTime = 20000;
 			var autoRefreshData = function(){
 				$scope.intervalId = $interval(function(){
 					refreshRdvData();
@@ -157,9 +210,12 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			var formatAnnonces = function(aAnnonces){
 				var nbAnnonces = aAnnonces.length;
 
+
 				for(var i=0; i< nbAnnonces;i++){
-					$scope.aAnnoncesFormated[i] = formatAnnonce(aAnnonces[i]);
+					aAnnonces[i] = formatAnnonce(aAnnonces[i]);
 				}
+
+				return aAnnonces;
 			};
 
 
@@ -184,7 +240,11 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					$scope.messageFormAnnonce = 'your annoncement has been send and will appear in few second, please wait';
 
-					//$scope.aRdv.push(formatAnnonce(data));
+					var newAnnonce = [];
+					newAnnonce.push(formatAnnonce(data));
+
+
+					addNewData($scope.aRdv,newAnnonce);
 
 				}).error(function(data){
 					$scope.annonce_tag = '';
@@ -209,6 +269,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				}
 				$scope.$watch('type',function(newValue, oldValue){
 					storage.setPersistant('cookie_type_rdv',newValue);
+					updateAllRdv();
 				});
 			};
 
@@ -242,6 +303,8 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						storage.erasePersistant('cookie_plateform_rdv_id');
 						//$location.path(homeUrl).replace();
 					}
+
+					updateAllRdv();
 				});
 			};
 
@@ -249,6 +312,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				$scope.$watch('tags',function(newValue,oldValue){
 					if(newValue !== '' || oldValue !== ''){
 						$location.search('tags', newValue);
+						updateAllRdv();
 					}
 				});
 

@@ -13,15 +13,16 @@ angular.module('myApp.services')
 
 			this.hasTagSelected = function(rdv,aTags){
 
-				var aTagItem = [];
+				var tagItemString = '';
 				for(var keyTagItem in rdv.tags){
-					aTagItem.push(rdv.tags[keyTagItem].nom.toLowerCase());
+					tagItemString = tagItemString+' '+rdv.tags[keyTagItem].nom.toLowerCase();
 				}
 
 				var asTag = true;
 				for(var keyTag in aTags){
-					if(aTagItem.indexOf(aTags[keyTag].toLowerCase()) < 0){
+					if(tagItemString.indexOf(aTags[keyTag].toLowerCase()) < 0){
 						asTag = false;
+						break;
 					}
 				}
 
@@ -30,7 +31,7 @@ angular.module('myApp.services')
 
 			this.hasPlateformSelected = function(rdv,plateformId){
 				var bHasPlateform = true;
-				if(plateformId !== "" && typeof(plateformId) !== 'undefined'){
+				if(plateformId !== "" && typeof(plateformId) !== 'undefined' && plateformId !== null){
 					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
 						bHasPlateform = false;
 					}

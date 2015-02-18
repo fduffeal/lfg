@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket',
-		function ($scope,$routeParams,user,socket) {
+	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog',
+		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog) {
 			'use strict';
 
 
@@ -10,52 +10,242 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			$scope.reverse = true;
 			$scope.onlyFriends = false;
 			$scope.username = '';
+			$scope.aAllUsers = [];
 
-			var refreshData = function() {
-				user.getAll().success(function (data, status, headers, config) {
-					console.log(data);
-					console.log('listuser ctrl', socket.listUsers);
+			$scope.plateform = null;
 
-					for (var key in data) {
-						data[key].connected = false;
-						data[key].me = false;
-						data[key].canAddToFriendList = true;
-						data[key].canAddToBlackList = true;
 
-						if (socket.listUsers[data[key].username]) {
-							data[key].connected = true;
-						}
+			$scope.aFriendsId = [];
+			var updateAFriendsId = function(data){
+				$scope.aFriendsId = [];
+				for (var key in data) {
+					$scope.aFriendsId.push(data[key].id);
+				}
+			};
 
-						if($scope.currentUser !== null && data[key].username === $scope.currentUser.username){
-							data[key].me = true;
+			$scope.aFriendsPendingId = [];
+			var updateAFriendsPendingId = function(data){
+				$scope.aFriendsPendingId = [];
+				for (var key in data) {
+					$scope.aFriendsPendingId.push(data[key].id);
+				}
+			};
+
+			$scope.aFriendsRequestPendingId = [];
+			var updateAFriendsRequestId = function(data){
+				$scope.aFriendsRequestPendingId = [];
+				for (var key in data) {
+					$scope.aFriendsRequestPendingId.push(data[key].id);
+				}
+			};
+
+			$scope.page = 1;
+			$scope.searchPlateform = null;
+			$scope.searchUsername = null;
+			$scope.searchMethode = null;
+			$scope.searchMore = true;
+			var nbResult = 60;
+
+			var addNewData = function(array,newDataArray) {
+				for (var j = 0; j < newDataArray.length; j++) {
+					var alreadyAdded = false;
+					for (var i = 0; i < array.length; i++) {
+
+						if (newDataArray[j].id === array[i].id) {
+							alreadyAdded = true;
+							array[i] = newDataArray[j];
+
 						}
 					}
 
-					$scope.aUsers = data;
-				});
-
+					if (alreadyAdded === false) {
+						array.push(newDataArray[j]);
+					}
+				}
 			};
 
+			var refreshData = function() {
 
+				var plateformId = null;
+				if(typeof $scope.plateform !== "undefined" && $scope.plateform  !== null){
+					plateformId = $scope.plateform.id;
+				}
+
+				var username = null;
+				if($scope.username.length >= 1){
+					username = $scope.username ;
+				}
+
+				if($scope.searchPlateform !== plateformId){
+					$scope.aAllUsers = [];
+				}
+
+				if ($scope.searchPlateform !== plateformId || $scope.searchUsername !== username){
+					$scope.page = 1;
+					$scope.searchMore = true;
+				}
+
+				$scope.searchPlateform = plateformId;
+				$scope.searchUsername = username;
+
+				user.getByUsername($scope.searchUsername,$scope.searchPlateform,$scope.page,nbResult).success(function (data, status, headers, config) {
+
+					if(data.length === 0){
+						$scope.searchMore = false;
+					}
+					addNewData($scope.aAllUsers,data);
+
+					filterData();
+				});
+			};
+
+			var filterData = function(){
+				for (var key in $scope.aAllUsers){
+					$scope.aAllUsers[key].connected = false;
+					$scope.aAllUsers[key].me = false;
+					$scope.aAllUsers[key].canAddToFriendList = true;
+					$scope.aAllUsers[key].canAddToBlackList = true;
+
+					if (socket.listUsers[$scope.aAllUsers[key].username]) {
+						$scope.aAllUsers[key].connected = true;
+						$scope.aAllUsers[key].onlineTime = 99999999999999999;
+					}
+
+					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
+						$scope.aAllUsers[key].me = true;
+					}
+
+					$scope.aAllUsers[key].isFriend = ($scope.aFriendsId.indexOf($scope.aAllUsers[key].id) > -1);
+					$scope.aAllUsers[key].isFriendPending = ($scope.aFriendsPendingId.indexOf($scope.aAllUsers[key].id) > -1);
+					$scope.aAllUsers[key].isFriendResquest = ($scope.aFriendsRequestPendingId.indexOf($scope.aAllUsers[key].id) > -1);
+				}
+
+				var plateformId = null;
+				if(typeof $scope.plateform !== "undefined" && $scope.plateform  !== null){
+					plateformId = $scope.plateform.id;
+				}
+
+				$scope.aUsers = $filter('filterUser')($scope.aAllUsers,$scope.username,$scope.onlyFriends,plateformId);
+			};
+
+			$scope.addMore = function(){
+				$scope.page++;
+				refreshData();
+			};
+
+			$scope.$watch('username',function(){
+				filterData();
+				if($scope.aUsers.length === 0){
+					refreshData();
+				}
+			});
+
+			$scope.$watch('plateform',function(){
+				filterData();
+				if($scope.aUsers.length === 0){
+					refreshData();
+				}
+			});
 
 			$scope.$on('updateListUsers',function(event,data){
-				console.log('updateListUsers',data);
-				refreshData();
+				filterData();
 			});
 
 			$scope.addToFriendList = function(friendUsername){
 				var addFriendPromise = user.addFriend(friendUsername);
 				if(addFriendPromise !== false){
-					addFriendPromise(friendUsername).success(function(data){
+					addFriendPromise.success(function(data){
+						updateFriendsStatus();
+					});
+				}
+				var message = gettextCatalog.getString("{{name}} added on your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
+			};
 
+			$scope.removeFromFriendList = function(friendUsername){
+				var removeFriendPromise = user.removeFriend(friendUsername);
+				if(removeFriendPromise !== false){
+					removeFriendPromise.success(function(data){
+						updateFriendsStatus();
+					});
+				}
+				var message = gettextCatalog.getString("{{name}} removed from your friend list", { name: friendUsername });
+				$scope.$broadcast('popup',[message]);
+			};
+
+
+			var fillPlateforms = function(){
+				rdv.getFormInfo().then(function(data){
+					$scope.aPlateforms = data.plateforms;
+					setDefaultFilterPlateform();
+				});
+			};
+
+
+			$scope.invite = function(user){
+				$scope.$broadcast('invite',[user]);
+			};
+
+			var getFriendRequest = function(){
+				var getFriendsRequestPromise = user.getFriends();
+				if(getFriendsRequestPromise !== false){
+					user.getFriendsRequest().success(function (data, status, headers, config) {
+						updateAFriendsRequestId(data);
+					}).then(function(data){
+						filterData();
 					});
 				}
 			};
 
-			$scope.removeFromFriendList = user.removeFriend;
+			var getFriendsRequestPending = function(){
+				var getFriendsRequestPendingPromise = user.getFriends();
+				if(getFriendsRequestPendingPromise !== false){
+					user.getFriendsPending().success(function (data, status, headers, config) {
+						updateAFriendsPendingId(data);
+					}).then(function(data){
+						filterData();
+					});
+				}
+			};
 
+			var getFriends = function(){
+				var getFriendsPromise = user.getFriends();
+				if(getFriendsPromise !== false){
+					user.getFriends().success(function (data, status, headers, config) {
+						updateAFriendsId(data);
+					}).then(function(data){
+						filterData();
+					});
+				}
+			};
+
+			var updateFriendsStatus = function(){
+				getFriends();
+				getFriendsRequestPending();
+				getFriendRequest();
+			};
+
+			var setDefaultFilterPlateform = function(){
+				if($scope.currentUser === null){
+					return;
+				}
+
+				var firstPlateform = $scope.currentUser.userGame[0].plateform;
+				for(var key in $scope.aPlateforms){
+					if($scope.aPlateforms[key].id === firstPlateform.id){
+						$scope.plateform = $scope.aPlateforms[key];
+					}
+				}
+			}
 
 			var init = function(){
+
+				fillPlateforms();
+
+				updateFriendsStatus();
+
+				refreshData();
+
 				socket.getUserList();
 			};
 

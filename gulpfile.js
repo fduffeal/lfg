@@ -33,6 +33,7 @@ gulp.task('scripts', function() {
 		'app/bower_components/angular-route/angular-route.js',
 		'app/bower_components/angular-cookies/angular-cookies.js',
 		'app/bower_components/angular-gettext/dist/angular-gettext.js',
+		'app/bower_components/angular-animate/angular-animate.js',
 		'app/*.js',
 		'app/js/*/*.js'
 	])

@@ -1,11 +1,162 @@
 #home {
+	.home-profile {
+
+		@media screen and (max-width: 1065px ) {
+			width: 84%;
+		}
+		@media screen and (max-width: 550px ) {
+			width: 95%;
+		}
+		background: #111;
+		width: 940px;
+		font-family: "Open Sans", sans-serif;
+		font-weight: 400;
+		font-size: 14px;
+		margin: auto;
+		.hm-guardian {
+			position: relative;
+			height: 96px;
+			.hm-emblem {
+				top: 0;
+				left: 0;
+				position: absolute;
+				width: 474px;
+				height: 96px;
+				text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+				@media screen and (max-width: 520px ) {
+					width: 100%;
+				}
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 86px;
+				}
+				.details {
+					position: absolute;
+					color: rgba(255, 255, 255, 0.5);
+					top: 18px;
+					left: 92px;
+					font-size: 16px;
+					@media screen and (max-width: 400px ) {
+						font-size: 12px;
+					}
+					h6 {
+						margin: 0;
+						padding: 0;
+						font-size: 26px;
+						color: #ffffff;
+						margin-top: 0;
+						text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+						@media screen and (max-width: 400px ) {
+							font-size: 18px;
+						}
+					}
+				}
+				.stats {
+					position: absolute;
+					text-align: right;
+					top: 5px;
+					right: 8px;
+					color: #fff;
+					h3 {
+						color: #f5dc56;
+						text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+						font-weight: 400;
+						font-size: 46px;
+						margin: 0;
+						padding: 0;
+						&:before {
+							content: "\2726";
+							display: inline-block;
+							vertical-align: 34%;
+							font-size: 50%;
+
+						}
+					}
+				}
+				.progress-wrapper {
+					position: absolute;
+					bottom: 0;
+					height: 10px;
+					width: 100%;
+					background: rgba(255, 255, 255, 0.11);
+					.bar {
+						height: 10px;
+						background: #f5dc56;
+					}
+				}
+			}
+			.alts {
+				@media screen and (max-width: 857px ) {
+					display:none
+				}
+				position: absolute;
+				left: 474px;
+				height: 96px;
+				padding: 7px 7px 0 7px;
+				width: 244px;
+				h4 {
+					font-weight: 400;
+					font-size: 12px;
+					margin: 0 0 2px 0;
+					color: #555;
+					text-transform: uppercase;
+					padding: 0;
+				}
+				.alt {
+					background-size: 100% auto;
+
+					width: 220px;
+					height: 32px;
+					margin-bottom: 3px;
+					text-shadow: 1px 1px 0px #000000;
+					a {
+						display: block;
+						color: rgba(255, 255, 255, 0.8);
+					}
+					img {
+						width: 32px;
+						vertical-align: middle;
+						height: 32px;
+					}
+					span i {
+						font-style: normal;
+						font-weight: bold;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
 	.welcome {
+		margin-top: 0;
+		color: white;
+		background: $orange;
+		.marge {
+			padding: 10px 20px 0 20px!important;
+		}
 		.hide, .show {
 			color: black;
+			float: right;
+			color: white;
+			&:hover {
+				color: #06ab93;
+			}
+		}
+
+		.hide {
+			&:before {
+				content: "✖";
+				font-size: 2rem;
+				color: white;
+			}
+			&:hover:before {
+				color: #06ab93;
+			}
 		}
 		.txt {
 			display: block;
-			color: white!important;
 			.tit {
 				font-weight: bold;
 
@@ -13,6 +164,7 @@
 		}
 		.fb_iframe_widget {
 			margin: 0;
+			float: left;
 		}
 		.btn2 {
 			display: inline-block;
@@ -21,6 +173,13 @@
 			color: white!important;
 			text-decoration: none!important;
 			font-size: 1.3rem;
+			margin-top: 0;
+			background: black;
+			margin-bottom: 10px;
+			&:hover {
+				background: #000;
+				color: $orange;
+			}
 			img{
 				position: absolute;
 				right: 10px;
@@ -66,7 +225,7 @@
 			}
 			input, label {
 				margin: 0 5px 10px 0;
-				border: none
+				border: 1px solid #999;
 			}
 			select {
 				padding:3px;
@@ -162,12 +321,20 @@
 				background: #e9aea6;
 				cursor: pointer;
 			}
+		  	&.ng-enter{
+			  @include transition(background-color 1s ease-out);
+			  background-color: #e9aea6;
+			}
+			&.ng-enter-active{
+			  @include transition(background-color 1s ease-out);
+			  background-color: white;
+			}
 		}
 
 		ul.search-tags {
 			@media screen and (max-width: 660px ) {
-					display:none;
-				}
+				display:none;
+			}
 			float: left;
 			input {
 				width: 250px;

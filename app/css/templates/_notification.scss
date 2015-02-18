@@ -1,64 +1,65 @@
 #notification {
-    .block {
-        width: 98%;
-        margin: auto;
-    }
-    .read-all {
-        font-size: 14px;
-        text-align: right;
-        a {
-            color: #06ab93;
-            &:hover {
-               text-decoration: underline;
-           }
-       }
+	.block {
+		width: 98%;
+		margin: auto;
+	}
+	.read-all {
+		font-size: 14px;
+		text-align: right;
+		a {
+			color: #06ab93;
+			&:hover {
+			   text-decoration: underline;
+		   }
+	   }
    }
    .notifs {
 
-    .sep {
-        border-bottom: 1px solid #cacaca;
-        margin: 5px 0;
-        width: 100%;
-        height: 1px;
-    }
-    .line {
-        height: 100px;
-        vertical-align: top;
-        margin: 5px 0;
-        color:#2d2d2d;
-        &.unread {
-            background: lighten(#cacaca, 15%);
-            .msg {
-                font-weight:bold;
-            }
-        }
-        .msg {
-            width: 70%;
-            float: left;
-            margin: 10px;
-            font-size: 13px;
-            line-height: 21px;
-        }
-        .date {
-            width: 15%;
-            text-align: right;
-            float: right;
-            margin: 10px;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        span {
-            font-weight: bold;
-            color: #f15641;
-        }
-        a {
-            span {
-                color: #06ab93!important;
-            }
-            &:hover {
-               text-decoration: underline;
-           }
-       }
+	.sep {
+		border-bottom: 1px solid #cacaca;
+		margin: 5px 0;
+		width: 100%;
+		height: 1px;
+	}
+	.line {
+		vertical-align: top;
+		margin: 5px 0;
+		color:#2d2d2d;
+		font-size: 1.3rem;
+		&.unread {
+			background: lighten(#cacaca, 15%);
+			.msg {
+				font-weight:bold;
+			}
+		}
+		.msg {
+			width: 70%;
+			float: left;
+			margin: 10px;
+			font-size: 1.3rem;
+			line-height: 21px;
+		}
+		.date {
+
+			text-align: right;
+			clear:both;
+			margin: 10px;
+			font-size: 1.1rem;
+			font-weight: bold;
+		}
+		span {
+			font-weight: bold;
+			color: #f15641;
+		}
+		a {
+			font-size: 1.3rem;
+			span {
+				color: #06ab93!important;
+			}
+			&:hover {
+			   text-decoration: underline;
+		   }
+	   }
    }
 
 }

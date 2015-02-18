@@ -64,7 +64,32 @@ angular.module('myApp.services')
 			};
 
 			this.getNotifications = function(){
-				return api.call('notifications/');
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/'+currentUser.id);
+			};
+			this.getAllNotifications = function(){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/all/'+currentUser.id);
+			};
+
+			this.markNotificationRead = function(ids){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/read/'+currentUser.id+'/'+ids);
 			};
 
 			this.isLive = function(rdv){
@@ -77,6 +102,17 @@ angular.module('myApp.services')
 				var now = new Date();
 				now = now.getTime()/1000;
 				return (typeof rdv !== "undefined" && rdv.end < now);
+			};
+
+			this.invite = function(destinataire,rdv){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('rdv/invite/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
 			};
 		}
 	]

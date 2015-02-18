@@ -7,6 +7,13 @@ body, html {
 	height: 100%;
 	font-size: 62.5%;
 }
+.clear{
+	clear: both;
+}
+input {
+	outline-style: none;
+
+}
 span.co, span.noco{
 	display: block;
 	width: 10px;
@@ -24,14 +31,100 @@ span.noco{
 	background: red
 
 }
+.pleasewait {
+	font-size: 1.3rem;
+	text-align: center;
+}
+.icon-actions {
+	span {
+		height: 16px;
+		display:block;
+		float: left;
+		margin-right: 10px;
+		background-repeat: no-repeat;
+		line-height: 16px;
+		cursor: pointer;
+		&:hover {
+			@include filter(grayscale(30%));
+		}
+		&.add{
+			background-image: url('../img/ico-add.png');
+			width: 16px;
+		}
+		&.remove {
+			background-image: url('../img/ico-delete.png');
+			width: 16px;
+		}
+		&.block {
+			background-image: url('../img/ico-block.png');
+			width: 13px;
+			margin-top: -1px;
+		}
+		&.unblock {
+			background-image: url('../img/ico-unblock.png');
+			width: 13px;
+			margin-top: -1px;
+		}
+		&.msg {
+			background-image: url('../img/ico-msg.png');
+			width: 23px;
+			background-size: 90%;
+			margin-top: 2px;
+		}
+		&.invit {
+			background-image: url('../img/ico-party.png');
+			width: 23px;
+			margin-top: -1px;
+		}
+	}
+}
+.xs-character {
+	width: 150px;
+	height: 20px!important;
+	background: rgba(30,36,43,0.5);
+	padding: 0 0 0 25px;
+	margin: 0 0 1px 0;
+	position: relative;
+	background-size: cover;
+	color: white;
+	line-height:20px;
+	img {
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 16px;
+		height: 16px;
+		background-color: rgba(0, 0, 0, 0.2);
+		background-size: cover;
+		transition: 0.25s ease;
+	}
+	.class {
+		position: relative;
+		display: block;
+
+		top: 0px;
+		color: white;
+		font-size: 1.5rem;
+		font-weight: 400;
+	}
+	.level {
+		position: absolute;
+		color: rgba(245, 220, 86, 1);
+		top: 0px;
+		right: 7px;
+		font-size: 1.5rem;
+		font-weight: 200;
+	}
+}
+
 #error404 {
 	background-size: cover;
 	background-image: url('/img/bg-404.jpg');
 	margin-top:47px!important;
 	text-align:center;
 	@media screen and (max-width: 490px ) {
-			height: 550px!important;
-		}
+		height: 550px!important;
+	}
 	img.picto-404 {
 		width: 250px;
 		margin-top: 2%;
@@ -112,8 +205,6 @@ span.noco{
 	&.co {
 		border-left: 5px solid #49c100;
 	}
-
-
 	a {
 		color: white!important;
 		display: block;
@@ -121,9 +212,6 @@ span.noco{
 	.embleme {
 		float: left;
 		width: 20%;
-
-
-
 	}
 	.left {
 		float: left;
@@ -133,11 +221,7 @@ span.noco{
 			margin-top: 5px;
 		}
 		.name {
-
 			margin-bottom: 2px;
-
-
-
 		}
 	}
 	.right {
@@ -209,7 +293,7 @@ ul, li {
 		}
 		&:hover, &.selected{
 			@include box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
-			border: 2px solid white
+			border: 2px solid black
 		}
 
 		a {
@@ -268,7 +352,10 @@ h1{
 	margin-top: 20px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
-	@media screen and (max-width: 980px ) {
+	@media screen and (max-width: 1065px ) {
+		width: 84%;
+	}
+	@media screen and (max-width: 550px ) {
 		width: 95%;
 	}
 }

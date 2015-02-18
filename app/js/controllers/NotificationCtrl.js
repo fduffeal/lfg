@@ -4,36 +4,71 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
             'use strict';
 
 	        $scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+	        $scope.listUsersUrl = redirection.getListUsersUrl();
 
 	        $scope.userInfo = user.get();
+
+	        $scope.displayNew = true;
+
+	        $scope.displayNewfn = function(){
+		        $scope.displayNew = true;
+	        };
+
+	        $scope.displayAllfn = function(){
+		        $scope.displayNew = false;
+	        };
 	        /**
 	         * autoRefreshDataNotif
 	         */
 	        var refreshDataNotif = function(){
-		        rdv.getNotifications().success(function(data){
-			        if($scope.userInfo === null){
-				        return;
-			        }
-			        $scope.notifications = $filter('filterNotification')(data,$scope.userInfo.id);
-			        $rootScope.notificationsAlreadyRead = $scope.notifications;
+
+		        var promiseNotification = rdv.getNotifications();
+
+		        if(promiseNotification === false){
+			        return;
+		        }
+		        promiseNotification.success(function(data){
+			        $scope.notifications = data;
 		        });
 	        };
 
-	        var refreshTime = 12000;
-	        var autoRefreshDataNotif = function(){
-		        $interval.cancel($scope.intervaNotificationId);
+	        $scope.markRead = function(id){
+		        var promiseMarkNotificationRead = rdv.markNotificationRead(id);
 
-		        if (angular.isDefined($scope.intervaNotificationId)) {
+		        if(promiseMarkNotificationRead === false){
 			        return;
 		        }
+		        promiseMarkNotificationRead.success(function(data){
+			        $scope.notifications = data;
+		        });
+	        };
 
-		        $scope.intervaNotificationId = $interval(function(){
-			        refreshDataNotif();
-		        }, refreshTime);
+	        $scope.markAllAsRead = function(){
+		        var listId = [];
+		        for(var key in $scope.notifications){
+			        listId.push($scope.notifications[key].id);
+		        }
+
+		        $scope.markRead(listId.join('-'));
+	        };
+
+	        /**
+	         * autoRefreshDataNotif
+	         */
+	        var getAllNotif = function(){
+
+		        var promiseNotification = rdv.getAllNotifications();
+
+		        if(promiseNotification === false){
+			        return;
+		        }
+		        promiseNotification.success(function(data){
+			        $scope.allNotifications = data;
+		        });
 	        };
 
 	        refreshDataNotif();
-	        autoRefreshDataNotif();
+	        getAllNotif();
         }
     ]
 );

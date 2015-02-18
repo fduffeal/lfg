@@ -1,0 +1,51 @@
+<div id="friendlist" ng-class="{' active': isActive}" ng-show="ready">
+<div class="toggle" ng-init="isActive = false"
+			ng-click="isActive = !isActive" ></div>
+	<h5	ng-init="isActive = true"
+		ng-click="isActive = !isActive" translate>Friend's list</h5>
+<div ng-click="scrollUp()" ng-show="firstDisplay>0" class="scrollup"><span></span></div>
+
+	<div class="fl-friends">
+
+		<div class="fl-friend" ng-repeat="user in aUsers" ng-class="{'last':$last, 'on':user.connected}" ng-if="firstDisplay<=$index">
+			<img class="xs-avatar" ng-repeat="usergame in user.userGame | filterAvatar" src="{{usergame.data5}}" alt=""/>
+			<span class="fl-name">{{user.userGame[0].gameUsername}}</span>
+			<span class="fl-etat online" ng-if="user.connected" translate>online</span>
+			<span class="fl-etat" ng-if="!user.connected">{{user.onlineTime | filterOnlineTime}}</span>
+
+			<div class="xl-info">
+				<div class="embleme" ng-repeat="usergame in user.userGame | filterAvatar"
+				     style="background: url('{{usergame.data5}}')">
+					<img src="img/forum/lay-bar-modo.png" alt="" ng-if="(user.role == 'modo')"/>
+					<img src="img/forum/lay-bar.png" alt="" ng-if="(user.role != 'modo')"/>
+				</div>
+				<div class="xl-info-right">
+					<div class="xs-character" ng-repeat="usergame in user.userGame" ng-if="$index < 3"
+					     style="background: url('{{usergame.data4}}')">
+						<img ng-src="{{usergame.data5}}" alt=""/>
+
+						<div class="class">{{usergame.data1}}</div>
+						<div class="level">{{usergame.data2}}</div>
+					</div>
+					<div class="fl-actions icon-actions">
+						<!--<span class="remove"></span>-->
+						<!--<span class="msg"></span>-->
+						<span class="invit" ng-click="invite(user)"></span>
+                     <!--    <span>{{user.userGame[0].gameUsername}}</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="remisansamis" ng-if="aUsers.length == 0">
+			<a ng-href="{{listUsersUrl}}"><img src="img/nofriend.png" alt=""></a>
+		</div>
+	</div>
+	 <div ng-click="scrollDown()" ng-show="firstDisplay<aUsers.length-1" class="scrolldown"><span></span></div>
+	<div id="search-box">
+		<input type="text" placeholder="Chercher" ng-model="username">
+	</div>
+</div>
+<div id="msg-box">
+<lfg-invite-popup></lfg-invite-popup>
+<lfg-popup></lfg-popup>
+</div>

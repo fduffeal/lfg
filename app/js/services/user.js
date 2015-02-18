@@ -172,6 +172,29 @@ angular.module('myApp.services')
 				return api.call('users/');
 			};
 
+			this.getByPage = function(page,nbResult){
+				return api.call('users/page/'+page+'/'+nbResult);
+			};
+
+			this.getByPlateform = function(plateformId,page,nbResult){
+				return api.call('users/plateform/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
+			this.getByUsername = function(username,plateformId,page,nbResult){
+				username = $window.encodeURIComponent(username);
+				return api.call('users/search/'+username+'/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
+			this.getFriends = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('user/friend/get/'+username+'/'+token);
+			};
+
 			this.addFriend = function(friendUsername){
 				var currentUser = this.get();
 				if(currentUser === null){
@@ -193,6 +216,30 @@ angular.module('myApp.services')
 				friendUsername = $window.encodeURIComponent(friendUsername);
 				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
 			};
+
+			/**
+			 * les utilisateurs à qui j'ai demandé d'être amis
+			 * @returns {*}
+			 */
+			this.getFriendsRequest = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/'+currentUser.id);
+			}
+
+			/**
+			 * les utilisateurs qui m'ont demandé en amis
+			 * @returns {*}
+			 */
+			this.getFriendsPending = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/pending/'+currentUser.id);
+			}
 		}
 	]
 );

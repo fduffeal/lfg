@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('TopicCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$route',
-		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$route) {
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$window',
+		function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$window) {
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
@@ -99,7 +99,7 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 			}
 
 			$scope.refresh = function(){
-				$route.reload();
+				$window.location.reload();
 			}
 		}
 	]
