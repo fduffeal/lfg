@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog',
-		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog) {
+	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog','$location',
+		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog,$location) {
 			'use strict';
 
 
@@ -134,6 +134,9 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 			};
 
 			$scope.$watch('username',function(){
+
+				$location.search('user', $scope.username);
+
 				filterData();
 				if($scope.aUsers.length === 0){
 					refreshData();
@@ -238,7 +241,16 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 				}
 			}
 
+			var initUser = function(){
+				var searchObject = $location.search();
+				if(searchObject.user){
+					$scope.username = searchObject.user;
+				}
+			};
+
 			var init = function(){
+
+				initUser();
 
 				fillPlateforms();
 

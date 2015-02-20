@@ -126,7 +126,8 @@ angular.module('myApp', [
 		$routeProvider.when('/:lang/users/connected',
 			{
 				templateUrl: '/html/controllers/list-users.html',
-				controller : 'ListUsersCtrl'
+				controller : 'ListUsersCtrl',
+				reloadOnSearch: false
 			});
 
 		$routeProvider.when('/:lang/annonce/create',
