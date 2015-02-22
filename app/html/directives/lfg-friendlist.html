@@ -1,7 +1,7 @@
 <div id="friendlist" ng-class="{' active': isActive}" ng-show="ready">
 <div class="toggle" ng-init="isActive = false"
 			ng-click="isActive = !isActive" ></div>
-	<h5	ng-init="isActive = true"
+	<h5	ng-init="isActive = false"
 		ng-click="isActive = !isActive" translate>Friend's list</h5>
 <div ng-click="scrollUp()" ng-show="firstDisplay>0" class="scrollup"><span></span></div>
 

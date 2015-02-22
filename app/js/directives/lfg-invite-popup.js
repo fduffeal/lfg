@@ -46,7 +46,7 @@ angular.module('myApp.directives')
                             $scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 
                             for(var i in $scope.aMyRdv){
-                                $scope.aMyRdv[i].description = $scope.aMyRdv[i].description +' '+ $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
+                                $scope.aMyRdv[i].description = $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
                             }
                             $scope.rdvInvite = $scope.aMyRdv[0];
                         }
