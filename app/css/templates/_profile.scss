@@ -1,0 +1,233 @@
+#profile {
+	font-size: 1.2rem;
+	.block{
+		margin: 10px;
+	}
+	.b-left {
+		float: left;
+		width: 96px;
+		.avatar {
+			width: 96px;
+			height: 96px;
+			position: relative;
+
+			img {
+				position: absolute;
+				bottom: 0;
+			}
+		}
+	}
+	.b-right {
+		float: left;
+		margin-left: 10px;
+		color: #4f4f4f;
+		width: 77%;
+		.last-connexion {
+			margin: 10px 0;
+		}
+		h2 {
+			margin-top: 0;
+			span {
+				color: #06ab93;
+			}
+			&.second {
+				margin-top: 10px;
+			}
+		}
+		a {
+			color: $orange;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		span {
+			font-weight: bold;
+		}
+	}
+	table {
+		font-size: 1.2rem;
+		text-align: left;
+		width:100%;
+		border-spacing: 0 10px;
+
+		.msg {
+			padding: 10px;
+			background: #fff;
+			border:1px solid #dddddd;
+		}
+		tr{
+
+		}
+		.to-sign {
+			font-size: 1.2rem;
+			color: #999;
+			border-top: 1px dotted #999;
+			padding-top: 5px;
+			font-style: italic;
+		}
+		.to-avatar {
+			width: 10%;
+			.one-perso {
+				width: 96px;
+				height: 96px;
+				position: relative;
+				img {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 48px;
+					height: 48px;
+
+				}
+
+			}
+			.persos {
+				width: 96px;
+				height: 96px;
+				position: relative;
+				background-color: $orange;
+				div {
+					background-size: cover!important;
+					float: left;
+					background-color: black;
+					width: 96px;
+					height: 96px;
+
+				}
+				.lay {
+					position: absolute;
+					bottom: 0;
+					height: auto;
+					right: 0;
+				}
+			}
+
+		}
+		.to-msg {
+			padding-left: 10px;
+			span{
+				font-weight: normal;
+			}
+		}
+		.to-info {
+			height: 20px;
+			width:90%;
+			.left {
+				float: left;
+				font-weight:bold;
+				padding-left: 10px;
+				&.modo {
+					color: #06ab93;
+				}
+			}
+			.right{
+				float: right;
+				color: #999;
+				.modify span:before {
+					content: "✎";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					margin-left: 10px;
+					opacity: 0.7;
+
+				}
+				.delete span:before {
+					content: "✖";
+					display:block;
+					width: 20px;
+					height: 20px;
+					font-size: 2rem;
+					float: right;
+					margin-top: -4px;
+					color: $orange;
+					opacity: 0.7;
+
+				}
+				a:hover span:before {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.welcome {
+		background: transparent;
+		width: auto;
+	}
+	.new {
+		h2 {
+			font-weight: bold;
+
+			color:black;
+			font-size: 1.5rem;
+		}
+		input[type=text]{
+			width:100%;
+		}
+		textarea{
+			width: 100%;
+			margin: 10px 0;
+			height: auto;
+		}
+		.btn2 {
+			border: 0;
+			cursor: pointer;
+			background: $orange;
+			&:hover {
+				color: black;
+			}
+		}
+	}
+	@media screen and (max-width: 990px ) {
+		.content-header {
+			width: 95%;
+		}
+		.b-left {
+			width: 48px;
+			.avatar {
+					width: 48px;
+					height: 48px;
+					div {
+						width: 48px;
+						height: 48px;
+
+					}
+					img {
+						width: 48px;
+
+					}
+				}
+		}
+
+		.page, .welcome {
+			width: 94%;
+		}
+		table {
+			.to-avatar {
+				.modo-avatar img {
+					width: 48px;
+					height: 48px;
+				}
+
+				.persos {
+					width: 48px;
+					height: 48px;
+					div {
+						width: 48px;
+						height: 48px;
+
+					}
+					img.lay {
+						width: 48px;
+
+					}
+				}
+
+			}
+		}
+	}
+}
