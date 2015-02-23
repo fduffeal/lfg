@@ -106,12 +106,17 @@ angular.module('myApp.directives')
 						}
 					};
 
+					var updateScrollPercent = function(){
+						$scope.percent = ($scope.firstDisplay / $scope.aUsers.length) * 100;
+					};
+
 					$scope.$on('scroll',function(event,data){
 						if(data[0]>0){
 							$scope.scrollDown();
 						} else {
 							$scope.scrollUp();
 						}
+						updateScrollPercent();
 					});
 
 					init();

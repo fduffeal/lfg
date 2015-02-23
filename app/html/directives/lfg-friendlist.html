@@ -1,7 +1,7 @@
 <div id="friendlist" ng-class="{'active': !isActive}" ng-show="ready" lfg-scroll>
 	<div class="toggle" ng-click="isActive = !isActive"></div>
 	<h5 ng-click="isActive = !isActive" translate>Friend's list</h5>
-	<div class="scrollbar"><span></span></div>
+	<div class="scrollbar" style="top:{{percent}}%"><span></span></div>
 	<div class="fl-friends">
 
 		<div class="fl-friend" ng-repeat="user in aUsers" ng-class="{'last':$last, 'on':user.connected}"
