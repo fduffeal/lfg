@@ -10,7 +10,25 @@
 	.toggle {
 		display: none;
 	}
-	.scrollup,.scrolldown{
+	.scrollbar {
+
+		height: 100%;
+		background: #b2b2b2;
+		width: 9px;
+		position: absolute;
+		right: 0;
+		z-index: 9;
+		span {
+			position: absolute;
+			height: 40px;
+			display: block;
+			z-index: 10;
+			width: 9px;
+			border-radius: 30px;
+			background: #595959;
+		}
+	}
+	/* .scrollup,.scrolldown{
 		text-align: center;
 		background: $orange;
 		color: white;
@@ -57,107 +75,99 @@
 		span:before {
 			@include transform(rotate(-90deg));
 		}
-	}
-	h5 {
-		background: $orange;
-		height: 20px;
-		line-height: 20px;
-		cursor: pointer;
-		text-align: center;
-		font-size: 1.3rem;
-		margin: 0;
-		color:white;
-		display:none;
-	}
-	.remisansamis {
-		background: $orange;
-		width: 206px;
-		text-align: center;
-		padding: 20px 0px 20px 0;
-		@media screen and (min-width: 550px) and (max-width: 1380px ) {
-			img {
-				display: none;
-
-			}
-			a {
-				display: block;
-				width: 16px;
-				margin: 20px auto ;
-				height: 16px;
-				background: url('../img/ico-add.png');
-
-			}
-			width: auto;
-			background: transparent;
-		}
-	}
-	@media screen and (min-width: 550px) and (max-width: 1380px ) {
-
-		.toggle {
-			width: 50px;
-			display: block;
-			height: 61px;
-			background: url('../img/toggle-friendlist.png');
-			position: absolute;
-			top: 50%;
-			position: absolute;
-			right: 205px;
+		} */
+		h5 {
+			background: $orange;
+			height: 20px;
+			line-height: 20px;
 			cursor: pointer;
+			text-align: center;
+			font-size: 1.3rem;
+			margin: 0;
+			color:white;
+			display:none;
 		}
-		&.active {
-			width: 49px;
-			.toggle {
-				right: 49px;
+		.remisansamis {
+			background: $orange;
+			width: 206px;
+			text-align: center;
+			padding: 20px 0px 20px 0;
+			@media screen and (min-width: 550px) and (max-width: 1380px ) {
+				img {
+					display: none;
+
+				}
+				a {
+					display: block;
+					width: 16px;
+					margin: 20px auto ;
+					height: 16px;
+					background: url('../img/ico-add.png');
+
+				}
+				width: auto;
+				background: transparent;
 			}
-			.fl-friend {
-				.xs-avatar {
-					border: 2px solid transparent;
+		}
+		@media screen and (min-width: 550px) and (max-width: 1380px ) {
+
+			.toggle {
+				width: 50px;
+				display: block;
+				height: 61px;
+				background: url('../img/toggle-friendlist.png');
+				position: absolute;
+				top: 50%;
+				position: absolute;
+				right: 205px;
+				cursor: pointer;
+			}
+			&.active {
+				width: 49px;
+				.toggle {
+					right: 49px;
 				}
-				&.on .xs-avatar {
-					border: 2px solid #49c100;
-				}
-				.fl-name {
-					display:none!important
-				}
-				.fl-etat {
-					display:none!important;
-					&:after {
-						display:block!important;
+				.fl-friend {
+					.xs-avatar {
+						border: 2px solid transparent;
+					}
+					&.on .xs-avatar {
+						border: 2px solid #49c100;
+					}
+					.fl-name {
+						display:none!important
+					}
+					.fl-etat {
+						display:none!important;
+						&:after {
+							display:block!important;
+						}
 					}
 				}
+				.xl-info {
+					right: 42px!important;
+				}
+				#search-box {
+					display: none;
+				}
 			}
-			.xl-info {
-				right: 42px!important;
-			}
-			#search-box {
-				display: none;
-			}
-		}
 
-	}
-	@media screen and (max-width: 550px ) {
-		border-right: 1px solid #999;
-		border-top: 1px solid #999;
-		height: auto;
-		top: auto;
-		right:20px;
-		bottom: 0;
-
-		.fl-friend,.remisansamis  {
-			display:none;
 		}
+		@media screen and (max-width: 550px ) {
+			border-right: 1px solid #999;
+			border-top: 1px solid #999;
+			height: auto;
+			top: auto;
+			right:20px;
+			bottom: 0;
 
-		h5 {
-			display:block;
-		}
-		#search-box {
-			width: 205px!important;
-			display:none;
-			input {
-				width: 155px!important;
+			.fl-friend,.remisansamis  {
+				display:none;
 			}
-		}
-		&.active {
+
+			h5 {
+				display:block;
+			}
 			padding-bottom: 50px;
 			.fl-friend,.remisansamis  {
 				display:block;
@@ -165,130 +175,146 @@
 			#search-box {
 				display:block;
 			}
-		}
-	}
-	@media screen and (max-width: 550px )  {
-		.fl-friend {
-			img.xs-avatar {
-
+			#search-box {
+				width: 205px!important;
+				display:none;
+				input {
+					width: 155px!important;
+				}
 			}
-		}
-		.xl-info {
-			background: white!important;
-			width: 184px !important;
-			right: 0 !important;
-			z-index: 999;
-			top: 45px!important;
-			border-bottom:45px;
-			.embleme {
-				display: none;
-			}
-		}
-		.fl-friend.last .xl-info {
-			top: -4px!important;
-		}
-	}
-	.fl-friend{
-		&:hover .xl-info {
-			display: block;
-		}
-		padding: 10px 5px;
-		font-size: 1.1rem;
-		position:relative;
-		height: 32px;
-		line-height: 32px;
-		border: 1px solid transparent;
-		cursor: pointer;
-		&:hover {
-			background: lighten(#999, 80%);
-			border-top: 1px solid #999;
-			border-bottom: 1px solid #999;
-		}
-		img.xs-avatar {
-			width: 32px;
-			height: 32px;
-			float: left;
-		}
-
-		.fl-name {
-			width: 90px;
-			display: block;
-			float: left;
-			margin-left: 5px;
-			overflow: hidden;
-		}
-		.fl-etat {
-			color: #999;
-			display: block;
-			float: left;
-			margin-left: 5px;
-			&.online {
-				color:#49c100;
-				&:after{
-					content: "☻";
-					margin-left: 5px;
+			&.active {
+				padding-bottom: 0px;
+				height: auto;
+				.fl-friend,.remisansamis  {
+					display:none;
+				}
+				#search-box {
+					display:none;
 				}
 			}
 		}
-	}
-	.xl-info {
-		background: url('../img/fl-xl-info.png');
-		width: 364px;
-		height: 102px;
-		position:absolute;
-		right: 196px;
-		display: none;
-		top: 0;
-		padding: 10px;
-		.embleme {
-			float: left;
-			width: 96px;
-			height: 96px;
-			position: relative;
-			img {
-				position: absolute;
-				bottom: 0;
-				height: auto;
+		@media screen and (max-width: 550px )  {
+			.fl-friend {
+				img.xs-avatar {
 
+				}
+			}
+			.xl-info {
+				background: white!important;
+				width: 184px !important;
+				right: 0 !important;
+				z-index: 999;
+				top: 45px!important;
+				border-bottom:45px;
+				.embleme {
+					display: none;
+				}
+			}
+			.fl-friend.last .xl-info {
+				top: -4px!important;
 			}
 		}
-		.xl-info-right {
-			float: left;
-			margin-left: 10px;
-			height: 96px;
+		.fl-friend{
+			&:hover .xl-info {
+				display: block;
+			}
+			padding: 10px 5px;
+			font-size: 1.1rem;
 			position:relative;
-			.fl-actions {
-				position:absolute;
-				bottom: 0;
-				height: 23px;
-				left: 0;
+			height: 32px;
+			line-height: 32px;
+			border: 1px solid transparent;
+			cursor: pointer;
+			&:hover {
+				background: lighten(#999, 80%);
+				border-top: 1px solid #999;
+				border-bottom: 1px solid #999;
 			}
-		}
-	}
-	#search-box {
-		position:fixed;
-		bottom:0;
-		background: white;
-		height: 25px;
-		width: 100%;
-		padding-bottom:5px;
-		&:before {
-			content: "☌";
-			font-size: 3rem;
-			margin-left: 10px;
-			color: #999;
-			margin-top: -5px;
-			float: left;
-			@include transform(rotate(90deg));
-		}
-		input {
-			border: 0;
-			width: 165px;
-			&:hover, &:focus {
-				border: 0;
-				box-shadow: none;
+			img.xs-avatar {
+				width: 32px;
+				height: 32px;
+				float: left;
 			}
 
+			.fl-name {
+				width: 90px;
+				display: block;
+				float: left;
+				margin-left: 5px;
+				overflow: hidden;
+			}
+			.fl-etat {
+				color: #999;
+				display: block;
+				float: left;
+				margin-left: 5px;
+				&.online {
+					color:#49c100;
+					&:after{
+						content: "☻";
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+		.xl-info {
+			background: url('../img/fl-xl-info.png');
+			width: 364px;
+			height: 102px;
+			position:absolute;
+			right: 196px;
+			display: none;
+			top: 0;
+			padding: 10px;
+			.embleme {
+				float: left;
+				width: 96px;
+				height: 96px;
+				position: relative;
+				img {
+					position: absolute;
+					bottom: 0;
+					height: auto;
+
+				}
+			}
+			.xl-info-right {
+				float: left;
+				margin-left: 10px;
+				height: 96px;
+				position:relative;
+				.fl-actions {
+					position:absolute;
+					bottom: 0;
+					height: 23px;
+					left: 0;
+				}
+			}
+		}
+		#search-box {
+			position:fixed;
+			bottom:0;
+			background: white;
+			height: 25px;
+			width: 100%;
+			padding-bottom:5px;
+			&:before {
+				content: "☌";
+				font-size: 3rem;
+				margin-left: 10px;
+				color: #999;
+				margin-top: -5px;
+				float: left;
+				@include transform(rotate(90deg));
+			}
+			input {
+				border: 0;
+				width: 165px;
+				&:hover, &:focus {
+					border: 0;
+					box-shadow: none;
+				}
+
+			}
 		}
 	}
-}
