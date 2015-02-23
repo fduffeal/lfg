@@ -31719,6 +31719,37 @@ angular.module('myApp.directives')
 						$scope.$broadcast('invite',[user]);
 					};
 
+					$scope.scrollUp=function(nbLoop){
+
+						if(nbLoop == null){
+							nbLoop = 1;
+						}
+						for(var i=0;i<nbLoop;i++){
+							if($scope.firstDisplay > 0){
+								$scope.firstDisplay--;
+							}
+						}
+					};
+
+					$scope.scrollDown=function(nbLoop){
+						if(nbLoop == null){
+							nbLoop = 1;
+						}
+						for(var i=0;i<nbLoop;i++) {
+							if ($scope.firstDisplay < $scope.aUsers.length - 1) {
+								$scope.firstDisplay++;
+							}
+						}
+					};
+
+					$scope.$on('scroll',function(event,data){
+						if(data[0]>0){
+							$scope.scrollDown();
+						} else {
+							$scope.scrollUp();
+						}
+					});
+
 					init();
 				},
 				restrict: 'E',
@@ -31862,6 +31893,103 @@ angular.module('myApp.directives')
 			};
 		}
 	]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgInvitePopup', ['rdv','$filter','user','gettextCatalog','$rootScope',
+        function(rdv,$filter,user,gettextCatalog,$rootScope) {
+            'use strict';
+            return {
+                scope:{
+
+                },
+                link: function($scope, element, attrs) {
+
+                    $scope.currentUser = user.get();
+
+                    $scope.aRdv = [];
+
+                    var getRdv = function(){
+                        rdv.getAll().success(function(data) {
+                            // this callback will be called asynchronously
+                            // when the response is available
+                            $scope.aRdv = data;
+
+                            updateMyRdv();
+
+                        }).error(function(data, status, headers, config) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        }).then(function(data){
+                            $scope.displayInvite = true;
+                        });
+                    };
+
+
+                    $scope.rdvInvite = null;
+                    var updateMyRdv = function(){
+                        //filterRdvWithMe:currentUser.id:plateformSelected:tags:slotMinAvailable:slotMaxAvailable
+                        if($scope.currentUser !== null){
+
+                            if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
+                                var plateformId = null;
+                            }else {
+                                var plateformId = $scope.plateform.id;
+                            }
+
+
+
+                            //if($scope.plateform)
+                            $scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
+
+                            for(var i in $scope.aMyRdv){
+                                $scope.aMyRdv[i].description = $filter('date')($scope.aMyRdv[i].start*1000,'yyyy-MM-dd');
+                            }
+                            $scope.rdvInvite = $scope.aMyRdv[0];
+                        }
+                    };
+
+
+                    $scope.displayInvite = false;
+
+                    $scope.$on('invite',function(event,data){
+
+                        if(typeof data == "undefined"){
+                            return;
+                        }
+                        $scope.userInvite = data[0];
+
+                        getRdv();
+                    });
+
+
+                    $scope.submitInvite = function(){
+                        if($scope.inviteForm.$valid === false){
+                            return;
+                        }
+
+                        var invitePromise = rdv.invite($scope.userInvite,$scope.rdvInvite);
+
+                        if(invitePromise !== false){
+                            invitePromise.then(function(data){
+
+                            });
+                        }
+	                    var message = gettextCatalog.getString("you have send a invite to {{name}}", { name: $scope.userInvite.username });
+	                    $rootScope.$broadcast('popup',[message]);
+	                    $scope.hide();
+                    };
+
+                    $scope.hide = function(){
+                        $scope.displayInvite = false;
+                    };
+
+                },
+                restrict: 'E',
+                templateUrl: '/html/directives/lfg-invite-popup.html'
+            };
+        }
+    ]
 );
 
 angular.module('myApp.directives')
@@ -32118,6 +32246,58 @@ angular.module('myApp.directives')
                 },
                 restrict: 'E',
                 templateUrl: '/html/directives/lfg-profile.html'
+            };
+        }
+    ]
+);
+
+angular.module('myApp.directives')
+    .directive('lfgScroll', ['tools','$timeout',
+        function(tools,$timeout) {
+            'use strict';
+            return {
+                link: function($scope, elm, attrs) {
+
+	                elm.on('mousewheel',function(event){
+		                if(event.deltaY > 0){
+			                $scope.$emit('scroll',[-1]);
+			                $scope.$apply();
+		                }else {
+			                $scope.$emit('scroll',[1]);
+			                $scope.$apply();
+		                }
+		                event.preventDefault();
+	                });
+
+	                elm.on('touchmove',function(event){
+		                event.preventDefault();
+	                });
+
+	                var toucheYStart = 0;
+	                elm.on('touchstart',function(event){
+		                toucheYStart = event.changedTouches[0].clientY;
+	                });
+
+	                elm.on('touchend',function(event){
+
+		                var diffY = event.changedTouches[0].clientY - toucheYStart;
+
+		                if(diffY < 0){
+			                $scope.$emit('scroll',[1]);
+			                $scope.$emit('scroll',[1]);
+			                $scope.$emit('scroll',[1]);
+			                $scope.$apply();
+		                } else {
+			                $scope.$emit('scroll',[-1]);
+			                $scope.$emit('scroll',[-1]);
+			                $scope.$emit('scroll',[-1]);
+			                $scope.$apply();
+		                }
+
+	                });
+                },
+                restrict: 'A',
+	            replace : false
             };
         }
     ]

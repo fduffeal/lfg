@@ -1,10 +1,6 @@
-<div id="friendlist" ng-class="{'active': !isActive}" ng-show="ready">
-	<div class="toggle" ng-init="isActive = false"
-	     ng-click="isActive = !isActive"></div>
-	<h5 ng-init="isActive = false"
-	    ng-click="isActive = !isActive" translate>Friend's list</h5>
-
-	<div ng-click="scrollUp()" ng-show="firstDisplay>0" class="scrollup"><span></span></div>
+<div id="friendlist" ng-class="{'active': !isActive}" ng-show="ready" lfg-scroll>
+	<div class="toggle" ng-click="isActive = !isActive"></div>
+	<h5 ng-click="isActive = !isActive" translate>Friend's list</h5>
 
 	<div class="fl-friends">
 
@@ -43,7 +39,6 @@
 			<a ng-href="{{listUsersUrl}}"><img src="img/nofriend.png" alt=""></a>
 		</div>
 	</div>
-	<div ng-click="scrollDown()" ng-show="firstDisplay<aUsers.length-1" class="scrolldown"><span></span></div>
 	<div id="search-box">
 		<input type="text" placeholder="Chercher" ng-model="username">
 	</div>

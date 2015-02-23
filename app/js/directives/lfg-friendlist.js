@@ -83,6 +83,37 @@ angular.module('myApp.directives')
 						$scope.$broadcast('invite',[user]);
 					};
 
+					$scope.scrollUp=function(nbLoop){
+
+						if(nbLoop == null){
+							nbLoop = 1;
+						}
+						for(var i=0;i<nbLoop;i++){
+							if($scope.firstDisplay > 0){
+								$scope.firstDisplay--;
+							}
+						}
+					};
+
+					$scope.scrollDown=function(nbLoop){
+						if(nbLoop == null){
+							nbLoop = 1;
+						}
+						for(var i=0;i<nbLoop;i++) {
+							if ($scope.firstDisplay < $scope.aUsers.length - 1) {
+								$scope.firstDisplay++;
+							}
+						}
+					};
+
+					$scope.$on('scroll',function(event,data){
+						if(data[0]>0){
+							$scope.scrollDown();
+						} else {
+							$scope.scrollUp();
+						}
+					});
+
 					init();
 				},
 				restrict: 'E',
