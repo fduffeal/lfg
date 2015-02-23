@@ -5,13 +5,21 @@ angular.module('myApp.directives')
             return {
                 link: function($scope, elm, attrs) {
 
+	                var scrollUp = function(){
+		                $scope.$emit('scroll',[-1]);
+		                $scope.$apply();
+	                }
+
+	                var scrollDown = function(){
+		                $scope.$emit('scroll',[1]);
+		                $scope.$apply();
+	                }
+
 	                elm.on('mousewheel',function(event){
 		                if(event.deltaY > 0){
-			                $scope.$emit('scroll',[-1]);
-			                $scope.$apply();
+			                scrollUp();
 		                }else {
-			                $scope.$emit('scroll',[1]);
-			                $scope.$apply();
+			                scrollDown();
 		                }
 		                event.preventDefault();
 	                });
@@ -30,14 +38,10 @@ angular.module('myApp.directives')
 		                var diffY = event.changedTouches[0].clientY - toucheYStart;
 
 		                if(diffY < 0){
-			                $scope.$emit('scroll',[1]);
-			                $scope.$emit('scroll',[1]);
-			                $scope.$emit('scroll',[1]);
+			                scrollDown();
 			                $scope.$apply();
 		                } else {
-			                $scope.$emit('scroll',[-1]);
-			                $scope.$emit('scroll',[-1]);
-			                $scope.$emit('scroll',[-1]);
+			                scrollUp();
 			                $scope.$apply();
 		                }
 
