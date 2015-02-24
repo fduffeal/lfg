@@ -1,95 +1,200 @@
 <lfg-header></lfg-header>
-<ul id="page">
-    <li id="ui-left"></li>
-    <li class="page">
-        <div id="profile" class="content">
-            <div class="cover {{lang}}">
-            </div>
-            <span class="important" translate>ALL FIELDS ARE REQUIRED</span>
+<lfg-friendlist></lfg-friendlist>
+<div id="profile" class="wrap">
 
-            <div class="block left">
-                <h1 translate>Personal Infos</h1>
-                <ul>
-                    <!-- <li>-->
-                    <!-- <label>Picture</label>-->
-                    <!-- <div class="mypicture">-->
-                    <!-- if no avatar -->
-                    <!-- <div class="no-avatar">No image</div> <br />
-                    <a href="">Upload a picture</a>-->
-                    <!-- if avatar -->
-                    <!--<img src="" /><br />
-                    <a href="">Change your picture</a>
+	<div class="page">
+		<div class="block">
+			<div class="b-left">
+				<div class="avatar" style="background:url('https://www.bungie.net/common/destiny_content/icons/9f72ac5deeefa618a0d4a679c9ab064e.jpg')">
+					<img src="img/forum/lay-bar-modo.png" alt="">
+				</div>
+			</div>
+			<div class="b-right">
+				<h2>poneyMCH <span>// ESBATTLE</span></h2>
+				<div class="like">
+				<h2 class="plateforme">PS4</h2>
+					<span>11</span> <a href="">j'aime</a> / <span>8</span> <a href="">j'aime pas</a><br/>
+					<span>850</span> annonces créées / <span>123</span> parties créées / <span>1078</span> messages forum <br />
+					<span>302</span> amis > <a href="">Demander en ami</a><br />
+					<div class="last-connexion"><span>Dernière connexion :</span> il y a 2 jours<br /></div>
+				</div>
+				<h2 class="second">Ses personnages</h2>
+				<div class="xs-character" style="background: url('https://www.bungie.net/common/destiny_content/icons/45d99c76397666848b6b3574ba069c75.jpg')">
+					<img src="https://www.bungie.net/common/destiny_content/icons/ce474c23ff28fabc6fdb79895259970d.jpg" alt="">
+					<div class="class ng-binding">titan</div>
+					<div class="level ng-binding">32</div>
+				</div>
+				<div class="xs-character" style="background: url('https://www.bungie.net/common/destiny_content/icons/45d99c76397666848b6b3574ba069c75.jpg')">
+					<img src="https://www.bungie.net/common/destiny_content/icons/ce474c23ff28fabc6fdb79895259970d.jpg" alt="">
+					<div class="class ng-binding">titan</div>
+					<div class="level ng-binding">32</div>
+				</div>
+				<div class="xs-character" style="background: url('https://www.bungie.net/common/destiny_content/icons/45d99c76397666848b6b3574ba069c75.jpg')">
+					<img src="https://www.bungie.net/common/destiny_content/icons/ce474c23ff28fabc6fdb79895259970d.jpg" alt="">
+					<div class="class ng-binding">titan</div>
+					<div class="level ng-binding">32</div>
+				</div>
+				<h2 class="second">Description</h2>
+				<div>Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l'éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.
+				</div>
+				<h2 class="second">Commentaires :</h2>
+				<table class="list-message" border="0">
 
-                        -->
-                    <!-- </div>-->
-                    <!-- </li>-->
-                    <li>
-                        <label translate>Username</label>
-                        <input type="text" ng-model="currentUser.username">
+					<tr>
+						<td class="msg">
+							<table>
+								<tr>
+									<td class="to-avatar" rowspan="2" valign="top">
+										<div class="persos">
+											<div style="background: url('https://www.bungie.net/common/destiny_content/icons/9f72ac5deeefa618a0d4a679c9ab064e.jpg')"></div>
+											<img src="img/forum/lay-bar.png" alt="" class="lay" />
+											<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
+										</div>
 
-                    </li>
-                    <li>
-                        <label translate>Email</label>
-                        <input type="email" ng-model="currentUser.email">
-                    </li>
+									</td>
+									<td class="to-info" valign="top">
+										<div class="left " >
+											Fifoukiller
+										</div>
+										<div class="right">
+											10/02/2015
+											<a href=""  class="delete"><span></span></a>
+											<a href=""  class="modify"><span></span></a>
 
-                    <!--<li>
-                        <a href="" class="btn" translate>Update</a>
-                    </li>
-                    -->
-                </ul>
-            </div>
-            <div class="block right">
-                <h1 translate>Game Infos for {{game.name}}</h1>
-                <form name="gameInfo" ng-submit="submitFormGameInfo()">
-                <ul>
-                    <li ng-show="false">
-                        <label translate>Game</label>
-                        <select ng-model="game" ng-options="gameData.name for gameData in games" required></select>
-                    </li>
-                    <li>
-                        <label translate>Platform</label>
-                        <select ng-model="plateform" ng-options="plateformData.nom for plateformData in plateforms" ng-change="updateFormData()" required></select>
-                    </li>
-                    <li>
-                        <label translate>Profil Name</label>
-                        <input type="text" ng-model="profilName" placeholder="eg: titan exo" required>
-                    </li>
-                    <li>
-                        <label translate>Username on this game</label>
-                        <input type="text" ng-model="gameUsername" placeholder="Psn Id, Xbox Live Id, ..." required>
-                    </li>
-                    <li>
-                        <label translate>Class</label>
-                       <!-- <input type="text" ng-model="data1" placeholder="titan, hunter, arcanist" required>-->
-                        <select  ng-model="data1">
-                            <option value="titan">titan</option>
-                            <option value="hunter">hunter</option>
-                            <option value="arcanist">arcanist</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label translate>Level</label>
-                        <input type="text" ng-model="data2" required>
-                    </li>
-                    <!--<li>
-                        <label>Your rating by other players</label>
-                        <div>2.341 likes / 478 dislikes</div>
-                    </li>-->
-                    <li>
-	                    <input type="submit" id="submit" value="{{'Update' | translate}}" class="btn"/>
-                    </li>
-                    <li ng-show="formGameInfoUpdate">
-                        Updated !
-                        <a href="" class="btn" translate ng-click="goBack()">Back</a>
-                    </li>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="to-msg" valign="top">
+										<span> trop bon joueur ce poney !!!</span>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="to-sign">
+										<span>
+											Titan 32
+										</span>
+										<br/>
+										<b>Esbattle</b>
 
-                </ul>
-                </form>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </li>
-</ul>
+									</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="msg">
+							<table>
+								<tr>
+									<td class="to-avatar" rowspan="2" valign="top">
+										<div class="persos">
+											<div style="background: url('https://www.bungie.net/common/destiny_content/icons/9f72ac5deeefa618a0d4a679c9ab064e.jpg')"></div>
+											<img src="img/forum/lay-bar.png" alt="" class="lay" />
+											<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
+										</div>
+
+									</td>
+									<td class="to-info" valign="top">
+										<div class="left " >
+											Fifoukiller
+										</div>
+										<div class="right">
+											10/02/2015
+											<a href=""  class="delete"><span></span></a>
+											<a href=""  class="modify"><span></span></a>
+
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="to-msg" valign="top">
+										<span> trop bon joueur ce poney !!!</span>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="to-sign">
+										<span>
+											Titan 32
+										</span>
+										<br/>
+										<b>Esbattle</b>
+
+									</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="msg">
+							<table>
+								<tr>
+									<td class="to-avatar" rowspan="2" valign="top">
+										<div class="persos">
+											<div style="background: url('https://www.bungie.net/common/destiny_content/icons/9f72ac5deeefa618a0d4a679c9ab064e.jpg')"></div>
+											<img src="img/forum/lay-bar.png" alt="" class="lay" />
+											<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
+										</div>
+
+									</td>
+									<td class="to-info" valign="top">
+										<div class="left " >
+											Fifoukiller
+										</div>
+										<div class="right">
+											10/02/2015
+											<a href=""  class="delete"><span></span></a>
+											<a href=""  class="modify"><span></span></a>
+
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="to-msg" valign="top">
+										<span> trop bon joueur ce poney !!!</span>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="to-sign">
+										<span>
+											Titan 32
+										</span>
+										<br/>
+										<b>Esbattle</b>
+
+									</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+				</table>
+				<div class="welcome"  style="margin-bottom: 20px;">
+					<div class="marge">
+
+						<div class="new">
+
+						<h2>Poster</h2>
+							<form name="myForm" ng-submit="submit()">
+								<textarea name="texteInput" id="" cols="30" rows="10" ng-model="texte" required  ></textarea><br />
+								<input type="submit" class="btn2" value="POSTER">
+
+								<a class="btn2 long" ng-href="{{registerUrl}}" translate ng-if="currentUser === null">Register</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div lfg-interval="intervalId" id="intervalId"></div>
+
 
 <lfg-footer></lfg-footer>
