@@ -17,70 +17,19 @@
 	<div class="page content">
 		<div class="block-left">
 			<h2>Dernière news</h2>
-			<div class="article">
+			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
 				<div class="post-image">
 					<a href=""><img src="http://www.journaldugeek.com/files/2015/01/Screenshot71-220x150.png" alt="Illustration"></a>
 				</div>
 				<div class="post-text">
 					<div class="post-title">
-						<a href="" class="title">Un nouveau trailer pour Better Call Saul</a><br />
-						<span class="date">28 janvier 2045</span>
-						<span class="comment"><a href="">0 commentaires</a></span>
-						<span class="author">de <a href="">poneyMCH</a></span>
+						<a href="{{topic.url}}" class="title">{{topic.titre}}</a><br />
+						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
+						<span class="comment"><a href="">{{topic.nbMessages}} commentaires</a></span>
+						<span class="author">de <a href="">{{topic.user.username}}</a></span>
 					</div>
 					<div class="text">
-						Dans le futur, nous pourrons avoir la 3G et 4G dans le métro parisien et sur les lignes de RER. Mais il faudra encore attendre un peu. En effet, Emmanuel...
-					</div>
-					<a href="" class="read">Lire</a>
-				</div>
-			</div>
-			<div class="article">
-				<div class="post-image">
-					<a href=""><img src="http://www.journaldugeek.com/files/2015/01/Screenshot71-220x150.png" alt="Illustration"></a>
-				</div>
-				<div class="post-text">
-					<div class="post-title">
-						<a href="" class="title">Un nouveau trailer pour Better Call Saul</a><br />
-						<span class="date">28 janvier 2045</span>
-						<span class="comment"><a href="">0 commentaires</a></span>
-						<span class="author">de <a href="">poneyMCH</a></span>
-					</div>
-					<div class="text">
-						Dans le futur, nous pourrons avoir la 3G et 4G dans le métro parisien et sur les lignes de RER. Mais il faudra encore attendre un peu. En effet, Emmanuel...
-					</div>
-					<a href="" class="read">Lire</a>
-				</div>
-			</div>
-			<div class="article">
-				<div class="post-image">
-					<a href=""><img src="http://www.journaldugeek.com/files/2015/01/Screenshot71-220x150.png" alt="Illustration"></a>
-				</div>
-				<div class="post-text">
-					<div class="post-title">
-						<a href="" class="title">Un nouveau trailer pour Better Call Saul</a><br />
-						<span class="date">28 janvier 2045</span>
-						<span class="comment"><a href="">0 commentaires</a></span>
-						<span class="author">de <a href="">poneyMCH</a></span>
-					</div>
-					<div class="text">
-						Dans le futur, nous pourrons avoir la 3G et 4G dans le métro parisien et sur les lignes de RER. Mais il faudra encore attendre un peu. En effet, Emmanuel...
-					</div>
-					<a href="" class="read">Lire</a>
-				</div>
-			</div>
-			<div class="article">
-				<div class="post-image">
-					<a href=""><img src="http://www.journaldugeek.com/files/2015/01/Screenshot71-220x150.png" alt="Illustration"></a>
-				</div>
-				<div class="post-text">
-					<div class="post-title">
-						<a href="" class="title">Un nouveau trailer pour Better Call Saul</a><br />
-						<span class="date">28 janvier 2045</span>
-						<span class="comment"><a href="">0 commentaires</a></span>
-						<span class="author">de <a href="">poneyMCH</a></span>
-					</div>
-					<div class="text">
-						Dans le futur, nous pourrons avoir la 3G et 4G dans le métro parisien et sur les lignes de RER. Mais il faudra encore attendre un peu. En effet, Emmanuel...
+					<span ng-bind-html="topic.message | filterHtml "></span>
 					</div>
 					<a href="" class="read">Lire</a>
 				</div>
