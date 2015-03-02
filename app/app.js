@@ -154,6 +154,12 @@ angular.module('myApp', [
 				controller : 'ProfileDestinyCtrl'
 			});
 
+		$routeProvider.when('/:lang/destiny/video/all',
+			{
+				templateUrl: '/html/controllers/videotheque.html',
+				controller : 'VideothequeCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr/destiny'});
 
 	}]);
