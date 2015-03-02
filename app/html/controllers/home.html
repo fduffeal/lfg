@@ -38,7 +38,7 @@
 		<div class="block-right">
 			<h2>Dernières parties créées</h2>
 
-			<table class="party" width="100%">
+			<table class="party" width="100%" ng-repeat="rdv in aRdv">
 				<tr>
 					<td colspan="3" align="left" class="perso" style="background:url('https://www.bungie.net/common/destiny_content/icons/dc7c03e29d0ec46b889282310d0e8b8e.jpg')">
 						<img src="https://www.bungie.net/common/destiny_content/icons/01e92aa9288da062ef7cd735e6b25909.jpg" alt=""><br />
@@ -53,7 +53,7 @@
 					<td class="l1" valign="top">
 						<span>Partie</span><br />
 						1/6<br />
-						<span>PS4</span>
+						<span>{{ rdv.plateform.nom }}</span>
 					</td>
 					<td class="l2" valign="top">
 						<span>#RAID #CROPTA</span><br />
