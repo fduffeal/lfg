@@ -18,27 +18,13 @@
 		<div class="block-left">
 			<h2>Dernière news</h2>
 			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
-				<div class="post-image">
-					<a href=""><img src="http://www.journaldugeek.com/files/2015/01/Screenshot71-220x150.png" alt="Illustration"></a>
-				</div>
-				<div class="post-text">
-					<div class="post-title">
-						<a href="{{topic.url}}" class="title">{{topic.titre}}</a><br />
-						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-						<span class="comment"><a href="">{{topic.nbMessages}} commentaires</a></span>
-						<span class="author">de <a href="">{{topic.user.username}}</a></span>
-					</div>
-					<div class="text">
-					<span ng-bind-html="topic.message | filterHtml "></span>
-					</div>
-					<a href="" class="read">Lire</a>
-				</div>
+                <lfg-youtube></lfg-youtube>
 			</div>
 		</div>
 		<div class="block-right">
 			<h2>Dernières parties créées</h2>
 
-			<table class="party" width="100%" ng-repeat="rdv in aRdv">
+			<table class="party" width="100%">
 				<tr>
 					<td colspan="3" align="left" class="perso" style="background:url('https://www.bungie.net/common/destiny_content/icons/dc7c03e29d0ec46b889282310d0e8b8e.jpg')">
 						<img src="https://www.bungie.net/common/destiny_content/icons/01e92aa9288da062ef7cd735e6b25909.jpg" alt=""><br />
@@ -53,7 +39,7 @@
 					<td class="l1" valign="top">
 						<span>Partie</span><br />
 						1/6<br />
-						<span>{{ rdv.plateform.nom }}</span>
+						<span>PS4</span>
 					</td>
 					<td class="l2" valign="top">
 						<span>#RAID #CROPTA</span><br />
@@ -122,8 +108,6 @@
 					</td>
 				</tr>
 			</table>
-
-            <lfg-youtube></lfg-youtube>
 
 			<h2 class="second">Nous suivre</h2>
 			<div class="socials">
