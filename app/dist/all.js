@@ -30151,8 +30151,20 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$scope.texte = "";
 
 
-			forum.getAllTopic().success(function(data) {
+			forum.getNews().success(function(data) {
 				$scope.aTopic = data;
+
+				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
+				for(var i = 0;i< $scope.aTopic.length;i++){
+					var match = $scope.aTopic[i].message.texte.match(regex);
+					if(match !== null){
+						$scope.aTopic[i].image = match[0];
+						$scope.aTopic[i].message.texte = $scope.aTopic[i].message.texte.replace(regex,'');
+
+					}
+					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
+					console.log(match);
+			    }
 
 				/*for(var i = 0;i< $scope.aTopic.length-1;i++){
 					forum.getTopic($scope.aTopic[i].id, 1, 1).success(function(data) {
@@ -33230,6 +33242,10 @@ angular.module('myApp.services')
 
 			this.getAllTopic = function(){
 				return api.call('forum');
+			};
+
+			this.getNews = function(){
+				return api.call('news');
 			};
 
 			this.getTopic = function(id,page,nbResult){

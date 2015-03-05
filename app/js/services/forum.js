@@ -7,6 +7,10 @@ angular.module('myApp.services')
 				return api.call('forum');
 			};
 
+			this.getNews = function(){
+				return api.call('news');
+			};
+
 			this.getTopic = function(id,page,nbResult){
 				return api.call('forum/topic/get/'+id+'/'+page+'/'+nbResult);
 			};

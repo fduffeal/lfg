@@ -67,6 +67,10 @@
 		border-bottom: 1px solid #eee;
 		height: 150px;
 		padding-bottom: 10px;
+        img {
+          max-height: 150px !important;
+          width: auto !important;
+        }
 		.post-image {
 			float: left;
 			width: 220px;
