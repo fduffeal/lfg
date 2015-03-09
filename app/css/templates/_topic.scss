@@ -235,4 +235,20 @@
 			}
 		}
 	}
+	.text-angular {
+		.btn-group {
+			display: inline-block;
+		}
+		.ta-editor {
+			margin-top: 15px;
+			border: 1px solid #999;
+		}
+		.btn {
+			height: 30px;
+			width: 30px;
+			line-height: 30px;
+			margin:10px 10px 0 0
+			
+		}
+	}
 }
