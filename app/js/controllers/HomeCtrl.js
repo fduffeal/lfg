@@ -20,14 +20,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 					}
 					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
-					console.log(match);
 			    }
-
-				/*for(var i = 0;i< $scope.aTopic.length-1;i++){
-					forum.getTopic($scope.aTopic[i].id, 1, 1).success(function(data) {
-						$scope.aTopic[i].message = data.messages[0].texte;
-					});
-				}*/
 			});
 
 

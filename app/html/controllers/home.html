@@ -11,6 +11,9 @@
 					<div class="bt">Voir les parties</div>
 					</a>
 				</li>
+				<li ng-repeat="topic in aTopic" ng-if="topic.document !== null">
+					<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
+				</li>
 			</ul>
 		</div>
 	</div>
