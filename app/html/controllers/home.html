@@ -3,23 +3,24 @@
 	<lfg-header></lfg-header>
 	<div class="page carousel">
 		<div class="block">
-			<ul>
-				<li><a href="" ng-click="prevCarrousel()">prev</a> </li>
+			<ul class="slider">
 				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel)">
 					<a ng-href="{{topic.url}}">
 						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
 					</a>
 				</li>
-				<li><a href="" ng-click="nextCarrousel()">next</a> </li>
 			</ul>
-		</div>
-		<div>
-			<ul>
+			<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
+			<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
+			<ul class="page-slider">
 				<li ng-repeat="topic in aCarrousel">
 					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}">{{$index}}</a>
 				</li>
 			</ul>
 		</div>
+
+			
+	
 	</div>
 	<div class="page content">
 		<div class="block-left">
