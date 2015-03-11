@@ -25,6 +25,18 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				$scope.indexCarrousel = index;
 			};
 
+			var autoChangeCarrousel = function(){
+				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
+					$scope.indexCarrousel++;
+				} else {
+					$scope.indexCarrousel = 0;
+				}
+
+				$timeout(function(){
+					autoChangeCarrousel();
+				},10000);
+			};
+
 
 			forum.getNews().success(function (data) {
 
@@ -77,6 +89,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			};
 
 			refreshRdvData();
+
+			$timeout(function(){
+				autoChangeCarrousel();
+			},10000);
 
 		}
 	]
