@@ -16,7 +16,7 @@
 		<div>
 			<ul>
 				<li ng-repeat="topic in aCarrousel">
-					<a href="" ng-click="goCarrousel($index)">{{$index}}</a>
+					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}">{{$index}}</a>
 				</li>
 			</ul>
 		</div>
