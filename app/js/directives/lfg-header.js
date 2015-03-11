@@ -20,6 +20,7 @@ angular.module('myApp.directives')
 
 
 					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.rdvUrl = redirection.getHomePageDestinyUrl();
 					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
 					$scope.loginPageUrl = redirection.getLoginPageUrl();

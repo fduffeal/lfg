@@ -25,8 +25,8 @@ angular.module('myApp', [
 
 		$routeProvider.when('/:lang/',
 			{
-				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl',
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl',
 				reloadOnSearch: false
 			});
 
