@@ -4,15 +4,19 @@
 	<div class="page carousel">
 		<div class="block">
 			<ul>
-				<li>
-					<a href="">
-					<img src="img/logo-destiny.png" alt="" class="logo-destiny"/>
-					<div class="text">Gardiens, rejoignez nos rangs</div>
-					<div class="bt">Voir les parties</div>
+				<li><a href="" ng-click="prevCarrousel()">prev</a> </li>
+				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel)">
+					<a ng-href="{{topic.url}}">
+						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
 					</a>
 				</li>
-				<li ng-repeat="topic in aTopic" ng-if="topic.document !== null">
-					<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
+				<li><a href="" ng-click="nextCarrousel()">next</a> </li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li ng-repeat="topic in aCarrousel">
+					<a href="" ng-click="goCarrousel($index)">{{$index}}</a>
 				</li>
 			</ul>
 		</div>
