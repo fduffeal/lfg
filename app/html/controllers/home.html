@@ -1,4 +1,3 @@
-
 <div id="homePage" class="wrap">
 	<lfg-header></lfg-header>
 	<div class="page carousel">
@@ -19,23 +18,23 @@
 			</ul>
 		</div>
 
-			
-	
+
 	</div>
 	<div class="page content">
 		<div class="block-left">
 			<h2>Dernière news</h2>
+
 			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
 				<div class="post-image"><span ta-bind ng-model="topic.image"></span></div>
 				<div class="post-text">
 					<div class="post-title">
-						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br />
+						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
 						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
 						<span class="comment"><a ng-href="{{topic.url}}">{{topic.nbMessages}} commentaires</a></span>
 						<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
 					</div>
 					<div class="text">
-					<span ta-bind ng-model="topic.message.texte "></span>
+						<span ta-bind ng-model="topic.message.texte "></span>
 					</div>
 					<a ng-href="{{topic.url}}" class="read fa fa-arrow-circle-o-right">Lire</a>
 				</div>
@@ -44,98 +43,39 @@
 		<div class="block-right">
 			<h2>Dernières parties créées</h2>
 
-			<table class="party" width="100%" ng-repeat="rdv in aRdv">
+			<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
 				<tr>
-					<td colspan="3" align="left" class="perso" style="background:url('https://www.bungie.net/common/destiny_content/icons/dc7c03e29d0ec46b889282310d0e8b8e.jpg')">
-						<img src="https://www.bungie.net/common/destiny_content/icons/01e92aa9288da062ef7cd735e6b25909.jpg" alt=""><br />
-						<div class="perso-box">
-							<div class="name">poneyMCH</div>
-							<div class="level">31</div>
-							<div class="class">Titan</div>
-						</div>
+					<td>
+						<lfg-profile-bungie with-plateform="false"
+						                    user-game="rdv.author"></lfg-profile-bungie>
 					</td>
 				</tr>
 				<tr class="line">
 					<td class="l1" valign="top">
-						<span>Partie</span><br />
-						1/6<br />
+						<span translate>Party</span><br/>
+						{{rdv.users.length}}/{{ rdv.nbParticipant}}<br/>
 						<span>{{ rdv.plateform.nom }}</span>
 					</td>
 					<td class="l2" valign="top">
-						<span>#RAID #CROPTA</span><br />
-						Cropta rapidos
+						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/>
+						{{rdv.description}}
 					</td>
 					<td class="l3" valign="top">
-						2015-01-28<br /><br />
-						<a href="">Rejoindre</a>
-					</td>
-				</tr>
-			</table>
-			<table class="party" width="100%">
-				<tr>
-					<td colspan="3" align="left" class="perso" style="background:url('https://www.bungie.net/common/destiny_content/icons/dc7c03e29d0ec46b889282310d0e8b8e.jpg')">
-						<img src="https://www.bungie.net/common/destiny_content/icons/01e92aa9288da062ef7cd735e6b25909.jpg" alt=""><br />
-						<div class="perso-box">
-							<div class="name">poneyMCH</div>
-							<div class="level">31</div>
-							<div class="class">Titan</div>
-						</div>
-					</td>
-				</tr>
-				<tr class="line">
-					<td class="l1" valign="top">
-						<span>Partie</span><br />
-						1/6<br />
-						<span>PS4</span>
-					</td>
-					<td class="l2" valign="top">
-						<span>#RAID #CROPTA</span><br />
-						Cropta rapidos
-					</td>
-					<td class="l3" valign="top">
-						2015-01-28<br /><br />
-						<a href="">Rejoindre</a>
+						<lfg-since time="{{rdv.start}}"><br/><br/>
+							<a ng-href="{{rdv.url}}" translate>Join</a>
 					</td>
 				</tr>
 			</table>
 
-			<table class="party" width="100%">
-				<tr>
-					<td colspan="3" align="left" class="perso" style="background:url('https://www.bungie.net/common/destiny_content/icons/dc7c03e29d0ec46b889282310d0e8b8e.jpg')">
-						<img src="https://www.bungie.net/common/destiny_content/icons/01e92aa9288da062ef7cd735e6b25909.jpg" alt=""><br />
-						<div class="perso-box">
-							<div class="name">poneyMCH</div>
-							<div class="level">31</div>
-							<div class="class">Titan</div>
-						</div>
-					</td>
-				</tr>
-				<tr class="line">
-					<td class="l1" valign="top">
-						<span>Partie</span><br />
-						1/6<br />
-						<span>PS4</span>
-					</td>
-					<td class="l2" valign="top">
-						<div class="hidden">
-							<span>#RAID #CROPTA</span><br />
-							Cropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidosCropta rapidos
-						</div>
-					</td>
-					<td class="l3" valign="top">
-						2015-01-28<br /><br />
-						<a href="">Rejoindre</a>
-					</td>
-				</tr>
-			</table>
+			<lfg-youtube></lfg-youtube>
 
-            <lfg-youtube></lfg-youtube>
+			<h2 class="second" translate>Follow us</h2>
 
-			<h2 class="second">Nous suivre</h2>
 			<div class="socials">
 				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
 				<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
-				<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img src="img/footer-logo-bungie.png"/></a>
+				<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
+						src="img/footer-logo-bungie.png"/></a>
 			</div>
 
 		</div>

@@ -76,6 +76,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			};
 
+			refreshRdvData();
+
 		}
 	]
 );
