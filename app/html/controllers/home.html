@@ -45,7 +45,7 @@
 
 			<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
 				<tr>
-					<td>
+					<td colspan="3">
 						<lfg-profile-bungie with-plateform="false"
 						                    user-game="rdv.author"></lfg-profile-bungie>
 					</td>
@@ -61,7 +61,7 @@
 						{{rdv.description}}
 					</td>
 					<td class="l3" valign="top">
-						<lfg-since time="{{rdv.start}}"><br/><br/>
+						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
 							<a ng-href="{{rdv.url}}" translate>Join</a>
 					</td>
 				</tr>
