@@ -29834,8 +29834,8 @@ angular.module('myApp', [
 
 		$routeProvider.when('/:lang/',
 			{
-				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl',
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl',
 				reloadOnSearch: false
 			});
 
@@ -30168,6 +30168,18 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				$scope.indexCarrousel = index;
 			};
 
+			var autoChangeCarrousel = function(){
+				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
+					$scope.indexCarrousel++;
+				} else {
+					$scope.indexCarrousel = 0;
+				}
+
+				$timeout(function(){
+					autoChangeCarrousel();
+				},10000);
+			};
+
 
 			forum.getNews().success(function (data) {
 
@@ -30220,6 +30232,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			};
 
 			refreshRdvData();
+
+			$timeout(function(){
+				autoChangeCarrousel();
+			},10000);
 
 		}
 	]
@@ -31961,6 +31977,7 @@ angular.module('myApp.directives')
 
 
 					$scope.homeUrl = redirection.getHomePageUrl();
+					$scope.rdvUrl = redirection.getHomePageDestinyUrl();
 					$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
 					$scope.profilGameUrl = redirection.getProfilGamePageUrl();
 					$scope.loginPageUrl = redirection.getLoginPageUrl();
