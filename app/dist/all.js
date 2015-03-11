@@ -30150,6 +30150,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$scope.currentUser = user.get();
 			$scope.texte = "";
 
+			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+
 			$scope.indexCarrousel = 0;
 
 			$scope.prevCarrousel = function () {

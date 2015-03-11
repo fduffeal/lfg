@@ -32,7 +32,7 @@
 						<h2>Nouveau sujet</h2>
 						<form name="myForm" ng-submit="submit()">
 							<input type="text" ng-model="title"  ng-show="currentUser !== null"/><br />
-							<textarea name="" id="" cols="30" rows="10" ng-model="texte"  ng-show="currentUser !== null"></textarea><br />
+							<text-angular class="text-angular" name="texteInput" id="" cols="30" rows="10" ng-model="texte" required  ng-show="currentUser !== null"></text-angular><br />
 							<input type="submit" class="btn2" value="POSTER" ng-show="currentUser !== null">
 							<a class="btn2 long" ng-href="{{registerUrl}}" translate ng-if="currentUser === null">Register</a>
 						</form>
