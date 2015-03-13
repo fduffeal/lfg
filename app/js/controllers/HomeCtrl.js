@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -81,7 +81,9 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						data[key].url = $scope.partyWaitingUrlRoot + data[key].id;
 						formatRdv(data[key]);
 					}
-					$scope.aRdv = data;
+					$scope.predicate = 'start';
+					$scope.reverse = true;
+					$scope.aRdv = $filter('orderBy')(data, $scope.predicate, $scope.reverse);
 
 				}).error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
