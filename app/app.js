@@ -161,7 +161,7 @@ angular.module('myApp', [
 				controller : 'VideothequeCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/fr/destiny'});
+		$routeProvider.otherwise({redirectTo: '/fr/'});
 
 
 		$provide.decorator('taOptions', ['$delegate', function(taOptions){
