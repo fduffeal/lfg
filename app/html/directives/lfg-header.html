@@ -3,7 +3,7 @@
 		<img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
 		<div class="menu-left-mobile">
 			<!--<img src="img/logo-header-small.png"  class="logo-header" />-->
-			<div class="menu"><span class="fa fa-bars"></span>Menu <a href="{{notifUrl}}"><span class="nb-notif">{{notifications.length}}</span></a>
+			<div class="menu"><span class="fa fa-bars"></span>Menu <a href="{{notifUrl}}" ng-if="userInfo.username"><span class="nb-notif">{{notifications.length}}</span></a>
 				<!--<a href="{{homeUrl}}" translate>Home</a>
 <a href="{{homeUrl}}">LFG</a>
 <a href="{{forumUrl}}">Forum</a>
