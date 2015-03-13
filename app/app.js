@@ -10,9 +10,10 @@ angular.module('myApp', [
 	'ngCookies',
 	'gettext',
 	'superCache',
-	'ngAnimate'
+	'ngAnimate',
+	'textAngular'
 ]).
-	config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	config(['$routeProvider', '$locationProvider','$provide', function ($routeProvider, $locationProvider, $provide) {
 
 		$locationProvider.html5Mode(true);
 
@@ -24,8 +25,8 @@ angular.module('myApp', [
 
 		$routeProvider.when('/:lang/',
 			{
-				templateUrl: '/html/controllers/rdv.html',
-				controller : 'RdvCtrl',
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl',
 				reloadOnSearch: false
 			});
 
@@ -154,7 +155,34 @@ angular.module('myApp', [
 				controller : 'ProfileDestinyCtrl'
 			});
 
+		$routeProvider.when('/:lang/destiny/video/all',
+			{
+				templateUrl: '/html/controllers/videotheque.html',
+				controller : 'VideothequeCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr/destiny'});
+
+
+		$provide.decorator('taOptions', ['$delegate', function(taOptions){
+			// $delegate is the taOptions we are decorating
+			// here we override the default toolbars and classes specified in taOptions.
+			taOptions.toolbar = [
+				['quote','bold', 'italics', 'underline','strikeThrough', 'ul', 'ol', 'redo', 'undo'],
+				['h1','justifyLeft','justifyCenter','justifyRight', 'insertImage', 'insertLink', 'insertVideo','html', 'clear']
+			];
+			taOptions.classes = {
+				focussed: 'focussed',
+				toolbar: 'btn-toolbar',
+				toolbarGroup: 'btn-group',
+				toolbarButton: 'btn btn-default',
+				toolbarButtonActive: 'active',
+				disabled: 'disabled',
+				textEditor: 'form-control',
+				htmlEditor: 'form-control'
+			};
+			return taOptions; // whatever you return will be the taOptions
+		}]);
 
 	}]);
 

@@ -7,6 +7,9 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var compass = require('gulp-compass');
+var minifyCSS = require('gulp-minify-css');
+var plumber = require('gulp-plumber');
 // SERVER
 webserver	= require('gulp-webserver'),					// permet de monter un serveur de fichier en local avec le livereload (rechargement du navigateur à chaque modification d'un fichier du projet) inclus.
 sourcemaps	= require('gulp-sourcemaps'),					// facilite le débugage en dév/prod sur le code minifié. Permet de faire la relation entre le code minifié et le code de dév (qui est non minifié et commenté)
@@ -19,11 +22,25 @@ gulp.task('lint', function() {
 		.pipe(jshint.reporter('default'));
 });
 
-// Compile Our Sass
-gulp.task('sass', function() {
-	return gulp.src('scss/*.scss')
-		.pipe(sass())
-		.pipe(gulp.dest('css'));
+gulp.task('compass', function() {
+	gulp.src('./app/css/**/*.scss')
+		.pipe(plumber({
+			errorHandler: function (error) {
+				console.log(error.message);
+				this.emit('end');
+			}}))
+		.pipe(compass({
+			config_file: 'app/config.rb',
+			css: 'app/css',
+			sass: 'app/css',
+			image: 'app/'
+		}))
+		.on('error', function(err) {
+			console.log(err.message)
+			// Would like to catch the error here
+		})
+		.pipe(minifyCSS())
+		.pipe(gulp.dest('/app/css'));
 });
 
 // Concatenate & Minify JS
@@ -34,6 +51,9 @@ gulp.task('scripts', function() {
 		'app/bower_components/angular-cookies/angular-cookies.js',
 		'app/bower_components/angular-gettext/dist/angular-gettext.js',
 		'app/bower_components/angular-animate/angular-animate.js',
+		'app/bower_components/textAngular/dist/textAngular.min.js',
+		'app/bower_components/textAngular/dist/textAngular-rangy.min.js',
+		'app/bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'app/*.js',
 		'app/js/*/*.js'
 	])
@@ -50,7 +70,8 @@ gulp.task('scripts', function() {
 gulp.task('watch', function() {
 	gulp.watch('app/*.js', ['lint', 'scripts']);
 	gulp.watch('app/js/*/*.js', ['lint', 'scripts']);
-	gulp.watch('scss/*.scss', ['sass']);
+	gulp.watch('app/css/*/*.scss', ['compass']);
+	gulp.watch('app/css/*.scss', ['compass']);
 });
 
 /*
