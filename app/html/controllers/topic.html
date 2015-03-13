@@ -5,8 +5,15 @@
 
 
 		<div class="marge">
-			<div class="filariane"><a ng-href="{{forumUrl}}">Forum</a> > {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
-			<h2 class="sujet"><span>Sujet :</span> {{topic.topic.titre}}</h2>
+			<div class="filariane">
+				<a ng-if="(topic.topic.status != 'news')" ng-href="{{forumUrl}}">Forum</a>
+				<a ng-if="(topic.topic.status == 'news')" ng-href="{{homeUrl}}">Home</a>
+				> {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
+			<h2 class="sujet">
+				<span ng-if="topic.topic.status != 'news'">Sujet :</span>
+				<span ng-if="topic.topic.status == 'news'">News :</span>
+				{{topic.topic.titre}}
+			</h2>
 
 			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
 			<a ng-href="{{forumUrl}}" class="toussujet btn2" >Sujets</a>

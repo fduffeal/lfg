@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.7.5\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
@@ -47,7 +47,7 @@ msgstr ""
 "avant de créer une partie !"
 
 #: app/html/controllers/annonce-create.html
-#: app/html/controllers/party-create.html app/html/controllers/profile.html
+#: app/html/controllers/party-create.html
 msgid "ALL FIELDS ARE REQUIRED"
 msgstr "TOUS LES CHAMPS DOIVENT ETRE REMPLIS"
 
@@ -71,10 +71,6 @@ msgstr "Annonce"
 msgid "Are you sure to kick :"
 msgstr "Êtes-vous sûr de vouloir kicker:"
 
-#: app/html/controllers/profile.html
-msgid "Back"
-msgstr "Retour"
-
 #: app/html/controllers/login.html
 msgid "Bad Username or Password."
 msgstr "Mauvais nom d'utilisateur ou mot de passe."
@@ -84,7 +80,6 @@ msgid "Choose a character"
 msgstr "Choisissez un personnage"
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/profile.html
 msgid "Class"
 msgstr "Class"
 
@@ -142,10 +137,6 @@ msgstr "Afficher tout"
 msgid "Display new"
 msgstr "Afficher les nouvelles"
 
-#: app/html/controllers/profile.html
-msgid "Email"
-msgstr "Adresse email"
-
 #: app/html/controllers/register.html
 msgid "Email Address"
 msgstr "Adresse email"
@@ -185,6 +176,10 @@ msgid ""
 msgstr ""
 "Vous devez d'abord créer une partie, après vous pourrez inviter vos amis !"
 
+#: app/html/controllers/home.html
+msgid "Follow us"
+msgstr "Nous suivre"
+
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
 msgstr "Mot de passe oublié ?"
@@ -196,14 +191,6 @@ msgstr "Français"
 #: app/html/directives/lfg-friendlist.html
 msgid "Friend's list"
 msgstr "Liste d'amis"
-
-#: app/html/controllers/profile.html
-msgid "Game"
-msgstr "Jeu"
-
-#: app/html/controllers/profile.html
-msgid "Game Infos for {{game.name}}"
-msgstr "Infos de jeux pour {{game.name}}"
 
 #: app/html/controllers/matchmaking.html
 msgid "Game Profil"
@@ -241,7 +228,7 @@ msgstr "Infos"
 msgid "Invit !"
 msgstr "Invites !"
 
-#: app/html/controllers/party-waiting.html
+#: app/html/controllers/home.html app/html/controllers/party-waiting.html
 msgid "Join"
 msgstr "Rejoins"
 
@@ -254,7 +241,6 @@ msgid "Leave"
 msgstr "Quitter"
 
 #: app/html/controllers/matchmaking-waiting.html
-#: app/html/controllers/profile.html
 msgid "Level"
 msgstr "Niveau"
 
@@ -318,6 +304,10 @@ msgstr "Non"
 msgid "Notification"
 msgstr "Notification"
 
+#: app/html/directives/lfg-header.html
+msgid "Notifications"
+msgstr "Notifications"
+
 #: app/html/controllers/login.html
 msgid "OR"
 msgstr "OU"
@@ -326,7 +316,8 @@ msgstr "OU"
 msgid "Open"
 msgstr "Ouvert"
 
-#: app/html/controllers/party-waiting.html app/html/controllers/rdv.html
+#: app/html/controllers/home.html app/html/controllers/party-waiting.html
+#: app/html/controllers/rdv.html
 msgid "Party"
 msgstr "Partie"
 
@@ -346,16 +337,11 @@ msgstr "Mot de passe mis à jour !"
 msgid "Passwords doesn't match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: app/html/controllers/profile.html
-msgid "Personal Infos"
-msgstr "Informations personelles"
-
 #: app/html/controllers/list-users.html app/html/controllers/rdv.html
 msgid "Plateform"
 msgstr "Plateforme"
 
-#: app/html/controllers/profile.html app/html/controllers/rdv.html
-#: app/html/controllers/register.html
+#: app/html/controllers/rdv.html app/html/controllers/register.html
 msgid "Platform"
 msgstr "Platformes"
 
@@ -382,16 +368,13 @@ msgstr "Merci de patienter, nous recherchons des joueurs..."
 msgid "Post an announcement"
 msgstr "Poster une annonce"
 
-#: app/html/controllers/profile.html
-msgid "Profil Name"
-msgstr "Nom du profil"
-
 #: app/html/controllers/party-waiting.html
 msgid "Promote"
 msgstr "Nommer chef de groupe"
 
 #: app/html/directives/lfg-header.html app/html/controllers/forum.html
-#: app/html/controllers/login.html app/html/controllers/topic.html
+#: app/html/controllers/login.html app/html/controllers/profile.html
+#: app/html/controllers/topic.html
 msgid "Register"
 msgstr "Inscription"
 
@@ -496,10 +479,6 @@ msgstr "Demain"
 msgid "Type"
 msgstr "Type"
 
-#: app/html/controllers/profile.html
-msgid "Update"
-msgstr "Mettre à jour"
-
 #: app/html/controllers/password-update.html
 msgid "Update Password"
 msgstr "Mettre à jour le mot de passe"
@@ -517,13 +496,9 @@ msgstr "Url de la partie:"
 msgid "Use this character"
 msgstr "Utiliser ce personnage"
 
-#: app/html/controllers/login.html app/html/controllers/profile.html
+#: app/html/controllers/login.html
 msgid "Username"
 msgstr "Nom d'utilisateur"
-
-#: app/html/controllers/profile.html
-msgid "Username on this game"
-msgstr "Nom d'utilisateur sur ce jeu"
 
 #: app/dynamique_translate.html
 msgid "Vault of Glass"
@@ -714,6 +689,30 @@ msgstr "{{notification.expediteur.username}} a quitté"
 msgid "{{notification.expediteur.username}} send you an invitation to"
 msgstr "{{notification.expediteur.username}} vous a envoyé une invitation pour"
 
+#~ msgid "Back"
+#~ msgstr "Retour"
+
+#~ msgid "Email"
+#~ msgstr "Adresse email"
+
+#~ msgid "Game"
+#~ msgstr "Jeu"
+
+#~ msgid "Game Infos for {{game.name}}"
+#~ msgstr "Infos de jeux pour {{game.name}}"
+
+#~ msgid "Personal Infos"
+#~ msgstr "Informations personelles"
+
+#~ msgid "Profil Name"
+#~ msgstr "Nom du profil"
+
+#~ msgid "Update"
+#~ msgstr "Mettre à jour"
+
+#~ msgid "Username on this game"
+#~ msgstr "Nom d'utilisateur sur ce jeu"
+
 #~ msgid "Logout"
 #~ msgstr "Déconnexion"
 
@@ -761,9 +760,6 @@ msgstr "{{notification.expediteur.username}} vous a envoyé une invitation pour"
 
 #~ msgid "Appointment not found"
 #~ msgstr "Rendez vous non trouvé"
-
-#~ msgid "Notifications"
-#~ msgstr "Notifications"
 
 #~ msgid "Ask to join the party"
 #~ msgstr "Demander à rejoindre la partie"

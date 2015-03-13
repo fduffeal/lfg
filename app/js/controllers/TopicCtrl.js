@@ -4,6 +4,7 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 			'use strict';
 
 			$scope.registerUrl = redirection.getRegisterPageUrl();
+			$scope.homeUrl = redirection.getHomePageUrl();
 
 			$scope.texte = "";
 

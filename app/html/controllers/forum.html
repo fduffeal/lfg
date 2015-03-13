@@ -17,8 +17,8 @@
 
 				<tbody>
 					<tr ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" >
-						<td class="fo-type"><div ng-class="{'postit':(topic.status == 'postit'),'normal':(topic.status == 'normal'),'high':(topic.status == 'high')}"></div></td>
-						<td class="fo-sujet"><a ng-href="{{topic.url}}">{{topic.titre}}</a></td>
+						<td class="fo-type"><div ng-class="{'postit':(topic.status == 'postit'),'normal':(topic.status == 'normal'),'high':(topic.status == 'news')}"></div></td>
+						<td class="fo-sujet"><a ng-href="{{topic.url}}"><span ng-if="topic.status == 'news'">[News] </span>{{topic.titre}}</a></td>
 						<td class="fo-author"><a href="" ng-class="{'modo':(topic.user.role == 'modo')}">{{topic.user.username}}</a></td>
 						<td class="fo-nb">{{topic.nbMessages}}</td>
 						<td class="fo-last">{{topic.updated | filterDateForum}}</td>
