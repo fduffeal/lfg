@@ -144,6 +144,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 		        }
 	        };
 
+
+
 			refreshData();
 			autoRefreshData();
 
