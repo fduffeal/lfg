@@ -131,6 +131,10 @@ angular.module('myApp.services')
 
 				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
 			};
+
+			this.getVideoUrl = function(){
+				return '/'+getLang()+'/destiny/video/all';
+			}
 		}
 	]
 );

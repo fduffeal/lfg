@@ -32019,6 +32019,7 @@ angular.module('myApp.directives')
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.videoUrl = redirection.getVideoUrl();
 
                     $scope.userInfo = user.get();
 
@@ -33689,6 +33690,10 @@ angular.module('myApp.services')
 
 				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
 			};
+
+			this.getVideoUrl = function(){
+				return '/'+getLang()+'/destiny/video/all';
+			}
 		}
 	]
 );

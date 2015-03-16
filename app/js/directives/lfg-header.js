@@ -32,6 +32,7 @@ angular.module('myApp.directives')
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.videoUrl = redirection.getVideoUrl();
 
                     $scope.userInfo = user.get();
 
