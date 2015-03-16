@@ -1,0 +1,38 @@
+#videos {
+	.grid > * > a {
+		display: block;
+		margin-bottom: 10px;
+		float: left;
+		position: relative;
+		&:hover {
+			opacity: 0.7;
+		}
+		img {
+			width: 100%;
+			display: block;
+			height: auto;
+			position: relative;
+			z-index: 1;
+		}
+		div {
+			position: relative;
+			z-index: 2;
+			background:rgba(0,0,0, 0.8);
+			margin-top: -50px;
+			height: 50px;
+			img {
+				display: inline;
+				width: 50px;
+				float: left;
+			}
+			span {
+				display: block;
+				float: left;
+				margin-left: 10px;
+				font-size: 15px;
+				margin-top: 5px;
+				color: white;
+			}
+		}
+	}
+}
