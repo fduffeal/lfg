@@ -1,19 +1,25 @@
 <div id="homePage" class="wrap">
 	<lfg-header></lfg-header>
-	<div class="page carousel">
+	<div class="carousel">
 		<div class="block">
 			<ul class="slider">
+				<!--<li>
+					<a href="">
+						<img src="../img/banniere.jpg" alt="">
+					</a>
+				</li>-->
 				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel)">
 					<a ng-href="{{topic.url}}">
 						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
 					</a>
 				</li>
+
 			</ul>
 			<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
 			<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
 			<ul class="page-slider">
 				<li ng-repeat="topic in aCarrousel">
-					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}">{{$index}}</a>
+					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}"></a>
 				</li>
 			</ul>
 		</div>
@@ -47,7 +53,7 @@
 				<tr>
 					<td colspan="3">
 						<lfg-profile-bungie with-plateform="false"
-						                    user-game="rdv.author"></lfg-profile-bungie>
+											user-game="rdv.author"></lfg-profile-bungie>
 					</td>
 				</tr>
 				<tr class="line">
@@ -62,30 +68,30 @@
 					</td>
 					<td class="l3" valign="top">
 						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-							<a ng-href="{{rdv.url}}" translate>Join</a>
-					</td>
-				</tr>
-			</table>
+				<a ng-href="{{rdv.url}}" translate>Join</a>
+				</td>
+			</tr>
+		</table>
 
-			<!--<lfg-youtube></lfg-youtube>-->
-			<h2 class="second">Partenaires</h2>
-			<a href="https://www.youtube.com/user/FRGrosChakaL" class="partenaires"><img src="img/part-groschakal.png" alt=""></a>
-			<a href="https://www.youtube.com/channel/UCVuJ-R2ai5_I6JyFXexwx7g" class="partenaires"><img src="img/part-thelastguardians.png" alt=""></a>
-			<a href="https://www.facebook.com/groups/destinyfrancexbox/" class="partenaires"><img src="img/part-destinyfrancexbox.png" alt=""></a>
-			<h2 class="second" translate>Follow us</h2>
+	<!--<lfg-youtube></lfg-youtube>-->
+	<h2 class="second">Partenaires</h2>
+	<a href="https://www.youtube.com/user/FRGrosChakaL" class="partenaires"><img src="img/part-groschakal.png" alt=""></a>
+	<a href="https://www.youtube.com/channel/UCVuJ-R2ai5_I6JyFXexwx7g" class="partenaires"><img src="img/part-thelastguardians.png" alt=""></a>
+	<a href="https://www.facebook.com/groups/destinyfrancexbox/" class="partenaires"><img src="img/part-destinyfrancexbox.png" alt=""></a>
+	<h2 class="second" translate>Follow us</h2>
 
-			<div class="socials">
-				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
-				<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
-				<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
-						src="img/footer-logo-bungie.png"/></a>
-			</div>
-
-		</div>
-		<div class="clear"></div>
+	<div class="socials">
+		<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
+		<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
+		<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
+																				  src="img/footer-logo-bungie.png"/></a>
 	</div>
 
-	<div lfg-interval="intervalId"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div lfg-interval="intervalId"></div>
 </div>
 
 </div>
