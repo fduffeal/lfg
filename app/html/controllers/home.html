@@ -3,7 +3,7 @@
 	<div class="carousel">
 		<div class="block">
 			<ul class="slider">
-				<!--<li>
+				<!--<li>q
 					<a href="">
 						<img src="../img/banniere.jpg" alt="">
 					</a>
@@ -31,18 +31,19 @@
 			<h2>Dernière news</h2>
 
 			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
-				<div class="post-image"><span ta-bind ng-model="topic.image"></span></div>
+				<a ng-href="{{topic.url}}" class="post-image"><span ta-bind ng-model="topic.image"></span></a>
 				<div class="post-text">
 					<div class="post-title">
 						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
 						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-						<span class="comment"><a ng-href="{{topic.url}}">{{topic.nbMessages}} commentaires</a></span>
-						<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
+						<span class="comment"><a ng-href="{{topic.url}}" class="fa fa-comment">{{topic.nbMessages}}</a></span>
+					<!--	<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>-->
 					</div>
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texte "></span>
 					</div>
-					<a ng-href="{{topic.url}}" class="read fa fa-arrow-circle-o-right">Lire</a>
+					<a ng-href="{{topic.url}}" class="read fa fa-play">Lire</a>
+					<a ng-href="{{topic.url}}" class="read fa fa-facebook">Share</a>
 				</div>
 			</div>
 		</div>
@@ -68,7 +69,7 @@
 					</td>
 					<td class="l3" valign="top">
 						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-				<a ng-href="{{rdv.url}}" translate>Join</a>
+				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in">Rejoins</a>
 				</td>
 			</tr>
 		</table>

@@ -52,7 +52,7 @@
 			@media (min-width: 1670px) {
 				height: 460px;
 			}
-			
+
 			a{
 				@media (max-width: 854px) {
 					position: relative;
@@ -86,24 +86,28 @@
 			}
 		}
 		.page-slider {
-				text-align: center;
-				margin-top: -32px;
-				position: relative;
-			}
+			text-align: center;
+			margin-top: -32px;
+			position: relative;
+		}
 		.page-slider li {
 			display: inline-block;
 			a {
 				display: block;
-				width: 20px;
-				height: 20px;
+				width: 15px;
+				height: 15px;
 				border-radius: 50%;
-				background: #232121;
+				background: rgba(241,86,65,0.5);
 				text-align: center;
-				line-height: 20px;
-				font-size: 15px;
+				margin-right: 5px;
 				color: white;
+				@include transition(all 0.2s ease-out);
 				&.current {
-					background: #06ab93;
+					background: rgba(241,86,65,1);
+				}
+				&:hover {
+					background: rgba(241,86,65,1);
+					@include transform(scale(1.1));
 				}
 			}
 		}
@@ -140,7 +144,7 @@
 	.article {
 		font-size: 1.4rem;
 		margin-top: 10px;
-		border-bottom: 1px solid #eee;
+		border-bottom: 1px solid #dddddd ;
 		height: 150px;
 		padding-bottom: 10px;
 		img {
@@ -152,6 +156,10 @@
 			width: 220px;
 			margin-right: 20px;
 			overflow: hidden;
+			@include transition(opacity 0.2s ease-out);
+			&:hover {
+				opacity: 0.8;
+			}
 		}
 		.post-text {
 			float: right;
@@ -161,18 +169,35 @@
 				.title {
 					font-weight: bold;
 					font-size: 1.6rem;
-					color:black;
+					color:#444;
 					display: inline-block;
+					@include transition(opacity 0.2s ease-out);
+					&:hover {
+						opacity: 0.7;
+					}
 				}
 				span {
 					display: inline-block;
 					font-size: 1.1rem;
 					color: #999;
-					&.comment:before {
-						content: "☻";
-						font-size: 1.8rem;
-						margin: -4px 5px;
-						float: left;
+					.fa-comment{
+						&:before{
+							color: $orange;
+							top: -7px;
+							font-size: 25px;
+							position: absolute;
+							left: -4px;
+							z-index: -1;
+						}
+						color: white;
+						margin-right: 10px;
+						margin-left: 6px;
+						padding-left: 5px;
+						font-weight: bold;
+						&:hover {
+							text-decoration: none;
+							opacity: 0.7;
+						}
 					}
 					a{
 						color: $orange;
@@ -187,19 +212,28 @@
 				margin-top: 10px;
 				height: 76px;
 				overflow: hidden;
+				color: #444!important;
 				p {
 					margin: 0;
 				}
 			}
 			.read {
 				font-size: 1.3rem;
-				color: $orange;
+				background: $orange;
+				color: #fff;
+				height: 20px;
+				line-height: 20px;
+				padding: 0px 10px;
+				border-radius: 30px;
 				&:hover {
-					text-decoration: underline
+					opacity: 0.7;
 				}
 				&:before {
 					float: left;
-					margin: 0px 5px;
+					margin: 0px 7px 0 2px;
+				}
+				&.fa-facebook {
+					background: #3b5999;
 				}
 
 			}
@@ -217,6 +251,7 @@
 		&:hover {
 			background-color: rgba(6,171,147,0.2);
 		}
+
 		.hidden{
 			overflow:hidden;
 			white-space: normal;
@@ -260,11 +295,23 @@
 			.l3 {
 				width: 70px;
 				text-align: right;
-				a{
-					color:$orange;
+				.fa-sign-in {
+					font-size: 12px;
+					background: $orange;
+					color: #fff;
+					height: 20px;
+					line-height: 20px;
+					padding: 0px 6px;
+					border-radius: 30px;
 					&:hover {
-						text-decoration: underline
+						opacity: 0.7;
 					}
+					&:before {
+						float: left;
+						margin: 0px 4px 0 0px;
+						font-size: 13px;
+					}
+
 				}
 
 			}
