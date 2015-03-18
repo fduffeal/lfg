@@ -134,12 +134,18 @@ $color3: #06ab93; // blue
 		float: left;
 		line-height: 54px;
 		li {
-			margin-right: 35px;
-
-			:hover, .selected {
-				border-bottom: 2px solid white;
-				display: block;
-				height: 45px;
+			margin-right: 25px;
+			height: 47px;
+			line-height: 47px;
+			opacity: 0.8;
+				@include transition(opacity 0.2s ease-out);
+			&:hover, &.selected {
+				opacity: 1;
+			}
+			a{
+				&:before {
+					margin-right: 5px;
+				}
 			}
 		}
 	}
