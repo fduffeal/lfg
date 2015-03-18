@@ -26,11 +26,11 @@
 		</div>
 		<ul class="menu-left">
 			<img src="img/logo-header.png" class="logo-header" />
-			<li><a href="{{homeUrl}}" class="fa fa-home"translate>Home</a></li>
-			<li><a href="{{videoUrl}}" class="fa fa-video-camera">Videos</a></li>
-			<li><a href="{{rdvUrl}}" class="fa fa-gamepad ">LFG</a></li>
-			<li><a href="{{listUsersUrl}}" class="fa fa-users ">Gardiens</a></li>
-			<li><a href="{{forumUrl}}" class="fa fa-comments ">Forum</a></li>
+			<li><a href="{{homeUrl}}" class="fa fa-home"> <span translate>Home</span></a></li>
+			<li><a href="{{videoUrl}}" class="fa fa-video-camera"><span>Videos</span></a></li>
+			<li><a href="{{rdvUrl}}" class="fa fa-gamepad "><span>Parties</span></a></li>
+			<li><a href="{{listUsersUrl}}" class="fa fa-user-plus "><span>Gardiens</span></a></li>
+			<li><a href="{{forumUrl}}" class="fa fa-comments "><span>Forum</span></a></li>
 			<!--<li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
 <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
 			<li ng-if="userInfo.username" class="notif fa fa-bell"><a href="{{notifUrl}}" translate>Notification</a><span class="nb-notif">{{notifications.length}}</span></li>
@@ -50,8 +50,8 @@
 </li>
 </ul>-->
 		<ul class="menu-right unlogged"ng-if="!userInfo.username">
-			<li><a href="{{loginPageUrl}}" class="btn" translate>Login</a></li>
-			<li><a href="{{registerPageUrl}}" class="btn" translate>Register</a></li>
+			<li><a href="{{loginPageUrl}}" class="btn fa fa-connectdevelop" translate>Login</a></li>
+			<li><a href="{{registerPageUrl}}" class="btn fa fa-sign-in" translate>Register</a></li>
 		</ul>
 
 		<div lfg-interval="intervaNotificationId"></div>
