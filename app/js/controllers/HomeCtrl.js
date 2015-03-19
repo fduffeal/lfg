@@ -11,15 +11,30 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			$scope.indexCarrousel = 0;
 
+			$scope.aCarrousel = [];
+
+			var firstCover = {
+				document : {
+					src: "http://api.esbattle.com/uploads/documents/4e4a85d6da2e032797f4d89ebd2111fcc7fc163a.jpeg"
+				},
+				url : ''
+			};
+
+			$scope.aCarrousel.push(firstCover)
+
 			$scope.prevCarrousel = function () {
 				if ($scope.indexCarrousel > 0) {
 					$scope.indexCarrousel--;
+				} else {
+					$scope.indexCarrousel = $scope.aCarrousel.length-1;
 				}
 			};
 
 			$scope.nextCarrousel = function () {
 				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
 					$scope.indexCarrousel++;
+				} else {
+					$scope.indexCarrousel = 0;
 				}
 			};
 
@@ -41,8 +56,6 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 
 			forum.getNews().success(function (data) {
-
-				$scope.aCarrousel = [];
 
 				$scope.aTopic = data;
 
