@@ -115,6 +115,12 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				autoChangeCarrousel();
 			},10000);
 
+			$scope.indexPage = 0;
+			$scope.nbItemByPage = 10;
+			$scope.updateIndexPage = function(indexPage){
+				$scope.indexPage = indexPage;
+			};
+
 		}
 	]
 );
