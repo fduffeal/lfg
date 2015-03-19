@@ -8,9 +8,9 @@ angular.module('myApp.controllers').controller('PartenaireCtrl',
 		$scope.texte = "";
 
 
-		//partenaire.get($routeParams.id).success(function (data) {
-		//	console.log(data);
-		//});
+		partenaire.getById($routeParams.id).success(function (data) {
+			$scope.partenaire = data;
+		});
 
 	}
 ]);
