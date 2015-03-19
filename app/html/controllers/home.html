@@ -43,8 +43,9 @@
 						<span ta-bind ng-model="topic.message.texte "></span>
 					</div>
 					<a ng-href="{{topic.url}}" class="read fa fa-play">Lire</a>
-					<a ng-href="{{topic.url}}" class="read fa fa-facebook">Share</a>
-				</div>
+					<lfg-fb-share url="{{topic.url}}"></lfg-fb-share>
+
+                </div>
 			</div>
             <ul ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0">
                 <li><a href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a></li>
