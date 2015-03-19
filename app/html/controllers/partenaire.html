@@ -1,19 +1,9 @@
 
-<div id="videos" class="wrap">
+<div id="partenaires" class="wrap">
 	<lfg-header></lfg-header>
-	<!--<div class="page carousel">
-<div class="block">
-<ul>
-<li>
-<a href="">
-<img src="img/logo-destiny.png" alt="" class="logo-destiny"/>
-<div class="text">Gardiens, rejoignez nos rangs</div>
-<div class="bt">Voir les parties</div>
-</a>
-</li>
-</ul>
-</div>
-</div>-->
+	<div class="page">
+		<img src="{{partenaire.tuile.src}}" alt="" class="banniere">
+	</div>
 	<div class="page content grid">
 		<div class="grid2-1">
 			<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index <= 3">
