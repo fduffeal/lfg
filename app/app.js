@@ -161,6 +161,12 @@ angular.module('myApp', [
 				controller : 'VideothequeCtrl'
 			});
 
+		$routeProvider.when('/:lang/video/:id/:nom',
+			{
+				templateUrl: '/html/controllers/partenaire.html',
+				controller : 'PartenaireCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr/'});
 
 
