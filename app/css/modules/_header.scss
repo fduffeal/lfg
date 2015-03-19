@@ -9,6 +9,9 @@ $color3: #06ab93; // blue
 	top: 0;
 	position: fixed;
 	z-index: 999;
+	.fa-gamepad {
+		color: $color2!important;
+	}
 	.content-header {
 		margin: auto;
 		width: 940px;
