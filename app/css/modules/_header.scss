@@ -32,14 +32,14 @@ $color3: #06ab93; // blue
 				width: 20px;
 				height: 20px;
 				text-align: center;
-				border-radius: 50%;
+				border-radius: 5px;
 				position: absolute;
-				top: 11px;
-				background: #2d2d2d;
+				top: 15px;
+				background: #06ab93;
 				color: white;
-				left: 79px;
+				left: 16px;
 				line-height: 20px;
-				border: 2px solid #06ab93;
+
 			}
 		}
 
@@ -145,7 +145,7 @@ $color3: #06ab93; // blue
 			a{
 				&:before {
 					margin-right: 5px;
-					font-size: 15px;
+					font-size: 20px;
 				}
 			}
 		}
@@ -157,7 +157,7 @@ $color3: #06ab93; // blue
 		margin-right: 40px;
 		&.unlogged {
 			margin-right: 0;
-			margin-top: -10px;
+			margin-top: -7px;
 			.btn{
 				width: 100px;
 				margin-right: 10px;
@@ -245,6 +245,7 @@ $color3: #06ab93; // blue
 			margin-right: 10px!important;
 		}
 		.menu-left li {
+
 			a{
 				font-size: 18px;
 			}
@@ -253,9 +254,15 @@ $color3: #06ab93; // blue
 			padding: 0;
 			width: auto;
 			margin-right: 5px;
+			font-size: 11px;
+			margin-top: 25px;
+			padding: 0 3px!important;
 			&:before {
 				display: none;
 			}
+		}
+		.menu-left li a:before {
+			font-size: 20px;
 		}
 	}
 
