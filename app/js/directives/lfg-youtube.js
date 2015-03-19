@@ -4,11 +4,12 @@ angular.module('myApp.directives')
 			'use strict';
 			return {
 				scope:{
-					url : '@'
+					url : '='
 				},
 				link: function($scope, element, attrs) {
 
-					$scope.url = "";
+					console.log($scope.url);
+
 
 				},
 				restrict: 'E',
