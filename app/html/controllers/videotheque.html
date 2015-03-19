@@ -16,118 +16,33 @@
 </div>-->
 	<div class="page content grid">
 		<div class="grid2-1">
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
+			<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index <= 3">
+				<img src="{{partenaire.tuile.src}}" alt="">
 				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
+					<img src="{{partenaire.logo.src}}" alt="">
 					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-		</div>
-		<div class="grid3">
-			<!--<div ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
-<lfg-youtube></lfg-youtube>
-</div>-->
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
-					</span>
-				</div>
-			</a>
-			<a href="">
-				<img src="img/chaine-groschakal.png" alt="">
-				<div>
-					<img src="img/logo-groschakal.jpg" alt="">
-					<span>
-						CHAINE DE GROSCHAKAL<br />
-						Tutos, loots !
+						{{partenaire.nom}}<br />
+						{{partenaire.description}}
 					</span>
 				</div>
 			</a>
 		</div>
 
+		<div class="grid3">
+			<a ng-href="" ng-repeat="partenaire in partenaires" ng-if="$index > 3">
+				<img src="{{partenaire.tuile.src}}" alt="">
+				<div>
+					<img src="{{partenaire.logo.src}}" alt="">
+					<span>
+						{{partenaire.nom}}<br />
+						{{partenaire.description}}
+					</span>
+				</div>
+			</a>
+		</div>
 
 		<div class="clear"></div>
 	</div>
-
-	<div lfg-interval="intervalId"></div>
 </div>
 
 </div>

@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -73,6 +73,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
 				}
+			});
+
+			partenaire.getAll().success(function (data) {
+				$scope.partenaires = data;
 			});
 
 

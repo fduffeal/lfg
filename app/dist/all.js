@@ -30142,8 +30142,8 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 );
 
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -30216,6 +30216,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
 				}
+			});
+
+			partenaire.getAll().success(function (data) {
+				$scope.partenaires = data;
 			});
 
 
@@ -31764,28 +31768,24 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 );
 
 angular.module('myApp.controllers').controller('VideothequeCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$window',
-	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$window) {
-			'use strict';
-			/*$scope.msg = $routeParams.msg;
-			console.log($scope.msg);*/
-			$scope.currentUser = user.get();
-			$scope.texte = "";
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','partenaire',
+	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,partenaire) {
+		'use strict';
+		/*$scope.msg = $routeParams.msg;
+		console.log($scope.msg);*/
+		$scope.currentUser = user.get();
+		$scope.texte = "";
 
 
-			forum.getAllTopic().success(function(data) {
-				$scope.aTopic = data;
+		partenaire.getAll().success(function (data) {
+			for(var key in data){
+				data[key].href = redirection.getPartenaireByIdUrl(data[key]);
+			}
+			$scope.partenaires = data;
+		});
 
-				/*for(var i = 0;i< $scope.aTopic.length-1;i++){
-					forum.getTopic($scope.aTopic[i].id, 1, 1).success(function(data) {
-						$scope.aTopic[i].message = data.messages[0].texte;
-					});
-				}*/
-			});
-
-		}
-	]
-);
+	}
+]);
 
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
@@ -33451,6 +33451,22 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
+	.service('partenaire', ['api',
+		function(api) {
+			'use strict';
+
+			this.getAll = function(){
+				return api.call('partenaire');
+			};
+
+			this.getById = function(id){
+				return api.call('partenaire/'+id);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
 	.service('rdv', ['$http','user','api','superCache','$window',
 		function($http,user,api,superCache,$window) {
 			'use strict';
@@ -33628,6 +33644,24 @@ angular.module('myApp.services')
 
 			this.getPartyWaitingByIdUrl = function(id){
 				return this.getPartyWaitingUrlRoot()+id;
+			};
+
+			this.getPartenaireByIdUrlRoot = function(){
+				return '/'+getLang()+'/video/';
+			};
+
+			this.getPartenaireByIdUrl = function(partenaire){
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = partenaire.nom.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return this.getPartenaireByIdUrlRoot()+partenaire.id+'/'+titre;
 			};
 
 			this.goToRdvId = function(id){

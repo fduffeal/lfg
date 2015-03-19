@@ -76,9 +76,7 @@
 
 	<!--<lfg-youtube></lfg-youtube>-->
 	<h2 class="second">Partenaires</h2>
-	<a href="https://www.youtube.com/user/FRGrosChakaL" class="partenaires"><img src="img/part-groschakal.png" alt=""></a>
-	<a href="https://www.youtube.com/channel/UCVuJ-R2ai5_I6JyFXexwx7g" class="partenaires"><img src="img/part-thelastguardians.png" alt=""></a>
-	<a href="https://www.facebook.com/groups/destinyfrancexbox/" class="partenaires"><img src="img/part-destinyfrancexbox.png" alt=""></a>
+	<a href="{{partenaire.blocHomeLink}}" class="partenaires" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 	<h2 class="second" translate>Follow us</h2>
 
 	<div class="socials">
