@@ -31870,15 +31870,15 @@ angular.module('myApp.directives')
 				link : function($scope){
 
 					if(!$scope.url){
-						$scope.url = $location.absUrl();
+						$scope.urlFormat = $location.absUrl();
 					} else {
-						$scope.url = 'http://'+$location.host()+$scope.url;
+						$scope.urlFormat = 'http://'+$location.host()+$scope.url;
 					}
 
 					$scope.shareFB = function(){
 						FB.ui({
 							method: 'share',
-							href:$scope.url
+							href:$scope.urlFormat
 						}, function(response){
 							console.log(response);
 						});
