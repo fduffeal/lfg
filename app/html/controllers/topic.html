@@ -15,12 +15,11 @@
 				{{topic.topic.titre}}
 			</h2>
 
-            <lfg-fb-share></lfg-fb-share>
-
 			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
 			<a ng-href="{{forumUrl}}" class="toussujet btn2" >Sujets</a>
 		</div>
 		<div class="clear"></div>
+		<lfg-fb-share></lfg-fb-share>
 	</div>
 
 	<div class="page">
@@ -61,7 +60,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td></td>
+								<td class="none"></td>
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
 										{{usergame.data1 | translate}} {{usergame.data2}} |

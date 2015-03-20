@@ -1,12 +1,12 @@
 #topic {
-    img{
-      max-width: 100%;
-      height: auto;
-    }
-    iframe{
-      max-width: 100%;
-      height: auto;
-    }
+	img{
+		max-width: 100%;
+		height: auto;
+	}
+	iframe{
+		max-width: 100%;
+		height: auto;
+	}
 	.clear	{
 		clear:both;
 	}
@@ -28,6 +28,26 @@
 		border: 1px solid #ccc;
 		background: #fff;
 		clear: both;
+		.read {
+			font-size: 1.3rem;
+			margin-left: 20px;
+			background: $orange;
+			color: #fff;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px 10px;
+			&:hover {
+				opacity: 0.7;
+			}
+			&:before {
+				float: left;
+				margin: 0px 7px 0 2px;
+			}
+			&.fa-facebook {
+				background: #3b5999;
+			}
+
+		}
 		h2.sujet {
 			float: left;
 			margin-top:10px;
@@ -235,6 +255,11 @@
 			}
 		}
 	}
+	@media screen and (max-width: 390px ) {
+		.to-avatar, .none {
+			display: none!important;
+		}
+	}
 	.text-angular {
 		.btn-group {
 			display: inline-block;
@@ -248,7 +273,7 @@
 			width: 30px;
 			line-height: 30px;
 			margin:10px 10px 0 0
-			
+
 		}
 	}
 }
