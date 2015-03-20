@@ -76,6 +76,13 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			});
 
 			partenaire.getAll().success(function (data) {
+
+				for(var key in data){
+					if(data[key].blocHomeLink == ''){
+						data[key].blocHomeLink = redirection.getPartenaireByIdUrl(data[key]);
+					}
+				}
+
 				$scope.partenaires = data;
 			});
 
