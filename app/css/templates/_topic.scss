@@ -177,10 +177,15 @@
 		}
 		.to-msg {
 			padding-left: 10px;
+			font-family: 'Open Sans', sans-serif!important;
+			a {
+				color: $orange!important;
+			}
 		}
 		.to-info {
 			height: 20px;
 			width:90%;
+			border-bottom: 1px solid #ccc;
 			.left {
 				float: left;
 				font-weight:bold;
