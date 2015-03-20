@@ -203,17 +203,21 @@
 					.fa-comment{
 						&:before{
 							color: $orange;
-							top: -7px;
+							/*top: -7px;*/
 							font-size: 25px;
 							position: absolute;
-							left: -4px;
+							/*left: -4px;*/
 							z-index: -1;
+							margin-top: -7px;
+							margin-left: -8px;
 						}
 						color: white;
 						margin-right: 10px;
 						margin-left: 6px;
 						padding-left: 5px;
 						font-weight: bold;
+						z-index: 2;
+						position: relative;
 						&:hover {
 							text-decoration: none;
 							opacity: 0.7;
@@ -233,6 +237,9 @@
 				height: 76px;
 				overflow: hidden;
 				color: #444!important;
+				a {
+					color: $orange!important;
+				}
 				p {
 					margin: 0;
 				}
