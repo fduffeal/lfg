@@ -3,12 +3,21 @@ angular.module('myApp.directives')
 		function($location) {
 			'use strict';
 			return {
+				scope: {
+					url:'@'
+				},
 				link : function($scope){
+
+					if(!$scope.url){
+						$scope.url = $location.absUrl();
+					} else {
+						$scope.url = 'http://'+$location.host()+$scope.url;
+					}
 
 					$scope.shareFB = function(){
 						FB.ui({
 							method: 'share',
-							href:$location.absUrl()
+							href:$scope.url
 						}, function(response){
 							console.log(response);
 						});

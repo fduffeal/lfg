@@ -16,7 +16,7 @@
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" >
+					<tr ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
 						<td class="fo-type"><div ng-class="{'postit':(topic.status == 'postit'),'normal':(topic.status == 'normal'),'high':(topic.status == 'news')}"></div></td>
 						<td class="fo-sujet"><a ng-href="{{topic.url}}"><span ng-if="topic.status == 'news'">[News] </span>{{topic.titre}}</a></td>
 						<td class="fo-author"><a href="" ng-class="{'modo':(topic.user.role == 'modo')}">{{topic.user.username}}</a></td>
@@ -25,6 +25,11 @@
 					</tr>
 				</tbody>
 			</table>
+
+            <ul ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" ng-if="$index%nbItemByPage === 0">
+                <li><a href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a></li>
+            </ul>
+
 			<a href="" class="btn2 refresh" ng-click="refresh()">Actualiser</a>
 			<div class="welcome">
 				<div class="marge">

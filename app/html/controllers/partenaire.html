@@ -18,23 +18,14 @@
 			</a>
 		</div>
 
-		<div class="grid3">
-			<a ng-href="" ng-repeat="partenaire in partenaires" ng-if="$index > 3">
-				<img src="{{partenaire.tuile.src}}" alt="">
-				<div>
-					<img src="{{partenaire.logo.src}}" alt="">
-					<span>
-						{{partenaire.nom}}<br />
-						{{partenaire.description}}
-					</span>
-				</div>
-			</a>
-		</div>
+        <div ng-repeat="video in partenaire.videos">
+            <lfg-youtube url="video.url"></lfg-youtube>
+        </div>
 
 		<div class="clear"></div>
 	</div>
 </div>
 
-</div>
+	</div>
 </div>
 <lfg-footer></lfg-footer>
