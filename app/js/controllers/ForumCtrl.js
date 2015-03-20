@@ -31,11 +31,17 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 					var url = redirection.getTopicUrl(data,1)
 					$location.path(url);
 				});
-			}
+			};
 
 			$scope.refresh = function(){
 				$window.location.reload();
-			}
+			};
+
+			$scope.indexPage = 0;
+			$scope.nbItemByPage = 25;
+			$scope.updateIndexPage = function(indexPage){
+				$scope.indexPage = indexPage;
+			};
 		}
 	]
 );

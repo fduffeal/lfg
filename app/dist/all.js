@@ -29970,6 +29970,12 @@ angular.module('myApp', [
 				controller : 'VideothequeCtrl'
 			});
 
+		$routeProvider.when('/:lang/video/:id/:nom',
+			{
+				templateUrl: '/html/controllers/partenaire.html',
+				controller : 'PartenaireCtrl'
+			});
+
 		$routeProvider.otherwise({redirectTo: '/fr/'});
 
 
@@ -30061,11 +30067,17 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 					var url = redirection.getTopicUrl(data,1)
 					$location.path(url);
 				});
-			}
+			};
 
 			$scope.refresh = function(){
 				$window.location.reload();
-			}
+			};
+
+			$scope.indexPage = 0;
+			$scope.nbItemByPage = 25;
+			$scope.updateIndexPage = function(indexPage){
+				$scope.indexPage = indexPage;
+			};
 		}
 	]
 );
@@ -30142,8 +30154,8 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 );
 
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -30154,15 +30166,30 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			$scope.indexCarrousel = 0;
 
+			$scope.aCarrousel = [];
+
+			var firstCover = {
+				document : {
+					src: "http://api.esbattle.com/uploads/documents/4e4a85d6da2e032797f4d89ebd2111fcc7fc163a.jpeg"
+				},
+				url : ''
+			};
+
+			$scope.aCarrousel.push(firstCover)
+
 			$scope.prevCarrousel = function () {
 				if ($scope.indexCarrousel > 0) {
 					$scope.indexCarrousel--;
+				} else {
+					$scope.indexCarrousel = $scope.aCarrousel.length-1;
 				}
 			};
 
 			$scope.nextCarrousel = function () {
 				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
 					$scope.indexCarrousel++;
+				} else {
+					$scope.indexCarrousel = 0;
 				}
 			};
 
@@ -30185,8 +30212,6 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			forum.getNews().success(function (data) {
 
-				$scope.aCarrousel = [];
-
 				$scope.aTopic = data;
 
 				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
@@ -30203,6 +30228,17 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
 				}
+			});
+
+			partenaire.getAll().success(function (data) {
+
+				for(var key in data){
+					if(data[key].blocHomeLink == ''){
+						data[key].blocHomeLink = redirection.getPartenaireByIdUrl(data[key]);
+					}
+				}
+
+				$scope.partenaires = data;
 			});
 
 
@@ -30240,6 +30276,12 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$timeout(function(){
 				autoChangeCarrousel();
 			},10000);
+
+			$scope.indexPage = 0;
+			$scope.nbItemByPage = 10;
+			$scope.updateIndexPage = function(indexPage){
+				$scope.indexPage = indexPage;
+			};
 
 		}
 	]
@@ -30805,6 +30847,23 @@ angular.module('myApp.controllers').controller('NotificationCtrl',
     ]
 );
 
+angular.module('myApp.controllers').controller('PartenaireCtrl',
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','partenaire',
+	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,partenaire) {
+		'use strict';
+		/*$scope.msg = $routeParams.msg;
+		console.log($scope.msg);*/
+		$scope.currentUser = user.get();
+		$scope.texte = "";
+
+
+		partenaire.getById($routeParams.id).success(function (data) {
+			$scope.partenaire = data;
+		});
+
+	}
+]);
+
 angular.module('myApp.controllers').controller('PartyCreateCtrl',
 	['$scope','rdv','$location','$filter','user','$rootScope','redirection','lang','gettextCatalog',
 		function ($scope,rdv,$location,$filter,user,$rootScope,redirection,lang,gettextCatalog) {
@@ -31087,6 +31146,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 			        }
 		        }
 	        };
+
+
 
 			refreshData();
 			autoRefreshData();
@@ -31749,28 +31810,24 @@ angular.module('myApp.controllers').controller('TopicCtrl',
 );
 
 angular.module('myApp.controllers').controller('VideothequeCtrl',
-	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','$window',
-	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,$window) {
-			'use strict';
-			/*$scope.msg = $routeParams.msg;
-			console.log($scope.msg);*/
-			$scope.currentUser = user.get();
-			$scope.texte = "";
+	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','partenaire',
+	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,partenaire) {
+		'use strict';
+		/*$scope.msg = $routeParams.msg;
+		console.log($scope.msg);*/
+		$scope.currentUser = user.get();
+		$scope.texte = "";
 
 
-			forum.getAllTopic().success(function(data) {
-				$scope.aTopic = data;
+		partenaire.getAll().success(function (data) {
+			for(var key in data){
+				data[key].href = redirection.getPartenaireByIdUrl(data[key]);
+			}
+			$scope.partenaires = data;
+		});
 
-				/*for(var i = 0;i< $scope.aTopic.length-1;i++){
-					forum.getTopic($scope.aTopic[i].id, 1, 1).success(function(data) {
-						$scope.aTopic[i].message = data.messages[0].texte;
-					});
-				}*/
-			});
-
-		}
-	]
-);
+	}
+]);
 
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
@@ -31797,6 +31854,38 @@ angular.module('myApp.directives')
 				},
 				restrict: 'E',
 				templateUrl: '/html/directives/lfg-facebook.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgFbShare', ['$location',
+		function($location) {
+			'use strict';
+			return {
+				scope: {
+					url:'@'
+				},
+				link : function($scope){
+
+					if(!$scope.url){
+						$scope.url = $location.absUrl();
+					} else {
+						$scope.url = 'http://'+$location.host()+$scope.url;
+					}
+
+					$scope.shareFB = function(){
+						FB.ui({
+							method: 'share',
+							href:$scope.url
+						}, function(response){
+							console.log(response);
+						});
+					};
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-fb-share.html'
 			};
 		}
 	]
@@ -31994,6 +32083,7 @@ angular.module('myApp.directives')
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
+					$scope.videoUrl = redirection.getVideoUrl();
 
                     $scope.userInfo = user.get();
 
@@ -32542,11 +32632,49 @@ angular.module('myApp.directives')
 			'use strict';
 			return {
 				scope:{
-					url : '@'
+					url : '='
 				},
 				link: function($scope, element, attrs) {
 
-					$scope.url = "";
+					var ids = $scope.url.match(/(\?|&)v=[^&]*/);
+
+					// 3. This function creates an <iframe> (and YouTube player)
+					//    after the API code downloads.
+					var player;
+					$scope.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+						player = new YT.Player(element[0], {
+							height: '390',
+							width: '640',
+							videoId: ids[0].substring(3),
+							html5:1,
+							events: {
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+							}
+						});
+					};
+
+					// 4. The API will call this function when the video player is ready.
+					function onPlayerReady(event) {
+						//event.target.playVideo();
+					}
+
+					// 5. The API calls this function when the player's state changes.
+					//    The function indicates that when playing a video (state=1),
+					//    the player should play for six seconds and then stop.
+					var done = false;
+					function onPlayerStateChange(event) {
+						if (event.data == YT.PlayerState.PLAYING && !done) {
+							setTimeout(stopVideo, 6000);
+							done = true;
+						}
+					}
+					function stopVideo() {
+						player.stopVideo();
+					}
+
+					$scope.onYouTubeIframeAPIReady();
+
 
 				},
 				restrict: 'E',
@@ -32836,120 +32964,6 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -33412,6 +33426,22 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
+	.service('partenaire', ['api',
+		function(api) {
+			'use strict';
+
+			this.getAll = function(){
+				return api.call('partenaire');
+			};
+
+			this.getById = function(id){
+				return api.call('partenaire/'+id);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
 	.service('rdv', ['$http','user','api','superCache','$window',
 		function($http,user,api,superCache,$window) {
 			'use strict';
@@ -33591,6 +33621,24 @@ angular.module('myApp.services')
 				return this.getPartyWaitingUrlRoot()+id;
 			};
 
+			this.getPartenaireByIdUrlRoot = function(){
+				return '/'+getLang()+'/video/';
+			};
+
+			this.getPartenaireByIdUrl = function(partenaire){
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = partenaire.nom.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return this.getPartenaireByIdUrlRoot()+partenaire.id+'/'+titre;
+			};
+
 			this.goToRdvId = function(id){
 				$location.path(this.getPartyWaitingByIdUrl(id));
 			};
@@ -33664,6 +33712,10 @@ angular.module('myApp.services')
 
 				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
 			};
+
+			this.getVideoUrl = function(){
+				return '/'+getLang()+'/destiny/video/all';
+			}
 		}
 	]
 );
@@ -34159,4 +34211,119 @@ angular.module('myApp.services')
 			}
 		}
 	]
+);
+
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
 );

@@ -1,19 +1,25 @@
 <div id="homePage" class="wrap">
 	<lfg-header></lfg-header>
-	<div class="page carousel">
+	<div class="carousel">
 		<div class="block">
 			<ul class="slider">
+				<!--<li>q
+<a href="">
+<img src="../img/banniere.jpg" alt="">
+</a>
+</li>-->
 				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel)">
 					<a ng-href="{{topic.url}}">
 						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
 					</a>
 				</li>
+
 			</ul>
 			<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
 			<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
 			<ul class="page-slider">
 				<li ng-repeat="topic in aCarrousel">
-					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}">{{$index}}</a>
+					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}"></a>
 				</li>
 			</ul>
 		</div>
@@ -24,21 +30,32 @@
 		<div class="block-left">
 			<h2>Dernière news</h2>
 
-			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
-				<div class="post-image"><span ta-bind ng-model="topic.image"></span></div>
+			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
+				<a ng-href="{{topic.url}}" class="post-image"><span ta-bind ng-model="topic.image"></span></a>
 				<div class="post-text">
 					<div class="post-title">
 						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
 						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-						<span class="comment"><a ng-href="{{topic.url}}">{{topic.nbMessages}} commentaires</a></span>
-						<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
+						<span class="comment"><a ng-href="{{topic.url}}" class="fa fa-comment">{{topic.nbMessages}}</a></span>
+						<!--	<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>-->
 					</div>
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texte "></span>
 					</div>
-					<a ng-href="{{topic.url}}" class="read fa fa-arrow-circle-o-right">Lire</a>
+					<a ng-href="{{topic.url}}" class="read fa fa-play">Lire</a>
+					<lfg-fb-share url="{{topic.url}}"></lfg-fb-share>
+
 				</div>
 			</div>
+			<div class="pagination">
+				<span ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0" ng-class="{'actif':(currentPage == $index+1)}">
+					<a ng-href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a>
+				</span>
+			</div>
+			<!-- <ul ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0">
+<li><a href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a></li>
+</ul>-->
+
 		</div>
 		<div class="block-right">
 			<h2>Dernières parties créées</h2>
@@ -47,7 +64,7 @@
 				<tr>
 					<td colspan="3">
 						<lfg-profile-bungie with-plateform="false"
-						                    user-game="rdv.author"></lfg-profile-bungie>
+											user-game="rdv.author"></lfg-profile-bungie>
 					</td>
 				</tr>
 				<tr class="line">
@@ -62,27 +79,28 @@
 					</td>
 					<td class="l3" valign="top">
 						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-							<a ng-href="{{rdv.url}}" translate>Join</a>
-					</td>
-				</tr>
-			</table>
+				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in">Rejoins</a>
+				</td>
+			</tr>
+		</table>
 
-			<!--<lfg-youtube></lfg-youtube>-->
+	<!--<lfg-youtube></lfg-youtube>-->
+	<h2 class="second">Partenaires</h2>
+	<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+	<h2 class="second" translate>Follow us</h2>
 
-			<h2 class="second" translate>Follow us</h2>
-
-			<div class="socials">
-				<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
-				<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
-				<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
-						src="img/footer-logo-bungie.png"/></a>
-			</div>
-
-		</div>
-		<div class="clear"></div>
+	<div class="socials">
+		<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
+		<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
+		<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
+																				  src="img/footer-logo-bungie.png"/></a>
 	</div>
 
-	<div lfg-interval="intervalId"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div lfg-interval="intervalId"></div>
 </div>
 
 </div>

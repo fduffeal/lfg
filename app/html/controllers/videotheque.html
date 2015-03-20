@@ -1,35 +1,50 @@
 
-<div id="homePage" class=" video wrap">
+<div id="videos" class="wrap">
 	<lfg-header></lfg-header>
-	<div class="page carousel">
-		<div class="block">
-			<ul>
-				<li>
-					<a href="">
-						<img src="img/logo-destiny.png" alt="" class="logo-destiny"/>
-						<div class="text">Gardiens, rejoignez nos rangs</div>
-						<div class="bt">Voir les parties</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<!--<div class="page carousel">
+<div class="block">
+<ul>
+<li>
+<a href="">
+<img src="img/logo-destiny.png" alt="" class="logo-destiny"/>
+<div class="text">Gardiens, rejoignez nos rangs</div>
+<div class="bt">Voir les parties</div>
+</a>
+</li>
+</ul>
+</div>
+</div>-->
 	<div class="page content grid">
-
-		<h2>Toutes les vidéos</h2>
-		<div class="grid3">
-			<div ng-repeat="topic in aTopic  |orderBy:['position','updated']:true">
-				<lfg-youtube></lfg-youtube>
-				< /div>
-					</div>
-
-
-				<div class="clear"></div>
-			</div>
-
-			<div lfg-interval="intervalId"></div>
+		<div class="grid2-1">
+			<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index <= 3">
+				<img src="{{partenaire.tuile.src}}" alt="">
+				<div>
+					<img src="{{partenaire.logo.src}}" alt="">
+					<span>
+						{{partenaire.nom}}<br />
+						{{partenaire.description}}
+					</span>
+				</div>
+			</a>
 		</div>
 
+		<div class="grid3">
+			<a ng-href="" ng-repeat="partenaire in partenaires" ng-if="$index > 3">
+				<img src="{{partenaire.tuile.src}}" alt="">
+				<div>
+					<img src="{{partenaire.logo.src}}" alt="">
+					<span>
+						{{partenaire.nom}}<br />
+						{{partenaire.description}}
+					</span>
+				</div>
+			</a>
+		</div>
+
+		<div class="clear"></div>
 	</div>
+</div>
+
+</div>
 </div>
 <lfg-footer></lfg-footer>

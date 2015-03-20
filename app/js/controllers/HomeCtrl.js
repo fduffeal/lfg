@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -11,15 +11,30 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			$scope.indexCarrousel = 0;
 
+			$scope.aCarrousel = [];
+
+			var firstCover = {
+				document : {
+					src: "http://api.esbattle.com/uploads/documents/4e4a85d6da2e032797f4d89ebd2111fcc7fc163a.jpeg"
+				},
+				url : ''
+			};
+
+			$scope.aCarrousel.push(firstCover)
+
 			$scope.prevCarrousel = function () {
 				if ($scope.indexCarrousel > 0) {
 					$scope.indexCarrousel--;
+				} else {
+					$scope.indexCarrousel = $scope.aCarrousel.length-1;
 				}
 			};
 
 			$scope.nextCarrousel = function () {
 				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
 					$scope.indexCarrousel++;
+				} else {
+					$scope.indexCarrousel = 0;
 				}
 			};
 
@@ -42,8 +57,6 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			forum.getNews().success(function (data) {
 
-				$scope.aCarrousel = [];
-
 				$scope.aTopic = data;
 
 				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
@@ -60,6 +73,17 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
 				}
+			});
+
+			partenaire.getAll().success(function (data) {
+
+				for(var key in data){
+					if(data[key].blocHomeLink == ''){
+						data[key].blocHomeLink = redirection.getPartenaireByIdUrl(data[key]);
+					}
+				}
+
+				$scope.partenaires = data;
 			});
 
 
@@ -97,6 +121,12 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$timeout(function(){
 				autoChangeCarrousel();
 			},10000);
+
+			$scope.indexPage = 0;
+			$scope.nbItemByPage = 10;
+			$scope.updateIndexPage = function(indexPage){
+				$scope.indexPage = indexPage;
+			};
 
 		}
 	]

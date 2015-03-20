@@ -1,4 +1,4 @@
-angular.module('myApp.controllers').controller('VideothequeCtrl',
+angular.module('myApp.controllers').controller('PartenaireCtrl',
 	['$scope','$routeParams','forum','redirection','$anchorScroll','$location','$timeout','user','partenaire',
 	function ($scope,$routeParams,forum,redirection,$anchorScroll,$location,$timeout,user,partenaire) {
 		'use strict';
@@ -8,11 +8,8 @@ angular.module('myApp.controllers').controller('VideothequeCtrl',
 		$scope.texte = "";
 
 
-		partenaire.getAll().success(function (data) {
-			for(var key in data){
-				data[key].href = redirection.getPartenaireByIdUrl(data[key]);
-			}
-			$scope.partenaires = data;
+		partenaire.getById($routeParams.id).success(function (data) {
+			$scope.partenaire = data;
 		});
 
 	}

@@ -58,6 +58,24 @@ angular.module('myApp.services')
 				return this.getPartyWaitingUrlRoot()+id;
 			};
 
+			this.getPartenaireByIdUrlRoot = function(){
+				return '/'+getLang()+'/video/';
+			};
+
+			this.getPartenaireByIdUrl = function(partenaire){
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = partenaire.nom.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return this.getPartenaireByIdUrlRoot()+partenaire.id+'/'+titre;
+			};
+
 			this.goToRdvId = function(id){
 				$location.path(this.getPartyWaitingByIdUrl(id));
 			};
@@ -131,6 +149,10 @@ angular.module('myApp.services')
 
 				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
 			};
+
+			this.getVideoUrl = function(){
+				return '/'+getLang()+'/destiny/video/all';
+			}
 		}
 	]
 );

@@ -22,17 +22,16 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
 <base href="/">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> to improve your experience.</p>
 <![endif]-->
-
 <div ng-view></div>
 
 <script src="http://www.esbattle.com:3000/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="dist/all.js"></script>
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 
 <lfg-init></lfg-init>
 <script>
@@ -53,6 +52,16 @@
         js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1482107158698739',
+            cookie     : true,  // enable cookies to allow the server to access
+                                // the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.2' // use version 2.2
+        });    };
 
 </script>
 

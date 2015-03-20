@@ -1,0 +1,31 @@
+
+<div id="partenaires" class="wrap">
+	<lfg-header></lfg-header>
+
+	<img src="{{partenaire.header.src}}" alt="" class="banniere">
+
+	<div class="page content grid">
+		<!--<div class="grid2-1">
+<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index <= 3">
+<img src="{{partenaire.tuile.src}}" alt="">
+<div>
+<img src="{{partenaire.logo.src}}" alt="">
+<span>
+{{partenaire.nom}}<br />
+{{partenaire.description}}
+</span>
+</div>
+</a>
+</div>-->
+		<div class="grid3">
+			<div ng-repeat="video in partenaire.videos">
+				<lfg-youtube url="video.url"></lfg-youtube>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</div>
+</div>
+<lfg-footer></lfg-footer>
