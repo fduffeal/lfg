@@ -8,6 +8,26 @@
 			margin-right: 0;
 		}
 	}
+	.pagination {
+		float: right;
+		margin: 5px 0;
+		span {
+			display:inline-block;
+			font-size: 1.3rem;
+			margin: 5px;
+			font-weight:bold;
+			a{
+				color: $orange;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+			&.actif {
+				background: #000;
+				padding: 3px 10px;
+			}
+		}
+	}
 	.carousel {
 		position: relative;
 		.arrow {

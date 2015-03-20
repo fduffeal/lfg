@@ -9,7 +9,7 @@ $color3: #06ab93; // blue
 	top: 0;
 	position: fixed;
 	z-index: 999;
-	.fa-gamepad {
+	.fa-gamepad:before {
 		color: $color2!important;
 	}
 	.content-header {
@@ -52,6 +52,9 @@ $color3: #06ab93; // blue
 		a {
 			color: white;
 			font-weight: bold;
+			&.selected {
+				color: $color2;
+			}
 		}
 
 	}

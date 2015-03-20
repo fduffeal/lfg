@@ -26,10 +26,16 @@
 				</tbody>
 			</table>
 
-            <ul ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" ng-if="$index%nbItemByPage === 0">
+            <!--<ul ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" ng-if="$index%nbItemByPage === 0">
                 <li><a href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a></li>
-            </ul>
-
+            </ul>-->
+            
+   <div class="pagination">
+				<span ng-repeat="topic in aTopic  |orderBy:['position','updated']:true" ng-if="$index%nbItemByPage === 0" ng-class="{'actif':(currentPage == $index+1)}">
+					<a ng-href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a>
+				</span>
+			</div>
+			<div class="clear"></div>
 			<a href="" class="btn2 refresh" ng-click="refresh()">Actualiser</a>
 			<div class="welcome">
 				<div class="marge">
