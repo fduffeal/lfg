@@ -30074,7 +30074,7 @@ angular.module('myApp.controllers').controller('ForumCtrl',
 			};
 
 			$scope.indexPage = 0;
-			$scope.nbItemByPage = 10;
+			$scope.nbItemByPage = 25;
 			$scope.updateIndexPage = function(indexPage){
 				$scope.indexPage = indexPage;
 			};
