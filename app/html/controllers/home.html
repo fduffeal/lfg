@@ -37,7 +37,7 @@
 						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
 						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
 						<span class="comment"><a ng-href="{{topic.url}}" class="fa fa-comment">{{topic.nbMessages}}</a></span>
-						<!--	<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>-->
+							<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
 					</div>
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texte "></span>
