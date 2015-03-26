@@ -42,7 +42,7 @@
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texte "></span>
 					</div>
-					<a ng-href="{{topic.url}}" class="read fa fa-play">Lire</a>
+					<a ng-href="{{topic.url}}" class="read fa fa-play"><span>Lire</span></a>
 					<lfg-fb-share url="{{topic.url}}"></lfg-fb-share>
 
 				</div>
@@ -79,7 +79,7 @@
 					</td>
 					<td class="l3" valign="top">
 						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in">Rejoins</a>
+				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Rejoins</span></a>
 				</td>
 			</tr>
 		</table>
