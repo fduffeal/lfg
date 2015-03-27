@@ -20,7 +20,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				url : ''
 			};
 
-			$scope.aCarrousel.push(firstCover)
+			$scope.aCarrousel.push(firstCover);
 
 			$scope.prevCarrousel = function () {
 				if ($scope.indexCarrousel > 0) {
@@ -59,12 +59,11 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 				$scope.aTopic = data;
 
-				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
 				for (var i = 0; i < $scope.aTopic.length; i++) {
 
-					$scope.aTopic[i].message.texte = $scope.aTopic[i].message.texte.replace(regex, '');
-
 					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
+
+					$scope.aTopic[i].message.texteBrut = $filter('filterWords')($scope.aTopic[i].message.texteBrut, 26);
 
 					if ($scope.aTopic[i].document !== null) {
 						$scope.aCarrousel.push($scope.aTopic[i]);
