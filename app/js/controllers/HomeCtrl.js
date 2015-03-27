@@ -59,6 +59,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 				$scope.aTopic = data;
 
+				//var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
+
 				for (var i = 0; i < $scope.aTopic.length; i++) {
 
 					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
@@ -68,6 +70,16 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					if ($scope.aTopic[i].document !== null) {
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
+
+					/*
+					if($scope.aTopic[i].vignette === null) {
+						var match = $scope.aTopic[i].message.texte.match(regex);
+						if (match !== null) {
+							$scope.aTopic[i].vignetteOld = match[0];
+
+						}
+					}*/
+
 				}
 			});
 
