@@ -31,7 +31,9 @@
 			<h2>Dernière news</h2>
 
 			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
-				<a ng-href="{{topic.url}}" class="post-image"><span ta-bind ng-model="topic.image"></span></a>
+				<a ng-href="{{topic.url}}" class="post-image">
+                    <img src="{{topic.vignette.src}}">
+                </a>
 				<div class="post-text">
 					<div class="post-title">
 						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>

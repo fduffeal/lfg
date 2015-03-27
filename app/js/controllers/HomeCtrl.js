@@ -61,12 +61,9 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
 				for (var i = 0; i < $scope.aTopic.length; i++) {
-					var match = $scope.aTopic[i].message.texte.match(regex);
-					if (match !== null) {
-						$scope.aTopic[i].image = match[0];
-						$scope.aTopic[i].message.texte = $scope.aTopic[i].message.texte.replace(regex, '');
 
-					}
+					$scope.aTopic[i].message.texte = $scope.aTopic[i].message.texte.replace(regex, '');
+
 					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
 
 					if ($scope.aTopic[i].document !== null) {
