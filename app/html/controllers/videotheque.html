@@ -16,7 +16,7 @@
 </div>-->
 	<div class="page content grid">
 		<div class="grid2-1">
-			<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index <= 3">
+			<a ng-href="{{partenaire.href}}" ng-repeat="partenaire in partenaires" ng-if="$index < 3">
 				<img src="{{partenaire.tuile.src}}" alt="">
 				<div>
 					<img src="{{partenaire.logo.src}}" alt="">
@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="grid3">
-			<a ng-href="" ng-repeat="partenaire in partenaires" ng-if="$index > 3">
+			<a ng-href="" ng-repeat="partenaire in partenaires" ng-if="$index >= 3">
 				<img src="{{partenaire.tuile.src}}" alt="">
 				<div>
 					<img src="{{partenaire.logo.src}}" alt="">
