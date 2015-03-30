@@ -30175,7 +30175,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				url : ''
 			};
 
-			$scope.aCarrousel.push(firstCover)
+			$scope.aCarrousel.push(firstCover);
 
 			$scope.prevCarrousel = function () {
 				if ($scope.indexCarrousel > 0) {
@@ -30214,19 +30214,27 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 				$scope.aTopic = data;
 
-				var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
-				for (var i = 0; i < $scope.aTopic.length; i++) {
-					var match = $scope.aTopic[i].message.texte.match(regex);
-					if (match !== null) {
-						$scope.aTopic[i].image = match[0];
-						$scope.aTopic[i].message.texte = $scope.aTopic[i].message.texte.replace(regex, '');
+				//var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
 
-					}
+				for (var i = 0; i < $scope.aTopic.length; i++) {
+
 					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
+
+					$scope.aTopic[i].message.texteBrut = $filter('filterWords')($scope.aTopic[i].message.texteBrut, 26);
 
 					if ($scope.aTopic[i].document !== null) {
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
+
+					/*
+					if($scope.aTopic[i].vignette === null) {
+						var match = $scope.aTopic[i].message.texte.match(regex);
+						if (match !== null) {
+							$scope.aTopic[i].vignetteOld = match[0];
+
+						}
+					}*/
+
 				}
 			});
 
@@ -32780,6 +32788,53 @@ angular.module('myApp.filters').filter('filterHtml', ['$sce',
 		return input;
 	};
 }]);
+angular.module('myApp.filters').filter('filterLive', ['tools','$filter','gettextCatalog',
+	function (tools,$filter,gettextCatalog) {
+		'use strict';
+		return function (date2_s) {
+
+				var date2_ms = date2_s * 1000;
+				var currentDate = new Date(date2_ms);
+
+				var now = new Date();
+				var date1_ms = now.getTime();
+				// Calculate the difference in milliseconds
+				var difference_ms = date1_ms - date2_ms;
+
+				var tomorrow = new Date(date1_ms + 24 * 60 * 60 * 1000);
+
+				if (difference_ms < 0) {
+
+					if (tomorrow.getDay() == currentDate.getDay()) {
+						return gettextCatalog.getString("tomorrow at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
+					} else if (now.getDay() == currentDate.getDay()) {
+						return gettextCatalog.getString("today at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
+					}
+					return $filter('date')(date2_ms, 'd/MM/yy HH:mm');
+				}
+
+				var one_minute = 1000 * 60 * 1;
+
+				var diffMinutes = Math.round(difference_ms / one_minute);
+				if (diffMinutes < 60) {
+					return gettextCatalog.getString("online");
+				}
+
+				var one_hour = 1000 * 60 * 60 * 1;
+				var diffHours = Math.round(difference_ms / one_hour);
+				if (diffHours < 24) {
+					return gettextCatalog.getString("{{hours}} hours ago", {hours: diffHours});
+
+				}
+
+				//Get 1 day in milliseconds
+				var one_day = 1000 * 60 * 60 * 24;
+				var diffDays = Math.round(difference_ms / one_day);
+				return gettextCatalog.getString("{{days}} days ago", {days: diffDays});
+
+		};
+	}
+]);
 angular.module('myApp.filters').filter('filterOnlineTime', [
 	'$filter','gettextCatalog',
 	function ($filter,gettextCatalog) {
@@ -32949,6 +33004,8 @@ angular.module('myApp.filters').filter('filterUser', [
 angular.module('myApp.filters').filter('filterWords', function () {
 	'use strict';
 	return function (input, words) {
+
+		console.log('Filter words',input , words);
 		if (isNaN(words)) {
 			return input;
 		}

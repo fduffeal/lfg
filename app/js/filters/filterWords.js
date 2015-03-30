@@ -1,6 +1,8 @@
 angular.module('myApp.filters').filter('filterWords', function () {
 	'use strict';
 	return function (input, words) {
+
+		console.log('Filter words',input , words);
 		if (isNaN(words)) {
 			return input;
 		}
