@@ -70,16 +70,6 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					if ($scope.aTopic[i].document !== null) {
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
-
-					/*
-					if($scope.aTopic[i].vignette === null) {
-						var match = $scope.aTopic[i].message.texte.match(regex);
-						if (match !== null) {
-							$scope.aTopic[i].vignetteOld = match[0];
-
-						}
-					}*/
-
 				}
 			});
 
