@@ -3,28 +3,20 @@
 	<div class="carousel">
 		<div class="block">
 			<ul class="slider">
-				<!--<li>q
-<a href="">
-<img src="../img/banniere.jpg" alt="">
-</a>
-</li>-->
-				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel)">
+				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel && $index < nbItemByPage)">
 					<a ng-href="{{topic.url}}">
 						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
 					</a>
 				</li>
-
 			</ul>
 			<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
 			<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
 			<ul class="page-slider">
-				<li ng-repeat="topic in aCarrousel">
+				<li ng-repeat="topic in aCarrousel" ng-show="$index < nbItemByPage">
 					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}"></a>
 				</li>
 			</ul>
 		</div>
-
-
 	</div>
 	<div class="page content">
 		<div class="block-left">
@@ -81,7 +73,7 @@
 					</td>
 					<td class="l3" valign="top">
 						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Rejoins</span></a>
+				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
 				</td>
 			</tr>
 		</table>
