@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog','$location',
-		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog,$location) {
+	['$scope','$routeParams','user','$filter','rdv','gettextCatalog','$location',
+		function ($scope,$routeParams,user,$filter,rdv,gettextCatalog,$location) {
 			'use strict';
 
 
@@ -105,11 +105,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 					$scope.aAllUsers[key].me = false;
 					$scope.aAllUsers[key].canAddToFriendList = true;
 					$scope.aAllUsers[key].canAddToBlackList = true;
-
-					if (socket.listUsers[$scope.aAllUsers[key].username]) {
-						$scope.aAllUsers[key].connected = true;
-						$scope.aAllUsers[key].onlineTime = 99999999999999999;
-					}
 
 					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
 						$scope.aAllUsers[key].me = true;
@@ -258,7 +253,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 				refreshData();
 
-				socket.getUserList();
 			};
 
 			init();
