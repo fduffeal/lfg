@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
-    ['$scope','user','$route','$routeParams',
-        function ($scope,user,$route,$routeParams) {
+    ['$scope','user','$route','$routeParams','redirection',
+        function ($scope,user,$route,$routeParams,redirection) {
 			'use strict';
 
 			if($route.current.action === 'forget'){
@@ -18,6 +18,7 @@ angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
 				} else {
 					user.updatePassword($scope.password).success(function(data){
 						$scope.bDisplayUpdatePassword = true;
+						redirection.goHome();
 					}).error(function(data){
 						$scope.error = data.msg;
 					});

@@ -164,7 +164,9 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
 			};
 
 			this.updateOnline = function(currentUser){

@@ -30584,7 +30584,7 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.promiseLoginInProgress = false;
 			        $scope.userInfo = data;
-					redirection.goBack();
+					redirection.goHome();
 		        }).error(function(data){
 			        $scope.promiseLoginInProgress = false;
 					$scope.error = data.msg;
@@ -31155,8 +31155,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 );
 
 angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
-    ['$scope','user','$route','$routeParams',
-        function ($scope,user,$route,$routeParams) {
+    ['$scope','user','$route','$routeParams','redirection',
+        function ($scope,user,$route,$routeParams,redirection) {
 			'use strict';
 
 			if($route.current.action === 'forget'){
@@ -31174,6 +31174,7 @@ angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
 				} else {
 					user.updatePassword($scope.password).success(function(data){
 						$scope.bDisplayUpdatePassword = true;
+						redirection.goHome();
 					}).error(function(data){
 						$scope.error = data.msg;
 					});
@@ -34302,7 +34303,9 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
 			};
 
 			this.updateOnline = function(currentUser){

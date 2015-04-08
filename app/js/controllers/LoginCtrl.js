@@ -28,7 +28,7 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.promiseLoginInProgress = false;
 			        $scope.userInfo = data;
-					redirection.goBack();
+					redirection.goHome();
 		        }).error(function(data){
 			        $scope.promiseLoginInProgress = false;
 					$scope.error = data.msg;
