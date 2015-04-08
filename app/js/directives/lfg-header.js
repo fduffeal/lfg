@@ -16,6 +16,10 @@ angular.module('myApp.directives')
 						$window.location.reload();
 					};
 
+					$scope.refreshBungie = function(){
+						user.refreshBungie();
+					};
+
 
 
 

@@ -10,6 +10,8 @@ var rename = require('gulp-rename');
 var compass = require('gulp-compass');
 var minifyCSS = require('gulp-minify-css');
 var plumber = require('gulp-plumber');
+
+var devip = require('dev-ip');				// Récupération de l'ip du poste pour lancer le serveur local
 // SERVER
 webserver	= require('gulp-webserver'),					// permet de monter un serveur de fichier en local avec le livereload (rechargement du navigateur à chaque modification d'un fichier du projet) inclus.
 sourcemaps	= require('gulp-sourcemaps'),					// facilite le débugage en dév/prod sur le code minifié. Permet de faire la relation entre le code minifié et le code de dév (qui est non minifié et commenté)
@@ -82,9 +84,18 @@ gulp.task('watch', function() {
  *
  */
 gulp.task('server', function() {
+
+	var port = 8000,
+	host = '0.0.0.0',
+	openUrl = 'http://' + devip()[0] + ':' + port; // équivaut à localhost. On peut se connecter sur les envs de dév des copains en tapant sur leur IP !
+
+
 	return gulp.src(__dirname + '/app')
 		.pipe(
 		webserver({
+			host: host,
+			port: port,
+			open: openUrl,
 			livereload: true,
 			fallback: 'index.html'
 		})

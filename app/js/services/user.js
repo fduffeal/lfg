@@ -35,6 +35,22 @@ angular.module('myApp.services')
 				});
 			};
 
+			this.refreshBungie = function(username,token){
+
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+
+				var params = {
+					username : currentUser.username,
+					token : currentUser.token
+				};
+				return api.post('login/refresh',params).success(function(data){
+					storeUser(data);
+				});
+			};
+
 			this.logByForgetToken = function(username,token){
 				username = $window.encodeURIComponent(username);
 				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){

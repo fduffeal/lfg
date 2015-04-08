@@ -18,6 +18,7 @@
 					<li><a href="{{listUsersUrl}}">Gardiens</a></li>
 					<li><a href="{{forumUrl}}">Forum</a></li>
 					<li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a></li>
+					<li ng-if="userInfo.username"><a href="" ng-click="refreshBungie()">Update</a>
 					<!--    <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>-->
 				</ul>
 			</div>
@@ -34,6 +35,7 @@
 			<!--<li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
 <li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
 			<li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" class=" fa fa-bell" ></a><span class="nb-notif">{{notifications.length}}</span></li>
+			<li ng-if="userInfo.username"><a href="" ng-click="refreshBungie()">Update</a>
 			<!--<li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>-->
 			<!--    <li><a href="{{listUsersUrl}}" translate>Users Connected</a></li>-->
 		</ul>

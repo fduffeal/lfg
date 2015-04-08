@@ -32065,6 +32065,10 @@ angular.module('myApp.directives')
 						$window.location.reload();
 					};
 
+					$scope.refreshBungie = function(){
+						user.refreshBungie();
+					};
+
 
 
 
@@ -33188,9 +33192,10 @@ angular.module('myApp.services')
 					return this.url;
 				}
 				var host = $location.host();
-				if (host === 'www.esbattle.com') {
-					this.url = 'http://api.esbattle.com/';
-				} else {
+
+				this.url = 'http://apiv2.esbattle.com/';
+
+				if (host === 'localhost') {
 					this.url = 'http://lfg.esbattle.com/app_dev.php/';
 				}
 				return this.url;
@@ -34160,6 +34165,22 @@ angular.module('myApp.services')
 			this.logByToken = function(username,token){
 				username = $window.encodeURIComponent(username);
 				return api.call('login/token/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.refreshBungie = function(username,token){
+
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+
+				var params = {
+					username : currentUser.username,
+					token : currentUser.token
+				};
+				return api.post('login/refresh',params).success(function(data){
 					storeUser(data);
 				});
 			};
