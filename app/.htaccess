@@ -18,7 +18,7 @@
 </IfModule>
 
 <FilesMatch "\.(html|js|css|gif|jpg|jpeg|png|ico)$">
-	Header set Cache-Control "max-age=3600"
+	Header set Cache-Control "max-age=600"
 
 	Header set vary  "Accept-Encoding"
 	Header append vary "User-Agent"
