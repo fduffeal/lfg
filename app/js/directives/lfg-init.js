@@ -1,17 +1,13 @@
 angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
+	.directive('lfgInit', ['user',
+		function(user) {
 			'use strict';
 			return {
 				scope:{
 					'init':'='
 				},
 				link: function($scope, element, attrs) {
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
+					user.get();
 				},
 				restrict: 'E'
 			};

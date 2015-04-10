@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
-		function($window,socket,user,$filter,redirection) {
+	.directive('lfgFriendlist', ['$window','user','$filter','redirection',
+		function($window,user,$filter,redirection) {
 			'use strict';
 			return {
 				scope:{
@@ -38,10 +38,6 @@ angular.module('myApp.directives')
 							$scope.allUsers[key].canAddToFriendList = true;
 							$scope.allUsers[key].canAddToBlackList = true;
 
-							if (socket.listUsers[$scope.allUsers[key].username]) {
-								$scope.allUsers[key].connected = true;
-							}
-
 							if($scope.currentUser !== null && $scope.allUsers[key].username === $scope.currentUser.username){
 								$scope.allUsers[key].me = true;
 							}
@@ -76,7 +72,6 @@ angular.module('myApp.directives')
 
 					var init = function(){
 						refreshData();
-						socket.getUserList();
 					};
 
 					$scope.invite = function(user){

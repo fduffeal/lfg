@@ -1,8 +1,8 @@
 angular.module('myApp.controllers').controller('RdvCtrl',
 	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
-		'$filter','storage','$routeParams','$location','socket',
+		'$filter','storage','$routeParams','$location',
 		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
-		          $filter,storage,$routeParams,$location,socket) {
+		          $filter,storage,$routeParams,$location) {
 			'use strict';
 
 			lang.initLang();
@@ -331,7 +331,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				autoRefreshData();
 				setTypeFilter();
 				initTags();
-				socket.getUserList();
 			};
 
 

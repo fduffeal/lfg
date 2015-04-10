@@ -30286,8 +30286,8 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 );
 
 angular.module('myApp.controllers').controller('ListUsersCtrl',
-	['$scope','$routeParams','user','socket','$filter','rdv','gettextCatalog','$location',
-		function ($scope,$routeParams,user,socket,$filter,rdv,gettextCatalog,$location) {
+	['$scope','$routeParams','user','$filter','rdv','gettextCatalog','$location',
+		function ($scope,$routeParams,user,$filter,rdv,gettextCatalog,$location) {
 			'use strict';
 
 
@@ -30392,11 +30392,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 					$scope.aAllUsers[key].me = false;
 					$scope.aAllUsers[key].canAddToFriendList = true;
 					$scope.aAllUsers[key].canAddToBlackList = true;
-
-					if (socket.listUsers[$scope.aAllUsers[key].username]) {
-						$scope.aAllUsers[key].connected = true;
-						$scope.aAllUsers[key].onlineTime = 99999999999999999;
-					}
 
 					if($scope.currentUser !== null && $scope.aAllUsers[key].username === $scope.currentUser.username){
 						$scope.aAllUsers[key].me = true;
@@ -30545,7 +30540,6 @@ angular.module('myApp.controllers').controller('ListUsersCtrl',
 
 				refreshData();
 
-				socket.getUserList();
 			};
 
 			init();
@@ -30584,7 +30578,7 @@ angular.module('myApp.controllers').controller('LoginCtrl',
 		        user.log($scope.username,$scope.password).success(function(data){
 			        $scope.promiseLoginInProgress = false;
 			        $scope.userInfo = data;
-					redirection.goBack();
+					redirection.goHome();
 		        }).error(function(data){
 			        $scope.promiseLoginInProgress = false;
 					$scope.error = data.msg;
@@ -31155,8 +31149,8 @@ angular.module('myApp.controllers').controller('PartyWaitingCtrl',
 );
 
 angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
-    ['$scope','user','$route','$routeParams',
-        function ($scope,user,$route,$routeParams) {
+    ['$scope','user','$route','$routeParams','redirection',
+        function ($scope,user,$route,$routeParams,redirection) {
 			'use strict';
 
 			if($route.current.action === 'forget'){
@@ -31174,6 +31168,7 @@ angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
 				} else {
 					user.updatePassword($scope.password).success(function(data){
 						$scope.bDisplayUpdatePassword = true;
+						redirection.goHome();
 					}).error(function(data){
 						$scope.error = data.msg;
 					});
@@ -31272,9 +31267,9 @@ angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
 
 angular.module('myApp.controllers').controller('RdvCtrl',
 	['$scope','rdv','redirection','$route','tag','lang','$interval','user','bungie','annonce','$timeout',
-		'$filter','storage','$routeParams','$location','socket',
+		'$filter','storage','$routeParams','$location',
 		function ($scope,rdv,redirection,$route,tag,lang,$interval,user,bungie,annonce,$timeout,
-		          $filter,storage,$routeParams,$location,socket) {
+		          $filter,storage,$routeParams,$location) {
 			'use strict';
 
 			lang.initLang();
@@ -31603,7 +31598,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				autoRefreshData();
 				setTypeFilter();
 				initTags();
-				socket.getUserList();
 			};
 
 
@@ -31918,8 +31912,8 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-	.directive('lfgFriendlist', ['$window','socket','user','$filter','redirection',
-		function($window,socket,user,$filter,redirection) {
+	.directive('lfgFriendlist', ['$window','user','$filter','redirection',
+		function($window,user,$filter,redirection) {
 			'use strict';
 			return {
 				scope:{
@@ -31957,10 +31951,6 @@ angular.module('myApp.directives')
 							$scope.allUsers[key].canAddToFriendList = true;
 							$scope.allUsers[key].canAddToBlackList = true;
 
-							if (socket.listUsers[$scope.allUsers[key].username]) {
-								$scope.allUsers[key].connected = true;
-							}
-
 							if($scope.currentUser !== null && $scope.allUsers[key].username === $scope.currentUser.username){
 								$scope.allUsers[key].me = true;
 							}
@@ -31995,7 +31985,6 @@ angular.module('myApp.directives')
 
 					var init = function(){
 						refreshData();
-						socket.getUserList();
 					};
 
 					$scope.invite = function(user){
@@ -32063,6 +32052,14 @@ angular.module('myApp.directives')
 						user.logout();
 						$scope.userInfo = null;
 						$window.location.reload();
+					};
+
+					$scope.updateInProgress = false;
+					$scope.refreshBungie = function(){
+						$scope.updateInProgress = true;
+						user.refreshBungie().then(function(data){
+							$scope.updateInProgress = false;
+						});
 					};
 
 
@@ -32143,19 +32140,15 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-	.directive('lfgInit', ['user','socket',
-		function(user,socket) {
+	.directive('lfgInit', ['user',
+		function(user) {
 			'use strict';
 			return {
 				scope:{
 					'init':'='
 				},
 				link: function($scope, element, attrs) {
-					var currentUser = user.get();
-					if(currentUser !== null){
-						socket.addUser(currentUser.username);
-					}
-
+					user.get();
 				},
 				restrict: 'E'
 			};
@@ -32682,6 +32675,120 @@ angular.module('myApp.directives')
 	]
 );
 
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.filters').filter('filterAvatar', [function () {
 	'use strict';
 	return function (userGameProfil) {
@@ -33010,120 +33117,6 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -33188,9 +33181,10 @@ angular.module('myApp.services')
 					return this.url;
 				}
 				var host = $location.host();
-				if (host === 'www.esbattle.com') {
-					this.url = 'http://api.esbattle.com/';
-				} else {
+
+				this.url = 'http://apiv2.esbattle.com/';
+
+				if (host === 'localhost') {
 					this.url = 'http://lfg.esbattle.com/app_dev.php/';
 				}
 				return this.url;
@@ -34128,8 +34122,8 @@ angular.module('myApp.services')
 );
 
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
+		function($http,storage,api,$rootScope,$q,$timeout,$window) {
 			'use strict';
             this.data = '';
 
@@ -34147,7 +34141,6 @@ angular.module('myApp.services')
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 				storage.setPersistant('user',JSON.stringify(data));
-				socket.addUser(data.username);
 			};
 
 			this.log = function(username,password){
@@ -34160,6 +34153,22 @@ angular.module('myApp.services')
 			this.logByToken = function(username,token){
 				username = $window.encodeURIComponent(username);
 				return api.call('login/token/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.refreshBungie = function(username,token){
+
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+
+				var params = {
+					username : currentUser.username,
+					token : currentUser.token
+				};
+				return api.post('login/refresh',params).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -34202,7 +34211,6 @@ angular.module('myApp.services')
 				$rootScope.notificationsAlreadyRead = [];
 				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
-				socket.disconnect();
 			};
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
@@ -34277,7 +34285,9 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
 			};
 
 			this.updateOnline = function(currentUser){

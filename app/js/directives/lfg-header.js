@@ -16,6 +16,14 @@ angular.module('myApp.directives')
 						$window.location.reload();
 					};
 
+					$scope.updateInProgress = false;
+					$scope.refreshBungie = function(){
+						$scope.updateInProgress = true;
+						user.refreshBungie().then(function(data){
+							$scope.updateInProgress = false;
+						});
+					};
+
 
 
 

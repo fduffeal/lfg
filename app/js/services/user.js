@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window','socket',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,socket) {
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
+		function($http,storage,api,$rootScope,$q,$timeout,$window) {
 			'use strict';
             this.data = '';
 
@@ -18,7 +18,6 @@ angular.module('myApp.services')
 			var storeUser = function(data){
 				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
 				storage.setPersistant('user',JSON.stringify(data));
-				socket.addUser(data.username);
 			};
 
 			this.log = function(username,password){
@@ -31,6 +30,22 @@ angular.module('myApp.services')
 			this.logByToken = function(username,token){
 				username = $window.encodeURIComponent(username);
 				return api.call('login/token/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.refreshBungie = function(username,token){
+
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+
+				var params = {
+					username : currentUser.username,
+					token : currentUser.token
+				};
+				return api.post('login/refresh',params).success(function(data){
 					storeUser(data);
 				});
 			};
@@ -73,7 +88,6 @@ angular.module('myApp.services')
 				$rootScope.notificationsAlreadyRead = [];
 				$rootScope.userGameSelected = null;
 				storage.erasePersistant('user');
-				socket.disconnect();
 			};
 
 			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
@@ -148,7 +162,9 @@ angular.module('myApp.services')
 			this.updatePassword = function(password){
 				var currentUser = this.get();
 				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
 			};
 
 			this.updateOnline = function(currentUser){

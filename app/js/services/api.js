@@ -9,9 +9,10 @@ angular.module('myApp.services')
 					return this.url;
 				}
 				var host = $location.host();
-				if (host === 'www.esbattle.com') {
-					this.url = 'http://api.esbattle.com/';
-				} else {
+
+				this.url = 'http://apiv2.esbattle.com/';
+
+				if (host === 'localhost') {
 					this.url = 'http://lfg.esbattle.com/app_dev.php/';
 				}
 				return this.url;
