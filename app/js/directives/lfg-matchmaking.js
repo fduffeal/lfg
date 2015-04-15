@@ -22,7 +22,7 @@ angular.module('myApp.directives')
 			                }
 			                data[key].concatTags = "";
 			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+				                data[key].concatTags += data[key].tags[keyTag].nom+" ";
 			                }
 			                groupOfTemplate[data[key].description].push(data[key]);
 		                }

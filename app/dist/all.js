@@ -30945,8 +30945,9 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var description = $scope.description;
                 var slotTotal = $scope.slotTotal;
 				var profilId = $scope.profilSelected.id
+				var vignetteId = $scope.vignette;
 
-                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
+                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId,vignetteId).success(function(data){
 					redirection.goToRdvId(data.id);
                 });
             };
@@ -30987,6 +30988,11 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				$scope.tags = templateSelectedModel.concatTags;
 				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
 				$scope.slotTotal = templateSelectedModel.nbParticipant;
+
+				if(templateSelectedModel.vignette !== null){
+					$scope.vignette = templateSelectedModel.vignette.id;
+				}
+
 			});
 
 		}
@@ -32313,7 +32319,7 @@ angular.module('myApp.directives')
 			                }
 			                data[key].concatTags = "";
 			                for(var keyTag in data[key].tags){
-				                data[key].concatTags += "#"+data[key].tags[keyTag].nom+" ";
+				                data[key].concatTags += data[key].tags[keyTag].nom+" ";
 			                }
 			                groupOfTemplate[data[key].description].push(data[key]);
 		                }
@@ -32615,6 +32621,34 @@ angular.module('myApp.directives')
             };
         }
     ]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgTwitterShare', ['$location',
+		function($location) {
+			'use strict';
+			return {
+				templateUrl: '/html/directives/lfg-twitter-share.html',
+				restrict: 'E',
+				priority: 99, // it needs to run after the attributes are interpolated
+				scope: {
+					url:'@'
+				},
+				link: function(scope, element, attr) {
+
+					if(!scope.url){
+						scope.urlFormat = $location.absUrl();
+					} else {
+						scope.urlFormat = 'http://'+$location.host()+scope.url;
+					}
+
+					scope.shareTwitter = function(){
+
+					};
+				}
+			};
+		}
+	]
 );
 
 angular.module('myApp.directives')
@@ -33182,11 +33216,12 @@ angular.module('myApp.services')
 				}
 				var host = $location.host();
 
-				this.url = 'http://apiv2.esbattle.com/';
+				this.url = 'http://lfg.esbattle.com/app_dev.php/';
 
-				if (host === 'localhost') {
-					this.url = 'http://lfg.esbattle.com/app_dev.php/';
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://apiv2.esbattle.com/';
 				}
+
 				return this.url;
 			};
 
@@ -33615,7 +33650,7 @@ angular.module('myApp.services')
 				});
 			};
 
-            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
+            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId,vignetteId){
                 var currentUser = user.get();
 
 	            plateform = $window.encodeURIComponent(plateform);
@@ -33626,9 +33661,10 @@ angular.module('myApp.services')
 	            duree = $window.encodeURIComponent(duree);
 	            nbParticipant = $window.encodeURIComponent(nbParticipant);
 	            profilId = $window.encodeURIComponent(profilId);
+	            vignetteId = $window.encodeURIComponent(vignetteId);
 	            var username = $window.encodeURIComponent(currentUser.username);
 
-	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+vignetteId+'/'+username+'/'+currentUser.token);
             };
 
 			this.get = function(id){

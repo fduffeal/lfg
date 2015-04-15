@@ -87,8 +87,9 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
                 var description = $scope.description;
                 var slotTotal = $scope.slotTotal;
 				var profilId = $scope.profilSelected.id
+				var vignetteId = $scope.vignette;
 
-                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId).success(function(data){
+                rdv.add(plateform,game,tags,description,day,dureeHours+':'+dureeMinutes,slotTotal,profilId,vignetteId).success(function(data){
 					redirection.goToRdvId(data.id);
                 });
             };
@@ -129,6 +130,11 @@ angular.module('myApp.controllers').controller('PartyCreateCtrl',
 				$scope.tags = templateSelectedModel.concatTags;
 				$scope.description = gettextCatalog.getString(templateSelectedModel.description);
 				$scope.slotTotal = templateSelectedModel.nbParticipant;
+
+				if(templateSelectedModel.vignette !== null){
+					$scope.vignette = templateSelectedModel.vignette.id;
+				}
+
 			});
 
 		}

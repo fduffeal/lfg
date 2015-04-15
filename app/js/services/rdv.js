@@ -18,7 +18,7 @@ angular.module('myApp.services')
 				});
 			};
 
-            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId){
+            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId,vignetteId){
                 var currentUser = user.get();
 
 	            plateform = $window.encodeURIComponent(plateform);
@@ -29,9 +29,10 @@ angular.module('myApp.services')
 	            duree = $window.encodeURIComponent(duree);
 	            nbParticipant = $window.encodeURIComponent(nbParticipant);
 	            profilId = $window.encodeURIComponent(profilId);
+	            vignetteId = $window.encodeURIComponent(vignetteId);
 	            var username = $window.encodeURIComponent(currentUser.username);
 
-	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+username+'/'+currentUser.token);
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+vignetteId+'/'+username+'/'+currentUser.token);
             };
 
 			this.get = function(id){
