@@ -96,7 +96,7 @@ gulp.task('server', function() {
 			host: host,
 			port: port,
 			open: openUrl,
-			livereload: true,
+			livereload: false,
 			fallback: 'index.html'
 		})
 	);

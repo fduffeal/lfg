@@ -29958,12 +29958,6 @@ angular.module('myApp', [
 				controller : 'TopicCtrl'
 			});
 
-		$routeProvider.when('/:lang/destiny/profile/:username',
-			{
-				templateUrl: '/html/controllers/profile-destiny.html',
-				controller : 'ProfileDestinyCtrl'
-			});
-
 		$routeProvider.when('/:lang/destiny/video/all',
 			{
 				templateUrl: '/html/controllers/videotheque.html',
@@ -31189,86 +31183,20 @@ angular.module('myApp.controllers').controller('PasswordUpdateCtrl',
 );
 
 angular.module('myApp.controllers').controller('ProfileCtrl',
-    ['$scope','user','rdv','$routeParams','redirection','lang',
-        function ($scope,user,rdv,$routeParams,redirection,lang) {
+    ['$scope','user','rdv','$routeParams','redirection','lang','avis',
+        function ($scope,user,rdv,$routeParams,redirection,lang,avis) {
 			'use strict';
 
 	        $scope.lang = lang.getCurrent();
 
 			$scope.currentUser = user.get();
 
-			rdv.getFormInfo().then(function(data){
-				$scope.plateforms = data.plateforms;
-				$scope.games = data.games;
-
-				$scope.plateform = data.plateforms[0];
-				if($routeParams.plateformId){
-					for(var key in data.plateforms){
-						if(data.plateforms[key].id == $routeParams.plateformId){
-							$scope.plateform = data.plateforms[key];
-						}
-					}
-				}
-
-				$scope.game = data.games[0];
-				if($routeParams.gameId){
-					for(var key in data.games){
-						if(data.games[key].id == $routeParams.gameId){
-							$scope.game = data.games[key];
-						}
-					}
-				}
-
-				$scope.updateFormData();
-
-			});
-
-
-			$scope.submitFormGameInfo = function(){
-				if($scope.gameInfo.$valid === false){
-					return;
-				}
-				$scope.formGameInfoUpdate = false;
-				user.setUserGame($scope.plateform.id,$scope.game.id,$scope.profilName,$scope.gameUsername,$scope.data1,$scope.data2,$scope.data3,$scope.data4).success(function(data){
-					$scope.formGameInfoUpdate = true;
-				});
-			};
-
-			$scope.updateFormData = function(){
-				$scope.formGameInfoUpdate = false;
-				$scope.profilName = '';
-				$scope.gameUsername = '';
-				$scope.data1 = '';
-				$scope.data2 = '';
-				$scope.data3 = '';
-				$scope.data4 = '';
-				for(var key in $scope.currentUser.userGame){
-					if($scope.currentUser.userGame[key].plateform.id === $scope.plateform.id){
-						$scope.profilName = $scope.currentUser.userGame[key].gameProfilName;
-						$scope.gameUsername = $scope.currentUser.userGame[key].gameUsername;
-						$scope.data2 = $scope.currentUser.userGame[key].data2;
-						$scope.data3 = $scope.currentUser.userGame[key].data3;
-						$scope.data4 = $scope.currentUser.userGame[key].data4;
-						$scope.data1 = $scope.currentUser.userGame[key].data1;
-					}
-				}
-			};
-
-			$scope.goBack = function(){
-				redirection.goBack();
-			};
-
+	        $scope.submit = function(){
+		      console.log($scope.avis);
+		        avis.post(1,$scope.avis);
+	        };
         }
     ]
-);
-
-angular.module('myApp.controllers').controller('ProfileDestinyCtrl',
-	['$scope','$routeParams',
-		function ($scope,$routeParams) {
-			'use strict';
-
-		}
-	]
 );
 
 angular.module('myApp.controllers').controller('RdvCtrl',
@@ -32709,6 +32637,120 @@ angular.module('myApp.directives')
 	]
 );
 
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.filters').filter('filterAvatar', [function () {
 	'use strict';
 	return function (userGameProfil) {
@@ -33037,120 +33079,6 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -33252,14 +33180,27 @@ angular.module('myApp.services')
 				});
 			};
 
-			this.post = function (path, params) {
+			this.post = function (path, params,currentUser) {
 
 				var url = this.getApiUrl() + path;
+
+				var username = '';
+				var token = '';
+				if(currentUser !== null){
+					username = currentUser.username;
+					token = currentUser.token;
+				}
+
+
 				return $http({
 					method: 'POST',
 					url: url,
 					data: params,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+						'User' : username,
+						'Authorization': token
+					}
 				}).error(function (data, status, headers, config) {
 
 					switch (status) {
@@ -33284,6 +33225,28 @@ angular.module('myApp.services')
 							break;
 					}
 				});
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('avis', ['api','$window','user',
+		function(api,$window,user) {
+			'use strict';
+
+
+			this.get = function(userId){
+				return api.call('avis/'+userId);
+			};
+
+			this.post = function(userId,avis){
+
+				var currentUser = user.get();
+				var params = {
+					avis: avis
+				};
+				return api.post('avis/'+userId,params,currentUser);
 			};
 		}
 	]
