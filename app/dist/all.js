@@ -31195,6 +31195,10 @@ angular.module('myApp.controllers').controller('ProfileCtrl',
 		      console.log($scope.avis);
 		        avis.post(1,$scope.avis);
 	        };
+
+	        avis.get(1).then(function(data){
+		        console.log('ok',data);
+	        });
         }
     ]
 );
