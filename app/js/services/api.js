@@ -50,10 +50,10 @@ angular.module('myApp.services')
 
 				var url = this.getApiUrl() + path;
 
-				var username = '';
+				var userId = '';
 				var token = '';
 				if(currentUser !== null){
-					username = currentUser.username;
+					userId = currentUser.id;
 					token = currentUser.token;
 				}
 
@@ -63,9 +63,8 @@ angular.module('myApp.services')
 					url: url,
 					data: params,
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-						'User' : username,
-						'Authorization': token
+						'User' : userId,
+						'Token': token
 					}
 				}).error(function (data, status, headers, config) {
 
