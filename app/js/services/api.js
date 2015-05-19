@@ -10,11 +10,12 @@ angular.module('myApp.services')
 				}
 				var host = $location.host();
 
-				this.url = 'http://apiv2.esbattle.com/';
+				this.url = 'http://lfg.esbattle.com/app_dev.php/';
 
-				if (host === 'localhost') {
-					this.url = 'http://lfg.esbattle.com/app_dev.php/';
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://apiv2.esbattle.com/';
 				}
+
 				return this.url;
 			};
 
