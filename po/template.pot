@@ -102,10 +102,6 @@ msgstr ""
 msgid "Ended"
 msgstr ""
 
-#: app/html/directives/lfg-footer.html
-msgid "English"
-msgstr ""
-
 #: app/html/controllers/rdv.html
 msgid "Enter a description"
 msgstr ""
@@ -136,10 +132,6 @@ msgstr ""
 
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
-msgstr ""
-
-#: app/html/directives/lfg-footer.html
-msgid "French"
 msgstr ""
 
 #: app/html/directives/lfg-friendlist.html
@@ -182,7 +174,6 @@ msgstr ""
 msgid "Invit !"
 msgstr ""
 
-#: app/html/controllers/home.html
 #: app/html/controllers/party-waiting.html
 msgid "Join"
 msgstr ""
@@ -253,10 +244,6 @@ msgid "No"
 msgstr ""
 
 #: app/html/directives/lfg-header.html
-msgid "Notification"
-msgstr ""
-
-#: app/html/directives/lfg-header.html
 msgid "Notifications"
 msgstr ""
 
@@ -319,6 +306,10 @@ msgstr ""
 
 #: app/html/controllers/rdv.html
 msgid "Post an announcement"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Prison of Elders"
 msgstr ""
 
 #: app/html/controllers/party-waiting.html
@@ -420,6 +411,10 @@ msgstr ""
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Trials of Osiris"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -533,6 +528,7 @@ msgstr ""
 msgid "player(s)"
 msgstr ""
 
+#: app/html/directives/lfg-header.html
 #: app/html/controllers/login.html
 #: app/html/controllers/register.html
 msgid "please wait ... game's data update is in progress"
