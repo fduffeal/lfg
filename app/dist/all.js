@@ -32556,34 +32556,6 @@ angular.module('myApp.directives')
 );
 
 angular.module('myApp.directives')
-	.directive('lfgTwitterShare', ['$location',
-		function($location) {
-			'use strict';
-			return {
-				templateUrl: '/html/directives/lfg-twitter-share.html',
-				restrict: 'E',
-				priority: 99, // it needs to run after the attributes are interpolated
-				scope: {
-					url:'@'
-				},
-				link: function(scope, element, attr) {
-
-					if(!scope.url){
-						scope.urlFormat = $location.absUrl();
-					} else {
-						scope.urlFormat = 'http://'+$location.host()+scope.url;
-					}
-
-					scope.shareTwitter = function(){
-
-					};
-				}
-			};
-		}
-	]
-);
-
-angular.module('myApp.directives')
 	.directive('lfgYoutube', [
 		function() {
 			'use strict';
