@@ -1,4 +1,10 @@
 $orange: #f15641;
+$tiny-screen			: 400px; // tiny screens media query (less than 640px)
+$small-screen			: 600px; // screens between 640px and 960px
+$medium-screen			: 1180px; // screens between 960px and 1024px
+$large-screen			: 1430px; // screens between 1025px and 1280px
+$extra-large-screen		: 1600px; // screens between 1281px and 1600px
+$ultra-large-screen		: 1920px; // ultra large screens
 body, html {
 	margin: 0;
 	padding: 0;

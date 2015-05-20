@@ -3,7 +3,7 @@
 		margin-top: 48px;
 	}
 	.content-header {
-		width: 940px;
+		width: 1440px;
 		.menu-right {
 			margin-right: 0;
 		}
@@ -57,7 +57,7 @@
 			@media (min-width: 1100px) {
 			height: 300px;
 		}
-			@media (min-width: 1200px) {
+			@media (min-width: $large-screen) {
 			height: 320px;
 		}
 			@media (min-width: 1370px) {
@@ -102,7 +102,11 @@
 					top:50%;
 					transform: translate(-50%, -50%);
 					font-weight: 300;
+					height: 100px;
 					font-size: 30px;
+					background: rgba(0,0,0,0.65);
+					padding: 10px 20px;
+					border-radius: 10px;
 				}
 			}
 			/*	img {
@@ -149,139 +153,217 @@
 	}*/
 	}
 	.page {
-		width: 940px;
+		max-width: 1440px;
+		width: auto;
 		margin: auto;
-		padding: 20px;
+		padding: 0;
 		margin-bottom: 10px;
 		margin-top: 100px;
+		background: #ededed;
+		border: 0;
 	}
-
+	/*
 	.block-left {
-		float: left;
-		width: 600px;
-	}
+	float: left;
+	width: 600px;
+}
 	.block-right {
-		float: right;
-		width: 300px;
+	float: right;
+	width: 300px;
 
-	}
+}
 	h2 {
-		font-size: 1.8rem;
-		margin: 0;
-		&.second {
-			margin-top: 15px;
-			margin-bottom: 10px;
-		}
-	}
+	font-size: 1.8rem;
+	margin: 0;
+	&.second {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+}
 	.clear {
-		clear:both;
-	}
+	clear:both;
+}
 
 	.article {
-		font-size: 1.4rem;
-		margin-top: 10px;
-		border-bottom: 1px solid #dddddd ;
-		height: 150px;
-		padding-bottom: 10px;
-		img {
-			max-height: 150px !important;
-			width: auto !important;
-		}
-		.post-image {
-			float: left;
-			width: 220px;
-			margin-right: 20px;
-			overflow: hidden;
-			@include transition(opacity 0.2s ease-out);
-			&:hover {
-				opacity: 0.8;
+	font-size: 1.4rem;
+	margin-top: 10px;
+	border-bottom: 1px solid #dddddd ;
+	height: 150px;
+	padding-bottom: 10px;
+	img {
+	max-height: 150px !important;
+	width: auto !important;
+}
+	.post-image {
+	float: left;
+	width: 220px;
+	margin-right: 20px;
+	overflow: hidden;
+	@include transition(opacity 0.2s ease-out);
+	&:hover {
+	opacity: 0.8;
+}
+}
+	.post-text {
+	float: right;
+	width: 360px;
+	overflow: hidden;
+	.post-title {
+	.title {
+	font-weight: bold;
+	font-size: 1.6rem;
+	color:#444;
+	display: inline-block;
+	@include transition(opacity 0.2s ease-out);
+	&:hover {
+	opacity: 0.7;
+}
+}
+	span {
+	display: inline-block;
+	font-size: 1.1rem;
+	color: #999;
+	.fa-comment{
+	&:before{
+	color: $orange;
+
+	font-size: 25px;
+	position: absolute;
+
+	z-index: -1;
+	margin-top: -7px;
+	margin-left: -8px;
+}
+	color: white;
+	margin-right: 10px;
+	margin-left: 6px;
+	padding-left: 5px;
+	font-weight: bold;
+	z-index: 2;
+	position: relative;
+	&:hover {
+	text-decoration: none;
+	opacity: 0.7;
+}
+}
+	a{
+	color: $orange;
+	&:hover {
+	text-decoration: underline
+}
+}
+}
+}
+	.text {
+	font-size: 1.3rem;
+	margin-top: 10px;
+	height: 76px;
+	overflow: hidden;
+	color: #444!important;
+	a {
+	color: $orange!important;
+}
+	p {
+	margin: 0;
+}
+}
+	.read {
+	font-size: 1.3rem;
+	background: $orange;
+	color: #fff;
+	height: 20px;
+	line-height: 20px;
+	padding: 0px 10px;
+	&:hover {
+	opacity: 0.7;
+}
+	&:before {
+	float: left;
+	margin: 0px 7px 0 2px;
+}
+	&.fa-facebook {
+	background: #3b5999;
+}
+
+}
+}
+}
+	*/
+	article a:hover .title2,article a:hover .text  {
+		color: $orange!important;
+	}
+	article a:hover .cover {
+		opacity: 0.7;
+		@include transform(scale(1.02));
+	}
+	.article {
+		div.article-content {
+			border: 1px solid #dddddd;
+			border-radius: 5px;
+			background:white;
+			padding: 10px;
+			font-size: 15px;
+			font-family: 'roboto', sans-serif;
+			iframe {
+				width: 100%!important;
 			}
-		}
-		.post-text {
-			float: right;
-			width: 360px;
-			overflow: hidden;
-			.post-title {
-				.title {
-					font-weight: bold;
-					font-size: 1.6rem;
-					color:#444;
-					display: inline-block;
-					@include transition(opacity 0.2s ease-out);
-					&:hover {
-						opacity: 0.7;
-					}
-				}
+			.partenaires img {
+				width: 100%;
+			}
+			.title-video {
+				color: #515151;
+				margin-top: 5px;
+				font-size: 18px;
+				border-bottom: 1px solid #515151;
+				padding-bottom: 5px;
+				margin-bottom: 10px;
+			}
+
+			.title {
+				text-align: center;
+				text-transform: uppercase;
+				height: 49px;
+				line-height: 49px;
+				width: calc(100% + 20px);
+				margin: -10px 0 0 -10px;
+				border-radius: 5px 5px 0 0;
+				background: #232121;
+				color: #FFF;
+				font-weight: bold;
+				font-size: 18px;
+				position: relative;
+			}
+			.cover {
+				width: 100%;
+				margin-bottom: 5px;
+				@include transition(0.2s linear all);
+			}
+			.title2 {
+				color: #515151;
+				border-bottom: 1px solid #515151;
+				margin-bottom: 15px;
+				padding-bottom: 10px;
+				@include transition(0.2s linear all);
+			}
+			.date {
+				color: #515151;
+				font-size: 13px;
+				display: block;
+			}
+			.by {
+				color: #515151;
+				font-size: 13px;
 				span {
-					display: inline-block;
-					font-size: 1.1rem;
-					color: #999;
-					.fa-comment{
-						&:before{
-							color: $orange;
-							/*top: -7px;*/
-							font-size: 25px;
-							position: absolute;
-							/*left: -4px;*/
-							z-index: -1;
-							margin-top: -7px;
-							margin-left: -8px;
-						}
-						color: white;
-						margin-right: 10px;
-						margin-left: 6px;
-						padding-left: 5px;
-						font-weight: bold;
-						z-index: 2;
-						position: relative;
-						&:hover {
-							text-decoration: none;
-							opacity: 0.7;
-						}
-					}
-					a{
-						color: $orange;
-						&:hover {
-							text-decoration: underline
-						}
-					}
+					color: $orange;
 				}
 			}
 			.text {
-				font-size: 1.3rem;
-				margin-top: 10px;
-				height: 76px;
-				overflow: hidden;
-				color: #444!important;
-				a {
-					color: $orange!important;
-				}
-				p {
-					margin: 0;
-				}
-			}
-			.read {
-				font-size: 1.3rem;
-				background: $orange;
-				color: #fff;
-				height: 20px;
-				line-height: 20px;
-				padding: 0px 10px;
-				&:hover {
-					opacity: 0.7;
-				}
-				&:before {
-					float: left;
-					margin: 0px 7px 0 2px;
-				}
-				&.fa-facebook {
-					background: #3b5999;
-				}
+				color: #000;
+				@include transition(0.2s linear all);
 
 			}
 		}
 	}
-
 	.party {
 		display: block;
 		border: 1px solid transparent;
@@ -305,7 +387,7 @@
 		.character {
 			border: 0;
 			margin-right: 0;
-			width: 293px;
+			width: 100%;
 			.left {
 				.name {
 					font-size: 18px;
@@ -361,61 +443,61 @@
 			}
 		}
 	}
-
+	/*
 	.socials {
-		img {
-			margin-right: 5px;
-			opacity: 0.6;
-			@include transition(opacity 0.2s ease-out);
-			&:hover {
-				opacity: 1;
-			}
-		}
-	}
+	img {
+	margin-right: 5px;
+	opacity: 0.6;
+	@include transition(opacity 0.2s ease-out);
+	&:hover {
+	opacity: 1;
+}
+}
+}
 	.partenaires {
-		opacity: 0.7;
-		@include transition(opacity 0.3s ease-out);
-		&:hover {
-			opacity: 1;
-		}
-	}
+	opacity: 0.7;
+	@include transition(opacity 0.3s ease-out);
+	&:hover {
+	opacity: 1;
+}
+}
 	@media screen and (max-width: 990px ) {
-		.content-header {
-			width: 95%;
-		}
-		.page {
-			width: 94%;
-		}
-		.block-right {
-			display: none;
-		}
-	}
+	.content-header {
+	width: 95%;
+}
+	.page {
+	width: 94%;
+}
+	.block-right {
+	display: none;
+}
+}
 	@media screen and (max-width: 620px) {
-		.page {
-			width: 90%;
-		}
-		.article {
-			height: auto!important;
-			img {
-				max-height: none!important;
-				width: 100%!important;
-			}
-		}
-		.block-left {
-			width: 100%
-		}
-		.carousel a .text {
-			font-size: 2.5rem;
-		}
-		.post-image {
-			float: none!important;
-			max-width: 100%!important;
-			width: auto!important;
-		}
-		.article .post-text {
-			float: none!important;
-			width: 94%;
-		}
-	}
+	.page {
+	width: 90%;
+}
+	.article {
+	height: auto!important;
+	img {
+	max-height: none!important;
+	width: 100%!important;
+}
+}
+	.block-left {
+	width: 100%
+}
+	.carousel a .text {
+	font-size: 2.5rem;
+}
+	.post-image {
+	float: none!important;
+	max-width: 100%!important;
+	width: auto!important;
+}
+	.article .post-text {
+	float: none!important;
+	width: 94%;
+}
+}*/
 
 }
