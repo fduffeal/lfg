@@ -29,14 +29,14 @@
 		</div>
 	</div>
 	<div class="page content" id="container">
-		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 article">
+		<div class="article">
 			<div class="article-content">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/sLj0X-kDvms" frameborder="0" allowfullscreen></iframe>
 				<div class="title-video">Découvrez l'intro du site Esbattle.com</div>
 				<div class="title2-video">Une claque sa déchire bravo à tous</div>
 			</div>
 		</div>
-		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 last-party article">
+		<div class="article">
 			<div class="article-content">
 				<div class="title">Dernières parties</div>
 				<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
@@ -64,15 +64,15 @@
 			</table>
 	</div>
 </div>
-<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 article">
+<div class="article">
 	<div class="article-content">
 		<div class="title">Partenaires</div>
 		<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 	</div>
 </div>
-<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="topic in aTopic  |orderBy:['position','created']:true">
+<article class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true">
 	<a href="{{topic.url}}">
-		<div class=" article">
+		<div class="">
 			<div class="article-content">
 				<div class="title2">{{topic.titre}}</div>
 				<img class="cover" src="{{topic.vignette.src}}">
