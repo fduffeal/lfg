@@ -30221,12 +30221,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 				}
 
-				var container = document.querySelector('#container');
-				var msnry = new Masonry( container, {
-					// options
-					columnWidth: 200,
-					itemSelector: '.article'
-				});
+
 			});
 
 			partenaire.getAll().success(function (data) {
@@ -30281,6 +30276,18 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$scope.updateIndexPage = function(indexPage){
 				$scope.indexPage = indexPage;
 			};
+
+			var container = document.querySelector('#container');
+			$scope.masonry = new Masonry( container, {
+				// options
+				columnWidth: 200,
+				itemSelector: '.article'
+			});
+
+			//$scope.addItem = function(elements){
+			//	console.log('addItem',elements);
+			//	msnry.addItems( elements )
+			//};
 
 		}
 	]
@@ -32229,6 +32236,26 @@ angular.module('myApp.directives')
 				restrict: 'E',
 				replace:false,
 				templateUrl: '/html/directives/lfg-loader.html'
+			};
+		}
+	]
+);
+
+angular.module('myApp.directives')
+	.directive('lfgMasonry', [
+		function() {
+			'use strict';
+			return {
+				scope:{
+					lfgMasonry : '='
+				},
+				link: function($scope, element, attrs) {
+					$scope.lfgMasonry.appended( element );
+
+					$scope.lfgMasonry.bindResize();
+				},
+				restrict: 'A',
+				priority: 99
 			};
 		}
 	]

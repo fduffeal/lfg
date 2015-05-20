@@ -72,12 +72,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 				}
 
-				var container = document.querySelector('#container');
-				var msnry = new Masonry( container, {
-					// options
-					columnWidth: 200,
-					itemSelector: '.article'
-				});
+
 			});
 
 			partenaire.getAll().success(function (data) {
@@ -132,6 +127,18 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$scope.updateIndexPage = function(indexPage){
 				$scope.indexPage = indexPage;
 			};
+
+			var container = document.querySelector('#container');
+			$scope.masonry = new Masonry( container, {
+				// options
+				columnWidth: 200,
+				itemSelector: '.article'
+			});
+
+			//$scope.addItem = function(elements){
+			//	console.log('addItem',elements);
+			//	msnry.addItems( elements )
+			//};
 
 		}
 	]

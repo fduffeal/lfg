@@ -70,7 +70,7 @@
 		<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 	</div>
 </div>
-<article class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true">
+<article class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" lfg-masonry="masonry">
 	<a href="{{topic.url}}">
 		<div class="">
 			<div class="article-content">
