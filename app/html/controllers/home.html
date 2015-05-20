@@ -67,7 +67,7 @@
 		<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 	</div>
 </div>
-<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
+<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="topic in aTopic  |orderBy:['position','created']:true">
 	<a href="{{topic.url}}">
 		<div class=" article">
 			<div class="article-content">
