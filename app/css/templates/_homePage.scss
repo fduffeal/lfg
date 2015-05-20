@@ -97,6 +97,8 @@
 					font-family: 'Roboto', sans-serif;
 					color:white;
 					position: absolute;
+					width: 70%;
+					text-align: center;
 					left: 50%;
 					top:50%;
 					transform: translate(-50%, -50%);
@@ -107,17 +109,16 @@
 					background: rgba(0,0,0,0.5);
 					padding: 10px 20px;
 					border-radius: 10px;
+					@media (max-width: 680px) {
+						font-size: 40px;
+					}
 					.btn-find {
 						padding: 5px 10px;
 						background-color: $orange;
 						text-shadow: none;
 						border-radius: 5px;
 						font-size: 30px;
-						bottom: 12;
-						left: 50%;
 						width: 320px;
-						transform: translate(-50%,0%);
-						position: absolute;
 					}
 				}
 			}
