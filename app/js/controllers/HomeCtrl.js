@@ -71,6 +71,13 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						$scope.aCarrousel.push($scope.aTopic[i]);
 					}
 				}
+
+				var container = document.querySelector('#container');
+				var msnry = new Masonry( container, {
+					// options
+					columnWidth: 200,
+					itemSelector: '.article'
+				});
 			});
 
 			partenaire.getAll().success(function (data) {

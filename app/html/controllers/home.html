@@ -28,7 +28,7 @@
 </ul>-->
 		</div>
 	</div>
-	<div class="page content">
+	<div class="page content" id="container">
 		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 article">
 			<div class="article-content">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/sLj0X-kDvms" frameborder="0" allowfullscreen></iframe>
@@ -70,7 +70,7 @@
 		<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 	</div>
 </div>
-<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
+<article class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="topic in aTopic  |orderBy:['position','created']:true">
 	<a href="{{topic.url}}">
 		<div class=" article">
 			<div class="article-content">
