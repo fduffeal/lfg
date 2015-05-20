@@ -131,9 +131,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {
 				// options
-				columnWidth: 352,
+				columnWidth: '.grid-sizer',
 				itemSelector: '.article',
-				gutter: 1
+				gutter: 10,
+				percentPosition: true
 			});
 		}
 	]
