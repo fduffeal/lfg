@@ -6,37 +6,24 @@
 				<li>
 					<a href="www.esbattle.com/fr/destiny" style="background-image:url('img/main_banniere.jpg')">
 						<div class="txt1">
-						Site n°1 d'actus #FRANCOPHONE<br/>
-						<div class="btn-find fa fa-search">Trouvez des joueurs</div>
+							Site n°1 d'actus #FRANCOPHONE<br/>
+							<div class="btn-find fa fa-search">Trouvez des joueurs</div>
 						</div>
 					</a>
 				</li>
 			</ul>
-			<!--<ul class="slider">
-<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel && $index < nbItemByPage)">
-<a ng-href="{{topic.url}}">
-<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
-</a>
-</li>
-</ul>-->
-			<!--<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
-<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
-<ul class="page-slider">
-<li ng-repeat="topic in aCarrousel" ng-show="$index < nbItemByPage">
-<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}"></a>
-</li>
-</ul>-->
+
 		</div>
 	</div>
 	<div class="page content" id="container">
-		<div class="article">
-			<div class="article-content">
+		<div class="article w2 fix400">
+			<div class="article-content ">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/sLj0X-kDvms" frameborder="0" allowfullscreen></iframe>
 				<div class="title-video">Découvrez l'intro du site Esbattle.com</div>
 				<div class="title2-video">Une claque sa déchire bravo à tous</div>
 			</div>
 		</div>
-		<div class="article">
+		<div class="article lastparty">
 			<div class="article-content">
 				<div class="title">Dernières parties</div>
 				<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
@@ -57,38 +44,40 @@
 							{{rdv.description}}
 						</td>
 						<td class="l3" valign="top">
-							<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-					<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
-					</td>
-				</tr>
-			</table>
-	</div>
-</div>
-<div class="article">
-	<div class="article-content">
-		<div class="title">Partenaires</div>
-		<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
-	</div>
-</div>
-<article class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" lfg-masonry="masonry">
-	<a href="{{topic.url}}">
-		<div class="">
-			<div class="article-content">
-				<div class="title2">{{topic.titre}}</div>
-				<img class="cover" src="{{topic.vignette.src}}">
-				<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-				<div class="text">
-					<span ta-bind ng-model="topic.message.texteBrut"></span>
-				</div>
-				<div class="by">par <span>{{topic.user.username}}</span> | {{topic.nbMessages}} commentaire(s)</div>
-				
+							<lfg-since time="{{rdv.start}}"></lfg-since><br/>
+							<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
+						</td>
+					</tr>
+				</table>
 			</div>
-			
+		</div>
+		<div class="article partner">
+			<div class="article-content">
+				<div class="title">Partenaires</div>
+				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+			</div>
 		</div>
 		
-	</a>
-</article>
-<!--<div class="block-left">
+		<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" lfg-masonry="masonry">
+			<a href="{{topic.url}}">
+
+				<div class="article-content">
+					<div class="title2">{{topic.titre}}</div>
+					<img class="cover" src="{{topic.vignette.src}}">
+					<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
+					<div class="text">
+						<span ta-bind ng-model="topic.message.texteBrut"></span>
+					</div>
+					<div class="by">par <span>{{topic.user.username}}</span> | {{topic.nbMessages}} commentaire(s)</div>
+
+				</div>
+
+
+
+			</a>
+		</div>
+
+		<!--<div class="block-left">
 <h2>Dernière news</h2>
 
 <div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
@@ -117,7 +106,7 @@
 </span>
 </div>
 </div>-->
-<!--<div class="block-right">
+		<!--<div class="block-right">
 <h2>Dernières parties créées</h2>
 
 <table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
@@ -156,10 +145,10 @@ src="img/footer-logo-bungie.png"/></a>
 </div>
 
 </div>-->
-<div class="clear"></div>
-</div>
 
-<div lfg-interval="intervalId"></div>
+	</div>
+
+	<!--<div lfg-interval="intervalId"></div>-->
 </div>
 
 </div>
