@@ -134,14 +134,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				columnWidth: 352,
 				itemSelector: '.article',
 				gutter: 1
-				
 			});
-
-			//$scope.addItem = function(elements){
-			//	console.log('addItem',elements);
-			//	msnry.addItems( elements )
-			//};
-
 		}
 	]
 );
