@@ -61,7 +61,7 @@
 		<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" lfg-masonry="masonry">
 			<a href="{{topic.url}}">
 
-				<div class="article-content">
+				<div class="article-content {{topic.status}}">
 					<div class="title2">{{topic.titre}}</div>
 					<img class="cover" src="{{topic.vignette.src}}">
 					<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
