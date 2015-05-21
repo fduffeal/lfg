@@ -97,7 +97,8 @@
 				position: relative;
 				background-position: center;
 				display:block;
-				height:calc(500px - 44px - 24px);
+				height:432px;
+				
 				@media screen and (max-width:945px){
 					height: 300px;
 					.txt1{

@@ -30333,6 +30333,1422 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
+angular.module('myApp.services')
+	.service('activity', ['$rootScope','$window',
+		function($rootScope,$window) {
+			'use strict';
+
+			var sendInactivityAfer = 10 * 60 * 1000;
+			var timeoutInactivity = null;
+			this.setEvent = function(){
+				$window.onfocus = function(){
+					$rootScope.activityOnWindow = true;
+				};
+
+				$window.onblur = function (){
+					$rootScope.activityOnWindow = false;
+				};
+			};
+
+			this.isActiveWindow = function(){
+				return $rootScope.activityOnWindow;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('annonce', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
+			'use strict';
+
+			this.create = function(tags,description,userGameId){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+				tags = $window.encodeURIComponent(tags);
+				description = $window.encodeURIComponent(description);
+				userGameId = $window.encodeURIComponent(userGameId);
+				return api.call('annonce/create/'+tags+'/'+description+'/'+userGameId);
+			};
+
+			this.get = function(){
+				return api.call('annonce');
+			};
+		}
+
+	]
+);
+
+angular.module('myApp.services')
+	.service('api', ['$http','storage','redirection','$location',
+		function($http,storage,redirection,$location) {
+			'use strict';
+
+			this.url = null;
+			this.getApiUrl = function () {
+				if (this.url !== null) {
+					return this.url;
+				}
+				var host = $location.host();
+
+				this.url = 'http://lfg.esbattle.com/app_dev.php/';
+
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://apiv2.esbattle.com/';
+				}
+
+				return this.url;
+			};
+
+			this.call = function (path) {
+				return $http.get(this.getApiUrl() + path).error(function (data, status, headers, config) {
+
+					switch (status) {
+						case 401 :
+							storage.erasePersistant('user');
+							redirection.goToLogin();
+							break;
+
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
+						case 308:
+							redirection.goHome();
+							break;
+
+						case 404:
+							redirection.notFound(data.msg);
+							break;
+
+						default:
+							break;
+					}
+				});
+			};
+
+			this.post = function (path, params,currentUser) {
+
+				var url = this.getApiUrl() + path;
+
+				var userId = '';
+				var token = '';
+				if(currentUser !== null){
+					userId = currentUser.id;
+					token = currentUser.token;
+				}
+
+
+				return $http({
+					method: 'POST',
+					url: url,
+					data: params,
+					headers: {
+						'User' : userId,
+						'Token': token
+					}
+				}).error(function (data, status, headers, config) {
+
+					switch (status) {
+						case 401 :
+							storage.erasePersistant('user');
+							redirection.goToLogin();
+							break;
+
+						case 403:
+							//on ne fait rien, la requete n'est pas authorisée
+							break;
+
+						case 308:
+							redirection.goHome();
+							break;
+
+						case 404:
+							redirection.notFound(data.msg);
+							break;
+
+						default:
+							break;
+					}
+				});
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('avis', ['api','$window','user',
+		function(api,$window,user) {
+			'use strict';
+
+
+			this.get = function(userId){
+				return api.call('avis/'+userId);
+			};
+
+			this.post = function(userId,avis){
+
+				var currentUser = user.get();
+				var params = {
+					avis: avis
+				};
+				return api.post('avis/'+userId,params,currentUser);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
+		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
+			'use strict';
+			this.characters = null;
+
+			this.getCharacters = function(plateforme,plateformeBungie,battleTag){
+
+				var username = null;
+				var token = null;
+				var currentUser = user.get();
+				if(currentUser !== null){
+					var username = $window.encodeURIComponent(currentUser.username);
+					var token = $window.encodeURIComponent(currentUser.token);
+				}
+
+
+				plateforme = $window.encodeURIComponent(plateforme);
+				plateformeBungie = $window.encodeURIComponent(plateformeBungie);
+				battleTag = $window.encodeURIComponent(battleTag);
+				return api.call('bungie/characters/'+plateforme+'/'+plateformeBungie+'/'+battleTag+'/'+username+'/'+token);
+			};
+		}
+
+	]
+);
+
+angular.module('myApp.services')
+	.service('filter', [
+		function() {
+			'use strict';
+
+			this.isExpired = function(rdv,now){
+				return (rdv.end < now);
+			};
+
+			this.isLive = function(rdv,now){
+				return (rdv.end > now && rdv.start < now + (5*60));
+			};
+
+			this.hasTagSelected = function(rdv,aTags){
+
+				var tagItemString = '';
+				for(var keyTagItem in rdv.tags){
+					tagItemString = tagItemString+' '+rdv.tags[keyTagItem].nom.toLowerCase();
+				}
+
+				var asTag = true;
+				for(var keyTag in aTags){
+					if(tagItemString.indexOf(aTags[keyTag].toLowerCase()) < 0){
+						asTag = false;
+						break;
+					}
+				}
+
+				return asTag;
+			};
+
+			this.hasPlateformSelected = function(rdv,plateformId){
+				var bHasPlateform = true;
+				if(plateformId !== "" && typeof(plateformId) !== 'undefined' && plateformId !== null){
+					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
+						bHasPlateform = false;
+					}
+				}
+
+				return bHasPlateform;
+			};
+
+			this.getCurrentTimestampInSeconds = function(){
+				return new Date().getTime()/1000;
+			};
+
+			this.tagsStringToArray = function(tags){
+				var aTags = [];
+				if(typeof tags === "string" && tags !== ""){
+					aTags = tags.split(' ');
+				}
+				return aTags;
+			};
+
+			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
+
+				if(!rdv.users){
+					return true;
+				}
+
+				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
+			};
+
+			this.hasType = function(rdv,type){
+				if(type === 'type_all'){
+					return true;
+				} else if(type === 'type_annonce' && rdv.type === type){
+					return true;
+				} else if(type === 'type_party' && rdv.type !== 'type_annonce'){
+					return true;
+				}
+
+				return false;
+			};
+
+			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(onlyWithPlace === true && this.hasPlaceAvailable(items[key],nbPlaceAvailableMin,nbPlaceAvailableMax) === false){
+						continue;
+					}
+
+					if(onlyLive === true && this.isLive(items[key],now) === false){
+						continue;
+					}
+
+					if(onlyInFuture === true && (this.isExpired(items[key],now) === true || this.isLive(items[key],now) === true)){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					if(this.hasType(items[key],type) === false){
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
+
+			this.hasMeInGame = function(rdv,userId){
+
+				for(var key in rdv.users){
+					if(rdv.users[key].user.id === userId){
+						return true;
+					}
+				}
+
+				for(var key_2 in rdv.usersInQueue){
+					if(rdv.usersInQueue[key_2].user.id === userId){
+						return true;
+					}
+				}
+				return false;
+			};
+
+			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
+				var aFilteredItems = [];
+
+				var aTags = this.tagsStringToArray(tags);
+
+				var now = this.getCurrentTimestampInSeconds();
+
+				for(var key in items){
+
+					if(this.hasMeInGame(items[key],currentUserId) === false){
+						continue;
+					}
+
+					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
+						continue;
+					}
+
+					if(this.isExpired(items[key],now) === true){
+						continue;
+					}
+
+					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
+						continue;
+					}
+
+					aFilteredItems.push(items[key]);
+				}
+
+				return aFilteredItems;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('forum', ['api','$window','user',
+		function(api,$window,user) {
+			'use strict';
+
+			this.getAllTopic = function(){
+				return api.call('forum');
+			};
+
+			this.getNews = function(offset,limit){
+				return api.call('news/'+offset+'/'+limit);
+			};
+
+			this.getTopic = function(id,page,nbResult){
+				return api.call('forum/topic/get/'+id+'/'+page+'/'+nbResult);
+			};
+
+			this.reply = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.updateMessage = function(id,texte,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				//texte = $window.encodeURI(texte);
+				var data = {texte:texte};
+				return api.post('forum/topic/message/update/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
+			};
+
+			this.deleteMessage = function(id,page,nbResult){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
+			};
+
+			this.createTopic = function(title,texte){
+				var currentUser = user.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+
+				texte = texte.replace(/\n/g,'<br/>');
+				var data = {title:title,texte:texte};
+				return api.post('forum/topic/create/'+username+'/'+token,data);
+			};
+
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
+		function(gettextCatalog,$routeParams,$rootScope,$location) {
+			'use strict';
+
+			this.initLang = function(){
+				gettextCatalog.debug = true;
+
+				if($routeParams.lang){
+					this.updateLang($routeParams.lang);
+				}else {
+					this.updateLang('fr');
+				}
+			};
+
+			this.getCurrent = function(){
+				this.initLang();
+				return $rootScope.lang;
+			};
+
+			this.updateLang = function(newLang){
+				$rootScope.lang = newLang;
+				gettextCatalog.setCurrentLanguage(newLang);// Corresponds au header 'Language' du fichier .po;
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('matchmaking', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
+			'use strict';
+			this.getConf = function(){
+				return api.call('matchmaking/');
+			};
+
+			this.join = function(matchmakingId,profilId){
+				var currentUser = user.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('meta', ['$rootScope',
+		function($rootScope) {
+			'use strict';
+			$rootScope.description = 'EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !',
+			this.getDescription = function(){
+				return  $rootScope.description;
+			}
+
+			this.setDescription = function(newDesc){
+				$rootScope.description = newDesc;
+			}
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('partenaire', ['api',
+		function(api) {
+			'use strict';
+
+			this.getAll = function(){
+				return api.call('partenaire');
+			};
+
+			this.getById = function(id){
+				return api.call('partenaire/'+id);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('rdv', ['$http','user','api','superCache','$window',
+		function($http,user,api,superCache,$window) {
+			'use strict';
+			this.getAll = function(){
+				return api.call('rdv/');
+			};
+
+			this.getFormInfo = function(){
+				var cache = superCache.promise('getFormInfo');
+				if(cache !== false){
+					return cache;
+				}
+				return api.call('rdv/form_info').success(function(data){
+					superCache.put('getFormInfo',data);
+				}).then(function(promise){
+					return promise.data;
+				});
+			};
+
+            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId,vignetteId){
+                var currentUser = user.get();
+
+	            plateform = $window.encodeURIComponent(plateform);
+	            game = $window.encodeURIComponent(game);
+	            tags = $window.encodeURIComponent(tags);
+	            description = $window.encodeURIComponent(description);
+	            start = $window.encodeURIComponent(start);
+	            duree = $window.encodeURIComponent(duree);
+	            nbParticipant = $window.encodeURIComponent(nbParticipant);
+	            profilId = $window.encodeURIComponent(profilId);
+	            vignetteId = $window.encodeURIComponent(vignetteId);
+	            var username = $window.encodeURIComponent(currentUser.username);
+
+	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+vignetteId+'/'+username+'/'+currentUser.token);
+            };
+
+			this.get = function(id){
+				return api.call('rdv/get/'+id);
+			};
+
+			this.join = function(rdvId,userGameId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
+			};
+
+			this.acceptUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.kickUser = function(userId,rdvId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
+			};
+
+			this.leave = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
+			};
+
+			this.promote = function(rdvId,userId,username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
+			};
+
+			this.getNotifications = function(){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/'+currentUser.id);
+			};
+			this.getAllNotifications = function(){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/all/'+currentUser.id);
+			};
+
+			this.markNotificationRead = function(ids){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+
+				return api.call('notifications/read/'+currentUser.id+'/'+ids);
+			};
+
+			this.isLive = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
+			};
+
+			this.isEnded = function(rdv){
+				var now = new Date();
+				now = now.getTime()/1000;
+				return (typeof rdv !== "undefined" && rdv.end < now);
+			};
+
+			this.invite = function(destinataire,rdv){
+
+				var currentUser = user.get();
+				if(currentUser === null) {
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('rdv/invite/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('redirection', ['$location','$rootScope','$window',
+		function($location,$rootScope,$window) {
+			'use strict';
+			var getLang = function(){
+				if($rootScope.lang === undefined){
+					return 'fr';
+				}
+				return $rootScope.lang;
+			};
+
+			this.getLoginPageUrl = function(){
+				return '/'+getLang()+'/login';
+			};
+
+			this.goToLogin = function(){
+				$location.path(this.getLoginPageUrl());
+			};
+
+			this.getRegisterPageUrl = function(){
+				return '/'+getLang()+'/register';
+			};
+			this.getNotifPageUrl = function(){
+				return '/'+getLang()+'/notification';
+			};
+			this.getMatchmakingPageUrl = function(){
+				return '/'+getLang()+'/matchmaking';
+			};
+			this.getGamesPageUrl = function(){
+				return '/'+getLang()+'/games';
+			};
+
+			this.goToGamesPage = function(){
+				$location.path(this.getGamesPageUrl());
+			};
+
+			this.goToRegister = function(){
+				$location.path(this.getRegisterPageUrl());
+			};
+
+			this.getCreatePartyPageUrl = function(){
+				return '/'+getLang()+'/party/create';
+			};
+
+			this.goCreateParty = function(){
+				$location.path(this.getCreatePartyPageUrl());
+			};
+
+			this.goBack = function(){
+				$window.history.back();
+			};
+
+			this.getPartyWaitingUrlRoot = function(){
+				return '/'+getLang()+'/party/waiting/';
+			};
+
+			this.getPartyWaitingByIdUrl = function(id){
+				return this.getPartyWaitingUrlRoot()+id;
+			};
+
+			this.getPartenaireByIdUrlRoot = function(){
+				return '/'+getLang()+'/video/';
+			};
+
+			this.getPartenaireByIdUrl = function(partenaire){
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = partenaire.nom.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return this.getPartenaireByIdUrlRoot()+partenaire.id+'/'+titre;
+			};
+
+			this.goToRdvId = function(id){
+				$location.path(this.getPartyWaitingByIdUrl(id));
+			};
+
+			this.goToMatchmakingId = function(id){
+				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
+			};
+
+			this.getHomePageUrl = function(){
+				return '/'+getLang()+'/';
+			};
+
+			this.getHomePageDestinyUrl = function(){
+				return '/'+getLang()+'/destiny/';
+			};
+
+			this.goHome = function(id){
+				$location.path(this.getHomePageUrl());
+			};
+
+			this.getNotFoundPageUrl = function(msg){
+				return '/'+getLang()+'/404/'+msg;
+			};
+
+			this.goWelcomeHome = function(){
+				$location.path('/'+getLang()+'/welcome');
+			};
+
+			this.notFound = function(msg){
+				$location.path(this.getNotFoundPageUrl(msg));
+			};
+
+			this.getProfilGamePageUrl = function(gameId,plateformId){
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
+			};
+
+			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
+				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
+			};
+
+			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
+				this.goToGamesPage();
+			};
+
+			this.getListUsersUrl = function(){
+				return '/'+getLang()+'/users/connected/';
+			};
+
+			this.getAnnonceCreateUrl = function(){
+				return '/'+getLang()+'/annonce/create/';
+			};
+
+			this.getForumUrl = function(){
+				return '/'+getLang()+'/forum/';
+			};
+
+			this.getTopicUrl = function(topic,page){
+
+				if(!page){
+					page = 1;
+				}
+
+				/* Remove unwanted characters, only accept alphanumeric and space */
+				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
+
+				/* Replace multi spaces with a single space */
+				titre = titre.replace(/\s{2,}/g,' ');
+
+				/* Replace space with a '-' symbol */
+				titre = titre.replace(/\s/g, "-");
+
+				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
+			};
+
+			this.getVideoUrl = function(){
+				return '/'+getLang()+'/destiny/video/all';
+			}
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('socket', ['$rootScope','$location',
+		function($rootScope,$location) {
+			'use strict';
+			this.currentSocket = null;
+			this.listUsers = {};
+			this.url = null;
+
+			this.getSocketUrl = function(){
+				if(this.url !== null){
+					return this.url;
+				}
+				var host = $location.host();
+				if(host === 'www.esbattle.com'){
+					this.url = 'http://www.esbattle.com:3000';
+				}else {
+					this.url = 'http://www.esbattle.com:3000';
+				}
+				return this.url;
+			};
+
+			this.on = function(event,callback){
+				var socket = this.getCurrentSocket();
+				socket.on(event, function (data) {
+					console.log('event global',data);
+					callback();
+				});
+			};
+
+			this.initListener = function(socket){
+
+				var that = this;
+				// Whenever the server emits 'new message', update the chat body
+				socket.on('new message', function (data) {
+					console.log('new message',data);
+				});
+
+				// Whenever the server emits 'user joined', log it in the chat body
+				socket.on('user joined', function (data) {
+					console.log('user join',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'user left', log it in the chat body
+				socket.on('user left', function (data) {
+					console.log('user left',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'users list', log it in the chat body
+				socket.on('users list', function (data) {
+					console.log('users list',data);
+					that.listUsers = data.listUsers;
+					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
+				});
+
+				// Whenever the server emits 'typing', show the typing message
+				socket.on('typing', function (data) {
+					console.log('typing',data);
+				});
+
+				// Whenever the server emits 'stop typing', kill the typing message
+				socket.on('stop typing', function (data) {
+					console.log('stop typing',data);
+				});
+			};
+
+			this.getCurrentSocket = function(){
+				if(this.currentSocket === null && typeof(io) !== "undefined"){
+					var url = this.getSocketUrl();
+					this.currentSocket = io.connect(url);
+					this.initListener(this.currentSocket);
+				}
+
+				return this.currentSocket;
+			};
+
+			this.addUser = function(username){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				socket.emit('add user', username);
+			};
+
+			this.disconnect = function(){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				socket.close();
+				//socket.emit('disconnect');
+			};
+
+			this.getUserList = function(){
+				var socket = this.getCurrentSocket();
+				if(socket === null){
+					return;
+				}
+				console.log('emit : ask users list');
+				socket.emit('ask users list');
+			};
+		}
+	]
+);
+/**
+ * Ce service permet de gérer les stockage de données
+ *
+ * dans cet ordre de priorité
+ * soit en localStorage et sessionStorage si disponible
+ * soit avec une fonction propre au device
+ * soit en cookie
+ */
+'use strict';
+angular.module('myApp.services').service('storage',['$rootScope','$cookies',
+	function($rootScope,$cookies){
+
+		this.createCookie = function(name,value,days) {
+			var expires = "";
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				expires = "; expires="+date.toGMTString();
+			}
+			document.cookie = name+"="+value+expires+"; path=/";
+		};
+
+		this.eraseCookie = function(name) {
+			document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		};
+
+		this.erasePersistant = function(name) {
+
+			if(localStorage !== null){
+				localStorage[name] = null;
+			} else {
+				document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			}
+		};
+
+		this.getPersistant = function(name){
+
+			if(localStorage !== null){
+				return localStorage[name];
+			}
+			var data = $cookies[name];
+			return data;
+		};
+
+		this.setPersistant = function(name,value){
+
+			if(localStorage !== null){
+				localStorage[name]=value;
+				return;
+			}
+			this.createCookie(name,value,360);
+		};
+	}
+]);
+
+
+angular.module('myApp.services')
+	.service('tag', ['rdv',
+		function(rdv) {
+			'use strict';
+			/**
+			 * @desc autoCompleteUserTags retourne les tags utilisateurs complétés des autres tags disponibles
+			 * @param aTags tags utilisateurs
+			 */
+			this.autoCompleteUserTags = function(aTags,allTags){
+
+
+				var previousTags = '';
+				var aPreviousTags = [];
+				for(var i = 0; i < aTags.length -1; i++){
+					previousTags =  previousTags+aTags[i]+' ';
+					aPreviousTags.push(aTags[i]);
+				}
+
+				var autocompleteTag = [];
+				for(var key in allTags){
+
+					if(aPreviousTags.indexOf(allTags[key].nom) > -1){
+						continue;
+					}
+					autocompleteTag.push(previousTags +allTags[key].nom);
+				}
+
+				return autocompleteTag;
+
+
+			};
+
+		}
+	]
+);
+angular.module('myApp.services')
+	.service('tools', ['gettextCatalog','$filter',
+		function(gettextCatalog,$filter) {
+			'use strict';
+			this.getSinceTimeMessage = function(date2_s) {
+
+				var date2_ms = date2_s * 1000;
+				var currentDate = new Date(date2_ms);
+
+				var now = new Date();
+				var date1_ms = now.getTime();
+				// Calculate the difference in milliseconds
+				var difference_ms = date1_ms - date2_ms;
+
+				var tomorrow = new Date(date1_ms + 24 * 60 * 60 * 1000);
+
+				if (difference_ms < 0) {
+
+					if (tomorrow.getDay() == currentDate.getDay()) {
+						return gettextCatalog.getString("tomorrow at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
+					} else if (now.getDay() == currentDate.getDay()) {
+						return gettextCatalog.getString("today at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
+					}
+					return $filter('date')(date2_ms, 'd/MM/yy HH:mm');
+				}
+
+				var one_minute = 1000 * 60 * 1;
+
+				var diffMinutes = Math.round(difference_ms / one_minute);
+				if (diffMinutes < 60) {
+					return gettextCatalog.getString("{{minutes}} minutes ago", {minutes: diffMinutes});
+				}
+
+				var one_hour = 1000 * 60 * 60 * 1;
+				var diffHours = Math.round(difference_ms / one_hour);
+				if (diffHours < 24) {
+					return gettextCatalog.getString("{{hours}} hours ago", {hours: diffHours});
+
+				}
+
+				//Get 1 day in milliseconds
+				var one_day = 1000 * 60 * 60 * 24;
+				var diffDays = Math.round(difference_ms / one_day);
+				return gettextCatalog.getString("{{days}} days ago", {days: diffDays});
+			}
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
+		function($http,storage,api,$rootScope,$q,$timeout,$window) {
+			'use strict';
+            this.data = '';
+
+			this.fakePromise = function(){
+				var deferred = $q.defer();
+				var promise = deferred.promise;
+
+				$timeout(function(){
+					deferred.resolve();
+				},0);
+
+				return promise;
+			};
+
+			var storeUser = function(data){
+				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
+				storage.setPersistant('user',JSON.stringify(data));
+			};
+
+			this.log = function(username,password){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/'+username+'/'+password).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logByToken = function(username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/token/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.refreshBungie = function(username,token){
+
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+
+				var params = {
+					username : currentUser.username,
+					token : currentUser.token
+				};
+				return api.post('login/refresh',params).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logByForgetToken = function(username,token){
+				username = $window.encodeURIComponent(username);
+				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.get = function(){
+				var courantUser = storage.getPersistant('user');
+				if(typeof(courantUser) !== "undefined"){
+					var user = JSON.parse(courantUser);
+					if(user !== null && user.ttl < new Date().getTime()){
+						this.logout();
+						this.logByToken(user.username,user.token).then(function(data){
+							user = data;
+						});
+					}
+					return user;
+				}
+				return null;
+			};
+
+			this.register = function(email,password,username,plateformId,gamertag){
+
+				email = $window.encodeURIComponent(email);
+				password = $window.encodeURIComponent(password);
+				username = $window.encodeURIComponent(username);
+				plateformId = $window.encodeURIComponent(plateformId);
+				gamertag = $window.encodeURIComponent(gamertag);
+				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.logout = function(){
+				$rootScope.notificationsAlreadyRead = [];
+				$rootScope.userGameSelected = null;
+				storage.erasePersistant('user');
+			};
+
+			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
+
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
+
+				plateformId = $window.encodeURIComponent(plateformId);
+				gameId = $window.encodeURIComponent(gameId);
+				profilId = $window.encodeURIComponent(profilId);
+				profilName = $window.encodeURIComponent(profilName);
+				gameUsername = $window.encodeURIComponent(gameUsername);
+				data1 = $window.encodeURIComponent(data1);
+				data2 = $window.encodeURIComponent(data2);
+				data3 = $window.encodeURIComponent(data3);
+				data4 = $window.encodeURIComponent(data4);
+
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+
+				if(typeof data1 === "undefined" || data1 === ""){
+					data1='null';
+				}
+				if(typeof data2 === "undefined" || data2 === ""){
+					data2='null';
+				}
+				if(typeof data3 === "undefined" || data3 === ""){
+					data3='null';
+				}
+				if(typeof data4 === "undefined" || data4 === ""){
+					data4='null';
+				}
+
+				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.forgetPassword = function(email){
+				return api.call('forget_password/'+email);
+			};
+
+			this.updatePassword = function(password){
+				var currentUser = this.get();
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.updateOnline = function(currentUser){
+				var username = $window.encodeURIComponent(currentUser.username);
+				return api.call('login/online/'+username+'/'+currentUser.token);
+			};
+
+			this.refresh = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('login/online/'+username+'/'+token).success(function(data){
+					storeUser(data);
+				});
+			};
+
+			this.getAll = function(){
+				return api.call('users/');
+			};
+
+			this.getByPage = function(page,nbResult){
+				return api.call('users/page/'+page+'/'+nbResult);
+			};
+
+			this.getByPlateform = function(plateformId,page,nbResult){
+				return api.call('users/plateform/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
+			this.getByUsername = function(username,plateformId,page,nbResult){
+				username = $window.encodeURIComponent(username);
+				return api.call('users/search/'+username+'/'+plateformId+'/'+page+'/'+nbResult);
+			};
+
+			this.getFriends = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				return api.call('user/friend/get/'+username+'/'+token);
+			};
+
+			this.addFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
+			};
+
+			this.removeFriend = function(friendUsername){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				var username = $window.encodeURIComponent(currentUser.username);
+				var token = $window.encodeURIComponent(currentUser.token);
+				friendUsername = $window.encodeURIComponent(friendUsername);
+				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
+			};
+
+			/**
+			 * les utilisateurs à qui j'ai demandé d'être amis
+			 * @returns {*}
+			 */
+			this.getFriendsRequest = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/'+currentUser.id);
+			}
+
+			/**
+			 * les utilisateurs qui m'ont demandé en amis
+			 * @returns {*}
+			 */
+			this.getFriendsPending = function(){
+				var currentUser = this.get();
+				if(currentUser === null){
+					return false;
+				}
+				return api.call('user/friend/request/pending/'+currentUser.id);
+			}
+		}
+	]
+);
+
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -31212,120 +32628,6 @@ angular.module('myApp.directives')
 	]
 );
 
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.controllers').controller('404Ctrl',
 	['$scope','$routeParams',
 		function ($scope,$routeParams) {
@@ -33045,1305 +34347,3 @@ angular.module('myApp.controllers').controller('VideothequeCtrl',
 
 	}
 ]);
-
-angular.module('myApp.services')
-	.service('activity', ['$rootScope','$window',
-		function($rootScope,$window) {
-			'use strict';
-
-			var sendInactivityAfer = 10 * 60 * 1000;
-			var timeoutInactivity = null;
-			this.setEvent = function(){
-				$window.onfocus = function(){
-					$rootScope.activityOnWindow = true;
-				};
-
-				$window.onblur = function (){
-					$rootScope.activityOnWindow = false;
-				};
-			};
-
-			this.isActiveWindow = function(){
-				return $rootScope.activityOnWindow;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('annonce', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
-			'use strict';
-
-			this.create = function(tags,description,userGameId){
-
-				var username = null;
-				var token = null;
-				var currentUser = user.get();
-				if(currentUser !== null){
-					var username = $window.encodeURIComponent(currentUser.username);
-					var token = $window.encodeURIComponent(currentUser.token);
-				}
-
-				tags = $window.encodeURIComponent(tags);
-				description = $window.encodeURIComponent(description);
-				userGameId = $window.encodeURIComponent(userGameId);
-				return api.call('annonce/create/'+tags+'/'+description+'/'+userGameId);
-			};
-
-			this.get = function(){
-				return api.call('annonce');
-			};
-		}
-
-	]
-);
-
-angular.module('myApp.services')
-	.service('api', ['$http','storage','redirection','$location',
-		function($http,storage,redirection,$location) {
-			'use strict';
-
-			this.url = null;
-			this.getApiUrl = function () {
-				if (this.url !== null) {
-					return this.url;
-				}
-				var host = $location.host();
-
-				this.url = 'http://lfg.esbattle.com/app_dev.php/';
-
-				if(host === 'www.esbattle.com'){
-					this.url = 'http://apiv2.esbattle.com/';
-				}
-
-				return this.url;
-			};
-
-			this.call = function (path) {
-				return $http.get(this.getApiUrl() + path).error(function (data, status, headers, config) {
-
-					switch (status) {
-						case 401 :
-							storage.erasePersistant('user');
-							redirection.goToLogin();
-							break;
-
-						case 403:
-							//on ne fait rien, la requete n'est pas authorisée
-							break;
-
-						case 308:
-							redirection.goHome();
-							break;
-
-						case 404:
-							redirection.notFound(data.msg);
-							break;
-
-						default:
-							break;
-					}
-				});
-			};
-
-			this.post = function (path, params,currentUser) {
-
-				var url = this.getApiUrl() + path;
-
-				var userId = '';
-				var token = '';
-				if(currentUser !== null){
-					userId = currentUser.id;
-					token = currentUser.token;
-				}
-
-
-				return $http({
-					method: 'POST',
-					url: url,
-					data: params,
-					headers: {
-						'User' : userId,
-						'Token': token
-					}
-				}).error(function (data, status, headers, config) {
-
-					switch (status) {
-						case 401 :
-							storage.erasePersistant('user');
-							redirection.goToLogin();
-							break;
-
-						case 403:
-							//on ne fait rien, la requete n'est pas authorisée
-							break;
-
-						case 308:
-							redirection.goHome();
-							break;
-
-						case 404:
-							redirection.notFound(data.msg);
-							break;
-
-						default:
-							break;
-					}
-				});
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('avis', ['api','$window','user',
-		function(api,$window,user) {
-			'use strict';
-
-
-			this.get = function(userId){
-				return api.call('avis/'+userId);
-			};
-
-			this.post = function(userId,avis){
-
-				var currentUser = user.get();
-				var params = {
-					avis: avis
-				};
-				return api.post('avis/'+userId,params,currentUser);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('bungie', ['$http','storage','api','$rootScope','$q','$timeout','$window','user',
-		function($http,storage,api,$rootScope,$q,$timeout,$window,user) {
-			'use strict';
-			this.characters = null;
-
-			this.getCharacters = function(plateforme,plateformeBungie,battleTag){
-
-				var username = null;
-				var token = null;
-				var currentUser = user.get();
-				if(currentUser !== null){
-					var username = $window.encodeURIComponent(currentUser.username);
-					var token = $window.encodeURIComponent(currentUser.token);
-				}
-
-
-				plateforme = $window.encodeURIComponent(plateforme);
-				plateformeBungie = $window.encodeURIComponent(plateformeBungie);
-				battleTag = $window.encodeURIComponent(battleTag);
-				return api.call('bungie/characters/'+plateforme+'/'+plateformeBungie+'/'+battleTag+'/'+username+'/'+token);
-			};
-		}
-
-	]
-);
-
-angular.module('myApp.services')
-	.service('filter', [
-		function() {
-			'use strict';
-
-			this.isExpired = function(rdv,now){
-				return (rdv.end < now);
-			};
-
-			this.isLive = function(rdv,now){
-				return (rdv.end > now && rdv.start < now + (5*60));
-			};
-
-			this.hasTagSelected = function(rdv,aTags){
-
-				var tagItemString = '';
-				for(var keyTagItem in rdv.tags){
-					tagItemString = tagItemString+' '+rdv.tags[keyTagItem].nom.toLowerCase();
-				}
-
-				var asTag = true;
-				for(var keyTag in aTags){
-					if(tagItemString.indexOf(aTags[keyTag].toLowerCase()) < 0){
-						asTag = false;
-						break;
-					}
-				}
-
-				return asTag;
-			};
-
-			this.hasPlateformSelected = function(rdv,plateformId){
-				var bHasPlateform = true;
-				if(plateformId !== "" && typeof(plateformId) !== 'undefined' && plateformId !== null){
-					if(rdv.plateform === null || rdv.plateform.id !== plateformId){
-						bHasPlateform = false;
-					}
-				}
-
-				return bHasPlateform;
-			};
-
-			this.getCurrentTimestampInSeconds = function(){
-				return new Date().getTime()/1000;
-			};
-
-			this.tagsStringToArray = function(tags){
-				var aTags = [];
-				if(typeof tags === "string" && tags !== ""){
-					aTags = tags.split(' ');
-				}
-				return aTags;
-			};
-
-			this.hasPlaceAvailable = function(rdv,placesAvailableMini,placeAvailableMax){
-
-				if(!rdv.users){
-					return true;
-				}
-
-				return (rdv.nbParticipant - rdv.users.length >= placesAvailableMini && rdv.nbParticipant - rdv.users.length <= placeAvailableMax);
-			};
-
-			this.hasType = function(rdv,type){
-				if(type === 'type_all'){
-					return true;
-				} else if(type === 'type_annonce' && rdv.type === type){
-					return true;
-				} else if(type === 'type_party' && rdv.type !== 'type_annonce'){
-					return true;
-				}
-
-				return false;
-			};
-
-			this.byPlateformsAndTags = function(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type){
-				var aFilteredItems = [];
-
-				var aTags = this.tagsStringToArray(tags);
-
-				var now = this.getCurrentTimestampInSeconds();
-
-				for(var key in items){
-
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
-						continue;
-					}
-
-					if(onlyWithPlace === true && this.hasPlaceAvailable(items[key],nbPlaceAvailableMin,nbPlaceAvailableMax) === false){
-						continue;
-					}
-
-					if(onlyLive === true && this.isLive(items[key],now) === false){
-						continue;
-					}
-
-					if(onlyInFuture === true && (this.isExpired(items[key],now) === true || this.isLive(items[key],now) === true)){
-						continue;
-					}
-
-					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
-						continue;
-					}
-
-					if(this.hasType(items[key],type) === false){
-						continue;
-					}
-
-					aFilteredItems.push(items[key]);
-				}
-
-				return aFilteredItems;
-			};
-
-			this.hasMeInGame = function(rdv,userId){
-
-				for(var key in rdv.users){
-					if(rdv.users[key].user.id === userId){
-						return true;
-					}
-				}
-
-				for(var key_2 in rdv.usersInQueue){
-					if(rdv.usersInQueue[key_2].user.id === userId){
-						return true;
-					}
-				}
-				return false;
-			};
-
-			this.byPlateformsAndTagsWithMe = function(items,currentUserId,plateformId,tags,nbPlaceAvailableMin,nbPlaceAvailableMax){
-				var aFilteredItems = [];
-
-				var aTags = this.tagsStringToArray(tags);
-
-				var now = this.getCurrentTimestampInSeconds();
-
-				for(var key in items){
-
-					if(this.hasMeInGame(items[key],currentUserId) === false){
-						continue;
-					}
-
-					if(plateformId !== null && this.hasPlateformSelected(items[key],plateformId) === false){
-						continue;
-					}
-
-					if(this.isExpired(items[key],now) === true){
-						continue;
-					}
-
-					if (aTags.length !== 0 && this.hasTagSelected(items[key], aTags) === false) {
-						continue;
-					}
-
-					aFilteredItems.push(items[key]);
-				}
-
-				return aFilteredItems;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('forum', ['api','$window','user',
-		function(api,$window,user) {
-			'use strict';
-
-			this.getAllTopic = function(){
-				return api.call('forum');
-			};
-
-			this.getNews = function(offset,limit){
-				return api.call('news/'+offset+'/'+limit);
-			};
-
-			this.getTopic = function(id,page,nbResult){
-				return api.call('forum/topic/get/'+id+'/'+page+'/'+nbResult);
-			};
-
-			this.reply = function(id,texte,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				texte = texte.replace(/\n/g,'<br/>');
-				//texte = $window.encodeURI(texte);
-				var data = {texte:texte};
-				return api.post('forum/topic/message/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
-			};
-
-			this.updateMessage = function(id,texte,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				texte = texte.replace(/\n/g,'<br/>');
-				//texte = $window.encodeURI(texte);
-				var data = {texte:texte};
-				return api.post('forum/topic/message/update/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token,data);
-			};
-
-			this.deleteMessage = function(id,page,nbResult){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				return api.call('forum/topic/message/delete/'+id+'/'+page+'/'+nbResult+'/'+username+'/'+token);
-			};
-
-			this.createTopic = function(title,texte){
-				var currentUser = user.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-
-				texte = texte.replace(/\n/g,'<br/>');
-				var data = {title:title,texte:texte};
-				return api.post('forum/topic/create/'+username+'/'+token,data);
-			};
-
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('lang', ['gettextCatalog','$routeParams','$rootScope','$location',
-		function(gettextCatalog,$routeParams,$rootScope,$location) {
-			'use strict';
-
-			this.initLang = function(){
-				gettextCatalog.debug = true;
-
-				if($routeParams.lang){
-					this.updateLang($routeParams.lang);
-				}else {
-					this.updateLang('fr');
-				}
-			};
-
-			this.getCurrent = function(){
-				this.initLang();
-				return $rootScope.lang;
-			};
-
-			this.updateLang = function(newLang){
-				$rootScope.lang = newLang;
-				gettextCatalog.setCurrentLanguage(newLang);// Corresponds au header 'Language' du fichier .po;
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('matchmaking', ['$http','user','api','superCache','$window',
-		function($http,user,api,superCache,$window) {
-			'use strict';
-			this.getConf = function(){
-				return api.call('matchmaking/');
-			};
-
-			this.join = function(matchmakingId,profilId){
-				var currentUser = user.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('matchmaking/join/'+matchmakingId+'/'+profilId+'/'+username+'/'+currentUser.token);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('meta', ['$rootScope',
-		function($rootScope) {
-			'use strict';
-			$rootScope.description = 'EsBattle.com est votre site de recherche de joueurs pour Destiny. Vous cherchez des joueurs pour le raid ? Sur www.esbattle.com vous pouvez créer une partie ou en rejoindre une rapidement ! Créez un profil de jeu et demander à rejoindre une partie !',
-			this.getDescription = function(){
-				return  $rootScope.description;
-			}
-
-			this.setDescription = function(newDesc){
-				$rootScope.description = newDesc;
-			}
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('partenaire', ['api',
-		function(api) {
-			'use strict';
-
-			this.getAll = function(){
-				return api.call('partenaire');
-			};
-
-			this.getById = function(id){
-				return api.call('partenaire/'+id);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('rdv', ['$http','user','api','superCache','$window',
-		function($http,user,api,superCache,$window) {
-			'use strict';
-			this.getAll = function(){
-				return api.call('rdv/');
-			};
-
-			this.getFormInfo = function(){
-				var cache = superCache.promise('getFormInfo');
-				if(cache !== false){
-					return cache;
-				}
-				return api.call('rdv/form_info').success(function(data){
-					superCache.put('getFormInfo',data);
-				}).then(function(promise){
-					return promise.data;
-				});
-			};
-
-            this.add = function(plateform,game,tags,description,start,duree,nbParticipant,profilId,vignetteId){
-                var currentUser = user.get();
-
-	            plateform = $window.encodeURIComponent(plateform);
-	            game = $window.encodeURIComponent(game);
-	            tags = $window.encodeURIComponent(tags);
-	            description = $window.encodeURIComponent(description);
-	            start = $window.encodeURIComponent(start);
-	            duree = $window.encodeURIComponent(duree);
-	            nbParticipant = $window.encodeURIComponent(nbParticipant);
-	            profilId = $window.encodeURIComponent(profilId);
-	            vignetteId = $window.encodeURIComponent(vignetteId);
-	            var username = $window.encodeURIComponent(currentUser.username);
-
-	            return api.call('rdv/add/'+plateform+'/'+game+'/'+tags+'/'+description+'/'+start+'/'+duree+'/'+nbParticipant+'/'+profilId+'/'+vignetteId+'/'+username+'/'+currentUser.token);
-            };
-
-			this.get = function(id){
-				return api.call('rdv/get/'+id);
-			};
-
-			this.join = function(rdvId,userGameId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/join/'+rdvId+'/'+userGameId+'/'+username+'/'+token);
-			};
-
-			this.acceptUser = function(userId,rdvId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/accept_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
-			};
-
-			this.kickUser = function(userId,rdvId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/kick_user/'+userId+'/'+rdvId+'/'+username+'/'+token);
-			};
-
-			this.leave = function(rdvId,userId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/leave/'+rdvId+'/'+userId+'/'+username+'/'+token);
-			};
-
-			this.promote = function(rdvId,userId,username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('rdv/promote/'+rdvId+'/'+userId+'/'+username+'/'+token);
-			};
-
-			this.getNotifications = function(){
-
-				var currentUser = user.get();
-				if(currentUser === null) {
-					return false;
-				}
-
-				return api.call('notifications/'+currentUser.id);
-			};
-			this.getAllNotifications = function(){
-
-				var currentUser = user.get();
-				if(currentUser === null) {
-					return false;
-				}
-
-				return api.call('notifications/all/'+currentUser.id);
-			};
-
-			this.markNotificationRead = function(ids){
-
-				var currentUser = user.get();
-				if(currentUser === null) {
-					return false;
-				}
-
-				return api.call('notifications/read/'+currentUser.id+'/'+ids);
-			};
-
-			this.isLive = function(rdv){
-				var now = new Date();
-				now = now.getTime()/1000;
-				return (typeof rdv !== "undefined" && rdv.start < now && rdv.end > now);
-			};
-
-			this.isEnded = function(rdv){
-				var now = new Date();
-				now = now.getTime()/1000;
-				return (typeof rdv !== "undefined" && rdv.end < now);
-			};
-
-			this.invite = function(destinataire,rdv){
-
-				var currentUser = user.get();
-				if(currentUser === null) {
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				return api.call('rdv/invite/'+destinataire.id+'/'+rdv.id+'/'+username+'/'+token);
-			};
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('redirection', ['$location','$rootScope','$window',
-		function($location,$rootScope,$window) {
-			'use strict';
-			var getLang = function(){
-				if($rootScope.lang === undefined){
-					return 'fr';
-				}
-				return $rootScope.lang;
-			};
-
-			this.getLoginPageUrl = function(){
-				return '/'+getLang()+'/login';
-			};
-
-			this.goToLogin = function(){
-				$location.path(this.getLoginPageUrl());
-			};
-
-			this.getRegisterPageUrl = function(){
-				return '/'+getLang()+'/register';
-			};
-			this.getNotifPageUrl = function(){
-				return '/'+getLang()+'/notification';
-			};
-			this.getMatchmakingPageUrl = function(){
-				return '/'+getLang()+'/matchmaking';
-			};
-			this.getGamesPageUrl = function(){
-				return '/'+getLang()+'/games';
-			};
-
-			this.goToGamesPage = function(){
-				$location.path(this.getGamesPageUrl());
-			};
-
-			this.goToRegister = function(){
-				$location.path(this.getRegisterPageUrl());
-			};
-
-			this.getCreatePartyPageUrl = function(){
-				return '/'+getLang()+'/party/create';
-			};
-
-			this.goCreateParty = function(){
-				$location.path(this.getCreatePartyPageUrl());
-			};
-
-			this.goBack = function(){
-				$window.history.back();
-			};
-
-			this.getPartyWaitingUrlRoot = function(){
-				return '/'+getLang()+'/party/waiting/';
-			};
-
-			this.getPartyWaitingByIdUrl = function(id){
-				return this.getPartyWaitingUrlRoot()+id;
-			};
-
-			this.getPartenaireByIdUrlRoot = function(){
-				return '/'+getLang()+'/video/';
-			};
-
-			this.getPartenaireByIdUrl = function(partenaire){
-
-				/* Remove unwanted characters, only accept alphanumeric and space */
-				var titre = partenaire.nom.replace(/[^A-Za-z0-9 ]/g,'');
-
-				/* Replace multi spaces with a single space */
-				titre = titre.replace(/\s{2,}/g,' ');
-
-				/* Replace space with a '-' symbol */
-				titre = titre.replace(/\s/g, "-");
-
-				return this.getPartenaireByIdUrlRoot()+partenaire.id+'/'+titre;
-			};
-
-			this.goToRdvId = function(id){
-				$location.path(this.getPartyWaitingByIdUrl(id));
-			};
-
-			this.goToMatchmakingId = function(id){
-				$location.path('/'+getLang()+'/matchmaking/waiting/'+id);
-			};
-
-			this.getHomePageUrl = function(){
-				return '/'+getLang()+'/';
-			};
-
-			this.getHomePageDestinyUrl = function(){
-				return '/'+getLang()+'/destiny/';
-			};
-
-			this.goHome = function(id){
-				$location.path(this.getHomePageUrl());
-			};
-
-			this.getNotFoundPageUrl = function(msg){
-				return '/'+getLang()+'/404/'+msg;
-			};
-
-			this.goWelcomeHome = function(){
-				$location.path('/'+getLang()+'/welcome');
-			};
-
-			this.notFound = function(msg){
-				$location.path(this.getNotFoundPageUrl(msg));
-			};
-
-			this.getProfilGamePageUrl = function(gameId,plateformId){
-				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
-			};
-
-			this.getProfilGamePageByGameAndPlateformUrl = function(gameId,plateformId){
-				return '/'+getLang()+'/profile/'+gameId+'/'+plateformId;
-			};
-
-			this.goToCreateProfilForGameAndPlateform = function(gameId,plateformId){
-				this.goToGamesPage();
-			};
-
-			this.getListUsersUrl = function(){
-				return '/'+getLang()+'/users/connected/';
-			};
-
-			this.getAnnonceCreateUrl = function(){
-				return '/'+getLang()+'/annonce/create/';
-			};
-
-			this.getForumUrl = function(){
-				return '/'+getLang()+'/forum/';
-			};
-
-			this.getTopicUrl = function(topic,page){
-
-				if(!page){
-					page = 1;
-				}
-
-				/* Remove unwanted characters, only accept alphanumeric and space */
-				var titre = topic.titre.replace(/[^A-Za-z0-9 ]/g,'');
-
-				/* Replace multi spaces with a single space */
-				titre = titre.replace(/\s{2,}/g,' ');
-
-				/* Replace space with a '-' symbol */
-				titre = titre.replace(/\s/g, "-");
-
-				return '/'+getLang()+'/forum/topic/'+topic.id+'/'+page+'/'+titre;
-			};
-
-			this.getVideoUrl = function(){
-				return '/'+getLang()+'/destiny/video/all';
-			}
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('socket', ['$rootScope','$location',
-		function($rootScope,$location) {
-			'use strict';
-			this.currentSocket = null;
-			this.listUsers = {};
-			this.url = null;
-
-			this.getSocketUrl = function(){
-				if(this.url !== null){
-					return this.url;
-				}
-				var host = $location.host();
-				if(host === 'www.esbattle.com'){
-					this.url = 'http://www.esbattle.com:3000';
-				}else {
-					this.url = 'http://www.esbattle.com:3000';
-				}
-				return this.url;
-			};
-
-			this.on = function(event,callback){
-				var socket = this.getCurrentSocket();
-				socket.on(event, function (data) {
-					console.log('event global',data);
-					callback();
-				});
-			};
-
-			this.initListener = function(socket){
-
-				var that = this;
-				// Whenever the server emits 'new message', update the chat body
-				socket.on('new message', function (data) {
-					console.log('new message',data);
-				});
-
-				// Whenever the server emits 'user joined', log it in the chat body
-				socket.on('user joined', function (data) {
-					console.log('user join',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'user left', log it in the chat body
-				socket.on('user left', function (data) {
-					console.log('user left',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'users list', log it in the chat body
-				socket.on('users list', function (data) {
-					console.log('users list',data);
-					that.listUsers = data.listUsers;
-					$rootScope.$broadcast('updateListUsers',[data.listUsers]);
-				});
-
-				// Whenever the server emits 'typing', show the typing message
-				socket.on('typing', function (data) {
-					console.log('typing',data);
-				});
-
-				// Whenever the server emits 'stop typing', kill the typing message
-				socket.on('stop typing', function (data) {
-					console.log('stop typing',data);
-				});
-			};
-
-			this.getCurrentSocket = function(){
-				if(this.currentSocket === null && typeof(io) !== "undefined"){
-					var url = this.getSocketUrl();
-					this.currentSocket = io.connect(url);
-					this.initListener(this.currentSocket);
-				}
-
-				return this.currentSocket;
-			};
-
-			this.addUser = function(username){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				socket.emit('add user', username);
-			};
-
-			this.disconnect = function(){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				socket.close();
-				//socket.emit('disconnect');
-			};
-
-			this.getUserList = function(){
-				var socket = this.getCurrentSocket();
-				if(socket === null){
-					return;
-				}
-				console.log('emit : ask users list');
-				socket.emit('ask users list');
-			};
-		}
-	]
-);
-/**
- * Ce service permet de gérer les stockage de données
- *
- * dans cet ordre de priorité
- * soit en localStorage et sessionStorage si disponible
- * soit avec une fonction propre au device
- * soit en cookie
- */
-'use strict';
-angular.module('myApp.services').service('storage',['$rootScope','$cookies',
-	function($rootScope,$cookies){
-
-		this.createCookie = function(name,value,days) {
-			var expires = "";
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				expires = "; expires="+date.toGMTString();
-			}
-			document.cookie = name+"="+value+expires+"; path=/";
-		};
-
-		this.eraseCookie = function(name) {
-			document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-		};
-
-		this.erasePersistant = function(name) {
-
-			if(localStorage !== null){
-				localStorage[name] = null;
-			} else {
-				document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			}
-		};
-
-		this.getPersistant = function(name){
-
-			if(localStorage !== null){
-				return localStorage[name];
-			}
-			var data = $cookies[name];
-			return data;
-		};
-
-		this.setPersistant = function(name,value){
-
-			if(localStorage !== null){
-				localStorage[name]=value;
-				return;
-			}
-			this.createCookie(name,value,360);
-		};
-	}
-]);
-
-
-angular.module('myApp.services')
-	.service('tag', ['rdv',
-		function(rdv) {
-			'use strict';
-			/**
-			 * @desc autoCompleteUserTags retourne les tags utilisateurs complétés des autres tags disponibles
-			 * @param aTags tags utilisateurs
-			 */
-			this.autoCompleteUserTags = function(aTags,allTags){
-
-
-				var previousTags = '';
-				var aPreviousTags = [];
-				for(var i = 0; i < aTags.length -1; i++){
-					previousTags =  previousTags+aTags[i]+' ';
-					aPreviousTags.push(aTags[i]);
-				}
-
-				var autocompleteTag = [];
-				for(var key in allTags){
-
-					if(aPreviousTags.indexOf(allTags[key].nom) > -1){
-						continue;
-					}
-					autocompleteTag.push(previousTags +allTags[key].nom);
-				}
-
-				return autocompleteTag;
-
-
-			};
-
-		}
-	]
-);
-angular.module('myApp.services')
-	.service('tools', ['gettextCatalog','$filter',
-		function(gettextCatalog,$filter) {
-			'use strict';
-			this.getSinceTimeMessage = function(date2_s) {
-
-				var date2_ms = date2_s * 1000;
-				var currentDate = new Date(date2_ms);
-
-				var now = new Date();
-				var date1_ms = now.getTime();
-				// Calculate the difference in milliseconds
-				var difference_ms = date1_ms - date2_ms;
-
-				var tomorrow = new Date(date1_ms + 24 * 60 * 60 * 1000);
-
-				if (difference_ms < 0) {
-
-					if (tomorrow.getDay() == currentDate.getDay()) {
-						return gettextCatalog.getString("tomorrow at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
-					} else if (now.getDay() == currentDate.getDay()) {
-						return gettextCatalog.getString("today at {{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
-					}
-					return $filter('date')(date2_ms, 'd/MM/yy HH:mm');
-				}
-
-				var one_minute = 1000 * 60 * 1;
-
-				var diffMinutes = Math.round(difference_ms / one_minute);
-				if (diffMinutes < 60) {
-					return gettextCatalog.getString("{{minutes}} minutes ago", {minutes: diffMinutes});
-				}
-
-				var one_hour = 1000 * 60 * 60 * 1;
-				var diffHours = Math.round(difference_ms / one_hour);
-				if (diffHours < 24) {
-					return gettextCatalog.getString("{{hours}} hours ago", {hours: diffHours});
-
-				}
-
-				//Get 1 day in milliseconds
-				var one_day = 1000 * 60 * 60 * 24;
-				var diffDays = Math.round(difference_ms / one_day);
-				return gettextCatalog.getString("{{days}} days ago", {days: diffDays});
-			}
-		}
-	]
-);
-
-angular.module('myApp.services')
-	.service('user', ['$http','storage','api','$rootScope','$q','$timeout','$window',
-		function($http,storage,api,$rootScope,$q,$timeout,$window) {
-			'use strict';
-            this.data = '';
-
-			this.fakePromise = function(){
-				var deferred = $q.defer();
-				var promise = deferred.promise;
-
-				$timeout(function(){
-					deferred.resolve();
-				},0);
-
-				return promise;
-			};
-
-			var storeUser = function(data){
-				data.ttl = new Date(new Date().getTime()+ 2*60*60*1000).getTime();
-				storage.setPersistant('user',JSON.stringify(data));
-			};
-
-			this.log = function(username,password){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/'+username+'/'+password).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logByToken = function(username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/token/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.refreshBungie = function(username,token){
-
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-
-				var params = {
-					username : currentUser.username,
-					token : currentUser.token
-				};
-				return api.post('login/refresh',params).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logByForgetToken = function(username,token){
-				username = $window.encodeURIComponent(username);
-				return api.call('login/forgetToken/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.get = function(){
-				var courantUser = storage.getPersistant('user');
-				if(typeof(courantUser) !== "undefined"){
-					var user = JSON.parse(courantUser);
-					if(user !== null && user.ttl < new Date().getTime()){
-						this.logout();
-						this.logByToken(user.username,user.token).then(function(data){
-							user = data;
-						});
-					}
-					return user;
-				}
-				return null;
-			};
-
-			this.register = function(email,password,username,plateformId,gamertag){
-
-				email = $window.encodeURIComponent(email);
-				password = $window.encodeURIComponent(password);
-				username = $window.encodeURIComponent(username);
-				plateformId = $window.encodeURIComponent(plateformId);
-				gamertag = $window.encodeURIComponent(gamertag);
-				return api.call('register/'+email+'/'+password+'/'+username+'/'+plateformId+'/'+gamertag).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.logout = function(){
-				$rootScope.notificationsAlreadyRead = [];
-				$rootScope.userGameSelected = null;
-				storage.erasePersistant('user');
-			};
-
-			this.createUserGame = function(plateformId,gameId,profilName,gameUsername,data1,data2,data3,data4){
-
-				plateformId = $window.encodeURIComponent(plateformId);
-				gameId = $window.encodeURIComponent(gameId);
-				profilName = $window.encodeURIComponent(profilName);
-				gameUsername = $window.encodeURIComponent(gameUsername);
-				data1 = $window.encodeURIComponent(data1);
-				data2 = $window.encodeURIComponent(data2);
-				data3 = $window.encodeURIComponent(data3);
-				data4 = $window.encodeURIComponent(data4);
-
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-
-				if(typeof data1 === "undefined" || data1 === ""){
-					data1='null';
-				}
-				if(typeof data2 === "undefined" || data2 === ""){
-					data2='null';
-				}
-				if(typeof data3 === "undefined" || data3 === ""){
-					data3='null';
-				}
-				if(typeof data4 === "undefined" || data4 === ""){
-					data4='null';
-				}
-
-				return api.call('game_data/create/'+plateformId+'/'+gameId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.updateUserGame = function(plateformId,gameId,profilId,profilName,gameUsername,data1,data2,data3,data4){
-
-				plateformId = $window.encodeURIComponent(plateformId);
-				gameId = $window.encodeURIComponent(gameId);
-				profilId = $window.encodeURIComponent(profilId);
-				profilName = $window.encodeURIComponent(profilName);
-				gameUsername = $window.encodeURIComponent(gameUsername);
-				data1 = $window.encodeURIComponent(data1);
-				data2 = $window.encodeURIComponent(data2);
-				data3 = $window.encodeURIComponent(data3);
-				data4 = $window.encodeURIComponent(data4);
-
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-
-				if(typeof data1 === "undefined" || data1 === ""){
-					data1='null';
-				}
-				if(typeof data2 === "undefined" || data2 === ""){
-					data2='null';
-				}
-				if(typeof data3 === "undefined" || data3 === ""){
-					data3='null';
-				}
-				if(typeof data4 === "undefined" || data4 === ""){
-					data4='null';
-				}
-
-				return api.call('game_data/update/'+plateformId+'/'+gameId+'/'+profilId+'/'+profilName+'/'+gameUsername+'/'+data1+'/'+data2+'/'+data3+'/'+data4+'/'+username+'/'+currentUser.token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.forgetPassword = function(email){
-				return api.call('forget_password/'+email);
-			};
-
-			this.updatePassword = function(password){
-				var currentUser = this.get();
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('update_password/'+password+'/'+username+'/'+currentUser.token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.updateOnline = function(currentUser){
-				var username = $window.encodeURIComponent(currentUser.username);
-				return api.call('login/online/'+username+'/'+currentUser.token);
-			};
-
-			this.refresh = function(){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				return api.call('login/online/'+username+'/'+token).success(function(data){
-					storeUser(data);
-				});
-			};
-
-			this.getAll = function(){
-				return api.call('users/');
-			};
-
-			this.getByPage = function(page,nbResult){
-				return api.call('users/page/'+page+'/'+nbResult);
-			};
-
-			this.getByPlateform = function(plateformId,page,nbResult){
-				return api.call('users/plateform/'+plateformId+'/'+page+'/'+nbResult);
-			};
-
-			this.getByUsername = function(username,plateformId,page,nbResult){
-				username = $window.encodeURIComponent(username);
-				return api.call('users/search/'+username+'/'+plateformId+'/'+page+'/'+nbResult);
-			};
-
-			this.getFriends = function(){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				return api.call('user/friend/get/'+username+'/'+token);
-			};
-
-			this.addFriend = function(friendUsername){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				friendUsername = $window.encodeURIComponent(friendUsername);
-				return api.call('user/friend/add/'+friendUsername+'/'+username+'/'+token);
-			};
-
-			this.removeFriend = function(friendUsername){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				var username = $window.encodeURIComponent(currentUser.username);
-				var token = $window.encodeURIComponent(currentUser.token);
-				friendUsername = $window.encodeURIComponent(friendUsername);
-				return api.call('user/friend/remove/'+friendUsername+'/'+username+'/'+token);
-			};
-
-			/**
-			 * les utilisateurs à qui j'ai demandé d'être amis
-			 * @returns {*}
-			 */
-			this.getFriendsRequest = function(){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				return api.call('user/friend/request/'+currentUser.id);
-			}
-
-			/**
-			 * les utilisateurs qui m'ont demandé en amis
-			 * @returns {*}
-			 */
-			this.getFriendsPending = function(){
-				var currentUser = this.get();
-				if(currentUser === null){
-					return false;
-				}
-				return api.call('user/friend/request/pending/'+currentUser.id);
-			}
-		}
-	]
-);
