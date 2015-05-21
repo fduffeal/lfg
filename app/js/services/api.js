@@ -52,7 +52,7 @@ angular.module('myApp.services')
 
 				var userId = '';
 				var token = '';
-				if(currentUser !== null){
+				if(currentUser !== null && typeof currentUser !== 'undefined'){
 					userId = currentUser.id;
 					token = currentUser.token;
 				}
