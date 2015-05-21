@@ -53,6 +53,9 @@
 			position: relative;
 			color: #FFF;
 			height: 350px;
+			@media screen and (max-width:945px){
+				height: 310px;
+			}
 			/*@media (max-width: 854px) {
 			height: auto;
 		}
