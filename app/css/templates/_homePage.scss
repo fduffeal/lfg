@@ -468,6 +468,9 @@
 		position: absolute;
 		bottom: -21px;
 		cursor: pointer;
+		&:hover {
+			opacity: 0.8
+		}
 		span {
 			display: block;
 			position: absolute;
