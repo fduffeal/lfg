@@ -7,20 +7,21 @@
 					<a href="www.esbattle.com/fr/destiny" style="background-image:url('img/main_banniere.jpg')">
 						<div class="txt1">
 							Site n°1 d'actus #FRANCOPHONE<br/>
+
 							<div class="btn-find fa fa-search"><span>Trouvez des joueurs</span></div>
 						</div>
 					</a>
 				</li>
 			</ul>
-
 		</div>
 	</div>
 	<div class="page content" id="container">
 		<div class="grid-sizer"></div>
 		<div class="article w2 fix400">
 			<div class="article-content ">
-			<div class="title2">Découvrez l'intro du site Esbattle.com</div>
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/sLj0X-kDvms" frameborder="0" allowfullscreen></iframe>
+				<div class="title2">Découvrez l'intro du site Esbattle.com</div>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/sLj0X-kDvms" frameborder="0"
+				        allowfullscreen></iframe>
 				<div class="title2-video">Une claque sa déchire bravo à tous</div>
 			</div>
 		</div>
@@ -31,7 +32,7 @@
 					<tr>
 						<td colspan="3">
 							<lfg-profile-bungie with-plateform="false"
-												user-game="rdv.author"></lfg-profile-bungie>
+							                    user-game="rdv.author"></lfg-profile-bungie>
 						</td>
 					</tr>
 					<tr class="line">
@@ -45,7 +46,8 @@
 							{{rdv.description}}
 						</td>
 						<td class="l3" valign="top">
-							<lfg-since time="{{rdv.start}}"></lfg-since><br/>
+							<lfg-since time="{{rdv.start}}"></lfg-since>
+							<br/>
 							<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
 						</td>
 					</tr>
@@ -55,7 +57,8 @@
 		<div class="article partner">
 			<div class="article-content">
 				<div class="title2">Partenaires</div>
-				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank"
+				   ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
 			</div>
 		</div>
 
@@ -63,10 +66,11 @@
 			<a href="{{topic.url}}">
 
 				<div class="article-content {{topic.status}}">
-				<div class="category {{topic.status}}">{{topic.status}}</div>
+					<div class="category {{topic.status}}">{{topic.status}}</div>
 					<div class="title2">{{topic.titre}}</div>
-					<img class="cover" src="{{topic.vignette.src}}">
+					<img class="cover" ng-src="{{topic.vignette.src}}">
 					<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
+
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texteBrut"></span>
 					</div>
@@ -74,82 +78,7 @@
 				</div>
 			</a>
 		</div>
-		<div class="more-info"><span>Plus de news</span></div>
-
-		<!--<div class="block-left">
-<h2>Dernière news</h2>
-
-<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
-<a ng-href="{{topic.url}}" class="post-image">
-<img src="{{topic.vignette.src}}">
-</a>
-<div class="post-text">
-<div class="post-title">
-<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
-<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-<span class="comment"><a ng-href="{{topic.url}}" class="fa fa-comment">{{topic.nbMessages}}</a></span>
-<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
-</div>
-<div class="text">
-<span ta-bind ng-model="topic.message.texteBrut"></span>
-</div>
-<a ng-href="{{topic.url}}" class="read fa fa-play"><span>Lire</span></a>
-<lfg-fb-share url="{{topic.url}}"></lfg-fb-share>
-<a href="" class="read fa fa-twitter"><span>Twitter</span></a>
-
-</div>
-</div>
-<div class="pagination">
-<span ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0" ng-class="{'actif':(currentPage == $index+1)}">
-<a ng-href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a>
-</span>
-</div>
-</div>-->
-		<!--<div class="block-right">
-<h2>Dernières parties créées</h2>
-
-<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
-<tr>
-<td colspan="3">
-<lfg-profile-bungie with-plateform="false"
-user-game="rdv.author"></lfg-profile-bungie>
-</td>
-</tr>
-<tr class="line">
-<td class="l1" valign="top">
-<span translate>Party</span><br/>
-{{rdv.users.length}}/{{ rdv.nbParticipant}}<br/>
-<span>{{ rdv.plateform.nom }}</span>
-</td>
-<td class="l2" valign="top">
-<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/>
-{{rdv.description}}
-</td>
-<td class="l3" valign="top">
-<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
-</td>
-</tr>
-</table>
-
-<h2 class="second">Partenaires</h2>
-<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
-<h2 class="second" translate>Follow us</h2>
-
-<div class="socials">
-<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
-<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
-<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
-src="img/footer-logo-bungie.png"/></a>
-</div>
-
-</div>-->
-
+		<div ng-show="displayAddNews" class="more-info" ng-click="addNews()"><span>Plus de news</span></div>
 	</div>
-
-	<!--<div lfg-interval="intervalId"></div>-->
-</div>
-
-</div>
 </div>
 <lfg-footer></lfg-footer>

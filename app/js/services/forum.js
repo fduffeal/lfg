@@ -7,8 +7,8 @@ angular.module('myApp.services')
 				return api.call('forum');
 			};
 
-			this.getNews = function(){
-				return api.call('news');
+			this.getNews = function(offset,limit){
+				return api.call('news/'+offset+'/'+limit);
 			};
 
 			this.getTopic = function(id,page,nbResult){
