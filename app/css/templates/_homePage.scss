@@ -428,6 +428,7 @@
 				margin-bottom: 15px;
 				padding-bottom: 10px;
 				@include transition(0.1s linear all);
+				font-weight: 700;
 			}
 			.date {
 				color: #515151;
@@ -453,6 +454,7 @@
 		width: 100%;
 		position: absolute;
 		bottom: -21px;
+		cursor: pointer;
 		span {
 			display: block;
 			position: absolute;
