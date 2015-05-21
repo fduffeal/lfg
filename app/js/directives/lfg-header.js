@@ -45,10 +45,6 @@ angular.module('myApp.directives')
 
 					$scope.currentUrl = $location.path();
 
-					console.log($scope.currentUrl);
-					console.log($scope.listUsersUrl);
-
-
 
 					/**
 					 * autoRefreshDataNotif

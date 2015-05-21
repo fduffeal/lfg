@@ -4,12 +4,12 @@
 		<div class="menu-left-mobile">
 			<div class="menu"><span class="fa fa-bars"></span>Menu <a href="{{notifUrl}}" ng-if="userInfo.username"><span class="nb-notif">{{notifications.length}}</span></a>
 				<ul>
-					<li><a ng-href="{{homeUrl}}" translate class="selected">Home</a></li>
-					<li><a ng-href="{{videoUrl}}">Videos</a></li>
-					<li><a ng-href="{{rdvUrl}}">LFG</a></li>
-					<li><a ng-href="{{listUsersUrl}}">Gardiens</a></li>
-					<li><a ng-href="{{forumUrl}}">Forum</a></li>
-					<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" translate>Notifications</a></li>
+					<li><a ng-href="{{homeUrl}}" translate ng-class="{'selected':currentUrl == homeUrl}">Home</a></li>
+					<li><a ng-href="{{videoUrl}}"  ng-class="{'selected':currentUrl == videoUrl}">Videos</a></li>
+					<li><a ng-href="{{rdvUrl}}"  ng-class="{'selected':currentUrl == rdvUrl}">LFG</a></li>
+					<li><a ng-href="{{listUsersUrl}}"  ng-class="{'selected':currentUrl == listUsersUrl}">Gardiens</a></li>
+					<li><a ng-href="{{forumUrl}}"  ng-class="{'selected':currentUrl == forumUrl}">Forum</a></li>
+					<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" translate  ng-class="{'selected':currentUrl == notifUrl}">Notifications</a></li>
 					<li ng-if="userInfo.username"><a ng-href="" ng-click="refreshBungie()">Update</a>
 				</ul>
 			</div>
