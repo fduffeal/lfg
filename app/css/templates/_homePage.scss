@@ -109,7 +109,8 @@
 					text-align: center;
 					left: 50%;
 					top:50%;
-					transform: translate(-50%, -50%);
+					/*transform: translate(-50%, -50%);*/
+					@include transform(translate(-50%, -50%));
 					font-weight: 400;
 					height: 140px;
 					font-size: 60px;
@@ -131,6 +132,9 @@
 						@include transition(all 0.1s linear);
 						&:hover {
 							background: lighten($orange, 3%);
+						}
+						span{
+							font-family: 'roboto', sans-serif;
 						}
 						@media screen and (max-width:945px){
 							font-size: 20px;
