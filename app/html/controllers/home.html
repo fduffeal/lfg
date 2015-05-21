@@ -63,7 +63,7 @@
 			<a href="{{topic.url}}">
 
 				<div class="article-content {{topic.status}}">
-				<div class="category">news</div>
+				<div class="category {{topic.status}}">news</div>
 					<div class="title2">{{topic.titre}}</div>
 					<img class="cover" src="{{topic.vignette.src}}">
 					<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>

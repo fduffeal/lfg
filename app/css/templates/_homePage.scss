@@ -422,6 +422,12 @@
 				right: -5px;
 				font-size: 13px;
 				top: 5px;
+				&.tuto{
+					background: #fab802 ;
+				}
+				&.video {
+					background: #db0707 ;
+				}
 			}
 			.cover {
 				width: 100%;
