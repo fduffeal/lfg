@@ -426,7 +426,7 @@
 					background: #fab802 ;
 				}
 				&.video {
-					background: #db0707 ;
+					background: #8d00e7  ;
 				}
 			}
 			.cover {
@@ -468,6 +468,9 @@
 		position: absolute;
 		bottom: -21px;
 		cursor: pointer;
+		&:hover {
+			opacity: 0.8
+		}
 		span {
 			display: block;
 			position: absolute;
