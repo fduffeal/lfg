@@ -20,8 +20,8 @@ $color3: #06ab93; // blue
 	}
 	.content-header {
 		margin: auto;
-		width: 1440px;
-		
+		width: 95%!important;
+		max-width: 1440px;
 		font-size: 13px;
 		font-size: 1.3rem;
 		@media screen and (max-width: 980px ) {

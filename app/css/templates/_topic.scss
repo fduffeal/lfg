@@ -15,12 +15,7 @@
 	.clear	{
 		clear:both;
 	}
-	.content-header {
-		width: 940px;
-		.menu-right {
-			margin-right: 0;
-		}
-	}
+	
 	.filariane {
 		color: #999;
 		font-weight:bold;
@@ -29,7 +24,8 @@
 		}
 	}
 	.welcome {
-		width: 940px;
+		width: auto;
+		max-width: 1440px;
 		border: 1px solid #ccc;
 		background: #fff;
 		clear: both;
@@ -59,13 +55,13 @@
 			color: black;
 			font-size: 2rem;
 			span {
-				color: #999;
+				color: $base-color2;;
 			}
 			&:before {
 				content: "✪";
 				display:inline-block;
 				margin:2px 5px 0 0;
-
+				color: $base-color2;
 
 			}
 		}
@@ -117,7 +113,6 @@
 	.page {
 		background: transparent;
 		border: none;
-		width: 940px;
 		margin: auto;
 		margin-bottom: 10px;
 	}
@@ -234,13 +229,13 @@
 		}
 	}
 	@media screen and (max-width: 990px ) {
-		.content-header {
+		/*.content-header {
 			width: 95%;
 		}
 
 		.page, .welcome {
 			width: 94%;
-		}
+		}*/
 		table {
 			.to-avatar {
 				.modo-avatar img {

@@ -1,6 +1,6 @@
 <div id="topic" class="wrap">
 	<lfg-header></lfg-header>
-<lfg-friendlist></lfg-friendlist>
+
 	<div class="welcome">
 
 
@@ -64,10 +64,10 @@
 								<td class="none"></td>
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
-										{{usergame.data1 | translate}} {{usergame.data2}} |
-									</span>
+										{{usergame.data1 | translate}} {{usergame.data2}} | 
+									</span> <b>{{message.user.userGame[0].plateform.nom}}</b>
 									<br/>
-									<b>{{message.user.userGame[0].data3}}</b>
+									<b>{{message.user.userGame[0].data3}}</b> 
 
 								</td>
 							</tr>
