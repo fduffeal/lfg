@@ -15,22 +15,31 @@
 				{{topic.topic.titre}}
 			</h2>
 
-			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
-			<a ng-href="{{forumUrl}}" class="toussujet btn2" >Sujets</a>
+
+			<a href="" class="btn2 refresh" ng-click="refresh()" ng-if="topic.topic.status != 'news'" >Actualiser</a>
+			<a ng-href="{{forumUrl}}" class="toussujet btn2" ng-if="topic.topic.status != 'news'" >Sujets</a>
+			<div class="topic-news"  ng-if="topic.topic.status == 'news'" ng-repeat="message in (filteredItems = (topic.messages | limitTo:1))">
+				<div class="new-author" ng-if="topic.topic.status == 'news'" >
+					par <span class="news-user">{{message.user.username}}</span> le <span class="new-date">	{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
+				</div>
+				<div class="news-msg" ta-bind ng-model="message.texte"></div>
+
+			</div>
 		</div>
 		<div class="clear"></div>
 		<lfg-fb-share></lfg-fb-share>
 		<a href="" class="read fa fa-twitter"><span>Twitter</span></a>
+
 	</div>
 
 	<div class="page">
 
-		<lfg-pagination id="top" a-page="aPage" current-page="currentPage" max-page="6"></lfg-pagination>
+		<lfg-pagination id="top" a-page="aPage" current-page="currentPage" max-page="6" ng-if="(topic.topic.status != 'news')"></lfg-pagination>
 
 		<div class="block">
 			<table class="list-message" border="0">
 
-				<tr ng-repeat="message in topic.messages">
+				<tr ng-repeat="message in topic.messages" ng-if="(topic.topic.status != 'news')">
 					<td class="msg">
 						<table>
 							<tr>
@@ -54,6 +63,52 @@
 									</div>
 								</td>
 							</tr>
+
+							<tr>
+								<td class="to-msg" valign="top">
+									<div ta-bind ng-model="message.texte"></div>
+									<!--<span ng-bind-html="message.texte | filterHtml "></span>-->
+								</td>
+							</tr>
+							<tr>
+								<td class="none"></td>
+								<td class="to-sign">
+									<span ng-repeat="usergame in message.user.userGame" >
+										{{usergame.data1 | translate}} {{usergame.data2}} | 
+									</span> <b>{{message.user.userGame[0].plateform.nom}}</b>
+									<br/>
+									<b>{{message.user.userGame[0].data3}}</b> 
+
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr ng-repeat="message in topic.messages" ng-show="!$first" ng-if="(topic.topic.status == 'news')">
+					<td class="msg">
+						<table>
+							<tr>
+								<td class="to-avatar" rowspan="2" valign="top">
+									<div class="persos" ng-if="message.user.userGame.length > 0">
+										<div ng-repeat="usergame in message.user.userGame | filterAvatar" style="background: url('{{usergame.data5}}')"></div>
+										<img src="img/forum/lay-bar.png" alt="" class="lay" ng-if="(message.user.role != 'modo')" />
+										<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
+									</div>
+
+								</td>
+								<td class="to-info" valign="top">
+									<div class="left " ng-class="{'modo':(message.user.role == 'modo')}">
+										{{message.user.username}}
+									</div>
+									<div class="right">
+										{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}
+										<a href="" ng-click="delete(message)" ng-if="message.user.id === currentUser.id || currentUser.role == 'modo'" class="delete"><span></span></a>
+										<a href="" ng-click="modify(message)" ng-if="message.user.id === currentUser.id || currentUser.role == 'modo'" class="modify"><span></span></a>
+
+									</div>
+								</td>
+							</tr>
+
 							<tr>
 								<td class="to-msg" valign="top">
 									<div ta-bind ng-model="message.texte"></div>

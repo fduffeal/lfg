@@ -15,7 +15,7 @@
 	.clear	{
 		clear:both;
 	}
-	
+
 	.filariane {
 		color: #999;
 		font-weight:bold;
@@ -23,6 +23,30 @@
 			color: $base-color1;
 		}
 	}
+	.topic-news {
+		color: black;
+		float: left;
+		width: 100%;
+		.news-author {
+			margin-top: 5px;
+		}
+		span{
+			color: #999;
+			&.news-user {
+				font-weight: bold;
+			}
+		}
+		.news-msg {
+			border-top: 1px solid #999;
+			margin-top: 20px;
+			font-family: 'roboto', sans-serif;
+			font-size: 14px;
+			a{
+				color: $base-color1;
+			}
+		}
+	}
+
 	.welcome {
 		width: auto;
 		max-width: 1440px;
@@ -65,6 +89,7 @@
 
 			}
 		}
+
 		h2 {
 			margin:0;
 		}
@@ -230,12 +255,12 @@
 	}
 	@media screen and (max-width: 990px ) {
 		/*.content-header {
-			width: 95%;
-		}
+		width: 95%;
+	}
 
 		.page, .welcome {
-			width: 94%;
-		}*/
+		width: 94%;
+	}*/
 		table {
 			.to-avatar {
 				.modo-avatar img {
