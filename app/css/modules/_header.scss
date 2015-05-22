@@ -10,7 +10,7 @@ $color3: #06ab93; // blue
 	position: fixed;
 	z-index: 999;
 	.fa-gamepad:before {
-		color: $color2!important;
+		/*color: $color2!important;*/
 	}
 	.content-header {
 		margin: auto;
@@ -52,7 +52,7 @@ $color3: #06ab93; // blue
 		a {
 			color: white;
 			font-weight: bold;
-			&.selected {
+			&.selected:before {
 				color: $color2;
 			}
 		}
