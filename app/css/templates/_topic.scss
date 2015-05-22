@@ -23,6 +23,28 @@
 			color: $base-color1;
 		}
 	}
+	.news-cover {
+		height: 160px;
+		width: 100%;
+		background-repeat: no-repeat;
+		margin-top: 10px;
+		overflow: hidden;
+		position: relative;
+		margin-bottom: -10px;
+		img {
+			width: 100%;
+			height: auto;
+			position: absolute;
+			top: -50%;
+		}
+		.blur {
+			@include box-shadow(inset 0px -16px 20px 0px #fff);
+			height: 160px;
+			width: 100%;
+			position: absolute;
+			top: 0;
+		}
+	}
 	.topic-news {
 		color: black;
 		float: left;

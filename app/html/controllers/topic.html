@@ -9,16 +9,20 @@
 				<a ng-if="(topic.topic.status != 'news')" ng-href="{{forumUrl}}">Forum</a>
 				<a ng-if="(topic.topic.status == 'news')" ng-href="{{homeUrl}}">Home</a>
 				> {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
+				<div class="news-cover" ng-if="topic.topic.status == 'news'">
+					<img src="{{topic.topic.vignette}}" alt="">
+					<div class="blur"></div>
+				</div>
 			<h2 class="sujet">
 				<span ng-if="topic.topic.status != 'news'">Sujet :</span>
 				<span ng-if="topic.topic.status == 'news'">News :</span>
 				{{topic.topic.titre}}
 			</h2>
 
-
 			<a href="" class="btn2 refresh" ng-click="refresh()" ng-if="topic.topic.status != 'news'" >Actualiser</a>
 			<a ng-href="{{forumUrl}}" class="toussujet btn2" ng-if="topic.topic.status != 'news'" >Sujets</a>
 			<div class="topic-news"  ng-if="topic.topic.status == 'news'" ng-repeat="message in (filteredItems = (topic.messages | limitTo:1))">
+				
 				<div class="new-author" ng-if="topic.topic.status == 'news'" >
 					par <span class="news-user">{{message.user.username}}</span> le <span class="new-date">	{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
 				</div>
