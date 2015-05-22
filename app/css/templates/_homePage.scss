@@ -127,7 +127,7 @@
 					}
 					.btn-find {
 						padding: 5px 10px;
-						background-color: $base-color2;
+						background-color: $base-color1;
 						text-shadow: none;
 						border-radius: 5px;
 						opacity: 1;
@@ -421,7 +421,7 @@
 				position: absolute;
 				color: white;
 				@include transform(rotate(45deg));
-				background: $base-color1;
+				background: $base-color2;
 				padding: 0px 3px;
 				right: -5px;
 				font-size: 13px;
@@ -456,7 +456,7 @@
 				color: #515151;
 				font-size: 13px;
 				span {
-					color: $base-color1;
+					color: $base-color2;
 				}
 			}
 			.text {

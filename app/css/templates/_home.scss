@@ -133,7 +133,7 @@
 	.welcome {
 		margin-top: 0;
 		color: white;
-		background: $base-color1;
+		background: $base-color3;
 		.marge {
 			padding: 10px 20px 0 20px!important;
 		}
@@ -175,7 +175,7 @@
 			text-decoration: none!important;
 			font-size: 1.3rem;
 			margin-top: 0;
-			background: black;
+			background: $base-color2;
 			margin-bottom: 10px;
 			&:hover {
 				background: #000;

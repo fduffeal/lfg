@@ -35,7 +35,7 @@
 		font-weight: bold;
 		font-size: 1.4rem;
 		margin-top: 10px;
-		background: #f15641;
+		background: $base-color1;
 		cursor: pointer;
 		&:hover {
 			color:black;
@@ -116,7 +116,7 @@
 		border-collapse: collapse;
 		thead {
 			text-transform: uppercase;
-			background: #262525;
+			background: $base-color3;
 			font-weight: bold;
 			color:white;
 		}
@@ -142,7 +142,7 @@
 				color:#000;
 			}
 			&.modo {
-				color: #06ab93;
+				color: $base-color2;
 			}
 		}
 
