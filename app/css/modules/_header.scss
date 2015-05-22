@@ -4,17 +4,24 @@ $color3: #06ab93; // blue
 .header {
 	height: 47px;
 	line-height: 47px;
-	background: $color1;
+	/*background: $color1;*/
+	background: #242d3c ;
 	width: 100%;
 	top: 0;
 	position: fixed;
 	z-index: 999;
+	.fa span {
+		font-size: 12px;
+		font-family: 'roboto', sans-serif;
+		text-transform: uppercase;
+	}
 	.fa-gamepad:before {
 		/*color: $color2!important;*/
 	}
 	.content-header {
 		margin: auto;
-		width: 940px;
+		width: 1440px;
+		
 		font-size: 13px;
 		font-size: 1.3rem;
 		@media screen and (max-width: 980px ) {

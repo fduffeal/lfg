@@ -1,5 +1,8 @@
 #party-waiting {
 	.welcome {
+		max-width: 1440px;
+		width: auto;
+		background: $base-color1;
 		.btn2 {
 			width: 300px;
 			cursor: pointer;
@@ -13,7 +16,7 @@
 		}
 		.read {
 				font-size: 1.3rem;
-				background: $orange;
+				background: $base-color1;
 				color: #fff;
 				height: 20px;
 				line-height: 20px;

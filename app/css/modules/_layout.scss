@@ -1,4 +1,8 @@
-$orange: #f15641;
+/*$base-color1: #f15641;*/
+$base-color1: #35aaa2 ; // blue
+$base-color2: #f15641; // orange
+$base-color3: #242d3c; // blue darken
+
 $tiny-screen			: 400px; // tiny screens media query (less than 640px)
 $small-screen			: 600px; // screens between 640px and 960px
 $medium-screen			: 1180px; // screens between 960px and 1024px
@@ -341,7 +345,7 @@ a {
 	text-decoration: none;
 }
 h1{
-	background: $color2;
+	background: $base-color1;
 	display: block;
 	font-size: 13px;
 	text-align: center;
@@ -358,7 +362,8 @@ h1{
 
 .page {
 	background: white;
-	width: 940px;
+	max-width: 1440px;
+	width: auto;
 	margin:auto;
 	margin-top: 20px;
 	border: 1px solid #dddddd;

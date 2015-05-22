@@ -5,7 +5,7 @@
 
 	}
 	.content-header {
-		width: 940px;
+		/*width: 940px;*/
 		.menu-right {
 			margin-right: 0;
 		}
@@ -19,7 +19,7 @@
 			margin: 5px;
 			font-weight:bold;
 			a{
-				color: $orange;
+				color: $base-color1;
 				&:hover{
 					text-decoration: underline;
 				}
@@ -75,8 +75,8 @@
 		clear:both;
 	}
 	.page {
-		width: 940px;
-		margin: auto;
+		/*width: 940px;
+		margin: auto;*/
 		margin-bottom: 10px;
 	}
 	.new {
@@ -134,7 +134,7 @@
 			}
 		}
 		a {
-			color:#f15641;
+			color:$base-color1;
 			display: block;
 			height: 20px;
 			overflow: hidden;

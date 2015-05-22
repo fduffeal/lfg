@@ -8,7 +8,8 @@
 			width: 95%;
 		}
 		background: #111;
-		width: 940px;
+		/*width: 940px;*/
+		max-width: 1440px;	
 		font-family: "Open Sans", sans-serif;
 		font-weight: 400;
 		font-size: 14px;
@@ -132,7 +133,7 @@
 	.welcome {
 		margin-top: 0;
 		color: white;
-		background: $orange;
+		background: $base-color1;
 		.marge {
 			padding: 10px 20px 0 20px!important;
 		}
@@ -178,7 +179,7 @@
 			margin-bottom: 10px;
 			&:hover {
 				background: #000;
-				color: $orange;
+				color: $base-color1;
 			}
 			img{
 				position: absolute;
@@ -411,7 +412,7 @@
 
 			}
 			thead {
-				background: #262525;
+				background: $base-color3;
 				font-weight: bold;
 				height: 25px;
 				line-height: 25px;
@@ -428,7 +429,7 @@
 					min-width: 300px;
 				}
 				span {
-					color: $color2;
+					color: $base-color1;
 					font-size: 1.4rem;
 					float: left;
 					&.co, &.noco {

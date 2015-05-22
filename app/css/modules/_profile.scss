@@ -1,8 +1,7 @@
 .profile {
-
 	width: 233px;
 	@include box-shadow(0px 4px 10px 0px rgba(50, 50, 50, 0.75));
-	background: $orange;
+	background: $base-color1;
 	height: 400px;
 	float: left;
 	position: relative;
@@ -51,7 +50,7 @@
 		}
 	}
 	.hide-shadow {
-		background: $orange;
+		background: $base-color1;
 		width: 233px;
 		height: 14px;
 		position: absolute;
