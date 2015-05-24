@@ -1,4 +1,4 @@
-<div id="topic" class="wrap">
+    <div id="topic" class="wrap">
 	<lfg-header></lfg-header>
 
 	<div class="welcome">
@@ -13,13 +13,14 @@
 					<img src="{{topic.topic.vignette}}" alt="">
 				</div>
 			<h2 class="sujet">
+			<span class="fa fa-newspaper-o"></span>
 				<span ng-if="topic.topic.status != 'news'">Sujet :</span>
 				<span ng-if="topic.topic.status == 'news'">News :</span>
 				{{topic.topic.titre}}
 			</h2>
 
-			<a href="" class="btn2 refresh" ng-click="refresh()" ng-if="topic.topic.status != 'news'" >Actualiser</a>
-			<a ng-href="{{forumUrl}}" class="toussujet btn2" ng-if="topic.topic.status != 'news'" >Sujets</a>
+			<a href="" class="btn2 refresh" ng-click="refresh()" ng-if="topic.topic.status != 'news'" ><span class="fa fa-refresh"></span>Actualiser</a>
+			<a ng-href="{{forumUrl}}" class="toussujet btn2" ng-if="topic.topic.status != 'news'" ><span class="fa fa-newspaper-o"></span>Sujets</a>
 			<div class="topic-news"  ng-if="topic.topic.status == 'news'" ng-repeat="message in (filteredItems = (topic.messages | limitTo:1))">
 				
 				<div class="new-author" ng-if="topic.topic.status == 'news'" >

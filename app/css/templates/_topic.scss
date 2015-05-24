@@ -95,13 +95,7 @@
 			span {
 				color: $base-color2;;
 			}
-			&:before {
-				content: "✪";
-				display:inline-block;
-				margin:2px 5px 0 0;
-				color: $base-color2;
-
-			}
+			
 		}
 
 		h2 {
@@ -116,10 +110,7 @@
 			float: right;
 			margin-bottom: 20px;
 			width: 100px;
-			&:before {
-				content: "✽";
-				float: right;
-			}
+		
 		}
 	}
 	.btn2 {
