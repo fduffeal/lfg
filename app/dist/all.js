@@ -30199,7 +30199,9 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 					$scope.predicate = 'start';
 					$scope.reverse = true;
-					$scope.aRdv = $filter('orderBy')(data, $scope.predicate, $scope.reverse);
+
+					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
+					$scope.aRdv = $filter('filterRdvLastPlace')(data, null,[],false,true,true,1,5,'type_party');
 
 				}).error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
@@ -32840,9 +32842,9 @@ angular.module('myApp.filters').filter('filterRdvLastPlace', [
 	'filter',
 	function (filter) {
 	'use strict';
-	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type) {
+	return function (items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type) {
 
-		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,onlyOnePlace,nbPlaceAvailable,type);
+		return filter.byPlateformsAndTags(items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type);
 
 	};
 }]);
@@ -33330,7 +33332,7 @@ angular.module('myApp.services')
 
 				for(var key in items){
 
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
+					if(this.hasPlateformSelected(items[key],plateformId) === false && plateformId !== null){
 						continue;
 					}
 

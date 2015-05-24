@@ -50,7 +50,9 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 					$scope.predicate = 'start';
 					$scope.reverse = true;
-					$scope.aRdv = $filter('orderBy')(data, $scope.predicate, $scope.reverse);
+
+					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
+					$scope.aRdv = $filter('filterRdvLastPlace')(data, null,[],false,true,true,1,5,'type_party');
 
 				}).error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs

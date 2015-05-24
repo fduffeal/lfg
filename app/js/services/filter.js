@@ -82,7 +82,7 @@ angular.module('myApp.services')
 
 				for(var key in items){
 
-					if(this.hasPlateformSelected(items[key],plateformId) === false){
+					if(this.hasPlateformSelected(items[key],plateformId) === false && plateformId !== null){
 						continue;
 					}
 
