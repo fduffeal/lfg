@@ -10,6 +10,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			$scope.aTopic = [];
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
+			$scope.rdvUrl = redirection.getHomePageDestinyUrl();
 
 			var firstCover = {
 				document : {
@@ -39,6 +40,13 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 				}
 			};
+
+
+			var plateformId = null;
+			if($scope.currentUser !== null && $scope.currentUser.userGame[0] && $scope.currentUser.userGame[0].plateform){
+				plateformId = $scope.currentUser.userGame[0].plateform.id;
+			}
+
 			var refreshRdvData = function () {
 
 				rdv.getAll().success(function (data) {
@@ -52,7 +60,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					$scope.reverse = true;
 
 					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
-					$scope.aRdv = $filter('filterRdvLastPlace')(data, null,[],false,true,true,1,5,'type_party');
+					$scope.aRdv = $filter('filterRdvLastPlace')(data, plateformId,[],false,true,true,1,5,'type_party');
 
 					if($scope.aRdv.length === 0){
 						$scope.aRdv = $filter('orderBy')(data, $scope.predicate,$scope.reverse);
