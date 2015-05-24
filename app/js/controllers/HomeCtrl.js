@@ -54,6 +54,11 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
 					$scope.aRdv = $filter('filterRdvLastPlace')(data, null,[],false,true,true,1,5,'type_party');
 
+					if($scope.aRdv.length === 0){
+						$scope.aRdv = $filter('orderBy')(data, $scope.predicate,$scope.reverse);
+
+					}
+
 				}).error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
