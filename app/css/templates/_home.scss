@@ -148,14 +148,7 @@
 		}
 
 		.hide {
-			&:before {
-				content: "✖";
-				font-size: 2rem;
-				color: white;
-			}
-			&:hover:before {
-				color: #06ab93;
-			}
+			
 		}
 		.txt {
 			display: block;
@@ -179,7 +172,7 @@
 			background: $base-color2;
 			margin-bottom: 10px;
 			&:hover {
-				background: #000;
+				background: $base-color1;
 				color: $base-color1;
 			}
 			img{
