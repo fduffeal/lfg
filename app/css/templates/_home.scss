@@ -1,13 +1,13 @@
 #home {
 	.home-profile {
 		width: 95%;
-/*
+		/*
 		@media screen and (max-width: 1065px ) {
-			width: 94%;
-		}
+		width: 94%;
+	}
 		@media screen and (max-width: 550px ) {
-			width: 95%;
-		}*/
+		width: 95%;
+	}*/
 		background: #111;
 		/*width: 940px;*/
 		max-width: 1440px;	
@@ -149,13 +149,13 @@
 
 		.hide {
 			/*&:before {
-				content: "✖";
-				font-size: 2rem;
-				color: white;
-			}
+			content: "✖";
+			font-size: 2rem;
+			color: white;
+		}
 			&:hover:before {
-				color: #06ab93;
-			}*/
+			color: #06ab93;
+		}*/
 		}
 		.txt {
 			display: block;
@@ -322,13 +322,13 @@
 				background: #e9aea6;
 				cursor: pointer;
 			}
-		  	&.ng-enter{
-			  @include transition(background-color 1s ease-out);
-			  background-color: #e9aea6;
+			&.ng-enter{
+				@include transition(background-color 1s ease-out);
+				background-color: #e9aea6;
 			}
 			&.ng-enter-active{
-			  @include transition(background-color 1s ease-out);
-			  background-color: white;
+				@include transition(background-color 1s ease-out);
+				background-color: white;
 			}
 		}
 
@@ -453,12 +453,69 @@
 
 					font-size: 11px!important
 				}
+				.plat-name {
+					border-radius: 30px;
+					padding: 2px 5px;
+					background: #9aca42 ;
+					color: white ;
+					&.PS4 {
+						background: #000;
+						color: #fff;
+					}
+					&.PS3 {
+						background: #515151 ;
+						color: #fff;
+					}
+					&.XBOX.ONE {
+						background: #117d10 ;
+						color: #fdfcf8 ;
+					}
+
+				}
 			}
 			.list-infos{
 				width: 50%;
-				span {
+				span.type-info {
 					font-weight: bold;
+					display: block;
+					float: left;
+					margin-right: 5px;
+					color: #565656;
+					border-radius: 30px;
+					padding: 2px 5px;
+					border: 2px solid #565656 ;
+					&.raid {
+						color: #a40000;
+						border-color: #a40000;
+					}
+					&.cropta {
+						color: #05b0f0;
+						border-color: #05b0f0;
+					}
+					&.caveau,&.atheon {
+						color: #0ebe23   ;
+						border-color: #0ebe23 ;
+					}
+					&.osiris {
+						color: #e59c00   ;
+						border-color: #e59c00 ;
+					}
+					&.prison, &.arene {
+						color: #d705f0  ;
+						border-color: #d705f0;
+					}
+					&.pvp {
+						color: #f15e5e ;
+						border-color: #f15e5e ;
+					}
+					&.nuit, &.noir, &.noire {
+						color: #005e66 ;;
+						border-color: #005e66 ;
+					}
+
 				}
+
+
 			}
 			.list-start{
 				width: 15%;
@@ -480,11 +537,11 @@
 
 	}
 
-/*
-  Set the color of the icon
-  */
-  svg path,
-  svg rect{
-  	fill: #FF6700;
-  }
+	/*
+	Set the color of the icon
+	*/
+	svg path,
+	svg rect{
+		fill: #FF6700;
+	}
 }
