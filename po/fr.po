@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
@@ -171,10 +171,6 @@ msgid ""
 "friends !"
 msgstr ""
 "Vous devez d'abord créer une partie, après vous pourrez inviter vos amis !"
-
-#: app/html/controllers/home.html
-msgid "Follow us"
-msgstr "Nous suivre"
 
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
@@ -619,6 +615,10 @@ msgid "warlock"
 msgstr "arcaniste"
 
 #: app/dynamique_translate.html
+msgid "yesterday at {{time}}"
+msgstr "hier à {{time}}"
+
+#: app/dynamique_translate.html
 msgid "you have send a invite to {{name}}"
 msgstr "vous avez envoyé une invitation à {{name}}"
 
@@ -685,6 +685,9 @@ msgstr "{{notification.expediteur.username}} a quitté"
 #: app/html/controllers/notification.html
 msgid "{{notification.expediteur.username}} send you an invitation to"
 msgstr "{{notification.expediteur.username}} vous a envoyé une invitation pour"
+
+#~ msgid "Follow us"
+#~ msgstr "Nous suivre"
 
 #~ msgid "English"
 #~ msgstr "Anglais"
