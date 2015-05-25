@@ -333,9 +333,13 @@
 	.article a:hover .title2,.article a:hover .text  {
 		color: $base-color1!important;
 	}
-	.article a:hover .cover {
-		opacity: 0.7;
-		/*@include transform(scale(1.02));*/
+	.partner .partenaires{
+		display: block;
+		overflow: hidden;
+	}
+	.article a:hover .cover, .partner .partenaires:hover img {
+		opacity: 0.9;
+		@include transform(scale(1.07));
 	}
 	.grid-sizer, .article {
 		width: 24%;
@@ -429,6 +433,9 @@
 				&.video {
 					background: #8d00e7  ;
 				}
+			}
+			.block-cover {
+				overflow: hidden
 			}
 			.cover {
 				width: 100%;

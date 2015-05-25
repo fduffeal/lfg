@@ -68,7 +68,9 @@
 				<div class="article-content {{topic.status}}">
 					<div class="category {{topic.status}}">{{topic.status}}</div>
 					<div class="title2">{{topic.titre}}</div>
-					<img class="cover" ng-src="{{topic.vignette.src}}">
+					<div class="block-cover">
+						<img class="cover" ng-src="{{topic.vignette.src}}">
+					</div>
 					<span class="date">{{topic.dateFormated}}</span>
 
 					<div class="text">

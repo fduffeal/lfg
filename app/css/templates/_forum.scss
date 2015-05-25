@@ -38,16 +38,15 @@
 		background: $base-color1;
 		cursor: pointer;
 		&:hover {
-			color:black;
+			background: $base-color2;
 		}
 	}
 	.refresh {
 		float: right;
 		margin-bottom: 20px;
 		width: 100px;
-		&:before {
-			content: "✽";
-			float: right;
+		.fa {
+			margin-right: 5px;
 		}
 	}
 	.text-angular {
