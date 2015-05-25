@@ -188,8 +188,61 @@
 				height: 20px;
 			}
 		}
+		.read {
+			font-size: 1.3rem;
+			margin-right: 10px;
+			background: $base-color1;
+			color: #fff;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px 10px;
+			&:hover {
+				opacity: 0.7;
+			}
+			&:before {
+				float: left;
+				margin: 0px 7px 0 2px;
+			}
+			&.fa-facebook {
+				background: #3b5999;
+			}
+
+		}
 		.social {
 			text-align: right;
+		}
+		.fb_reset, #fb-root {
+			display: none;
+		}
+		.fb_iframe_widget {
+			margin: 0 10px;
+		}
+		.fb-like {
+			display: inline-block;
+		}
+		.don{
+			display: inline-block;
+
+			div{
+				display: inline-block;
+				background: #00335e ;
+				color: white;
+				height: 20px;
+				line-height: 20px;
+				padding: 0px 10px;
+
+				input {
+					background: transparent;
+					border:0;
+					color: white;
+					font-size: 1.3rem;
+					cursor: pointer;
+				}
+				&:hover {
+					opacity: 0.8
+				}
+			}
+
 		}
 		.add {
 			margin-top: 15px;
