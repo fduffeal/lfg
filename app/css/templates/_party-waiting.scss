@@ -15,24 +15,24 @@
 			}
 		}
 		.read {
-				font-size: 1.3rem;
-				background: $base-color1;
-				color: #fff;
-				height: 20px;
-				line-height: 20px;
-				padding: 0px 10px;
-				&:hover {
-					opacity: 0.7;
-				}
-				&:before {
-					float: left;
-					margin: 0px 7px 0 2px;
-				}
-				&.fa-facebook {
-					background: #3b5999;
-				}
-
+			font-size: 1.3rem;
+			background: $base-color1;
+			color: #fff;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px 10px;
+			&:hover {
+				opacity: 0.7;
 			}
+			&:before {
+				float: left;
+				margin: 0px 7px 0 2px;
+			}
+			&.fa-facebook {
+				background: #3b5999;
+			}
+
+		}
 		.btn2.long {
 			width: 400px;
 		}
@@ -102,6 +102,64 @@
 			}
 		}
 	}
+	.plat-name {
+		border-radius: 30px;
+		padding: 2px 5px;
+		background: #9aca42 ;
+		color: white ;
+		&.PS4 {
+			background: #000;
+			color: #fff;
+		}
+		&.PS3 {
+			background: #515151 ;
+			color: #fff;
+		}
+		&.XBOX.ONE {
+			background: #117d10 ;
+			color: #fdfcf8 ;
+		}
+
+	}
+	span.type-info {
+		font-weight: bold;
+		display: block;
+		float: left;
+		margin-right: 5px;
+		color: #565656;
+		border-radius: 30px;
+		padding: 2px 5px;
+		border: 2px solid #565656 ;
+		&.raid {
+			color: #a40000;
+			border-color: #a40000;
+		}
+		&.cropta {
+			color: #05b0f0;
+			border-color: #05b0f0;
+		}
+		&.caveau,&.atheon {
+			color: #0ebe23   ;
+			border-color: #0ebe23 ;
+		}
+		&.osiris {
+			color: #e59c00   ;
+			border-color: #e59c00 ;
+		}
+		&.prison, &.arene {
+			color: #d705f0  ;
+			border-color: #d705f0;
+		}
+		&.pvp {
+			color: #f15e5e ;
+			border-color: #f15e5e ;
+		}
+		&.nuit, &.noir, &.noire {
+			color: #005e66 ;;
+			border-color: #005e66 ;
+		}
+
+	}
 	.page table {
 		width: 100%;
 		text-align: left;
@@ -151,8 +209,8 @@
 		}
 		.place {
 			width: 3%;
-		  	&.leader{
-			  background: red;
+			&.leader{
+				background: red;
 			}
 		}
 		.perso{

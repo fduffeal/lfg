@@ -78,7 +78,7 @@
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
 										{{usergame.data1 | translate}} {{usergame.data2}} | 
-									</span> <b>{{message.user.userGame[0].plateform.nom}}</b>
+									</span> <span class="plat-name {{message.user.userGame[0].plateform.nom}}">{{message.user.userGame[0].plateform.nom}}</span>
 									<br/>
 									<b>{{message.user.userGame[0].data3}}</b> 
 
@@ -123,7 +123,7 @@
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
 										{{usergame.data1 | translate}} {{usergame.data2}} | 
-									</span> <b>{{message.user.userGame[0].plateform.nom}}</b>
+									</span> <span class="plat-name {{message.user.userGame[0].plateform.nom}}">{{message.user.userGame[0].plateform.nom}}</span>
 									<br/>
 									<b>{{message.user.userGame[0].data3}}</b> 
 

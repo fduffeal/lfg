@@ -37,6 +37,26 @@
 			top: -50%;
 		}
 	}
+	.plat-name {
+		border-radius: 30px;
+		padding: 2px 5px;
+		background: #9aca42 ;
+		color: white ;
+		display: inline-block;
+		&.PS4 {
+			background: #000;
+			color: #fff;
+		}
+		&.PS3 {
+			background: #515151 ;
+			color: #fff;
+		}
+		&.XBOX.ONE {
+			background: #117d10 ;
+			color: #fdfcf8 ;
+		}
+
+	}
 	.topic-news {
 		color: black;
 		float: left;
@@ -98,7 +118,7 @@
 			.fa {
 				margin-right: 10px;
 			}
-			
+
 		}
 
 		h2 {

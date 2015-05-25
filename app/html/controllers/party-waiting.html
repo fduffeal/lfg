@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td>Tags:</td>
-					<td><span ng-repeat="tag in rdv.tags">#{{tag.nom}} </span></td>
+					<td><span ng-repeat="tag in rdv.tags" class="type-info {{ tag.nom | lowercase}}">#{{tag.nom}} </span></td>
 				</tr>
 				<tr>
 					<td>Infos:</td>
@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td translate>Platform:</td>
-					<td>{{rdv.plateform.nom}}</td>
+					<td><span class="plat-name {{ rdv.plateform.nom }}">{{rdv.plateform.nom}}</span></td>
 				</tr>
 
 			</table>
