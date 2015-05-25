@@ -90,7 +90,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 						data[i].url = redirection.getTopicUrl(data[i]);
 						data[i].message.texteBrut = $filter('filterWords')(data[i].message.texteBrut, 26);
 
-						data[i].created = $filter('filterDateNews')(data[i].created);
+						data[i].dateFormated = $filter('filterDateNews')(data[i].created);
 
 						$scope.aTopic.push(data[i]);
 						offsetNews++;
