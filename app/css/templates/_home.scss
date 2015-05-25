@@ -179,8 +179,7 @@
 			background: $base-color2;
 			margin-bottom: 10px;
 			&:hover {
-				background: #000;
-				color: $base-color1;
+				background: $base-color1;
 			}
 			img{
 				position: absolute;
@@ -202,7 +201,7 @@
 
 
 			a {
-				color: $color1;
+				color: $base-color1;
 				text-decoration: underline;
 			}
 			h2 {
