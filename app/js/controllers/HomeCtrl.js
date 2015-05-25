@@ -62,7 +62,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
 					$scope.aRdv = $filter('filterRdvLastPlace')(data, plateformId,[],false,true,true,1,5,'type_party');
 
-					if($scope.aRdv.length === 0){
+					if($scope.aRdv.length < 2){
 						$scope.aRdv = $filter('orderBy')(data, $scope.predicate,$scope.reverse);
 
 					}
