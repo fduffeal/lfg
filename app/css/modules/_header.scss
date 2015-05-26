@@ -14,6 +14,10 @@ $color3: #06ab93; // blue
 		font-size: 12px;
 		font-family: 'roboto', sans-serif;
 		text-transform: uppercase;
+		@media screen and (max-width: 490px) {
+			font-size: 10px;
+		}
+
 	}
 	.fa-gamepad:before {
 		/*color: $color2!important;*/
@@ -167,7 +171,7 @@ $color3: #06ab93; // blue
 		background: #fff;
 		top: 47px;
 		position: absolute;
-		  line-height: 23px;
+		line-height: 23px;
 		width: 300px;
 	}
 	.menu-right {
@@ -275,7 +279,7 @@ $color3: #06ab93; // blue
 			width: auto;
 			margin-right: 5px;
 			font-size: 11px;
-			margin-top: 25px;
+			margin-top: 20px;
 			padding: 0 3px!important;
 			&:before {
 				display: none;
