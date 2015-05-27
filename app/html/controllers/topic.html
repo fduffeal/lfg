@@ -105,7 +105,8 @@
 								<td class="to-avatar" rowspan="2" valign="top">
 									<div class="persos" ng-if="message.user.userGame.length > 0">
 										<div ng-repeat="usergame in message.user.userGame | filterAvatar" style="background: url('{{usergame.data5}}')"></div>
-										<img src="img/forum/lay-bar.png" alt="" class="lay" ng-if="(message.user.role != 'modo')" />
+										<img src="img/forum/lay-bar.png" alt="" class="lay" ng-if="(message.user.role != 'modo' && message.user.role != 'redacteur')" />
+										<img src="img/forum/lay-bar-reda.png" alt="" class="lay" ng-if="(message.user.role == 'redacteur')" />
 										<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
 									</div>
 
