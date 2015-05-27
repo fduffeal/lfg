@@ -1,6 +1,6 @@
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire','planification','$sce',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire,planification,$sce) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -98,8 +98,36 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				});
 			};
 
+			var self = this;
+
+			//$sce.trustAsResourceUrl('http://www.youtube.com/');
+
+			$scope.trustSrc = function(src) {
+				return $sce.trustAsResourceUrl(src);
+			};
+
+			var getPlanification = function(){
+				planification.getCurrent().success(function(data){
+
+					//console.log($sce.parseAsResourceUrl(data.video.url));
+					//
+					//self.explicitlyTrustedResourceUrl = $sce.trustAsResourceUrl($sce.parseAsResourceUrl(data.video.url));
+
+					$scope.isYoutube = data.video.url.match(/youtube/);
+
+					//http://www.twitch.tv/streamerhouse/embed"
+					$scope.isTwitch = data.video.url.match(/twitch/);
+
+
+					//$sce.trustAsUrl(data.video.url);
+					$scope.planification = data;
+
+				});
+			};
+
 			refreshRdvData();
 			$scope.addNews();
+			getPlanification();
 
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {

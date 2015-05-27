@@ -30362,8 +30362,8 @@ angular.module('myApp.controllers').controller('GamesProfilesCtrl',
 );
 
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire','planification','$sce',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire,planification,$sce) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
@@ -30461,8 +30461,36 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				});
 			};
 
+			var self = this;
+
+			//$sce.trustAsResourceUrl('http://www.youtube.com/');
+
+			$scope.trustSrc = function(src) {
+				return $sce.trustAsResourceUrl(src);
+			};
+
+			var getPlanification = function(){
+				planification.getCurrent().success(function(data){
+
+					//console.log($sce.parseAsResourceUrl(data.video.url));
+					//
+					//self.explicitlyTrustedResourceUrl = $sce.trustAsResourceUrl($sce.parseAsResourceUrl(data.video.url));
+
+					$scope.isYoutube = data.video.url.match(/youtube/);
+
+					//http://www.twitch.tv/streamerhouse/embed"
+					$scope.isTwitch = data.video.url.match(/twitch/);
+
+
+					//$sce.trustAsUrl(data.video.url);
+					$scope.planification = data;
+
+				});
+			};
+
 			refreshRdvData();
 			$scope.addNews();
+			getPlanification();
 
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {
@@ -32784,19 +32812,33 @@ angular.module('myApp.directives')
 			'use strict';
 			return {
 				scope:{
-					url : '='
+					url : '=',
+					height: '=',
+					width: '='
 				},
 				link: function($scope, element, attrs) {
 
+					$scope.isYoutube = $scope.url.match(/youtube/);
+
 					var ids = $scope.url.match(/(\?|&)v=[^&]*/);
+
+					var h = 390;
+					if($scope.height > 0){
+						h = $scope.height;
+					}
+
+					var w = 640;
+					if($scope.width > 0){
+						w = $scope.width;
+					}
 
 					// 3. This function creates an <iframe> (and YouTube player)
 					//    after the API code downloads.
 					var player;
 					$scope.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
 						player = new YT.Player(element[0], {
-							height: '390',
-							width: '640',
+							height: h,
+							width: w,
 							videoId: ids[0].substring(3),
 							html5:1,
 							events: {
@@ -32825,8 +32867,9 @@ angular.module('myApp.directives')
 						player.stopVideo();
 					}
 
-					$scope.onYouTubeIframeAPIReady();
-
+					if($scope.isYoutube){
+						$scope.onYouTubeIframeAPIReady();
+					}
 
 				},
 				restrict: 'E',
@@ -33811,6 +33854,17 @@ angular.module('myApp.services')
 
 			this.getById = function(id){
 				return api.call('partenaire/'+id);
+			};
+		}
+	]
+);
+
+angular.module('myApp.services')
+	.service('planification', ['api',
+		function(api) {
+			'use strict';
+			this.getCurrent = function(username,token){
+				return api.call('planification');
 			};
 		}
 	]
