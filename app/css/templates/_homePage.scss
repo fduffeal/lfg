@@ -98,7 +98,7 @@
 				background-position: center;
 				display:block;
 				height:432px;
-				
+
 				@media screen and (max-width:945px){
 					height: 300px;
 					.txt1{
@@ -381,7 +381,11 @@
 			font-family: 'roboto', sans-serif;
 			iframe {
 				width: 100%!important;
-				height: 378px;
+				min-height: 176px;
+				@media screen and (max-width: 320px){
+					width: 276px;
+					height: 177px;
+				}
 			}
 			.partenaires {
 				img {
