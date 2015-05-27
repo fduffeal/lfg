@@ -18,9 +18,9 @@
 	<div class="page content" id="container">
 		<div class="grid-sizer"></div>
 		<div class="article w2 fix400" lfg-masonry="masonry">
-			<div class="article-content ">
+			<div class="article-content " lfg-masonry="masonry">
 				<div class="title2">{{planification.titre}}</div>
-				<lfg-youtube ng-if="planification.video && isYoutube" url="planification.video.url" height="378" width="620"></lfg-youtube>
+				<lfg-youtube ng-if="planification.video" url="planification.video.url" height="378" width="620"></lfg-youtube>
 				<div class="title2-video">{{planification.description}}</div>
 			</div>
 		</div>

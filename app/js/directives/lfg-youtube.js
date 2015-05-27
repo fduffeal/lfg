@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgYoutube', [
-		function() {
+	.directive('lfgYoutube', ['$sce',
+		function($sce) {
 			'use strict';
 			return {
 				scope:{
@@ -51,7 +51,7 @@ angular.module('myApp.directives')
 					var done = false;
 					function onPlayerStateChange(event) {
 						if (event.data == YT.PlayerState.PLAYING && !done) {
-							setTimeout(stopVideo, 6000);
+							//setTimeout(stopVideo, 6000);
 							done = true;
 						}
 					}
@@ -59,8 +59,16 @@ angular.module('myApp.directives')
 						player.stopVideo();
 					}
 
-					if($scope.isYoutube){
+					$scope.iframe = false;
+
+					$scope.trustSrc = function(src) {
+						return $sce.trustAsResourceUrl(src);
+					};
+
+					if($scope.isYoutube && ids){
 						$scope.onYouTubeIframeAPIReady();
+					} else {
+						$scope.iframe = true;
 					}
 
 				},
