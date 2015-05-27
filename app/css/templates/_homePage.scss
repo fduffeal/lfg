@@ -383,7 +383,7 @@
 				width: 100%!important;
 				min-height: 176px;
 				@media screen and (max-width: 320px){
-					width: 276px;
+					width: 276px!important;
 					height: 177px;
 				}
 			}
