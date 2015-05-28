@@ -139,7 +139,7 @@
 										<span class="plat-name {{ rdv.plateform.nom }}">
 											<span ng-if="rdv.plateform.nom == 'XBOX ONE'">ONE</span>
 											<span ng-if="rdv.plateform.nom == 'XBOX 360'">360</span>
-											<span ng-if="rdv.plateform.nom != 'XBOX 360' && 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
+											<span ng-if="rdv.plateform.nom != 'XBOX 360' && rdv.plateform.nom != 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
 
 										</span>
 									</td>
@@ -188,7 +188,7 @@
 									<span class="plat-name {{ rdv.plateform.nom }}">
 										<span ng-if="rdv.plateform.nom === 'XBOX ONE'">ONE</span>
 										<span ng-if="rdv.plateform.nom === 'XBOX 360'">360</span>
-										<span ng-if="rdv.plateform.nom !== 'XBOX 360' && 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
+										<span ng-if="rdv.plateform.nom !== 'XBOX 360' && rdv.plateform.nom != 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
 
 									</span>
 								</td>
