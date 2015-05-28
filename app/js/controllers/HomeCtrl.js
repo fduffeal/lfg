@@ -109,6 +109,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			var getPlanification = function(){
 				planification.getCurrent().success(function(data){
 					$scope.planification = data;
+					$timeout(function(){
+						$scope.masonry.reloadItems();
+						$scope.masonry.layout();
+					},15000)
 				});
 			};
 
