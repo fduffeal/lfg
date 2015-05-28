@@ -30472,6 +30472,11 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 			var getPlanification = function(){
 				planification.getCurrent().success(function(data){
 					$scope.planification = data;
+					$timeout(function(){
+						console.log('refresh');
+						$scope.masonry.reloadItems();
+						$scope.masonry.layout();
+					},15000)
 				});
 			};
 
@@ -31488,7 +31493,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			});
 
 			var formatRdv = function(rdv){
-				console.log(rdv);
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
 						rdv.author = rdv.users[key];
