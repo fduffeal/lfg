@@ -149,12 +149,6 @@ angular.module('myApp', [
 				controller : 'TopicCtrl'
 			});
 
-		$routeProvider.when('/:lang/destiny/profile/:username',
-			{
-				templateUrl: '/html/controllers/profile-destiny.html',
-				controller : 'ProfileDestinyCtrl'
-			});
-
 		$routeProvider.when('/:lang/destiny/video/all',
 			{
 				templateUrl: '/html/controllers/videotheque.html',

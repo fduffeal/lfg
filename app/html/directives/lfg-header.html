@@ -2,24 +2,15 @@
 	<div class="content-header">
 		<img src="img/logo-small.png" class="notlog mobile"  ng-if="!userInfo.username"/>
 		<div class="menu-left-mobile">
-			<!--<img src="img/logo-header-small.png"  class="logo-header" />-->
 			<div class="menu"><span class="fa fa-bars"></span>Menu <a href="{{notifUrl}}" ng-if="userInfo.username"><span class="nb-notif">{{notifications.length}}</span></a>
-				<!--<a href="{{homeUrl}}" translate>Home</a>
-<a href="{{homeUrl}}">LFG</a>
-<a href="{{forumUrl}}">Forum</a>
-<a href="{{listUsersUrl}}">Gardiens</a>
-<a href="{{notifUrl}}" class="notif" ng-if="userInfo.username" ><span class="nb-notif">{{notifications.length}}</span></a>-->
 				<ul>
-					<li><a href="{{homeUrl}}" translate>Home</a></li>
-					<li><a href="{{videoUrl}}">Videos</a></li>
-					
-					
-					<li><a href="{{rdvUrl}}">LFG</a></li>
-					<li><a href="{{listUsersUrl}}">Gardiens</a></li>
-					<li><a href="{{forumUrl}}">Forum</a></li>
-					<li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" translate>Notifications</a></li>
-					<li ng-if="userInfo.username"><a href="" ng-click="refreshBungie()">Update</a>
-					<!--    <li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>-->
+					<li><a ng-href="{{homeUrl}}" translate ng-class="{'selected':currentUrl == homeUrl}">Home</a></li>
+					<li><a ng-href="{{videoUrl}}"  ng-class="{'selected':currentUrl == videoUrl}">Videos</a></li>
+					<li><a ng-href="{{rdvUrl}}"  ng-class="{'selected':currentUrl == rdvUrl}">LFG</a></li>
+					<li><a ng-href="{{listUsersUrl}}"  ng-class="{'selected':currentUrl == listUsersUrl}">Gardiens</a></li>
+					<li><a ng-href="{{forumUrl}}"  ng-class="{'selected':currentUrl == forumUrl}">Forum</a></li>
+					<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" translate  ng-class="{'selected':currentUrl == notifUrl}">Notifications</a></li>
+					<li ng-if="userInfo.username"><a ng-href="" ng-click="refreshBungie()">Update</a>
 				</ul>
 			</div>
 
@@ -27,34 +18,18 @@
 		</div>
 		<ul class="menu-left">
 			<img src="img/logo-header.png" class="logo-header" />
-			<li><a href="{{homeUrl}}" class="fa fa-home"> <span translate>Home</span></a></li>
-			<li><a href="{{videoUrl}}" class="fa fa-video-camera"><span>Videos</span></a></li>
-			<li><a href="{{rdvUrl}}" class="fa fa-gamepad "><span>Parties</span></a></li>
-			<li ng-if="userInfo.username"><a href="{{listUsersUrl}}" class="fa fa-user-plus "><span>Gardiens</span></a></li>
-			<li><a href="{{forumUrl}}" class="fa fa-comments "><span>Forum</span></a></li>
-			<!--<li><a href="{{partyCreateUrl}}" translate>Create Party</a></li>
-<li ng-if="userInfo.username"><a href="{{matchmakingUrl}}" translate>Matchmaking</a></li>-->
-		<li ng-if="userInfo.username"><a href="" ng-click="refreshBungie()" class="fa fa-refresh"><span>Update</span></a>
-			<li ng-if="userInfo.username" class="notif"><a href="{{notifUrl}}" class=" fa fa-bell" ></a><span class="nb-notif">{{notifications.length}}</span></li>
-			
-			<!--<li ng-if="userInfo.username"><a href="{{gamesUrl}}" translate>Games Profiles</a></li>-->
-			<!--    <li><a href="{{listUsersUrl}}" translate>Users Connected</a></li>-->
+			<li><a ng-href="{{homeUrl}}" class="fa fa-home" ng-class="{'selected':currentUrl == homeUrl}"> <span translate>Home</span></a></li>
+			<li><a ng-href="{{videoUrl}}" class="fa fa-video-camera" ng-class="{'selected':currentUrl == videoUrl}"><span>Videos</span></a></li>
+			<li><a ng-href="{{rdvUrl}}" class="fa fa-gamepad " ng-class="{'selected':currentUrl == rdvUrl}"><span>Parties</span></a></li>
+			<li ng-if="userInfo.username"><a ng-href="{{listUsersUrl}}" class="fa fa-user-plus "  ng-class="{'selected':currentUrl == listUsersUrl}"><span>Gardiens</span></a></li>
+			<li><a ng-href="{{forumUrl}}" class="fa fa-comments "  ng-class="{'selected':currentUrl == forumUrl}"><span>Forum</span></a></li>
+			<li ng-if="userInfo.username"><a ng-href="" ng-click="refreshBungie()" class="fa fa-refresh"><span>Update</span></a>
+			<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" class=" fa fa-bell" ng-class="{'selected':currentUrl == notifUrl}"></a><span class="nb-notif">{{notifications.length}}</span></li>
 		</ul>
-		<!--  <ul class="menu-right"ng-if="userInfo.username">
-<li class="username">
-{{userInfo.username}}
-<img src="img/arrow-white.png" />
-<div class="submenu">
-<ul>
-<li>
-<a href="" ng-click="logout()" translate>Logout</a><!--</li>
-</ul>
-</div>
-</li>
-</ul>-->
+
 		<ul class="menu-right unlogged"ng-if="!userInfo.username">
-			<li><a href="{{loginPageUrl}}" class="btn fa fa-connectdevelop" translate>Login</a></li>
-			<li><a href="{{registerPageUrl}}" class="btn fa fa-sign-in" translate>Register</a></li>
+			<li><a ng-href="{{loginPageUrl}}" class="btn fa fa-connectdevelop" translate>Login</a></li>
+			<li><a ng-href="{{registerPageUrl}}" class="btn fa fa-sign-in" translate>Register</a></li>
 		</ul>
 
 		<div lfg-interval="intervaNotificationId"></div>

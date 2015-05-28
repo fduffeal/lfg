@@ -45,7 +45,7 @@ angular.module('myApp.services')
 					username : currentUser.username,
 					token : currentUser.token
 				};
-				return api.post('login/refresh',params).success(function(data){
+				return api.post('login/refresh',params,currentUser).success(function(data){
 					storeUser(data);
 				});
 			};

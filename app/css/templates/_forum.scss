@@ -5,7 +5,7 @@
 
 	}
 	.content-header {
-		width: 940px;
+		/*width: 940px;*/
 		.menu-right {
 			margin-right: 0;
 		}
@@ -19,13 +19,13 @@
 			margin: 5px;
 			font-weight:bold;
 			a{
-				color: $orange;
+				color: 0;
 				&:hover{
 					text-decoration: underline;
 				}
 			}
 			&.actif {
-				background: #000;
+				background: $base-color1;
 				padding: 3px 10px;
 			}
 		}
@@ -35,19 +35,18 @@
 		font-weight: bold;
 		font-size: 1.4rem;
 		margin-top: 10px;
-		background: #f15641;
+		background: $base-color1;
 		cursor: pointer;
 		&:hover {
-			color:black;
+			background: $base-color2;
 		}
 	}
 	.refresh {
 		float: right;
 		margin-bottom: 20px;
 		width: 100px;
-		&:before {
-			content: "✽";
-			float: right;
+		.fa {
+			margin-right: 5px;
 		}
 	}
 	.text-angular {
@@ -75,8 +74,8 @@
 		clear:both;
 	}
 	.page {
-		width: 940px;
-		margin: auto;
+		/*width: 940px;
+		margin: auto;*/
 		margin-bottom: 10px;
 	}
 	.new {
@@ -116,7 +115,7 @@
 		border-collapse: collapse;
 		thead {
 			text-transform: uppercase;
-			background: #262525;
+			background: $base-color3;
 			font-weight: bold;
 			color:white;
 		}
@@ -134,7 +133,7 @@
 			}
 		}
 		a {
-			color:#f15641;
+			color:$base-color1;
 			display: block;
 			height: 20px;
 			overflow: hidden;
@@ -142,7 +141,7 @@
 				color:#000;
 			}
 			&.modo {
-				color: #06ab93;
+				color: $base-color2;
 			}
 		}
 

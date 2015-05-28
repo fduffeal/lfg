@@ -1,6 +1,6 @@
 <div id="topic" class="wrap">
 	<lfg-header></lfg-header>
-<lfg-friendlist></lfg-friendlist>
+
 	<div class="welcome">
 
 
@@ -9,27 +9,51 @@
 				<a ng-if="(topic.topic.status != 'news')" ng-href="{{forumUrl}}">Forum</a>
 				<a ng-if="(topic.topic.status == 'news')" ng-href="{{homeUrl}}">Home</a>
 				> {{topic.topic.titre}} - <span>Page</span> {{currentPage}}</div>
+				<div class="news-cover" ng-if="topic.topic.status == 'news'">
+					<img src="{{topic.topic.vignette}}" alt="">
+				</div>
 			<h2 class="sujet">
-				<span ng-if="topic.topic.status != 'news'">Sujet :</span>
+				<span ng-if="topic.topic.status != 'news'"><span class="fa fa-newspaper-o"></span>Sujet :</span>
 				<span ng-if="topic.topic.status == 'news'">News :</span>
 				{{topic.topic.titre}}
 			</h2>
 
-			<a href="" class="btn2 refresh" ng-click="refresh()" >Actualiser</a>
-			<a ng-href="{{forumUrl}}" class="toussujet btn2" >Sujets</a>
+			<a href="" class="btn2 refresh" ng-click="refresh()" ng-if="topic.topic.status != 'news'" ><span class="fa fa-refresh"></span>Actualiser</a>
+			<a ng-href="{{forumUrl}}" class="toussujet btn2" ng-if="topic.topic.status != 'news'" ><span class="fa fa-newspaper-o"></span>Sujets</a>
+			<div class="topic-news"  ng-if="topic.topic.status == 'news'" ng-repeat="message in (filteredItems = (topic.messages | limitTo:1))">
+				
+				<div class="new-author" ng-if="topic.topic.status == 'news'" >
+					par <span class="news-user">{{message.user.username}}</span> le <span class="new-date">	{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
+				</div>
+				<div class="news-msg" ta-bind ng-model="message.texte"></div>
+
+			</div>
 		</div>
 		<div class="clear"></div>
 		<lfg-fb-share></lfg-fb-share>
+		<a href="" class="read fa fa-twitter"><span>Twitter</span></a>
+		<div id="fb-root"></div>
+			<div class="fb-like" data-href="https://www.facebook.com/esbattlelfg" data-width="50"
+				 data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="don " target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="8PSC8UEQW5LQJ">
+				<div class="fa fa-paypal"><input type="submit"  value="Faire un don Paypal" ></div>
+				
+				<!--<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">-->
+				<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+			</form>
+
 	</div>
 
 	<div class="page">
 
-		<lfg-pagination id="top" a-page="aPage" current-page="currentPage" max-page="6"></lfg-pagination>
+		<lfg-pagination id="top" a-page="aPage" current-page="currentPage" max-page="6" ng-if="(topic.topic.status != 'news')"></lfg-pagination>
 
 		<div class="block">
 			<table class="list-message" border="0">
 
-				<tr ng-repeat="message in topic.messages">
+				<tr ng-repeat="message in topic.messages" ng-if="(topic.topic.status != 'news')">
 					<td class="msg">
 						<table>
 							<tr>
@@ -53,6 +77,7 @@
 									</div>
 								</td>
 							</tr>
+
 							<tr>
 								<td class="to-msg" valign="top">
 									<div ta-bind ng-model="message.texte"></div>
@@ -63,10 +88,56 @@
 								<td class="none"></td>
 								<td class="to-sign">
 									<span ng-repeat="usergame in message.user.userGame" >
-										{{usergame.data1 | translate}} {{usergame.data2}} |
-									</span>
+										{{usergame.data1 | translate}} {{usergame.data2}} | 
+									</span> <span class="plat-name {{message.user.userGame[0].plateform.nom}}">{{message.user.userGame[0].plateform.nom}}</span>
 									<br/>
-									<b>{{message.user.userGame[0].data3}}</b>
+									<b>{{message.user.userGame[0].data3}}</b> 
+
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr ng-repeat="message in topic.messages" ng-show="!$first" ng-if="(topic.topic.status == 'news')">
+					<td class="msg">
+						<table>
+							<tr>
+								<td class="to-avatar" rowspan="2" valign="top">
+									<div class="persos" ng-if="message.user.userGame.length > 0">
+										<div ng-repeat="usergame in message.user.userGame | filterAvatar" style="background: url('{{usergame.data5}}')"></div>
+										<img src="img/forum/lay-bar.png" alt="" class="lay" ng-if="(message.user.role != 'modo' && message.user.role != 'redacteur')" />
+										<img src="img/forum/lay-bar-reda.png" alt="" class="lay" ng-if="(message.user.role == 'redacteur')" />
+										<img src="img/forum/lay-bar-modo.png" alt="" class="lay" ng-if="(message.user.role == 'modo')" />
+									</div>
+
+								</td>
+								<td class="to-info" valign="top">
+									<div class="left " ng-class="{'modo':(message.user.role == 'modo')}">
+										{{message.user.username}}
+									</div>
+									<div class="right">
+										{{message.created *1000 | date:'yyyy-MM-dd HH:mm'}}
+										<a href="" ng-click="delete(message)" ng-if="message.user.id === currentUser.id || currentUser.role == 'modo'" class="delete"><span></span></a>
+										<a href="" ng-click="modify(message)" ng-if="message.user.id === currentUser.id || currentUser.role == 'modo'" class="modify"><span></span></a>
+
+									</div>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="to-msg" valign="top">
+									<div ta-bind ng-model="message.texte"></div>
+									<!--<span ng-bind-html="message.texte | filterHtml "></span>-->
+								</td>
+							</tr>
+							<tr>
+								<td class="none"></td>
+								<td class="to-sign">
+									<span ng-repeat="usergame in message.user.userGame" >
+										{{usergame.data1 | translate}} {{usergame.data2}} | 
+									</span> <span class="plat-name {{message.user.userGame[0].plateform.nom}}">{{message.user.userGame[0].plateform.nom}}</span>
+									<br/>
+									<b>{{message.user.userGame[0].data3}}</b> 
 
 								</td>
 							</tr>

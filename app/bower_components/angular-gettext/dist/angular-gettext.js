@@ -12,6 +12,14 @@ angular.module('gettext').constant('gettext', function (str) {
 
 angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "$http", "$cacheFactory", "$interpolate", "$rootScope", function (gettextPlurals, $http, $cacheFactory, $interpolate, $rootScope) {
     var catalog;
+    var noContext = '$$noContext';
+
+    // IE8 returns UPPER CASE tags, even though the source is lower case.
+    // This can causes the (key) string in the DOM to have a different case to
+    // the string in the `po` files.
+    // IE9, IE10 and IE11 reorders the attributes of tags.
+    var test = '<span id="test" title="test" class="tested">test</span>';
+    var isHTMLModified = (angular.element('<span>' + test + '</span>').html() !== test);
 
     var prefixDebug = function (string) {
         if (catalog.debug && catalog.currentLanguage !== catalog.baseLanguage) {
@@ -49,6 +57,10 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "$http", 
             broadcastUpdated();
         },
 
+        getCurrentLanguage: function () {
+            return this.currentLanguage;
+        },
+
         setStrings: function (language, strings) {
             if (!this.strings[language]) {
                 this.strings[language] = {};
@@ -56,32 +68,50 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "$http", 
 
             for (var key in strings) {
                 var val = strings[key];
-                if (typeof val === 'string') {
-                    this.strings[language][key] = [val];
-                } else {
-                    this.strings[language][key] = val;
+
+                if (isHTMLModified) {
+                    // Use the DOM engine to render any HTML in the key (#131).
+                    key = angular.element('<span>' + key + '</span>').html();
                 }
+
+                if (angular.isString(val) || angular.isArray(val)) {
+                    // No context, wrap it in $$noContext.
+                    var obj = {};
+                    obj[noContext] = val;
+                    val = obj;
+                }
+
+                // Expand single strings for each context.
+                for (var context in val) {
+                    var str = val[context];
+                    val[context] = angular.isArray(str) ? str : [str];
+                }
+                this.strings[language][key] = val;
             }
 
             broadcastUpdated();
         },
 
-        getStringForm: function (string, n) {
+        getStringForm: function (string, n, context) {
             var stringTable = this.strings[this.currentLanguage] || {};
-            var plurals = stringTable[string] || [];
+            var contexts = stringTable[string] || {};
+            var plurals = contexts[context || noContext] || [];
             return plurals[n];
         },
 
-        getString: function (string, context) {
-            string = this.getStringForm(string, 0) || prefixDebug(string);
-            string = context ? $interpolate(string)(context) : string;
+        getString: function (string, scope, context) {
+            string = this.getStringForm(string, 0, context) || prefixDebug(string);
+            string = scope ? $interpolate(string)(scope) : string;
             return addTranslatedMarkers(string);
         },
 
-        getPlural: function (n, string, stringPlural, context) {
+        getPlural: function (n, string, stringPlural, scope, context) {
             var form = gettextPlurals(this.currentLanguage, n);
-            string = this.getStringForm(string, form) || prefixDebug(n === 1 ? string : stringPlural);
-            string = context ? $interpolate(string)(context) : string;
+            string = this.getStringForm(string, form, context) || prefixDebug(n === 1 ? string : stringPlural);
+            if (scope) {
+                scope.$count = n;
+                string = $interpolate(string)(scope);
+            }
             return addTranslatedMarkers(string);
         },
 
@@ -101,7 +131,7 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "$http", 
     return catalog;
 }]);
 
-angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$animate", "$compile", function (gettextCatalog, $parse, $animate, $compile) {
+angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$animate", "$compile", "$window", function (gettextCatalog, $parse, $animate, $compile, $window) {
     // Trim polyfill for old browsers (instead of jQuery)
     // Based on AngularJS-v1.2.2 (angular.js#620)
     var trim = (function () {
@@ -121,8 +151,10 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
         }
     }
 
+    var msie = parseInt((/msie (\d+)/.exec(angular.lowercase($window.navigator.userAgent)) || [])[1], 10);
+
     return {
-        restrict: 'A',
+        restrict: 'AE',
         terminal: true,
         compile: function compile(element, attrs) {
             // Validate attributes
@@ -131,11 +163,21 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
 
             var msgid = trim(element.html());
             var translatePlural = attrs.translatePlural;
+            var translateContext = attrs.translateContext;
+
+            if (msie <= 8) {
+                // Workaround fix relating to angular adding a comment node to
+                // anchors. angular/angular.js/#1949 / angular/angular.js/#2013
+                if (msgid.slice(-13) === '<!--IE fix-->') {
+                    msgid = msgid.slice(0, -13);
+                }
+            }
 
             return {
                 post: function (scope, element, attrs) {
                     var countFn = $parse(attrs.translateN);
                     var pluralScope = null;
+                    var linking = true;
 
                     function update() {
                         // Fetch correct translated string.
@@ -143,16 +185,31 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
                         if (translatePlural) {
                             scope = pluralScope || (pluralScope = scope.$new());
                             scope.$count = countFn(scope);
-                            translated = gettextCatalog.getPlural(scope.$count, msgid, translatePlural);
+                            translated = gettextCatalog.getPlural(scope.$count, msgid, translatePlural, null, translateContext);
                         } else {
-                            translated = gettextCatalog.getString(msgid);
+                            translated = gettextCatalog.getString(msgid,  null, translateContext);
+                        }
+
+                        var oldContents = element.contents();
+
+                        if (oldContents.length === 0){
+                            return;
+                        }
+
+                        // Avoid redundant swaps
+                        if (translated === trim(oldContents.html())){
+                            // Take care of unlinked content
+                            if (linking){
+                                $compile(oldContents)(scope);
+                            }
+                            return;
                         }
 
                         // Swap in the translation
                         var newWrapper = angular.element('<span>' + translated + '</span>');
                         $compile(newWrapper.contents())(scope);
-                        var oldContents = element.contents();
                         var newContents = newWrapper.contents();
+
                         $animate.enter(newContents, element);
                         $animate.leave(oldContents);
                     }
@@ -164,6 +221,7 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
                     scope.$on('gettextLanguageChanged', update);
 
                     update();
+                    linking = false;
                 }
             };
         }
@@ -171,8 +229,8 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
 }]);
 
 angular.module('gettext').filter('translate', ["gettextCatalog", function (gettextCatalog) {
-    function filter(input) {
-        return gettextCatalog.getString(input);
+    function filter(input, context) {
+        return gettextCatalog.getString(input, null, context);
     }
     filter.$stateful = true;
     return filter;

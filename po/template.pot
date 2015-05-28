@@ -126,10 +126,6 @@ msgstr ""
 msgid "First you have to create a party, then you will be able to invite your friends !"
 msgstr ""
 
-#: app/html/controllers/home.html
-msgid "Follow us"
-msgstr ""
-
 #: app/html/controllers/login.html
 msgid "Forget login or password ?"
 msgstr ""
@@ -560,6 +556,10 @@ msgstr ""
 
 #: app/dynamique_translate.html
 msgid "warlock"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "yesterday at {{time}}"
 msgstr ""
 
 #: app/dynamique_translate.html

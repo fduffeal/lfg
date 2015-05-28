@@ -1,17 +1,16 @@
 angular.module('myApp.controllers').controller('HomeCtrl',
-	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire',
-		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire) {
+	['$scope', '$routeParams', 'forum', 'redirection', '$anchorScroll', '$location', '$timeout', 'user', 'rdv','$filter','partenaire','planification','$sce',
+		function ($scope, $routeParams, forum, redirection, $anchorScroll, $location, $timeout, user, rdv,$filter,partenaire,planification,$sce) {
 			'use strict';
 			/*$scope.msg = $routeParams.msg;
 			 console.log($scope.msg);*/
 			$scope.currentUser = user.get();
 			$scope.texte = "";
 
+			$scope.aTopic = [];
+
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
-
-			$scope.indexCarrousel = 0;
-
-			$scope.aCarrousel = [];
+			$scope.rdvUrl = redirection.getHomePageDestinyUrl();
 
 			var firstCover = {
 				document : {
@@ -19,59 +18,6 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				},
 				url : ''
 			};
-
-			$scope.aCarrousel.push(firstCover);
-
-			$scope.prevCarrousel = function () {
-				if ($scope.indexCarrousel > 0) {
-					$scope.indexCarrousel--;
-				} else {
-					$scope.indexCarrousel = $scope.aCarrousel.length-1;
-				}
-			};
-
-			$scope.nextCarrousel = function () {
-				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
-					$scope.indexCarrousel++;
-				} else {
-					$scope.indexCarrousel = 0;
-				}
-			};
-
-			$scope.goCarrousel = function(index){
-				$scope.indexCarrousel = index;
-			};
-
-			var autoChangeCarrousel = function(){
-				if ($scope.indexCarrousel < $scope.aCarrousel.length-1) {
-					$scope.indexCarrousel++;
-				} else {
-					$scope.indexCarrousel = 0;
-				}
-
-				$timeout(function(){
-					autoChangeCarrousel();
-				},10000);
-			};
-
-
-			forum.getNews().success(function (data) {
-
-				$scope.aTopic = data;
-
-				//var regex = /<img[ a-z="\/:.0-9\-_]{0,}>/i;
-
-				for (var i = 0; i < $scope.aTopic.length; i++) {
-
-					$scope.aTopic[i].url = redirection.getTopicUrl($scope.aTopic[i]);
-
-					$scope.aTopic[i].message.texteBrut = $filter('filterWords')($scope.aTopic[i].message.texteBrut, 26);
-
-					if ($scope.aTopic[i].document !== null) {
-						$scope.aCarrousel.push($scope.aTopic[i]);
-					}
-				}
-			});
 
 			partenaire.getAll().success(function (data) {
 
@@ -94,6 +40,13 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 				}
 			};
+
+
+			var plateformId = null;
+			if($scope.currentUser !== null && $scope.currentUser.userGame[0] && $scope.currentUser.userGame[0].plateform){
+				plateformId = $scope.currentUser.userGame[0].plateform.id;
+			}
+
 			var refreshRdvData = function () {
 
 				rdv.getAll().success(function (data) {
@@ -105,7 +58,14 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					}
 					$scope.predicate = 'start';
 					$scope.reverse = true;
-					$scope.aRdv = $filter('orderBy')(data, $scope.predicate, $scope.reverse);
+
+					//items,plateformId,tags,onlyLive,onlyInFuture,onlyWithPlace,nbPlaceAvailableMin,nbPlaceAvailableMax,type
+					$scope.aRdv = $filter('filterRdvLastPlace')(data, plateformId,[],false,true,true,1,5,'type_party');
+
+					if($scope.aRdv.length < 2){
+						$scope.aRdv = $filter('orderBy')(data, $scope.predicate,$scope.reverse);
+
+					}
 
 				}).error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
@@ -114,18 +74,56 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 
 			};
 
-			refreshRdvData();
+			var offsetNews = 0;
+			var limitNews = 13;
+			$scope.displayAddNews = true;
+			$scope.addNews = function(){
+				forum.getNews(offsetNews,limitNews).success(function (data) {
 
-			$timeout(function(){
-				autoChangeCarrousel();
-			},10000);
+					var nbNewsToDisplay = data.length-1;
+					if(data.length !== limitNews){
+						$scope.displayAddNews = false;
+						nbNewsToDisplay = data.length;
+					}
 
-			$scope.indexPage = 0;
-			$scope.nbItemByPage = 10;
-			$scope.updateIndexPage = function(indexPage){
-				$scope.indexPage = indexPage;
+					for (var i = 0; i < nbNewsToDisplay; i++) {
+						data[i].url = redirection.getTopicUrl(data[i]);
+						data[i].message.texteBrut = $filter('filterWords')(data[i].message.texteBrut, 26);
+
+						data[i].dateFormated = $filter('filterDateNews')(data[i].created);
+
+						$scope.aTopic.push(data[i]);
+						offsetNews++;
+					}
+				});
 			};
 
+			var self = this;
+
+			//$sce.trustAsResourceUrl('http://www.youtube.com/');
+
+			$scope.trustSrc = function(src) {
+				return $sce.trustAsResourceUrl(src);
+			};
+
+			var getPlanification = function(){
+				planification.getCurrent().success(function(data){
+					$scope.planification = data;
+				});
+			};
+
+			refreshRdvData();
+			$scope.addNews();
+			getPlanification();
+
+			var container = document.querySelector('#container');
+			$scope.masonry = new Masonry( container, {
+				// options
+				columnWidth: '.grid-sizer',
+				itemSelector: '.article',
+				gutter: 10,
+				percentPosition: true
+			});
 		}
 	]
 );

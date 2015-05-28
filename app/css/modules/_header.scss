@@ -4,17 +4,28 @@ $color3: #06ab93; // blue
 .header {
 	height: 47px;
 	line-height: 47px;
-	background: $color1;
+	/*background: $color1;*/
+	background: #242d3c ;
 	width: 100%;
 	top: 0;
 	position: fixed;
 	z-index: 999;
+	.fa span {
+		font-size: 12px;
+		font-family: 'roboto', sans-serif;
+		text-transform: uppercase;
+		@media screen and (max-width: 490px) {
+			font-size: 10px;
+		}
+
+	}
 	.fa-gamepad:before {
-		color: $color2!important;
+		/*color: $color2!important;*/
 	}
 	.content-header {
 		margin: auto;
-		width: 940px;
+		width: 95%!important;
+		max-width: 1440px;
 		font-size: 13px;
 		font-size: 1.3rem;
 		@media screen and (max-width: 980px ) {
@@ -52,7 +63,7 @@ $color3: #06ab93; // blue
 		a {
 			color: white;
 			font-weight: bold;
-			&.selected {
+			&.selected:before {
 				color: $color2;
 			}
 		}
@@ -160,7 +171,7 @@ $color3: #06ab93; // blue
 		background: #fff;
 		top: 47px;
 		position: absolute;
-		  line-height: 23px;
+		line-height: 23px;
 		width: 300px;
 	}
 	.menu-right {
@@ -268,7 +279,7 @@ $color3: #06ab93; // blue
 			width: auto;
 			margin-right: 5px;
 			font-size: 11px;
-			margin-top: 25px;
+			margin-top: 20px;
 			padding: 0 3px!important;
 			&:before {
 				display: none;

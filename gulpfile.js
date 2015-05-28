@@ -51,8 +51,8 @@ gulp.task('scripts', function() {
 		'app/bower_components/angular/angular.js',
 		'app/bower_components/angular-route/angular-route.js',
 		'app/bower_components/angular-cookies/angular-cookies.js',
-		'app/bower_components/angular-gettext/dist/angular-gettext.js',
 		'app/bower_components/angular-animate/angular-animate.js',
+		'app/bower_components/angular-gettext/dist/angular-gettext.js',
 		'app/bower_components/textAngular/dist/textAngular.min.js',
 		'app/bower_components/textAngular/dist/textAngular-rangy.min.js',
 		'app/bower_components/textAngular/dist/textAngular-sanitize.min.js',
@@ -96,7 +96,7 @@ gulp.task('server', function() {
 			host: host,
 			port: port,
 			open: openUrl,
-			livereload: true,
+			livereload: false,
 			fallback: 'index.html'
 		})
 	);

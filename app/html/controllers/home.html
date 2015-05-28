@@ -3,100 +3,83 @@
 	<div class="carousel">
 		<div class="block">
 			<ul class="slider">
-				<li ng-repeat="topic in aCarrousel" ng-show="($index === indexCarrousel && $index < nbItemByPage)">
-					<a ng-href="{{topic.url}}">
-						<img src="{{topic.document.src}}" alt="" class="logo-destiny"/>
+				<li>
+					<a ng-href="{{rdvUrl}}" style="background-image:url('img/main_banniere.jpg')">
+						<div class="txt1">
+							Site n°1 d'actus #FRANCOPHONE<br/>
+
+							<div class="btn-find fa fa-search"><span>Trouvez des joueurs</span></div>
+						</div>
 					</a>
 				</li>
 			</ul>
-			<a href="" class="arrow fa fa-caret-left" ng-click="prevCarrousel()"></a>
-			<a href="" class="arrow fa fa-caret-right" ng-click="nextCarrousel()"></a>
-			<ul class="page-slider">
-				<li ng-repeat="topic in aCarrousel" ng-show="$index < nbItemByPage">
-					<a href="" ng-click="goCarrousel($index)" ng-class="{'current':$index === indexCarrousel}"></a>
-				</li>
-			</ul>
 		</div>
 	</div>
-	<div class="page content">
-		<div class="block-left">
-			<h2>Dernière news</h2>
+	<div class="page content" id="container">
+		<div class="grid-sizer"></div>
+		<div class="article w2 fix400" lfg-masonry="masonry"  ng-if="planification.video">
+			<div class="article-content " lfg-masonry="masonry">
+				<div class="title2">{{planification.titre}}</div>
+				<lfg-youtube ng-if="planification.video" url="planification.video.url"></lfg-youtube>
+				<div class="title2-video">{{planification.description}}</div>
+			</div>
+		</div>
+		<div class="article lastparty">
+			<div class="article-content">
+				<div class="title2">Dernières parties</div>
+				<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)" lfg-masonry="masonry">
+					<tr>
+						<td colspan="3">
+							<lfg-profile-bungie with-plateform="false"
+							                    user-game="rdv.author"></lfg-profile-bungie>
+						</td>
+					</tr>
+					<tr class="line">
+						<td class="l1" valign="top">
+							<span translate>Party</span><br/>
+							{{rdv.users.length}}/{{ rdv.nbParticipant}}<br/>
+							<span>{{ rdv.plateform.nom }}</span>
+						</td>
+						<td class="l2" valign="top">
+							<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/>
+							{{rdv.description}}
+						</td>
+						<td class="l3" valign="top">
+							<lfg-since time="{{rdv.start}}"></lfg-since>
+							<br/>
+							<a ng-href="{{rdv.url}}" class="read fa fa-eye"><span>Voir</span></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="article partner">
+			<div class="article-content">
+				<div class="title2">Partenaires</div>
+				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank"
+				   ng-repeat="partenaire in partenaires" lfg-masonry="masonry"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+			</div>
+		</div>
 
-			<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-show="$index < (indexPage+1)*nbItemByPage && $index >= (indexPage)*nbItemByPage">
-				<a ng-href="{{topic.url}}" class="post-image">
-                    <img src="{{topic.vignette.src}}">
-                </a>
-				<div class="post-text">
-					<div class="post-title">
-						<a ng-href="{{topic.url}}" class="title">{{topic.titre}}</a><br/>
-						<span class="date">{{topic.created *1000 | date:'yyyy-MM-dd HH:mm'}}</span>
-						<span class="comment"><a ng-href="{{topic.url}}" class="fa fa-comment">{{topic.nbMessages}}</a></span>
-							<span class="author">de <a ng-href="{{topic.url}}">{{topic.user.username}}</a></span>
+		<div class="article" ng-repeat="topic in aTopic  |orderBy:['position','created']:true" lfg-masonry="masonry">
+			<a href="{{topic.url}}">
+
+				<div class="article-content {{topic.status}}">
+					<div class="category {{topic.status}}">{{topic.status}}</div>
+					<div class="title2">{{topic.titre}}</div>
+					<div class="block-cover">
+						<img class="cover" ng-src="{{topic.vignette.src}}">
 					</div>
+					<span class="date">{{topic.dateFormated}}</span>
+
 					<div class="text">
 						<span ta-bind ng-model="topic.message.texteBrut"></span>
 					</div>
-					<a ng-href="{{topic.url}}" class="read fa fa-play"><span>Lire</span></a>
-					<lfg-fb-share url="{{topic.url}}"></lfg-fb-share>
-
+					<div class="by">par <span>{{topic.user.username}}</span> | {{topic.nbMessages}} commentaire(s)</div>
 				</div>
-			</div>
-			<div class="pagination">
-				<span ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0" ng-class="{'actif':(currentPage == $index+1)}">
-					<a ng-href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a>
-				</span>
-			</div>
-			<!-- <ul ng-repeat="topic in aTopic  |orderBy:['position','created']:true" ng-if="$index%nbItemByPage === 0">
-<li><a href="" ng-click="updateIndexPage(($index/nbItemByPage))">{{($index/nbItemByPage)+1}}</a></li>
-</ul>-->
-
+			</a>
 		</div>
-		<div class="block-right">
-			<h2>Dernières parties créées</h2>
-
-			<table class="party" width="100%" ng-repeat="rdv in aRdv" ng-if="($index < 3)">
-				<tr>
-					<td colspan="3">
-						<lfg-profile-bungie with-plateform="false"
-											user-game="rdv.author"></lfg-profile-bungie>
-					</td>
-				</tr>
-				<tr class="line">
-					<td class="l1" valign="top">
-						<span translate>Party</span><br/>
-						{{rdv.users.length}}/{{ rdv.nbParticipant}}<br/>
-						<span>{{ rdv.plateform.nom }}</span>
-					</td>
-					<td class="l2" valign="top">
-						<span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/>
-						{{rdv.description}}
-					</td>
-					<td class="l3" valign="top">
-						<lfg-since time="{{rdv.start}}"></lfg-since></lfg-since><br/>
-				<a ng-href="{{rdv.url}}" class="read fa fa-sign-in"><span>Voir</span></a>
-				</td>
-			</tr>
-		</table>
-
-	<!--<lfg-youtube></lfg-youtube>-->
-	<h2 class="second">Partenaires</h2>
-	<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank" ng-repeat="partenaire in partenaires"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
-	<h2 class="second" translate>Follow us</h2>
-
-	<div class="socials">
-		<a href="https://www.facebook.com/esbattlelfg" target="_blank"><img src="img/footer-logo-fb.png"/></a>
-		<a href="https://twitter.com/esbattle" target="_blank"><img src="img/footer-logo-twitter.png"/></a>
-		<a href="http://www.bungie.net/fr/Clan/Forum/595307" target="_blank"><img
-																				  src="img/footer-logo-bungie.png"/></a>
+		<div ng-show="displayAddNews" class="more-info" ng-click="addNews()"><span>Plus de news</span></div>
 	</div>
-
-</div>
-<div class="clear"></div>
-</div>
-
-<div lfg-interval="intervalId"></div>
-</div>
-
-</div>
 </div>
 <lfg-footer></lfg-footer>

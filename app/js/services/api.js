@@ -46,14 +46,26 @@ angular.module('myApp.services')
 				});
 			};
 
-			this.post = function (path, params) {
+			this.post = function (path, params,currentUser) {
 
 				var url = this.getApiUrl() + path;
+
+				var userId = '';
+				var token = '';
+				if(currentUser !== null && typeof currentUser !== 'undefined'){
+					userId = currentUser.id;
+					token = currentUser.token;
+				}
+
+
 				return $http({
 					method: 'POST',
 					url: url,
 					data: params,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
+					headers: {
+						'User' : userId,
+						'Token': token
+					}
 				}).error(function (data, status, headers, config) {
 
 					switch (status) {

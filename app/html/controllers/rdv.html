@@ -4,17 +4,20 @@
 	<lfg-profile-header></lfg-profile-header>
 	<div class="welcome page">
 		<div class="marge">
+			
 			<div id="fb-root"></div>
 			<div class="fb-like" data-href="https://www.facebook.com/esbattlelfg" data-width="50"
-			     data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="8PSC8UEQW5LQJ">
-<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-</form>
+				 data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="don " target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="8PSC8UEQW5LQJ">
+				<div class="fa fa-paypal"><input type="submit"  value="Faire un don Paypal" ></div>
 
-			<a href="" class="hide" ng-click="hideHelp()" ng-if="displayhelp"><span></span></a>
+				<!--<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">-->
+				<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+			</form>
+<div class="clear"></div>
+			<a href="" class="hide" ng-click="hideHelp()" ng-if="displayhelp"><span class="fa fa-close"></span></a>
 			<a href="" class="show" translate ng-click="showHelp()" ng-if="!displayhelp">Show Help</a>
 
 			<div class="clear"></div>
@@ -25,10 +28,10 @@
 			<br/>
 
 			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
-					src="img/ico-create.png"/></a>
+																									src="img/ico-create.png"/></a>
 			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span
-					translate>Post an announcement</span><img
-					src="img/ico-annonce.png"/></a>
+																						translate>Post an announcement</span><img
+																																  src="img/ico-annonce.png"/></a>
 
 			<div class="add" ng-show="displayFormAnnonce">
 				<form name="myFormBattleTag" ng-submit="getDestinyCharacters()">
@@ -36,17 +39,17 @@
 
 					<div ng-show="(aCharacters.length === 0)">
 						<p><span translate>Enter your informations or</span> <a ng-href="{{registerPageUrl}}" translate>create an account</a> <span
-								translate>to save your character for the next time !</span></p>
+																																					translate>to save your character for the next time !</span></p>
 						<label for="">
 							<select ng-model="plateformAnnonce"
-							        ng-options="plateformData.nom for plateformData in aPlateforms"
-							        ng-change="updateFormData()" required>
+									ng-options="plateformData.nom for plateformData in aPlateforms"
+									ng-change="updateFormData()" required>
 								<option value="" translate>Platform</option>
 							</select>
 						</label>
 
 						<input ng-model="gamertag" type="text" placeholder="{{'Your gamertag'|translate}}" class="first"
-						       style="margin-top:10px;" required/>
+							   style="margin-top:10px;" required/>
 
 						<span>
 							<input type="submit" href="#" class="btn2" value="{{'Find' | translate}}"/>
@@ -57,7 +60,7 @@
 						Choose a character
 					</div>
 					<lfg-profile with-plateform="true" selected-perso="selectedPerso"
-					             a-user-game="aCharacters"></lfg-profile>
+								 a-user-game="aCharacters"></lfg-profile>
 				</form>
 
 				<br style="clear:both"/>
@@ -66,12 +69,12 @@
 					<form name="myFormAnnonce" ng-submit="addAnnonce()">
 						<input type="text" placeholder="#Tag" class="first" ng-model="annonce_tag" required>
 						<input type="text" placeholder="{{'Enter a description'|translate}}" class="desc"
-						       ng-model="annonce_description" required>
-								<span>
-									<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)"
-									       value="{{'Send it'| translate}}">
-									<lfg-loader ng-if="(blockPostAnnonce == true)"></lfg-loader>
-								</span>
+							   ng-model="annonce_description" required>
+						<span>
+							<input type="submit" class="btn2" ng-if="(blockPostAnnonce === false)"
+								   value="{{'Send it'| translate}}">
+							<lfg-loader ng-if="(blockPostAnnonce == true)"></lfg-loader>
+						</span>
 
 						<div ng-if="(messageFormAnnonce !== null)">{{messageFormAnnonce | translate}}</div>
 					</form>
@@ -85,7 +88,7 @@
 
 		<div class="list">
 			<select class="platforms" ng-model="plateform"
-			        ng-options="plateformData.nom for plateformData in aPlateforms">
+					ng-options="plateformData.nom for plateformData in aPlateforms">
 				<option value="" translate>Plateform</option>
 			</select>
 
@@ -98,7 +101,7 @@
 			<ul class="search-tags">
 
 				<li class="search"><input type="text" ng-trim="false" placeholder="#TAGS" ng-model="tags"
-				                          ng-change="updateTags(this)" list="tagsList">
+										  ng-change="updateTags(this)" list="tagsList">
 				</li>
 				<datalist id="tagsList">
 					<option data-ng-repeat="item in autoCompleteTags" value="{{item}}"/>
@@ -111,12 +114,12 @@
 					<h1 translate>My partys</h1>
 					<table border="0">
 						<thead>
-						<tr>
-							<th class="list-player"><a href="" translate>Creator</a></th>
-							<th class="list-type"><a href="">Type</a></th>
-							<th class="list-infos"><a href="" translate>Infos</a></th>
-							<th class="list-start"><a href="" translate>Start</a></th>
-						</tr>
+							<tr>
+								<th class="list-player"><a href="" translate>Creator</a></th>
+								<th class="list-type"><a href="">Type</a></th>
+								<th class="list-infos"><a href="" translate>Infos</a></th>
+								<th class="list-start"><a href="" translate>Start</a></th>
+							</tr>
 						</thead>
 					</table>
 					<a class="line" ng-href="{{rdv.url}}"
@@ -124,26 +127,29 @@
 						<table border="0">
 							<tbody>
 
-							<tr>
-								<td class="list-player">
-									<lfg-profile-bungie with-plateform="false"
-									                    user-game="rdv.author"></lfg-profile-bungie>
-								</td>
-								<td class="list-type"><span translate>Party</span> <br/>
-							<span class="slot">Slots
-								{{rdv.users.length}}/{{ rdv.nbParticipant}}
-							</span><br/>
-							<span>
-								{{ rdv.plateform.nom }}
-							</span>
-								</td>
-								<td class="list-infos"><span
-										ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
-								</td>
-								<td class="list-start">
-									<lfg-since time="{{rdv.start}}">
-								</td>
-							</tr>
+								<tr>
+									<td class="list-player">
+										<lfg-profile-bungie with-plateform="false"
+															user-game="rdv.author"></lfg-profile-bungie>
+									</td>
+									<td class="list-type"><span translate>Party</span> <br/>
+										<span class="slot">Slots
+											{{rdv.users.length}}/{{ rdv.nbParticipant}}
+										</span><br/>
+										<span class="plat-name {{ rdv.plateform.nom }}">
+											<span ng-if="rdv.plateform.nom == 'XBOX ONE'">ONE</span>
+											<span ng-if="rdv.plateform.nom == 'XBOX 360'">360</span>
+											<span ng-if="rdv.plateform.nom != 'XBOX 360' && 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
+
+										</span>
+									</td>
+									<td class="list-infos">
+										<span  class="type-info {{ tag.nom | lowercase}}" ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
+									</td>
+									<td class="list-start">
+										<lfg-since time="{{rdv.start}}">
+											</td>
+								</tr>
 							</tbody>
 
 						</table>
@@ -152,12 +158,12 @@
 
 				<table border="0">
 					<thead>
-					<tr>
-						<th class="list-player"><a href="" translate>Player</a></th>
-						<th class="list-type"><a href="">Type</a></th>
-						<th class="list-infos"><a href="" translate>Infos</a></th>
-						<th class="list-start"><a href="" translate>Start</a></th>
-					</tr>
+						<tr>
+							<th class="list-player"><a href="" translate>Player</a></th>
+							<th class="list-type"><a href="">Type</a></th>
+							<th class="list-infos"><a href="" translate>Infos</a></th>
+							<th class="list-start"><a href="" translate>Start</a></th>
+						</tr>
 					</thead>
 				</table>
 				<a class="line" ng-href="{{rdv.url}}" ng-animate
@@ -165,37 +171,44 @@
 					<table border="0">
 
 						<tbody>
-						<tr class="mobile-hour">
-							<td align="center" colspan="5">
-								<lfg-since time="{{rdv.start}}">
-							</td>
-						</tr>
-						<tr>
-							<td class="list-player">
-								<lfg-profile-bungie with-plateform="false" user-game="rdv.author" user="rdv.user"
-								                    list-user="listUser"></lfg-profile-bungie>
-							</td>
-							<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/>
-							<span class="slot">Slots
-								{{rdv.users.length}}/{{ rdv.nbParticipant}}
-							</span><br/>
-							<span>
-								{{ rdv.plateform.nom }}
-							</span>
-							</td>
-							<td class="list-type" ng-if="rdv.type === 'type_annonce'">
-								<span translate>Announcement</span><br/><br/>
-							<span>
-								{{ rdv.plateform.nom }}
-							</span>
-							</td>
-							<td class="list-infos"><span ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>
-								{{ rdv.description}}
-							</td>
-							<td class="list-start">
-								<lfg-since time="{{rdv.start}}"></lfg-since>
-							</td>
-						</tr>
+							<tr class="mobile-hour">
+								<td align="center" colspan="5">
+									<lfg-since time="{{rdv.start}}">
+										</td>
+							</tr>
+							<tr>
+								<td class="list-player">
+									<lfg-profile-bungie with-plateform="false" user-game="rdv.author" user="rdv.user"
+														list-user="listUser"></lfg-profile-bungie>
+								</td>
+								<td class="list-type" ng-if="rdv.type !== 'type_annonce'"><span translate>Party</span> <br/>
+									<span class="slot">Slots
+										{{rdv.users.length}}/{{ rdv.nbParticipant}}
+									</span><br/>
+									<span class="plat-name {{ rdv.plateform.nom }}">
+										<span ng-if="rdv.plateform.nom === 'XBOX ONE'">ONE</span>
+										<span ng-if="rdv.plateform.nom === 'XBOX 360'">360</span>
+										<span ng-if="rdv.plateform.nom !== 'XBOX 360' && 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
+
+									</span>
+								</td>
+								<td class="list-type" ng-if="rdv.type === 'type_annonce'">
+									<span translate>Announcement</span><br/><br/>
+									<span class="plat-name {{ rdv.plateform.nom }}">
+										<span ng-if="rdv.plateform.nom === 'XBOX ONE'">ONE</span>
+										<span ng-if="rdv.plateform.nom === 'XBOX 360'">360</span>
+										<span ng-if="rdv.plateform.nom !== 'XBOX 360' && rdv.plateform.nom !== 'XBOX ONE'">{{ rdv.plateform.nom }}</span>
+									</span>
+								</td>
+								<td class="list-infos">
+									<span ng-repeat="tag in rdv.tags" class="type-info {{ tag.nom | lowercase}}">#{{ tag.nom }} </span>
+									<br/><br/>
+									{{ rdv.description}}
+								</td>
+								<td class="list-start">
+									<lfg-since time="{{rdv.start}}"></lfg-since>
+								</td>
+							</tr>
 						</tbody>
 
 					</table>

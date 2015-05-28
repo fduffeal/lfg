@@ -1,14 +1,16 @@
 #home {
 	.home-profile {
-
+		width: 95%;
+		/*
 		@media screen and (max-width: 1065px ) {
-			width: 84%;
-		}
+		width: 94%;
+	}
 		@media screen and (max-width: 550px ) {
-			width: 95%;
-		}
+		width: 95%;
+	}*/
 		background: #111;
-		width: 940px;
+		/*width: 940px;*/
+		max-width: 1440px;	
 		font-family: "Open Sans", sans-serif;
 		font-weight: 400;
 		font-size: 14px;
@@ -132,7 +134,7 @@
 	.welcome {
 		margin-top: 0;
 		color: white;
-		background: $orange;
+		background: $base-color3;
 		.marge {
 			padding: 10px 20px 0 20px!important;
 		}
@@ -146,14 +148,14 @@
 		}
 
 		.hide {
-			&:before {
-				content: "✖";
-				font-size: 2rem;
-				color: white;
-			}
+			/*&:before {
+			content: "✖";
+			font-size: 2rem;
+			color: white;
+		}
 			&:hover:before {
-				color: #06ab93;
-			}
+			color: #06ab93;
+		}*/
 		}
 		.txt {
 			display: block;
@@ -174,11 +176,10 @@
 			text-decoration: none!important;
 			font-size: 1.3rem;
 			margin-top: 0;
-			background: black;
+			background: $base-color2;
 			margin-bottom: 10px;
 			&:hover {
-				background: #000;
-				color: $orange;
+				background: $base-color1;
 			}
 			img{
 				position: absolute;
@@ -187,8 +188,63 @@
 				height: 20px;
 			}
 		}
+		.read {
+			font-size: 1.3rem;
+			margin-right: 10px;
+			background: $base-color1;
+			color: #fff;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px 10px;
+			margin-bottom: 5px;
+			&:hover {
+				opacity: 0.7;
+			}
+			&:before {
+				float: left;
+				margin: 0px 7px 0 2px;
+			}
+			&.fa-facebook {
+				background: #3b5999;
+			}
+
+		}
 		.social {
 			text-align: right;
+		}
+		.fb_reset, #fb-root {
+			display: none;
+		}
+		.fb_iframe_widget {
+			margin-right: 10px;
+		}
+		.fb-like {
+			  margin-bottom: 5px;
+			display: inline-block;
+		}
+		.don{
+			display: inline-block;
+
+			div{
+				display: inline-block;
+				background: #00335e ;
+				color: white;
+				height: 20px;
+				line-height: 20px;
+				padding: 0px 10px;
+
+				input {
+					background: transparent;
+					border:0;
+					color: white;
+					font-size: 1.3rem;
+					cursor: pointer;
+				}
+				&:hover {
+					opacity: 0.8
+				}
+			}
+
 		}
 		.add {
 			margin-top: 15px;
@@ -200,7 +256,7 @@
 
 
 			a {
-				color: $color1;
+				color: $base-color1;
 				text-decoration: underline;
 			}
 			h2 {
@@ -321,13 +377,13 @@
 				background: #e9aea6;
 				cursor: pointer;
 			}
-		  	&.ng-enter{
-			  @include transition(background-color 1s ease-out);
-			  background-color: #e9aea6;
+			&.ng-enter{
+				@include transition(background-color 1s ease-out);
+				background-color: #e9aea6;
 			}
 			&.ng-enter-active{
-			  @include transition(background-color 1s ease-out);
-			  background-color: white;
+				@include transition(background-color 1s ease-out);
+				background-color: white;
 			}
 		}
 
@@ -411,7 +467,7 @@
 
 			}
 			thead {
-				background: #262525;
+				background: $base-color3;
 				font-weight: bold;
 				height: 25px;
 				line-height: 25px;
@@ -428,7 +484,7 @@
 					min-width: 300px;
 				}
 				span {
-					color: $color2;
+					color: $base-color1;
 					font-size: 1.4rem;
 					float: left;
 					&.co, &.noco {
@@ -452,12 +508,69 @@
 
 					font-size: 11px!important
 				}
+				.plat-name {
+					border-radius: 30px;
+					padding: 2px 5px;
+					background: #9aca42 ;
+					color: white ;
+					&.PS4 {
+						background: #000;
+						color: #fff;
+					}
+					&.PS3 {
+						background: #515151 ;
+						color: #fff;
+					}
+					&.XBOX.ONE {
+						background: #117d10 ;
+						color: #fdfcf8 ;
+					}
+
+				}
 			}
 			.list-infos{
 				width: 50%;
-				span {
+				span.type-info {
 					font-weight: bold;
+					display: block;
+					float: left;
+					margin-right: 5px;
+					color: #565656;
+					border-radius: 30px;
+					padding: 2px 5px;
+					border: 2px solid #565656 ;
+					&.raid {
+						color: #a40000;
+						border-color: #a40000;
+					}
+					&.cropta {
+						color: #05b0f0;
+						border-color: #05b0f0;
+					}
+					&.caveau,&.atheon {
+						color: #0ebe23   ;
+						border-color: #0ebe23 ;
+					}
+					&.osiris {
+						color: #e59c00   ;
+						border-color: #e59c00 ;
+					}
+					&.prison, &.arene {
+						color: #d705f0  ;
+						border-color: #d705f0;
+					}
+					&.pvp {
+						color: #f15e5e ;
+						border-color: #f15e5e ;
+					}
+					&.nuit, &.noir, &.noire {
+						color: #005e66 ;;
+						border-color: #005e66 ;
+					}
+
 				}
+
+
 			}
 			.list-start{
 				width: 15%;
@@ -479,11 +592,11 @@
 
 	}
 
-/*
-  Set the color of the icon
-  */
-  svg path,
-  svg rect{
-  	fill: #FF6700;
-  }
+	/*
+	Set the color of the icon
+	*/
+	svg path,
+	svg rect{
+		fill: #FF6700;
+	}
 }

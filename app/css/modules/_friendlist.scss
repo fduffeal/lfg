@@ -30,7 +30,7 @@
 	}
 	/* .scrollup,.scrolldown{
 		text-align: center;
-		background: $orange;
+		background: $base-color1;
 		color: white;
 		cursor: pointer;
 		span:before{
@@ -42,7 +42,7 @@
 		}
 		&:hover {
 			background: black;
-			color: $orange;
+			color: $base-color1;
 		}
 	}
 	@media screen and (min-width: 550px) and (max-width: 1380px ){
@@ -77,7 +77,7 @@
 		}
 		} */
 		h5 {
-			background: $orange;
+			background: $base-color1;
 			height: 20px;
 			line-height: 20px;
 			cursor: pointer;
@@ -88,7 +88,7 @@
 			display:none;
 		}
 		.remisansamis {
-			background: $orange;
+			background: $base-color1;
 			width: 206px;
 			text-align: center;
 			padding: 20px 0px 20px 0;
@@ -109,7 +109,7 @@
 				background: transparent;
 			}
 		}
-		@media screen and (min-width: 550px) and (max-width: 1380px ) {
+		@media screen and (min-width: 550px) and (max-width: 1640px ) {
 
 			.toggle {
 				width: 50px;

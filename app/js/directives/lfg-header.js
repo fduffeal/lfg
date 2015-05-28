@@ -1,6 +1,6 @@
 angular.module('myApp.directives')
-	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window',
-		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window) {
+	.directive('lfgHeader', ['user','rdv','tag','lang','redirection','$interval','$filter','$document','$window','$location',
+		function(user,rdv,tag,lang,redirection,$interval,$filter,$document,$window,$location) {
 			'use strict';
 			return {
 				scope:{
@@ -39,10 +39,11 @@ angular.module('myApp.directives')
 					$scope.matchmakingUrl = redirection.getMatchmakingPageUrl();
 					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.forumUrl = redirection.getForumUrl();
-					$scope.listUsersUrl = redirection.getListUsersUrl();
 					$scope.videoUrl = redirection.getVideoUrl();
 
                     $scope.userInfo = user.get();
+
+					$scope.currentUrl = $location.path();
 
 
 					/**

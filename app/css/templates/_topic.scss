@@ -15,28 +15,115 @@
 	.clear	{
 		clear:both;
 	}
-	.content-header {
-		width: 940px;
-		.menu-right {
-			margin-right: 0;
-		}
-	}
+
 	.filariane {
 		color: #999;
 		font-weight:bold;
 		a {
-			color: $orange;
+			color: $base-color1;
 		}
 	}
+	.fb_reset, #fb-root {
+		display: none;
+	}
+	.fb_iframe_widget {
+		margin: 0 10px;
+	}
+	.fb-like {
+		display: inline-block;
+	}
+	.don{
+		display: inline-block;
+		margin-top: 5px;
+		div{
+			display: inline-block;
+			background: #00335e ;
+			color: white;
+			height: 20px;
+			line-height: 20px;
+			padding: 0px 10px;
+			
+			input {
+				background: transparent;
+				border:0;
+				color: white;
+				font-size: 1.3rem;
+				cursor: pointer;
+			}
+			&:hover {
+				opacity: 0.8
+			}
+		}
+
+	}
+	.news-cover {
+		height: 160px;
+		width: 100%;
+		background-repeat: no-repeat;
+		margin-top: 10px;
+		overflow: hidden;
+		position: relative;
+		margin-bottom: -5px;
+		img {
+			height: auto;
+			position: absolute;
+			top: -50%;
+		}
+	}
+	.plat-name {
+		border-radius: 30px;
+		padding: 2px 5px;
+		background: #9aca42 ;
+		color: white ;
+		display: inline-block;
+		&.PS4 {
+			background: #000;
+			color: #fff;
+		}
+		&.PS3 {
+			background: #515151 ;
+			color: #fff;
+		}
+		&.XBOX.ONE {
+			background: #117d10 ;
+			color: #fdfcf8 ;
+		}
+
+	}
+	.topic-news {
+		color: black;
+		float: left;
+		width: 100%;
+		.news-author {
+			margin-top: 5px;
+		}
+		span{
+			color: #999;
+			&.news-user {
+				font-weight: bold;
+			}
+		}
+		.news-msg {
+			border-top: 1px solid #999;
+			margin-top: 20px;
+			font-family: 'roboto', sans-serif;
+			font-size: 14px;
+			a{
+				color: $base-color1;
+			}
+		}
+	}
+
 	.welcome {
-		width: 940px;
+		width: auto;
+		max-width: 1440px;
 		border: 1px solid #ccc;
 		background: #fff;
 		clear: both;
 		.read {
 			font-size: 1.3rem;
 			margin-left: 20px;
-			background: $orange;
+			background: $base-color1;
 			color: #fff;
 			height: 20px;
 			line-height: 20px;
@@ -59,21 +146,22 @@
 			color: black;
 			font-size: 2rem;
 			span {
-				color: #999;
+				color: $base-color2;;
 			}
-			&:before {
-				content: "✪";
-				display:inline-block;
-				margin:2px 5px 0 0;
-
-
+			.fa {
+				margin-right: 10px;
 			}
+
 		}
+
 		h2 {
 			margin:0;
 		}
+		.fa {
+			margin-right: 5px;
+		}
 		.toussujet {
-			width: 60px;
+			width: 65px;
 			float: right;
 			margin-right: 10px;
 		}
@@ -81,17 +169,14 @@
 			float: right;
 			margin-bottom: 20px;
 			width: 100px;
-			&:before {
-				content: "✽";
-				float: right;
-			}
+
 		}
 	}
 	.btn2 {
-		background: #f15641;
+		background: $base-color1;
 		cursor: pointer;
 		&:hover {
-			color:black;
+			background: $base-color2;
 		}
 	}
 
@@ -117,7 +202,6 @@
 	.page {
 		background: transparent;
 		border: none;
-		width: 940px;
 		margin: auto;
 		margin-bottom: 10px;
 	}
@@ -162,7 +246,7 @@
 				width: 96px;
 				height: 96px;
 				position: relative;
-				background-color: $orange;
+				background-color: $base-color1;
 				div {
 					background-size: cover!important;
 					float: left;
@@ -184,7 +268,7 @@
 			padding-left: 10px;
 			font-family: 'Open Sans', sans-serif!important;
 			a {
-				color: $orange!important;
+				color: $base-color1!important;
 			}
 		}
 		.to-info {
@@ -210,7 +294,7 @@
 					font-size: 2rem;
 					float: right;
 					margin-top: -4px;
-					color: $orange;
+					color: $base-color1;
 					margin-left: 10px;
 					opacity: 0.7;
 
@@ -223,7 +307,7 @@
 					font-size: 2rem;
 					float: right;
 					margin-top: -4px;
-					color: $orange;
+					color: $base-color1;
 					opacity: 0.7;
 
 				}
@@ -234,13 +318,13 @@
 		}
 	}
 	@media screen and (max-width: 990px ) {
-		.content-header {
-			width: 95%;
-		}
+		/*.content-header {
+		width: 95%;
+	}
 
 		.page, .welcome {
-			width: 94%;
-		}
+		width: 94%;
+	}*/
 		table {
 			.to-avatar {
 				.modo-avatar img {
