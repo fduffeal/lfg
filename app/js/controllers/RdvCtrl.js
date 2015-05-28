@@ -71,6 +71,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			});
 
 			var formatRdv = function(rdv){
+				console.log(rdv);
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
 						rdv.author = rdv.users[key];

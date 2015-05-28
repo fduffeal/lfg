@@ -144,7 +144,7 @@
 										</span>
 									</td>
 									<td class="list-infos">
-										<span  class="type-info {{ tag.nom | lowercase}}" ng-repeat="tag in rdv.tags">#{{ tag.nom }} </span><br/><br/>{{ rdv.description}}
+										<span  class="type-info {{ tag.nom | filterTags:false | lowercase}}" ng-repeat="tag in rdv.tags">{{ tag.nom | filterTags:true }} </span><br/><br/>{{ rdv.description}}
 									</td>
 									<td class="list-start">
 										<lfg-since time="{{rdv.start}}">
@@ -201,7 +201,7 @@
 									</span>
 								</td>
 								<td class="list-infos">
-									<span ng-repeat="tag in rdv.tags" class="type-info {{ tag.nom | lowercase}}">#{{ tag.nom }} </span>
+									<span ng-repeat="tag in rdv.tags" class="type-info {{ tag.nom | filterTags:false | lowercase}}">{{ tag.nom | filterTags:true}} </span>
 									<br/><br/>
 									{{ rdv.description}}
 								</td>

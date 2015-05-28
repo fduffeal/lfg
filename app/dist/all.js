@@ -31488,6 +31488,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			});
 
 			var formatRdv = function(rdv){
+				console.log(rdv);
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
 						rdv.author = rdv.users[key];
@@ -33155,6 +33156,20 @@ angular.module('myApp.filters').filter('filterSince', ['tools',
 		'use strict';
 		return function (time_s) {
 			return tools.getSinceTimeMessage(time_s);
+		};
+	}
+]);
+angular.module('myApp.filters').filter('filterTags', [
+	function () {
+		'use strict';
+		return function (tag,withDiese) {
+			var hasDiese = tag.match(/#/);
+			if(!hasDiese && withDiese){
+				tag = "#"+tag;
+			} else if(hasDiese && !withDiese){
+				tag = tag.replace('#','');
+			}
+			return tag;
 		};
 	}
 ]);
