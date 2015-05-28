@@ -155,7 +155,6 @@ $color3: #06ab93; // blue
 			height: 47px;
 			line-height: 47px;
 			opacity: 0.8;
-			@include transition(opacity 0.2s ease-out);
 			&:hover, &.selected {
 				opacity: 1;
 			}
