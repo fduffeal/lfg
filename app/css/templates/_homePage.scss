@@ -475,6 +475,34 @@
 
 		}
 	}
+	.planning-twitch {
+		.pl-line {
+			margin-bottom: 10px;
+			font-size: 13px;
+			float: left;
+			img {
+				float: left;
+				margin-right: 5px;
+				width: 70px;
+			}
+			.pl-info {
+
+				span {
+					display: block;
+					&.pl-hours {
+						font-weight: bold;
+						color:  $base-color2;
+					}
+					&.pl-title {
+						font-weight: bold;
+					}
+					&.pl-desc {
+						color: #515151;
+					}
+				}
+			}
+		}
+	}
 	.more-info {
 		border-bottom: 2px solid #515151;
 		width: 100%;
@@ -568,7 +596,7 @@
 					}
 					&:before {
 						float: left;
-						
+
 						margin: 0px 4px 0 0px;
 						font-size: 13px;
 					}

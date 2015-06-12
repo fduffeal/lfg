@@ -31,7 +31,7 @@
 					<tr>
 						<td colspan="3">
 							<lfg-profile-bungie with-plateform="false"
-							                    user-game="rdv.author"></lfg-profile-bungie>
+												user-game="rdv.author"></lfg-profile-bungie>
 						</td>
 					</tr>
 					<tr class="line">
@@ -53,11 +53,42 @@
 				</table>
 			</div>
 		</div>
-		<div class="article partner">
+		<div class="article planning-twitch">
 			<div class="article-content">
-				<div class="title2">Partenaires</div>
-				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank"
-				   ng-repeat="partenaire in partenaires" lfg-masonry="masonry"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+				<div class="title2">Planning Twitch</div>
+				<div class="pl-line">
+					<img src="http://lfg.esbattle.com/uploads/documents/cfdb2de7ca7ba1643038eaa519a78e62cb3da3e7.jpeg" alt="" />
+					<div class="pl-info">
+						<span class="pl-hours">Mer - 17:00 - 21h30</span>
+						<span class="pl-title">PS4 Destiny Skolas</span>
+						<span class="pl-desc">Ce soir on défonce le skolas en pdv 35 avec armes en 365</span>
+					</div>
+				</div>
+				<div class="pl-line">
+					<img src="http://lfg.esbattle.com/uploads/documents/cfdb2de7ca7ba1643038eaa519a78e62cb3da3e7.jpeg" alt="" />
+					<div class="pl-info">
+						<span class="pl-hours">Jeu - 17:00 - 21h30</span>
+						<span class="pl-title">PS4 Destiny Skolas</span>
+						<span class="pl-desc">Ce soir on défonce le skolas en pdv 35 avec armes en 365</span>
+					</div>
+				</div>
+				<div class="pl-line">
+					<img src="http://lfg.esbattle.com/uploads/documents/cfdb2de7ca7ba1643038eaa519a78e62cb3da3e7.jpeg" alt="" />
+					<div class="pl-info">
+						<span class="pl-hours">Sam - 17:00 - 21h30</span>
+						<span class="pl-title">PS4 Destiny Skolas</span>
+						<span class="pl-desc">Ce soir on défonce le skolas en pdv 35 avec armes en 365</span>
+					</div>
+				</div>
+				<div class="pl-line">
+					<img src="http://lfg.esbattle.com/uploads/documents/cfdb2de7ca7ba1643038eaa519a78e62cb3da3e7.jpeg" alt="" />
+					<div class="pl-info">
+						<span class="pl-hours">Lun - 17:00 - 21h30</span>
+						<span class="pl-title">PS4 Destiny Skolas</span>
+						<span class="pl-desc">Ce soir on défonce le skolas en pdv 35 avec armes en 365</span>
+					</div>
+				</div>
+				<div class="clear"></div>
 			</div>
 		</div>
 
@@ -78,6 +109,13 @@
 					<div class="by">par <span>{{topic.user.username}}</span> | {{topic.nbMessages}} commentaire(s)</div>
 				</div>
 			</a>
+		</div>
+		<div class="article partner">
+			<div class="article-content">
+				<div class="title2">Partenaires</div>
+				<a href="{{partenaire.blocHomeLink}}" class="partenaires" target="_blank"
+				   ng-repeat="partenaire in partenaires" lfg-masonry="masonry"><img src="{{partenaire.blocHomeImg.src}}" alt=""></a>
+			</div>
 		</div>
 		<div ng-show="displayAddNews" class="more-info" ng-click="addNews()"><span>Plus de news</span></div>
 	</div>
