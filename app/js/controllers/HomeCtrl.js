@@ -116,9 +116,18 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				});
 			};
 
+			var getNextPlanification = function(){
+				planification.getNext().success(function(data){
+					$scope.aNextPlanifications = data;
+					$scope.masonry.reloadItems();
+					$scope.masonry.layout();
+				});
+			};
+
 			refreshRdvData();
 			$scope.addNews();
 			getPlanification();
+			getNextPlanification();
 
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {

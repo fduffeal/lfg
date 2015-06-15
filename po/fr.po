@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/html/controllers/rdv.html
@@ -176,6 +176,10 @@ msgstr ""
 msgid "Forget login or password ?"
 msgstr "Mot de passe oublié ?"
 
+#: app/dynamique_translate.html
+msgid "Fri"
+msgstr "Ven"
+
 #: app/html/directives/lfg-friendlist.html
 msgid "Friend's list"
 msgstr "Liste d'amis"
@@ -262,6 +266,10 @@ msgstr "Marquer tout comme lu"
 #: app/html/controllers/notification.html
 msgid "Mark as read"
 msgstr "Marquer comme lu"
+
+#: app/dynamique_translate.html
+msgid "Mon"
+msgstr "Lun"
 
 #: app/html/controllers/rdv.html
 msgid "My partys"
@@ -382,6 +390,10 @@ msgstr "Inscrits toi pour rejoindre la partie !"
 msgid "Retrieve my account !"
 msgstr "Récupérer mon compte !"
 
+#: app/dynamique_translate.html
+msgid "Sat"
+msgstr "Sam"
+
 #: app/html/controllers/list-users.html
 msgid "Search"
 msgstr "Recherche"
@@ -437,6 +449,10 @@ msgstr "Histoire épique"
 msgid "Strike"
 msgstr "Assaut"
 
+#: app/dynamique_translate.html
+msgid "Sun"
+msgstr "Dim"
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
@@ -458,6 +474,10 @@ msgstr ""
 "Ce gamerTag ou PSN ID est déjà utilisé comme nom de compte Esbattle, s'il "
 "vous plait choississez un autre nom pour votre compte Esbattle."
 
+#: app/dynamique_translate.html
+msgid "Thu"
+msgstr "Jeu"
+
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
@@ -466,6 +486,10 @@ msgstr "Demain"
 #: app/dynamique_translate.html
 msgid "Trials of Osiris"
 msgstr "Le Jugement d'Osiris"
+
+#: app/dynamique_translate.html
+msgid "Tue"
+msgstr "Mar"
 
 #: app/html/controllers/rdv.html
 msgid "Type"
@@ -503,6 +527,10 @@ msgstr "CaveauDeVerre"
 #: app/html/controllers/party-waiting.html
 msgid "Waiting / Guest Players"
 msgstr "Joueurs invités / en attente "
+
+#: app/dynamique_translate.html
+msgid "Wed"
+msgstr "Mer"
 
 #: app/dynamique_translate.html
 msgid "Weekly Heroic Strike"

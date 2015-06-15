@@ -130,6 +130,10 @@ msgstr ""
 msgid "Forget login or password ?"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Fri"
+msgstr ""
+
 #: app/html/directives/lfg-friendlist.html
 msgid "Friend's list"
 msgstr ""
@@ -212,6 +216,10 @@ msgstr ""
 
 #: app/html/controllers/notification.html
 msgid "Mark as read"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Mon"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -336,6 +344,10 @@ msgstr ""
 msgid "Retrieve my account !"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Sat"
+msgstr ""
+
 #: app/html/controllers/list-users.html
 msgid "Search"
 msgstr ""
@@ -387,6 +399,10 @@ msgstr ""
 msgid "Strike"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Sun"
+msgstr ""
+
 #: app/html/controllers/matchmaking-waiting.html
 #: app/html/controllers/party-waiting.html
 msgid "Team"
@@ -404,6 +420,10 @@ msgstr ""
 msgid "This gamerTag or PSN ID is already used as Esbattle account, please choose an other name for your Esbattle account."
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "Thu"
+msgstr ""
+
 #: app/html/controllers/annonce-create.html
 #: app/html/controllers/party-create.html
 msgid "Tomorrow"
@@ -411,6 +431,10 @@ msgstr ""
 
 #: app/dynamique_translate.html
 msgid "Trials of Osiris"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Tue"
 msgstr ""
 
 #: app/html/controllers/rdv.html
@@ -448,6 +472,10 @@ msgstr ""
 
 #: app/html/controllers/party-waiting.html
 msgid "Waiting / Guest Players"
+msgstr ""
+
+#: app/dynamique_translate.html
+msgid "Wed"
 msgstr ""
 
 #: app/dynamique_translate.html

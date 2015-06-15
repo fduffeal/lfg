@@ -5,6 +5,10 @@ angular.module('myApp.services')
 			this.getCurrent = function(username,token){
 				return api.call('planification');
 			};
+
+			this.getNext = function(){
+				return api.call('planification/next');
+			};
 		}
 	]
 );
