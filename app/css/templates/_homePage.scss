@@ -477,7 +477,9 @@
 	}
 	.planning-twitch {
 		.pl-line {
-			margin-bottom: 10px;
+			padding: 10px 0;
+			width: 100%;
+			border-bottom: 1px solid #ccc;
 			font-size: 13px;
 			float: left;
 			img {
