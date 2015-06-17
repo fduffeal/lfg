@@ -12,7 +12,7 @@ angular.module('myApp.filters').filter('filterDateNews', ['gettextCatalog','$fil
 			var yesterday = new Date(date1_ms - 24 * 60 * 60 * 1000);
 
 			if (currentDate.toLocaleDateString() === now.toLocaleDateString()) {
-				return gettextCatalog.getString("{{time}}", {time: $filter('date')(date2_ms, 'HH:mm')});
+				return $filter('date')(date2_ms, 'HH:mm');
 			}
 
 			if (currentDate.toLocaleDateString() === yesterday.toLocaleDateString()) {
