@@ -22,7 +22,11 @@
 				<div class="title2">{{planification.titre}}</div>
 				<lfg-youtube ng-if="planification.video" url="planification.video.url"></lfg-youtube>
 				<div class="title2-video">{{planification.description}}</div>
+				<div><a href="" ng-click="toggleChat()">chat</a><span ng-if="displayChat == true"> ON</span><span ng-if="displayChat == false"> OFF</span></div>
 			</div>
+		</div>
+		<div class="article" lfg-masonry="masonry" ng-if="displayChat == true">
+			<lfg-chat-twitch ng-if="planification.video" url="planification.video.url"></lfg-chat-twitch>
 		</div>
 		<div class="article lastparty">
 			<div class="article-content">
@@ -51,9 +55,10 @@
 						</td>
 					</tr>
 				</table>
+				<div class="button"><a href="" ng-click="reloadParty()">rafraichir</a></div>
 			</div>
 		</div>
-		<div class="article planning-twitch">
+		<div class="article planning-twitch" ng-if="aNextPlanifications">
 			<div class="article-content">
 				<div class="title2">Planning Twitch <span class="fa fa-twitch"></span></div>
 				<div class="pl-line" ng-repeat="nextPlanification in aNextPlanifications">

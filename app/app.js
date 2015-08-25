@@ -23,6 +23,13 @@ angular.module('myApp', [
 				controller : 'MatchmakingCtrl'
 			});
 
+		$routeProvider.when('/',
+			{
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl',
+				reloadOnSearch: false
+			});
+
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: '/html/controllers/home.html',

@@ -112,7 +112,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					$timeout(function(){
 						$scope.masonry.reloadItems();
 						$scope.masonry.layout();
-					},15000)
+					},15000);
 				});
 			};
 
@@ -124,10 +124,29 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				});
 			};
 
+			var reloadMasonry = function(){
+				$scope.masonry.reloadItems();
+				$scope.masonry.layout();
+			};
+
+			$scope.displayChat = false;
+			$scope.toggleChat = function(){
+				reloadMasonry();
+				$scope.displayChat = !$scope.displayChat;
+				$timeout(function(){
+					reloadMasonry();
+				},1000);
+
+			};
+
 			refreshRdvData();
 			$scope.addNews();
 			getPlanification();
 			getNextPlanification();
+
+			$scope.reloadParty = function(){
+				refreshRdvData();
+			};
 
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {
@@ -137,6 +156,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				gutter: 10,
 				percentPosition: true
 			});
+
+			$scope.isTwitchUrl = function(url){
+				return url.match(/twitch/);
+			};
 		}
 	]
 );

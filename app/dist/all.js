@@ -30046,6 +30046,13 @@ angular.module('myApp', [
 				controller : 'MatchmakingCtrl'
 			});
 
+		$routeProvider.when('/',
+			{
+				templateUrl: '/html/controllers/home.html',
+				controller : 'HomeCtrl',
+				reloadOnSearch: false
+			});
+
 		$routeProvider.when('/:lang/',
 			{
 				templateUrl: '/html/controllers/home.html',
@@ -30475,7 +30482,7 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 					$timeout(function(){
 						$scope.masonry.reloadItems();
 						$scope.masonry.layout();
-					},15000)
+					},15000);
 				});
 			};
 
@@ -30487,10 +30494,29 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				});
 			};
 
+			var reloadMasonry = function(){
+				$scope.masonry.reloadItems();
+				$scope.masonry.layout();
+			};
+
+			$scope.displayChat = false;
+			$scope.toggleChat = function(){
+				reloadMasonry();
+				$scope.displayChat = !$scope.displayChat;
+				$timeout(function(){
+					reloadMasonry();
+				},1000);
+
+			};
+
 			refreshRdvData();
 			$scope.addNews();
 			getPlanification();
 			getNextPlanification();
+
+			$scope.reloadParty = function(){
+				refreshRdvData();
+			};
 
 			var container = document.querySelector('#container');
 			$scope.masonry = new Masonry( container, {
@@ -30500,6 +30526,10 @@ angular.module('myApp.controllers').controller('HomeCtrl',
 				gutter: 10,
 				percentPosition: true
 			});
+
+			$scope.isTwitchUrl = function(url){
+				return url.match(/twitch/);
+			};
 		}
 	]
 );
@@ -31984,6 +32014,120 @@ angular.module('myApp.controllers').controller('VideothequeCtrl',
 	}
 ]);
 
+angular.module('superCache',[])
+	.factory('superCache', ['$cacheFactory','$q','$timeout',
+		function($cacheFactory,$q,$timeout) {
+			'use strict';
+			this.customCache = {
+				myCache : $cacheFactory('super-cache',{capacity:200}),
+				get : function(id){
+					return this.myCache.get(id);
+				},
+				put : function(id,dataToCache){
+					this.myCache.put(id,dataToCache);
+				},
+				removeAll : function(){
+					this.myCache.removeAll();
+				},
+				promise : function(id){
+					var cache = this.get(id);
+					if(cache && typeof cache === "object"){
+						var deferred = $q.defer();
+						var promise = deferred.promise;
+
+						$timeout(function(){
+							deferred.resolve();
+						},0);
+
+						return promise.then(function(response){
+							return cache;
+						});
+					} else {
+						return false;
+					}
+				}
+			};
+			return this.customCache;
+		}
+	]
+);
+// I provide a request-transformation method that is used to prepare the outgoing
+// request as a FORM post instead of a JSON packet.
+//
+angular.module('myApp').factory(
+    "transformRequestAsFormPost",
+    function () {
+
+        // I prepare the request data for the form post.
+        function transformRequest(data, getHeaders) {
+
+            var headers = getHeaders();
+
+            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+
+            return ( serializeData(data) );
+
+        }
+
+
+        // Return the factory value.
+        return ( transformRequest );
+
+
+        // ---
+        // PRVIATE METHODS.
+        // ---
+
+
+        // I serialize the given Object into a key-value pair string. This
+        // method expects an object and will default to the toString() method.
+        // --
+        // NOTE: This is an atered version of the jQuery.param() method which
+        // will serialize a data collection for Form posting.
+        // --
+        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
+        function serializeData(data) {
+
+            // If this is not an object, defer to native stringification.
+            if (!angular.isObject(data)) {
+
+                return ( ( data == null ) ? "" : data.toString() );
+
+            }
+
+            var buffer = [];
+
+            // Serialize each key in the object.
+            for (var name in data) {
+
+                if (!data.hasOwnProperty(name)) {
+
+                    continue;
+
+                }
+
+                var value = data[name];
+
+                buffer.push(
+                    encodeURIComponent(name) +
+                    "=" +
+                    encodeURIComponent(( value == null ) ? "" : value)
+                );
+
+            }
+
+            // Serialize the buffer and clean it up for transportation.
+            var source = buffer
+                    .join("&")
+                    .replace(/%20/g, "+")
+                ;
+
+            return ( source );
+
+        }
+
+    }
+);
 angular.module('myApp.filters').filter('filterAvatar', [function () {
 	'use strict';
 	return function (userGameProfil) {
@@ -32351,6 +32495,33 @@ angular.module('myApp.filters').filter('filterWords', function () {
 		return input;
 	};
 });
+angular.module('myApp.directives')
+	.directive('lfgChatTwitch', ['$sce',
+		function($sce) {
+			'use strict';
+			return {
+				scope:{
+					url : '='
+				},
+				link: function($scope, element, attrs) {
+
+					$scope.isTwitch = $scope.url.match(/twitch/);
+
+
+					$scope.urlChat =  $scope.url.replace('/embed','/chat?popout=');
+
+					$scope.trustSrc = function(src) {
+						return $sce.trustAsResourceUrl(src);
+					};
+
+				},
+				restrict: 'E',
+				templateUrl: '/html/directives/lfg-chat-twitch.html'
+			};
+		}
+	]
+);
+
 angular.module('myApp.directives')
 	.directive('lfgFacebook', ['$window','$document',
 		function($window,$document) {
@@ -33254,120 +33425,6 @@ angular.module('myApp.directives')
 	]
 );
 
-angular.module('superCache',[])
-	.factory('superCache', ['$cacheFactory','$q','$timeout',
-		function($cacheFactory,$q,$timeout) {
-			'use strict';
-			this.customCache = {
-				myCache : $cacheFactory('super-cache',{capacity:200}),
-				get : function(id){
-					return this.myCache.get(id);
-				},
-				put : function(id,dataToCache){
-					this.myCache.put(id,dataToCache);
-				},
-				removeAll : function(){
-					this.myCache.removeAll();
-				},
-				promise : function(id){
-					var cache = this.get(id);
-					if(cache && typeof cache === "object"){
-						var deferred = $q.defer();
-						var promise = deferred.promise;
-
-						$timeout(function(){
-							deferred.resolve();
-						},0);
-
-						return promise.then(function(response){
-							return cache;
-						});
-					} else {
-						return false;
-					}
-				}
-			};
-			return this.customCache;
-		}
-	]
-);
-// I provide a request-transformation method that is used to prepare the outgoing
-// request as a FORM post instead of a JSON packet.
-//
-angular.module('myApp').factory(
-    "transformRequestAsFormPost",
-    function () {
-
-        // I prepare the request data for the form post.
-        function transformRequest(data, getHeaders) {
-
-            var headers = getHeaders();
-
-            headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
-
-            return ( serializeData(data) );
-
-        }
-
-
-        // Return the factory value.
-        return ( transformRequest );
-
-
-        // ---
-        // PRVIATE METHODS.
-        // ---
-
-
-        // I serialize the given Object into a key-value pair string. This
-        // method expects an object and will default to the toString() method.
-        // --
-        // NOTE: This is an atered version of the jQuery.param() method which
-        // will serialize a data collection for Form posting.
-        // --
-        // https://github.com/jquery/jquery/blob/master/src/serialize.js#L45
-        function serializeData(data) {
-
-            // If this is not an object, defer to native stringification.
-            if (!angular.isObject(data)) {
-
-                return ( ( data == null ) ? "" : data.toString() );
-
-            }
-
-            var buffer = [];
-
-            // Serialize each key in the object.
-            for (var name in data) {
-
-                if (!data.hasOwnProperty(name)) {
-
-                    continue;
-
-                }
-
-                var value = data[name];
-
-                buffer.push(
-                    encodeURIComponent(name) +
-                    "=" +
-                    encodeURIComponent(( value == null ) ? "" : value)
-                );
-
-            }
-
-            // Serialize the buffer and clean it up for transportation.
-            var source = buffer
-                    .join("&")
-                    .replace(/%20/g, "+")
-                ;
-
-            return ( source );
-
-        }
-
-    }
-);
 angular.module('myApp.services')
 	.service('activity', ['$rootScope','$window',
 		function($rootScope,$window) {
@@ -33433,7 +33490,7 @@ angular.module('myApp.services')
 				}
 				var host = $location.host();
 
-				this.url = 'http://lfg.esbattle.com/app_dev.php/';
+				this.url = 'http://apidev.esbattle.com/app_dev.php/';
 
 				if(host === 'www.esbattle.com'){
 					this.url = 'http://apiv2.esbattle.com/';

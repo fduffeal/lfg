@@ -5,7 +5,7 @@
 		<div class="name">
 			{{ userGame.gameUsername }}
 		</div>
-		<div ng-if="(withPlateform != true)" class="team">{{ userGame.data3 }}</div>
+		<div ng-if="(withPlateform != true)" class="team"><a href="https://www.bungie.net/fr/View/Search?all={{ userGame.data3 }}">{{ userGame.data3 }}</a></div>
 		<div ng-if="(withPlateform == true)" class="plateform">{{ userGame.plateform.nom }}</div>
 	</div>
 	<div class="right">
