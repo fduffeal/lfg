@@ -243,7 +243,7 @@ $color3: #06ab93; // blue
 			}
 		}
 	}
-	@media screen and (max-width: 752px) {
+	@media screen and (max-width: 652px) {
 		.menu-left li {
 			a{
 				font-size: 20px;
@@ -255,9 +255,9 @@ $color3: #06ab93; // blue
 		}
 	}
 	@media screen and (max-width: 646px ) {
-		.logo-header {
+		/*.logo-header {
 			display: none!important;
-		}
+		}*/
 	}
 	@media screen and (max-width: 574px ) {
 		.menu-left li {
