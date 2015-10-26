@@ -1,12 +1,12 @@
 $color1: #232121; // black
-$color2: #f15641; // orange
+$color2: #fadd6a; // orange
 $color3: #06ab93; // blue
 .header {
 	height: 47px;
 	line-height: 47px;
 	/*background: $color1;*/
-	background: #242d3c ;
 	width: 100%;
+	background: rgba(0,0,0,0.8);
 	top: 0;
 	position: fixed;
 	z-index: 999;
@@ -243,17 +243,18 @@ $color3: #06ab93; // blue
 			}
 		}
 	}
-	@media screen and (max-width: 952px) {
+	@media screen and (max-width: 752px) {
 		.menu-left li {
 			a{
 				font-size: 20px;
+				&:before {
+					display: none;
+				}
 			}
-			span {
-				display: none;
-			}
+			
 		}
 	}
-	@media screen and (max-width: 696px ) {
+	@media screen and (max-width: 6436px ) {
 		.logo-header {
 			display: none!important;
 		}
@@ -318,12 +319,12 @@ $color3: #06ab93; // blue
 }*/
 	.btn {
 		display: block;
-		color: white;
+		color: black;
 		padding: 0 10px;
 		text-align: center;
 		height: 25px;
 		line-height: 25px;
-		background: #f15641;
+		background: #fadd6a;
 		@include transition(opacity 0.2 ease-out);
 		&:before {
 			margin-right: 10px;

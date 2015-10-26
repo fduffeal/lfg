@@ -1,5 +1,4 @@
 <lfg-header></lfg-header>
-<lfg-friendlist></lfg-friendlist>
 <div id="home" class="wrap">
 	<lfg-profile-header></lfg-profile-header>
 	<div class="welcome page">
@@ -27,11 +26,9 @@
 
 			<br/>
 
-			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> <img
-																									src="img/ico-create.png"/></a>
+			<a ng-href="{{partyCreateUrl}}" class="btn2"><span translate>Create a party</span> </a>
 			<a href="#" ng-click="displayFormAnnonce = true;" class="btn2 second"><span
-																						translate>Post an announcement</span><img
-																																  src="img/ico-annonce.png"/></a>
+																						translate>Post an announcement</span></a>
 
 			<div class="add" ng-show="displayFormAnnonce">
 				<form name="myFormBattleTag" ng-submit="getDestinyCharacters()">
@@ -84,7 +81,7 @@
 			
 		</div>
 	</div>
-	<div class="page">
+	<div class="page marge-page">
 
 		<div class="list">
 			<select class="platforms" ng-model="plateform"

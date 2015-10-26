@@ -33,7 +33,7 @@
 				color: #87cbc1;
 			}
 			&.selected {
-				color: #f15641
+				color: #fadd6a
 			}
 			&.create {
 				background: #87cbc1;
@@ -41,7 +41,7 @@
 				border: 2px solid darken(#87cbc1, 20%);
 				font-weight: bold;
 				&:hover {
-					color: #f15641
+					color: #fadd6a
 				}
 			}
 		}
@@ -95,12 +95,12 @@
 					}
 					&.selected {
 						span {
-							background: #f15641
+							background: #fadd6a
 						}
 					}
 					&:hover {
 						span {
-							background: lighten(#f15641,20%);
+							background: lighten(#fadd6a,20%);
 						}
 					}
 				}

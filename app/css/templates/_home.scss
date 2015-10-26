@@ -1,4 +1,9 @@
 #home {
+	.marge-page {
+		margin-top: 535px!important;
+		background: none;
+		border: 0;
+	}
 	.home-profile {
 		width: 95%;
 		/*
@@ -15,6 +20,7 @@
 		font-weight: 400;
 		font-size: 14px;
 		margin: auto;
+
 		.hm-guardian {
 			position: relative;
 			height: 96px;
@@ -134,9 +140,16 @@
 	.welcome {
 		margin-top: 0;
 		color: white;
-		background: $base-color3;
+		background: url('http://news.esbattle.com/wp-content/uploads/2015/10/Sans-titre-1.jpg');
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		border: 0;
+		height: 522px;
 		.marge {
-			padding: 10px 20px 0 20px!important;
+			margin: 100px 2%;
+			background: rgba(0,0,0,0.6);
 		}
 		.hide, .show {
 			color: black;
@@ -172,14 +185,14 @@
 			display: inline-block;
 			margin-right: 10px;
 			position: relative;
-			color: white!important;
+			color: black!important;
 			text-decoration: none!important;
 			font-size: 1.3rem;
 			margin-top: 0;
-			background: $base-color2;
+			background: $base-color1;
 			margin-bottom: 10px;
 			&:hover {
-				background: $base-color1;
+				background: $base-color2;
 			}
 			img{
 				position: absolute;
@@ -219,7 +232,7 @@
 			margin-right: 10px;
 		}
 		.fb-like {
-			  margin-bottom: 5px;
+			margin-bottom: 5px;
 			display: inline-block;
 		}
 		.don{
@@ -367,10 +380,10 @@
 		.line {
 
 			@include transition(background-color 0.2s ease-out);
-			background: white;
+			background: transparent;
 			display: block;
 			&:nth-child(even), &.colored{
-				background: #e5e1e1;
+				background: #000;
 
 			}
 			&:hover, &.selected {
@@ -429,6 +442,7 @@
 			font-size: 1.2rem;
 			text-align: left;
 			border-collapse: collapse;
+			color: #FFF;
 			border: 0;
 			@media screen and (max-width: 800px ) {
 				font-size: 10px!important;
@@ -467,12 +481,13 @@
 
 			}
 			thead {
-				background: $base-color3;
+				background: $base-color2;
 				font-weight: bold;
 				height: 25px;
 				line-height: 25px;
+				color: black
 				a {
-					color: white;
+					color: black;
 				}
 			}
 			br {
@@ -538,34 +553,32 @@
 					color: #565656;
 					border-radius: 30px;
 					padding: 2px 5px;
-					border: 2px solid #565656 ;
+		
+					color: #FFF;
 					&.raid {
-						color: #a40000;
-						border-color: #a40000;
+						background-color: #a40000;
+					}
+					.oryx {
+						background: $base-color1;
 					}
 					&.cropta {
-						color: #05b0f0;
-						border-color: #05b0f0;
+
+						background-color: #05b0f0;
 					}
 					&.caveau,&.atheon {
-						color: #0ebe23   ;
-						border-color: #0ebe23 ;
+						background-color: #0ebe23 ;
 					}
 					&.osiris {
-						color: #e59c00   ;
-						border-color: #e59c00 ;
+						background-color: #e59c00 ;
 					}
 					&.prison, &.arene {
-						color: #d705f0  ;
-						border-color: #d705f0;
+						background-color: #d705f0;
 					}
 					&.pvp {
-						color: #f15e5e ;
-						border-color: #f15e5e ;
+						background-color: #f15e5e ;
 					}
 					&.nuit, &.noir, &.noire {
-						color: #005e66 ;;
-						border-color: #005e66 ;
+						background-color: #005e66 ;
 					}
 
 				}

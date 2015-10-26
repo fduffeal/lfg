@@ -1,6 +1,6 @@
-/*$base-color1: #f15641;*/
-$base-color1: #35aaa2 ; // blue
-$base-color2: #f15641; // orange
+/*$base-color1: #fadd6a;*/
+$base-color1: #dc3522 ; // red
+$base-color2: #fadd6a; // yellow
 $base-color3: #242d3c; // blue darken
 
 $tiny-screen			: 400px; // tiny screens media query (less than 640px)
@@ -12,7 +12,7 @@ $ultra-large-screen		: 1920px; // ultra large screens
 body, html {
 	margin: 0;
 	padding: 0;
-	background: #ededed;
+	background: #1e1e1e;
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 	font-size: 62.5%;
@@ -241,13 +241,18 @@ span.noco{
 	}
 	.right {
 		float: right;
-
+	
 		margin: 10px 10px 0 0;
 		text-align: center;
-		.perso-box, .level {
+		.classe {
 			font-size: 24px;
+			margin-top: -8px;
+		}
+		.perso-box, .level {
+			font-size: 15px;
 			text-align: right;
-			margin-top: -10px;
+			margin-top: -3px;
+			
 			margin-bottom: -1px;
 			color:rgba(245, 220, 86, 1);
 			&:before {
@@ -361,7 +366,7 @@ ul, li {
 		padding: 20px;
 	}
 	.btn2 {
-		width: 150px;
+
 		font-weight: bold;
 		font-size: 1.4rem;
 		margin-top: 10px;
@@ -391,7 +396,7 @@ h1{
 	max-width: 1440px;
 	width: 95%;
 	margin:auto;
-	margin-top: 20px;
+	margin-top: 320px;
 	border: 1px solid #dddddd;
 	margin-bottom: 30px;
 	@media screen and (max-width: 1065px ) {
@@ -452,7 +457,7 @@ input.error {
 	margin:20px auto;
 	@include transition(all 0.2s ease-in-out);
 	&:hover {
-		color: #f15641;
+		color: #fadd6a;
 	}
 }
 
