@@ -18,8 +18,9 @@
 			font-size: 1.3rem;
 			margin: 5px;
 			font-weight:bold;
+			background: $base-color2!important;
 			a{
-				color: 0;
+				color: #000;
 				&:hover{
 					text-decoration: underline;
 				}
@@ -115,7 +116,7 @@
 		border-collapse: collapse;
 		thead {
 			text-transform: uppercase;
-			background: $base-color3;
+			background: $base-color1;
 			font-weight: bold;
 			color:white;
 		}
@@ -124,7 +125,7 @@
 			line-height: 20px;
 		}
 		tr:nth-child(even) td{
-			background: #e5e1e1;
+			background: #000;
 		}
 		tr:hover td {
 			background: #e9aea6 !important;
@@ -132,13 +133,16 @@
 				color: white
 			}
 		}
+		.fo-author a:visited{
+			color: #FFF;
+		}
 		a {
-			color:$base-color1;
+			color:#FFF;
 			display: block;
 			height: 20px;
 			overflow: hidden;
 			&:visited {
-				color:#000;
+				color:purple;
 			}
 			&.modo {
 				color: $base-color2;
