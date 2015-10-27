@@ -1,19 +1,43 @@
-<div class="home-profile" ng-show="currentUser">
+<div class="home-profile" >
 	<div class="hm-guardian">
-		<div class="hm-emblem" style="background: url('{{profilSelected.data4}}')">
-			<img ng-src="{{profilSelected.data5}}" alt="">
+		<div class="hm-emblem" ng-click="selectProfil(profil)">
+			<img ng-src="{{profilSelected.data4}}" alt="" class="bg">
+			<img ng-src="{{profilSelected.data5}}" class="emb" alt="">
 			<div class="details">
 				<h6>{{profilSelected.gameUsername}}</h6>
 				{{profilSelected.data1 | translate}}
 			</div>
 			<div class="stats">
-				<h3>{{profilSelected.data2}}</h3>
+			<h4>{{profilSelected.data2}}</h4>
+				<h3>298</h3>
 			</div>
-			<!--<div class="progress-wrapper">
-				<div class="bar" style="width:{{profilSelected.data2/32 *100}}%"></div>
-			</div>-->
 		</div>
-		<div class="alts">
+		<div class="hm-emblem" ng-click="selectProfil(profil)">
+			<img ng-src="{{profilSelected.data4}}" alt="" class="bg">
+			<img ng-src="{{profilSelected.data5}}" class="emb" alt="">
+			<div class="details">
+				<h6>{{profilSelected.gameUsername}}</h6>
+				{{profilSelected.data1 | translate}}
+			</div>
+			<div class="stats">
+			<h4>{{profilSelected.data2}}</h4>
+				<h3>298</h3>
+			</div>
+		</div>
+		<div class="hm-emblem" ng-click="selectProfil(profil)">
+			<img ng-src="{{profilSelected.data4}}" alt="" class="bg">
+			<img ng-src="{{profilSelected.data5}}" class="emb" alt="">
+			<div class="details">
+				<h6>{{profilSelected.gameUsername}}</h6>
+				{{profilSelected.data1 | translate}}
+			</div>
+			<div class="stats">
+			<h4>{{profilSelected.data2}}</h4>
+				<h3>298</h3>
+			</div>
+		</div>
+		
+		<!--<div class="alts">
 			<h4 translate>Alternate Guardians</h4>
 			<div class="alt" ng-repeat="profil in profilNotSelected" style="background-image:url('{{profil.data4}}');" ng-if="$index < 2">
 				<a href="" ng-click="selectProfil(profil)">
@@ -24,15 +48,7 @@
 						</span>
 				</a>
 			</div>
-			<!--<div class="alt" style="background-image:url(//desimg.zamimg.com/static/image/icons/gamedata/game-backgrounds/large/2c73bcd2e874e640f158197bb9f2c55d.png?1423198752);">-->
-				<!--<a href="/guardians/playstation/2305843009270854826-poneymch">-->
-					<!--<img src="//desimg.zamimg.com/static/image/icons/gamedata/game-backgrounds/medium/117285c72a9c89626cd7b3fa3d7226ee.png?1423198752">-->
-						<!--<span>-->
-							<!--<i>4</i>-->
-							<!--Awoken Warlock-->
-						<!--</span>-->
-				<!--</a>-->
-			<!--</div>-->
-		</div>
+	
+		</div>-->
 	</div>
 </div>

@@ -1,7 +1,7 @@
 #forum {
 	.welcome {
-		background: #fff;
-		border-top: 1px solid #ccc;
+		background: url('http://news.esbattle.com/wp-content/uploads/2015/10/Sans-titre-1.jpg');
+		
 
 	}
 	.content-header {
@@ -56,7 +56,7 @@
 		}
 		.ta-editor {
 			margin-top: 15px;
-			border: 1px solid #999;
+			background: rgba(255,255,255,0.6);
 		}
 		.btn {
 			height: 30px;
@@ -82,12 +82,12 @@
 	.new {
 		h2 {
 			font-weight: bold;
-			color: black;
+			color: white;
 			font-size: 1.5rem;
 			margin-top: 0;
 			&:before {
 				content: "✉";
-				color: black;
+				color: white;
 				float: left;
 				margin:-3px 5px  0 0px;
 				font-size: 2rem;
@@ -128,7 +128,7 @@
 			background: #000;
 		}
 		tr:hover td {
-			background: #e9aea6 !important;
+			background: $base-color1 !important;
 			&.fo-sujet a{
 				color: white
 			}

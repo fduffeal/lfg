@@ -2,7 +2,10 @@
 	.welcome {
 		max-width: 1440px;
 		width: auto;
-		background: $base-color3;
+		background: url('http://news.esbattle.com/wp-content/uploads/2015/10/Sans-titre-1.jpg');
+		.marge {
+			background: rgba(0,0,0,0.6);
+		}
 		.btn2 {
 			width: 300px;
 			cursor: pointer;

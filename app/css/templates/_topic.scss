@@ -1,5 +1,8 @@
 #topic {
 	color: #000;
+	.welcome {
+		background: url('http://news.esbattle.com/wp-content/uploads/2015/10/Sans-titre-1.jpg');
+	}
 	blockquote {
 		color: #fff;
 		font-style: italic;
@@ -118,9 +121,11 @@
 	.welcome {
 		width: auto;
 		max-width: 1440px;
-		border: 1px solid #ccc;
-		background: #fff;
+
 		clear: both;
+		&.wel2 {
+			background: #FFF;
+		}
 		.read {
 			font-size: 1.3rem;
 			margin-left: 20px;
@@ -144,7 +149,7 @@
 		h2.sujet {
 			float: left;
 			margin-top:10px;
-			color: black;
+			color: white;
 			font-size: 2rem;
 			span {
 				color: $base-color2;;

@@ -1,9 +1,12 @@
 #party-create {
+	.welcome {
+		background: url('http://news.esbattle.com/wp-content/uploads/2015/10/Sans-titre-1.jpg');
+	}
 	.important {
 		display: block;
 		text-align: center;
 		margin-top: 10px;
-		color: black;
+		color: $base-color1;
 		text-decoration: underline;
 		font-size: 13px;
 		font-weight: bold;
