@@ -1,4 +1,5 @@
 #notification {
+	
 	.block {
 		width: 98%;
 		margin: auto;
@@ -24,10 +25,10 @@
 	.line {
 		vertical-align: top;
 		margin: 5px 0;
-		color:#2d2d2d;
+		color:#FFF;
 		font-size: 1.3rem;
 		&.unread {
-			background: lighten(#cacaca, 15%);
+			background: rgba(0,0,0,0.2);
 			.msg {
 				font-weight:bold;
 			}
@@ -49,12 +50,12 @@
 		}
 		span {
 			font-weight: bold;
-			color: #fadd6a;
+			color: white;
 		}
 		a {
 			font-size: 1.3rem;
 			span {
-				color: #06ab93!important;
+				color: $base-color1;
 			}
 			&:hover {
 			   text-decoration: underline;
