@@ -223,7 +223,7 @@
 		.actions{
 			width: 30%;
 			a {
-				color: $color3;
+				color: $base-color2;
 			}
 		}
 		@media screen and (max-width: 390px ) {
@@ -234,7 +234,7 @@
 	}
 	.team {
 		tbody tr:nth-child(odd) {
-			background: #e5e1e1
+			background: rgba(0,0,0,0.3);
 		}
 	}
 	.questions {

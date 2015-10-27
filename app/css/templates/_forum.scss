@@ -125,7 +125,7 @@
 			line-height: 20px;
 		}
 		tr:nth-child(even) td{
-			background: #000;
+			background: rgba(0,0,0,0.3);
 		}
 		tr:hover td {
 			background: $base-color1 !important;
