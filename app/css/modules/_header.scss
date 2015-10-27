@@ -250,14 +250,19 @@ $color3: #06ab93; // blue
 				&:before {
 					display: none;
 				}
+				&.fa-bell {
+					&:before {
+					display: block;
+				}
+				}
 			}
 			
 		}
 	}
 	@media screen and (max-width: 646px ) {
-		/*.logo-header {
+		.logo-header {
 			display: none!important;
-		}*/
+		}
 	}
 	@media screen and (max-width: 574px ) {
 		.menu-left li {
