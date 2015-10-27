@@ -172,6 +172,9 @@ $color3: #06ab93; // blue
 		position: absolute;
 		line-height: 23px;
 		width: 300px;
+		span {
+			color: black!important
+		}
 	}
 	.menu-right {
 		height: 47px;
