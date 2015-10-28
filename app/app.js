@@ -25,12 +25,12 @@ angular.module('myApp', [
 
 		$routeProvider.when('/',
 			{
-				templateUrl: '/html/controllers/home.html',
-				controller : 'HomeCtrl',
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl',
 				reloadOnSearch: false
 			});
 
-		$routeProvider.when('/:lang/',
+		$routeProvider.when('/:lang/home/',
 			{
 				templateUrl: '/html/controllers/home.html',
 				controller : 'HomeCtrl',
@@ -168,7 +168,7 @@ angular.module('myApp', [
 				controller : 'PartenaireCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/fr/'});
+		$routeProvider.otherwise({redirectTo: '/fr/destiny/'});
 
 
 		$provide.decorator('taOptions', ['$delegate', function(taOptions){

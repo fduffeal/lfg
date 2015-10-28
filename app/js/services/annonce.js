@@ -22,6 +22,10 @@ angular.module('myApp.services')
 			this.get = function(){
 				return api.call('annonce');
 			};
+
+			this.getByPlateform = function(plateformId){
+				return api.call('annonce/byPlateform/'+plateformId);
+			};
 		}
 
 	]

@@ -6,6 +6,10 @@ angular.module('myApp.services')
 				return api.call('rdv/');
 			};
 
+			this.getByPlateform = function(plateformId){
+				return api.call('rdv/byPlateform/'+plateformId);
+			};
+
 			this.getFormInfo = function(){
 				var cache = superCache.promise('getFormInfo');
 				if(cache !== false){

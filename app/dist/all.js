@@ -30048,12 +30048,12 @@ angular.module('myApp', [
 
 		$routeProvider.when('/',
 			{
-				templateUrl: '/html/controllers/home.html',
-				controller : 'HomeCtrl',
+				templateUrl: '/html/controllers/rdv.html',
+				controller : 'RdvCtrl',
 				reloadOnSearch: false
 			});
 
-		$routeProvider.when('/:lang/',
+		$routeProvider.when('/:lang/home/',
 			{
 				templateUrl: '/html/controllers/home.html',
 				controller : 'HomeCtrl',
@@ -30191,7 +30191,7 @@ angular.module('myApp', [
 				controller : 'PartenaireCtrl'
 			});
 
-		$routeProvider.otherwise({redirectTo: '/fr/'});
+		$routeProvider.otherwise({redirectTo: '/fr/destiny/'});
 
 
 		$provide.decorator('taOptions', ['$delegate', function(taOptions){
@@ -31523,13 +31523,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			$scope.allTags = [];
 
-			rdv.getFormInfo().then(function(data){
-				$scope.allTags = data.tags;
-				$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
-				$scope.aPlateforms = data.plateforms;
-				setPlateformCookie();
-			});
-
 			var formatRdv = function(rdv){
 				for(var key in rdv.users){
 					if(rdv.users[key].user.id === rdv.leader.id){
@@ -31585,7 +31578,6 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 						var plateformId = $scope.plateform.id;
 					}
 
-					//if($scope.plateform)
 					$scope.aMyRdv = $filter('filterRdvWithMe')($scope.aRdv,$scope.currentUser.id,plateformId,$scope.tags,$scope.slotMinAvailable,$scope.slotMaxAvailable);
 					$scope.aMyRdv = $filter('orderBy')($scope.aMyRdv, $scope.predicate, $scope.reverse);
 				}
@@ -31598,7 +31590,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 				if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
 					var plateformId = null;
-				}else {
+				} else {
 					var plateformId = $scope.plateform.id;
 				}
 
@@ -31610,24 +31602,47 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 			var refreshRdvData = function(){
 
-				annonce.get().success(function(data) {
-					addNewData($scope.aRdv,formatAnnonces(data));
-				});
+				if(typeof $scope.plateform === "undefined" || $scope.plateform  === null){
 
-				rdv.getAll().success(function(data) {
-					// this callback will be called asynchronously
-					// when the response is available
-					for(var key in data){
-						data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
-						formatRdv(data[key]);
-					}
-					addNewData($scope.aRdv,data);
+					annonce.get().success(function(data) {
+						addNewData($scope.aRdv,formatAnnonces(data));
+					});
 
-				}).error(function(data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
-				});
+					rdv.getAll().success(function(data) {
+						// this callback will be called asynchronously
+						// when the response is available
+						for(var key in data){
+							data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+							formatRdv(data[key]);
+						}
+						addNewData($scope.aRdv,data);
 
+					}).error(function(data, status, headers, config) {
+						// called asynchronously if an error occurs
+						// or server returns response with an error status.
+					});
+				} else {
+
+					var plateformId = $scope.plateform.id;
+
+					annonce.getByPlateform(plateformId).success(function(data) {
+						addNewData($scope.aRdv,formatAnnonces(data));
+					});
+
+					rdv.getByPlateform(plateformId).success(function(data) {
+						// this callback will be called asynchronously
+						// when the response is available
+						for(var key in data){
+							data[key].url = $scope.partyWaitingUrlRoot+data[key].id;
+							formatRdv(data[key]);
+						}
+						addNewData($scope.aRdv,data);
+
+					}).error(function(data, status, headers, config) {
+						// called asynchronously if an error occurs
+						// or server returns response with an error status.
+					});
+				}
 			};
 
 			$scope.displayWelcome = ($route.current.action === 'welcome');
@@ -31733,9 +31748,12 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 				});
 			};
 
-			var setPlateformCookie = function(){
-				var plateform_rdv = storage.getPersistant('cookie_plateform_rdv_id');
+			var setPlateform = function(){
 				var plateform_rdv_url = $routeParams.plateform;
+
+				if($scope.currentUser !== null && $scope.currentUser.userGame[0] && $scope.currentUser.userGame[0].plateform){
+					var plateform_rdv = $scope.currentUser.userGame[0].plateform.id;
+				}
 
 				if(typeof plateform_rdv_url !== "undefined"){
 					plateform_rdv_url = plateform_rdv_url.replace('_',' ');
@@ -31756,17 +31774,17 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 
 					var homeUrl = redirection.getHomePageDestinyUrl();
 					if(typeof newValue !== "undefined" && newValue !== null){
-						storage.setPersistant('cookie_plateform_rdv_id',newValue.id);
 						var plateformNameUrl = newValue.nom.replace(' ','_');
-						//$location.path(homeUrl+plateformNameUrl).replace();
+						$location.path(homeUrl+plateformNameUrl).replace();
 					}else {
-						storage.erasePersistant('cookie_plateform_rdv_id');
-						//$location.path(homeUrl).replace();
+						$location.path(homeUrl+'ALL').replace();
 					}
 
-					updateAllRdv();
+					//updateAllRdv();
 				});
 			};
+
+
 
 			var initTags = function(){
 				$scope.$watch('tags',function(newValue,oldValue){
@@ -31806,7 +31824,16 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			 */
 			var init = function(){
 				$scope.currentUser = user.get();
-				launchRdvCtrl();
+
+				rdv.getFormInfo().then(function(data){
+					$scope.allTags = data.tags;
+					$scope.autoCompleteTags = tag.autoCompleteUserTags([],$scope.allTags);
+					$scope.aPlateforms = data.plateforms;
+					setPlateform();
+					launchRdvCtrl();
+				});
+
+
 			};
 
 			init();
@@ -33439,6 +33466,10 @@ angular.module('myApp.services')
 			this.get = function(){
 				return api.call('annonce');
 			};
+
+			this.getByPlateform = function(plateformId){
+				return api.call('annonce/byPlateform/'+plateformId);
+			};
 		}
 
 	]
@@ -33925,6 +33956,10 @@ angular.module('myApp.services')
 			'use strict';
 			this.getAll = function(){
 				return api.call('rdv/');
+			};
+
+			this.getByPlateform = function(plateformId){
+				return api.call('rdv/byPlateform/'+plateformId);
 			};
 
 			this.getFormInfo = function(){
