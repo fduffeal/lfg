@@ -33489,7 +33489,7 @@ angular.module('myApp.services')
 
 				this.url = 'http://apidev.esbattle.com/app_dev.php/';
 
-				if(host === 'www.esbattle.com'){
+				if(host === 'lfg.esbattle.com'){
 					this.url = 'http://apiv2.esbattle.com/';
 				}
 
