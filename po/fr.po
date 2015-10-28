@@ -59,10 +59,6 @@ msgstr "Accepter"
 msgid "Actions"
 msgstr "Actions"
 
-#: app/html/directives/lfg-profile-header.html
-msgid "Alternate Guardians"
-msgstr "Autre Gardiens"
-
 #: app/html/controllers/rdv.html
 msgid "Announcement"
 msgstr "Annonce"
@@ -228,6 +224,10 @@ msgstr "Rejoins"
 msgid "Kick"
 msgstr "Rejeter"
 
+#: app/dynamique_translate.html
+msgid "La Chute du Roi"
+msgstr "La Chute du Roi"
+
 #: app/html/controllers/party-waiting.html
 msgid "Leave"
 msgstr "Quitter"
@@ -368,9 +368,8 @@ msgstr "La Prison des Vétérans"
 msgid "Promote"
 msgstr "Nommer chef de groupe"
 
-#: app/html/directives/lfg-header.html app/html/controllers/forum.html
-#: app/html/controllers/login.html app/html/controllers/profile.html
-#: app/html/controllers/topic.html
+#: app/html/controllers/forum.html app/html/controllers/login.html
+#: app/html/controllers/profile.html app/html/controllers/topic.html
 msgid "Register"
 msgstr "Inscription"
 
@@ -713,6 +712,9 @@ msgstr "{{notification.expediteur.username}} a quitté"
 #: app/html/controllers/notification.html
 msgid "{{notification.expediteur.username}} send you an invitation to"
 msgstr "{{notification.expediteur.username}} vous a envoyé une invitation pour"
+
+#~ msgid "Alternate Guardians"
+#~ msgstr "Autre Gardiens"
 
 #~ msgid "Follow us"
 #~ msgstr "Nous suivre"

@@ -26,10 +26,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: app/html/directives/lfg-profile-header.html
-msgid "Alternate Guardians"
-msgstr ""
-
 #: app/html/controllers/rdv.html
 msgid "Announcement"
 msgstr ""
@@ -182,6 +178,10 @@ msgstr ""
 msgid "Kick"
 msgstr ""
 
+#: app/dynamique_translate.html
+msgid "La Chute du Roi"
+msgstr ""
+
 #: app/html/controllers/party-waiting.html
 msgid "Leave"
 msgstr ""
@@ -320,7 +320,6 @@ msgstr ""
 msgid "Promote"
 msgstr ""
 
-#: app/html/directives/lfg-header.html
 #: app/html/controllers/forum.html
 #: app/html/controllers/login.html
 #: app/html/controllers/profile.html
