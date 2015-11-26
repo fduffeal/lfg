@@ -12,7 +12,7 @@ angular.module('myApp.services')
 
 				this.url = 'http://apidev.esbattle.com/app_dev.php/';
 
-				if(host === 'lfg.esbattle.com'){
+				if(host === 'www.esbattle.com'){
 					this.url = 'http://apiv2.esbattle.com/';
 				}
 
