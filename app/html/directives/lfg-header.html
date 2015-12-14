@@ -7,7 +7,7 @@
 					<li><a href="http://www.esbattle.com" translate >Home</a></li>
 					<li><a ng-href="{{forumUrl}}" ng-class="{'selected':currentUrl == forumUrl}">Forum</a></li>
 					<li><a ng-href="{{homeUrl}}" ng-class="{'selected':currentUrl != forumUrl}">Parties</a></li>
-					<li><a href="http://www.next-stage.fr" target="_blank">NEXT STAGE</a></li>
+					<!--<li><a href="http://www.next-stage.fr" target="_blank">NEXT STAGE</a></li>-->
 					<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" translate  ng-class="{'selected':currentUrl == notifUrl}">Notifications</a></li>
 					<li ng-if="userInfo.username"><a ng-href="" ng-click="refreshBungie()">Update</a>
 				</ul>
@@ -20,7 +20,7 @@
 			<li><a href="http://www.esbattle.com" class="fa fa-home"><span translate>Home</span></a></li>
 			<li><a ng-href="{{forumUrl}}" class="fa fa-comments" ng-class="{'selected':currentUrl == forumUrl}"><span>Forum</span></a></li>
 			<li><a ng-href="{{homeUrl}}" class="fa fa-gamepad" ng-class="{'selected':currentUrl != forumUrl}">Parties</a></li>
-			<li><a href="http://www.next-stage.fr" class="fa fa-newspaper-o" target="_blank">NEXT STAGE</a></li>
+			<!--<li><a href="http://www.next-stage.fr" class="fa fa-newspaper-o" target="_blank">NEXT STAGE</a></li>-->
 			<li ng-if="userInfo.username"><a ng-href="" ng-click="refreshBungie()" class="fa fa-refresh"><span>Update</span></a>
 			<li ng-if="userInfo.username" class="notif"><a ng-href="{{notifUrl}}" class=" fa fa-bell" ng-class="{'selected':currentUrl == notifUrl}"></a><span class="nb-notif">{{notifications.length}}</span></li>
 		</ul>

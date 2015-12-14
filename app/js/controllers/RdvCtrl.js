@@ -29,7 +29,7 @@ angular.module('myApp.controllers').controller('RdvCtrl',
 			$scope.demain.setTime($scope.demain.getTime() + 24 * 3600 * 1000);
 
 			$scope.slotMinAvailable = 0;
-			$scope.slotMaxAvailable = 6;
+			$scope.slotMaxAvailable = 200;
 
 			$scope.partyWaitingUrlRoot = redirection.getPartyWaitingUrlRoot();
 			$scope.partyCreateUrl = redirection.getCreatePartyPageUrl();
